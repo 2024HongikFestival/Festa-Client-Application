@@ -19,11 +19,7 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
-    "prettier/prettier": [
-      "error",
-      {
-        endOfLine: "auto",
-      },
-    ],
+    "prettier/prettier": ["error", { endOfLine: "auto", trailingComma: "es5" }], // Prettier와 동일한 설정
+    "comma-dangle": ["error", "never"], // ESLint에서 쉼표 추가를 비활성화
   },
 };

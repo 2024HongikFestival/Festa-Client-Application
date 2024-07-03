@@ -5,4 +5,5 @@ module.exports = {
   printWidth: 120,
   arrowParens: "always",
   semi: true,
+  trailingComma: "es5",
 };
