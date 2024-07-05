@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 /*
   경로 설정은 여기에서 합니다! 자신이 만들 경로들 위에 주석으로 이름 표기 부탁드립니다. 🙇‍♀️
-// 페이지 url은 모두 소문자로 작성합니다.
+  페이지 url은 모두 소문자로 작성합니다.
 */
 function App() {
   return (
