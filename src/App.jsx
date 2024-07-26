@@ -16,8 +16,6 @@ function App() {
 
   return (
     <div>
-      <h1>홍익대학교 멋쟁이사자처럼 2024 대동제 프로젝트입니다. 🦁</h1>
-      <Example>컴끼얏호우</Example>
       <button onClick={() => clickHandler("en")}>English</button>
       <button onClick={() => clickHandler("ko")}>Korean</button>
       <div>{t("hello")}</div>
