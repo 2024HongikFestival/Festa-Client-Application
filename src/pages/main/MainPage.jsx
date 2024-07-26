@@ -1,2 +1,21 @@
-// 자신이 개발할 페이지의 이름을 폴더로 만들고 그 아래에 페이지 라우터에 띄워줄 루트 컴포넌트를 만듭니다. 확장자는 jsx로 통일하겠습니다.
-// 루트 컴포넌트 외에 더 깊은 depth 페이지 컴포넌트도 추가적으로 만들어서 넣어 주세요. 👍🏻
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+
+export default function MainPage() {
+  const { t, i18n } = useTranslation("translations");
+
+  const clickHandler = (lang) => {
+    console.log(`conver to ${lang}`);
+    i18n.changeLanguage(lang);
+  };
+  return (
+    <>
+      <p>홍익 대동제 메인 페이지!</p>
+      <div>아이오에오</div>
+      <p>{t("hello")}</p>
+      <p>{t("goodbye")}</p>
+      <button onClick={() => clickHandler("ko")}>ko</button>
+      <button onClick={() => clickHandler("en")}>en</button>
+    </>
+  );
+}
