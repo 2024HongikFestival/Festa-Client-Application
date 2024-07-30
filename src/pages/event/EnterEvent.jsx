@@ -7,6 +7,8 @@ const EnterEvent = () => {
     setTextCount(e.target.value.length);
   };
 
+  const submitEvent = async () => {};
+
   return (
     <div
       style={{
