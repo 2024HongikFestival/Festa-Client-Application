@@ -3,6 +3,7 @@ import MainPage from "@/pages/main/MainPage";
 import NotFoundPage from "@/pages/notFound/NotFound";
 import BoothPage from "@/pages/booth/BoothPage";
 import EventPage from "@/pages/event/EventPage";
+import EnterEvent from "./pages/event/EnterEvent";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
           {/* 가영 라우팅 ✨ */}
           <Route path="/event" element={<EventPage />} />
+          <Route path="/event/:eventId" element={<EnterEvent />} />
           {/* 정인 라우팅 🍀 */}
 
           {/* 수연 라우팅 ✌🏻 */}
