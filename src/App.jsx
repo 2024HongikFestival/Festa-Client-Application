@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "@/pages/main/MainPage";
 import NotFoundPage from "@/pages/notFound/NotFound";
 import BoothPage from "@/pages/booth/BoothPage";
+import EventPage from "@/pages/event/EventPage";
 
 function App() {
   return (
