@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "@/pages/main/MainPage";
-import NotFoundPage from "@/pages/notFound/NotFoundPage";
+import NotFoundPage from "@/pages/notFound/NotFound";
+import BoothPage from "@/pages/booth/BoothPage";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
           {/* 윤서 라우팅 😽 */}
           <Route path="/" element={<MainPage />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/pub&booth" element={<BoothPage />} />
+
           {/* 가영 라우팅 ✨ */}
 
           {/* 정인 라우팅 🍀 */}

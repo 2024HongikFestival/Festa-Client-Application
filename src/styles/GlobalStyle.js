@@ -22,7 +22,10 @@ const GlobalStyles = createGlobalStyle`
         line-height: 1;
         font-family: 'Noto Sans KR', sans-serif;
         background-color: #000000;
-        /* margin-bottom: 100px; */
+        max-width: 760px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     ol, ul{
         list-style: none;
