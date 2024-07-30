@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 const EnterEvent = () => {
+  const [textCount, setTextCount] = useState(0);
+
+  const onTextChange = (e) => {
+    setTextCount(e.target.value.length);
+  };
+
   return (
     <div
       style={{
@@ -49,9 +55,14 @@ const EnterEvent = () => {
           </div>
           <div>
             <p>축제 후기를 들려주세요! (선택)</p>
-            <textarea type="text" placeholder="당첨과 상관없ㅇ다~~" />
+            <textarea
+              type="text"
+              placeholder="당첨과 상관없다~~"
+              maxLength="500"
+              onChange={onTextChange}
+            />
           </div>
-          <div>글자수</div>
+          <div>({textCount}/500)</div>
 
           {/* 하단 고정 플로팅 버튼 */}
           <div
