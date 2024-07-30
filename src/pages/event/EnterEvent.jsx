@@ -24,56 +24,67 @@ const EnterEvent = () => {
         }}
       ></div>
       {/* body */}
-      <div style={{ marginTop: "3.4375rem" }}></div>
-      {/* title */}
-      <div>이벤트 응모하기</div>
-      {/* form */}
-      <form>
-        <div>
-          <p>이름</p>
-          <input type="text" placeholder="ex. 홍길동" />
-        </div>
-        <div>
-          <p>당첨 시 연락처</p>
-          <input type="text" placeholder="‘-’ 없이 숫자만 (ex. 01012341234)" />
-        </div>
-        <div>
-          <p>축제 후기를 들려주세요! (선택)</p>
-          <input type="text" placeholder="당첨과 상관없ㅇ다~~" />
-        </div>
-        <div>글자수</div>
+      <div
+        style={{
+          marginTop: "3.4375rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {/* title */}
+        <div>이벤트 응모하기</div>
+        {/* form */}
+        <form>
+          <div>
+            <p>이름</p>
+            <input type="text" placeholder="ex. 홍길동" />
+          </div>
+          <div>
+            <p>당첨 시 연락처</p>
+            <input
+              type="text"
+              placeholder="‘-’ 없이 숫자만 (ex. 01012341234)"
+            />
+          </div>
+          <div>
+            <p>축제 후기를 들려주세요! (선택)</p>
+            <textarea type="text" placeholder="당첨과 상관없ㅇ다~~" />
+          </div>
+          <div>글자수</div>
 
-        {/* 하단 고정 플로팅 버튼 */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "0",
-            width: "100%",
-          }}
-        >
+          {/* 하단 고정 플로팅 버튼 */}
           <div
             style={{
+              position: "absolute",
+              bottom: "0",
               width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
             }}
           >
-            <button
+            <div
               style={{
-                backgroundColor: "black",
-                color: "white",
-                border: "none",
-                width: "20rem",
-                height: "3rem",
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              응모 완료
-            </button>
+              <button
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                  border: "none",
+                  width: "20rem",
+                  height: "3rem",
+                }}
+              >
+                응모 완료
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
