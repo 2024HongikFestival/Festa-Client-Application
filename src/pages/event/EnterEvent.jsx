@@ -1,13 +1,30 @@
 import React, { useState } from "react";
+import { axiosInstance } from "@/api/axios";
 
 const EnterEvent = () => {
   const [textCount, setTextCount] = useState(0);
+  const [eventId, setEventId] = useState(1);
 
   const onTextChange = (e) => {
     setTextCount(e.target.value.length);
   };
 
-  const submitEvent = async () => {};
+  // 현재 이벤트 조회 (단건 조회)
+  const getCurrentEvent = async () => {
+    try {
+      const response = await axiosInstance.get(`/events/${eventId}`);
+      console.log(response.data);
+      if (response.datat.status === 200) {
+        // 성공
+        console.log(response.data.message);
+      } else if (response.data.status === 404) {
+        // 실패
+        console.log("존재하지 않는 이벤트입니다");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div
