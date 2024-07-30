@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "@/api/axios";
+import { useNavigate } from "react-router-dom";
 
 const EventPage = () => {
   const [eventId, setEventId] = useState(1);
+
+  const navigate = useNavigate();
 
   // 이벤트 데이터
   const [title, setTitle] = useState("");
@@ -40,6 +43,30 @@ const EventPage = () => {
       console.error(error);
       if (error.response.status === 404) {
         console.log("존재하지 않는 이벤트입니다.");
+      }
+    }
+  };
+
+  // 이벤트 응모 인가 토큰 발급
+  const handleEventEntry = async () => {
+    try {
+      const response = await axiosInstance.post(`/events/${eventId}/entry`, {
+        // 추가 구현 필요 (필드 상태만 맞춰 놓음)
+        code: "accessCode",
+        latitude: 37.5512242,
+        longtitude: 126.9255396,
+      });
+      console.log(response.data.message);
+      localStorage.setItem(
+        "event_access_token",
+        response.data.data.accessToken
+      );
+      navigate(`/event/${eventId}`);
+    } catch (error) {
+      if (error.response.status === 400) {
+        console.log("홍익대 외부");
+      } else if (error.response.status === 401) {
+        console.log("사용자 인증 실패");
       }
     }
   };
@@ -157,6 +184,7 @@ const EventPage = () => {
                 width: "20rem",
                 height: "3rem",
               }}
+              onClick={handleEventEntry}
             >
               이벤트 응모
             </button>
