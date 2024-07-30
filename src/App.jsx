@@ -14,7 +14,7 @@ function App() {
           <Route path="/pub&booth" element={<BoothPage />} />
 
           {/* 가영 라우팅 ✨ */}
-
+          <Route path="/" element={<EventPage />} />
           {/* 정인 라우팅 🍀 */}
 
           {/* 수연 라우팅 ✌🏻 */}
