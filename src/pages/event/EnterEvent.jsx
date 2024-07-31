@@ -1,10 +1,31 @@
 import React, { useState } from "react";
+import { axiosInstance } from "@/api/axios";
 
 const EnterEvent = () => {
+  const [eventId, setEventId] = useState(1);
   const [textCount, setTextCount] = useState(0);
+
+  // input & textarea 상태 관리
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [comment, setComment] = useState("");
 
   const onTextChange = (e) => {
     setTextCount(e.target.value.length);
+  };
+
+  const handleEventEntry = async () => {
+    try {
+      const response = await axiosInstance.post(`/events/${eventId}/entries`, {
+        Headers: {
+          Authorization: `Bearer ${localStorage.getItem("event_access_token")}`,
+        },
+
+        name: name,
+        phone: phone,
+        comment: comment,
+      });
+    } catch (error) {}
   };
 
   return (
@@ -101,6 +122,7 @@ const EnterEvent = () => {
                   width: "20rem",
                   height: "3rem",
                 }}
+                onClick={handleEventEntry}
               >
                 응모 완료
               </button>

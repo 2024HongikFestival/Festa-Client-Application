@@ -3,6 +3,7 @@ import { axiosInstance } from "@/api/axios";
 import { useNavigate } from "react-router-dom";
 
 const EventPage = () => {
+  // 전역상태로 관리 필요
   const [eventId, setEventId] = useState(1);
 
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const EventPage = () => {
   };
 
   // 이벤트 응모 인가 토큰 발급
-  const handleEventEntry = async () => {
+  const getEventToken = async () => {
     try {
       const response = await axiosInstance.post(`/events/${eventId}/entry`, {
         // 추가 구현 필요 (필드 상태만 맞춰 놓음)
@@ -184,7 +185,7 @@ const EventPage = () => {
                 width: "20rem",
                 height: "3rem",
               }}
-              onClick={handleEventEntry}
+              onClick={getEventToken}
             >
               이벤트 응모
             </button>
