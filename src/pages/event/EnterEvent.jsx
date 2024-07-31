@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosInstance } from "@/api/axios";
 
 const EnterEvent = () => {
@@ -10,8 +10,22 @@ const EnterEvent = () => {
   const [phone, setPhone] = useState("");
   const [comment, setComment] = useState("");
 
-  const onTextChange = (e) => {
-    setTextCount(e.target.value.length);
+  // 이름 입력 관리
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+  // 전화번호 입력 관리
+  const handlePhone = (e) => {
+    // 유효성 검사
+    const regex = /^[0-9\b -]{0,13}$/;
+    if (regex.test(e.target.value)) {
+      setPhone(e.target.value);
+    }
+  };
+  // 후기 입력 관리
+  const handleComment = (e) => {
+    setTextCount(e.target.value.length); // 글자수 세기
+    setComment(e.target.value);
   };
 
   const handleEventEntry = async () => {
@@ -25,8 +39,21 @@ const EnterEvent = () => {
         phone: phone,
         comment: comment,
       });
+      console.log(response.data.message);
     } catch (error) {}
   };
+
+  useEffect(() => {
+    // 전화번호 하이픈 자동 생성
+    if (phone.length === 10) {
+      setPhone(phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    }
+    if (phone.length === 13) {
+      setPhone(
+        phone.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
+    }
+  }, [phone]);
 
   return (
     <div
@@ -78,13 +105,20 @@ const EnterEvent = () => {
           >
             <div>
               <p>이름</p>
-              <input type="text" placeholder="ex. 홍길동" />
+              <input
+                type="text"
+                placeholder="ex. 홍길동"
+                onChange={handleName}
+                value={name}
+              />
             </div>
             <div>
               <p>당첨 시 연락처</p>
               <input
                 type="text"
                 placeholder="‘-’ 없이 숫자만 (ex. 01012341234)"
+                onChange={handlePhone}
+                value={phone}
               />
             </div>
             <div>
@@ -93,7 +127,8 @@ const EnterEvent = () => {
                 type="text"
                 placeholder="당첨과 상관없다~~"
                 maxLength="500"
-                onChange={onTextChange}
+                onChange={handleComment}
+                value={comment}
               />
             </div>
             <div>({textCount}/500)</div>
@@ -122,6 +157,7 @@ const EnterEvent = () => {
                   border: "none",
                   width: "20rem",
                   height: "3rem",
+                  cursor: "pointer",
                 }}
                 onClick={handleEventEntry}
               >
