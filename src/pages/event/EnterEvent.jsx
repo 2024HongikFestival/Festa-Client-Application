@@ -31,9 +31,10 @@ const EnterEvent = () => {
   return (
     <div
       style={{
-        width: "25rem",
+        width: "50rem",
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
         height: "60rem",
         border: "solid 2px",
         borderColor: "black",
