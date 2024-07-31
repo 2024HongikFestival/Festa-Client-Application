@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "@/api/axios";
 import { useNavigate } from "react-router-dom";
+import { useLocate } from "../../hooks/useLocate";
 
 const EventPage = () => {
   // 전역상태로 관리 필요
@@ -18,6 +19,8 @@ const EventPage = () => {
   const [imageUrl, setImageUrl] = useState("");
 
   const [timeLeft, setTimeLeft] = useState("");
+
+  const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
 
   // 현재 이벤트 조회 (단건 조회)
   const getCurrentEvent = async () => {
@@ -48,15 +51,26 @@ const EventPage = () => {
     }
   };
 
+  // 위치 정보 불러오기
+  const getLocation = async () => {
+    navigator.geolocation.getCurrentPosition = (position) => {
+      setLocation({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+    };
+  };
+
   // 이벤트 응모 인가 토큰 발급
   // 컴포넌트 위치에 따라 위치 변동 가능성 있음
   const getEventToken = async () => {
     try {
+      getLocation();
       const response = await axiosInstance.post(`/events/${eventId}/entry`, {
         // 추가 구현 필요 (필드 상태만 맞춰 놓음)
         code: "accessCode",
-        latitude: 37.5512242,
-        longtitude: 126.9255396,
+        latitude: location.latitude,
+        longtitude: location.longitude,
       });
       console.log(response.data.message);
       // 이벤트 토큰 저장
@@ -76,7 +90,7 @@ const EventPage = () => {
   };
 
   useEffect(() => {
-    getCurrentEvent();
+    //getCurrentEvent();
   }, []);
 
   return (
