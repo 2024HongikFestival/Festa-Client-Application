@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "@/api/axios";
 import { useNavigate } from "react-router-dom";
-import { useLocate } from "../../hooks/useLocate";
 
 const EventPage = () => {
   // 전역상태로 관리 필요
@@ -53,12 +52,12 @@ const EventPage = () => {
 
   // 위치 정보 불러오기
   const getLocation = async () => {
-    navigator.geolocation.getCurrentPosition = (position) => {
-      setLocation({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      });
-    };
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      console.log(pos);
+      var latitude = pos.coords.latitude;
+      var longitude = pos.coords.longitude;
+      setLocation({ latitude: latitude, longitude: longitude });
+    });
   };
 
   // 이벤트 응모 인가 토큰 발급
@@ -91,6 +90,7 @@ const EventPage = () => {
 
   useEffect(() => {
     //getCurrentEvent();
+    getLocation();
   }, []);
 
   return (
