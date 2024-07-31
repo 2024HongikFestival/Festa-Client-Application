@@ -49,6 +49,7 @@ const EventPage = () => {
   };
 
   // 이벤트 응모 인가 토큰 발급
+  // 컴포넌트 위치에 따라 위치 변동 가능성 있음
   const getEventToken = async () => {
     try {
       const response = await axiosInstance.post(`/events/${eventId}/entry`, {
@@ -58,10 +59,12 @@ const EventPage = () => {
         longtitude: 126.9255396,
       });
       console.log(response.data.message);
+      // 이벤트 토큰 저장
       localStorage.setItem(
         "event_access_token",
         response.data.data.accessToken
       );
+      // 응모 정보 작성 페이지로 이동
       navigate(`/event/${eventId}`);
     } catch (error) {
       if (error.response.status === 400) {
