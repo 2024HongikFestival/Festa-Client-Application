@@ -4,24 +4,22 @@ import { initReactI18next } from "react-i18next";
 import TranslationEn from "./resource/en.json";
 import TranslationKo from "./resource/ko.json";
 
-const resource = {
+const resources = {
   en: {
-    translations: TranslationEn,
+    translation: TranslationEn,
   },
   ko: {
-    translations: TranslationKo,
+    translation: TranslationKo,
   },
 };
 
 i18n
-  .use(initReactI18next)
   .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
-    compatibilityJSON: "v3",
+    resources,
     lng: "ko",
-    resources: resource,
-    ns: ["translations"],
-    fallbackLng: "ko", // 대체 언어
+    fallbackLng: "ko",
     interpolation: {
       escapeValue: false,
     },
