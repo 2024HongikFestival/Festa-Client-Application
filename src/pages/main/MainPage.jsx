@@ -3,7 +3,7 @@ import styled from "styled-components";
 import MoveToWdfBtn from "../../components/main/MoveToWDFBtn";
 
 export default function MainPage() {
-  const { t, i18n } = useTranslation("translations");
+  const { t, i18n } = useTranslation();
 
   const clickHandler = (lang) => {
     console.log(`conver to ${lang}`);
@@ -26,6 +26,7 @@ export default function MainPage() {
         <div>아이오에오</div>
         <p>{t("hello")}</p>
         <p>{t("goodbye")}</p>
+        <p>{t("main.sorry")}</p>
         <button onClick={() => clickHandler("ko")}>ko</button>
         <button onClick={() => clickHandler("en")}>en</button>
         <MoveToWdfBtn />
