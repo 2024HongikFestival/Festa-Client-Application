@@ -1,3 +1,6 @@
+// 대동제 이벤트 (응모)
+// url: /event/enter
+
 import React, { useState, useEffect } from "react";
 import { axiosInstance } from "@/api/axios";
 
