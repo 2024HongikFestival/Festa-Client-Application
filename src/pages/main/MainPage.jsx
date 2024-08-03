@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-import MoveToWdfBtn from "../../../src//components/main/MoveToWdfBtn";
+import MoveToWdfBtn from "@/components/main/MoveToWdfBtn";
 import { useTranslation } from "react-i18next";
 
 export default function MainPage() {
