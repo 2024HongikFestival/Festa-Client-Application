@@ -19,6 +19,8 @@ export default function MainPage() {
       <button onClick={() => clickHandler("ko")}>ko</button>
       <button onClick={() => clickHandler("en")}>en</button>
       <MoveToWdfBtn />
+      <div>출근하기 싫어요</div>
+      <p>힝구힝구</p>
     </>
   );
 }
