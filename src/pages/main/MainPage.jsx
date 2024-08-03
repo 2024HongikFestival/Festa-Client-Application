@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import MoveToWdfBtn from "../../../src//components/main/MoveToWdfBtn";
 import { useTranslation } from "react-i18next";
 
 export default function MainPage() {
@@ -20,6 +21,7 @@ export default function MainPage() {
       <button onClick={() => clickHandler("en")}>en</button>
       <MoveToWdfBtn />
       <div>출근하기 싫어요</div>
+      <p>2024 hongik fetival</p>
       <p>힝구힝구</p>
     </>
   );
