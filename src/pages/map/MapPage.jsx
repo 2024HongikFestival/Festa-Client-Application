@@ -1,3 +1,6 @@
+// 대동제 로드맵
+// url: /map
+
 import React from "react";
 
 const MapPage = () => {
