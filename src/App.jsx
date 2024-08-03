@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainPage from "@/pages/main/MainPage";
-import NotFoundPage from "@/pages/notFound/NotFound";
+import MainPage from "./pages/main/MainPage";
+import NotFoundPage from "@/pages/notfound/NotFound";
 import BoothPage from "@/pages/booth/BoothPage";
-import EventPage from "@/pages/event/EventPage";
+// import EventPage from "@/pages/event/EventPage";
 import Layout from "@/components/layouts/Layout";
-import EnterEvent from "./pages/event/EnterEvent";
-import CompleteEvent from "./pages/event/SubmitEvent";
+// import EnterEvent from "./pages/event/EnterEvent";
+// import CompleteEvent from "./pages/event/SubmitEvent";
 import MapPage from "./pages/map/MapPage";
 import LineupPage from "./pages/stage/LineupPage";
 import StageInfoPage from "./pages/stage/StageInfoPage";
@@ -48,9 +48,9 @@ function App() {
             <Route path="/promotion" element={<PromotionPage />} />
 
             {/* 가영 라우팅 ✨ */}
-            <Route path="/event/:event-id" element={<EventPage />} />
-            <Route path="/event/enter" element={<EnterEvent />} />
-            <Route path="/event/submit" element={<CompleteEvent />} />
+            {/* <Route path="/event/:event-id" element={<EventPage />} />
+            <Route path="/event/enter" element={<EnterEvent />} /> */}
+            {/* <Route path="/event/submit" element={<CompleteEvent />} /> */}
 
             {/* 정인 라우팅 🍀 */}
             <Route path="/map" element={<MapPage />} />
