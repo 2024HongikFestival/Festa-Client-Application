@@ -1,4 +1,4 @@
-import FloatingHearts from '@/components/main/Heart';
+// import FloatingHearts from '@/components/main/Heart';
 import { useState, useEffect } from 'react';
 import { FaHeart } from 'react-icons/fa6';
 
@@ -29,7 +29,6 @@ export default function BoothPage() {
   return (
     <>
       <h1>부스 페이지입니다!</h1>
-      <FloatingHearts />
     </>
   );
 }
