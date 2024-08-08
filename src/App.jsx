@@ -31,6 +31,8 @@ import FlamePromotionPage from './pages/flame/promotion/FlamePromotionPage';
 import GlobalStyles from './styles/GlobalStyle';
 
 function App() {
+  console.log('sss ');
+
   return (
     <>
       <BrowserRouter>
