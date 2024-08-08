@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
@@ -20,12 +20,11 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         line-height: 1;
-        font-family: 'Noto Sans KR', sans-serif;
-        background-color: #000000;
-        max-width: 760px;
-        display: flex;
+        /* font-family: 'Noto Sans KR', sans-serif; */
+        /* max-width: 760px; */
+        display: flex; 
         flex-direction: column;
-        justify-content: center;
+        justify-content: center; 
     }
     ol, ul{
         list-style: none;
