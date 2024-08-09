@@ -1,8 +1,11 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
+import theme from './theme';
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
+    ${theme.fontFaces}
+
     a{
         text-decoration: none;
         color: inherit;
@@ -15,7 +18,8 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         border: 0;
-        font-size: 10px;
+        /* font-size: 10px; */
+        font-size: 16px;
         vertical-align: baseline;
     }
     body{
@@ -38,12 +42,12 @@ const GlobalStyles = createGlobalStyle`
     html {
         font-size: 16px; /* Default font size */
         /* Media query for mobile */
-        @media (min-width: 450px) and (max-width: 600px) {
+        /* @media (min-width: 450px) and (max-width: 600px) {
             font-size: 13px;
         }
         @media (max-width: 450px) {
             font-size: 10px;
-        }
+        } */
     }
 `;
 
