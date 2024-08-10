@@ -28,6 +28,7 @@ import FlameLineupPage from '@/pages/flame/lineup/FlameLineupPage';
 import FlameMdPage from '@/pages/flame/merchandiser/FlameMdPage';
 import FlamePromotionPage from '@/pages/flame/promotion/FlamePromotionPage';
 import GlobalStyles from '@/styles/GlobalStyle';
+import RedirectEvents from './auth/RedirectEvents';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             <Route path="/event/:event-id" element={<EventPage />} />
             <Route path="/event/enter" element={<EnterEvent />} />
             <Route path="/event/submit" element={<CompleteEvent />} />
+            <Route path="/oauth/events" element={<RedirectEvents />} />
 
             {/* 정인 라우팅 🍀 */}
             <Route path="/map" element={<MapPage />} />

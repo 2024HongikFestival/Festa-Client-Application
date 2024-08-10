@@ -67,6 +67,7 @@ const EventPage = () => {
   // 컴포넌트 위치에 따라 위치 변동 가능성 있음
   const getEventToken = async () => {
     try {
+      //handleKakaoAuth();
       getLocation();
       const response = await axiosInstance.post(`/events/${eventId}/entry`, {
         // 추가 구현 필요 (필드 상태만 맞춰 놓음)
@@ -195,15 +196,15 @@ const EventPage = () => {
 
             <button
               style={{
-                backgroundColor: 'black',
-                color: 'white',
+                backgroundColor: '#FADB34',
+                color: 'black',
                 border: 'none',
                 width: '20rem',
                 height: '3rem',
               }}
               onClick={getEventToken}
             >
-              이벤트 응모
+              카카오 인증 후 응모하기
             </button>
           </div>
         </div>
