@@ -2,18 +2,17 @@
 // url: /flame/md
 
 import theme from '@/styles/theme';
-import React from 'react';
 import styled from 'styled-components';
-import md1 from './merchandiserImages/Frame2608705.svg';
-import md2 from './merchandiserImages/Frame2608708.svg';
-import md3 from './merchandiserImages/Frame2608707.svg';
-import md4 from './merchandiserImages/Frame2608702.svg';
-import md5 from './merchandiserImages/Frame2608704.svg';
-import md6 from './merchandiserImages/Frame2608720.svg';
-import md7 from './merchandiserImages/Frame2608721.svg';
-import md8 from './merchandiserImages/Frame2608701.svg';
-import md9 from './merchandiserImages/Frame2608703.svg';
-import alertImage from './merchandiserImages/alert.svg';
+import md1 from '@/image/flame/merchandiser/Frame2608705.svg';
+import md2 from '@/image/flame/merchandiser/Frame2608708.svg';
+import md3 from '@/image/flame/merchandiser/Frame2608707.svg';
+import md4 from '@/image/flame/merchandiser/Frame2608702.svg';
+import md5 from '@/image/flame/merchandiser/Frame2608704.svg';
+import md6 from '@/image/flame/merchandiser/Frame2608720.svg';
+import md7 from '@/image/flame/merchandiser/Frame2608721.svg';
+import md8 from '@/image/flame/merchandiser/Frame2608701.svg';
+import md9 from '@/image/flame/merchandiser/Frame2608703.svg';
+import alertImage from '@/image/flame/merchandiser/alert.svg';
 import Header from '@/components/layouts/Header';
 import Footer from '@/components/layouts/Footer';
 
@@ -48,7 +47,7 @@ const ProductList = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 20.9375rem; /* 335px -> 20.9375rem */
-  gap: 2.25rem; /* 36px -> 2.25rem */
+  gap: 1.75rem; /* 28px -> 1.75rem */
 `;
 
 const ProductLocation = styled.div`
@@ -95,13 +94,13 @@ const AlertImage = styled.img`
 
 const ProductCard = styled.div`
   position: relative;
-  width: 20.9375rem; /* 335px -> 20.9375rem */
+  width: 100%;
   /* height: 20.9375rem; */
   border: 1px solid transparent;
-  border-image: linear-gradient(to bottom, #df2121 0%, rgba(255, 255, 255, 0) 100%) 1;
+  /* border-image: linear-gradient(to bottom, #df2121 0%, rgba(255, 255, 255, 0) 100%) 1; */
   align-self: stretch;
   flex-shrink: 0;
-  box-shadow: 0rem 0rem 0.5rem 0rem rgba(255, 255, 255, 0.25); /* 8px -> 0.5rem */
+  /* box-shadow: 0rem 0rem 0.5rem 0rem rgba(255, 255, 255, 0.25); */
 `;
 
 const ProductImage = styled.img`
@@ -113,8 +112,8 @@ const ProductImage = styled.img`
 const ProductInfo = styled.div`
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 1px;
+  right: 1px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -198,6 +197,12 @@ const NoticeItem = styled.li`
     color: ${theme.colors.gray_5};
   }
 `;
+const HighlightedText = styled.span`
+  /* Body/Body_2_med */
+  font: ${theme.fontStyles.body_2_med.font};
+  letter-spacing: ${theme.fontStyles.body_2_med.letterSpacing};
+  color: ${theme.colors.gray_30};
+`;
 
 const FlameMdPage = () => {
   const products = [
@@ -255,9 +260,16 @@ const FlameMdPage = () => {
         <NoticeContainer>
           <NoticeTitle>현장 구매 시 유의 사항</NoticeTitle>
           <NoticeList>
-            <NoticeItem>계좌 이체 및 현금 결제만 가능합니다.</NoticeItem>
-            <NoticeItem>구매 완료 시 환불, 교환, 취소 불가능합니다.</NoticeItem>
-            <NoticeItem>불량품은 현장에서 확인 후 바로 현장 관리 인원에게 말씀해 주시기 바랍니다.</NoticeItem>
+            <NoticeItem>
+              계좌 이체 <HighlightedText>및</HighlightedText> 현금 결제<HighlightedText>만 가능합니다.</HighlightedText>
+            </NoticeItem>
+            <NoticeItem>
+              구매 완료 시 환불, 교환, 취소 불가능<HighlightedText>합니다.</HighlightedText>
+            </NoticeItem>
+            <NoticeItem>
+              불량품
+              <HighlightedText>은 현장에서 확인 후 바로 현장 관리 인원에게 말씀해 주시기 바랍니다.</HighlightedText>
+            </NoticeItem>
           </NoticeList>
         </NoticeContainer>
       </MdProductsContainer>

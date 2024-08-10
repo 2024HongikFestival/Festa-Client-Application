@@ -1,7 +1,7 @@
-import PretendardBold from '../assets/fonts/Pretendard-Bold.otf';
-import PretendardMedium from '../assets/fonts/Pretendard-Medium.otf';
-import PretendardExtraBold from '../assets/fonts/Pretendard-ExtraBold.otf';
-import NanumSquareNeo from '../assets/fonts/NanumSquareNeoOTF-Hv.otf';
+import PretendardBold from '../fonts/Pretendard-Bold.otf';
+import PretendardMedium from '../fonts/Pretendard-Medium.otf';
+import PretendardExtraBold from '../fonts/Pretendard-ExtraBold.otf';
+import NanumSquareNeo from '../fonts/NanumSquareNeoOTF-Hv.otf';
 
 const theme = {
   colors: {
