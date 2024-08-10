@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/main/MainPage';
-import NotFoundPage from '@/pages/notFound/NotFound';
+import NotFoundPage from '@/pages/notfound/NotFound';
 import BoothPage from '@/pages/booth/BoothPage';
 // import EventPage from "@/pages/event/EventPage";
 import Layout from '@/components/layouts/Layout';

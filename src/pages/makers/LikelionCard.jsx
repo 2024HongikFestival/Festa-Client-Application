@@ -9,7 +9,6 @@ const LikelionCard = () => {
       <CardImg>
         <img src={PM} alt="PM" />
       </CardImg>
-
       <Name>장윤영</Name>
       <Department>컴퓨터공학과 20</Department>
       <Ment>🩷 윤영이 짱</Ment>
