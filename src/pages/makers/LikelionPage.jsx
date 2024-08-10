@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import likelionBgImg from '@/assets/makers/likelionBgImg.svg';
 import LikelionCard from './LikelionCard';
@@ -115,6 +114,7 @@ const LikelionLayout = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #121212;
+  margin-top: 56px;
 `;
 
 const LikelionBgImg = styled.div`
