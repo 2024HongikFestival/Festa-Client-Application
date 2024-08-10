@@ -8,6 +8,7 @@ export default function Layout() {
     <Continer>
       <Header />
       <Outlet />
+      <Footer />
     </Continer>
   );
 }
@@ -16,5 +17,5 @@ const Continer = styled.div`
   min-width: 375px;
   max-width: 768px;
   min-height: calc(var(--vh, 1vh) * 100);
-  margin: 0 auto;
+  margin: 56px auto 0;
 `;
