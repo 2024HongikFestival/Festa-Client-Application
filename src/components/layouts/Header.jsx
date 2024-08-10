@@ -58,8 +58,7 @@ const HambergerMenu = styled.div`
 `;
 
 const HiuLogo = styled.div`
-  width: 137px;
-  height: 28px;
+  width: 147px;
   overflow: hidden;
   img {
     width: 100%;
