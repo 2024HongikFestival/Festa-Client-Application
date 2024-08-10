@@ -31,6 +31,8 @@ import GlobalStyles from '@/styles/GlobalStyle';
 import RedirectEvents from './auth/RedirectEvents';
 
 function App() {
+  console.log('sss ');
+
   return (
     <>
       {/* url 세그먼트 확정 후 수정 예정 */}
