@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainPage from './pages/main/MainPage';
+import MainPage from '@/pages/main/MainPage';
 import NotFoundPage from '@/pages/notFound/NotFound';
 import BoothPage from '@/pages/booth/BoothPage';
 import EventPage from '@/pages/event/EventPage';
@@ -31,8 +31,6 @@ import GlobalStyles from '@/styles/GlobalStyle';
 import RedirectEvents from './auth/RedirectEvents';
 
 function App() {
-  console.log('sss ');
-
   return (
     <>
       {/* url 세그먼트 확정 후 수정 예정 */}

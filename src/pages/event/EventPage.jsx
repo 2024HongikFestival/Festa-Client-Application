@@ -1,9 +1,10 @@
 // // 대동제 이벤트
 // // url: /event/{event-id}
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { axiosInstance } from '@/api/axios';
 import { useNavigate } from 'react-router-dom';
+import { EVENTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
 
 const EventPage = () => {
   // 전역상태로 관리 필요
@@ -63,31 +64,35 @@ const EventPage = () => {
     });
   };
 
+  const handleKakaoAuth = () => {
+    window.location.href = EVENTS_KAKAO_AUTH_URL;
+  };
+
   // 이벤트 응모 인가 토큰 발급
   // 컴포넌트 위치에 따라 위치 변동 가능성 있음
-  const getEventToken = async () => {
-    try {
-      //handleKakaoAuth();
-      getLocation();
-      const response = await axiosInstance.post(`/events/${eventId}/entry`, {
-        // 추가 구현 필요 (필드 상태만 맞춰 놓음)
-        code: 'accessCode',
-        latitude: location.latitude,
-        longtitude: location.longitude,
-      });
-      console.log(response.data.message);
-      // 이벤트 토큰 저장
-      localStorage.setItem('event_access_token', response.data.data.accessToken);
-      // 응모 정보 작성 페이지로 이동
-      navigate(`/event/${eventId}`);
-    } catch (error) {
-      if (error.response.status === 400) {
-        console.log('홍익대 외부');
-      } else if (error.response.status === 401) {
-        console.log('사용자 인증 실패');
-      }
-    }
-  };
+  // const getEventToken = async () => {
+  //   handleKakaoAuth();
+  //   try {
+  //     getLocation();
+  //     const response = await axiosInstance.post(`/events/${eventId}/token`, {
+  //       // 추가 구현 필요 (필드 상태만 맞춰 놓음)
+  //       code: 'kakao_code',
+  //       latitude: location.latitude,
+  //       longtitude: location.longitude,
+  //     });
+  //     console.log(response.data.message);
+  //     // 이벤트 토큰 저장
+  //     localStorage.setItem('event_access_token', response.data.data.accessToken);
+  //     // 응모 정보 작성 페이지로 이동
+  //     navigate(`/event/${eventId}`);
+  //   } catch (error) {
+  //     if (error.response.status === 400) {
+  //       console.log('홍익대 외부');
+  //     } else if (error.response.status === 401) {
+  //       console.log('사용자 인증 실패');
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     //getCurrentEvent();
@@ -202,7 +207,7 @@ const EventPage = () => {
                 width: '20rem',
                 height: '3rem',
               }}
-              onClick={getEventToken}
+              onClick={handleKakaoAuth}
             >
               카카오 인증 후 응모하기
             </button>
