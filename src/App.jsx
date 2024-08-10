@@ -28,15 +28,11 @@ import FlameReservationPage from './pages/flame/reservation/FlameReservationPage
 import FlameLineupPage from './pages/flame/lineup/FlameLineupPage';
 import FlameMdPage from './pages/flame/merchandiser/FlameMdPage';
 import FlamePromotionPage from './pages/flame/promotion/FlamePromotionPage';
-import GlobalStyles from './styles/GlobalStyle';
 
 function App() {
-  console.log('sss ');
-
   return (
     <>
       <BrowserRouter>
-        <GlobalStyles />
         <Routes>
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}
