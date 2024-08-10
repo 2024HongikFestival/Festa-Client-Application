@@ -119,7 +119,7 @@ const EnterEvent = () => {
               <textarea
                 type="text"
                 placeholder="당첨과 상관없다~~"
-                maxLength="500"
+                maxLength="100"
                 onChange={handleComment}
                 value={comment}
               />
