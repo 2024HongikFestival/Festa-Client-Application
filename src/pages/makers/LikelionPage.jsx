@@ -1,37 +1,40 @@
 import styled from 'styled-components';
 import likelionBgImg from '@/static/image/makers/likelionBgImg.svg';
 import LikelionCard from './LikelionCard';
+import { useTranslation } from 'react-i18next';
 
 const LikelionPage = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <LikelionLayout>
       <LikelionBgImg>
         <Title>
-          홍익대학교
+          {t('likelion.title1')}
           <br />
-          멋쟁이 사자처럼
+          {t('likelion.title2')}
         </Title>
       </LikelionBgImg>
       <WhoWeAreBg>
         <WhoWeAre>
-          &apos;멋쟁이사자처럼&apos;은
+          {t('likelion.whoWeAre1')}
           <br />
-          창업과 서비스 개발에 대한 독보적인 교육을 통해
+          {t('likelion.whoWeAre2')}
           <br />
-          자신만의 테크 기반 아이디어를 실현하는
+          {t('likelion.whoWeAre3')}
           <br />
-          전국 최대 규모의 대학 연합 IT 동아리입니다.
+          {t('likelion.whoWeAre4')}
           <br />
           <br />
-          홍익대학교 멋쟁이사자처럼 12기 구성원들이
+          {t('likelion.whoWeAre5')}
           <br />
-          화양연화 ; 만개 기획 및 개발에 참여하여
+          {t('likelion.whoWeAre6')}
           <br />
-          2024 홍익대학교 대동제 축제 사이트를
+          {t('likelion.whoWeAre7')}
           <br />
-          제작하였습니다.
+          {t('likelion.whoWeAre8')}
         </WhoWeAre>
-        <Slogan># Possibility to Reality</Slogan>
+        <Slogan> {t('likelion.slogan')}</Slogan>
       </WhoWeAreBg>
       <Devider />
       <RoleSection>
@@ -66,7 +69,6 @@ const LikelionPage = () => {
         </CardWrapper>
       </RoleSection>
       <Devider />
-
       <RoleSection>
         <RoleName>프론트엔드</RoleName>
         <RoleDescription>
