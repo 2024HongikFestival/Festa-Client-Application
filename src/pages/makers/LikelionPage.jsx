@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import likelionBgImg from '@/assets/makers/likelionBgImg.svg';
+import likelionBgImg from '@/static/image/makers/likelionBgImg.svg';
 import LikelionCard from './LikelionCard';
 
 const LikelionPage = () => {
