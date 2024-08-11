@@ -4,7 +4,7 @@ import LikelionCard from './LikelionCard';
 import { useTranslation } from 'react-i18next';
 
 const LikelionPage = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <LikelionLayout>
