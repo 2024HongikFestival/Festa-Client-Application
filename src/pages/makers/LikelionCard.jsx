@@ -32,8 +32,8 @@ const LikelionCardLayout = styled.div`
 `;
 
 const CardImg = styled.div`
-  width: 95px;
-  height: 95px;
+  width: 9.5rem;
+  height: 9.5rem;
   overflow: hidden;
 
   img {
@@ -43,47 +43,32 @@ const CardImg = styled.div`
 `;
 
 const Name = styled.h5`
-  margin-top: 12px;
-
-  /* 기본_Headline/Headline 5 */
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 1.6;
-  letter-spacing: -0.02px;
-  color: white;
+  margin-top: 1.2rem;
+  ${(props) => props.theme.fontStyles.flame.Headline5};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 const Department = styled.div`
-  margin-top: 8px;
-  width: 109px;
-  height: 29px;
-  border: 1px solid #888e94;
-  border-radius: 4px;
+  margin-top: 0.8rem;
+  width: 10.9rem;
+  height: 2.9rem;
+  border: 0.1rem solid ${(props) => props.theme.colors.gray50};
+  border-radius: 0.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* Body/Body_2_med */
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.014px;
-  color: #888e94;
+  ${(props) => props.theme.fontStyles.body2Med};
+  color: ${(props) => props.theme.colors.gray50};
 `;
 
 const Ment = styled.p`
-  margin-top: 8px;
-
-  /* Caption/Caption_med */
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.012px;
-  color: #888e94;
+  margin-top: 0.8rem;
+  ${(props) => props.theme.fontStyles.captionMed};
+  color: ${(props) => props.theme.colors.gray50};
 `;
 
 const Icons = styled.div`
-  margin-top: 12px;
+  margin-top: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;

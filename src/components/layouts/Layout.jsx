@@ -5,17 +5,17 @@ import Footer from '@/components/layouts/Footer';
 
 export default function Layout() {
   return (
-    <Continer>
+    <Container>
       <Header />
       <Outlet />
       <Footer />
-    </Continer>
+    </Container>
   );
 }
 
-const Continer = styled.div`
+const Container = styled.div`
   min-width: 375px;
   max-width: 768px;
   min-height: calc(var(--vh, 1vh) * 100);
-  margin: 56px auto 0;
+  margin: 5.6rem auto 0;
 `;

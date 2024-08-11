@@ -27,81 +27,78 @@ export default function Footer() {
 const FooterLayout = styled.div`
   width: 100%;
   height: auto;
-  background-color: #121212;
+  background-color: ${(props) => props.theme.colors.makersBackgroundColor};
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
 const PreviousBtn = styled.div`
-  margin: 100px auto 0;
+  margin: 10rem auto 0;
   cursor: pointer;
-  width: 127px;
-  height: 45px;
-  border-radius: 50px;
-  border: 1px solid #888e94;
-  background: #181a1b;
+  width: 12.7rem;
+  height: 4.5rem;
+  border-radius: 5rem;
+  border: 0.1rem solid ${(props) => props.theme.colors.gray50};
+  background: ${(props) => props.theme.colors.gray100};
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 
   span {
-    color: #fafafb;
-    font-family: Pretendard;
-    font-size: 16px;
+    padding-top: 0.2rem;
+    color: ${(props) => props.theme.colors.gray5};
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 1.6rem;
     font-weight: 700;
-    line-height: 21px;
+    line-height: 2.1rem;
   }
 `;
 
 const LikelionBtn = styled.div`
   cursor: pointer;
-  margin-top: 32px;
-  color: white;
+  margin-top: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 
-  /* Body/Body_2_bold */
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: -0.014px;
+  span {
+    color: ${(props) => props.theme.colors.white};
+    text-align: center;
+    ${(props) => props.theme.fontStyles.body2Bold};
+  }
 `;
 
 const GaehwaBtn = styled.div`
   cursor: pointer;
-  margin-top: 8px;
-  color: white;
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 
-  /* Body/Body_2_bold */
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: -0.014px;
+  span {
+    color: ${(props) => props.theme.colors.white};
+    text-align: center;
+    ${(props) => props.theme.fontStyles.body2Bold};
+  }
 `;
 
 const DaedongjeContainer = styled.div`
-  margin: 80px 0 0 20px;
+  margin: 8rem 0 0 2rem;
   display: flex;
   flex-direction: column;
   span {
-    color: white;
-
-    /* Caption/Caption_bold */
-    font-family: Pretendard;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.5;
-    letter-spacing: -0.012px;
+    color: ${(props) => props.theme.colors.white};
+    ${(props) => props.theme.fontStyles.captionBold};
   }
 
   img {
-    width: 24px;
-    height: 24px;
-    margin-top: 8px;
-    margin-bottom: 155px;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-top: 0.8rem;
+    margin-bottom: 15.5rem;
   }
 `;
