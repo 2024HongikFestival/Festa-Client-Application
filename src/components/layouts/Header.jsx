@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import hiuLogo from '@/assets/layouts/hiuLogo.svg';
-import hambergerMenu from '@/assets/layouts/hambergerMenu.svg';
+import hiuLogo from '@/static/image/layouts/hiuLogo.svg';
+import hambergerMenu from '@/static/image/layouts/hambergerMenu.svg';
 
 export default function Header() {
   return (

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import instaLogo from '@/assets/layouts/instaLogo.svg';
+import instaLogo from '@/static/image/layouts/instaLogo.svg';
 
 export default function Footer() {
   const nav = useNavigate();
