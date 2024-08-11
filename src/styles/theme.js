@@ -13,6 +13,7 @@ const theme = {
     gray90: '#2c2d30',
     gray100: '#181a1b',
     black: '#000000',
+    makersBackgroundColor: '#121212',
     flameBackgroundColor: '#010304',
     flameSubBackgroundColor: 'rgba(24, 24, 24, 0.60)',
     flameMainColor: '#f20d0d',

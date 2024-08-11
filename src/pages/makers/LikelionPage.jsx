@@ -113,8 +113,7 @@ const LikelionLayout = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  background-color: #121212;
-  margin-top: 56px;
+  background-color: ${(props) => props.theme.colors.makersBackgroundColor};
 `;
 
 const LikelionBgImg = styled.div`
@@ -133,12 +132,8 @@ const LikelionBgImg = styled.div`
 const Title = styled.h1`
   position: absolute;
   top: 44%;
-
-  // Headline 1
-  font-size: 2.25rem;
-  font-weight: 800;
-  line-height: 1.6;
-  color: white;
+  ${(props) => props.theme.fontStyles.flame.Headline1};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 const WhoWeAreBg = styled.div`
@@ -151,33 +146,26 @@ const WhoWeAreBg = styled.div`
 
 const WhoWeAre = styled.div`
   position: absolute;
-  margin-top: -0.75rem;
-
-  // Body_1_med
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.5;
-  color: white;
-  letter-spacing: -0.016px;
+  margin-top: -1.2rem;
+  ${(props) => props.theme.fontStyles.body1Med};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 const Slogan = styled.p`
-  margin-top: 258px;
-  font-family: Inconsolata;
-  color: white;
-  font-size: 16px;
+  margin-top: 25.8rem;
+  color: ${(props) => props.theme.colors.white};
+  font-family: 'Inconsolata', san-serif;
+  font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.5;
-  letter-spacing: 0.32px;
-  margin-bottom: 123px;
+  letter-spacing: 0.032rem;
+  margin-bottom: 12.3rem;
 `;
 
 const Devider = styled.div`
   width: 100%;
-  /* height: 12px; */
   padding-bottom: 3.2%;
-  background: #181a1b;
+  background-color: ${(props) => props.theme.colors.gray100};
 `;
 
 const RoleSection = styled.section`
@@ -190,34 +178,24 @@ const RoleSection = styled.section`
 `;
 
 const RoleName = styled.h3`
-  margin-top: 36px;
-
-  /* 기본_Headline/Headline 3 */
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1.6;
-  letter-spacing: -0.028px;
-  color: white;
+  margin-top: 3.6rem;
+  ${(props) => props.theme.fontStyles.flame.Headline3};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 const RoleDescription = styled.div`
-  margin-top: 16px;
-  margin-bottom: 32px;
-
-  /* Body/Body_1_med */
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.016px;
-  color: #a3a8ae;
+  margin-top: 1.6rem;
+  margin-bottom: 3.2rem;
+  ${(props) => props.theme.fontStyles.body1Med};
+  color: ${(props) => props.theme.colors.gray40};
 `;
 
 const CardWrapper = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: 3.2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 40px;
-  row-gap: 28px;
+  column-gap: 4rem;
+  row-gap: 2.8rem;
 
   & > *:nth-child(odd):first-of-type {
     grid-column: span 2;
