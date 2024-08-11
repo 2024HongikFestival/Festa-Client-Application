@@ -18,7 +18,7 @@ module.exports = {
   rules: {
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-    'prettier/prettier': ['error', { endOfLine: 'auto', trailingComma: 'es5' }], // Prettier와 동일한 설정
+    'prettier/prettier': ['error', { endOfLine: 'auto', trailingComma: 'es5', semi: true }], // Prettier와 동일한 설정
     // ESLint에서 쉼표 추가를 비활성화
     'no-unused-vars': 'warn',
     'no-console': 'warn',

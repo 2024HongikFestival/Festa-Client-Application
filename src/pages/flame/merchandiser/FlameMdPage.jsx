@@ -1,93 +1,85 @@
-// 와디페 MD 상품
-// url: /flame/md
-
-import theme from '@/styles/theme';
 import styled from 'styled-components';
-import md1 from '@/image/flame/merchandiser/Frame2608705.svg';
-import md2 from '@/image/flame/merchandiser/Frame2608708.svg';
-import md3 from '@/image/flame/merchandiser/Frame2608707.svg';
-import md4 from '@/image/flame/merchandiser/Frame2608702.svg';
-import md5 from '@/image/flame/merchandiser/Frame2608704.svg';
-import md6 from '@/image/flame/merchandiser/Frame2608720.svg';
-import md7 from '@/image/flame/merchandiser/Frame2608721.svg';
-import md8 from '@/image/flame/merchandiser/Frame2608701.svg';
-import md9 from '@/image/flame/merchandiser/Frame2608703.svg';
-import alertImage from '@/image/flame/merchandiser/alert.svg';
+import md1 from '@/static/image/flame/merchandiser/Frame2608705.svg';
+import md2 from '@/static/image/flame/merchandiser/Frame2608708.svg';
+import md3 from '@/static/image/flame/merchandiser/Frame2608707.svg';
+import md4 from '@/static/image/flame/merchandiser/Frame2608702.svg';
+import md5 from '@/static/image/flame/merchandiser/Frame2608704.svg';
+import md6 from '@/static/image/flame/merchandiser/Frame2608720.svg';
+import md7 from '@/static/image/flame/merchandiser/Frame2608721.svg';
+import md8 from '@/static/image/flame/merchandiser/Frame2608701.svg';
+import md9 from '@/static/image/flame/merchandiser/Frame2608703.svg';
+import alertImage from '@/static/image/flame/merchandiser/alert.svg';
 import Header from '@/components/layouts/Header';
 import Footer from '@/components/layouts/Footer';
 
 const MdProductsContainer = styled.div`
   width: 100%;
-  /* background-color: #010304; */
-  background-color: ${theme.colors.flameBackgroundColor};
+  background-color: ${(props) => props.theme.colors.flameBackgroundColor};
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 3.25rem; /* 52px -> 3.25rem */
+  gap: 5.2rem; /* 52px -> 5.2rem */
 `;
 
 const ProductsSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.75rem; /* 28px -> 1.75rem */
+  gap: 2.8rem; /* 28px -> 2.8rem */
   align-self: stretch;
 `;
 
 const Title = styled.h2`
-  height: 3rem; /* 48px -> 3rem */
+  height: 4.8rem; /* 48px -> 4.8rem */
   text-align: center;
-  color: ${theme.colors.white};
-  font: ${theme.fontStyles.flameHeadline3.font};
-  letter-spacing: ${theme.fontStyles.flameHeadline3.letterSpacing};
+  color: ${(props) => props.theme.colors.white};
+  ${(props) => props.theme.fontStyles.flame.wdfHeadline3};
 `;
 
 const ProductList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 20.9375rem; /* 335px -> 20.9375rem */
-  gap: 1.75rem; /* 28px -> 1.75rem */
+  width: 33.5rem; /* 335px -> 33.5rem */
+  gap: 2.8rem; /* 28px -> 2.8rem */
 `;
 
 const ProductLocation = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem; /* 8px -> 0.5rem */
+  gap: 0.8rem; /* 8px -> 0.8rem */
   align-self: stretch;
   text-align: center;
 `;
+
 const LocationDescription = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.25rem; /* 4px -> 0.25rem */
+  gap: 0.4rem; /* 4px -> 0.4rem */
   align-self: stretch;
-  background-color: ${theme.colors.gray_90};
-  padding: 0.5rem; /* 8px -> 0.5rem */
-  color: ${theme.colors.gray_10};
-  /* Body/Body_1_bold */
-  font: ${theme.fontStyles.body_1_bold.font};
-  letter-spacing: ${theme.fontStyles.body_1_bold.letterSpacing};
+  background-color: ${(props) => props.theme.colors.gray90};
+  padding: 0.8rem; /* 8px -> 0.8rem */
+  color: ${(props) => props.theme.colors.gray10};
+  ${(props) => props.theme.fontStyles.body1Bold};
 `;
+
 const SubDescription = styled.p`
-  color: ${theme.colors.gray_20};
-  /* Body/Body_1_med */
-  font: ${theme.fontStyles.body_1_med.font};
-  letter-spacing: ${theme.fontStyles.body_1_med.letterSpacing};
+  color: ${(props) => props.theme.colors.gray20};
+  ${(props) => props.theme.fontStyles.body1Med};
 `;
+
 const LocationAlert = styled.div`
   display: flex;
-  height: 1.125rem; /* 18px -> 1.125rem */
-  color: ${theme.colors.gray_60};
-  gap: 0.5rem; /* 8px -> 0.5rem */
-  /* Caption/Caption_med */
-  font: ${theme.fontStyles.caption_med.font};
-  letter-spacing: ${theme.fontStyles.caption_med.letterSpacing};
+  height: 1.8rem; /* 18px -> 1.8rem */
+  color: ${(props) => props.theme.colors.gray60};
+  gap: 0.8rem; /* 8px -> 0.8rem */
+  ${(props) => props.theme.fontStyles.captionMed};
 `;
+
 const AlertImage = styled.img`
-  width: 0.96rem; /* 15.36px -> 0.96rem */
-  height: 0.96rem; /* 15.36px -> 0.96rem */
+  width: 1.536rem; /* 15.36px -> 1.536rem */
+  height: 1.536rem; /* 15.36px -> 1.536rem */
   flex-shrink: 0;
   opacity: 0.5;
 `;
@@ -95,12 +87,9 @@ const AlertImage = styled.img`
 const ProductCard = styled.div`
   position: relative;
   width: 100%;
-  /* height: 20.9375rem; */
   border: 1px solid transparent;
-  /* border-image: linear-gradient(to bottom, #df2121 0%, rgba(255, 255, 255, 0) 100%) 1; */
   align-self: stretch;
   flex-shrink: 0;
-  /* box-shadow: 0rem 0rem 0.5rem 0rem rgba(255, 255, 255, 0.25); */
 `;
 
 const ProductImage = styled.img`
@@ -112,16 +101,16 @@ const ProductImage = styled.img`
 const ProductInfo = styled.div`
   position: absolute;
   bottom: 0;
-  left: 1px;
-  right: 1px;
+  left: 1.6px;
+  right: 1.6px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-shrink: 0;
-  gap: 0.125rem; /* 2px -> 0.125rem */
-  background-color: ${theme.colors.flameSubBackgroundColor};
-  backdrop-filter: blur(0.375rem); /* 6px -> 0.375rem */
-  padding: 1rem; /* 16px -> 1rem */
+  gap: 0.2rem; /* 2px -> 0.2rem */
+  background-color: ${(props) => props.theme.colors.flameSubBackgroundColor};
+  backdrop-filter: blur(0.6rem); /* 6px -> 0.6rem */
+  padding: 1.6rem; /* 16px -> 1.6rem */
 `;
 
 const ProductDetails = styled.div`
@@ -129,63 +118,53 @@ const ProductDetails = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 0.25rem; /* 4px -> 0.25rem */
+  gap: 0.4rem; /* 4px -> 0.4rem */
   align-self: stretch;
 `;
 
 const ProductTag = styled.div`
-  color: ${theme.colors.flameMainColor};
-  /* Caption/Caption_bold */
-  font: ${theme.fontStyles.caption_bold.font};
-  letter-spacing: ${theme.fontStyles.caption_bold.letterSpacing};
+  color: ${(props) => props.theme.colors.flameMainColor};
+  ${(props) => props.theme.fontStyles.captionBold};
 `;
 
 const ProductName = styled.div`
-  color: ${theme.colors.white};
-  /* Subhead/Subhead_bold */
-  font: ${theme.fontStyles.subhead_bold.font};
-  letter-spacing: ${theme.fontStyles.subhead_bold.letterSpacing};
+  color: ${(props) => props.theme.colors.white};
+  ${(props) => props.theme.fontStyles.subHeadBold};
 `;
 
 const ProductPrice = styled.div`
-  color: ${theme.colors.gray_50};
-  /* Body/Body_1_med */
-  font: ${theme.fontStyles.body_1_med.font};
-  letter-spacing: ${theme.fontStyles.body_1_med.letterSpacing};
+  color: ${(props) => props.theme.colors.gray50};
+  ${(props) => props.theme.fontStyles.body1Med};
 `;
 
 const NoticeContainer = styled.div`
   display: flex;
-  width: 20.9375rem; /* 335px -> 20.9375rem */
+  width: 33.5rem; /* 335px -> 33.5rem */
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem; /* 12px -> 0.75rem */
+  gap: 1.2rem; /* 12px -> 1.2rem */
 `;
 
 const NoticeTitle = styled.div`
   align-self: stretch;
-  color: ${theme.colors.white};
-  /* Subhead/Subhead_bold */
-  font: ${theme.fontStyles.subhead_bold.font};
-  letter-spacing: ${theme.fontStyles.subhead_bold.letterSpacing};
+  color: ${(props) => props.theme.colors.white};
+  ${(props) => props.theme.fontStyles.subHeadBold};
 `;
 
 const NoticeList = styled.ul`
-  list-style: none; /* 기본 리스트 스타일 제거 */
+  list-style: none;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.25rem; /* 4px -> 0.25rem */
+  gap: 0.4rem; /* 4px -> 0.4rem */
   align-self: stretch;
 `;
 
 const NoticeItem = styled.li`
   position: relative;
-  padding-left: 1rem;
-  color: ${theme.colors.gray_5};
-  /* Body/Body_2_med */
-  font: ${theme.fontStyles.body_2_med.font};
-  letter-spacing: ${theme.fontStyles.body_2_med.letterSpacing};
+  padding-left: 1.6rem; /* 10px -> 1.6rem */
+  color: ${(props) => props.theme.colors.gray5};
+  ${(props) => props.theme.fontStyles.body2Med};
 
   &::before {
     content: '•';
@@ -193,15 +172,14 @@ const NoticeItem = styled.li`
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 0.75rem; /* 동그라미 크기 조절 */
-    color: ${theme.colors.gray_5};
+    font-size: 1.2rem; /* 12px -> 1.2rem */
+    color: ${(props) => props.theme.colors.gray5};
   }
 `;
+
 const HighlightedText = styled.span`
-  /* Body/Body_2_med */
-  font: ${theme.fontStyles.body_2_med.font};
-  letter-spacing: ${theme.fontStyles.body_2_med.letterSpacing};
-  color: ${theme.colors.gray_30};
+  ${(props) => props.theme.fontStyles.body2Med};
+  color: ${(props) => props.theme.colors.gray30};
 `;
 
 const FlameMdPage = () => {
@@ -229,7 +207,7 @@ const FlameMdPage = () => {
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <MdProductsContainer>
         <ProductsSection>
           <Title>MD 상품</Title>
@@ -240,7 +218,8 @@ const FlameMdPage = () => {
                 <SubDescription>에서 구매하실 수 있습니다!</SubDescription>
               </LocationDescription>
               <LocationAlert>
-                <AlertImage src={alertImage}></AlertImage>현장 구매만 가능합니다
+                <AlertImage src={alertImage} />
+                현장 구매만 가능합니다
               </LocationAlert>
             </ProductLocation>
             {products.map((product) => (
@@ -270,10 +249,14 @@ const FlameMdPage = () => {
               불량품
               <HighlightedText>은 현장에서 확인 후 바로 현장 관리 인원에게 말씀해 주시기 바랍니다.</HighlightedText>
             </NoticeItem>
+            <NoticeItem>
+              불량품
+              <HighlightedText>은 현장에서 확인 후 바로 현장 관리 인원에게 말씀해 주시기 바랍니다.</HighlightedText>
+            </NoticeItem>
           </NoticeList>
         </NoticeContainer>
       </MdProductsContainer>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };
