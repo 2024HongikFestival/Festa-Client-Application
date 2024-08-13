@@ -21,8 +21,6 @@ const EventPage = () => {
   const [announcedDate, setAnnouncedDate] = useState('');
   const [imageUrl, setImageUrl] = useState('');
 
-  const [timeLeft, setTimeLeft] = useState('');
-
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
 
   // 현재 이벤트 조회 (단건 조회)

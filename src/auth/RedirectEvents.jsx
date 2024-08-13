@@ -1,7 +1,5 @@
-import EnterEvent from '@/pages/event/EnterEvent';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '@/api/axios';
-import { useNavigate } from 'react-router-dom';
 
 const RedirectEvents = () => {
   const code = new URL(window.location.href).searchParams.get('code');
@@ -9,8 +7,6 @@ const RedirectEvents = () => {
 
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
   const [eventId, setEventId] = useState(1);
-
-  const navigate = useNavigate();
 
   // 위치 정보 불러오기
   const getLocation = async () => {
@@ -34,8 +30,8 @@ const RedirectEvents = () => {
       console.log(response.data.message);
       // 이벤트 토큰 저장
       localStorage.setItem('event_access_token', response.data.data.accessToken);
-      // 응모 정보 작성 페이지로 이동
-      navigate('/event/enter');
+      // 성공 시 응모 정보 작성 페이지로 이동
+      window.location.href = '/event/enter';
     } catch (error) {
       if (error.response.status === 400) {
         console.log('요청 양식 불량');
@@ -48,14 +44,12 @@ const RedirectEvents = () => {
       } else {
         console.log('알 수 없는 오류');
       }
+      window.location.href = `/event/${eventId}`;
     }
   };
   useEffect(() => {
-    getLocation();
     getEventToken();
   }, []);
-
-  return <EnterEvent />;
 };
 
 export default RedirectEvents;
