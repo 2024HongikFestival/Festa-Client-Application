@@ -33,7 +33,7 @@ const Title = styled.h2`
   height: 4.8rem; /* 48px -> 4.8rem */
   text-align: center;
   color: ${(props) => props.theme.colors.white};
-  ${(props) => props.theme.fontStyles.flame.wdfHeadline3};
+  ${(props) => props.theme.fontStyles.flame.headline3};
 `;
 
 const ProductList = styled.div`
@@ -61,12 +61,12 @@ const LocationDescription = styled.div`
   background-color: ${(props) => props.theme.colors.gray90};
   padding: 0.8rem; /* 8px -> 0.8rem */
   color: ${(props) => props.theme.colors.gray10};
-  ${(props) => props.theme.fontStyles.body1Bold};
+  ${(props) => props.theme.fontStyles.basic.body1Bold};
 `;
 
 const SubDescription = styled.p`
   color: ${(props) => props.theme.colors.gray20};
-  ${(props) => props.theme.fontStyles.body1Med};
+  ${(props) => props.theme.fontStyles.basic.body1Med};
 `;
 
 const LocationAlert = styled.div`
@@ -74,7 +74,7 @@ const LocationAlert = styled.div`
   height: 1.8rem; /* 18px -> 1.8rem */
   color: ${(props) => props.theme.colors.gray60};
   gap: 0.8rem; /* 8px -> 0.8rem */
-  ${(props) => props.theme.fontStyles.captionMed};
+  ${(props) => props.theme.fontStyles.basic.captionMed};
 `;
 
 const AlertImage = styled.img`
@@ -124,17 +124,17 @@ const ProductDetails = styled.div`
 
 const ProductTag = styled.div`
   color: ${(props) => props.theme.colors.flameMainColor};
-  ${(props) => props.theme.fontStyles.captionBold};
+  ${(props) => props.theme.fontStyles.basic.captionBold};
 `;
 
 const ProductName = styled.div`
   color: ${(props) => props.theme.colors.white};
-  ${(props) => props.theme.fontStyles.subHeadBold};
+  ${(props) => props.theme.fontStyles.basic.subHeadBold};
 `;
 
 const ProductPrice = styled.div`
   color: ${(props) => props.theme.colors.gray50};
-  ${(props) => props.theme.fontStyles.body1Med};
+  ${(props) => props.theme.fontStyles.basic.body1Med};
 `;
 
 const NoticeContainer = styled.div`
@@ -148,7 +148,7 @@ const NoticeContainer = styled.div`
 const NoticeTitle = styled.div`
   align-self: stretch;
   color: ${(props) => props.theme.colors.white};
-  ${(props) => props.theme.fontStyles.subHeadBold};
+  ${(props) => props.theme.fontStyles.basic.subHeadBold};
 `;
 
 const NoticeList = styled.ul`
@@ -164,7 +164,7 @@ const NoticeItem = styled.li`
   position: relative;
   padding-left: 1.6rem; /* 10px -> 1.6rem */
   color: ${(props) => props.theme.colors.gray5};
-  ${(props) => props.theme.fontStyles.body2Med};
+  ${(props) => props.theme.fontStyles.basic.body2Med};
 
   &::before {
     content: '•';
@@ -178,7 +178,7 @@ const NoticeItem = styled.li`
 `;
 
 const HighlightedText = styled.span`
-  ${(props) => props.theme.fontStyles.body2Med};
+  ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray30};
 `;
 
