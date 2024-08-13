@@ -30,6 +30,8 @@ import FlameMdPage from './pages/flame/merchandiser/FlameMdPage';
 import FlamePromotionPage from './pages/flame/promotion/FlamePromotionPage';
 
 function App() {
+  console.log('pr test');
+
   return (
     <>
       <BrowserRouter>
