@@ -1,0 +1,49 @@
+name: PR Notification
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  notify_slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Read user mapping
+        id: user_mapping
+        run: echo "::set-output name=mapping::$(cat github-slack-users.json)"
+
+      - name: Get Slack user ID
+        id: slack_user
+        run: |
+          mapping='${{ steps.user_mapping.outputs.mapping }}'
+          github_user='${{ github.event.pull_request.user.login }}'
+          slack_id=$(echo $mapping | jq -r --arg gh_user "$github_user" '.[$gh_user]')
+          if [ "$slack_id" != "null" ]; then
+            echo "::set-output name=id::<@$slack_id>"
+          else
+            echo "::set-output name=id::$github_user"
+          fi
+
+      - name: Slack Notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: |
+            새로운 PR이 생성되었습니다!
+            작성자: ${{ steps.slack_user.outputs.id }}
+            PR 제목: ${{ github.event.pull_request.title }}
+            PR 링크: ${{ github.event.pull_request.html_url }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow
+          author_name: GitHub Action
+          mention: here
+          if_mention: failure,cancelled
+          job_name: PR Notification
+          channel: your-channel-name
+          icon_emoji: ':github:'
+          username: GitHub PR Bot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
