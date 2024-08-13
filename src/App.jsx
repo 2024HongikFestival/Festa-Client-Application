@@ -35,7 +35,6 @@ function App() {
     <>
       {/* url 세그먼트 확정 후 수정 예정 */}
       <BrowserRouter>
-        <GlobalStyles />
         <Routes>
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}

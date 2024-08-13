@@ -22,6 +22,8 @@ const GlobalStyles = createGlobalStyle`
         line-height: 1;
         /* font-family: 'Noto Sans KR', sans-serif; */
         /* max-width: 760px; */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         display: flex; 
         flex-direction: column;
         justify-content: center; 
