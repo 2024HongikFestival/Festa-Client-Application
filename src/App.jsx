@@ -27,7 +27,6 @@ import FlameReservationPage from '@/pages/flame/reservation/FlameReservationPage
 import FlameLineupPage from '@/pages/flame/lineup/FlameLineupPage';
 import FlameMdPage from '@/pages/flame/merchandiser/FlameMdPage';
 import FlamePromotionPage from '@/pages/flame/promotion/FlamePromotionPage';
-import GlobalStyles from '@/styles/GlobalStyle';
 import RedirectEvents from './auth/RedirectEvents';
 
 function App() {
