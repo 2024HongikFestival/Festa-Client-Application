@@ -13,7 +13,7 @@ jobs:
 
       - name: Read user mapping
         id: user_mapping
-        run: echo "::set-output name=mapping::$(cat github-slack-users.json)"
+        run: echo "::set-output name=mapping::$(cat .github/github-slack-users.json)"
 
       - name: Get Slack user ID
         id: slack_user
