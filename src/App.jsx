@@ -28,6 +28,7 @@ import FlameLineupPage from '@/pages/flame/lineup/FlameLineupPage';
 import FlameMdPage from '@/pages/flame/merchandiser/FlameMdPage';
 import FlamePromotionPage from '@/pages/flame/promotion/FlamePromotionPage';
 import RedirectEvents from './auth/RedirectEvents';
+import RedirectLosts from './auth/RedirectLosts';
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
             <Route path="/lost-and-found" element={<LostAndFoundPage />} />
             <Route path="/lost-and-found/:post-id" element={<LostAndFoundDetail />} />
             <Route path="/lost-and-found/add" element={<AddLostItem />} />
+            <Route path="/oauth/losts" element={<RedirectLosts />} />
 
             {/* 동욱 라우팅 🍷 */}
             <Route path="/lineup" element={<LineupPage />} />
