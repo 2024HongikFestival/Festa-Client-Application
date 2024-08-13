@@ -63,15 +63,20 @@ jobs:
 
       - name: Read user mapping
         id: user_mapping
-        run: echo "mapping=$(cat .github/workflows/github-slack-users.json)" >> $GITHUB_OUTPUT
+        run: |
+          content=$(cat .github/workflows/github-slack-users.json)
+          # 줄바꿈과 따옴표 처리
+          content="${content//$'\n'/''}"
+          content="${content//\"/\\\"}"
+          echo "mapping=$content" >> $GITHUB_OUTPUT
 
       - name: Get Slack user ID
         id: slack_user
         run: |
           mapping='${{ steps.user_mapping.outputs.mapping }}'
           github_user='${{ github.event.pull_request.user.login }}'
-          slack_id=$(echo $mapping | jq -r --arg gh_user "$github_user" '.[$gh_user]')
-          if [ "$slack_id" != "null" ]; then
+          slack_id=$(echo "$mapping" | jq -r --arg gh_user "$github_user" '.[$gh_user]')
+          if [ "$slack_id" != "null" ] && [ -n "$slack_id" ]; then
             echo "id=<@$slack_id>" >> $GITHUB_OUTPUT
           else
             echo "id=$github_user" >> $GITHUB_OUTPUT
