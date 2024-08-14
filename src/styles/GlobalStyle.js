@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
@@ -44,6 +44,11 @@ const GlobalStyles = createGlobalStyle`
         @media (max-width: 450px) {
             font-size: 10px;
         }
+    }
+
+    @font-face {
+      font-family: "PD-Thin";
+      src: url("./fonts/Pretendard-Thin");
     }
 `;
 
