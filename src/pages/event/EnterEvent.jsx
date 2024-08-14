@@ -1,12 +1,14 @@
 // // 대동제 이벤트 (응모)
 // // url: /event/enter
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { axiosInstance } from '@/api/axios';
+import { useNavigate } from 'react-router-dom';
 
 const EnterEvent = () => {
   const [eventId, setEventId] = useState(1);
   const [textCount, setTextCount] = useState(0);
+  const navigate = useNavigate();
 
   // input & textarea 상태 관리
   const [name, setName] = useState('');
@@ -27,22 +29,32 @@ const EnterEvent = () => {
   };
   // 후기 입력 관리
   const handleComment = (e) => {
+    e.preventDefault();
     setTextCount(e.target.value.length); // 글자수 세기
     setComment(e.target.value);
   };
 
-  const handleEventEntry = async () => {
+  const handleEventEntry = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axiosInstance.post(`/events/${eventId}/entries`, {
-        Headers: {
-          Authorization: `Bearer ${localStorage.getItem('event_access_token')}`,
+      const response = await axiosInstance.post(
+        `/events/${eventId}/entries`,
+        {
+          name: name,
+          phone: phone,
+          comment: comment,
         },
-
-        name: name,
-        phone: phone,
-        comment: comment,
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('event_access_token')}`,
+          },
+        }
+      );
       console.log(response.data.message);
+      // 응모 완료 시 응모 관련 localStorage 초기화 후 응모 완료 페이지로 이동
+      localStorage.removeItem('kakao_code');
+      localStorage.removeItem('event_access_token');
+      navigate('/event/submit');
     } catch (error) {
       console.log(error);
     }

@@ -26,7 +26,7 @@ const RedirectEvents = () => {
     try {
       getLocation();
       const response = await axiosInstance.post(`/events/${eventId}/token`, {
-        // 추가 구현 필요 (필드 상태만 맞춰 놓음)
+        // 현재 홍대 내부 좌표로 임의 설정
         code: localStorage.getItem('kakao_code'),
         // latitude: location.latitude,
         // longtitude: location.longitude,
@@ -50,7 +50,7 @@ const RedirectEvents = () => {
       } else {
         console.log('알 수 없는 오류');
       }
-      //window.location.href = `/event/${eventId}`;
+      navigate(`/event/${eventId}`);
     }
   };
   useEffect(() => {
