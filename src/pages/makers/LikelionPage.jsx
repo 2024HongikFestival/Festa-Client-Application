@@ -21,6 +21,7 @@ const LikelionPage = () => {
           <br />
           {t('likelion.whoWeAre2')}
           <br />
+          <br />
           {t('likelion.whoWeAre3')}
           <br />
           {t('likelion.whoWeAre4')}
@@ -33,6 +34,9 @@ const LikelionPage = () => {
           {t('likelion.whoWeAre7')}
           <br />
           {t('likelion.whoWeAre8')}
+          <br />
+          <br />
+          {t('likelion.whoWeAre9')}
         </WhoWeAre>
         <Slogan> {t('likelion.slogan')}</Slogan>
       </WhoWeAreBg>
@@ -120,7 +124,7 @@ const LikelionLayout = styled.div`
 
 const LikelionBgImg = styled.div`
   width: 100%;
-  padding-bottom: 78.67%;
+  padding-bottom: 128%;
   margin: 0 auto;
   background: linear-gradient(180deg, rgba(18, 18, 18, 0.4) 0%, #121212 100%), url(${likelionBgImg});
   background-size: cover;
@@ -133,8 +137,8 @@ const LikelionBgImg = styled.div`
 
 const Title = styled.h1`
   position: absolute;
-  top: 44%;
-  ${(props) => props.theme.fontStyles.flame.Headline1};
+  top: 32%;
+  ${(props) => props.theme.fontStyles.basic.headline1};
   color: ${(props) => props.theme.colors.white};
 `;
 
@@ -148,20 +152,20 @@ const WhoWeAreBg = styled.div`
 
 const WhoWeAre = styled.div`
   position: absolute;
-  margin-top: -1.2rem;
-  ${(props) => props.theme.fontStyles.body1Med};
+  margin-top: -14.1rem;
+  ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.white};
 `;
 
 const Slogan = styled.p`
-  margin-top: 25.8rem;
+  margin-top: 20.1rem;
   color: ${(props) => props.theme.colors.white};
   font-family: 'Inconsolata', san-serif;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.032rem;
-  margin-bottom: 12.3rem;
+  margin-bottom: 5.1rem;
 `;
 
 const Devider = styled.div`
@@ -181,14 +185,14 @@ const RoleSection = styled.section`
 
 const RoleName = styled.h3`
   margin-top: 3.6rem;
-  ${(props) => props.theme.fontStyles.flame.Headline3};
+  ${(props) => props.theme.fontStyles.basic.headline3};
   color: ${(props) => props.theme.colors.white};
 `;
 
 const RoleDescription = styled.div`
   margin-top: 1.6rem;
   margin-bottom: 3.2rem;
-  ${(props) => props.theme.fontStyles.body1Med};
+  ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.gray40};
 `;
 

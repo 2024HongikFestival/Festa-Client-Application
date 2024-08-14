@@ -22,7 +22,7 @@ const GaehwaCardLayout = styled.div`
 `;
 
 const Name = styled.h5`
-  ${(props) => props.theme.fontStyles.flame.Headline5};
+  ${(props) => props.theme.fontStyles.basic.headline5};
   color: ${(props) => props.theme.colors.white};
 `;
 
@@ -35,12 +35,12 @@ const Department = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${(props) => props.theme.fontStyles.body2Med};
+  ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray50};
 `;
 
 const Role = styled.p`
   margin-top: 0.8rem;
-  ${(props) => props.theme.fontStyles.captionMed};
+  ${(props) => props.theme.fontStyles.basic.captionMed};
   color: ${(props) => props.theme.colors.gray50};
 `;

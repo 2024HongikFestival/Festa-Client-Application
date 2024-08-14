@@ -67,7 +67,7 @@ const LikelionBtn = styled.div`
   span {
     color: ${(props) => props.theme.colors.white};
     text-align: center;
-    ${(props) => props.theme.fontStyles.body2Bold};
+    ${(props) => props.theme.fontStyles.basic.body2Bold};
   }
 `;
 
@@ -82,7 +82,7 @@ const GaehwaBtn = styled.div`
   span {
     color: ${(props) => props.theme.colors.white};
     text-align: center;
-    ${(props) => props.theme.fontStyles.body2Bold};
+    ${(props) => props.theme.fontStyles.basic.body2Bold};
   }
 `;
 
@@ -92,7 +92,7 @@ const DaedongjeContainer = styled.div`
   flex-direction: column;
   span {
     color: ${(props) => props.theme.colors.white};
-    ${(props) => props.theme.fontStyles.captionBold};
+    ${(props) => props.theme.fontStyles.basic.captionBold};
   }
 
   img {
