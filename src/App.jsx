@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/main/MainPage';
-// import NotFoundPage from '@/pages/notfound/NotFound';
+import NotFoundPage from '@/pages/notFound/NotFound';
 import BoothPage from '@/pages/booth/BoothPage';
 // import EventPage from "@/pages/event/EventPage";
 import Layout from '@/components/layouts/Layout';
+
 // import EnterEvent from "./pages/event/EnterEvent";
 // import CompleteEvent from "./pages/event/SubmitEvent";
 import MapPage from './pages/map/MapPage';
@@ -27,13 +28,11 @@ import FlameReservationPage from './pages/flame/reservation/FlameReservationPage
 import FlameLineupPage from './pages/flame/lineup/FlameLineupPage';
 import FlameMdPage from './pages/flame/merchandiser/FlameMdPage';
 import FlamePromotionPage from './pages/flame/promotion/FlamePromotionPage';
-import GlobalStyles from './styles/GlobalStyle';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <GlobalStyles />
         <Routes>
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}
