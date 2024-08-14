@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { axiosInstance } from '@/api/axios';
+import { useNavigate } from 'react-router-dom';
 
 const RedirectLosts = () => {
   const code = new URL(window.location.href).searchParams.get('code');
   localStorage.setItem('kakao_code', code);
+
+  const navigate = useNavigate();
 
   const getLostsToken = async () => {
     try {
@@ -14,7 +17,7 @@ const RedirectLosts = () => {
       // 분실물 토큰 저장
       localStorage.setItem('lost_access_token', response.data.data.accessToken);
       // 성공 시 분실물 게시글 작성 페이지로 이동
-      window.location.href = '/lost-and-found/add';
+      navigate('/lost-and-found/add');
     } catch (error) {
       // 세부 에러 처리 필요 시 추가
       if (error.response.status === 400) {
@@ -24,7 +27,7 @@ const RedirectLosts = () => {
       } else {
         console.log('알 수 없는 오류');
       }
-      window.location.href = '/lost-and-found';
+      navigate('/lost-and-found');
     }
   };
   useEffect(() => {

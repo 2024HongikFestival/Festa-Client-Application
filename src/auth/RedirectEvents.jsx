@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '@/api/axios';
+import EnterEvent from '@/pages/event/EnterEvent';
+import { useNavigate } from 'react-router-dom';
 
 const RedirectEvents = () => {
   const code = new URL(window.location.href).searchParams.get('code');
@@ -7,6 +9,8 @@ const RedirectEvents = () => {
 
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
   const [eventId, setEventId] = useState(1);
+
+  const navigate = useNavigate();
 
   // 위치 정보 불러오기
   const getLocation = async () => {
@@ -24,14 +28,16 @@ const RedirectEvents = () => {
       const response = await axiosInstance.post(`/events/${eventId}/token`, {
         // 추가 구현 필요 (필드 상태만 맞춰 놓음)
         code: localStorage.getItem('kakao_code'),
-        latitude: location.latitude,
-        longtitude: location.longitude,
+        // latitude: location.latitude,
+        // longtitude: location.longitude,
+        latitude: 37.5512242,
+        longtitude: 126.9255396,
       });
       console.log(response.data.message);
       // 이벤트 토큰 저장
       localStorage.setItem('event_access_token', response.data.data.accessToken);
       // 성공 시 응모 정보 작성 페이지로 이동
-      window.location.href = '/event/enter';
+      navigate('/event/enter');
     } catch (error) {
       if (error.response.status === 400) {
         console.log('요청 양식 불량');
@@ -44,7 +50,7 @@ const RedirectEvents = () => {
       } else {
         console.log('알 수 없는 오류');
       }
-      window.location.href = `/event/${eventId}`;
+      //window.location.href = `/event/${eventId}`;
     }
   };
   useEffect(() => {
