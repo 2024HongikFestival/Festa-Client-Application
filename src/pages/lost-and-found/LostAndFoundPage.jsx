@@ -13,6 +13,9 @@ const LostAndFoundPage = () => {
       <div>
         LostAndFoundPage
         {/* 테스트용으로 만들어둔 인증 버튼입니다 */}
+        {/* 📢📢 분실물 게시글 생성 성공 시(POST /losts) 에 
+        로컬 스토리지에서 kakao_code와 lost_access_token
+        삭제해주세요!!!!!! */}
         <button
           style={{
             backgroundColor: '#FADB34',
