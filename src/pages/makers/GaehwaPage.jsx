@@ -201,7 +201,7 @@ const GaehwaBgImg = styled.div`
 const Title = styled.h1`
   position: absolute;
   top: 44%;
-  ${(props) => props.theme.fontStyles.flame.Headline1};
+  ${(props) => props.theme.fontStyles.basic.headline1};
   color: ${(props) => props.theme.colors.white};
 `;
 
@@ -216,7 +216,7 @@ const WhoWeAreBg = styled.div`
 const WhoWeAre = styled.div`
   position: absolute;
   margin-top: -1.2rem;
-  ${(props) => props.theme.fontStyles.body1Med};
+  ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.white};
 `;
 
@@ -243,14 +243,14 @@ const RoleSection = styled.section`
 
 const RoleName = styled.h3`
   margin-top: 3.6rem;
-  ${(props) => props.theme.fontStyles.flame.Headline3};
+  ${(props) => props.theme.fontStyles.basic.headline3};
   color: ${(props) => props.theme.colors.white};
 `;
 
 const RoleDescription = styled.div`
   margin-top: 1.6rem;
   margin-bottom: 3.2rem;
-  ${(props) => props.theme.fontStyles.body1Med};
+  ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.gray40};
 `;
 
