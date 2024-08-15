@@ -1,6 +1,7 @@
 // 대동제 분실물 (메인)
 // url: /lost-and-found
 
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as S from './LostAndFoundPage.styled';
@@ -16,25 +17,20 @@ const LostAndFoundPage = () => {
   const query = new URLSearchParams(location.search);
   const page = parseInt(query.get('page')) || 1; //  string -> int 로 변환
 
-  // const getItemsApi = async () => {
-  //   try {
-  //     const response = await axios.get('https://api.2024hongikfestival.com/losts', { params: { date: '2024-08-14' } });
-  //     //console.log(response.data.data.length);
-  //     setItems(response.data.data);
-  //     setTotalItems(response.data.data.length);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const getItemsApi = async () => {
+    try {
+      //전체 데이터를 받고 싶다면 params 안 넘겨도 됨 - 필터링 구현 때 로직 구체화하기
+      const response = await axios.get('https://api.2024hongikfestival.com/losts', { params: { date: '2024-08-14' } });
+      setItems(response.data.data);
+      setTotalItems(response.data.data.length);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  // useEffect(() => {
-  //   getItemsApi();
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(items);
-  //   console.log(totalItems);
-  // }, [items, totalItems]);
+  useEffect(() => {
+    getItemsApi();
+  }, []);
 
   useEffect(() => {
     setCurrentPage(page);
