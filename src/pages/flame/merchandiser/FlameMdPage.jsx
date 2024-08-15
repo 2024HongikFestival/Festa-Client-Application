@@ -29,6 +29,7 @@ const ProductsSection = styled.div`
   align-items: center;
   gap: 2.8rem; /* 28px -> 2.8rem */
   align-self: stretch;
+  margin-top: 2.4rem;
 `;
 
 const Title = styled.h2`
