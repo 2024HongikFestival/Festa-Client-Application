@@ -1,43 +1,49 @@
 // 와디페 메인 페이지
 // url: /flame
+import Header from '@/components/layouts/Header';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import FLAME from '../../assets/svgs/FLAME.svg';
 
 const FlameMainPage = () => {
   const [selectedDay, setSelectedDay] = useState('day1');
   return (
-    <Flame>
-      <Title>WOW DJ FESTIVAL the FLAME</Title>
-      <WDFImage></WDFImage>
-      <WDFContainer>
-        <WDFIntroduction>ONE AND ONLY</WDFIntroduction>
-        <WDFIntroduction>와우 디제이 페스티벌</WDFIntroduction>
-        <WDFDescription>
-          현실의 무게와 무력감에 깨져가는 청춘을 깨우고 <br />
-          가장 아름답게 빛나는 &apos;나&apos;를 마주할 시간입니다. <br />
-          청춘의 불꽃이 함께하는 그 유일무이한 순간에 <br />
-          여러분을 초대합니다.
-        </WDFDescription>
-      </WDFContainer>
+    <>
+      <Header />
+      <Flame>
+        <Title>WOW DJ FESTIVAL</Title>
+        <WDFLogo src={FLAME} alt="flame" />
+        <WDFImage></WDFImage>
+        <WDFContainer>
+          <WDFIntroduction>ONE AND ONLY</WDFIntroduction>
+          <WDFIntroduction>와우 디제이 페스티벌</WDFIntroduction>
+          <WDFDescription>
+            현실의 무게와 무력감에 깨져가는 청춘을 깨우고 <br />
+            가장 아름답게 빛나는 &apos;나&apos;를 마주할 시간입니다. <br />
+            청춘의 불꽃이 함께하는 그 유일무이한 순간에 <br />
+            여러분을 초대합니다.
+          </WDFDescription>
+        </WDFContainer>
 
-      <DateSection>
-        <DateButton onClick={() => setSelectedDay('day1')}>
-          Day 1 <br /> 9.25 (수)
-        </DateButton>
-        <DateButton onClick={() => setSelectedDay('day2')}>
-          Day 2 <br /> 9.26 (목)
-        </DateButton>
-        <DateButton onClick={() => setSelectedDay('day3')}>
-          Day 3<br /> 9.27 (금)
-        </DateButton>
-      </DateSection>
+        <DateSection>
+          <DateButton onClick={() => setSelectedDay('day1')}>
+            Day 1 <br /> 9.25 (수)
+          </DateButton>
+          <DateButton onClick={() => setSelectedDay('day2')}>
+            Day 2 <br /> 9.26 (목)
+          </DateButton>
+          <DateButton onClick={() => setSelectedDay('day3')}>
+            Day 3<br /> 9.27 (금)
+          </DateButton>
+        </DateSection>
 
-      <DayContent>
-        {selectedDay === 'day1' && <Day1Content />}
-        {selectedDay === 'day2' && <Day2Content />}
-        {selectedDay === 'day3' && <Day3Content />}
-      </DayContent>
-    </Flame>
+        <DayContent>
+          {selectedDay === 'day1' && <Day1Content />}
+          {selectedDay === 'day2' && <Day2Content />}
+          {selectedDay === 'day3' && <Day3Content />}
+        </DayContent>
+      </Flame>
+    </>
   );
 };
 const Day1Content = () => (
@@ -68,13 +74,18 @@ const Flame = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: ${(props) => props.theme.colors.black};
 `;
 
 const Title = styled.span`
-  font-size: 2.375rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 400;
   margin-bottom: 2.188rem;
+  font-style: italic;
+  color: ${(props) => props.theme.colors.gray20};
 `;
+
+const WDFLogo = styled.img``;
 
 const WDFContainer = styled.div`
   display: flex;
