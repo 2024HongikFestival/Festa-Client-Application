@@ -64,7 +64,7 @@ const FooterLayout = styled.div`
 `;
 
 const PreviousBtn = styled.div`
-  margin: 2.8rem auto 0;
+  margin: 2rem auto 0;
   cursor: pointer;
   width: 12.8rem;
   height: 6rem;

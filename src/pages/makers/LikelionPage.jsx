@@ -54,11 +54,9 @@ const LikelionPage = () => {
         <RoleDescription>
           프로젝트의 계획, 실행, 관리를 담당하며,
           <br />
-          팀을 이끌어 목표 달성과
-          <br />
-          일정 준수를 책임집니다.
+          팀을 이끌어 목표 달성과 일정 준수를 책임집니다.
         </RoleDescription>
-        <CardWrapper cardCount={pm.length}>
+        <CardWrapper $cardCount={pm.length}>
           {contributors.pm.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -68,13 +66,11 @@ const LikelionPage = () => {
       <RoleSection>
         <RoleName>기획</RoleName>
         <RoleDescription>
-          사용자 경험을 바탕으로
-          <br />
-          서비스를 기획하여
+          사용자 경험을 바탕으로 서비스를 기획하여
           <br />
           사용자가 만족할 수 있는 서비스를 제공합니다.
         </RoleDescription>
-        <CardWrapper cardCount={plan.length}>
+        <CardWrapper $cardCount={plan.length}>
           {contributors.plan.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -84,13 +80,11 @@ const LikelionPage = () => {
       <RoleSection>
         <RoleName>디자인</RoleName>
         <RoleDescription>
-          사용자가 원하는 정보를
-          <br />
-          쉽게 얻을 수 있도록
+          사용자가 원하는 정보를 쉽게 얻을 수 있도록
           <br />
           화면의 디자인을 담당합니다.
         </RoleDescription>
-        <CardWrapper cardCount={design.length}>
+        <CardWrapper $cardCount={design.length}>
           {contributors.design.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -106,7 +100,7 @@ const LikelionPage = () => {
           <br />
           최적의 사용자 경험을 제공합니다.
         </RoleDescription>
-        <CardWrapper cardCount={frontend.length}>
+        <CardWrapper $cardCount={frontend.length}>
           {contributors.frontend.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -116,13 +110,11 @@ const LikelionPage = () => {
       <RoleSection>
         <RoleName>백엔드</RoleName>
         <RoleDescription>
-          눈에 보이지 않는
-          <br />
-          비지니스 로직을 담당하며
+          눈에 보이지 않는 비지니스 로직을 담당하며
           <br />
           서비스가 원활히 동작할 수 있도록 뒷받침합니다.
         </RoleDescription>
-        <CardWrapper cardCount={backend.length}>
+        <CardWrapper $cardCount={backend.length}>
           {contributors.backend.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -218,14 +210,14 @@ const RoleDescription = styled.div`
 `;
 
 const CardWrapper = styled.div`
-  margin-bottom: 3.2rem;
+  margin-bottom: 3.6rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 4rem;
   row-gap: 2.8rem;
 
-  ${({ cardCount }) =>
-    cardCount % 2 === 1 &&
+  ${({ $cardCount }) =>
+    $cardCount % 2 === 1 &&
     css`
       & > *:nth-child(odd):first-of-type {
         grid-column: span 2;
