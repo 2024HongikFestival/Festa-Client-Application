@@ -138,7 +138,7 @@ const LikelionLayout = styled.div`
 
 const LikelionBgImg = styled.div`
   width: 100%;
-  padding-bottom: 92%;
+  padding-bottom: 90%;
   margin: 0 auto;
   background: linear-gradient(180deg, rgba(18, 18, 18, 0.4) 0%, #121212 100%), url(${likelionBgImg});
   background-size: cover;
@@ -166,13 +166,13 @@ const WhoWeAreBg = styled.div`
 
 const WhoWeAre = styled.div`
   position: absolute;
-  margin-top: -1.2rem;
+  margin-top: -0.3rem;
   ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.white};
 `;
 
 const Slogan = styled.p`
-  margin-top: 33rem;
+  margin-top: 33.9rem;
   color: ${(props) => props.theme.colors.white};
   font-family: 'Inconsolata', san-serif;
   font-size: 1.6rem;
