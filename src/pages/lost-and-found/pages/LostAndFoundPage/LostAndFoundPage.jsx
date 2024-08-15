@@ -40,8 +40,6 @@ const LostAndFoundPage = () => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  console.log('currentPage:', currentPage);
-
   return (
     <>
       <S.Header></S.Header>
@@ -56,8 +54,6 @@ const LostAndFoundPage = () => {
         </S.ButtonWrapper>
         <S.LostAndFoundSection>
           {items.map((none, idx) => {
-            console.log(idx);
-
             return (
               //현재 페이지에 렌더링 되어야 하는 item인지 판단하는 로직
               idx >= (currentPage - 1) * itemCountPerPage &&
