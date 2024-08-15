@@ -2,15 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as jwtDecode from 'jwt-decode';
-import axios from 'axios';
+import { adminAxiosInstance } from '@/api/axios';
 import AdminLogin from './AdminLogin';
 import Post from './Post';
 import BlockList from './BlockList';
-
-const axiosInstance = axios.create({
-  baseURL: 'https://localhost:3000',
-  timeout: 1000,
-});
 
 const AdminPage = () => {
   const [error, setError] = useState(null);
@@ -54,7 +49,7 @@ const AdminPage = () => {
   };
 
   useEffect(() => {
-    const interceptors = axiosInstance.interceptors.request.use(
+    const interceptors = adminAxiosInstance.interceptors.request.use(
       (config) => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -66,7 +61,7 @@ const AdminPage = () => {
     );
 
     return () => {
-      axiosInstance.interceptors.request.eject(interceptors);
+      adminAxiosInstance.interceptors.request.eject(interceptors);
     };
   }, []);
 
@@ -78,9 +73,9 @@ const AdminPage = () => {
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
-  // if (!isLoggedIn) {
-  //   return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
-  // }
+  if (!isLoggedIn) {
+    return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
+  }
 
   return (
     <>

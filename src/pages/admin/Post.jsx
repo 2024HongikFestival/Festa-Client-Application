@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { adminAxiosInstance } from '@/api/axios';
 
-const axiosInstance = axios.create({
-  baseURL: 'https://localhost:3000',
-  timeout: 1000,
-});
 const Post = () => {
   const [losts, setLosts] = useState();
   const [selectedLost, setSelectedLost] = useState(null);
   const getLosts = async () => {
     try {
-      const response = await axiosInstance.get('/losts');
+      const response = await adminAxiosInstance.get('/losts');
       setLosts(response.data);
     } catch (error) {
       console.error('Error fetching URL: ', error);
