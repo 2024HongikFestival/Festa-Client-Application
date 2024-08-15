@@ -1,18 +1,26 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const GaehwaCard = () => {
+const GaehwaCard = ({ name, department, role }) => {
   return (
     <GaehwaCardLayout>
-      <Name>곽도현</Name>
-      <Department>법학부 21</Department>
-      <Role>학생회장</Role>
+      <Name>{name}</Name>
+      <Department>{department}</Department>
+      <Role>{role}</Role>
     </GaehwaCardLayout>
   );
 };
 
 export default GaehwaCard;
 
+GaehwaCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  department: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+};
+
 const GaehwaCardLayout = styled.div`
+  width: 10.9rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -28,8 +36,10 @@ const Name = styled.h5`
 
 const Department = styled.div`
   margin-top: 0.8rem;
-  width: 10.9rem;
-  height: 2.9rem;
+  padding: 0.3rem 0.7rem;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
   border: 0.1rem solid ${(props) => props.theme.colors.gray50};
   border-radius: 0.4rem;
   display: flex;

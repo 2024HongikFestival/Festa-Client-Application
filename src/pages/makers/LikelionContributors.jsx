@@ -110,7 +110,7 @@ export const contributors = {
     {
       profileImg: fe6,
       name: '원채영',
-      department: '자율전공 22',
+      department: '캠퍼스자율전공 22',
       ment: '🫧 무아지경으로 즐겨보아요~',
       instaLink: 'https://www.instagram.com/chae0_w/',
       githubLink: 'https://github.com/chaeyoungwon',
@@ -145,7 +145,7 @@ export const contributors = {
       profileImg: be3,
       name: '김혁진',
       department: '컴퓨터공학과 17',
-      ment: '🍀 대동제 개발자라니 완전 럭키비키 잖아',
+      ment: '🍀 대동제 개발자 럭키비키',
       instaLink: 'https://www.instagram.com/youcancallmekimm/',
       githubLink: 'https://github.com/hyukjinKimm',
     },
