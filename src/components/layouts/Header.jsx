@@ -27,7 +27,7 @@ const HeaderLayout = styled.div`
   background-color: ${(props) => props.theme.colors.black};
   position: fixed;
   top: 0rem;
-  z-index: 10;
+  z-index: 100;
 `;
 
 const HeaderBg = styled.div`
