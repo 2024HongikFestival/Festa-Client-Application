@@ -1,12 +1,18 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+<<<<<<< HEAD
 import instaLogo from '@/static/image/layouts/instaLogo.svg';
+=======
+import instaLogo from '@/assets/svgs/layouts/instaLogo.svg';
+import { useTranslation } from 'react-i18next';
+>>>>>>> dcc99c9 ([Feat] ko.json로 변환 완료)
 
 export default function Footer() {
+  const [isAtFooter, setIsAtFooter] = useState(false);
   const nav = useNavigate();
   const location = useLocation();
-  const [isAtFooter, setIsAtFooter] = useState(false);
+  const { t } = useTranslation();
 
   const handleNavigation = (path) => {
     if (location.pathname === path) {
@@ -59,16 +65,16 @@ export default function Footer() {
   return (
     <FooterLayout id="footer">
       <PreviousBtn isAtFooter={isAtFooter} onClick={handleGoBack}>
-        <span>이전 화면으로</span>
+        <span>{t('footer.prev')}</span>
       </PreviousBtn>
       <LikelionBtn onClick={() => handleNavigation('/likelion')}>
-        <span>제작 멋쟁이사자처럼 &gt;</span>
+        <span>{t('footer.toLikelion')}</span>
       </LikelionBtn>
       <GaehwaBtn onClick={() => handleNavigation('/gaehwa')}>
-        <span>총학생회 개화 ; 開花 &gt;</span>
+        <span>{t('footer.toGaehwa')}</span>
       </GaehwaBtn>
       <DaedongjeContainer>
-        <span>대동제 채널 바로가기</span>
+        <span>{t('footer.toDaedongjeInsta')}</span>
         <a href="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
           <img src={instaLogo} alt="instaLogo" />
         </a>
