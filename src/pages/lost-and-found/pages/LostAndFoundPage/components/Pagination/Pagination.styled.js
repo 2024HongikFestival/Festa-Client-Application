@@ -86,7 +86,7 @@ export const ItemLink = styled(Link)`
     $active &&
     css`
       font-weight: 700;
-      background: #2f5d62;
+      background: red;
       color: white;
     `};
 `;

@@ -7,16 +7,25 @@ import * as S from './LostAndFoundPage.styled';
 import Pagination from './components/Pagination/Pagination';
 
 const LostAndFoundPage = () => {
-  const [totalItems, setTotalItems] = useState(0);
-  const [data, setData] = useState({});
+  const [totalItems, setTotalItems] = useState(100);
+  const [items, setItems] = useState([...Array(totalItems)]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemCountPerPage = 10;
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
-  const page = query.get('page') || 1; // api 요청 0 페이지부터 온다던거 같은데 확인해보기
+  const page = parseInt(query.get('page')) || 1; // 쿼리파라미터 미존재 시 기본적으로 1페이지.
+
+  useEffect(() => {
+    setCurrentPage(page);
+    //API 요청으로 items(데이터), totalItems(총 데이터 개수) 가져오기
+  }, [page]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [page]);
+  }, [currentPage]);
+
+  console.log('currentPage:', currentPage);
 
   return (
     <>
@@ -31,25 +40,19 @@ const LostAndFoundPage = () => {
           </S.ButtonDetailWrapper>
         </S.ButtonWrapper>
         <S.LostAndFoundSection>
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
-          <S.LostAndFoundPost />
+          {items.map(
+            (none, idx) =>
+              idx + 1 >= currentPage * itemCountPerPage &&
+              idx + 1 <= (currentPage + 1) * itemCountPerPage && <S.LostAndFoundPost key={idx} />
+          )}
         </S.LostAndFoundSection>
+
         <S.Pagenation>
           <Pagination
             totalItems={totalItems}
-            itemCountPerPage={10}
+            itemCountPerPage={itemCountPerPage}
             pageToShow={5}
-            currentPage={page & (parseInt(page) > 0) ? parseInt(page) : 1}
+            currentPage={currentPage}
           />
         </S.Pagenation>
       </S.Main>
