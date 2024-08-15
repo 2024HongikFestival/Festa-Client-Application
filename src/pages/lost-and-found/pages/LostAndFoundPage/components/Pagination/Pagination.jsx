@@ -28,17 +28,16 @@ const Pagination = ({ totalItems, itemCountPerPage, pageToShow, currentPage }) =
         <S.PaginationEdgeLi $invisible={noPrev}>
           <Link to={`?page=${startPage - 1}`}>이전</Link>
         </S.PaginationEdgeLi>
-        {[...Array(pageToShow)].map((none, i) => (
-          <>
-            {startPage + i <= totalPages && (
-              <S.PaginationItemLi key={i}>
+        {[...Array(pageToShow)].map(
+          (none, i) =>
+            startPage + i <= totalPages && (
+              <S.PaginationItemLi key={`${startPage + i}`}>
                 <S.ItemLink to={`?page=${startPage + i}`} $active={currentPage === startPage + i}>
                   {startPage + i}
                 </S.ItemLink>
               </S.PaginationItemLi>
-            )}
-          </>
-        ))}
+            )
+        )}
 
         <S.PaginationEdgeLi $invisible={noNext}>
           <Link to={`?page=${startPage + pageToShow}`}>다음</Link>

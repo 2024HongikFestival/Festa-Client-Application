@@ -43,7 +43,7 @@ const LostAndFoundPage = () => {
           {items.map(
             (none, idx) =>
               idx + 1 >= currentPage * itemCountPerPage &&
-              idx + 1 <= (currentPage + 1) * itemCountPerPage && <S.LostAndFoundPost key={idx} />
+              idx + 1 <= (currentPage + 1) * itemCountPerPage && <S.LostAndFoundPost key={`item_${idx}`} />
           )}
         </S.LostAndFoundSection>
 
