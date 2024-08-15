@@ -1,16 +1,18 @@
 import styled from 'styled-components';
-import md1 from '@/static/image/flame/merchandiser/Frame2608705.svg';
-import md2 from '@/static/image/flame/merchandiser/Frame2608708.svg';
-import md3 from '@/static/image/flame/merchandiser/Frame2608707.svg';
-import md4 from '@/static/image/flame/merchandiser/Frame2608702.svg';
-import md5 from '@/static/image/flame/merchandiser/Frame2608704.svg';
-import md6 from '@/static/image/flame/merchandiser/Frame2608720.svg';
-import md7 from '@/static/image/flame/merchandiser/Frame2608721.svg';
-import md8 from '@/static/image/flame/merchandiser/Frame2608701.svg';
-import md9 from '@/static/image/flame/merchandiser/Frame2608703.svg';
-import alertImage from '@/static/image/flame/merchandiser/alert.svg';
+import md1 from '@/assets/webps/wdfMD/frame_2608705.webp';
+import md2 from '@/assets/webps/wdfMD/frame_2608708.webp';
+import md3 from '@/assets/webps/wdfMD/frame_2608707.webp';
+import md4 from '@/assets/webps/wdfMD/frame_2608702.webp';
+import md5 from '@/assets/webps/wdfMD/frame_2608704.webp';
+import md6 from '@/assets/webps/wdfMD/frame_2608720.webp';
+import md7 from '@/assets/webps/wdfMD/frame_2608721.webp';
+import md8 from '@/assets/webps/wdfMD/frame_2608701.webp';
+import md9 from '@/assets/webps/wdfMD/frame_2608703.webp';
+import alertImage from '@/assets/webps/wdfMD/error.webp';
 import Header from '@/components/layouts/Header';
 import Footer from '@/components/layouts/Footer';
+import { useEffect, useState } from 'react';
+import productsData from '@/assets/static/wdfMD/data.json';
 
 const MdProductsContainer = styled.div`
   width: 100%;
@@ -55,18 +57,31 @@ const ProductLocation = styled.div`
 
 const LocationDescription = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 0.4rem; /* 4px -> 0.4rem */
   align-self: stretch;
   background-color: ${(props) => props.theme.colors.gray90};
   padding: 0.8rem; /* 8px -> 0.8rem */
   color: ${(props) => props.theme.colors.gray10};
   ${(props) => props.theme.fontStyles.basic.body1Bold};
+  letter-spacing: -0.1rem;
 `;
 
-const SubDescription = styled.p`
+const MainDescription = styled.span`
+  color: ${(props) => props.theme.colors.gray10};
+  ${(props) => props.theme.fontStyles.basic.body1Bold};
+  letter-spacing: -0.1rem;
+`;
+
+const Highlight = styled.span`
+  ${(props) => props.theme.fontStyles.basic.body1Med}; /* "에서"에 적용될 스타일 */
+`;
+
+const SubDescription = styled.span`
   color: ${(props) => props.theme.colors.gray20};
   ${(props) => props.theme.fontStyles.basic.body1Med};
+  letter-spacing: -0.1rem;
 `;
 
 const LocationAlert = styled.div`
@@ -143,6 +158,7 @@ const NoticeContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1.2rem; /* 12px -> 1.2rem */
+  margin-bottom: 6.4rem;
 `;
 
 const NoticeTitle = styled.div`
@@ -162,14 +178,14 @@ const NoticeList = styled.ul`
 
 const NoticeItem = styled.li`
   position: relative;
-  padding-left: 1.6rem; /* 10px -> 1.6rem */
+  margin-left: 1.9rem;
   color: ${(props) => props.theme.colors.gray5};
   ${(props) => props.theme.fontStyles.basic.body2Med};
 
   &::before {
     content: '•';
     position: absolute;
-    left: 0;
+    left: -1.2rem;
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2rem; /* 12px -> 1.2rem */
@@ -179,31 +195,28 @@ const NoticeItem = styled.li`
 
 const HighlightedText = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Med};
+  letter-spacing: -0.1rem;
   color: ${(props) => props.theme.colors.gray30};
 `;
 
 const FlameMdPage = () => {
-  const products = [
-    { id: 1, name: '와디페 슬로건타올', price: 'W 6,000', image: md1 },
-    {
-      id: 2,
-      name: 'WOW DJ FESTIVAL 띠부씰 2EA (랜덤)',
-      price: 'W 1,000',
-      image: md2,
-    },
-    {
-      id: 3,
-      name: 'WOW DJ FESTIVAL 스티커 패키지',
-      price: 'W 4,000',
-      image: md3,
-    },
-    { id: 4, name: '와우 금속 뱃지', price: 'W 6,000', image: md4 },
-    { id: 5, name: 'WOW DJ FESTIVAL 티셔츠', price: 'W 9,000', image: md5 },
-    { id: 6, name: 'WOW DJ FESTIVAL 스트링백', price: 'W 8,000', image: md6 },
-    { id: 7, name: '야구 유니폼', price: 'W 38,000', image: md7 },
-    { id: 8, name: '럭비 유니폼', price: 'W 39,000', image: md8 },
-    { id: 9, name: '반다나', price: 'W 5,000', image: md9 },
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts(productsData.products);
+  }, []);
+
+  const imageMap = {
+    md1: md1,
+    md2: md2,
+    md3: md3,
+    md4: md4,
+    md5: md5,
+    md6: md6,
+    md7: md7,
+    md8: md8,
+    md9: md9,
+  };
 
   return (
     <>
@@ -214,8 +227,10 @@ const FlameMdPage = () => {
           <ProductList>
             <ProductLocation>
               <LocationDescription>
-                홍문관(R동) 앞 & 아트앤디자인밸리 측면
-                <SubDescription>에서 구매하실 수 있습니다!</SubDescription>
+                <MainDescription>
+                  홍문관(R동) 앞 & 아트앤디자인밸리 측면<Highlight>에서</Highlight>
+                </MainDescription>
+                <SubDescription>구매하실 수 있습니다!</SubDescription>
               </LocationDescription>
               <LocationAlert>
                 <AlertImage src={alertImage} />
@@ -224,7 +239,7 @@ const FlameMdPage = () => {
             </ProductLocation>
             {products.map((product) => (
               <ProductCard key={product.id}>
-                <ProductImage src={product.image} />
+                <ProductImage src={imageMap[product.image]} alt={product.name} />
                 <ProductInfo>
                   <ProductDetails>
                     <ProductTag>한정판매</ProductTag>
@@ -244,10 +259,6 @@ const FlameMdPage = () => {
             </NoticeItem>
             <NoticeItem>
               구매 완료 시 환불, 교환, 취소 불가능<HighlightedText>합니다.</HighlightedText>
-            </NoticeItem>
-            <NoticeItem>
-              불량품
-              <HighlightedText>은 현장에서 확인 후 바로 현장 관리 인원에게 말씀해 주시기 바랍니다.</HighlightedText>
             </NoticeItem>
             <NoticeItem>
               불량품
