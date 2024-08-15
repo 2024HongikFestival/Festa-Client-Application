@@ -8,7 +8,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import DJ from '../../assets/DJ.webp';
-//import speaker from '../../assets/speaker.webp';
+import speaker from '../../assets/speaker.webp';
+import Insta from '../../assets/insta.webp';
+import footerbg from '../../assets/footerBg.webp';
 
 const FlameMainPage = () => {
   const [selectedDay, setSelectedDay] = useState('day1');
@@ -16,9 +18,11 @@ const FlameMainPage = () => {
     <>
       <Header />
       <Flame>
-        <Title>WOW DJ FESTIVAL</Title>
-        <WDFLogo src={FLAME} alt="flame" />
-        {/* <WDFImage src={speaker}></WDFImage> */}
+        <TitleContainer>
+          <Title>WOW DJ FESTIVAL</Title>
+          <WDFLogo src={FLAME} alt="flame" />
+          <WDFImage src={speaker}></WDFImage>
+        </TitleContainer>
         <WDFContainer>
           <WDFIntroduction>
             <IntroWrapper>
@@ -53,6 +57,8 @@ const FlameMainPage = () => {
           {selectedDay === 'day2' && <Day2Content />}
           {selectedDay === 'day3' && <Day3Content />}
         </DayContent>
+
+        <FooterSection></FooterSection>
       </Flame>
     </>
   );
@@ -85,7 +91,10 @@ const Day1Content = () => {
             <ImageContainer key={index}>
               <CarouselImage src={item.src} alt={item.alt} />
               <Line />
-              <DJName>디제이 이름</DJName>
+              <DJWrapper>
+                <DJName>디제이 이름</DJName>
+                <DJInsta src={Insta} alt="insta" />
+              </DJWrapper>
               <DJInfo>
                 국내외 페스티벌 섭외 1순위. <br />
                 아시아 시장 섭렵 <br />
@@ -122,7 +131,10 @@ const Day2Content = () => {
             <ImageContainer key={index}>
               <CarouselImage src={item.src} alt={item.alt} />
               <Line />
-              <DJName>디제이 이름</DJName>
+              <DJWrapper>
+                <DJName>디제이 이름</DJName>
+                <DJInsta src={Insta} alt="insta" />
+              </DJWrapper>
               <DJInfo>
                 국내외 페스티벌 섭외 1순위. <br />
                 아시아 시장 섭렵 <br />
@@ -159,7 +171,10 @@ const Day3Content = () => {
             <ImageContainer key={index}>
               <CarouselImage src={item.src} alt={item.alt} />
               <Line />
-              <DJName>디제이 이름</DJName>
+              <DJWrapper>
+                <DJName>디제이 이름</DJName>
+                <DJInsta src={Insta} alt="insta" />
+              </DJWrapper>
               <DJInfo>
                 국내외 페스티벌 섭외 1순위. <br />
                 아시아 시장 섭렵 <br />
@@ -183,22 +198,24 @@ export { Day1Content, Day2Content, Day3Content };
 export default FlameMainPage;
 
 const Flame = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  width: 100%;
   background-color: ${(props) => props.theme.colors.black};
 `;
 
 const Title = styled.span`
   font-size: 1rem;
   font-weight: 400;
-  margin-bottom: 2.188rem;
+  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.25);
+  font-family: 'Sandoll Press';
+  font-style: normal;
   font-style: italic;
   color: ${(props) => props.theme.colors.gray20};
 `;
 
-const WDFLogo = styled.img``;
+const WDFLogo = styled.img`
+  width: 14.813rem;
+  height: 4.688rem;
+`;
 
 const WDFContainer = styled.div`
   display: flex;
@@ -206,6 +223,14 @@ const WDFContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+  margin-bottom: 3.25rem;
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const WDFIntroduction = styled.div`
@@ -256,7 +281,7 @@ const WDFDescription = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray60};
   font-size: 0.875rem;
-  padding-bottom: 3.25rem;
+  margin-bottom: 3.375rem;
 `;
 
 const DateSection = styled.div`
@@ -265,7 +290,7 @@ const DateSection = styled.div`
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  padding-top: 2rem;
+  margin-top: 2rem;
 `;
 
 const DateButton = styled.button`
@@ -316,13 +341,14 @@ const carouselSettings = {
 const CarouselContainer = styled.div`
   position: relative;
   width: 100%;
+  min-width: 23.438rem;
+  max-width: 48rem;
   height: 27.313rem;
 `;
 
 const CarouselImage = styled.img`
   width: 12.875rem;
   height: 12.75rem;
-  z-index: 1000;
   object-fit: contain;
   margin-top: 1.5rem;
 `;
@@ -333,7 +359,11 @@ const ImageContainer = styled.div`
   align-items: center;
   width: 17.25rem !important;
   height: 25.813rem;
-  border: 1px solid #df2121;
+
+  border: 0.063rem solid;
+  border-image-source: linear-gradient(180deg, #df2121 0%, #cdb3b3 70%, #515356 100%);
+  border-image-slice: 1;
+  background: var(--UI-Background, #010304);
   margin: 0 0.5rem;
   box-sizing: border-box;
   position: relative;
@@ -361,9 +391,12 @@ const Content = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  width: 48rem;
+  width: 100%;
+  min-width: 23.438rem;
+  max-width: 48rem;
   height: 27.313rem;
   margin-top: 1.75rem;
+  margin-bottom: 2rem;
 `;
 
 const Line = styled.div`
@@ -377,7 +410,7 @@ const Line = styled.div`
 
 const DJName = styled.span`
   ${(props) => props.theme.fontStyles.basic.headline5};
-  width: 13.75rem;
+  width: 13.25rem;
   color: ${(props) => props.theme.colors.white};
   text-align: left;
   font-size: 1.25rem;
@@ -387,4 +420,33 @@ const DJInfo = styled.span`
   ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.gray50};
   font-size: 1rem;
+  width: 15.25rem;
+`;
+
+const DJWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 17.25rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+`;
+
+const DJInsta = styled.img`
+  display: flex !important;
+  justify-content: flex-end;
+  width: 2.4rem;
+  height: 2.4rem;
+`;
+
+const FooterSection = styled.div`
+  margin-top: 3.25rem;
+  background-image: url(${footerbg});
+  width: 100%;
+  min-width: 23.438rem;
+  max-width: 48rem;
+  height: 30rem;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
