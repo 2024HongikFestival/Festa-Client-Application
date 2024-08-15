@@ -1,10 +1,23 @@
 // 대동제 분실물 (메인)
 // url: /lost-and-found
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import * as S from './LostAndFoundPage.styled';
+import Pagination from './components/Pagination/Pagination';
 
 const LostAndFoundPage = () => {
+  const [totalItems, setTotalItems] = useState(0);
+  const [data, setData] = useState({});
+
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const page = query.get('page') || 1; // api 요청 0 페이지부터 온다던거 같은데 확인해보기
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
+
   return (
     <>
       <S.Header></S.Header>
@@ -31,7 +44,14 @@ const LostAndFoundPage = () => {
           <S.LostAndFoundPost />
           <S.LostAndFoundPost />
         </S.LostAndFoundSection>
-        <S.Pagenation></S.Pagenation>
+        <S.Pagenation>
+          <Pagination
+            totalItems={totalItems}
+            itemCountPerPage={10}
+            pageToShow={5}
+            currentPage={page & (parseInt(page) > 0) ? parseInt(page) : 1}
+          />
+        </S.Pagenation>
       </S.Main>
     </>
   );
