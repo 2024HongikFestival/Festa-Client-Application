@@ -21,9 +21,9 @@ import {
   TTWrapper,
   UnderlinedText,
 } from './styles';
-import redbuttonImg from './redbutton.svg';
-import redbuttonActiveImg from './fullRedButton.svg';
-import DJImg from './DJImg.svg';
+import redbuttonImg from '../../../assets/svgs/redbutton.svg';
+import redbuttonActiveImg from '../../../assets/svgs/fullRedButton.svg';
+import DJImg from '../../../assets/svgs/DJImg.svg';
 import { useInterval } from 'react-use';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
