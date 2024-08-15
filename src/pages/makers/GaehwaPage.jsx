@@ -221,7 +221,7 @@ const GaehwaLayout = styled.div`
 
 const GaehwaBgImg = styled.div`
   width: 100%;
-  padding-bottom: 78.67%;
+  padding-bottom: 92%;
   margin: 0 auto;
   background: linear-gradient(180deg, rgba(18, 18, 18, 0.4) 0%, #121212 100%), url(${gaehwaBgImg});
   background-size: cover;
@@ -234,7 +234,7 @@ const GaehwaBgImg = styled.div`
 
 const Title = styled.h1`
   position: absolute;
-  top: 44%;
+  top: 45%;
   ${(props) => props.theme.fontStyles.basic.headline1};
   color: ${(props) => props.theme.colors.white};
 `;
