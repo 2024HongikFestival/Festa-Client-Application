@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import styled from 'styled-components';
 import likelionBgImg from '@/static/image/makers/likelionBgImg.svg';
+=======
+import styled, { css } from 'styled-components';
+import likelionBgImg from '@/assets/svgs/makers/likelionBgImg.svg';
+>>>>>>> abea1b2 ([Feat] 짝수, 홀수 따라 grid 변경)
 import LikelionCard from './LikelionCard';
 import { useTranslation } from 'react-i18next';
 import { contributors } from './LikelionContributors';
@@ -7,6 +12,12 @@ import Footer from '@/components/layouts/Footer';
 
 const LikelionPage = () => {
   const { t } = useTranslation();
+
+  const pm = contributors.pm;
+  const plan = contributors.plan;
+  const design = contributors.design;
+  const frontend = contributors.frontend;
+  const backend = contributors.backend;
 
   return (
     <LikelionLayout>
@@ -52,7 +63,7 @@ const LikelionPage = () => {
           <br />
           일정 준수를 책임집니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={pm.length}>
           {contributors.pm.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -68,7 +79,7 @@ const LikelionPage = () => {
           <br />
           사용자가 만족할 수 있는 서비스를 제공합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={plan.length}>
           {contributors.plan.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -84,7 +95,7 @@ const LikelionPage = () => {
           <br />
           화면의 디자인을 담당합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={design.length}>
           {contributors.design.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -100,7 +111,7 @@ const LikelionPage = () => {
           <br />
           최적의 사용자 경험을 제공합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={frontend.length}>
           {contributors.frontend.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -116,7 +127,7 @@ const LikelionPage = () => {
           <br />
           서비스가 원활히 동작할 수 있도록 뒷받침합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={backend.length}>
           {contributors.backend.map((contributor, index) => (
             <LikelionCard key={index} {...contributor} />
           ))}
@@ -218,8 +229,12 @@ const CardWrapper = styled.div`
   column-gap: 4rem;
   row-gap: 2.8rem;
 
-  & > *:nth-child(odd):first-of-type {
-    grid-column: span 2;
-    justify-self: center;
-  }
+  ${({ cardCount }) =>
+    cardCount % 2 === 1 &&
+    css`
+      & > *:nth-child(odd):first-of-type {
+        grid-column: span 2;
+        justify-self: center;
+      }
+    `}
 `;
