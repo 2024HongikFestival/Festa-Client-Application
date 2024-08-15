@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import gaehwaBgImg from '@/assets/svgs/makers/gaehwaBgImg.svg';
 import gaehwaLogo from '@/assets/svgs/makers/gaehwaLogo.svg';
 import GaehwaCard from './GaehwaCard';
@@ -8,6 +8,15 @@ import { contributors } from './GaehwaContributors';
 
 const GaehwaPage = () => {
   const { t } = useTranslation();
+
+  const executive = contributors.executive;
+  const strategicPolicy = contributors.strategicPolicy;
+  const culturalPlanning = contributors.culturalPlanning;
+  const mediaRelations = contributors.mediaRelations;
+  const finance = contributors.finance;
+  const rightsSolidarity = contributors.rightsSolidarity;
+  const studentWelfare = contributors.studentWelfare;
+  const graduationPreparation = contributors.graduationPreparation;
 
   return (
     <GaehwaLayout>
@@ -56,7 +65,7 @@ const GaehwaPage = () => {
           <br />
           기록물들을 관리하고 게시합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={executive.length}>
           {contributors.executive.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
@@ -74,7 +83,7 @@ const GaehwaPage = () => {
           <br />
           학교본부와 지속적으로 논의합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={strategicPolicy.length}>
           {contributors.strategicPolicy.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
@@ -92,7 +101,7 @@ const GaehwaPage = () => {
           <br />
           창조하고 진행합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={culturalPlanning.length}>
           {contributors.culturalPlanning.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
@@ -110,7 +119,7 @@ const GaehwaPage = () => {
           <br />
           시각 매체 제작을 총괄합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={mediaRelations.length}>
           {contributors.mediaRelations.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
@@ -126,7 +135,7 @@ const GaehwaPage = () => {
           <br />
           총학생회 운영의 기반이 되는 자료를 관리합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={finance.length}>
           {contributors.finance.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
@@ -146,7 +155,7 @@ const GaehwaPage = () => {
           <br />
           권리 증진을 위한 행사를 기획합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={rightsSolidarity.length}>
           {contributors.rightsSolidarity.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
@@ -164,7 +173,7 @@ const GaehwaPage = () => {
           <br />
           학우들의 복지문제를 해결합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={studentWelfare.length}>
           {contributors.studentWelfare.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
@@ -182,7 +191,7 @@ const GaehwaPage = () => {
           <br />
           의결기구를 운영하여 졸업 관련 논의를 진행합니다.
         </RoleDescription>
-        <CardWrapper>
+        <CardWrapper cardCount={graduationPreparation.length}>
           {contributors.graduationPreparation.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
@@ -285,10 +294,14 @@ const CardWrapper = styled.div`
   column-gap: 2.4rem;
   row-gap: 2.8rem;
 
-  & > *:nth-child(odd):first-of-type {
-    grid-column: span 2;
-    justify-self: center;
-  }
+  ${({ cardCount }) =>
+    cardCount % 2 === 1 &&
+    css`
+      & > *:nth-child(odd):first-of-type {
+        grid-column: span 2;
+        justify-self: center;
+      }
+    `}
 `;
 
 const PresidencyWrapper = styled.div`
