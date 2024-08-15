@@ -6,6 +6,7 @@ import { adminAxiosInstance } from '@/api/axios';
 import AdminLogin from './AdminLogin';
 import Post from './Post';
 import BlockList from './BlockList';
+import Header from '@/components/layouts/Header';
 
 const AdminPage = () => {
   const [error, setError] = useState(null);
@@ -73,12 +74,14 @@ const AdminPage = () => {
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
+
   if (!isLoggedIn) {
     return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
   }
 
   return (
     <>
+      <Header />
       {isNavbarOpen && (
         <Navbar isOpen={isNavbarOpen}>
           <BtnContainer>

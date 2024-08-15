@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
 import { adminAxiosInstance } from '@/api/axios';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const AdminLogin = () => {
+const AdminLogin = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -11,23 +12,31 @@ const AdminLogin = () => {
 
   const adminAccess = async (username, password) => {
     try {
-      const response = await adminAxiosInstance.post('/admin/token', { username: username, password: password });
+      const response = await adminAxiosInstance.post('/admin/token', { username, password });
+      console.log(response);
       if (response.status === 200) {
         const { accessToken } = response.data;
         localStorage.setItem('token', accessToken);
         alert('로그인 성공');
+        onLoginSuccess();
         navigate('/admin');
       }
     } catch (err) {
       if (err.response) {
+        // 서버에서 응답이 왔으나 오류 상태인 경우
         if (err.response.status === 401) {
           setError('어드민 인증 실패');
         } else {
           setError('서버 오류');
         }
+      } else if (err.request) {
+        // 요청이 만들어졌으나 응답을 받지 못한 경우
+        console.log(err.request);
+        setError('서버에 응답이 없습니다.');
       } else {
-        console.log(err);
-        setError('서버에 연결할 수 없습니다.');
+        // 요청을 설정하는 동안 오류가 발생한 경우
+        console.log('Error', err.message);
+        setError('요청 설정 중 오류 발생');
       }
     }
   };
@@ -40,9 +49,13 @@ const AdminLogin = () => {
         <LoginInput type="text" placeholder="ID" value={username} onChange={(e) => setUsername(e.target.value)} />
         <LoginInput type="password" placeholder="PW" value={password} onChange={(e) => setPassword(e.target.value)} />
       </Form>
-      <LoginButton onClick={adminAccess}>Login</LoginButton>
+      <LoginButton onClick={() => adminAccess(username, password)}>Login</LoginButton>
     </LoginContainer>
   );
+};
+
+AdminLogin.propTypes = {
+  onLoginSuccess: PropTypes.func.isRequired, // 함수 타입, 필수 prop
 };
 
 export default AdminLogin;
