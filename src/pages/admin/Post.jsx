@@ -10,6 +10,8 @@ const Post = ({ setIsDetailView, setPostId }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
   const [loading, setLoading] = useState(false);
+  const [showOptions, setShowOptions] = useState(null);
+  const [currentPostId, setCurrentPostId] = useState(null);
 
   const getLosts = async () => {
     setLoading(true);
@@ -29,7 +31,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
   }, []);
 
   const handleClick = (lostId) => {
-    setPostId(lostId); // setPostId가 올바르게 사용되고 있음
+    setPostId(lostId);
     setIsDetailView(true);
   };
 
@@ -45,9 +47,76 @@ const Post = ({ setIsDetailView, setPostId }) => {
       });
     }
   };
+  const handleMoreClick = (lostId) => {
+    setCurrentPostId(lostId);
+    setShowOptions((prev) => (prev === lostId ? null : lostId));
+  };
 
   const formatId = (id) => {
     return String(id).padStart(6, '0');
+  };
+
+  const handleDeletePost = async () => {
+    try {
+      await adminAxiosInstance.delete(`/losts/${currentPostId}`);
+      setAllLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
+      setDisplayedLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
+      setShowOptions(false);
+    } catch (error) {
+      console.error('Error deleting post: ', error);
+    }
+  };
+
+  const getAdminToken = () => {
+    return localStorage.getItem('token');
+  };
+
+  const handleBlockAndDelete = async (lostId) => {
+    // Find the lost item by its ID
+    const lost = allLosts.find((lost) => lost.lostId === lostId);
+
+    if (!lost) {
+      console.error('Lost item not found');
+      return;
+    }
+
+    try {
+      // Block and delete the post
+      await Promise.all([
+        adminAxiosInstance.post(
+          '/blacklist',
+          { userId: lost.userId }, // Use the userId from the lost object
+          {
+            headers: {
+              Authorization: `Bearer ${getAdminToken()}`,
+            },
+          }
+        ),
+        adminAxiosInstance.delete(`/losts/${lostId}`),
+      ]);
+
+      // Update the state after successful operation
+      setAllLosts((prev) => prev.filter((lost) => lost.lostId !== lostId));
+      setDisplayedLosts((prev) => prev.filter((lost) => lost.lostId !== lostId));
+      setShowOptions(null);
+    } catch (error) {
+      console.error('Error handling block and delete: ', error);
+    }
+  };
+
+  const handleUndoDelete = async () => {
+    try {
+      await adminAxiosInstance.post(`/losts/${currentPostId}`, { lostStatus: 'PUBLISHED' });
+      setAllLosts((prev) =>
+        prev.map((lost) => (lost.lostId === currentPostId ? { ...lost, lostStatus: 'PUBLISHED' } : lost))
+      );
+      setDisplayedLosts((prev) =>
+        prev.map((lost) => (lost.lostId === currentPostId ? { ...lost, lostStatus: 'PUBLISHED' } : lost))
+      );
+      setShowOptions(false);
+    } catch (error) {
+      console.error('Error undoing delete: ', error);
+    }
   };
 
   const formatDate = (dateString) => {
@@ -60,7 +129,22 @@ const Post = ({ setIsDetailView, setPostId }) => {
     const seconds = String(date.getSeconds()).padStart(2, '0');
     return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
   };
-
+  const OptionsMenu = ({ onUndo, isDeleted }) => (
+    <OptionsContainer>
+      {isDeleted ? (
+        <OptionButton onClick={onUndo}>삭제 취소</OptionButton>
+      ) : (
+        <>
+          <OptionButton onClick={handleDeletePost}>글 삭제</OptionButton>
+          <OptionButton onClick={handleBlockAndDelete}>차단하고 글 삭제</OptionButton>
+        </>
+      )}
+    </OptionsContainer>
+  );
+  OptionsMenu.propTypes = {
+    onUndo: PropTypes.func.isRequired,
+    isDeleted: PropTypes.bool.isRequired,
+  };
   return (
     <PostContainer>
       {Array.isArray(displayedLosts) && displayedLosts.length > 0 ? (
@@ -77,8 +161,20 @@ const Post = ({ setIsDetailView, setPostId }) => {
               </UserInfo>
               <Wrapper>
                 <PostDate>{formatDate(lost.createdAt)}</PostDate>
-                <MoreBtn />
+                <MoreBtn
+                  lostStatus={lost.lostStatus}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent click from triggering handleClick
+                    handleMoreClick(lost.lostId);
+                  }}
+                />
               </Wrapper>
+              {showOptions === lost.lostId && (
+                <OptionsMenu
+                  onUndo={handleUndoDelete}
+                  isDeleted={allLosts.find((lost) => lost.lostId === currentPostId)?.lostStatus === 'DELETED'}
+                />
+              )}
             </PostInfo>
           </Container>
         ))
@@ -115,6 +211,7 @@ const Wrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  padding-left: 1rem;
 `;
 
 const Container = styled.div`
@@ -126,6 +223,7 @@ const Container = styled.div`
   box-sizing: border-box;
   color: black;
   cursor: pointer;
+  position: relative;
 `;
 
 const Img = styled.img`
@@ -136,12 +234,14 @@ const Img = styled.img`
 
 const UserInfo = styled.span`
   display: flex;
+  height: 1.5rem;
   flex-direction: row;
+  align-items: center;
+  padding-left: 1rem;
   gap: 0.5rem;
 `;
 
 const UserName = styled.span`
-  height: 1.5rem;
   ${(props) => props.theme.fontStyles.body2Bold};
   color: ${(props) => props.theme.colors.gray60};
   font-size: 0.875rem;
@@ -149,14 +249,15 @@ const UserName = styled.span`
 `;
 
 const UserId = styled.span`
-  height: 1.5rem;
   ${(props) => props.theme.fontStyles.body2Med};
   color: ${(props) => props.theme.colors.gray80};
   font-size: 0.875rem;
 `;
 
 const PostDate = styled.span`
+  height: 1.3rem;
   display: flex;
+  align-items: flex-end;
   ${(props) => props.theme.fontStyles.body2Med};
   color: ${(props) => props.theme.colors.gray40};
   font-size: 0.875rem;
@@ -166,7 +267,9 @@ const PostInfo = styled.div`
   display: flex;
   flex-direction: column;
   width: 15rem;
-  padding: 0.5rem 1rem;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+  position: relative;
 `;
 
 const Status = styled.span`
@@ -194,7 +297,37 @@ const LoadMoreButton = styled.button`
 const MoreBtn = styled.div`
   background: url(${morebtn});
   width: 1.5rem;
-  height: 1.5rem;
+  height: 1.3rem;
+  z-index: 1000;
   background-repeat: no-repeat;
   background-size: contain;
+`;
+
+const OptionsContainer = styled.div`
+  position: absolute;
+  top: calc(100% - 0.5rem);
+  right: -0.625rem;
+  background-color: ${(props) => props.theme.colors.white};
+  width: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1001;
+`;
+
+const OptionButton = styled.button`
+  ${(props) => props.theme.fontStyles.basic.captionMed};
+  width: 100%;
+  padding: 0.5rem 1rem;
+  height: 2.125rem;
+  border: none;
+  font-size: 0.75rem;
+  background-color: ${(props) => props.theme.colors.gray60};
+  color: ${(props) => props.theme.colors.white};
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.gray70};
+  }
 `;
