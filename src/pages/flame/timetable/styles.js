@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 const fadeInUp = keyframes`
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(2rem);
   }
   to {
     opacity: 1;
@@ -28,13 +28,13 @@ const flagWaving = keyframes`
     transform: translateX(0) rotate(0deg);
   }
   25% {
-    transform: translateX(10px) rotate(-3deg);
+    transform: translateX(1rem) rotate(-3deg);
   }
   50% {
-    transform: translateX(-10px) rotate(3deg);
+    transform: translateX(-1rem) rotate(3deg);
   }
   75% {
-    transform: translateX(5px) rotate(-2deg);
+    transform: translateX(0.5rem) rotate(-2deg);
   }
   100% {
     transform: translateX(0) rotate(0deg);
@@ -205,7 +205,7 @@ export const LiveDj = styled.span`
   left: 2rem;
   bottom: 1.2rem;
   ${(props) => props.theme.fontStyles.flame.headline5};
-  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.25);
+  text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.25);
   animation: ${backgroundPulse} 2s infinite;
 `;
 
