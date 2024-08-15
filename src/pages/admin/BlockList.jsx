@@ -11,18 +11,32 @@ const BlockList = () => {
     getLists();
   }, []);
 
+  const getAdminToken = () => {
+    return localStorage.getItem('token');
+  };
+
   const getLists = async () => {
     try {
-      const response = await adminAxiosInstance.get('/blacklist');
+      const token = getAdminToken();
+      const response = await adminAxiosInstance.get('/blacklist', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setList(response.data.data);
     } catch (error) {
-      console.error('Error fetching URL: ', error);
+      console.error('Error fetching blacklist:', error.response?.data || error.message);
     }
   };
 
   const deleteBlackLists = async (userId) => {
     try {
-      const response = await adminAxiosInstance.delete(`/blacklist/${userId}`);
+      const token = getAdminToken();
+      const response = await adminAxiosInstance.delete(`/blacklist/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.status === 204) {
         alert('차단 해제가 완료되었습니다.');
         setList(list.filter((item) => item.userId !== userId)); // 차단 해제된 사용자 리스트에서 제거

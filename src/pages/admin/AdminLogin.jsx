@@ -15,7 +15,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
       const response = await adminAxiosInstance.post('/admin/token', { username, password });
       console.log(response);
       if (response.status === 200) {
-        const { accessToken } = response.data;
+        const { accessToken } = response.data.data;
         localStorage.setItem('token', accessToken);
         alert('로그인 성공');
         onLoginSuccess();

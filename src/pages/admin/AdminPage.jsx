@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as jwtDecode from 'jwt-decode';
-import { adminAxiosInstance } from '@/api/axios';
-import AdminLogin from './AdminLogin';
-import Post from './Post';
-import BlockList from './BlockList';
-import PostDetail from './PostDetail';
-import Header from '@/components/layouts/Header';
+import { adminAxiosInstance } from '@/api/axios'; // Axios 인스턴스
+import AdminLogin from './AdminLogin'; // 로그인 컴포넌트
+import Post from './Post'; // 게시글 컴포넌트
+import BlockList from './BlockList'; // 차단 목록 컴포넌트
+import PostDetail from './PostDetail'; // 게시글 상세 컴포넌트
+import Header from '@/components/layouts/Header'; // 헤더 컴포넌트
+import { useNavigate } from 'react-router-dom';
 
 const AdminPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeComponent, setActiveComponent] = useState('posts');
   const [isDetailView, setIsDetailView] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token && !isTokenExpired(token)) {
       setIsLoggedIn(true);
+    } else {
+      handleLogout(); // 토큰이 없거나 만료된 경우 로그아웃 처리
     }
   }, []);
 
@@ -31,13 +35,15 @@ const AdminPage = () => {
     }
   };
 
-  const logout = () => {
+  const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken'); // 리프레시 토큰도 삭제
     setIsLoggedIn(false);
+    navigate('/admin'); // 로그인 화면으로 리다이렉트
   };
 
   useEffect(() => {
-    const interceptors = adminAxiosInstance.interceptors.request.use(
+    const requestInterceptor = adminAxiosInstance.interceptors.request.use(
       (config) => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -48,8 +54,19 @@ const AdminPage = () => {
       (error) => Promise.reject(error)
     );
 
+    const responseInterceptor = adminAxiosInstance.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error.response.status === 401) {
+          handleLogout(); // 액세스 토큰이 만료된 경우 로그아웃
+        }
+        return Promise.reject(error);
+      }
+    );
+
     return () => {
-      adminAxiosInstance.interceptors.request.eject(interceptors);
+      adminAxiosInstance.interceptors.request.eject(requestInterceptor);
+      adminAxiosInstance.interceptors.response.eject(responseInterceptor);
     };
   }, []);
 
@@ -61,21 +78,29 @@ const AdminPage = () => {
     <>
       <Header />
       <Container>
-        <SelectBar>
-          <Title onClick={() => setActiveComponent('posts')} active={activeComponent === 'posts'}>
-            게시글
-          </Title>
-          <Title onClick={() => setActiveComponent('blockList')} active={activeComponent === 'blockList'}>
-            차단 목록
-          </Title>
-        </SelectBar>
+        {!isDetailView && (
+          <SelectBar>
+            <Title onClick={() => setActiveComponent('posts')} active={activeComponent === 'posts'}>
+              게시글
+            </Title>
+            <Title onClick={() => setActiveComponent('blockList')} active={activeComponent === 'blockList'}>
+              차단 목록
+            </Title>
+          </SelectBar>
+        )}
         {activeComponent === 'posts' &&
           (isDetailView ? (
-            <PostDetail postId={selectedPostId} onBack={() => setIsDetailView(false)} />
+            <PostDetail
+              postId={selectedPostId}
+              onBack={() => {
+                setIsDetailView(false); // Go back to the post list view
+                setSelectedPostId(null); // Clear the selected post ID
+              }}
+            />
           ) : (
             <Post setIsDetailView={setIsDetailView} setPostId={setSelectedPostId} />
           ))}
-        {activeComponent === 'blockList' && <BlockList />}
+        {activeComponent === 'blockList' && !isDetailView && <BlockList />}
       </Container>
     </>
   );
@@ -85,70 +110,6 @@ export default AdminPage;
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.gray10};
-`;
-const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  background-color: ${(props) => props.theme.colors.gray50};
-`;
-
-const ToggleButton = styled.button`
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 1.5rem;
-`;
-const Navbar = styled.div`
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  width: 12rem;
-  height: calc(var(--vh, 1vh) * 100);
-  transition: transform 0.3s ease-in-out;
-  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(-100%)')};
-`;
-
-const BtnWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-`;
-const BtnContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const LostBtn = styled.span`
-  display: flex;
-  justify-content: flex-start;
-  font-size: 1.125rem;
-  padding: 1rem;
-  gap: 0.625rem;
-  align-self: stretch;
-`;
-
-const EventBtn = styled(LostBtn)``;
-
-const LogoutBtn = styled(LostBtn)`
-  margin-right: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  text-align: center;
-  cursor: pointer;
-  padding: 1rem;
-  background-color: ${(props) => props.theme.colors.gray70};
-  color: white;
-  gap: 0.625rem;
-`;
-
-const Error = styled.p`
-  color: red;
-  margin-top: 1rem;
 `;
 
 const SelectBar = styled.div`

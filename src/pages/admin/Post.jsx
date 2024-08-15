@@ -4,7 +4,7 @@ import morebtn from '../../assets/svgs/more_vert.svg';
 import { adminAxiosInstance } from '@/api/axios';
 import PropTypes from 'prop-types';
 
-const Post = ({ setIsDetailView, setSelectedPostId }) => {
+const Post = ({ setIsDetailView, setPostId }) => {
   const [allLosts, setAllLosts] = useState([]);
   const [displayedLosts, setDisplayedLosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,8 +29,8 @@ const Post = ({ setIsDetailView, setSelectedPostId }) => {
   }, []);
 
   const handleClick = (lostId) => {
-    setSelectedPostId(lostId);
-    setIsDetailView(true); // 상세 조회 시작
+    setPostId(lostId); // setPostId가 올바르게 사용되고 있음
+    setIsDetailView(true);
   };
 
   const loadMore = () => {
@@ -95,7 +95,7 @@ const Post = ({ setIsDetailView, setSelectedPostId }) => {
 };
 Post.propTypes = {
   setIsDetailView: PropTypes.func.isRequired,
-  setSelectedPostId: PropTypes.func.isRequired,
+  setPostId: PropTypes.func.isRequired,
 };
 
 export default Post;
