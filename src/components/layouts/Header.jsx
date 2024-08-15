@@ -1,6 +1,11 @@
 import styled from 'styled-components';
+<<<<<<< HEAD
 import hiuLogo from '@/static/image/layouts/hiuLogo.svg';
 import hambergerMenu from '@/static/image/layouts/hambergerMenu.svg';
+=======
+import hiuLogo from '@/assets/webps/layouts/hiuLogo.webp';
+import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
+>>>>>>> 9f489da ([Fix] svg -> webp로 변경)
 
 export default function Header() {
   return (

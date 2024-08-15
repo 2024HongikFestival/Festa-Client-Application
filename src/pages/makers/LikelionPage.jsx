@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import likelionBgImg from '@/static/image/makers/likelionBgImg.svg';
 =======
 import styled, { css } from 'styled-components';
+<<<<<<< HEAD
 import likelionBgImg from '@/assets/svgs/makers/likelionBgImg.svg';
 >>>>>>> abea1b2 ([Feat] 짝수, 홀수 따라 grid 변경)
+=======
+import likelionBgImg from '@/assets/webps/makers/likelionBgImg.webp';
+>>>>>>> 9f489da ([Fix] svg -> webp로 변경)
 import LikelionCard from './LikelionCard';
 import { useTranslation } from 'react-i18next';
 import { contributors } from './LikelionContributors';

@@ -6,9 +6,14 @@ import githubIcon from '@/static/image/makers/githubIcon.svg';
 =======
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+<<<<<<< HEAD
 import instaIcon from '@/assets/svgs/makers/instaIcon.svg';
 import githubIcon from '@/assets/svgs/makers/githubIcon.svg';
 >>>>>>> ad99153 ([Feat] 만든이들 데이터 삽입 및 컴포넌트 분리)
+=======
+import instaIcon from '@/assets/webps/makers/instaIcon.webp';
+import githubIcon from '@/assets/webps/makers/githubIcon.webp';
+>>>>>>> 9f489da ([Fix] svg -> webp로 변경)
 
 const LikelionCard = ({ profileImg, name, department, ment, instaLink, githubLink }) => {
   return (

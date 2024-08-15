@@ -4,9 +4,14 @@ import gaehwaBgImg from '@/static/image/makers/gaehwaBgImg.svg';
 import gaehwaLogo from '@/static/image/makers/gaehwaLogo.svg';
 =======
 import styled, { css } from 'styled-components';
+<<<<<<< HEAD
 import gaehwaBgImg from '@/assets/svgs/makers/gaehwaBgImg.svg';
 import gaehwaLogo from '@/assets/svgs/makers/gaehwaLogo.svg';
 >>>>>>> abea1b2 ([Feat] 짝수, 홀수 따라 grid 변경)
+=======
+import gaehwaBgImg from '@/assets/webps/makers/gaehwaBgImg.webp';
+import gaehwaLogo from '@/assets/webps/makers/gaehwaLogo.webp';
+>>>>>>> 9f489da ([Fix] svg -> webp로 변경)
 import GaehwaCard from './GaehwaCard';
 import { useTranslation } from 'react-i18next';
 import Footer from '@/components/layouts/Footer';
