@@ -16,9 +16,28 @@ const LostAndFoundPage = () => {
   const query = new URLSearchParams(location.search);
   const page = parseInt(query.get('page')) || 1; //  string -> int 로 변환
 
+  // const getItemsApi = async () => {
+  //   try {
+  //     const response = await axios.get('https://api.2024hongikfestival.com/losts', { params: { date: '2024-08-14' } });
+  //     //console.log(response.data.data.length);
+  //     setItems(response.data.data);
+  //     setTotalItems(response.data.data.length);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getItemsApi();
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log(items);
+  //   console.log(totalItems);
+  // }, [items, totalItems]);
+
   useEffect(() => {
     setCurrentPage(page);
-    //API 요청으로 items(데이터), totalItems(총 데이터 개수) 가져오기
   }, [page]);
 
   useEffect(() => {
@@ -40,11 +59,15 @@ const LostAndFoundPage = () => {
           </S.ButtonDetailWrapper>
         </S.ButtonWrapper>
         <S.LostAndFoundSection>
-          {items.map(
-            (none, idx) =>
-              idx + 1 >= currentPage * itemCountPerPage &&
-              idx + 1 <= (currentPage + 1) * itemCountPerPage && <S.LostAndFoundPost key={`item_${idx}`} />
-          )}
+          {items.map((none, idx) => {
+            console.log(idx);
+
+            return (
+              //현재 페이지에 렌더링 되어야 하는 item인지 판단하는 로직
+              idx >= (currentPage - 1) * itemCountPerPage &&
+              idx < currentPage * itemCountPerPage && <S.LostAndFoundPost key={`item_${idx}`} />
+            );
+          })}
         </S.LostAndFoundSection>
 
         <S.Pagenation>
