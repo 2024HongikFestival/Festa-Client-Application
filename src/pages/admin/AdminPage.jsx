@@ -1,4 +1,3 @@
-// AdminPage.js
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as jwtDecode from 'jwt-decode';
@@ -6,47 +5,35 @@ import { adminAxiosInstance } from '@/api/axios';
 import AdminLogin from './AdminLogin';
 import Post from './Post';
 import BlockList from './BlockList';
+import PostDetail from './PostDetail';
 import Header from '@/components/layouts/Header';
 
 const AdminPage = () => {
-  const [error, setError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [activeComponent, setActiveComponent] = useState('posts');
-
-  const handlePostsClick = () => setActiveComponent('posts');
-  const handleBlockListClick = () => setActiveComponent('blockList');
+  const [isDetailView, setIsDetailView] = useState(false);
+  const [selectedPostId, setSelectedPostId] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
-      checkTokenExpiration();
+    if (token && !isTokenExpired(token)) {
       setIsLoggedIn(true);
     }
   }, []);
 
+  const isTokenExpired = (token) => {
+    try {
+      const decodedToken = jwtDecode(token);
+      return decodedToken.exp < Date.now() / 1000;
+    } catch (error) {
+      console.error('Token decode error:', error);
+      return true;
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
-  };
-
-  const checkTokenExpiration = () => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const decodedToken = jwtDecode(token);
-        const currentTime = Date.now() / 1000;
-        if (decodedToken.exp < currentTime) {
-          localStorage.removeItem('token');
-          alert('세션이 만료되었습니다. 다시 로그인 해주세요.');
-          setIsLoggedIn(false);
-        }
-      } catch (e) {
-        console.error('Token decode error:', e);
-        localStorage.removeItem('token');
-        setIsLoggedIn(false);
-      }
-    }
   };
 
   useEffect(() => {
@@ -66,15 +53,6 @@ const AdminPage = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const intervalId = setInterval(checkTokenExpiration, 300000);
-    return () => clearInterval(intervalId);
-  }, []);
-
-  const toggleNavbar = () => {
-    setIsNavbarOpen(!isNavbarOpen);
-  };
-
   if (!isLoggedIn) {
     return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
   }
@@ -82,28 +60,21 @@ const AdminPage = () => {
   return (
     <>
       <Header />
-      {isNavbarOpen && (
-        <Navbar isOpen={isNavbarOpen}>
-          <BtnContainer>
-            <BtnWrapper>
-              <LostBtn>분실물 게시판 관리</LostBtn>
-              <EventBtn>이벤트 관리</EventBtn>
-            </BtnWrapper>
-            <LogoutBtn onClick={logout}>로그아웃</LogoutBtn>
-          </BtnContainer>
-          {error && <Error>{error}</Error>}
-        </Navbar>
-      )}
       <Container>
         <SelectBar>
-          <Title onClick={handlePostsClick} active={activeComponent === 'posts'}>
+          <Title onClick={() => setActiveComponent('posts')} active={activeComponent === 'posts'}>
             게시글
           </Title>
-          <Title onClick={handleBlockListClick} active={activeComponent === 'blockList'}>
+          <Title onClick={() => setActiveComponent('blockList')} active={activeComponent === 'blockList'}>
             차단 목록
           </Title>
         </SelectBar>
-        {activeComponent === 'posts' && <Post />}
+        {activeComponent === 'posts' &&
+          (isDetailView ? (
+            <PostDetail postId={selectedPostId} onBack={() => setIsDetailView(false)} />
+          ) : (
+            <Post setIsDetailView={setIsDetailView} setPostId={setSelectedPostId} />
+          ))}
         {activeComponent === 'blockList' && <BlockList />}
       </Container>
     </>
@@ -111,14 +82,6 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
-
-// const Header = ({ onToggleNavbar }) => {
-//   return (
-//     <HeaderContainer>
-//       <ToggleButton onClick={onToggleNavbar}>Toggle </ToggleButton>
-//     </HeaderContainer>
-//   );
-// };
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.gray10};
@@ -203,4 +166,5 @@ const Title = styled.div`
   font-size: 1.125rem;
   color: ${({ active, theme }) => (active ? theme.colors.gray80 : theme.colors.gray40)};
   transition: background-color 0.3s;
+  font-weight: 700;
 `;
