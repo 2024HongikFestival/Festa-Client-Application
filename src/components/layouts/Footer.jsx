@@ -48,7 +48,9 @@ export default function Footer() {
       </GaehwaBtn>
       <DaedongjeContainer>
         <span>대동제 채널 바로가기</span>
-        <img src={instaLogo} alt="instaLogo" />
+        <a href="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
+          <img src={instaLogo} alt="instaLogo" />
+        </a>
       </DaedongjeContainer>
     </FooterLayout>
   );
