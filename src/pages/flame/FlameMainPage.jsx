@@ -1,10 +1,14 @@
 // 와디페 메인 페이지
 // url: /flame
 import Header from '@/components/layouts/Header';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import FLAME from '../../assets/svgs/FLAME.svg';
-import speaker from '../../assets/speaker.webp';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import DJ from '../../assets/DJ.webp';
+//import speaker from '../../assets/speaker.webp';
 
 const FlameMainPage = () => {
   const [selectedDay, setSelectedDay] = useState('day1');
@@ -33,13 +37,13 @@ const FlameMainPage = () => {
         </WDFContainer>
 
         <DateSection>
-          <DateButton onClick={() => setSelectedDay('day1')}>
+          <DateButton selected={selectedDay === 'day1'} onClick={() => setSelectedDay('day1')}>
             DAY 1 <br /> 9.25 (수)
           </DateButton>
-          <DateButton onClick={() => setSelectedDay('day2')}>
+          <DateButton selected={selectedDay === 'day2'} onClick={() => setSelectedDay('day2')}>
             DAY 2 <br /> 9.26 (목)
           </DateButton>
-          <DateButton onClick={() => setSelectedDay('day3')}>
+          <DateButton selected={selectedDay === 'day3'} onClick={() => setSelectedDay('day3')}>
             DAY 3<br /> 9.27 (금)
           </DateButton>
         </DateSection>
@@ -53,26 +57,128 @@ const FlameMainPage = () => {
     </>
   );
 };
-const Day1Content = () => (
-  <Content>
-    <h2>Day 1 Events</h2>
-    <p>Details for Day 1...</p>
-  </Content>
-);
+const carouselItems = [
+  { src: DJ, alt: 'Image 1' },
+  { src: DJ, alt: 'Image 2' },
+  { src: DJ, alt: 'Image 3' },
+  { src: DJ, alt: 'Image 4' },
+  { src: DJ, alt: 'Image 5' },
+  { src: DJ, alt: 'Image 6' },
+];
 
-const Day2Content = () => (
-  <Content>
-    <h2>Day 2 Events</h2>
-    <p>Details for Day 2...</p>
-  </Content>
-);
+const Day1Content = () => {
+  const sliderRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-const Day3Content = () => (
-  <Content>
-    <h2>Day 3 Events</h2>
-    <p>Details for Day 3...</p>
-  </Content>
-);
+  const goToSlide = (index) => {
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(index);
+      setCurrentSlide(index);
+    }
+  };
+
+  return (
+    <Content>
+      <CarouselContainer>
+        <Slider {...carouselSettings} ref={sliderRef} afterChange={(index) => setCurrentSlide(index)}>
+          {carouselItems.map((item, index) => (
+            <ImageContainer key={index}>
+              <CarouselImage src={item.src} alt={item.alt} />
+              <Line />
+              <DJName>디제이 이름</DJName>
+              <DJInfo>
+                국내외 페스티벌 섭외 1순위. <br />
+                아시아 시장 섭렵 <br />
+                트랜드를 이끌며 신 한류 문화가 될 <br /> K-EDM장르의 선두 DJ
+              </DJInfo>
+            </ImageContainer>
+          ))}
+        </Slider>
+        <NavigationBar>
+          {carouselItems.map((_, index) => (
+            <NavigationButton key={index} active={currentSlide === index} onClick={() => goToSlide(index)} />
+          ))}
+        </NavigationBar>
+      </CarouselContainer>
+    </Content>
+  );
+};
+
+const Day2Content = () => {
+  const sliderRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const goToSlide = (index) => {
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(index);
+      setCurrentSlide(index);
+    }
+  };
+  return (
+    <Content>
+      <CarouselContainer>
+        <Slider {...carouselSettings} ref={sliderRef} afterChange={(index) => setCurrentSlide(index)}>
+          {carouselItems.map((item, index) => (
+            <ImageContainer key={index}>
+              <CarouselImage src={item.src} alt={item.alt} />
+              <Line />
+              <DJName>디제이 이름</DJName>
+              <DJInfo>
+                국내외 페스티벌 섭외 1순위. <br />
+                아시아 시장 섭렵 <br />
+                트랜드를 이끌며 신 한류 문화가 될 <br /> K-EDM장르의 선두 DJ
+              </DJInfo>
+            </ImageContainer>
+          ))}
+        </Slider>
+        <NavigationBar>
+          {carouselItems.map((_, index) => (
+            <NavigationButton key={index} active={currentSlide === index} onClick={() => goToSlide(index)} />
+          ))}
+        </NavigationBar>
+      </CarouselContainer>
+    </Content>
+  );
+};
+
+const Day3Content = () => {
+  const sliderRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const goToSlide = (index) => {
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(index);
+      setCurrentSlide(index);
+    }
+  };
+  return (
+    <Content>
+      <CarouselContainer>
+        <Slider {...carouselSettings} ref={sliderRef} afterChange={(index) => setCurrentSlide(index)}>
+          {carouselItems.map((item, index) => (
+            <ImageContainer key={index}>
+              <CarouselImage src={item.src} alt={item.alt} />
+              <Line />
+              <DJName>디제이 이름</DJName>
+              <DJInfo>
+                국내외 페스티벌 섭외 1순위. <br />
+                아시아 시장 섭렵 <br />
+                트랜드를 이끌며 신 한류 문화가 될 <br /> K-EDM장르의 선두 DJ
+              </DJInfo>
+            </ImageContainer>
+          ))}
+        </Slider>
+        <NavigationBar>
+          {carouselItems.map((_, index) => (
+            <NavigationButton key={index} active={currentSlide === index} onClick={() => goToSlide(index)} />
+          ))}
+        </NavigationBar>
+      </CarouselContainer>
+    </Content>
+  );
+};
+
+export { Day1Content, Day2Content, Day3Content };
 
 export default FlameMainPage;
 
@@ -160,16 +266,20 @@ const DateSection = styled.div`
   align-items: center;
   gap: 3rem;
   padding-top: 2rem;
-  margin-top: 1.75rem;
 `;
 
 const DateButton = styled.button`
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
-  color: ${(props) => props.theme.colors.gray80};
+  color: ${(props) => (props.selected ? props.theme.colors.flameMainColor : props.theme.colors.gray80)};
   font-size: 1.125rem;
   cursor: pointer;
   border: none;
   letter-spacing: -0.001rem;
+  background: ${(props) =>
+    props.selected ? 'linear-gradient(103.64deg, #df2020 35.72%, #ffb800 88.25%)' : 'transparent'};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: ${(props) => (props.selected ? 'transparent' : props.theme.colors.gray80)};
+  background-clip: text;
 
   &:hover {
     background: linear-gradient(103.64deg, #df2020 35.72%, #ffb800 88.25%);
@@ -184,13 +294,97 @@ const DayContent = styled.div`
   margin-top: 1rem;
 `;
 
-const Content = styled.div`
-  padding: 1rem;
-`;
-
 const IntroWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+`;
+
+const carouselSettings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  autoplay: false,
+  centerMode: true,
+  variableWidth: true,
+};
+
+const CarouselContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 27.313rem;
+`;
+
+const CarouselImage = styled.img`
+  width: 12.875rem;
+  height: 12.75rem;
+  z-index: 1000;
+  object-fit: contain;
+  margin-top: 1.5rem;
+`;
+
+const ImageContainer = styled.div`
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  width: 17.25rem !important;
+  height: 25.813rem;
+  border: 1px solid #df2121;
+  margin: 0 0.5rem;
+  box-sizing: border-box;
+  position: relative;
+`;
+
+const NavigationBar = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.375rem;
+`;
+
+const NavigationButton = styled.button`
+  background-color: ${(props) => (props.active ? props.theme.colors.flameMainColor : props.theme.colors.gray80)};
+  border: none;
+  width: ${(props) => (props.active ? '1.5rem' : '1rem')};
+  height: 0.25rem;
+  cursor: pointer;
+`;
+
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 48rem;
+  height: 27.313rem;
+  margin-top: 1.75rem;
+`;
+
+const Line = styled.div`
+  width: 15.25rem;
+  margin: 1rem 0;
+  box-sizing: border-box;
+  border-bottom: 0.063rem solid;
+  border-image-source: linear-gradient(90deg, #ffb801 0%, #df2020 100%);
+  border-image-slice: 1;
+`;
+
+const DJName = styled.span`
+  ${(props) => props.theme.fontStyles.basic.headline5};
+  width: 13.75rem;
+  color: ${(props) => props.theme.colors.white};
+  text-align: left;
+  font-size: 1.25rem;
+`;
+
+const DJInfo = styled.span`
+  ${(props) => props.theme.fontStyles.basic.body1Med};
+  color: ${(props) => props.theme.colors.gray50};
+  font-size: 1rem;
 `;
