@@ -8,15 +8,16 @@ import { contributors } from './GaehwaContributors';
 
 const GaehwaPage = () => {
   const { t } = useTranslation();
+  const contributorsData = contributors(t);
 
-  const executive = contributors.executive;
-  const strategicPolicy = contributors.strategicPolicy;
-  const culturalPlanning = contributors.culturalPlanning;
-  const mediaRelations = contributors.mediaRelations;
-  const finance = contributors.finance;
-  const rightsSolidarity = contributors.rightsSolidarity;
-  const studentWelfare = contributors.studentWelfare;
-  const graduationPreparation = contributors.graduationPreparation;
+  const executive = contributorsData.executive;
+  const strategicPolicy = contributorsData.strategicPolicy;
+  const culturalPlanning = contributorsData.culturalPlanning;
+  const mediaRelations = contributorsData.mediaRelations;
+  const finance = contributorsData.finance;
+  const rightsSolidarity = contributorsData.rightsSolidarity;
+  const studentWelfare = contributorsData.studentWelfare;
+  const graduationPreparation = contributorsData.graduationPreparation;
 
   return (
     <GaehwaLayout>
@@ -48,151 +49,151 @@ const GaehwaPage = () => {
       </WhoWeAreBg>
       <Devider />
       <RoleSection>
-        <RoleName>회장단</RoleName>
+        <RoleName>{t('gaehwa.presidency')}</RoleName>
         <PresidencyWrapper>
-          {contributors.presidency.map((contributor, index) => (
+          {contributorsData.presidency.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
         </PresidencyWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
-        <RoleName>집행위원회</RoleName>
+        <RoleName>{t('gaehwa.executive')}</RoleName>
         <RoleDescription>
-          총학생회의 전반적인 업무 보조 등의 역할을 합니다.
+          {t('gaehwa.executiveDescription1')}
           <br />
-          교내 다양한 협의체 활동에서 나온
+          {t('gaehwa.executiveDescription2')}
           <br />
-          기록물들을 관리하고 게시합니다.
+          {t('gaehwa.executiveDescription3')}
         </RoleDescription>
         <CardWrapper $cardCount={executive.length}>
-          {contributors.executive.map((contributor, index) => (
+          {contributorsData.executive.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
-        <RoleName>전략정책국</RoleName>
+        <RoleName>{t('gaehwa.strategicPolicy')}</RoleName>
         <RoleDescription>
-          교내 교육환경과 학생사회 등의 문제점을 파악하여
+          {t('gaehwa.strategicPolicyDescription1')}
           <br />
-          학우들에게 필요한 정책 및 개선안을 마련합니다.
+          {t('gaehwa.strategicPolicyDescription2')}
           <br />
-          더 나은 홍익대학교를 이루어내기 위해
+          {t('gaehwa.strategicPolicyDescription3')}
           <br />
-          학교본부와 지속적으로 논의합니다.
+          {t('gaehwa.strategicPolicyDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={strategicPolicy.length}>
-          {contributors.strategicPolicy.map((contributor, index) => (
+          {contributorsData.strategicPolicy.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
-        <RoleName>문화기획국</RoleName>
+        <RoleName>{t('gaehwa.culturalPlanning')}</RoleName>
         <RoleDescription>
-          홍익대학교 학우들을 위한
+          {t('gaehwa.culturalPlanningDescription1')}
           <br />
-          문화 콘텐츠 기획 및 진행을 담당합니다.
+          {t('gaehwa.culturalPlanningDescription2')}
           <br />
-          홍익대학교만의 차별화된 새로운 대학 문화를
+          {t('gaehwa.culturalPlanningDescription3')}
           <br />
-          창조하고 진행합니다.
+          {t('gaehwa.culturalPlanningDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={culturalPlanning.length}>
-          {contributors.culturalPlanning.map((contributor, index) => (
+          {contributorsData.culturalPlanning.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
-        <RoleName>미디어홍보국</RoleName>
+        <RoleName>{t('gaehwa.mediaRelations')}</RoleName>
         <RoleDescription>
-          총학생회의 정보들을 신속하게 전달하기 위한
+          {t('gaehwa.mediaRelationsDescription1')}
           <br />
-          홍보물을 제작합니다.
+          {t('gaehwa.mediaRelationsDescription2')}
           <br />
-          총학생회에서 진행하는 행사 및 사업의
+          {t('gaehwa.mediaRelationsDescription3')}
           <br />
-          시각 매체 제작을 총괄합니다.
+          {t('gaehwa.mediaRelationsDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={mediaRelations.length}>
-          {contributors.mediaRelations.map((contributor, index) => (
+          {contributorsData.mediaRelations.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
-        <RoleName>재정사무국</RoleName>
+        <RoleName>{t('gaehwa.finance')}</RoleName>
         <RoleDescription>
-          총학생회의 전반적인 회계와 사무 업무를 담당합니다.
+          {t('gaehwa.financeDescription1')}
           <br />
-          학생회칙 및 세칙을 포함하여
+          {t('gaehwa.financeDescription2')}
           <br />
-          총학생회 운영의 기반이 되는 자료를 관리합니다.
+          {t('gaehwa.financeDescription3')}
         </RoleDescription>
         <CardWrapper $cardCount={finance.length}>
-          {contributors.finance.map((contributor, index) => (
+          {contributorsData.finance.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
-        <RoleName>권리연대국</RoleName>
+        <RoleName>{t('gaehwa.rightsSolidarity')}</RoleName>
         <RoleDescription>
-          홍익대학교 내 학우들의 권리를 위한
+          {t('gaehwa.rightsSolidarityDescription1')}
           <br />
-          연대 활동을 진행합니다.
+          {t('gaehwa.rightsSolidarityDescription2')}
           <br />
-          학우들의 편리한 학교 생활을 위하여
+          {t('gaehwa.rightsSolidarityDescription3')}
           <br />
-          교내 시설 및 프로그램 소개를 진행하고
+          {t('gaehwa.rightsSolidarityDescription4')}
           <br />
-          권리 증진을 위한 행사를 기획합니다.
+          {t('gaehwa.rightsSolidarityDescription5')}
         </RoleDescription>
         <CardWrapper $cardCount={rightsSolidarity.length}>
-          {contributors.rightsSolidarity.map((contributor, index) => (
+          {contributorsData.rightsSolidarity.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
-        <RoleName>학생복지위원회</RoleName>
+        <RoleName>{t('gaehwa.studentWelfare')}</RoleName>
         <RoleDescription>
-          홍익대학교 학우들의 편의를 위해
+          {t('gaehwa.studentWelfareDescription1')}
           <br />
-          대외 업체들과 제휴를 맺고,
+          {t('gaehwa.studentWelfareDescription2')}
           <br />
-          편리를 위해 상시 복지 사업 및 다양한 사업을 진행하여
+          {t('gaehwa.studentWelfareDescription3')}
           <br />
-          학우들의 복지문제를 해결합니다.
+          {t('gaehwa.studentWelfareDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={studentWelfare.length}>
-          {contributors.studentWelfare.map((contributor, index) => (
+          {contributorsData.studentWelfare.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
-        <RoleName>총졸업준비위원회</RoleName>
+        <RoleName>{t('gaehwa.graduationPreparation')}</RoleName>
         <RoleDescription>
-          홍익대학교 졸업 예정자들을 위한 업무를 총괄하며,
+          {t('gaehwa.graduationPreparationDescription1')}
           <br />
-          졸업 관련 제반 업무를 진행합니다.
+          {t('gaehwa.graduationPreparationDescription2')}
           <br />
-          졸업준비운영위원회, 졸업준비위원총회 등
+          {t('gaehwa.graduationPreparationDescription3')}
           <br />
-          의결기구를 운영하여 졸업 관련 논의를 진행합니다.
+          {t('gaehwa.graduationPreparationDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={graduationPreparation.length}>
-          {contributors.graduationPreparation.map((contributor, index) => (
+          {contributorsData.graduationPreparation.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
           ))}
         </CardWrapper>
