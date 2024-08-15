@@ -216,7 +216,6 @@ const CardWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   column-gap: 4rem;
   row-gap: 2.8rem;
-
   ${({ $cardCount }) =>
     $cardCount % 2 === 1 &&
     css`
