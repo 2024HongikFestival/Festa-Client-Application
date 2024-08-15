@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/main/MainPage';
 // import EventPage from "@/pages/event/EventPage";
 import Layout from '@/components/layouts/Layout';
-
+import ScrollToTop from './components/layouts/ScrollToTop';
 // import EnterEvent from "./pages/event/EnterEvent";
 // import CompleteEvent from "./pages/event/SubmitEvent";
 import AdminPage from './pages/admin/AdminPage';
@@ -33,6 +33,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}

@@ -1,19 +1,49 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import instaLogo from '@/assets/svgs/layouts/instaLogo.svg';
 
 export default function Footer() {
   const nav = useNavigate();
+  const location = useLocation();
+
+  const handleNavigation = (path) => {
+    if (location.pathname === path) {
+      // 같은 페이지로 이동할 때
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      // 다른 페이지로 이동할 때
+      nav(path);
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }, 100);
+    }
+  };
+
+  const handleGoBack = () => {
+    nav(-1);
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 100);
+  };
 
   return (
     <FooterLayout>
-      <PreviousBtn onClick={() => nav(-1)}>
+      <PreviousBtn onClick={handleGoBack}>
         <span>이전 화면으로</span>
       </PreviousBtn>
-      <LikelionBtn onClick={() => nav('/likelion')}>
+      <LikelionBtn onClick={() => handleNavigation('/likelion')}>
         <span>제작 멋쟁이사자처럼 &gt;</span>
       </LikelionBtn>
-      <GaehwaBtn onClick={() => nav('/gaehwa')}>
+      <GaehwaBtn onClick={() => handleNavigation('/gaehwa')}>
         <span>총학생회 개화 ; 開花 &gt;</span>
       </GaehwaBtn>
       <DaedongjeContainer>
