@@ -1,23 +1,38 @@
-import PM from '@/assets/svgs/makers/PM.svg';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import instaIcon from '@/assets/svgs/makers/instaIcon.svg';
 import githubIcon from '@/assets/svgs/makers/githubIcon.svg';
 
-const LikelionCard = () => {
+const LikelionCard = ({ profileImg, name, department, ment, instaLink, githubLink }) => {
   return (
     <LikelionCardLayout>
-      <CardImg>
-        <img src={PM} alt="PM" />
-      </CardImg>
-      <Name>장윤영</Name>
-      <Department>컴퓨터공학과 20</Department>
-      <Ment>🩷 윤영이 짱</Ment>
+      <ProfileImg>
+        <img src={profileImg} alt="Profile" />
+      </ProfileImg>
+      <Name>{name}</Name>
+      <Department>{department}</Department>
+      <Ment>{ment}</Ment>
       <Icons>
-        <img src={instaIcon} />
-        <img src={githubIcon} />
+        <a href={instaLink} target="_blank" rel="noopener noreferrer">
+          <img src={instaIcon} alt="Instagram" />
+        </a>
+        {githubLink && (
+          <a href={githubLink} target="_blank" rel="noopener noreferrer">
+            <img src={githubIcon} alt="GitHub" />
+          </a>
+        )}
       </Icons>
     </LikelionCardLayout>
   );
+};
+
+LikelionCard.propTypes = {
+  profileImg: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  department: PropTypes.string.isRequired,
+  ment: PropTypes.string.isRequired,
+  instaLink: PropTypes.string.isRequired,
+  githubLink: PropTypes.string,
 };
 
 export default LikelionCard;
@@ -31,7 +46,7 @@ const LikelionCardLayout = styled.div`
   justify-content: center;
 `;
 
-const CardImg = styled.div`
+const ProfileImg = styled.div`
   width: 9.5rem;
   height: 9.5rem;
   overflow: hidden;
@@ -72,4 +87,16 @@ const Icons = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.8rem;
+
+  a {
+    width: 2.4rem;
+    height: 2.4rem;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import likelionBgImg from '@/assets/svgs/makers/likelionBgImg.svg';
 import LikelionCard from './LikelionCard';
 import { useTranslation } from 'react-i18next';
+import { contributors } from './LikelionContributors';
 
 const LikelionPage = () => {
   const { t } = useTranslation();
@@ -44,68 +45,80 @@ const LikelionPage = () => {
       <RoleSection>
         <RoleName>총괄</RoleName>
         <RoleDescription>
-          사용자 중심 사고를 바탕으로
+          프로젝트의 계획, 실행, 관리를 담당하며,
           <br />
-          서비스 기획 등 일련의 과정을 통하여
+          팀을 이끌어 목표 달성과
           <br />
-          실제 서비스를 기획합니다.
+          일정 준수를 책임집니다.
         </RoleDescription>
         <CardWrapper>
-          <LikelionCard />
+          {contributors.pm.map((contributor, index) => (
+            <LikelionCard key={index} {...contributor} />
+          ))}
+        </CardWrapper>
+      </RoleSection>
+      <Devider />
+      <RoleSection>
+        <RoleName>기획</RoleName>
+        <RoleDescription>
+          사용자 경험을 바탕으로
+          <br />
+          서비스를 기획하여
+          <br />
+          사용자가 만족할 수 있는 서비스를 제공합니다.
+        </RoleDescription>
+        <CardWrapper>
+          {contributors.plan.map((contributor, index) => (
+            <LikelionCard key={index} {...contributor} />
+          ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
         <RoleName>디자인</RoleName>
         <RoleDescription>
-          사용자 중심 사고를 바탕으로
+          사용자가 원하는 정보를
           <br />
-          서비스 기획 등 일련의 과정을 통하여
+          쉽게 얻을 수 있도록
           <br />
-          실제 서비스를 기획합니다.
+          화면의 디자인을 담당합니다.
         </RoleDescription>
         <CardWrapper>
-          <LikelionCard />
-          <LikelionCard />
-          <LikelionCard />
-          <LikelionCard />
-          <LikelionCard />
+          {contributors.design.map((contributor, index) => (
+            <LikelionCard key={index} {...contributor} />
+          ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
         <RoleName>프론트엔드</RoleName>
         <RoleDescription>
-          사용자 중심 사고를 바탕으로
+          사용자와 가장 밀접하게 맞닿는
           <br />
-          서비스 기획 등 일련의 과정을 통하여
+          서비스의 인터페이스를 구현하여,
           <br />
-          실제 서비스를 기획합니다.
+          최적의 사용자 경험을 제공합니다.
         </RoleDescription>
         <CardWrapper>
-          <LikelionCard />
-          <LikelionCard />
-          <LikelionCard />
-          <LikelionCard />
-          <LikelionCard />
+          {contributors.frontend.map((contributor, index) => (
+            <LikelionCard key={index} {...contributor} />
+          ))}
         </CardWrapper>
       </RoleSection>
       <Devider />
       <RoleSection>
         <RoleName>백엔드</RoleName>
         <RoleDescription>
-          사용자 중심 사고를 바탕으로
+          눈에 보이지 않는
           <br />
-          서비스 기획 등 일련의 과정을 통하여
+          비지니스 로직을 담당하며
           <br />
-          실제 서비스를 기획합니다.
+          서비스가 원활히 동작할 수 있도록 뒷받침합니다.
         </RoleDescription>
         <CardWrapper>
-          <LikelionCard />
-          <LikelionCard />
-          <LikelionCard />
-          <LikelionCard />
-          <LikelionCard />
+          {contributors.backend.map((contributor, index) => (
+            <LikelionCard key={index} {...contributor} />
+          ))}
         </CardWrapper>
       </RoleSection>
     </LikelionLayout>
