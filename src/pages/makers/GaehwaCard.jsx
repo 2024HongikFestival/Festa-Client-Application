@@ -5,7 +5,9 @@ const GaehwaCard = ({ name, department, role }) => {
   return (
     <GaehwaCardLayout>
       <Name>{name}</Name>
-      <Department>{department}</Department>
+      <Department name={name}>
+        <span>{department}</span>
+      </Department>
       <Role>{role}</Role>
     </GaehwaCardLayout>
   );
@@ -36,7 +38,8 @@ const Name = styled.h5`
 
 const Department = styled.div`
   margin-top: 0.8rem;
-  padding: 0.3rem 0.7rem;
+  padding: ${(props) => (props.name === '맹지수' ? '0.35rem 0.7rem' : '0.2rem 0.7rem')};
+
   width: auto;
   text-align: center;
   white-space: nowrap;
@@ -45,8 +48,13 @@ const Department = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray50};
+
+  span {
+    padding-top: 0.2rem;
+    ${(props) =>
+      props.name === '맹지수' ? props.theme.fontStyles.basic.captionMed : props.theme.fontStyles.basic.body2Med};
+  }
 `;
 
 const Role = styled.p`
