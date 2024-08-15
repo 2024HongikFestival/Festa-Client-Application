@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import gaehwaBgImg from '@/assets/svgs/makers/gaehwaBgImg.svg';
-import gaehwaLogo from '@/assets/svgs/makers/gaehwaLogo.svg';
+import gaehwaBgImg from '@/assets/webps/makers/gaehwaBgImg.webp';
+import gaehwaLogo from '@/assets/webps/makers/gaehwaLogo.webp';
 import GaehwaCard from './GaehwaCard';
 import { useTranslation } from 'react-i18next';
 import Footer from '@/components/layouts/Footer';

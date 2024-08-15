@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import instaLogo from '@/assets/svgs/layouts/instaLogo.svg';
+import instaLogo from '@/assets/webps/layouts/instaLogo.webp';
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
@@ -60,7 +60,7 @@ export default function Footer() {
 
   return (
     <FooterLayout id="footer">
-      <PreviousBtn isAtFooter={isAtFooter} onClick={handleGoBack}>
+      <PreviousBtn $isAtFooter={isAtFooter} onClick={handleGoBack}>
         <span>{t('footer.prev')}</span>
       </PreviousBtn>
       <LikelionBtn onClick={() => handleNavigation('/likelion')}>
@@ -90,12 +90,12 @@ const FooterLayout = styled.div`
 `;
 
 const PreviousBtn = styled.div`
-  position: ${(props) => (props.isAtFooter ? 'static' : 'fixed')};
-  bottom: ${(props) => (props.isAtFooter ? '' : '5.2rem')};
-  left: ${(props) => (props.isAtFooter ? '' : '50%')};
-  transform: ${(props) => (props.isAtFooter ? '' : 'translateX(-50%)')};
+  position: ${(props) => (props.$isAtFooter ? 'static' : 'fixed')};
+  bottom: ${(props) => (props.$isAtFooter ? '' : '5.2rem')};
+  left: ${(props) => (props.$isAtFooter ? '' : '50%')};
+  transform: ${(props) => (props.$isAtFooter ? '' : 'translateX(-50%)')};
   z-index: 100;
-  margin: ${(props) => (props.isAtFooter ? '2rem auto 0' : '')};
+  margin: ${(props) => (props.$isAtFooter ? '2rem auto 0' : '')};
   cursor: pointer;
   width: 12.8rem;
   height: 6rem;

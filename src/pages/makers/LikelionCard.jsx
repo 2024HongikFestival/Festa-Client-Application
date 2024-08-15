@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import instaIcon from '@/assets/svgs/makers/instaIcon.svg';
-import githubIcon from '@/assets/svgs/makers/githubIcon.svg';
+import instaIcon from '@/assets/webps/makers/instaIcon.webp';
+import githubIcon from '@/assets/webps/makers/githubIcon.webp';
 
 const LikelionCard = ({ profileImg, name, department, ment, instaLink, githubLink }) => {
   return (
