@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import likelionBgImg from '@/static/image/makers/likelionBgImg.svg';
+import likelionBgImg from '@/assets/svgs/makers/likelionBgImg.svg';
 import LikelionCard from './LikelionCard';
 import { useTranslation } from 'react-i18next';
 

@@ -1,7 +1,7 @@
-import PM from '@/static/image/makers/PM.svg';
+import PM from '@/assets/svgs/makers/PM.svg';
 import styled from 'styled-components';
-import instaIcon from '@/static/image/makers/instaIcon.svg';
-import githubIcon from '@/static/image/makers/githubIcon.svg';
+import instaIcon from '@/assets/svgs/makers/instaIcon.svg';
+import githubIcon from '@/assets/svgs/makers/githubIcon.svg';
 
 const LikelionCard = () => {
   return (

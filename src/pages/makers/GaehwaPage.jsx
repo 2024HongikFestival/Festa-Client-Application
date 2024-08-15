@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import gaehwaBgImg from '@/static/image/makers/gaehwaBgImg.svg';
-import gaehwaLogo from '@/static/image/makers/gaehwaLogo.svg';
+import gaehwaBgImg from '@/assets/svgs/makers/gaehwaBgImg.svg';
+import gaehwaLogo from '@/assets/svgs/makers/gaehwaLogo.svg';
 import GaehwaCard from './GaehwaCard';
 import { useTranslation } from 'react-i18next';
 
