@@ -47,6 +47,7 @@ adminAxiosInstance.interceptors.response.use(
 );
 
 // 일반 사용자 전용 axios 인스턴스
+// Authorization 헤더에 USER access token이 필요한 경우 사용
 export const userAxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
 });
