@@ -14,7 +14,7 @@ const LostAndFoundPage = () => {
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
-  const page = parseInt(query.get('page')) || 1; // 쿼리파라미터 미존재 시 기본적으로 1페이지.
+  const page = parseInt(query.get('page')) || 1; //  string -> int 로 변환
 
   useEffect(() => {
     setCurrentPage(page);
