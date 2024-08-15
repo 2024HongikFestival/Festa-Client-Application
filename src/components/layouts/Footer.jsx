@@ -1,10 +1,12 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import instaLogo from '@/static/image/layouts/instaLogo.svg';
 
 export default function Footer() {
   const nav = useNavigate();
   const location = useLocation();
+  const [isAtFooter, setIsAtFooter] = useState(false);
 
   const handleNavigation = (path) => {
     if (location.pathname === path) {
@@ -35,9 +37,28 @@ export default function Footer() {
     }, 100);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const footerElement = document.getElementById('footer');
+      const footerTop = footerElement.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (footerTop <= windowHeight) {
+        setIsAtFooter(true);
+      } else {
+        setIsAtFooter(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <FooterLayout>
-      <PreviousBtn onClick={handleGoBack}>
+    <FooterLayout id="footer">
+      <PreviousBtn isAtFooter={isAtFooter} onClick={handleGoBack}>
         <span>이전 화면으로</span>
       </PreviousBtn>
       <LikelionBtn onClick={() => handleNavigation('/likelion')}>
@@ -63,10 +84,16 @@ const FooterLayout = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 `;
 
 const PreviousBtn = styled.div`
-  margin: 2rem auto 0;
+  position: ${(props) => (props.isAtFooter ? 'static' : 'fixed')};
+  bottom: ${(props) => (props.isAtFooter ? '' : '5.2rem')};
+  left: ${(props) => (props.isAtFooter ? '' : '50%')};
+  transform: ${(props) => (props.isAtFooter ? '' : 'translateX(-50%)')};
+  z-index: 100;
+  margin: ${(props) => (props.isAtFooter ? '2rem auto 0' : '')};
   cursor: pointer;
   width: 12.8rem;
   height: 6rem;
