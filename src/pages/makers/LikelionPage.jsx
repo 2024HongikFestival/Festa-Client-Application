@@ -3,6 +3,7 @@ import likelionBgImg from '@/assets/svgs/makers/likelionBgImg.svg';
 import LikelionCard from './LikelionCard';
 import { useTranslation } from 'react-i18next';
 import { contributors } from './LikelionContributors';
+import Footer from '@/components/layouts/Footer';
 
 const LikelionPage = () => {
   const { t } = useTranslation();
@@ -121,6 +122,7 @@ const LikelionPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
+      <Footer />
     </LikelionLayout>
   );
 };
