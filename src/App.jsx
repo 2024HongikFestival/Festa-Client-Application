@@ -4,7 +4,7 @@ import NotFoundPage from '@/pages/notfound/NotFound';
 import BoothPage from '@/pages/booth/BoothPage';
 // import EventPage from "@/pages/event/EventPage";
 import Layout from '@/components/layouts/Layout';
-
+import ScrollToTop from './components/layouts/ScrollToTop';
 // import EnterEvent from "./pages/event/EnterEvent";
 // import CompleteEvent from "./pages/event/SubmitEvent";
 import MapPage from './pages/map/MapPage';
@@ -35,6 +35,7 @@ function App() {
     <>
       {/* url 세그먼트 확정 후 수정 예정 */}
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}
