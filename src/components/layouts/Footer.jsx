@@ -34,10 +34,10 @@ const FooterLayout = styled.div`
 `;
 
 const PreviousBtn = styled.div`
-  margin: 10rem auto 0;
+  margin: 2.8rem auto 0;
   cursor: pointer;
-  width: 12.7rem;
-  height: 4.5rem;
+  width: 12.8rem;
+  height: 6rem;
   border-radius: 5rem;
   border: 0.1rem solid ${(props) => props.theme.colors.gray50};
   background: ${(props) => props.theme.colors.gray100};
@@ -58,7 +58,7 @@ const PreviousBtn = styled.div`
 
 const LikelionBtn = styled.div`
   cursor: pointer;
-  margin-top: 3.2rem;
+  margin-top: 2.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,6 +99,6 @@ const DaedongjeContainer = styled.div`
     width: 2.4rem;
     height: 2.4rem;
     margin-top: 0.8rem;
-    margin-bottom: 15.5rem;
+    margin-bottom: 6.4rem;
   }
 `;

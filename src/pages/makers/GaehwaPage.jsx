@@ -3,6 +3,7 @@ import gaehwaBgImg from '@/static/image/makers/gaehwaBgImg.svg';
 import gaehwaLogo from '@/static/image/makers/gaehwaLogo.svg';
 import GaehwaCard from './GaehwaCard';
 import { useTranslation } from 'react-i18next';
+import Footer from '@/components/layouts/Footer';
 
 const GaehwaPage = () => {
   const { t } = useTranslation();
@@ -171,6 +172,7 @@ const GaehwaPage = () => {
           <GaehwaCard />
         </CardWrapper>
       </RoleSection>
+      <Footer />
     </GaehwaLayout>
   );
 };

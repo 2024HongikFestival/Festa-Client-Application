@@ -45,6 +45,7 @@ LikelionCard.propTypes = {
 export default LikelionCard;
 
 const LikelionCardLayout = styled.div`
+  width: 10.9rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -72,8 +73,10 @@ const Name = styled.h5`
 
 const Department = styled.div`
   margin-top: 0.8rem;
-  width: 10.9rem;
-  height: 2.9rem;
+  padding: 0.3rem 0.7rem;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
   border: 0.1rem solid ${(props) => props.theme.colors.gray50};
   border-radius: 0.4rem;
   display: flex;
@@ -87,6 +90,8 @@ const Ment = styled.p`
   margin-top: 0.8rem;
   ${(props) => props.theme.fontStyles.basic.captionMed};
   color: ${(props) => props.theme.colors.gray50};
+  text-align: center;
+  white-space: nowrap;
 `;
 
 const Icons = styled.div`
@@ -100,6 +105,7 @@ const Icons = styled.div`
     width: 2.4rem;
     height: 2.4rem;
     overflow: hidden;
+    cursor: pointer;
   }
 
   img {
