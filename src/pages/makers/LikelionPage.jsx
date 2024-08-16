@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import likelionBgImg from '@/assets/webps/makers/likelionBgImg.webp';
-import LikelionCard from './LikelionCard';
+import LikelionCard from '@/pages/makers/LikelionCard';
 import { useTranslation } from 'react-i18next';
-import { contributors } from './LikelionContributors';
+import { contributors } from '@/pages/makers/LikelionContributors';
 import Footer from '@/components/layouts/Footer';
 
 const LikelionPage = () => {
