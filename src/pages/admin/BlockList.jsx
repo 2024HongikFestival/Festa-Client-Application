@@ -5,16 +5,29 @@ import arrowDown from '../../assets/svgs/arrow_down.svg';
 import arrowUp from '../../assets/svgs/arrow_up.svg';
 import Post from './Post';
 
+const PAGE_SIZE = 12;
+
 const BlockList = () => {
   const [list, setList] = useState([]);
   const [expandedItem, setExpandedItem] = useState(null);
   const [allLosts, setAllLosts] = useState([]);
   const [displayedLosts, setDisplayedLosts] = useState({});
+  const [displayedList, setDisplayedList] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     getLists();
     getAllLosts();
   }, []);
+
+  useEffect(() => {
+    // 페이지가 변경될 때마다 displayedList를 업데이트
+    const nextPageItems = list.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+    setDisplayedList(nextPageItems);
+    setHasMore(nextPageItems.length === PAGE_SIZE);
+  }, [page, list]);
 
   const getAdminToken = () => localStorage.getItem('accessToken');
 
@@ -26,6 +39,7 @@ const BlockList = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(response.data.data);
       setList(response.data.data);
     } catch (error) {
       console.error('Error fetching blacklist:', error.response?.data || error.message);
@@ -66,7 +80,14 @@ const BlockList = () => {
       });
       if (response.status === 204) {
         alert('차단 해제가 완료되었습니다.');
-        setList(list.filter((item) => item.userId !== userId)); // 차단 해제된 사용자 리스트에서 제거
+        setList((prevList) => prevList.filter((item) => item.userId !== userId)); // 차단 해제된 사용자 리스트에서 제거
+        setDisplayedList((prevList) => prevList.filter((item) => item.userId !== userId));
+        setExpandedItem(null); // 해당 사용자가 펼쳐져 있는 상태를 초기화
+        setDisplayedLosts((prevPosts) => {
+          const updatedPosts = { ...prevPosts };
+          delete updatedPosts[userId]; // 사용자의 포스트 정보 삭제
+          return updatedPosts;
+        });
       }
     } catch (error) {
       console.error('Error unblocking user: ', error);
@@ -87,8 +108,13 @@ const BlockList = () => {
     const minutes = pad(date.getMinutes());
     const seconds = pad(date.getSeconds());
 
-    // 원하는 형식으로 문자열 구성
     return `${month}.${day} ${hours}:${minutes}:${seconds}`;
+  };
+
+  const handleLoadMore = () => {
+    if (!loading) {
+      setPage((prevPage) => prevPage + 1);
+    }
   };
 
   const toggleExpand = (userId) => {
@@ -109,9 +135,9 @@ const BlockList = () => {
           <SubTitle>작성자</SubTitle>
           <SubTitle>차단 일시</SubTitle>
         </TitleSection>
-        {list.length > 0 ? (
-          list.map((item) => (
-            <div key={item.userId}>
+        {displayedList.length > 0 ? (
+          displayedList.map((item, index) => (
+            <div key={`${item.userId}-${index}`}>
               <List>
                 <UserId>{formatUserId(item.userId)}</UserId>
                 <BlockDate>{formatBlockedDate(item.blockedAt)}</BlockDate>
@@ -139,6 +165,11 @@ const BlockList = () => {
         ) : (
           <p>No blocked users found.</p>
         )}
+        {hasMore && (
+          <LoadMoreButton onClick={handleLoadMore} disabled={loading}>
+            {loading ? 'Loading...' : '더보기'}
+          </LoadMoreButton>
+        )}
       </Container>
     </ListContainer>
   );
@@ -150,6 +181,7 @@ const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   align-items: center;
 `;
 
@@ -216,4 +248,17 @@ const List = styled.div`
 
 const PostDetails = styled.div`
   background-color: ${(props) => props.theme.colors.gray10};
+`;
+
+const LoadMoreButton = styled.button`
+  ${(props) => props.theme.fontStyles.basic.body1Bold};
+  width: 20rem;
+  height: 4rem;
+  background-color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.gray70};
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-bottom: 4.813em;
 `;
