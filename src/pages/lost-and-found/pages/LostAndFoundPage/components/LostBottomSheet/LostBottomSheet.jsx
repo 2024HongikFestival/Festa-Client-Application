@@ -1,9 +1,28 @@
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as S from './LostBottomSheet.styled';
 
 const LostBottomSheet = ({ isOpen, setIsOpen }) => {
   const modalRef = useRef(null);
+
+  const useOutsideClick = (ref, onClickOutside) => {
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+          onClickOutside();
+        }
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref, onClickOutside]);
+  };
+
+  useOutsideClick(modalRef, () => {
+    if (isOpen) setIsOpen(false);
+  });
 
   return (
     isOpen && (
