@@ -3,13 +3,16 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import * as S from './LostAndFoundPage.styled';
 import Pagination from './components/Pagination/Pagination';
 
+// [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
+// Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
 const LostAndFoundPage = () => {
-  const [totalItems, setTotalItems] = useState(100);
-  const [items, setItems] = useState([...Array(totalItems)]);
+  const navigate = useNavigate();
+  const [totalItems, setTotalItems] = useState(0);
+  const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemCountPerPage = 10;
 
@@ -40,6 +43,10 @@ const LostAndFoundPage = () => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
+  const handleClickItem = (lostId) => () => {
+    navigate(`${lostId}`);
+  };
+
   return (
     <>
       <S.Header></S.Header>
@@ -53,13 +60,16 @@ const LostAndFoundPage = () => {
           </S.ButtonDetailWrapper>
         </S.ButtonWrapper>
         <S.LostAndFoundSection>
-          {items.map((none, idx) => {
-            return (
-              //현재 페이지에 렌더링 되어야 하는 item인지 판단하는 로직
-              idx >= (currentPage - 1) * itemCountPerPage &&
-              idx < currentPage * itemCountPerPage && <S.LostAndFoundPost key={`item_${idx}`} />
-            );
-          })}
+          {items.length > 0 &&
+            items.map((item, idx) => {
+              return (
+                //현재 페이지에 렌더링 되어야 하는 item인지 판단하는 로직
+                idx >= (currentPage - 1) * itemCountPerPage &&
+                idx < currentPage * itemCountPerPage && (
+                  <S.LostAndFoundPost onClick={handleClickItem(item.lostId)} key={`item_${idx}`} />
+                )
+              );
+            })}
         </S.LostAndFoundSection>
 
         <S.Pagenation>
