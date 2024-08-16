@@ -64,7 +64,7 @@ function App() {
 
             {/* 준혁 라우팅 🐳 */}
             <Route path="/lost-and-found" element={<LostAndFoundPage />} />
-            <Route path="/lost-and-found/:postId" element={<LostAndFoundDetail />} />
+            <Route path="/lost-and-found/:lostId" element={<LostAndFoundDetail />} />
             <Route path="/lost-and-found/add" element={<AddLostItem />} />
             <Route path="/oauth/losts" element={<RedirectLosts />} />
 
