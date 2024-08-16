@@ -4,6 +4,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 import * as S from './LostAndFoundPage.styled';
 import Pagination from './components/Pagination/Pagination';
 
@@ -49,7 +50,7 @@ const LostAndFoundPage = () => {
 
   return (
     <>
-      <S.Header></S.Header>
+      <Header></Header>
       <S.Main>
         <S.Title>분실물</S.Title>
         <S.ButtonWrapper>

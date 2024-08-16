@@ -1,7 +1,5 @@
-import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
-import Header from '@/components/layouts/Header';
-import Footer from '@/components/layouts/Footer';
+import styled from 'styled-components';
 
 export default function Layout() {
   return (
@@ -12,6 +10,8 @@ export default function Layout() {
 }
 
 const Continer = styled.div`
+  display: flex;
+  justify-content: center;
   min-width: 375px;
   max-width: 768px;
   min-height: calc(var(--vh, 1vh) * 100);

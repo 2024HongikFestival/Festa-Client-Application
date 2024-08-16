@@ -6,7 +6,7 @@ export const HeaderLayout = styled.div`
   min-width: 375px;
   margin: 0 auto;
   height: 5.6rem;
-  background-color: ${(props) => props.theme.colors.black};
+  background-color: ${(props) => props.theme.colors.white};
   position: fixed;
   top: 0rem;
   z-index: 100;
