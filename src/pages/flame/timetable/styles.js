@@ -56,10 +56,13 @@ export const SchoolHeader = styled.div`
 `;
 
 export const TTTitle = styled.div`
-  margin-top: 2.4rem;
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline3};
   text-align: center;
+`;
+
+export const TTBox = styled.div`
+  margin: 2.4rem 0 5.6rem;
 `;
 
 export const DaysBox = styled.div`
@@ -111,6 +114,14 @@ export const RedLine = styled.div`
   align-items: center;
   z-index: 0;
 
+  .fullBtn {
+    min-width: 22px;
+  }
+
+  .emptyBtn {
+    max-width: 12px;
+  }
+
   img {
     z-index: 1;
   }
@@ -148,7 +159,7 @@ export const TimeTableTime = styled.span`
 `;
 
 export const NoticeBox = styled.div`
-  margin: 6.4rem 2rem 5.6rem;
+  margin: 6.4rem 2rem 0;
   width: calc(100% - 4rem);
   display: flex;
   flex-direction: column;
