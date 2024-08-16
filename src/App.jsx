@@ -42,11 +42,11 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/booth" element={<BoothPage />} />
             <Route path="/fleamarket" element={<Fleamarket />} />
-            <Route path="/fleamarket/:market-id" element={<FleamarketDetail />} />
+            <Route path="/fleamarket/:marketId" element={<FleamarketDetail />} />
             <Route path="/promotion" element={<PromotionPage />} />
 
             {/* 가영 라우팅 ✨ */}
-            <Route path="/event/:event-id" element={<EventPage />} />
+            <Route path="/event/:eventId" element={<EventPage />} />
             <Route path="/event/enter" element={<EnterEvent />} />
             <Route path="/event/submit" element={<CompleteEvent />} />
             <Route path="/oauth/events" element={<RedirectEvents />} />
@@ -64,7 +64,7 @@ function App() {
 
             {/* 준혁 라우팅 🐳 */}
             <Route path="/lost-and-found" element={<LostAndFoundPage />} />
-            <Route path="/lost-and-found/:post-id" element={<LostAndFoundDetail />} />
+            <Route path="/lost-and-found/:postId" element={<LostAndFoundDetail />} />
             <Route path="/lost-and-found/add" element={<AddLostItem />} />
             <Route path="/oauth/losts" element={<RedirectLosts />} />
 
