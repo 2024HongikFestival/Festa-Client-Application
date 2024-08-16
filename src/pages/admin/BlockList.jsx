@@ -123,14 +123,16 @@ const BlockList = () => {
                 />
               </List>
               {expandedItem === item.userId && (
-                <PostDetails>
-                  <Post
-                    posts={displayedLosts[item.userId]}
-                    userId={expandedItem}
-                    setIsDetailView={() => {}}
-                    setPostId={() => {}}
-                  />
-                </PostDetails>
+                <>
+                  <PostDetails>
+                    <Post
+                      posts={displayedLosts[item.userId]}
+                      userId={expandedItem}
+                      setIsDetailView={() => {}}
+                      setPostId={() => {}}
+                    />
+                  </PostDetails>
+                </>
               )}
             </div>
           ))
@@ -160,7 +162,7 @@ const Container = styled.div`
 const SubTitle = styled.span`
   width: 5rem;
   color: ${(props) => props.theme.colors.white};
-  ${(props) => props.theme.fontStyles.body2Bold};
+  ${(props) => props.theme.fontStyles.basic.body2Bold};
   font-size: 0.875rem;
 `;
 
@@ -181,7 +183,7 @@ const UserId = styled.span`
 `;
 
 const BlockDate = styled.span`
-  ${(props) => props.theme.fontStyles.body2Med};
+  ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray40};
   font-size: 0.875rem;
   width: 8.5rem;
@@ -194,8 +196,10 @@ const ArrowIcon = styled.img`
 `;
 
 const BlockBtn = styled.button`
-  ${(props) => props.theme.fontStyles.captionBold};
+  ${(props) => props.theme.fontStyles.basic.captionBold};
   color: ${(props) => props.theme.colors.gray70};
+  width: 4rem;
+  font-weight: 700;
   font-size: 0.75rem;
   text-decoration: underline;
 `;
@@ -207,9 +211,9 @@ const List = styled.div`
   width: 100%;
   padding: 0.5rem 0.5rem;
   background-color: ${(props) => props.theme.colors.white};
+  border-bottom: 0.063rem solid ${(props) => props.theme.colors.gray20};
 `;
 
 const PostDetails = styled.div`
-  padding: 0.5rem;
   background-color: ${(props) => props.theme.colors.gray10};
 `;

@@ -205,10 +205,10 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
   };
 
   return (
-    <PostContainer>
+    <PostContainer noGap={posts === userPosts}>
       {Array.isArray(userPosts) && userPosts.length > 0 ? (
         userPosts.map((lost) => (
-          <Container key={lost.lostId} onClick={() => handleClick(lost.lostId)}>
+          <Container key={lost.lostId} onClick={() => handleClick(lost.lostId)} border={posts === userPosts}>
             <Img src={lost.imageUrl} alt={lost.content} />
             <PostInfo>
               <Status lostStatus={lost.lostStatus}>
@@ -235,13 +235,15 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
       ) : (
         <p>No lost items found.</p>
       )}
-      <LoadMoreWrapper showButton={displayedLosts.length < allLosts.length}>
-        {displayedLosts.length < allLosts.length && (
-          <LoadMoreButton onClick={loadMore} disabled={loading}>
-            {loading ? 'Loading...' : '더보기'}
-          </LoadMoreButton>
-        )}
-      </LoadMoreWrapper>
+      {posts !== userPosts && (
+        <LoadMoreWrapper showButton={displayedLosts.length < allLosts.length}>
+          {displayedLosts.length < allLosts.length && (
+            <LoadMoreButton onClick={loadMore} disabled={loading}>
+              {loading ? 'Loading...' : '더보기'}
+            </LoadMoreButton>
+          )}
+        </LoadMoreWrapper>
+      )}
       {showPopup && (
         <Popup
           message={
@@ -296,7 +298,7 @@ const PostContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 0.5rem;
+  gap: ${({ noGap }) => (noGap ? '0' : '0.5rem')};
 `;
 
 const Wrapper = styled.div`
@@ -317,6 +319,8 @@ const Container = styled.div`
   box-sizing: border-box;
   color: black;
   cursor: pointer;
+  border-bottom: ${({ border, theme }) => (border ? `0.063rem solid ${theme.colors.gray20}` : 'none')};
+  box-sizing: border-box;
   position: relative;
 `;
 
