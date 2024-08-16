@@ -16,7 +16,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
       console.log(response);
       if (response.status === 200) {
         const { accessToken } = response.data.data;
-        localStorage.setItem('token', accessToken);
+        localStorage.setItem('accessToken', accessToken);
         alert('로그인 성공');
         onLoginSuccess();
         navigate('/admin');

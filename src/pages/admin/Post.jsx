@@ -26,6 +26,10 @@ const Post = ({ setIsDetailView, setPostId }) => {
     }
   };
 
+  const getAdminToken = () => {
+    return localStorage.getItem('accessToken');
+  };
+
   useEffect(() => {
     getLosts();
   }, []);
@@ -33,6 +37,9 @@ const Post = ({ setIsDetailView, setPostId }) => {
   const handleClick = (lostId) => {
     setPostId(lostId);
     setIsDetailView(true);
+  };
+  const formatId = (id) => {
+    return String(id).padStart(6, '0');
   };
 
   const loadMore = () => {
@@ -47,55 +54,49 @@ const Post = ({ setIsDetailView, setPostId }) => {
       });
     }
   };
-  const handleMoreClick = (lostId) => {
-    setCurrentPostId(lostId);
-    setShowOptions((prev) => (prev === lostId ? null : lostId));
-  };
 
-  const formatId = (id) => {
-    return String(id).padStart(6, '0');
+  const handleMoreClick = (lostId, e) => {
+    e.stopPropagation();
+    setShowOptions((prev) => (prev === lostId ? null : lostId));
+    setCurrentPostId(lostId);
   };
 
   const handleDeletePost = async () => {
     try {
-      await adminAxiosInstance.delete(`/losts/${currentPostId}`);
+      await adminAxiosInstance.delete(`/admin/losts/${currentPostId}`, {
+        headers: {
+          Authorization: `Bearer ${getAdminToken()}`,
+        },
+      });
       setAllLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
       setDisplayedLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
-      setShowOptions(false);
+      setShowOptions(null);
     } catch (error) {
       console.error('Error deleting post: ', error);
     }
   };
 
-  const getAdminToken = () => {
-    return localStorage.getItem('token');
-  };
-
   const handleBlockAndDelete = async (lostId) => {
-    // Find the lost item by its ID
     const lost = allLosts.find((lost) => lost.lostId === lostId);
-
     if (!lost) {
       console.error('Lost item not found');
       return;
     }
 
     try {
-      // Block and delete the post
       await Promise.all([
         adminAxiosInstance.post(
-          '/blacklist',
-          { userId: lost.userId }, // Use the userId from the lost object
+          '/admin/blacklist',
+          { userId: lost.userId },
           {
             headers: {
               Authorization: `Bearer ${getAdminToken()}`,
             },
           }
         ),
-        adminAxiosInstance.delete(`/losts/${lostId}`),
+        adminAxiosInstance.delete(`/admin/losts/${lostId}`),
       ]);
 
-      // Update the state after successful operation
       setAllLosts((prev) => prev.filter((lost) => lost.lostId !== lostId));
       setDisplayedLosts((prev) => prev.filter((lost) => lost.lostId !== lostId));
       setShowOptions(null);
@@ -106,14 +107,14 @@ const Post = ({ setIsDetailView, setPostId }) => {
 
   const handleUndoDelete = async () => {
     try {
-      await adminAxiosInstance.post(`/losts/${currentPostId}`, { lostStatus: 'PUBLISHED' });
+      await adminAxiosInstance.post(`/admin/losts/${currentPostId}`, { lostStatus: 'PUBLISHED' });
       setAllLosts((prev) =>
         prev.map((lost) => (lost.lostId === currentPostId ? { ...lost, lostStatus: 'PUBLISHED' } : lost))
       );
       setDisplayedLosts((prev) =>
         prev.map((lost) => (lost.lostId === currentPostId ? { ...lost, lostStatus: 'PUBLISHED' } : lost))
       );
-      setShowOptions(false);
+      setShowOptions(null); // Corrected to hide options on undo
     } catch (error) {
       console.error('Error undoing delete: ', error);
     }
@@ -121,30 +122,54 @@ const Post = ({ setIsDetailView, setPostId }) => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
-    return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
+    return `${month}.${day} ${hours}:${minutes}:${seconds}`;
   };
-  const OptionsMenu = ({ onUndo, isDeleted }) => (
+
+  const OptionsMenu = ({ onUndo, isDeleted, onBlockAndDelete }) => (
     <OptionsContainer>
       {isDeleted ? (
-        <OptionButton onClick={onUndo}>삭제 취소</OptionButton>
+        <OptionButton
+          onClick={(e) => {
+            e.stopPropagation();
+            onUndo();
+          }}
+        >
+          삭제 취소
+        </OptionButton>
       ) : (
         <>
-          <OptionButton onClick={handleDeletePost}>글 삭제</OptionButton>
-          <OptionButton onClick={handleBlockAndDelete}>차단하고 글 삭제</OptionButton>
+          <OptionButton
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDeletePost();
+            }}
+          >
+            글 삭제
+          </OptionButton>
+          <OptionButton
+            onClick={(e) => {
+              e.stopPropagation();
+              onBlockAndDelete(currentPostId);
+            }}
+          >
+            차단하고 글 삭제
+          </OptionButton>
         </>
       )}
     </OptionsContainer>
   );
+
   OptionsMenu.propTypes = {
     onUndo: PropTypes.func.isRequired,
     isDeleted: PropTypes.bool.isRequired,
+    onBlockAndDelete: PropTypes.func.isRequired,
   };
+
   return (
     <PostContainer>
       {Array.isArray(displayedLosts) && displayedLosts.length > 0 ? (
@@ -161,18 +186,13 @@ const Post = ({ setIsDetailView, setPostId }) => {
               </UserInfo>
               <Wrapper>
                 <PostDate>{formatDate(lost.createdAt)}</PostDate>
-                <MoreBtn
-                  lostStatus={lost.lostStatus}
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent click from triggering handleClick
-                    handleMoreClick(lost.lostId);
-                  }}
-                />
+                <MoreBtn lostStatus={lost.lostStatus} onClick={(e) => handleMoreClick(lost.lostId, e)} />
               </Wrapper>
               {showOptions === lost.lostId && (
                 <OptionsMenu
                   onUndo={handleUndoDelete}
-                  isDeleted={allLosts.find((lost) => lost.lostId === currentPostId)?.lostStatus === 'DELETED'}
+                  isDeleted={lost.lostStatus === 'DELETED'} // Corrected here
+                  onBlockAndDelete={handleBlockAndDelete}
                 />
               )}
             </PostInfo>
@@ -189,6 +209,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
     </PostContainer>
   );
 };
+
 Post.propTypes = {
   setIsDetailView: PropTypes.func.isRequired,
   setPostId: PropTypes.func.isRequired,
@@ -292,6 +313,7 @@ const LoadMoreButton = styled.button`
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
+  margin-bottom: 5rem;
 `;
 
 const MoreBtn = styled.div`
@@ -326,6 +348,7 @@ const OptionButton = styled.button`
   color: ${(props) => props.theme.colors.white};
   cursor: pointer;
   text-align: left;
+  z-index: 1001;
 
   &:hover {
     background-color: ${(props) => props.theme.colors.gray70};

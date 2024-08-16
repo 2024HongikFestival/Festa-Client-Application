@@ -12,18 +12,19 @@ const BlockList = () => {
   }, []);
 
   const getAdminToken = () => {
-    return localStorage.getItem('token');
+    return localStorage.getItem('accessToken');
   };
 
   const getLists = async () => {
     try {
       const token = getAdminToken();
-      const response = await adminAxiosInstance.get('/blacklist', {
+      const response = await adminAxiosInstance.get('/admin/blacklist', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setList(response.data.data);
+      console.log(response);
     } catch (error) {
       console.error('Error fetching blacklist:', error.response?.data || error.message);
     }
@@ -32,7 +33,7 @@ const BlockList = () => {
   const deleteBlackLists = async (userId) => {
     try {
       const token = getAdminToken();
-      const response = await adminAxiosInstance.delete(`/blacklist/${userId}`, {
+      const response = await adminAxiosInstance.delete(`/admin/blacklist/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -52,8 +53,16 @@ const BlockList = () => {
   };
 
   const formatBlockedDate = (dateString) => {
-    const options = { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-    return new Date(dateString).toLocaleString('ko-KR', options);
+    const date = new Date(dateString);
+    const pad = (num) => num.toString().padStart(2, '0');
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+    const seconds = pad(date.getSeconds());
+
+    // 원하는 형식으로 문자열 구성
+    return `${month}.${day} ${hours}:${minutes}:${seconds}`;
   };
 
   const toggleExpand = (userId) => {
@@ -127,7 +136,7 @@ const TitleSection = styled.div`
 `;
 
 const UserId = styled.span`
-  width: 5rem;
+  width: 5.5rem;
   color: ${(props) => props.theme.colors.gray30};
   font-size: 0.875rem;
   text-decoration: line-through;
@@ -156,7 +165,7 @@ const List = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   background-color: ${(props) => props.theme.colors.white};
   box-sizing: border-box;
   border-bottom: 0.063rem solid ${(props) => props.theme.colors.gray10};

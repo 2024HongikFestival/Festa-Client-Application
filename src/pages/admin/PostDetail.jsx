@@ -8,7 +8,7 @@ const PostDetail = ({ postId, onBack }) => {
   const [lostDetails, setLostDetails] = useState(null);
 
   const getAdminToken = () => {
-    return localStorage.getItem('token');
+    return localStorage.getItem('accessToken');
   };
 
   const getLostDetails = async () => {
@@ -36,7 +36,12 @@ const PostDetail = ({ postId, onBack }) => {
   };
   const handleDelete = async () => {
     try {
-      await adminAxiosInstance.delete(`/losts/${postId}`);
+      const token = getAdminToken();
+      await adminAxiosInstance.delete(`/admin/losts/${postId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setLostDetails((prev) => ({ ...prev, lostStatus: 'DELETED' }));
     } catch (error) {
       console.error('Error deleting post: ', error);
@@ -45,7 +50,16 @@ const PostDetail = ({ postId, onBack }) => {
 
   const handleUndoDelete = async () => {
     try {
-      await adminAxiosInstance.post(`/losts/${postId}`, { lostStatus: 'PUBLISHED' });
+      const token = getAdminToken();
+      await adminAxiosInstance.delete(
+        `/admin/losts/${postId}`,
+        { lostStatus: 'PUBLISHED' },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setLostDetails((prev) => ({ ...prev, lostStatus: 'PUBLISHED' }));
     } catch (error) {
       console.error('Error undoing delete: ', error);
@@ -56,7 +70,7 @@ const PostDetail = ({ postId, onBack }) => {
     try {
       const token = getAdminToken();
       await adminAxiosInstance.post(
-        '/blacklist',
+        '/admin/blacklist',
         { userId: lostDetails.userId },
         {
           headers: {
@@ -73,7 +87,7 @@ const PostDetail = ({ postId, onBack }) => {
   const handleUnblockUser = async () => {
     try {
       const token = getAdminToken();
-      await adminAxiosInstance.post(`/blacklist/${lostDetails.userId}`, {
+      await adminAxiosInstance.delete(`/admin/blacklist/${lostDetails.userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
