@@ -9,7 +9,7 @@ export const HeaderLayout = styled.div`
   background-color: ${(props) => props.theme.colors.white};
   position: fixed;
   top: 0rem;
-  z-index: 100;
+  z-index: 2;
 `;
 
 export const HeaderBg = styled.div`
@@ -22,7 +22,7 @@ export const HeaderBg = styled.div`
   backdrop-filter: blur(0.2rem);
   position: fixed;
   top: 0rem;
-  z-index: 100;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -4,6 +4,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 
 const LostAndFoundDetail = () => {
   const { lostId } = useParams();
@@ -27,7 +28,12 @@ const LostAndFoundDetail = () => {
     console.log(item);
   }, [item]);
 
-  return <div>LostAndFoundDetail</div>;
+  return (
+    <>
+      <Header />
+      <main></main>
+    </>
+  );
 };
 
 export default LostAndFoundDetail;

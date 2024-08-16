@@ -6,12 +6,14 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import * as S from './LostAndFoundPage.styled';
+import LostBottomSheet from './components/LostBottomSheet/LostBottomSheet';
 import Pagination from './components/Pagination/Pagination';
 
 // [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
 // Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
 const LostAndFoundPage = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalItems, setTotalItems] = useState(0);
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,7 +56,7 @@ const LostAndFoundPage = () => {
       <S.Main>
         <S.Title>분실물</S.Title>
         <S.ButtonWrapper>
-          <S.AddLostItemButton>분실물을 주웠어요!</S.AddLostItemButton>
+          <S.AddLostItemButton onClick={() => setIsModalOpen(true)}>분실물을 주웠어요!</S.AddLostItemButton>
           <S.ButtonDetailWrapper>
             <S.ButtonDetailIcon />
             <S.ButtonDetailText>전자기기, 카드, 지갑 등은 제보 후 총학 부스에 보관해주세요</S.ButtonDetailText>
@@ -82,6 +84,7 @@ const LostAndFoundPage = () => {
           />
         </S.Pagenation>
       </S.Main>
+      <LostBottomSheet isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import warningIcon from '@/assets/svgs/error.svg';
+import warningIcon from '@/assets/svgs/lost/error.svg';
 import styled from 'styled-components';
 
 export const Header = styled.header`
