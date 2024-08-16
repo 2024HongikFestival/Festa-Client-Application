@@ -26,7 +26,7 @@ const LostBottomSheet = ({ isOpen, setIsOpen }) => {
 
   return (
     isOpen && (
-      <S.ModalWrapper onClick={() => setIsOpen(false)}>
+      <S.ModalWrapper>
         <S.ModalBox ref={modalRef}>
           <S.ModalBoxHeader>
             <S.ModalBoxHeaderDragLine onClick={() => setIsOpen(false)} />
