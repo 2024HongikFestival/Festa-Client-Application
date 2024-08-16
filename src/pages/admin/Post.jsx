@@ -5,7 +5,7 @@ import { adminAxiosInstance } from '@/api/axios';
 import PropTypes from 'prop-types';
 import Popup from './Popup';
 
-const Post = ({ setIsDetailView, setPostId }) => {
+const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
   const [allLosts, setAllLosts] = useState([]);
   const [displayedLosts, setDisplayedLosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,8 +15,15 @@ const Post = ({ setIsDetailView, setPostId }) => {
   const [currentPostId, setCurrentPostId] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [popupType, setPopupType] = useState(null);
-
   const optionsMenuRef = useRef(null);
+
+  useEffect(() => {
+    if (Array.isArray(posts)) {
+      setDisplayedLosts(posts.slice(0, currentPage * postsPerPage));
+    }
+  }, [posts, currentPage]);
+
+  const userPosts = userId && posts ? posts : displayedLosts;
 
   const getLosts = async () => {
     setLoading(true);
@@ -25,6 +32,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
       setAllLosts(response.data.data);
       setDisplayedLosts(response.data.data.slice(0, postsPerPage));
       setLoading(false);
+      console.log(response.data.data);
     } catch (error) {
       console.error('Error fetching URL: ', error);
       setLoading(false);
@@ -73,7 +81,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
   };
 
   const handleMoreClick = (lostId, e) => {
-    e.stopPropagation(); // Prevent the click from bubbling up to the container
+    e.stopPropagation();
     setShowOptions((prev) => (prev === lostId ? null : lostId));
     setCurrentPostId(lostId);
   };
@@ -198,8 +206,8 @@ const Post = ({ setIsDetailView, setPostId }) => {
 
   return (
     <PostContainer>
-      {Array.isArray(displayedLosts) && displayedLosts.length > 0 ? (
-        displayedLosts.map((lost) => (
+      {Array.isArray(userPosts) && userPosts.length > 0 ? (
+        userPosts.map((lost) => (
           <Container key={lost.lostId} onClick={() => handleClick(lost.lostId)}>
             <Img src={lost.imageUrl} alt={lost.content} />
             <PostInfo>
@@ -208,7 +216,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
               </Status>
               <UserInfo>
                 <UserName>작성자</UserName>
-                <UserId>{formatId(lost.lostId)}</UserId>
+                <UserId isBlocked={lost.isUserBlocked}>{formatId(lost.userId)}</UserId>
               </UserInfo>
               <Wrapper>
                 <PostDate>{formatDate(lost.createdAt)}</PostDate>
@@ -266,6 +274,16 @@ const Post = ({ setIsDetailView, setPostId }) => {
 };
 
 Post.propTypes = {
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      lostId: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired,
+      content: PropTypes.string,
+      lostStatus: PropTypes.oneOf(['PUBLISHED', 'DELETED']).isRequired,
+      // 기타 필요한 PropTypes 정의
+    })
+  ).isRequired,
+  userId: PropTypes.string,
   setIsDetailView: PropTypes.func.isRequired,
   setPostId: PropTypes.func.isRequired,
 };
@@ -326,8 +344,9 @@ const UserName = styled.span`
 
 const UserId = styled.span`
   ${(props) => props.theme.fontStyles.body2Med};
-  color: ${(props) => props.theme.colors.gray80};
   font-size: 0.875rem;
+  color: ${(props) => (props.isBlocked ? props.theme.colors.gray30 : props.theme.colors.gray80)};
+  text-decoration: ${(props) => (props.isBlocked ? 'line-through' : 'none')};
 `;
 
 const PostDate = styled.span`
@@ -361,12 +380,13 @@ const Status = styled.span`
 `;
 
 const LoadMoreButton = styled.button`
+  ${(props) => props.theme.fontStyles.basic.body1Bold};
   width: 20rem;
   height: 4rem;
   background-color: ${(props) => props.theme.colors.white};
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.gray70};
   border: none;
-  border-radius: 0.25rem;
+  font-size: 1rem;
   cursor: pointer;
 `;
 

@@ -1,19 +1,22 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { adminAxiosInstance } from '@/api/axios';
 import arrowDown from '../../assets/svgs/arrow_down.svg';
 import arrowUp from '../../assets/svgs/arrow_up.svg';
+import Post from './Post';
 
 const BlockList = () => {
   const [list, setList] = useState([]);
   const [expandedItem, setExpandedItem] = useState(null);
+  const [allLosts, setAllLosts] = useState([]);
+  const [displayedLosts, setDisplayedLosts] = useState({});
+
   useEffect(() => {
     getLists();
+    getAllLosts();
   }, []);
 
-  const getAdminToken = () => {
-    return localStorage.getItem('accessToken');
-  };
+  const getAdminToken = () => localStorage.getItem('accessToken');
 
   const getLists = async () => {
     try {
@@ -24,10 +27,33 @@ const BlockList = () => {
         },
       });
       setList(response.data.data);
-      console.log(response);
     } catch (error) {
       console.error('Error fetching blacklist:', error.response?.data || error.message);
     }
+  };
+
+  const getAllLosts = async () => {
+    try {
+      const token = getAdminToken();
+      const response = await adminAxiosInstance.get('/losts', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setAllLosts(response.data.data);
+    } catch (error) {
+      console.error('Error fetching lost posts:', error.response?.data || error.message);
+    }
+  };
+
+  const filterPostsByUserId = (userId) => allLosts.filter((lost) => lost.userId === userId);
+
+  const handleFilterByUserId = (userId) => {
+    const filteredPosts = filterPostsByUserId(userId);
+    setDisplayedLosts((prevPosts) => ({
+      ...prevPosts,
+      [userId]: filteredPosts,
+    }));
   };
 
   const deleteBlackLists = async (userId) => {
@@ -66,7 +92,14 @@ const BlockList = () => {
   };
 
   const toggleExpand = (userId) => {
-    setExpandedItem(expandedItem === userId ? null : userId);
+    if (expandedItem === userId) {
+      setExpandedItem(null);
+    } else {
+      setExpandedItem(userId);
+      if (!displayedLosts[userId]) {
+        handleFilterByUserId(userId);
+      }
+    }
   };
 
   return (
@@ -91,7 +124,12 @@ const BlockList = () => {
               </List>
               {expandedItem === item.userId && (
                 <PostDetails>
-                  <p>작성자가 작성한 게시물 정보</p>
+                  <Post
+                    posts={displayedLosts[item.userId]}
+                    userId={expandedItem}
+                    setIsDetailView={() => {}}
+                    setPostId={() => {}}
+                  />
                 </PostDetails>
               )}
             </div>
@@ -148,11 +186,13 @@ const BlockDate = styled.span`
   font-size: 0.875rem;
   width: 8.5rem;
 `;
+
 const ArrowIcon = styled.img`
   width: 1rem;
   height: 1rem;
   cursor: pointer;
 `;
+
 const BlockBtn = styled.button`
   ${(props) => props.theme.fontStyles.captionBold};
   color: ${(props) => props.theme.colors.gray70};
@@ -165,15 +205,11 @@ const List = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   background-color: ${(props) => props.theme.colors.white};
-  box-sizing: border-box;
-  border-bottom: 0.063rem solid ${(props) => props.theme.colors.gray10};
 `;
 
 const PostDetails = styled.div`
   padding: 0.5rem;
   background-color: ${(props) => props.theme.colors.gray10};
-  border-left: 2px solid ${(props) => props.theme.colors.gray30};
-  margin-left: 1rem;
 `;
