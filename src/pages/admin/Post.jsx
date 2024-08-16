@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import morebtn from '../../assets/svgs/more_vert.svg';
 import { adminAxiosInstance } from '@/api/axios';
 import PropTypes from 'prop-types';
+import Popup from './Popup';
 
 const Post = ({ setIsDetailView, setPostId }) => {
   const [allLosts, setAllLosts] = useState([]);
@@ -12,6 +13,10 @@ const Post = ({ setIsDetailView, setPostId }) => {
   const [loading, setLoading] = useState(false);
   const [showOptions, setShowOptions] = useState(null);
   const [currentPostId, setCurrentPostId] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupType, setPopupType] = useState(null);
+
+  const optionsMenuRef = useRef(null);
 
   const getLosts = async () => {
     setLoading(true);
@@ -29,6 +34,17 @@ const Post = ({ setIsDetailView, setPostId }) => {
   const getAdminToken = () => {
     return localStorage.getItem('accessToken');
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (optionsMenuRef.current && !optionsMenuRef.current.contains(event.target)) {
+        setShowOptions(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     getLosts();
@@ -38,6 +54,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
     setPostId(lostId);
     setIsDetailView(true);
   };
+
   const formatId = (id) => {
     return String(id).padStart(6, '0');
   };
@@ -56,9 +73,15 @@ const Post = ({ setIsDetailView, setPostId }) => {
   };
 
   const handleMoreClick = (lostId, e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Prevent the click from bubbling up to the container
     setShowOptions((prev) => (prev === lostId ? null : lostId));
     setCurrentPostId(lostId);
+  };
+
+  const openPopup = (type) => {
+    console.log('Opening popup of type:', type); // Debug log
+    setPopupType(type);
+    setShowPopup(true);
   };
 
   const handleDeletePost = async () => {
@@ -71,13 +94,14 @@ const Post = ({ setIsDetailView, setPostId }) => {
       setAllLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
       setDisplayedLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
       setShowOptions(null);
+      setShowPopup(false);
     } catch (error) {
       console.error('Error deleting post: ', error);
     }
   };
 
-  const handleBlockAndDelete = async (lostId) => {
-    const lost = allLosts.find((lost) => lost.lostId === lostId);
+  const handleBlockAndDelete = async () => {
+    const lost = allLosts.find((lost) => lost.lostId === currentPostId);
     if (!lost) {
       console.error('Lost item not found');
       return;
@@ -94,12 +118,13 @@ const Post = ({ setIsDetailView, setPostId }) => {
             },
           }
         ),
-        adminAxiosInstance.delete(`/admin/losts/${lostId}`),
+        adminAxiosInstance.delete(`/admin/losts/${currentPostId}`),
       ]);
 
-      setAllLosts((prev) => prev.filter((lost) => lost.lostId !== lostId));
-      setDisplayedLosts((prev) => prev.filter((lost) => lost.lostId !== lostId));
+      setAllLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
+      setDisplayedLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
       setShowOptions(null);
+      setShowPopup(false);
     } catch (error) {
       console.error('Error handling block and delete: ', error);
     }
@@ -114,7 +139,8 @@ const Post = ({ setIsDetailView, setPostId }) => {
       setDisplayedLosts((prev) =>
         prev.map((lost) => (lost.lostId === currentPostId ? { ...lost, lostStatus: 'PUBLISHED' } : lost))
       );
-      setShowOptions(null); // Corrected to hide options on undo
+      setShowOptions(null);
+      setShowPopup(false);
     } catch (error) {
       console.error('Error undoing delete: ', error);
     }
@@ -131,7 +157,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
   };
 
   const OptionsMenu = ({ onUndo, isDeleted, onBlockAndDelete }) => (
-    <OptionsContainer>
+    <OptionsContainer ref={optionsMenuRef}>
       {isDeleted ? (
         <OptionButton
           onClick={(e) => {
@@ -146,7 +172,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
           <OptionButton
             onClick={(e) => {
               e.stopPropagation();
-              handleDeletePost();
+              openPopup('delete');
             }}
           >
             글 삭제
@@ -154,7 +180,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
           <OptionButton
             onClick={(e) => {
               e.stopPropagation();
-              onBlockAndDelete(currentPostId);
+              openPopup('blockAndDelete');
             }}
           >
             차단하고 글 삭제
@@ -191,7 +217,7 @@ const Post = ({ setIsDetailView, setPostId }) => {
               {showOptions === lost.lostId && (
                 <OptionsMenu
                   onUndo={handleUndoDelete}
-                  isDeleted={lost.lostStatus === 'DELETED'} // Corrected here
+                  isDeleted={lost.lostStatus === 'DELETED'}
                   onBlockAndDelete={handleBlockAndDelete}
                 />
               )}
@@ -201,10 +227,39 @@ const Post = ({ setIsDetailView, setPostId }) => {
       ) : (
         <p>No lost items found.</p>
       )}
-      {displayedLosts.length < allLosts.length && (
-        <LoadMoreButton onClick={loadMore} disabled={loading}>
-          {loading ? 'Loading...' : '더보기'}
-        </LoadMoreButton>
+      <LoadMoreWrapper showButton={displayedLosts.length < allLosts.length}>
+        {displayedLosts.length < allLosts.length && (
+          <LoadMoreButton onClick={loadMore} disabled={loading}>
+            {loading ? 'Loading...' : '더보기'}
+          </LoadMoreButton>
+        )}
+      </LoadMoreWrapper>
+      {showPopup && (
+        <Popup
+          message={
+            popupType === 'delete' ? (
+              '글을 삭제할까요?'
+            ) : popupType === 'blockAndDelete' ? (
+              <>
+                사용자을 차단하고
+                <br />
+                해당 글을 삭제할까요?
+              </>
+            ) : (
+              '삭제된 게시물을 복구할까요?'
+            )
+          }
+          onConfirm={
+            popupType === 'delete'
+              ? handleDeletePost
+              : popupType === 'blockAndDelete'
+                ? handleBlockAndDelete
+                : handleUndoDelete
+          }
+          onCancel={() => setShowPopup(false)}
+          confirmText={popupType === 'delete' ? '삭제' : popupType === 'blockAndDelete' ? '차단 후 삭제' : '복구'}
+          cancelText="취소"
+        />
       )}
     </PostContainer>
   );
@@ -313,7 +368,6 @@ const LoadMoreButton = styled.button`
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
-  margin-bottom: 5rem;
 `;
 
 const MoreBtn = styled.div`
@@ -353,4 +407,16 @@ const OptionButton = styled.button`
   &:hover {
     background-color: ${(props) => props.theme.colors.gray70};
   }
+`;
+const LoadMoreWrapper = styled.div`
+  width: 20rem;
+  height: ${(props) => (props.showButton ? '4rem' : '0')};
+  background-color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.black};
+  border: none;
+  cursor: ${(props) => (props.showButton ? 'pointer' : 'default')};
+  margin-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

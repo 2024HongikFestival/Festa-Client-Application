@@ -135,7 +135,7 @@ const PostDetail = ({ postId, onBack }) => {
                 justifyContent: 'space-between',
               }}
             >
-              {lostDetails.userId}
+              <UserId isBlocked={lostDetails.isUserBlocked}>{lostDetails.userId}</UserId>
               {lostDetails.isUserBlocked ? (
                 <ActionButton onClick={handleUnblockUser}>차단 해제</ActionButton>
               ) : (
@@ -227,8 +227,6 @@ const Value = styled.span`
   text-align: left;
   color: ${(props) => props.theme.colors.gray80};
   font-size: 0.875rem;
-  color: ${(props) => (props.isDeleted ? props.theme.colors.gray30 : props.theme.colors.black)};
-  text-decoration: ${(props) => (props.isDeleted ? 'line-through' : 'none')};
 `;
 
 const BackButton = styled.button`
@@ -258,4 +256,11 @@ const ActionButton = styled.button`
   border: none;
   border-radius: 0.625rem;
   cursor: pointer;
+`;
+
+const UserId = styled(Value)`
+  font-weight: 500;
+  color: ${(props) => (props.isBlocked ? props.theme.colors.gray30 : props.theme.colors.black)};
+  text-decoration: ${(props) => (props.isBlocked ? 'line-through' : 'none')};
+  width: 6.5rem;
 `;
