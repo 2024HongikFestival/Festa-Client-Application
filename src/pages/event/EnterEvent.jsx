@@ -136,7 +136,7 @@ const EnterEvent = () => {
                 value={comment}
               />
             </div>
-            <div>({textCount}/500)</div>
+            <div>({textCount}/100)</div>
           </div>
           {/* 하단 고정 플로팅 버튼 */}
           <div
