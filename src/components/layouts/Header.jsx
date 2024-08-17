@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 import hiuLogo from '@/assets/webps/layouts/hiuLogo.webp';
 import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
+  const nav = useNavigate();
+
   return (
     <HeaderLayout>
       <HeaderBg>
         <HambergerMenu>
           <img src={hambergerMenu} alt="hambergerMenu" />
         </HambergerMenu>
-        <HiuLogo>
+        <HiuLogo onClick={() => nav('/')}>
           <img src={hiuLogo} alt="hiuLogo" />
         </HiuLogo>
         <Right></Right>
@@ -47,6 +50,7 @@ const HeaderBg = styled.div`
 `;
 
 const HambergerMenu = styled.div`
+  cursor: pointer;
   margin-left: 2rem;
   width: 2.4rem;
   height: 2.4rem;
@@ -58,6 +62,7 @@ const HambergerMenu = styled.div`
 `;
 
 const HiuLogo = styled.div`
+  cursor: pointer;
   width: 14.7rem;
   overflow: hidden;
   img {
