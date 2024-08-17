@@ -80,10 +80,10 @@ const PreviousBtn = styled.div`
   z-index: 100;
   margin: 2rem auto 0;
   cursor: pointer;
-  width: 12.8rem;
-  height: 6rem;
+  width: 10.9rem;
+  height: 4.5rem;
   border-radius: 5rem;
-  border: 0.1rem solid ${(props) => props.theme.colors.gray50};
+  border: 0.1rem solid ${(props) => props.theme.colors.gray80};
   background: ${(props) => props.theme.colors.gray100};
   display: flex;
   justify-content: center;
@@ -91,18 +91,18 @@ const PreviousBtn = styled.div`
   text-align: center;
 
   span {
-    padding-top: 0.2rem;
+    padding-top: 0.1rem;
     color: ${(props) => props.theme.colors.gray5};
     font-family: 'Pretendard Variable', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 1.4rem;
+    font-weight: 500;
     line-height: 2.1rem;
   }
 `;
 
 const LikelionBtn = styled.div`
   cursor: pointer;
-  margin-top: 2.6rem;
+  margin-top: 2.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
