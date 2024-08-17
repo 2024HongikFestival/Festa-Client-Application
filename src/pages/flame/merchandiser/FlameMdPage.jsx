@@ -60,29 +60,26 @@ const LocationDescription = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.4rem; /* 4px -> 0.4rem */
   align-self: stretch;
   background-color: ${(props) => props.theme.colors.gray90};
   padding: 0.8rem; /* 8px -> 0.8rem */
   color: ${(props) => props.theme.colors.gray10};
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  letter-spacing: -0.1rem;
 `;
 
 const MainDescription = styled.span`
   color: ${(props) => props.theme.colors.gray10};
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  letter-spacing: -0.1rem;
 `;
 
 const Highlight = styled.span`
+  color: ${(props) => props.theme.colors.gray20};
   ${(props) => props.theme.fontStyles.basic.body1Med}; /* "에서"에 적용될 스타일 */
 `;
 
 const SubDescription = styled.span`
   color: ${(props) => props.theme.colors.gray20};
   ${(props) => props.theme.fontStyles.basic.body1Med};
-  letter-spacing: -0.1rem;
 `;
 
 const LocationAlert = styled.div`
@@ -91,6 +88,13 @@ const LocationAlert = styled.div`
   color: ${(props) => props.theme.colors.gray60};
   gap: 0.8rem; /* 8px -> 0.8rem */
   ${(props) => props.theme.fontStyles.basic.captionMed};
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.6rem;
 `;
 
 const AlertImage = styled.img`
@@ -182,13 +186,13 @@ const NoticeItem = styled.li`
   margin-left: 1.9rem;
   color: ${(props) => props.theme.colors.gray5};
   ${(props) => props.theme.fontStyles.basic.body2Med};
+  line-height: 1.5;
 
   &::before {
     content: '•';
     position: absolute;
     left: -1.2rem;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0; /* 점을 첫 번째 줄과 정렬합니다 */
     font-size: 1.2rem; /* 12px -> 1.2rem */
     color: ${(props) => props.theme.colors.gray5};
   }
@@ -196,7 +200,6 @@ const NoticeItem = styled.li`
 
 const HighlightedText = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Med};
-  letter-spacing: -0.1rem;
   color: ${(props) => props.theme.colors.gray30};
 `;
 
@@ -238,18 +241,20 @@ const FlameMdPage = () => {
                 현장 구매만 가능합니다
               </LocationAlert>
             </ProductLocation>
-            {products.map((product) => (
-              <ProductCard key={product.id}>
-                <ProductImage src={imageMap[product.image]} alt={product.name} />
-                <ProductInfo>
-                  <ProductDetails>
-                    <ProductTag>한정판매</ProductTag>
-                    <ProductName>{product.name}</ProductName>
-                  </ProductDetails>
-                  <ProductPrice>{product.price}</ProductPrice>
-                </ProductInfo>
-              </ProductCard>
-            ))}
+            <CardContainer>
+              {products.map((product) => (
+                <ProductCard key={product.id}>
+                  <ProductImage src={imageMap[product.image]} alt={product.name} />
+                  <ProductInfo>
+                    <ProductDetails>
+                      <ProductTag>한정판매</ProductTag>
+                      <ProductName>{product.name}</ProductName>
+                    </ProductDetails>
+                    <ProductPrice>{product.price}</ProductPrice>
+                  </ProductInfo>
+                </ProductCard>
+              ))}
+            </CardContainer>
           </ProductList>
         </ProductsSection>
         <NoticeContainer>
@@ -263,7 +268,10 @@ const FlameMdPage = () => {
             </NoticeItem>
             <NoticeItem>
               불량품
-              <HighlightedText>은 현장에서 확인 후 바로 현장 관리 인원에게 말씀해 주시기 바랍니다.</HighlightedText>
+              <HighlightedText>
+                은 현장에서 확인 후 바로 현장 관리 인원에게
+                <br /> 말씀해 주시기 바랍니다.
+              </HighlightedText>
             </NoticeItem>
           </NoticeList>
         </NoticeContainer>
