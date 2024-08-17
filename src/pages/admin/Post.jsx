@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import morebtn from '../../assets/svgs/more_vert.svg';
+import morebtn from '@/assets/webps/admin/more_vert.webp';
 import { adminAxiosInstance } from '@/api/axios';
 import PropTypes from 'prop-types';
 import Popup from './Popup';

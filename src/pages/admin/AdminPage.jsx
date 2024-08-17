@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 // import jwtDecode from 'jwt-decode';
-import { adminAxiosInstance } from '@/api/axios'; // Axios 인스턴스
-import AdminLogin from './AdminLogin'; // 로그인 컴포넌트
-import Post from './Post'; // 게시글 컴포넌트
-import BlockList from './BlockList'; // 차단 목록 컴포넌트
-import PostDetail from './PostDetail'; // 게시글 상세 컴포넌트
-import Header from '@/components/layouts/Header'; // 헤더 컴포넌트
+// import { adminAxiosInstance } from '@/api/axios';
+import AdminLogin from './AdminLogin';
+import Post from './Post';
+import BlockList from './BlockList';
+import PostDetail from './PostDetail';
+import Header from '@/components/layouts/Header';
 import { useNavigate } from 'react-router-dom';
 
 const AdminPage = () => {

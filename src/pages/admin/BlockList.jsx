@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { adminAxiosInstance } from '@/api/axios';
-import arrowDown from '../../assets/svgs/arrow_down.svg';
-import arrowUp from '../../assets/svgs/arrow_up.svg';
+import arrowDown from '@/assets/webps/admin/arrow_drop_down.webp';
+import arrowUp from '@/assets/webps/admin/arrow_drop_up.webp';
 import Post from './Post';
 
 const PAGE_SIZE = 12;
