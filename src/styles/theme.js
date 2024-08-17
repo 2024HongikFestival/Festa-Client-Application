@@ -19,88 +19,94 @@ const theme = {
     flameMainColor: '#f20d0d',
   },
   fontStyles: {
-    flame: {
-      headline1: `
-      font-family: 'NanumSquare', sans-serif;
-      font-size: 4rem;
-      font-weight: 900;
-      font-style: normal;
-      line-height: 150%;
-    `,
-      headline2: `
-      font-family: 'NanumSquare', sans-serif;
-      font-size: 3.6rem;
-      font-weight: 900;
-      font-style: normal;
-      line-height: 150%;
-    `,
-      headline3: `
-      font-family: 'NanumSquare', sans-serif;
-      font-size: 3.2rem;
-      font-weight: 900;
-      font-style: normal;
-      line-height: 150%;
-    `,
-      headline4: `
-      font-family: 'NanumSquare', sans-serif;
-      font-size: 2.8rem;
-      font-weight: 900;
-      font-style: normal;
-      line-height: 150%;
-    `,
-      headline5: `
-      font-family: 'NanumSquare', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 900;
-      font-style: normal;
-      line-height: 150%;
-    `,
-      headline6: `
-      font-family: 'NanumSquare', sans-serif;
-      font-size: 2.0rem;
-      font-weight: 900;
-      font-style: normal;
-      line-height: 150%;
-    `,
-    },
     main: {
       headline1: `
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'SCoreDream', sans-serif;;
+      font-size: 3.6rem;
+      font-weight: 800;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0036rem;
+    `,
+      headline2: `
+      font-family: 'SCoreDream', sans-serif;;
+      font-size: 3.2rem;
+      font-weight: 800;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0032rem;
+    `,
+      headline3: `
+      font-family: 'SCoreDream', sans-serif;;
+      font-size: 2.8rem;
+      font-weight: 800;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0028rem;
+    `,
+      headline4: `
+      font-family: 'SCoreDream', sans-serif;;
+      font-size: 2.4rem;
+      font-weight: 800;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0024rem;
+    `,
+      headline5: `
+      font-family: 'SCoreDream', sans-serif;;
+      font-size: 2.4rem;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0024rem;
+    `,
+      headline6: `
+      font-family: 'SCoreDream', sans-serif;;
+      font-size: 2rem;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.002rem;
+    `,
+    },
+    flame: {
+      headline1: `
+      font-family: 'NanumSquare Neo', sans-serif;
       font-size: 4rem;
       font-weight: 900;
       font-style: normal;
       line-height: 150%;
     `,
       headline2: `
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'NanumSquare Neo', sans-serif;
       font-size: 3.6rem;
       font-weight: 900;
       font-style: normal;
       line-height: 150%;
-  `,
+    `,
       headline3: `
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'NanumSquare Neo', sans-serif;
       font-size: 3.2rem;
       font-weight: 900;
       font-style: normal;
       line-height: 150%;
     `,
       headline4: `
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'NanumSquare Neo', sans-serif;
       font-size: 2.8rem;
       font-weight: 900;
       font-style: normal;
       line-height: 150%;
     `,
       headline5: `
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'NanumSquare Neo', sans-serif;
       font-size: 2.4rem;
       font-weight: 900;
       font-style: normal;
       line-height: 150%;
     `,
       headline6: `
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'NanumSquare Neo', sans-serif;
       font-size: 2.0rem;
       font-weight: 900;
       font-style: normal;
@@ -109,108 +115,108 @@ const theme = {
     },
     basic: {
       headline1: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 3.6rem;
       font-weight: 800;
       font-style: normal;
       line-height: 160%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0036rem;
     `,
       headline2: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 3.2rem;
       font-weight: 800;
       font-style: normal;
       line-height: 160%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0032rem;
   `,
       headline3: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 2.8rem;
       font-weight: 800;
       font-style: normal;
       line-height: 160%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0028rem;
     `,
       headline4: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 2.4rem;
       font-weight: 800;
       font-style: normal;
       line-height: 160%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0024rem;
     `,
       headline5: `
-      font-family: 'Pretendard Variable', sans-serif;
-      font-size: 2.0rem;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 2rem;
       font-weight: 800;
       font-style: normal;
       line-height: 160%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.002rem;
     `,
       subHeadBold: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.8rem;
       font-weight: 700;
       font-style: normal;
       line-height: 150%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0018rem;
     `,
       subHeadMed: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.8rem;
       font-weight: 500;
       font-style: normal;
       line-height: 150%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0018rem;
     `,
       body1Bold: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.6rem;
       font-weight: 700;
       font-style: normal;
       line-height: 150%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0016rem;
     `,
       body1Med: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.6rem;
       font-weight: 500;
       font-style: normal;
       line-height: 150%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0016rem;
     `,
       body2Bold: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.4rem;
       font-weight: 700;
       font-style: normal;
       line-height: 150%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0014rem;
     `,
       body2Med: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.4rem;
       font-weight: 500;
       font-style: normal;
       line-height: 150%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0014rem;
     `,
       captionBold: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
       font-style: normal;
       line-height: 150%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0012rem;
     `,
       captionMed: `
-      font-family: 'Pretendard Variable', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.2rem;
       font-weight: 500;
       font-style: normal;
       line-height: 150%;
-      letter-spacing: -0.1%;
+      letter-spacing: -0.0012rem;
   `,
     },
   },
