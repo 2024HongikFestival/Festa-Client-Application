@@ -1,12 +1,16 @@
-import styled from 'styled-components';
-import { Outlet } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from '@/components/layouts/Header';
+import Footer from '@/components/layouts/Footer';
 
 export default function Layout() {
+  const location = useLocation();
+
   return (
-    <Container>
+    <Container path={location.pathname}>
       <Header />
       <Outlet />
+      <Footer />
     </Container>
   );
 }

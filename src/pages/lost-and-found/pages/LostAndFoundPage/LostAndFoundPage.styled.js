@@ -1,13 +1,6 @@
 import warningIcon from '@/assets/svgs/error.svg';
 import styled from 'styled-components';
 
-export const Header = styled.header`
-  width: 39.3rem;
-  height: 5.5rem;
-  flex-shrink: 0;
-  background: #d9d9d9;
-`;
-
 export const Main = styled.main`
   width: 39.3rem;
   min-height: 49.7rem; //852 - 55
