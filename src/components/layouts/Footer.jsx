@@ -122,9 +122,8 @@ const PreviousBtn = styled.div`
   text-align: center;
 
   span {
-    padding-top: 0.1rem;
     color: ${(props) => props.theme.colors.gray5};
-    font-family: 'Pretendard Variable', sans-serif;
+    font-family: 'Pretendard', sans-serif;
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 2.1rem;
