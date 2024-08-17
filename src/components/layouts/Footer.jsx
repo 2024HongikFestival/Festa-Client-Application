@@ -13,7 +13,11 @@ import instaLogo from '@/assets/webps/layouts/instaLogo.webp';
 import styled, { css } from 'styled-components';
 import instaLogo from '@/assets/webps/layouts/instaLogo.webp';
 import flameFooterBg from '@/assets/webps/layouts/flameFooterBg.webp';
+<<<<<<< HEAD
 >>>>>>> fe834e9 ([Feat] flame 푸터 구현)
+=======
+import mangae from '@/assets/webps/layouts/mangae.webp';
+>>>>>>> 01a7070 ([Feat] 대동제 Footer 구현)
 import { useTranslation } from 'react-i18next';
 >>>>>>> dcc99c9 ([Feat] ko.json로 변환 완료)
 
@@ -52,6 +56,8 @@ export default function Footer() {
   };
 
   const showPreviousBtn = location.pathname == '/likelion' || location.pathname == '/gaehwa';
+  const daedongje =
+    location.pathname !== '/likelion' && location.pathname !== '/gaehwa' && !location.pathname.startsWith('/flame');
 
   return (
     <FooterLayout path={location.pathname}>
@@ -59,6 +65,11 @@ export default function Footer() {
         <PreviousBtn onClick={handleGoBack}>
           <span>{t('footer.prev')}</span>
         </PreviousBtn>
+      )}
+      {daedongje && (
+        <Mangae>
+          <img src={mangae} alt="mangae" />
+        </Mangae>
       )}
       <LikelionBtn path={location.pathname} onClick={() => handleNavigation('/likelion')}>
         <span>{t('footer.toLikelion')}</span>
@@ -83,6 +94,7 @@ const FooterLayout = styled.div`
   flex-direction: column;
   justify-content: center;
   position: relative;
+  background-color: transparent;
 
   ${(props) =>
     (props.path === '/likelion' || props.path === '/gaehwa') &&
@@ -98,6 +110,17 @@ const FooterLayout = styled.div`
       background-size: cover;
       background-position: center 20%;
     `}
+`;
+
+const Mangae = styled.div`
+  width: 10rem;
+  margin: 2.8rem auto 0;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const PreviousBtn = styled.div`
@@ -130,6 +153,7 @@ const LikelionBtn = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 3.6rem;
 
   span {
     color: ${(props) => props.theme.colors.white};
