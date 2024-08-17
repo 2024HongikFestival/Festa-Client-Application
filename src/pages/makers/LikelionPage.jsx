@@ -11,8 +11,12 @@ import likelionBgImg from '@/assets/webps/makers/likelionBgImg.webp';
 >>>>>>> 9f489da ([Fix] svg -> webp로 변경)
 import LikelionCard from './LikelionCard';
 import { useTranslation } from 'react-i18next';
+<<<<<<< HEAD
 import { contributors } from './LikelionContributors';
 import Footer from '@/components/layouts/Footer';
+=======
+import { contributors } from '@/pages/makers/LikelionContributors';
+>>>>>>> 44f61ef ([Feat] Footer 모든 페이지에 적용)
 
 const LikelionPage = () => {
   const { t } = useTranslation();
@@ -130,7 +134,6 @@ const LikelionPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Footer />
     </LikelionLayout>
   );
 };

@@ -14,8 +14,12 @@ import gaehwaLogo from '@/assets/webps/makers/gaehwaLogo.webp';
 >>>>>>> 9f489da ([Fix] svg -> webp로 변경)
 import GaehwaCard from './GaehwaCard';
 import { useTranslation } from 'react-i18next';
+<<<<<<< HEAD
 import Footer from '@/components/layouts/Footer';
 import { contributors } from './GaehwaContributors';
+=======
+import { contributors } from '@/pages/makers/GaehwaContributors';
+>>>>>>> 44f61ef ([Feat] Footer 모든 페이지에 적용)
 
 const GaehwaPage = () => {
   const { t } = useTranslation();
@@ -209,7 +213,6 @@ const GaehwaPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Footer />
     </GaehwaLayout>
   );
 };
