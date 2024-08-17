@@ -15,17 +15,17 @@ const PromotionContainer = styled.div`
 `;
 const Title = styled.h2`
   color: ${(props) => props.theme.colors.white};
-  ${(props) => props.theme.fontStyles.flame.wdfHeadline3};
+  ${(props) => props.theme.fontStyles.flame.headline3};
 `;
-const Promotion = styled.div``;
-const ImageContainer = styled.div`
+const Promotion = styled.div`
   width: 33.5rem; /* 335px -> 33.5rem */
-  height: 29.6rem;
+  height: 29.6rem; /* 수정 예정 */
   flex-shrink: 0;
   border: 1px solid transparent;
   border-image: linear-gradient(to bottom, #df2121 0%, rgba(255, 255, 255, 0.25) 100%) 1;
   /* box-shadow: 0rem 0rem 0.5rem 0rem rgba(255, 255, 255, 0.25); */
 `;
+const ImageContainer = styled.div``;
 
 const FlamePromotionPage = () => {
   return (
