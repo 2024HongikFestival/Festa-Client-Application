@@ -80,7 +80,7 @@ const Name = styled.h5`
 
 const Department = styled.div`
   margin-top: 0.8rem;
-  padding: 0.2rem 0.7rem;
+  padding: 0.3rem 0.7rem;
   width: auto;
   text-align: center;
   white-space: nowrap;
@@ -92,7 +92,6 @@ const Department = styled.div`
   color: ${(props) => props.theme.colors.gray50};
 
   span {
-    padding-top: 0.2rem;
     ${(props) => props.theme.fontStyles.basic.body2Med};
   }
 `;
