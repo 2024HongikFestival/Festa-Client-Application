@@ -1,5 +1,5 @@
 // 대동제 홍익존
-// url: /hongik-zone
+// url: /hongikzone
 
 import React from 'react';
 
