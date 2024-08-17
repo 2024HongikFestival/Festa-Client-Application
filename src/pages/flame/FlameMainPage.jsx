@@ -3,14 +3,14 @@
 import Header from '@/components/layouts/Header';
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import FLAME from '../../assets/svgs/FLAME.svg';
+import FLAME from '@/assets/svgs/FLAME.svg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import DJ from '../../assets/DJ.webp';
-import speaker from '../../assets/speaker.webp';
-import Insta from '../../assets/insta.webp';
-import footerbg from '../../assets/footerBg.webp';
+import DJ from '@/assets/webps/wdfMain/DJ.webp';
+import speaker from '@/assets/webps/wdfMain/speaker.webp';
+import Insta from '@/assets/webps/wdfMain/insta.webp';
+import footerbg from '@/assets/webps/wdfMain/footerBg.webp';
 
 const FlameMainPage = () => {
   const [selectedDay, setSelectedDay] = useState('day1');

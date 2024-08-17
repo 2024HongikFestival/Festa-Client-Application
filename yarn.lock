@@ -1446,9 +1446,9 @@ __metadata:
     react-icons: "npm:^5.2.1"
     react-moment: "npm:^1.1.3"
     react-router-dom: "npm:^6.25.1"
+    react-slick: "npm:^0.30.2"
     react-use: "npm:^17.5.1"
     recoil: "npm:^0.7.7"
-    react-slick: "npm:^0.30.2"
     slick-carousel: "npm:^1.8.1"
     styled-components: "npm:^6.1.11"
     styled-reset: "npm:^4.5.2"
@@ -4150,6 +4150,57 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-slick@npm:^0.30.2":
+  version: 0.30.2
+  resolution: "react-slick@npm:0.30.2"
+  dependencies:
+    classnames: "npm:^2.2.5"
+    enquire.js: "npm:^2.1.6"
+    json2mq: "npm:^0.2.0"
+    lodash.debounce: "npm:^4.0.8"
+    resize-observer-polyfill: "npm:^1.5.0"
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/8994ae2934aa39e889674124b68669e4e012b2a5286bbbc2a3455c2e11ebd5364ab9c56e1d268f3b7b9fe1fbc3a165b82dd84d6f234f3542385df09998c9fbb5
+  languageName: node
+  linkType: hard
+
+"react-universal-interface@npm:^0.6.2":
+  version: 0.6.2
+  resolution: "react-universal-interface@npm:0.6.2"
+  peerDependencies:
+    react: "*"
+    tslib: "*"
+  checksum: 10c0/97c32ecb7a425c3bcaa92dcf84c46146b49610d928efde9e9ee5518c475a0db942f01634dd490e4f42fcd95cc2f49657c1b96dcef96423c06f077147fe1968ab
+  languageName: node
+  linkType: hard
+
+"react-use@npm:^17.5.1":
+  version: 17.5.1
+  resolution: "react-use@npm:17.5.1"
+  dependencies:
+    "@types/js-cookie": "npm:^2.2.6"
+    "@xobotyi/scrollbar-width": "npm:^1.9.5"
+    copy-to-clipboard: "npm:^3.3.1"
+    fast-deep-equal: "npm:^3.1.3"
+    fast-shallow-equal: "npm:^1.0.0"
+    js-cookie: "npm:^2.2.1"
+    nano-css: "npm:^5.6.2"
+    react-universal-interface: "npm:^0.6.2"
+    resize-observer-polyfill: "npm:^1.5.1"
+    screenfull: "npm:^5.1.0"
+    set-harmonic-interval: "npm:^1.0.1"
+    throttle-debounce: "npm:^3.0.1"
+    ts-easing: "npm:^0.2.0"
+    tslib: "npm:^2.1.0"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  checksum: 10c0/3d6a8f46539b32698d31600239e72b5c23376a5343d0d687c6520e14532ed7f5c72c9b99d222be4eeacb0401ce3ae763d5648d0476440c8b4a6afbd56dc98bfa
+  languageName: node
+  linkType: hard
+
 "react@npm:^18.3.1":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
@@ -4206,6 +4257,13 @@ __metadata:
     es-errors: "npm:^1.3.0"
     set-function-name: "npm:^2.0.1"
   checksum: 10c0/0f3fc4f580d9c349f8b560b012725eb9c002f36daa0041b3fbf6f4238cb05932191a4d7d5db3b5e2caa336d5150ad0402ed2be81f711f9308fe7e1a9bf9bd552
+  languageName: node
+  linkType: hard
+
+"resize-observer-polyfill@npm:^1.5.0, resize-observer-polyfill@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "resize-observer-polyfill@npm:1.5.1"
+  checksum: 10c0/5e882475067f0b97dc07e0f37c3e335ac5bc3520d463f777cec7e894bb273eddbfecb857ae668e6fb6881fd6f6bb7148246967172139302da50fa12ea3a15d95
   languageName: node
   linkType: hard
 
