@@ -27,9 +27,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Header from '@/components/layouts/Header';
 import Footer from '@/components/layouts/Footer';
-import redButtonTwo from '../../../assets/images/RedButton.webp';
-import redfullBtn from '../../../assets/images/timtablefullButtton.webp';
-import DjImg from '../../../assets/images/DjImg.webp';
+import redButtonTwo from '../../../assets/webps/wdTT/RedButton.webp';
+import redfullBtn from '../../../assets/webps/wdTT/timtablefullButtton.webp';
+import DjImg from '../../../assets/webps/wdTT/DjImg.webp';
 
 const FlameTimeTablePage = () => {
   const [selectedDate, setSelectedDate] = useState(1);
