@@ -51,7 +51,7 @@ const PostDetail = ({ postId, onBack }) => {
   const handleUndoDelete = async () => {
     try {
       const token = getAdminToken();
-      await adminAxiosInstance.delete(
+      await adminAxiosInstance.put(
         `/admin/losts/${postId}`,
         { lostStatus: 'PUBLISHED' },
         {

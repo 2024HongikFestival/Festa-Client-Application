@@ -140,7 +140,15 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
 
   const handleUndoDelete = async () => {
     try {
-      await adminAxiosInstance.post(`/admin/losts/${currentPostId}`, { lostStatus: 'PUBLISHED' });
+      await adminAxiosInstance.put(
+        `/admin/losts/${currentPostId}`,
+        { lostStatus: 'PUBLISHED' },
+        {
+          headers: {
+            Authorization: `Bearer ${getAdminToken()}`,
+          },
+        }
+      );
       setAllLosts((prev) =>
         prev.map((lost) => (lost.lostId === currentPostId ? { ...lost, lostStatus: 'PUBLISHED' } : lost))
       );
