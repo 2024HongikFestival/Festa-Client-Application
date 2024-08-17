@@ -5,16 +5,22 @@ import hambergerMenu from '@/static/image/layouts/hambergerMenu.svg';
 =======
 import hiuLogo from '@/assets/webps/layouts/hiuLogo.webp';
 import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
+<<<<<<< HEAD
 >>>>>>> 9f489da ([Fix] svg -> webp로 변경)
+=======
+import { useNavigate } from 'react-router-dom';
+>>>>>>> 1f39290 ([Design] 이전 화면으로 버튼 위치 고정)
 
 export default function Header() {
+  const nav = useNavigate();
+
   return (
     <HeaderLayout>
       <HeaderBg>
         <HambergerMenu>
           <img src={hambergerMenu} alt="hambergerMenu" />
         </HambergerMenu>
-        <HiuLogo>
+        <HiuLogo onClick={() => nav('/')}>
           <img src={hiuLogo} alt="hiuLogo" />
         </HiuLogo>
         <Right></Right>
@@ -52,6 +58,7 @@ const HeaderBg = styled.div`
 `;
 
 const HambergerMenu = styled.div`
+  cursor: pointer;
   margin-left: 2rem;
   width: 2.4rem;
   height: 2.4rem;
@@ -63,6 +70,7 @@ const HambergerMenu = styled.div`
 `;
 
 const HiuLogo = styled.div`
+  cursor: pointer;
   width: 14.7rem;
   overflow: hidden;
   img {
