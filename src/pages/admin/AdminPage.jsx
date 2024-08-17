@@ -82,7 +82,7 @@ export default AdminPage;
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.gray10};
-  height: 100%;
+  height: 100vh;
 `;
 
 const SelectBar = styled.div`
