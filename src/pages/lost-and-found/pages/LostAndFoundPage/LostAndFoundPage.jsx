@@ -56,33 +56,42 @@ const LostAndFoundPage = () => {
       <S.Main>
         <S.Title>분실물</S.Title>
         <S.ButtonWrapper>
-          <S.AddLostItemButton onClick={() => setIsModalOpen(true)}>분실물을 주웠어요!</S.AddLostItemButton>
+          <S.AddLostItemButton onClick={() => setIsModalOpen(true)}>분실물 찾아주기 ✋🏻</S.AddLostItemButton>
           <S.ButtonDetailWrapper>
             <S.ButtonDetailIcon />
-            <S.ButtonDetailText>전자기기, 카드, 지갑 등은 제보 후 총학 부스에 보관해주세요</S.ButtonDetailText>
+            <S.ButtonDetailText>
+              전자기기, 카드, 지갑 등은 제보 후&nbsp;
+              <span>
+                <span>분실물 센터</span>에 보관
+              </span>
+              해 주세요
+            </S.ButtonDetailText>
           </S.ButtonDetailWrapper>
         </S.ButtonWrapper>
         <S.LostAndFoundSection>
-          {items.length > 0 &&
-            items.map((item, idx) => {
-              return (
-                //현재 페이지에 렌더링 되어야 하는 item인지 판단하는 로직
-                idx >= (currentPage - 1) * itemCountPerPage &&
-                idx < currentPage * itemCountPerPage && (
-                  <S.LostAndFoundPost onClick={handleClickItem(item.lostId)} key={`item_${idx}`} />
-                )
-              );
-            })}
+          <S.LostAndFoundSectionTitle>분실물 찾아가기 🧸</S.LostAndFoundSectionTitle>
+          <S.LostAndFoundArticleLayout>
+            {/*<DropDown></DropDown> */}
+            <S.LostAndFoundArticle>
+              {items.length > 0 &&
+                items.map((item, idx) => {
+                  return (
+                    //현재 페이지에 렌더링 되어야 하는 item인지 판단하는 로직
+                    idx >= (currentPage - 1) * itemCountPerPage &&
+                    idx < currentPage * itemCountPerPage && (
+                      <S.LostAndFoundPost onClick={handleClickItem(item.lostId)} key={`item_${idx}`} />
+                    )
+                  );
+                })}
+            </S.LostAndFoundArticle>
+            <Pagination
+              totalItems={totalItems}
+              itemCountPerPage={itemCountPerPage}
+              pageToShow={5}
+              currentPage={currentPage}
+            />
+          </S.LostAndFoundArticleLayout>
         </S.LostAndFoundSection>
-
-        <S.Pagenation>
-          <Pagination
-            totalItems={totalItems}
-            itemCountPerPage={itemCountPerPage}
-            pageToShow={5}
-            currentPage={currentPage}
-          />
-        </S.Pagenation>
       </S.Main>
       <LostBottomSheet isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
     </>

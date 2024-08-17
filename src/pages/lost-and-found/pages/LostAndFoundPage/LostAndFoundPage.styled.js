@@ -19,51 +19,55 @@ export const Main = styled.main`
 `;
 
 export const Title = styled.h1`
-  color: #000;
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 27px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  color: ${({ theme }) => theme.colors.black};
+  ${({ theme }) => theme.fontStyles.main.headline2}; //SCORE 어쩌구로 바뀜
 
-  margin-bottom: 8px;
+  margin-top: 2.8rem;
+  margin-bottom: 2.8rem;
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 33.6rem;
   height: auto;
 
   margin-bottom: 20px;
 `;
 
 export const AddLostItemButton = styled.button`
-  width: 29.5rem;
-  height: 4.7rem;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background: #d9d9d9;
+  display: flex;
+  width: 33.5rem;
+  height: 6.4rem;
+  padding: 2.4rem 4.3rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  align-self: stretch;
 
-  color: #000;
+  border-radius: 12px;
+  background: var(--HONGIK-BLUE, #1833db); //아직 theme에 없어서 하드 코딩
+  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
+
+  color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => theme.fontStyles.main.headline6}; //아직 S-Core Dream로 업데이트 안됨
   text-align: center;
-  font-family: Pretendard;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 
-  margin-bottom: 9px;
+  margin-bottom: 0.8rem;
 `;
 
 export const ButtonDetailWrapper = styled.div`
-  width: 30rem;
+  min-width: 32rem;
   display: inline-flex;
-  align-items: flex-start;
+  justify-content: center;
   gap: 4px;
 `;
 export const ButtonDetailIcon = styled.div`
-  width: 1.4rem;
-  height: 1.4rem;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
   background-image: url(${warningIcon});
   background-repeat: no-repeat;
   background-position: center;
@@ -73,38 +77,74 @@ export const ButtonDetailText = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 29.2rem;
+  white-space: nowrap;
 
-  color: #a2254a;
-  font-family: Pretendard;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 14px; /* 116.667% */
+  color: ${({ theme }) => theme.colors.gray70};
+  ${({ theme }) => theme.fontStyles.basic.captionMed};
+  font-size: 1rem; //뷰랑 완전히 일치하지 않아서 폰트 조절
+
+  span {
+    ${({ theme }) => theme.fontStyles.basic.captionBold};
+    font-size: 1rem;
+
+    span {
+      text-decoration: underline;
+    }
+  }
 `;
 
 //나중에 컴포넌트화 할 예정
 export const FilterWrapper = styled.div``;
 
 export const LostAndFoundSection = styled.section`
+  margin-top: 2.8rem;
+
   display: flex;
-  width: 37.6rem;
+  width: 33.5rem;
+  padding: 2.4rem 1.7rem;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  align-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
+
+  border-radius: 12px;
+  background: ${({ theme }) => theme.colors.white};
+
+  /* 대동제 요소 그림자 */
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12);
+`;
+
+export const LostAndFoundSectionTitle = styled.span`
+  align-self: stretch;
+
+  color: ${({ theme }) => theme.colors.gray100};
+  text-align: center;
+
+  ${({ theme }) => theme.fontStyles.main.headline6};
+  margin-bottom: 2rem;
+`;
+
+export const LostAndFoundArticleLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  align-self: stretch;
+`;
+
+export const LostAndFoundArticle = styled.article`
+  display: grid;
+  min-width: 30.1rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  row-gap: 1.2rem;
+  column-gap: 1.2rem;
 `;
 
 export const LostAndFoundPost = styled.article`
-  width: 12rem;
-  height: 12rem;
-  flex-shrink: 0;
-  background: #d9d9d9;
-`;
+  width: 9.5rem;
+  height: 9.5rem;
 
-//따로 뺄 예정
-export const Pagenation = styled.div`
-  display: inline-flex;
-  padding: 3px 0px;
-  align-items: center;
-  gap: 15px;
+  border-radius: 4px;
+  background: #d9d9d9;
 `;

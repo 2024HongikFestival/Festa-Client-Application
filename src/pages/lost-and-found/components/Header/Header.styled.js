@@ -6,7 +6,8 @@ export const HeaderLayout = styled.div`
   min-width: 375px;
   margin: 0 auto;
   height: 5.6rem;
-  background-color: ${(props) => props.theme.colors.white};
+  //background-color: ${(props) => props.theme.colors.white};
+  //backdrop-filter: blur(2px);
   position: fixed;
   top: 0rem;
   z-index: 2;
@@ -17,7 +18,7 @@ export const HeaderBg = styled.div`
   max-width: 768px;
   min-width: 375px;
   height: 5.6rem;
-  background: rgba(22, 22, 22, 0.1);
+  //background: rgba(22, 22, 22, 0.1);
   box-shadow: 0rem 0rem 0.4rem 0rem rgba(255, 255, 255, 0.12) inset;
   backdrop-filter: blur(0.2rem);
   position: fixed;
