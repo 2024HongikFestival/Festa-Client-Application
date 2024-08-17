@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import instaLogo from '@/assets/webps/layouts/instaLogo.webp';
+import flameFooterBg from '@/assets/webps/layouts/flameFooterBg.webp';
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
@@ -37,12 +38,16 @@ export default function Footer() {
     }, 100);
   };
 
+  const showPreviousBtn = location.pathname == '/likelion' || location.pathname == '/gaehwa';
+
   return (
-    <FooterLayout id="footer">
-      <PreviousBtn onClick={handleGoBack}>
-        <span>{t('footer.prev')}</span>
-      </PreviousBtn>
-      <LikelionBtn onClick={() => handleNavigation('/likelion')}>
+    <FooterLayout path={location.pathname}>
+      {showPreviousBtn && (
+        <PreviousBtn onClick={handleGoBack}>
+          <span>{t('footer.prev')}</span>
+        </PreviousBtn>
+      )}
+      <LikelionBtn path={location.pathname} onClick={() => handleNavigation('/likelion')}>
         <span>{t('footer.toLikelion')}</span>
       </LikelionBtn>
       <GaehwaBtn onClick={() => handleNavigation('/gaehwa')}>
@@ -61,11 +66,25 @@ export default function Footer() {
 const FooterLayout = styled.div`
   width: 100%;
   height: auto;
-  background-color: ${(props) => props.theme.colors.makersBackgroundColor};
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+
+  ${(props) =>
+    (props.path === '/likelion' || props.path === '/gaehwa') &&
+    css`
+      background-color: ${(props) => props.theme.colors.makersBackgroundColor};
+    `}
+
+  ${(props) =>
+    props.path.startsWith('/flame') &&
+    css`
+      background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+      background-image: url(${flameFooterBg});
+      background-size: cover;
+      background-position: center 20%;
+    `}
 `;
 
 const PreviousBtn = styled.div`
@@ -94,7 +113,6 @@ const PreviousBtn = styled.div`
 
 const LikelionBtn = styled.div`
   cursor: pointer;
-  margin-top: 2.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,6 +123,18 @@ const LikelionBtn = styled.div`
     text-align: center;
     ${(props) => props.theme.fontStyles.basic.body2Bold};
   }
+
+  ${(props) =>
+    (props.path === '/likelion' || props.path === '/gaehwa') &&
+    css`
+      margin-top: 2.4rem;
+    `}
+
+  ${(props) =>
+    props.path.startsWith('/flame') &&
+    css`
+      margin-top: 2.8rem;
+    `}
 `;
 
 const GaehwaBtn = styled.div`
