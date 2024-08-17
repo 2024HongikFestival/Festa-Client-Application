@@ -242,7 +242,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
           </Container>
         ))
       ) : (
-        <p>No lost items found.</p>
+        <p>분실물 게시글이 존재하지 않습니다.</p>
       )}
       {posts !== userPosts && (
         <LoadMoreWrapper showButton={displayedLosts.length < allLosts.length}>

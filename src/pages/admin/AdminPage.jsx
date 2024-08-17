@@ -72,7 +72,18 @@ const AdminPage = () => {
           ) : (
             <Post setIsDetailView={setIsDetailView} setPostId={setSelectedPostId} />
           ))}
-        {activeComponent === 'blockList' && !isDetailView && <BlockList />}
+        {activeComponent === 'blockList' &&
+          (isDetailView ? (
+            <PostDetail
+              postId={selectedPostId}
+              onBack={() => {
+                setIsDetailView(false); // Go back to the post list view
+                setSelectedPostId(null); // Clear the selected post ID
+              }}
+            />
+          ) : (
+            <BlockList setIsDetailView={setIsDetailView} setPostId={setSelectedPostId} />
+          ))}
       </Container>
     </>
   );

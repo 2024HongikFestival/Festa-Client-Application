@@ -4,10 +4,11 @@ import { adminAxiosInstance } from '@/api/axios';
 import arrowDown from '@/assets/webps/admin/arrow_drop_down.webp';
 import arrowUp from '@/assets/webps/admin/arrow_drop_up.webp';
 import Post from './Post';
+import PropTypes from 'prop-types;';
 
 const PAGE_SIZE = 12;
 
-const BlockList = () => {
+const BlockList = ({ setIsDetailView, setPostId }) => {
   const [list, setList] = useState([]);
   const [expandedItem, setExpandedItem] = useState(null);
   const [allLosts, setAllLosts] = useState([]);
@@ -16,6 +17,7 @@ const BlockList = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [selectedPostId, setSelectedPostId] = useState(null);
 
   useEffect(() => {
     getLists();
@@ -127,6 +129,10 @@ const BlockList = () => {
       }
     }
   };
+  const handlePostClick = (postId) => {
+    setIsDetailView(true);
+    setSelectedPostId(postId);
+  };
 
   return (
     <ListContainer>
@@ -154,8 +160,8 @@ const BlockList = () => {
                     <Post
                       posts={displayedLosts[item.userId]}
                       userId={expandedItem}
-                      setIsDetailView={() => {}}
-                      setPostId={() => {}}
+                      setIsDetailView={handlePostClick}
+                      setPostId={setPostId}
                     />
                   </PostDetails>
                 </>
@@ -163,7 +169,7 @@ const BlockList = () => {
             </div>
           ))
         ) : (
-          <p>No blocked users found.</p>
+          <p>차단된 사용자가 존재하지 않습니다.</p>
         )}
         {hasMore && (
           <LoadMoreButton onClick={handleLoadMore} disabled={loading}>
@@ -173,6 +179,10 @@ const BlockList = () => {
       </Container>
     </ListContainer>
   );
+};
+BlockList.propTypes = {
+  setIsDetailView: PropTypes.func.isRequired,
+  setPostId: PropTypes.func.isRequired,
 };
 
 export default BlockList;
@@ -208,6 +218,8 @@ const TitleSection = styled.div`
 `;
 
 const UserId = styled.span`
+  display: flex;
+  align-items: center;
   width: 5.5rem;
   color: ${(props) => props.theme.colors.gray30};
   font-size: 0.875rem;
