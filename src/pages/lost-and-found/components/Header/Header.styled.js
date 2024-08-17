@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderLayout = styled.div`
+export const HeaderLayout = styled.header`
   width: 100%;
   max-width: 768px;
   min-width: 375px;

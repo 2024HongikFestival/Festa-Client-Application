@@ -51,7 +51,7 @@ const LostAndFoundPage = () => {
   };
 
   return (
-    <>
+    <S.Wrapper>
       <Header></Header>
       <S.Main>
         <S.Title>분실물</S.Title>
@@ -93,8 +93,14 @@ const LostAndFoundPage = () => {
           </S.LostAndFoundArticleLayout>
         </S.LostAndFoundSection>
       </S.Main>
+      <S.FooterWrapper>
+        <S.FooterLayout>
+          <S.ManGaeSvg />
+          <S.FooterIntroduction></S.FooterIntroduction>
+        </S.FooterLayout>
+      </S.FooterWrapper>
       <LostBottomSheet isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </>
+    </S.Wrapper>
   );
 };
 

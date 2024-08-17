@@ -1,5 +1,13 @@
 import warningIcon from '@/assets/svgs/lost/error.svg';
+import Mangae from '@/assets/svgs/lost/Mangae.svg?react';
 import styled from 'styled-components';
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const Header = styled.header`
   width: 39.3rem;
@@ -147,4 +155,42 @@ export const LostAndFoundPost = styled.article`
 
   border-radius: 4px;
   background: #d9d9d9;
+`;
+
+export const FooterWrapper = styled.footer`
+  margin-top: 5.6rem;
+
+  display: flex;
+  height: 34.9rem;
+  padding: 2.8rem 2rem 0 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
+`;
+
+export const FooterLayout = styled.div`
+  display: flex;
+  width: 33.5rem;
+  height: 32.1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.6rem;
+`;
+
+export const ManGaeSvg = styled(Mangae)`
+  width: 10.1rem;
+  height: 4.06rem;
+  background-color: black; //임시
+`;
+
+export const FooterIntroduction = styled.div`
+  display: flex;
+  height: 24.4rem;
+  padding-bottom: 6.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8rem;
+  flex-shrink: 0;
+  align-self: stretch;
 `;
