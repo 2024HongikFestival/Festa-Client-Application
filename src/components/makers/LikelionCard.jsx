@@ -80,11 +80,11 @@ const Name = styled.h5`
 
 const Department = styled.div`
   margin-top: 0.8rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.4rem 0.8rem;
   width: auto;
   text-align: center;
   white-space: nowrap;
-  border: 0.1rem solid ${(props) => props.theme.colors.gray50};
+  box-shadow: 0 0 0 0.1rem ${(props) => props.theme.colors.gray50} inset;
   border-radius: 0.4rem;
   display: flex;
   justify-content: center;

@@ -11,6 +11,7 @@ import gaehwaLogo from '@/assets/svgs/makers/gaehwaLogo.svg';
 =======
 import gaehwaBgImg from '@/assets/webps/makers/gaehwaBgImg.webp';
 import gaehwaLogo from '@/assets/webps/makers/gaehwaLogo.webp';
+<<<<<<< HEAD
 >>>>>>> 9f489da ([Fix] svg -> webp로 변경)
 import GaehwaCard from './GaehwaCard';
 import { useTranslation } from 'react-i18next';
@@ -20,6 +21,11 @@ import { contributors } from './GaehwaContributors';
 =======
 import { contributors } from '@/pages/makers/GaehwaContributors';
 >>>>>>> 44f61ef ([Feat] Footer 모든 페이지에 적용)
+=======
+import GaehwaCard from '@/components/makers/GaehwaCard';
+import { useTranslation } from 'react-i18next';
+import { contributors } from '@/constants/makers/GaehwaContributors';
+>>>>>>> 099409f ([Fix] 폴더구조 변경, border, color, instaLink 수정)
 
 const GaehwaPage = () => {
   const { t } = useTranslation();
@@ -62,7 +68,7 @@ const GaehwaPage = () => {
           <img src={gaehwaLogo} alt="gaehwaLogo" />
         </Slogan>
       </WhoWeAreBg>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('gaehwa.presidency')}</RoleName>
         <PresidencyWrapper>
@@ -71,7 +77,7 @@ const GaehwaPage = () => {
           ))}
         </PresidencyWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('gaehwa.executive')}</RoleName>
         <RoleDescription>
@@ -87,7 +93,7 @@ const GaehwaPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('gaehwa.strategicPolicy')}</RoleName>
         <RoleDescription>
@@ -105,7 +111,7 @@ const GaehwaPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('gaehwa.culturalPlanning')}</RoleName>
         <RoleDescription>
@@ -123,7 +129,7 @@ const GaehwaPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('gaehwa.mediaRelations')}</RoleName>
         <RoleDescription>
@@ -141,7 +147,7 @@ const GaehwaPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('gaehwa.finance')}</RoleName>
         <RoleDescription>
@@ -157,7 +163,7 @@ const GaehwaPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('gaehwa.rightsSolidarity')}</RoleName>
         <RoleDescription>
@@ -177,7 +183,7 @@ const GaehwaPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('gaehwa.studentWelfare')}</RoleName>
         <RoleDescription>
@@ -195,7 +201,7 @@ const GaehwaPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('gaehwa.graduationPreparation')}</RoleName>
         <RoleDescription>
@@ -259,7 +265,7 @@ const WhoWeAre = styled.div`
   position: absolute;
   margin-top: -0.3rem;
   ${(props) => props.theme.fontStyles.basic.body1Med};
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.gray20};
 `;
 
 const Slogan = styled.p`
@@ -274,9 +280,9 @@ const Slogan = styled.p`
   }
 `;
 
-const Devider = styled.div`
+const Divider = styled.div`
   width: 100%;
-  padding-bottom: 3.2%;
+  height: 1.2rem;
   background-color: ${(props) => props.theme.colors.gray100};
 `;
 

@@ -189,18 +189,23 @@ const GaehwaBtn = styled.div`
 `;
 
 const DaedongjeContainer = styled.div`
-  margin: 8rem 0 0 2rem;
+  margin: 8rem 2rem 6.4rem;
   display: flex;
   flex-direction: column;
+
   span {
     color: ${(props) => props.theme.colors.white};
     ${(props) => props.theme.fontStyles.basic.captionBold};
+    margin-bottom: 0.8rem;
+  }
+
+  a {
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   img {
-    width: 2.4rem;
-    height: 2.4rem;
-    margin-top: 0.8rem;
-    margin-bottom: 6.4rem;
+    width: 100%;
+    height: 100%;
   }
 `;
