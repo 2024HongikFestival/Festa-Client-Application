@@ -160,24 +160,24 @@ const WhoWeAreBg = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 0;
 `;
 
 const WhoWeAre = styled.div`
-  position: absolute;
   margin-top: -0.3rem;
   ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.gray20};
 `;
 
-const Slogan = styled.p`
-  margin-top: 33.9rem;
+const Slogan = styled.div`
+  margin-top: 5.4rem;
+  margin-bottom: 5.1rem;
   color: ${(props) => props.theme.colors.white};
   font-family: 'Inconsolata', san-serif;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.032rem;
-  margin-bottom: 5.1rem;
 `;
 
 const Divider = styled.div`
