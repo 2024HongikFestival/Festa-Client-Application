@@ -8,7 +8,7 @@ import md6 from '@/assets/webps/wdfMD/frame_2608720.webp';
 import md7 from '@/assets/webps/wdfMD/frame_2608721.webp';
 import md8 from '@/assets/webps/wdfMD/frame_2608701.webp';
 import md9 from '@/assets/webps/wdfMD/frame_2608703.webp';
-import alertImage from '@/assets/webps/wdfMD/error.webp';
+import alertImage from '@/assets/webps/wdfMD/errorerror.webp';
 import Header from '@/components/layouts/Header';
 import Footer from '@/components/layouts/Footer';
 import { useEffect, useState } from 'react';
@@ -84,9 +84,10 @@ const SubDescription = styled.span`
 
 const LocationAlert = styled.div`
   display: flex;
+  align-items: center;
   height: 1.8rem; /* 18px -> 1.8rem */
   color: ${(props) => props.theme.colors.gray60};
-  gap: 0.8rem; /* 8px -> 0.8rem */
+  gap: 0.56rem;
   ${(props) => props.theme.fontStyles.basic.captionMed};
 `;
 
@@ -98,10 +99,9 @@ const CardContainer = styled.div`
 `;
 
 const AlertImage = styled.img`
-  width: 1.536rem; /* 15.36px -> 1.536rem */
-  height: 1.536rem; /* 15.36px -> 1.536rem */
+  width: 1.58rem; /* 15.36px -> 1.536rem */
+  height: 1.58rem; /* 15.36px -> 1.536rem */
   flex-shrink: 0;
-  opacity: 0.5;
 `;
 
 const ProductCard = styled.div`
