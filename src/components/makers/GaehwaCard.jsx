@@ -38,12 +38,12 @@ const Name = styled.h5`
 
 const Department = styled.div`
   margin-top: 0.8rem;
-  padding: ${(props) => (props.name === '맹지수' ? '0.45rem 0.7rem' : '0.3rem 0.7rem')};
+  padding: ${(props) => (props.name === '맹지수' ? '0.55rem 0.8rem' : '0.4rem 0.8rem')};
 
   width: auto;
   text-align: center;
   white-space: nowrap;
-  border: 0.1rem solid ${(props) => props.theme.colors.gray50};
+  box-shadow: 0 0 0 0.1rem ${(props) => props.theme.colors.gray50} inset;
   border-radius: 0.4rem;
   display: flex;
   justify-content: center;

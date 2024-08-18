@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import likelionBgImg from '@/assets/webps/makers/likelionBgImg.webp';
-import LikelionCard from '@/pages/makers/LikelionCard';
+import LikelionCard from '@/components/makers/LikelionCard';
 import { useTranslation } from 'react-i18next';
-import { contributors } from '@/pages/makers/LikelionContributors';
+import { contributors } from '@/constants/makers/LikelionContributors';
 
 const LikelionPage = () => {
   const { t } = useTranslation();
@@ -48,7 +48,7 @@ const LikelionPage = () => {
         </WhoWeAre>
         <Slogan> {t('likelion.slogan')}</Slogan>
       </WhoWeAreBg>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('likelion.pm')}</RoleName>
         <RoleDescription>
@@ -62,7 +62,7 @@ const LikelionPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('likelion.plan')}</RoleName>
         <RoleDescription>
@@ -76,7 +76,7 @@ const LikelionPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('likelion.design')}</RoleName>
         <RoleDescription>
@@ -90,7 +90,7 @@ const LikelionPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('likelion.fe')}</RoleName>
         <RoleDescription>
@@ -106,7 +106,7 @@ const LikelionPage = () => {
           ))}
         </CardWrapper>
       </RoleSection>
-      <Devider />
+      <Divider />
       <RoleSection>
         <RoleName>{t('likelion.be')}</RoleName>
         <RoleDescription>
@@ -166,7 +166,7 @@ const WhoWeAre = styled.div`
   position: absolute;
   margin-top: -0.3rem;
   ${(props) => props.theme.fontStyles.basic.body1Med};
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.gray20};
 `;
 
 const Slogan = styled.p`
@@ -180,9 +180,9 @@ const Slogan = styled.p`
   margin-bottom: 5.1rem;
 `;
 
-const Devider = styled.div`
+const Divider = styled.div`
   width: 100%;
-  padding-bottom: 3.2%;
+  height: 1.2rem;
   background-color: ${(props) => props.theme.colors.gray100};
 `;
 
