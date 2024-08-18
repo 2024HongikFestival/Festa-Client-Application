@@ -262,14 +262,13 @@ const WhoWeAreBg = styled.div`
 `;
 
 const WhoWeAre = styled.div`
-  position: absolute;
   margin-top: -0.3rem;
   ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.gray20};
 `;
 
-const Slogan = styled.p`
-  margin-top: 23.3rem;
+const Slogan = styled.div`
+  margin-top: 6.8rem;
   margin-bottom: 15.3rem;
   width: 6.2rem;
   overflow: hidden;
