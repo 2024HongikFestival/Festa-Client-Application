@@ -155,6 +155,10 @@ export const LostAndFoundPost = styled.article`
 
   border-radius: 4px;
   background: #d9d9d9;
+  background-image: url(${({ $imgSrc }) => $imgSrc});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 `;
 
 export const FooterWrapper = styled.footer`

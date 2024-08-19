@@ -84,11 +84,11 @@ const LostAndFoundPage = () => {
                 {items.length > 0 &&
                   items.map((item, idx) => {
                     return (
-                      //현재 페이지에 렌더링 되어야 하는 item인지 판단하는 로직
-                      idx >= (currentPage - 1) * itemCountPerPage &&
-                      idx < currentPage * itemCountPerPage && (
-                        <S.LostAndFoundPost onClick={handleClickItem(item.lostId)} key={`item_${idx}`} />
-                      )
+                      <S.LostAndFoundPost
+                        onClick={handleClickItem(item.lostId)}
+                        key={`item_${idx}`}
+                        $imgSrc={item.imageUrl}
+                      />
                     );
                   })}
               </S.LostAndFoundArticle>
