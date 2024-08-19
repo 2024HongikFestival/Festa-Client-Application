@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { FaHeart } from 'react-icons/fa6';
 import { axiosInstance } from '@/api/axios';
 import styled from 'styled-components';
+import ContentContainer from '@/components/common/ContentContainer';
 
 export default function BoothPage() {
   const [likes, setLikes] = useState({});
@@ -59,27 +60,61 @@ export default function BoothPage() {
   }, []);
 
   return (
-    <>
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <PageName>Booth Page</PageName>
-        <Btn onClick={() => onClickLikes(1)}>컴퓨터공학과 주점 좋아요 ❤️ {computerLikes}</Btn>
-        <Btn onClick={() => onClickLikes(2)}>경영학과 주점 좋아요 ❤️ {businessLikes}</Btn>
-        <Btn onClick={() => onClickLikes(3)}>수학교육과 주점 좋아요 ❤️ {mathLikes}</Btn>
-        <Btn onClick={() => onClickLikes(4)}>전자전기공학과 주점 좋아요 ❤️ {electronicLikes}</Btn>
-        <Btn onClick={() => onClickLikes(5)}>산업공학과 주점 좋아요 ❤️ {industrialLikes}</Btn>
-      </div>
-    </>
+    <Container>
+      <PageTitle>주점</PageTitle>
+      <ContentContainer>
+        <MapTitle>주점 위치</MapTitle>
+        <MapImage src="src/assets/webps/booth/mapExample.webp" />
+      </ContentContainer>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const PageTitle = styled.div`
+  width: 33.5rem;
+  height: 4.8rem;
+  margin-top: 2.8rem;
+  font-size: 3.2rem;
+  margin-bottom: 2.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const MapContainer = styled.div`
+  width: 33.5rem;
+  height: 34.6rem;
+  border-radius: 1.2rem;
+  box-shadow: 0px 0px 0.8rem 0.8rem rgba(0, 0, 0, 0.12);
+`;
+
+const MapImage = styled.img`
+  width: 33.5rem;
+  height: 25.2rem;
+  margin-bottom: 2.4rem;
+  border-top: 0.1rem solid #bfc2c8;
+  border-bottom: 0.1rem solid #bfc2c8;
+`;
+
+const MapTitle = styled.div`
+  width: 33.5rem;
+  height: 3.2rem;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin-top: 2.4rem;
+  margin-bottom: 1.6rem;
+`;
 
 const PageName = styled.div`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
@@ -97,3 +132,23 @@ const Btn = styled.div`
   align-items: center;
   margin: 1rem;
 `;
+
+{
+  /* <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <PageName>Booth Page</PageName>
+        <Btn onClick={() => onClickLikes(1)}>컴퓨터공학과 주점 좋아요 ❤️ {computerLikes}</Btn>
+        <Btn onClick={() => onClickLikes(2)}>경영학과 주점 좋아요 ❤️ {businessLikes}</Btn>
+        <Btn onClick={() => onClickLikes(3)}>수학교육과 주점 좋아요 ❤️ {mathLikes}</Btn>
+        <Btn onClick={() => onClickLikes(4)}>전자전기공학과 주점 좋아요 ❤️ {electronicLikes}</Btn>
+        <Btn onClick={() => onClickLikes(5)}>산업공학과 주점 좋아요 ❤️ {industrialLikes}</Btn>
+      </div> */
+}
