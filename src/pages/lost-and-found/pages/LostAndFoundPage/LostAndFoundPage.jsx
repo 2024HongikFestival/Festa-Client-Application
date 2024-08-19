@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import * as S from './LostAndFoundPage.styled';
 import LostBottomSheet from './components/LostBottomSheet/LostBottomSheet';
-import Pagination from './components/Pagination/Pagination';
+import NewPagination from './components/NewPagination/NewPagination';
 
 // [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
 // Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
@@ -16,8 +16,11 @@ const LostAndFoundPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalItems, setTotalItems] = useState(0);
   const [items, setItems] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const itemCountPerPage = 10;
+
+  //currentPage가 예상 외의 숫자일 경우 버그 처리
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -31,14 +34,11 @@ const LostAndFoundPage = () => {
       console.log(response);
       setItems(response.data.data.losts);
       setTotalItems(response.data.data.losts.length);
+      setTotalPages(response.data.data.totalPage);
     } catch (error) {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    getItemsApi();
-  }, []);
 
   useEffect(() => {
     setCurrentPage(page);
@@ -46,6 +46,7 @@ const LostAndFoundPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    getItemsApi();
   }, [currentPage]);
 
   const handleClickItem = (lostId) => () => {
@@ -86,12 +87,7 @@ const LostAndFoundPage = () => {
                   );
                 })}
             </S.LostAndFoundArticle>
-            <Pagination
-              totalItems={totalItems}
-              itemCountPerPage={itemCountPerPage}
-              pageToShow={5}
-              currentPage={currentPage}
-            />
+            <NewPagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
           </S.LostAndFoundArticleLayout>
         </S.LostAndFoundSection>
       </S.Main>
