@@ -8,7 +8,7 @@ itemCountPerPage: 페이지마다 보여줄 게시물의 개수
 pageToShow: 한번에 보여줄 페이지의 개수 
 currentPage: 현재 페이지
 */
-const Pagination = ({ totalItems, itemCountPerPage, pageToShow, currentPage }) => {
+const OldPagination = ({ totalItems, itemCountPerPage, pageToShow, currentPage }) => {
   const totalPages = Math.ceil(totalItems / itemCountPerPage);
   const [startPage, setStartPage] = useState(1);
   const noPrev = startPage === 1;
@@ -47,11 +47,11 @@ const Pagination = ({ totalItems, itemCountPerPage, pageToShow, currentPage }) =
   );
 };
 
-Pagination.propTypes = {
+OldPagination.propTypes = {
   totalItems: PropTypes.number.isRequired,
   itemCountPerPage: PropTypes.number.isRequired,
   pageToShow: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
 };
 
-export default Pagination;
+export default OldPagination;
