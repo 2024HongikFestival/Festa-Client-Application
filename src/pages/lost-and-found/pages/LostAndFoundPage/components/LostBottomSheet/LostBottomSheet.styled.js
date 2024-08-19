@@ -1,7 +1,25 @@
 //vite-plugin-svgr 설치 후, vite.config.js에 적절한 설정을 해준 후 아래와 같이 사용.
 import error_kakao from '@/assets/svgs/lost/error_kakao.svg?react';
 import kakaoAuth from '@/assets/webp/lost/kakaoAuth.webp';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const slideUp = keyframes`
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
+const slideDown = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+`;
 
 export const ModalWrapper = styled.div`
   position: fixed;
@@ -35,6 +53,8 @@ export const ModalBox = styled.div`
   box-shadow:
     0px 4px 8px 3px rgba(0, 0, 0, 0.15),
     0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+
+  animation: ${({ $isClosing }) => ($isClosing ? slideDown : slideUp)} 0.3s ease-out forwards;
 `;
 
 export const ModalBoxHeader = styled.div`

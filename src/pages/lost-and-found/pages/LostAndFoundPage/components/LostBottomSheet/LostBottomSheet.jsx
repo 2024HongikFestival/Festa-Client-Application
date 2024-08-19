@@ -1,9 +1,18 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as S from './LostBottomSheet.styled';
 
 const LostBottomSheet = ({ isOpen, setIsOpen }) => {
   const modalRef = useRef(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      setIsOpen(false);
+    }, 300); // 애니메이션 시간과 맞춰줌 (0.3s)
+  };
 
   const useOutsideClick = (ref, onClickOutside) => {
     useEffect(() => {
@@ -21,15 +30,15 @@ const LostBottomSheet = ({ isOpen, setIsOpen }) => {
   };
 
   useOutsideClick(modalRef, () => {
-    if (isOpen) setIsOpen(false);
+    if (isOpen) handleClose();
   });
 
   return (
     isOpen && (
       <S.ModalWrapper>
-        <S.ModalBox ref={modalRef}>
+        <S.ModalBox ref={modalRef} $isClosing={isClosing}>
           <S.ModalBoxHeader>
-            <S.ModalBoxHeaderDragLine onClick={() => setIsOpen(false)} />
+            <S.ModalBoxHeaderDragLine onClick={handleClose} />
           </S.ModalBoxHeader>
           <S.ModalBoxContent>
             <S.ContentNoticeLayout>
