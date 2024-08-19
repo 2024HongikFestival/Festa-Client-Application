@@ -25,8 +25,6 @@ import {
 import { useInterval } from 'react-use';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Header from '@/components/layouts/Header';
-import Footer from '@/components/layouts/Footer';
 import redButtonTwo from '../../../assets/webps/wdTT/RedButton.webp';
 import redfullBtn from '../../../assets/webps/wdTT/timtablefullButtton.webp';
 import DjImg from '../../../assets/webps/wdTT/DjImg.webp';
@@ -133,7 +131,6 @@ const FlameTimeTablePage = () => {
 
   return (
     <TTWrapper>
-      <Header />
       <TTBox>
         <TTTitle>타임테이블</TTTitle>
         <DaysBox>
@@ -206,7 +203,6 @@ const FlameTimeTablePage = () => {
           </NoticeText>
         </NoticeBox>
       </TTBox>
-      <Footer />
     </TTWrapper>
   );
 };

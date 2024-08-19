@@ -7,7 +7,6 @@ import * as S from './LostAndFoundPage.styled';
 const LostAndFoundPage = () => {
   return (
     <>
-      <S.Header></S.Header>
       <S.Main>
         <S.Title>분실물</S.Title>
         <S.ButtonWrapper>
