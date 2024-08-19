@@ -4,7 +4,7 @@ import { adminAxiosInstance } from '@/api/axios';
 import arrowDown from '@/assets/webps/admin/arrow_drop_down.webp';
 import arrowUp from '@/assets/webps/admin/arrow_drop_up.webp';
 import Post from './Post';
-import PropTypes from 'prop-types;';
+import PropTypes from 'prop-types';
 
 const PAGE_SIZE = 12;
 
@@ -56,7 +56,7 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setAllLosts(response.data.data);
+      setAllLosts(response.data.data.losts);
     } catch (error) {
       console.error('Error fetching lost posts:', error.response?.data || error.message);
     }
@@ -191,7 +191,6 @@ const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   align-items: center;
 `;
 
@@ -272,5 +271,5 @@ const LoadMoreButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
   margin-top: 1rem;
-  margin-bottom: 4.813em;
+  margin-bottom: 4.813rem;
 `;

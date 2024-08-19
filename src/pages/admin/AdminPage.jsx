@@ -1,46 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-// import jwtDecode from 'jwt-decode';
-// import { adminAxiosInstance } from '@/api/axios';
 import AdminLogin from './AdminLogin';
 import Post from './Post';
 import BlockList from './BlockList';
 import PostDetail from './PostDetail';
-import Header from '@/components/layouts/Header';
-import { useNavigate } from 'react-router-dom';
 
 const AdminPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeComponent, setActiveComponent] = useState('posts');
   const [isDetailView, setIsDetailView] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
-  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('accessToken');
-  //   if (token && !isTokenExpired(token)) {
-  //     setIsLoggedIn(true);
-  //   } else {
-  //     handleLogout(); // 토큰이 없거나 만료된 경우 로그아웃 처리
-  //   }
-  // }, []);
-
-  // const isTokenExpired = (token) => {
-  //   try {
-  //     const decodedToken = jwtDecode(token);
-  //     return decodedToken.exp < Date.now() / 1000;
-  //   } catch (error) {
-  //     console.error('Token decode error:', error);
-  //     return true;
-  //   }
-  // };
-
-  const handleLogout = () => {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken'); // 리프레시 토큰도 삭제
-    setIsLoggedIn(false);
-    navigate('/admin'); // 로그인 화면으로 리다이렉트
-  };
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   if (!isLoggedIn) {
     return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
@@ -48,7 +24,6 @@ const AdminPage = () => {
 
   return (
     <>
-      <Header />
       <Container>
         {!isDetailView && (
           <SelectBar>
@@ -65,8 +40,8 @@ const AdminPage = () => {
             <PostDetail
               postId={selectedPostId}
               onBack={() => {
-                setIsDetailView(false); // Go back to the post list view
-                setSelectedPostId(null); // Clear the selected post ID
+                setIsDetailView(false);
+                setSelectedPostId(null);
               }}
             />
           ) : (
@@ -77,8 +52,8 @@ const AdminPage = () => {
             <PostDetail
               postId={selectedPostId}
               onBack={() => {
-                setIsDetailView(false); // Go back to the post list view
-                setSelectedPostId(null); // Clear the selected post ID
+                setIsDetailView(false);
+                setSelectedPostId(null);
               }}
             />
           ) : (

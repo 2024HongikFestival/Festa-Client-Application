@@ -29,10 +29,10 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
     setLoading(true);
     try {
       const response = await adminAxiosInstance.get('/losts');
-      setAllLosts(response.data.data);
-      setDisplayedLosts(response.data.data.slice(0, postsPerPage));
-      setLoading(false);
       console.log(response.data.data);
+      setAllLosts(response.data.data.losts);
+      setDisplayedLosts(response.data.data.losts.slice(0, postsPerPage));
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching URL: ', error);
       setLoading(false);
@@ -321,12 +321,12 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   display: flex;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.white};
   justify-content: center;
   width: 20rem;
   height: 5rem;
   box-sizing: border-box;
-  color: black;
+  color: ${(props) => props.theme.colors.black};
   cursor: pointer;
   border-bottom: ${({ border, theme }) => (border ? `0.063rem solid ${theme.colors.gray20}` : 'none')};
   box-sizing: border-box;
@@ -407,7 +407,7 @@ const MoreBtn = styled.div`
   background: url(${morebtn});
   width: 1.5rem;
   height: 1.3rem;
-  z-index: 1000;
+  z-index: 10;
   background-repeat: no-repeat;
   background-size: contain;
 `;
@@ -421,7 +421,7 @@ const OptionsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1001;
+  z-index: 11;
 `;
 
 const OptionButton = styled.button`
@@ -435,7 +435,7 @@ const OptionButton = styled.button`
   color: ${(props) => props.theme.colors.white};
   cursor: pointer;
   text-align: left;
-  z-index: 1001;
+  z-index: 11;
 
   &:hover {
     background-color: ${(props) => props.theme.colors.gray70};
@@ -444,11 +444,9 @@ const OptionButton = styled.button`
 const LoadMoreWrapper = styled.div`
   width: 20rem;
   height: ${(props) => (props.showButton ? '4rem' : '0')};
-  background-color: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.colors.black};
   border: none;
   cursor: ${(props) => (props.showButton ? 'pointer' : 'default')};
-  margin-bottom: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;

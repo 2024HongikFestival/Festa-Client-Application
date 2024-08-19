@@ -35,7 +35,7 @@ const PopupOverlay = styled.div`
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  z-index: 10000;
+  z-index: 1000;
   align-items: center;
 `;
 
@@ -47,7 +47,7 @@ const PopupContainer = styled.div`
   border-radius: 1.25rem;
   width: 18rem;
   text-align: center;
-  z-index: 100001;
+  z-index: 1001;
   gap: 1rem;
 `;
 

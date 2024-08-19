@@ -48,13 +48,13 @@ const AdminLogin = ({ onLoginSuccess }) => {
         <LoginInput type="password" placeholder="PW" value={password} onChange={(e) => setPassword(e.target.value)} />
       </Form>
       <LoginButton onClick={() => adminAccess(username, password)}>Login</LoginButton>
-      {error && <Error>{error}</Error>}
+      {/* {error && <Error>{error}</Error>} */}
     </LoginContainer>
   );
 };
 
 AdminLogin.propTypes = {
-  onLoginSuccess: PropTypes.func.isRequired, // 함수 타입, 필수 prop
+  onLoginSuccess: PropTypes.func.isRequired,
 };
 
 export default AdminLogin;
@@ -86,6 +86,16 @@ const LoginInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #000 !important;
+  }
 `;
 
 const LoginContainer = styled.div`
@@ -112,10 +122,10 @@ const LoginButton = styled.button`
   font-size: 1.125rem;
 `;
 
-const Error = styled.p`
-  color: red;
-  margin-top: 1rem;
-`;
+// const Error = styled.p`
+//   color: red;
+//   margin-top: 1rem;
+// `;
 
 const Form = styled.form`
   display: flex;

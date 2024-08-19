@@ -40,7 +40,7 @@ adminAxiosInstance.interceptors.response.use(
     if (error.response.status === 401) {
       localStorage.removeItem('accessToken');
       alert('인증되지 않은 사용자입니다. 로그인 후 사용가능합니다.');
-      // 어드민 홈으로 이동 (확정 url 나오면 코드 추가 필요)
+      window.location.href = '/admin';
     }
     return Promise.reject(error);
   }
