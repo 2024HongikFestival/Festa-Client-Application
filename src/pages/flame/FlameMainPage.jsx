@@ -1,6 +1,5 @@
 // 와디페 메인 페이지
 // url: /flame
-import Header from '@/components/layouts/Header';
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import FLAME from '@/assets/svgs/FLAME.svg';
@@ -10,17 +9,18 @@ import 'slick-carousel/slick/slick-theme.css';
 import DJ from '@/assets/webps/wdfMain/DJ.webp';
 import speaker from '@/assets/webps/wdfMain/speaker.webp';
 import Insta from '@/assets/webps/wdfMain/insta.webp';
-import footerbg from '@/assets/webps/wdfMain/footerBg.webp';
 
 const FlameMainPage = () => {
   const [selectedDay, setSelectedDay] = useState('day1');
   return (
     <>
-      <Header />
       <Flame>
         <TitleContainer>
           <Title>WOW DJ FESTIVAL</Title>
-          <WDFLogo src={FLAME} alt="flame" />
+          <TitleWrapper>
+            <SubTitle>the</SubTitle>
+            <WDFLogo src={FLAME} alt="flame" />
+          </TitleWrapper>
           <WDFImage src={speaker}></WDFImage>
         </TitleContainer>
         <WDFContainer>
@@ -57,8 +57,6 @@ const FlameMainPage = () => {
           {selectedDay === 'day2' && <Day2Content />}
           {selectedDay === 'day3' && <Day3Content />}
         </DayContent>
-
-        <FooterSection></FooterSection>
       </Flame>
     </>
   );
@@ -203,13 +201,14 @@ const Flame = styled.div`
 `;
 
 const Title = styled.span`
+  ${(props) => props.theme.fontStyles.flame.subHead};
   font-size: 1rem;
   font-weight: 400;
-  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.25);
-  font-family: 'Sandoll Press';
+  text-shadow: 0px 0px 2rem rgba(255, 255, 255, 0.25);
   font-style: normal;
   font-style: italic;
   color: ${(props) => props.theme.colors.gray20};
+  margin-top: 2rem;
 `;
 
 const WDFLogo = styled.img`
@@ -226,6 +225,21 @@ const WDFContainer = styled.div`
   margin-bottom: 3.25rem;
 `;
 
+const SubTitle = styled.span`
+  left: -1.3rem;
+  text-shadow: 0px 0px 1rem rgba(255, 255, 255, 0.25);
+  padding-top: 1rem;
+  position: absolute;
+  ${(props) => props.theme.fontStyles.flame.subHead};
+  font-size: 0.875rem;
+  color: ${(props) => props.theme.colors.gray20};
+`;
+const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+`;
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -317,6 +331,7 @@ const DateButton = styled.button`
 
 const DayContent = styled.div`
   margin-top: 1rem;
+  height: 42.938rem;
 `;
 
 const IntroWrapper = styled.div`
@@ -367,6 +382,11 @@ const ImageContainer = styled.div`
   margin: 0 0.5rem;
   box-sizing: border-box;
   position: relative;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const NavigationBar = styled.div`
@@ -396,7 +416,6 @@ const Content = styled.div`
   max-width: 48rem;
   height: 27.313rem;
   margin-top: 1.75rem;
-  margin-bottom: 2rem;
 `;
 
 const Line = styled.div`
@@ -438,15 +457,4 @@ const DJInsta = styled.img`
   justify-content: flex-end;
   width: 2.4rem;
   height: 2.4rem;
-`;
-
-const FooterSection = styled.div`
-  margin-top: 3.25rem;
-  background-image: url(${footerbg});
-  width: 100%;
-  min-width: 23.438rem;
-  max-width: 48rem;
-  height: 30rem;
-  background-size: cover;
-  background-repeat: no-repeat;
 `;
