@@ -17,6 +17,7 @@ const LostAndFoundPage = () => {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
+  const [itemLostId, setItemLostId] = useState(-1);
 
   const [totalItems, setTotalItems] = useState(0);
   const [items, setItems] = useState([]);
@@ -53,6 +54,7 @@ const LostAndFoundPage = () => {
   const handleClickItem = (lostId) => () => {
     //navigate(`${lostId}`);
     setIsItemModalOpen(true);
+    setItemLostId(lostId);
   };
 
   return (
@@ -103,7 +105,7 @@ const LostAndFoundPage = () => {
         <LostBottomSheet isOpen={isBottomSheetOpen} setIsOpen={setIsBottomSheetOpen} />
       </S.Wrapper>
       <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
-      <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} />
+      <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} lostId={itemLostId} />
     </>
   );
 };

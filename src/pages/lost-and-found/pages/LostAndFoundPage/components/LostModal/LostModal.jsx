@@ -1,4 +1,6 @@
+import axios from 'axios';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import * as S from './LostModal.styled';
 
 const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
@@ -36,16 +38,41 @@ export const LocationModal = ({ isOpen, setIsOpen }) => {
   );
 };
 
-export const ItemModal = ({ isOpen, setIsOpen }) => {
+export const ItemModal = ({ isOpen, setIsOpen, lostId }) => {
+  const [item, setItem] = useState({});
+
+  const getItemApi = async () => {
+    try {
+      const response = await axios.get(`https://api.2024hongikfestival.com/losts/${lostId}`);
+      setItem(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    lostId !== -1 && getItemApi();
+  }, [lostId]);
+
+  const extractDate = (timestamp) => {
+    const date = timestamp.split('T')[0].split('-')[2] + '일';
+    return date;
+  };
+
+  const extractTime = (timestamp) => {
+    const time = timestamp.split('T')[1].slice(0, 5);
+    return time;
+  };
+
   return (
     <LostModal top={'7.9rem'} gap={'7.5rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
       <S.LostItemWrapper>
         <S.LostItemDateBox>
-          <S.LostItemDay>25일</S.LostItemDay>
-          <S.LostItemTime>11:23</S.LostItemTime>
+          <S.LostItemDay>{extractDate(item.createdAt)}</S.LostItemDay>
+          <S.LostItemTime>{extractTime(item.createdAt)}</S.LostItemTime>
         </S.LostItemDateBox>
         <S.LostItemLayout>
-          <S.LostItemImg src />
+          <S.LostItemImg src={item.imageUrl} />
           <S.LostItemContentWrapper>
             <S.LostItemMainContentLayout>
               <S.LostItemMainContentBox>
@@ -53,7 +80,7 @@ export const ItemModal = ({ isOpen, setIsOpen }) => {
                   발견 위치
                   <S.BlueLine />
                 </S.LostItemMainContentLeft>
-                <S.LostItemMainContentRight>학생 회관 앞</S.LostItemMainContentRight>
+                <S.LostItemMainContentRight>{item.foundLocation}</S.LostItemMainContentRight>
               </S.LostItemMainContentBox>
 
               <S.LostItemMainContentBox>
@@ -61,12 +88,10 @@ export const ItemModal = ({ isOpen, setIsOpen }) => {
                   보관 위치
                   <S.BlueLine />
                 </S.LostItemMainContentLeft>
-                <S.LostItemMainContentRight>총학 부스</S.LostItemMainContentRight>
+                <S.LostItemMainContentRight>{item.storageLocation}</S.LostItemMainContentRight>
               </S.LostItemMainContentBox>
             </S.LostItemMainContentLayout>
-            <S.ThreeLineTextContent>
-              엄청 큰 가방 학생회관 앞에서 주웠는데 총학 부스에 맡겼습니다~
-            </S.ThreeLineTextContent>
+            <S.ThreeLineTextContent>{item.content}</S.ThreeLineTextContent>
           </S.LostItemContentWrapper>
         </S.LostItemLayout>
       </S.LostItemWrapper>
@@ -90,4 +115,5 @@ LocationModal.propTypes = {
 ItemModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
+  lostId: PropTypes.number.isRequired,
 };
