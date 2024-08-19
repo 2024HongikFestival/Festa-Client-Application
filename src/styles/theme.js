@@ -21,7 +21,7 @@ const theme = {
   fontStyles: {
     main: {
       headline1: `
-      font-family: 'SCoreDream', sans-serif;
+      font-family: 'SCoreDream', sans-serif;;
       font-size: 3.6rem;
       font-weight: 800;
       font-style: normal;
@@ -29,7 +29,7 @@ const theme = {
       letter-spacing: -0.0036rem;
     `,
       headline2: `
-      font-family: 'SCoreDream', sans-serif;
+      font-family: 'SCoreDream', sans-serif;;
       font-size: 3.2rem;
       font-weight: 800;
       font-style: normal;
@@ -37,7 +37,7 @@ const theme = {
       letter-spacing: -0.0032rem;
     `,
       headline3: `
-      font-family: 'SCoreDream', sans-serif;
+      font-family: 'SCoreDream', sans-serif;;
       font-size: 2.8rem;
       font-weight: 800;
       font-style: normal;
@@ -45,7 +45,7 @@ const theme = {
       letter-spacing: -0.0028rem;
     `,
       headline4: `
-      font-family: 'SCoreDream', sans-serif;
+      font-family: 'SCoreDream', sans-serif;;
       font-size: 2.4rem;
       font-weight: 800;
       font-style: normal;
@@ -53,7 +53,7 @@ const theme = {
       letter-spacing: -0.0024rem;
     `,
       headline5: `
-      font-family: 'SCoreDream', sans-serif;
+      font-family: 'SCoreDream', sans-serif;;
       font-size: 2.4rem;
       font-weight: 700;
       font-style: normal;
@@ -61,7 +61,7 @@ const theme = {
       letter-spacing: -0.0024rem;
     `,
       headline6: `
-      font-family: 'SCoreDream', sans-serif;
+      font-family: 'SCoreDream', sans-serif;;
       font-size: 2rem;
       font-weight: 700;
       font-style: normal;

@@ -1,28 +1,8 @@
-<<<<<<< HEAD
-import styled from 'styled-components';
-import likelionBgImg from '@/static/image/makers/likelionBgImg.svg';
-=======
 import styled, { css } from 'styled-components';
-<<<<<<< HEAD
-import likelionBgImg from '@/assets/svgs/makers/likelionBgImg.svg';
->>>>>>> abea1b2 ([Feat] 짝수, 홀수 따라 grid 변경)
-=======
 import likelionBgImg from '@/assets/webps/makers/likelionBgImg.webp';
-<<<<<<< HEAD
->>>>>>> 9f489da ([Fix] svg -> webp로 변경)
-import LikelionCard from './LikelionCard';
-import { useTranslation } from 'react-i18next';
-<<<<<<< HEAD
-import { contributors } from './LikelionContributors';
-import Footer from '@/components/layouts/Footer';
-=======
-import { contributors } from '@/pages/makers/LikelionContributors';
->>>>>>> 44f61ef ([Feat] Footer 모든 페이지에 적용)
-=======
 import LikelionCard from '@/components/makers/LikelionCard';
 import { useTranslation } from 'react-i18next';
 import { contributors } from '@/constants/makers/LikelionContributors';
->>>>>>> 099409f ([Fix] 폴더구조 변경, border, color, instaLink 수정)
 
 const LikelionPage = () => {
   const { t } = useTranslation();
@@ -33,8 +13,6 @@ const LikelionPage = () => {
   const design = contributorsData.design;
   const frontend = contributorsData.frontend;
   const backend = contributorsData.backend;
-
-  console.log('test', t('makers.likelion.whoWeAre1'));
 
   return (
     <LikelionLayout>

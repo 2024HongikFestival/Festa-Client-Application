@@ -1,15 +1,7 @@
 import styled from 'styled-components';
-<<<<<<< HEAD
-import hiuLogo from '@/static/image/layouts/hiuLogo.svg';
-import hambergerMenu from '@/static/image/layouts/hambergerMenu.svg';
-=======
 import hiuLogo from '@/assets/webps/layouts/hiuLogo.webp';
 import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
-<<<<<<< HEAD
->>>>>>> 9f489da ([Fix] svg -> webp로 변경)
-=======
 import { useNavigate } from 'react-router-dom';
->>>>>>> 1f39290 ([Design] 이전 화면으로 버튼 위치 고정)
 
 export default function Header() {
   const nav = useNavigate();

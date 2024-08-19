@@ -1,31 +1,9 @@
-<<<<<<< HEAD
-import styled from 'styled-components';
-import gaehwaBgImg from '@/static/image/makers/gaehwaBgImg.svg';
-import gaehwaLogo from '@/static/image/makers/gaehwaLogo.svg';
-=======
 import styled, { css } from 'styled-components';
-<<<<<<< HEAD
-import gaehwaBgImg from '@/assets/svgs/makers/gaehwaBgImg.svg';
-import gaehwaLogo from '@/assets/svgs/makers/gaehwaLogo.svg';
->>>>>>> abea1b2 ([Feat] 짝수, 홀수 따라 grid 변경)
-=======
 import gaehwaBgImg from '@/assets/webps/makers/gaehwaBgImg.webp';
 import gaehwaLogo from '@/assets/webps/makers/gaehwaLogo.webp';
-<<<<<<< HEAD
->>>>>>> 9f489da ([Fix] svg -> webp로 변경)
-import GaehwaCard from './GaehwaCard';
-import { useTranslation } from 'react-i18next';
-<<<<<<< HEAD
-import Footer from '@/components/layouts/Footer';
-import { contributors } from './GaehwaContributors';
-=======
-import { contributors } from '@/pages/makers/GaehwaContributors';
->>>>>>> 44f61ef ([Feat] Footer 모든 페이지에 적용)
-=======
 import GaehwaCard from '@/components/makers/GaehwaCard';
 import { useTranslation } from 'react-i18next';
 import { contributors } from '@/constants/makers/GaehwaContributors';
->>>>>>> 099409f ([Fix] 폴더구조 변경, border, color, instaLink 수정)
 
 const GaehwaPage = () => {
   const { t } = useTranslation();

@@ -1,25 +1,9 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-import styled from 'styled-components';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import instaLogo from '@/static/image/layouts/instaLogo.svg';
-=======
-import instaLogo from '@/assets/svgs/layouts/instaLogo.svg';
-=======
-import instaLogo from '@/assets/webps/layouts/instaLogo.webp';
->>>>>>> 9f489da ([Fix] svg -> webp로 변경)
-=======
 import styled, { css } from 'styled-components';
 import instaLogo from '@/assets/webps/layouts/instaLogo.webp';
 import flameFooterBg from '@/assets/webps/layouts/flameFooterBg.webp';
-<<<<<<< HEAD
->>>>>>> fe834e9 ([Feat] flame 푸터 구현)
-=======
 import mangae from '@/assets/webps/layouts/mangae.webp';
->>>>>>> 01a7070 ([Feat] 대동제 Footer 구현)
 import { useTranslation } from 'react-i18next';
->>>>>>> dcc99c9 ([Feat] ko.json로 변환 완료)
 
 export default function Footer() {
   const nav = useNavigate();
