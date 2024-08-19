@@ -17,4 +17,5 @@ const Title = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  ${(props) => props.theme.fontStyles.main.headline2};
 `;

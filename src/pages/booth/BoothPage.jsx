@@ -107,6 +107,7 @@ const MapTitle = styled.div`
   font-size: 2rem;
   margin-top: 2.4rem;
   margin-bottom: 1.6rem;
+  ${(props) => props.theme.fontStyles.main.headline6};
 `;
 
 const PageName = styled.div`

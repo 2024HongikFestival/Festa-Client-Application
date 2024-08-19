@@ -34,6 +34,8 @@ const LikelionPage = () => {
   const frontend = contributorsData.frontend;
   const backend = contributorsData.backend;
 
+  console.log('test', t('makers.likelion.whoWeAre1'));
+
   return (
     <LikelionLayout>
       <LikelionBgImg>
