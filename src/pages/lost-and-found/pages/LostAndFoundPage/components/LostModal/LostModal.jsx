@@ -55,11 +55,13 @@ export const ItemModal = ({ isOpen, setIsOpen, lostId }) => {
   }, [lostId]);
 
   const extractDate = (timestamp) => {
+    if (!timestamp) return '';
     const date = timestamp.split('T')[0].split('-')[2] + '일';
     return date;
   };
 
   const extractTime = (timestamp) => {
+    if (!timestamp) return '';
     const time = timestamp.split('T')[1].slice(0, 5);
     return time;
   };
