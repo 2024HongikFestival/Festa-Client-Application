@@ -7,13 +7,17 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import * as S from './LostAndFoundPage.styled';
 import LostBottomSheet from './components/LostBottomSheet/LostBottomSheet';
+import { ItemModal, LocationModal } from './components/LostModal/LostModal';
 import NewPagination from './components/NewPagination/NewPagination';
 
 // [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
 // Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
 const LostAndFoundPage = () => {
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+  const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
+  const [isItemModalOpen, setIsItemModalOpen] = useState(false);
+
   const [totalItems, setTotalItems] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -54,51 +58,55 @@ const LostAndFoundPage = () => {
   };
 
   return (
-    <S.Wrapper>
-      <Header></Header>
-      <S.Main>
-        <S.Title>분실물</S.Title>
-        <S.ButtonWrapper>
-          <S.AddLostItemButton onClick={() => setIsModalOpen(true)}>분실물 찾아주기 ✋🏻</S.AddLostItemButton>
-          <S.ButtonDetailWrapper>
-            <S.ButtonDetailIcon />
-            <S.ButtonDetailText>
-              전자기기, 카드, 지갑 등은 제보 후&nbsp;
-              <span>
-                <span>분실물 센터</span>에 보관
-              </span>
-              해 주세요
-            </S.ButtonDetailText>
-          </S.ButtonDetailWrapper>
-        </S.ButtonWrapper>
-        <S.LostAndFoundSection>
-          <S.LostAndFoundSectionTitle>분실물 찾아가기 🧸</S.LostAndFoundSectionTitle>
-          <S.LostAndFoundArticleLayout>
-            {/*<DropDown></DropDown> */}
-            <S.LostAndFoundArticle>
-              {items.length > 0 &&
-                items.map((item, idx) => {
-                  return (
-                    //현재 페이지에 렌더링 되어야 하는 item인지 판단하는 로직
-                    idx >= (currentPage - 1) * itemCountPerPage &&
-                    idx < currentPage * itemCountPerPage && (
-                      <S.LostAndFoundPost onClick={handleClickItem(item.lostId)} key={`item_${idx}`} />
-                    )
-                  );
-                })}
-            </S.LostAndFoundArticle>
-            <NewPagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-          </S.LostAndFoundArticleLayout>
-        </S.LostAndFoundSection>
-      </S.Main>
-      <S.FooterWrapper>
-        <S.FooterLayout>
-          <S.ManGaeSvg />
-          <S.FooterIntroduction></S.FooterIntroduction>
-        </S.FooterLayout>
-      </S.FooterWrapper>
-      <LostBottomSheet isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </S.Wrapper>
+    <>
+      <S.Wrapper>
+        <Header></Header>
+        <S.Main>
+          <S.Title>분실물</S.Title>
+          <S.ButtonWrapper>
+            <S.AddLostItemButton onClick={() => setIsBottomSheetOpen(true)}>분실물 찾아주기 ✋🏻</S.AddLostItemButton>
+            <S.ButtonDetailWrapper>
+              <S.ButtonDetailIcon />
+              <S.ButtonDetailText>
+                전자기기, 카드, 지갑 등은 제보 후&nbsp;
+                <span>
+                  <span onClick={() => setIsLocationModalOpen(true)}>분실물 센터</span>에 보관
+                </span>
+                해 주세요
+              </S.ButtonDetailText>
+            </S.ButtonDetailWrapper>
+          </S.ButtonWrapper>
+          <S.LostAndFoundSection>
+            <S.LostAndFoundSectionTitle>분실물 찾아가기 🧸</S.LostAndFoundSectionTitle>
+            <S.LostAndFoundArticleLayout>
+              {/*<DropDown></DropDown> */}
+              <S.LostAndFoundArticle>
+                {items.length > 0 &&
+                  items.map((item, idx) => {
+                    return (
+                      //현재 페이지에 렌더링 되어야 하는 item인지 판단하는 로직
+                      idx >= (currentPage - 1) * itemCountPerPage &&
+                      idx < currentPage * itemCountPerPage && (
+                        <S.LostAndFoundPost onClick={handleClickItem(item.lostId)} key={`item_${idx}`} />
+                      )
+                    );
+                  })}
+              </S.LostAndFoundArticle>
+              <NewPagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            </S.LostAndFoundArticleLayout>
+          </S.LostAndFoundSection>
+        </S.Main>
+        <S.FooterWrapper>
+          <S.FooterLayout>
+            <S.ManGaeSvg />
+            <S.FooterIntroduction></S.FooterIntroduction>
+          </S.FooterLayout>
+        </S.FooterWrapper>
+        <LostBottomSheet isOpen={isBottomSheetOpen} setIsOpen={setIsBottomSheetOpen} />
+      </S.Wrapper>
+      <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
+      <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} />
+    </>
   );
 };
 
