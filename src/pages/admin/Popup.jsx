@@ -42,7 +42,7 @@ const PopupOverlay = styled.div`
 const PopupContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background: white;
+  background: ${(props) => props.theme.colors.white};
   padding: 2.5rem 1.5rem 1.5rem 1.5rem;
   border-radius: 1.25rem;
   width: 18rem;

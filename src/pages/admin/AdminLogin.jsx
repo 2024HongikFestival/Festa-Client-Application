@@ -43,12 +43,12 @@ const AdminLogin = ({ onLoginSuccess }) => {
   return (
     <LoginContainer>
       <Title>화양연화 관리자페이지</Title>
-      {error && <Error>{error}</Error>}
       <Form>
         <LoginInput type="text" placeholder="ID" value={username} onChange={(e) => setUsername(e.target.value)} />
         <LoginInput type="password" placeholder="PW" value={password} onChange={(e) => setPassword(e.target.value)} />
       </Form>
       <LoginButton onClick={() => adminAccess(username, password)}>Login</LoginButton>
+      {error && <Error>{error}</Error>}
     </LoginContainer>
   );
 };
@@ -107,7 +107,7 @@ const LoginButton = styled.button`
   border-radius: 1.25rem;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
   font-size: 1.125rem;
 `;
