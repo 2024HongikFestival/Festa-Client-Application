@@ -9,8 +9,6 @@ import md7 from '@/assets/webps/wdfMD/frame_2608721.webp';
 import md8 from '@/assets/webps/wdfMD/frame_2608701.webp';
 import md9 from '@/assets/webps/wdfMD/frame_2608703.webp';
 import alertImage from '@/assets/webps/wdfMD/error.webp';
-import Header from '@/components/layouts/Header';
-import Footer from '@/components/layouts/Footer';
 import { useEffect, useState } from 'react';
 import productsData from '@/assets/static/wdfMD/data.json';
 
@@ -60,19 +58,16 @@ const LocationDescription = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.4rem; /* 4px -> 0.4rem */
   align-self: stretch;
   background-color: ${(props) => props.theme.colors.gray90};
   padding: 0.8rem; /* 8px -> 0.8rem */
   color: ${(props) => props.theme.colors.gray10};
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  letter-spacing: -0.1rem;
 `;
 
 const MainDescription = styled.span`
   color: ${(props) => props.theme.colors.gray10};
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  letter-spacing: -0.1rem;
 `;
 
 const Highlight = styled.span`
@@ -82,15 +77,14 @@ const Highlight = styled.span`
 const SubDescription = styled.span`
   color: ${(props) => props.theme.colors.gray20};
   ${(props) => props.theme.fontStyles.basic.body1Med};
-  letter-spacing: -0.1rem;
 `;
 
 const LocationAlert = styled.div`
   display: flex;
   height: 1.8rem; /* 18px -> 1.8rem */
   color: ${(props) => props.theme.colors.gray60};
-  gap: 0.8rem; /* 8px -> 0.8rem */
-  ${(props) => props.theme.fontStyles.basic.captionMed}
+  gap: 0.8rem;
+  ${(props) => props.theme.fontStyles.basic.captionMed};
 `;
 
 const AlertImage = styled.img`
@@ -221,7 +215,6 @@ const FlameMdPage = () => {
 
   return (
     <>
-      <Header />
       <MdProductsContainer>
         <ProductsSection>
           <Title>MD 상품</Title>
@@ -268,7 +261,6 @@ const FlameMdPage = () => {
           </NoticeList>
         </NoticeContainer>
       </MdProductsContainer>
-      <Footer />
     </>
   );
 };
