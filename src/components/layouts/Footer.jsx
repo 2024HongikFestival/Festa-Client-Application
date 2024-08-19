@@ -63,7 +63,7 @@ export default function Footer() {
     <FooterLayout path={location.pathname}>
       {showPreviousBtn && (
         <PreviousBtn onClick={handleGoBack}>
-          <span>{t('footer.prev')}</span>
+          <span>{t('layouts.footer.prev')}</span>
         </PreviousBtn>
       )}
       {daedongje && (
@@ -72,13 +72,13 @@ export default function Footer() {
         </Mangae>
       )}
       <LikelionBtn path={location.pathname} onClick={() => handleNavigation('/likelion')}>
-        <span>{t('footer.toLikelion')}</span>
+        <span>{t('layouts.footer.toLikelion')}</span>
       </LikelionBtn>
       <GaehwaBtn onClick={() => handleNavigation('/gaehwa')}>
-        <span>{t('footer.toGaehwa')}</span>
+        <span>{t('layouts.footer.toGaehwa')}</span>
       </GaehwaBtn>
       <DaedongjeContainer>
-        <span>{t('footer.toDaedongjeInsta')}</span>
+        <span>{t('layouts.footer.toDaedongjeInsta')}</span>
         <a href="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
           <img src={instaLogo} alt="instaLogo" />
         </a>
@@ -89,7 +89,7 @@ export default function Footer() {
 
 const FooterLayout = styled.div`
   width: 100%;
-  height: auto;
+  /* height: auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;

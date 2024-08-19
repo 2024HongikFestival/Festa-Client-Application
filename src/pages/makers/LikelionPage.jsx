@@ -38,43 +38,43 @@ const LikelionPage = () => {
     <LikelionLayout>
       <LikelionBgImg>
         <Title>
-          {t('likelion.title1')}
+          {t('makers.likelion.title1')}
           <br />
-          {t('likelion.title2')}
+          {t('makers.likelion.title2')}
         </Title>
       </LikelionBgImg>
       <WhoWeAreBg>
         <WhoWeAre>
-          {t('likelion.whoWeAre1')}
+          {t('makers.likelion.whoWeAre1')}
           <br />
-          {t('likelion.whoWeAre2')}
-          <br />
-          <br />
-          {t('likelion.whoWeAre3')}
-          <br />
-          {t('likelion.whoWeAre4')}
+          {t('makers.likelion.whoWeAre2')}
           <br />
           <br />
-          {t('likelion.whoWeAre5')}
+          {t('makers.likelion.whoWeAre3')}
           <br />
-          {t('likelion.whoWeAre6')}
-          <br />
-          {t('likelion.whoWeAre7')}
-          <br />
-          {t('likelion.whoWeAre8')}
+          {t('makers.likelion.whoWeAre4')}
           <br />
           <br />
-          {t('likelion.whoWeAre9')}
+          {t('makers.likelion.whoWeAre5')}
+          <br />
+          {t('makers.likelion.whoWeAre6')}
+          <br />
+          {t('makers.likelion.whoWeAre7')}
+          <br />
+          {t('makers.likelion.whoWeAre8')}
+          <br />
+          <br />
+          {t('makers.likelion.whoWeAre9')}
         </WhoWeAre>
-        <Slogan> {t('likelion.slogan')}</Slogan>
+        <Slogan> {t('makers.likelion.slogan')}</Slogan>
       </WhoWeAreBg>
       <Divider />
       <RoleSection>
-        <RoleName>{t('likelion.pm')}</RoleName>
+        <RoleName>{t('makers.likelion.pm')}</RoleName>
         <RoleDescription>
-          {t('likelion.pmDescription1')}
+          {t('makers.likelion.pmDescription1')}
           <br />
-          {t('likelion.pmDescription2')}
+          {t('makers.likelion.pmDescription2')}
         </RoleDescription>
         <CardWrapper $cardCount={pm.length}>
           {contributorsData.pm.map((contributor, index) => (
@@ -84,11 +84,11 @@ const LikelionPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('likelion.plan')}</RoleName>
+        <RoleName>{t('makers.likelion.plan')}</RoleName>
         <RoleDescription>
-          {t('likelion.planDescription1')}
+          {t('makers.likelion.planDescription1')}
           <br />
-          {t('likelion.planDescription2')}
+          {t('makers.likelion.planDescription2')}
         </RoleDescription>
         <CardWrapper $cardCount={plan.length}>
           {contributorsData.plan.map((contributor, index) => (
@@ -98,11 +98,11 @@ const LikelionPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('likelion.design')}</RoleName>
+        <RoleName>{t('makers.likelion.design')}</RoleName>
         <RoleDescription>
-          {t('likelion.designDescription1')}
+          {t('makers.likelion.designDescription1')}
           <br />
-          {t('likelion.designDescription2')}
+          {t('makers.likelion.designDescription2')}
         </RoleDescription>
         <CardWrapper $cardCount={design.length}>
           {contributorsData.design.map((contributor, index) => (
@@ -112,13 +112,13 @@ const LikelionPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('likelion.fe')}</RoleName>
+        <RoleName>{t('makers.likelion.fe')}</RoleName>
         <RoleDescription>
-          {t('likelion.feDescription1')}
+          {t('makers.likelion.feDescription1')}
           <br />
-          {t('likelion.feDescription2')}
+          {t('makers.likelion.feDescription2')}
           <br />
-          {t('likelion.feDescription3')}
+          {t('makers.likelion.feDescription3')}
         </RoleDescription>
         <CardWrapper $cardCount={frontend.length}>
           {contributorsData.frontend.map((contributor, index) => (
@@ -128,11 +128,11 @@ const LikelionPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('likelion.be')}</RoleName>
+        <RoleName>{t('makers.likelion.be')}</RoleName>
         <RoleDescription>
-          {t('likelion.beDescription1')}
+          {t('makers.likelion.beDescription1')}
           <br />
-          {t('likelion.beDescription2')}
+          {t('makers.likelion.beDescription2')}
         </RoleDescription>
         <CardWrapper $cardCount={backend.length}>
           {contributorsData.backend.map((contributor, index) => (
@@ -148,7 +148,7 @@ export default LikelionPage;
 
 const LikelionLayout = styled.div`
   width: 100%;
-  height: auto;
+  /* height: auto; */
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.makersBackgroundColor};
@@ -208,7 +208,7 @@ const Divider = styled.div`
 
 const RoleSection = styled.section`
   width: 100%;
-  height: auto;
+  /* height: auto; */
   display: flex;
   flex-direction: column;
   align-items: center;

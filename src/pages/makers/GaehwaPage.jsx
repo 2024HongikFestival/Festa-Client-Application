@@ -44,25 +44,25 @@ const GaehwaPage = () => {
     <GaehwaLayout>
       <GaehwaBgImg>
         <Title>
-          {t('gaehwa.title1')}
+          {t('makers.gaehwa.title1')}
           <br />
-          {t('gaehwa.title2')}
+          {t('makers.gaehwa.title2')}
         </Title>
       </GaehwaBgImg>
       <WhoWeAreBg>
         <WhoWeAre>
-          {t('gaehwa.whoWeAre1')}
+          {t('makers.gaehwa.whoWeAre1')}
           <br />
-          {t('gaehwa.whoWeAre2')}
+          {t('makers.gaehwa.whoWeAre2')}
           <br />
-          {t('gaehwa.whoWeAre3')}
+          {t('makers.gaehwa.whoWeAre3')}
           <br />
           <br />
-          {t('gaehwa.whoWeAre4')}
+          {t('makers.gaehwa.whoWeAre4')}
           <br />
-          {t('gaehwa.whoWeAre5')}
+          {t('makers.gaehwa.whoWeAre5')}
           <br />
-          {t('gaehwa.whoWeAre6')}
+          {t('makers.gaehwa.whoWeAre6')}
         </WhoWeAre>
         <Slogan>
           <img src={gaehwaLogo} alt="gaehwaLogo" />
@@ -70,7 +70,7 @@ const GaehwaPage = () => {
       </WhoWeAreBg>
       <Divider />
       <RoleSection>
-        <RoleName>{t('gaehwa.presidency')}</RoleName>
+        <RoleName>{t('makers.gaehwa.presidency')}</RoleName>
         <PresidencyWrapper>
           {contributorsData.presidency.map((contributor, index) => (
             <GaehwaCard key={index} {...contributor} />
@@ -79,13 +79,13 @@ const GaehwaPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('gaehwa.executive')}</RoleName>
+        <RoleName>{t('makers.gaehwa.executive')}</RoleName>
         <RoleDescription>
-          {t('gaehwa.executiveDescription1')}
+          {t('makers.gaehwa.executiveDescription1')}
           <br />
-          {t('gaehwa.executiveDescription2')}
+          {t('makers.gaehwa.executiveDescription2')}
           <br />
-          {t('gaehwa.executiveDescription3')}
+          {t('makers.gaehwa.executiveDescription3')}
         </RoleDescription>
         <CardWrapper $cardCount={executive.length}>
           {contributorsData.executive.map((contributor, index) => (
@@ -95,15 +95,15 @@ const GaehwaPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('gaehwa.strategicPolicy')}</RoleName>
+        <RoleName>{t('makers.gaehwa.strategicPolicy')}</RoleName>
         <RoleDescription>
-          {t('gaehwa.strategicPolicyDescription1')}
+          {t('makers.gaehwa.strategicPolicyDescription1')}
           <br />
-          {t('gaehwa.strategicPolicyDescription2')}
+          {t('makers.gaehwa.strategicPolicyDescription2')}
           <br />
-          {t('gaehwa.strategicPolicyDescription3')}
+          {t('makers.gaehwa.strategicPolicyDescription3')}
           <br />
-          {t('gaehwa.strategicPolicyDescription4')}
+          {t('makers.gaehwa.strategicPolicyDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={strategicPolicy.length}>
           {contributorsData.strategicPolicy.map((contributor, index) => (
@@ -113,15 +113,15 @@ const GaehwaPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('gaehwa.culturalPlanning')}</RoleName>
+        <RoleName>{t('makers.gaehwa.culturalPlanning')}</RoleName>
         <RoleDescription>
-          {t('gaehwa.culturalPlanningDescription1')}
+          {t('makers.gaehwa.culturalPlanningDescription1')}
           <br />
-          {t('gaehwa.culturalPlanningDescription2')}
+          {t('makers.gaehwa.culturalPlanningDescription2')}
           <br />
-          {t('gaehwa.culturalPlanningDescription3')}
+          {t('makers.gaehwa.culturalPlanningDescription3')}
           <br />
-          {t('gaehwa.culturalPlanningDescription4')}
+          {t('makers.gaehwa.culturalPlanningDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={culturalPlanning.length}>
           {contributorsData.culturalPlanning.map((contributor, index) => (
@@ -131,15 +131,15 @@ const GaehwaPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('gaehwa.mediaRelations')}</RoleName>
+        <RoleName>{t('makers.gaehwa.mediaRelations')}</RoleName>
         <RoleDescription>
-          {t('gaehwa.mediaRelationsDescription1')}
+          {t('makers.gaehwa.mediaRelationsDescription1')}
           <br />
-          {t('gaehwa.mediaRelationsDescription2')}
+          {t('makers.gaehwa.mediaRelationsDescription2')}
           <br />
-          {t('gaehwa.mediaRelationsDescription3')}
+          {t('makers.gaehwa.mediaRelationsDescription3')}
           <br />
-          {t('gaehwa.mediaRelationsDescription4')}
+          {t('makers.gaehwa.mediaRelationsDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={mediaRelations.length}>
           {contributorsData.mediaRelations.map((contributor, index) => (
@@ -149,13 +149,13 @@ const GaehwaPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('gaehwa.finance')}</RoleName>
+        <RoleName>{t('makers.gaehwa.finance')}</RoleName>
         <RoleDescription>
-          {t('gaehwa.financeDescription1')}
+          {t('makers.gaehwa.financeDescription1')}
           <br />
-          {t('gaehwa.financeDescription2')}
+          {t('makers.gaehwa.financeDescription2')}
           <br />
-          {t('gaehwa.financeDescription3')}
+          {t('makers.gaehwa.financeDescription3')}
         </RoleDescription>
         <CardWrapper $cardCount={finance.length}>
           {contributorsData.finance.map((contributor, index) => (
@@ -165,17 +165,17 @@ const GaehwaPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('gaehwa.rightsSolidarity')}</RoleName>
+        <RoleName>{t('makers.gaehwa.rightsSolidarity')}</RoleName>
         <RoleDescription>
-          {t('gaehwa.rightsSolidarityDescription1')}
+          {t('makers.gaehwa.rightsSolidarityDescription1')}
           <br />
-          {t('gaehwa.rightsSolidarityDescription2')}
+          {t('makers.gaehwa.rightsSolidarityDescription2')}
           <br />
-          {t('gaehwa.rightsSolidarityDescription3')}
+          {t('makers.gaehwa.rightsSolidarityDescription3')}
           <br />
-          {t('gaehwa.rightsSolidarityDescription4')}
+          {t('makers.gaehwa.rightsSolidarityDescription4')}
           <br />
-          {t('gaehwa.rightsSolidarityDescription5')}
+          {t('makers.gaehwa.rightsSolidarityDescription5')}
         </RoleDescription>
         <CardWrapper $cardCount={rightsSolidarity.length}>
           {contributorsData.rightsSolidarity.map((contributor, index) => (
@@ -185,15 +185,15 @@ const GaehwaPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('gaehwa.studentWelfare')}</RoleName>
+        <RoleName>{t('makers.gaehwa.studentWelfare')}</RoleName>
         <RoleDescription>
-          {t('gaehwa.studentWelfareDescription1')}
+          {t('makers.gaehwa.studentWelfareDescription1')}
           <br />
-          {t('gaehwa.studentWelfareDescription2')}
+          {t('makers.gaehwa.studentWelfareDescription2')}
           <br />
-          {t('gaehwa.studentWelfareDescription3')}
+          {t('makers.gaehwa.studentWelfareDescription3')}
           <br />
-          {t('gaehwa.studentWelfareDescription4')}
+          {t('makers.gaehwa.studentWelfareDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={studentWelfare.length}>
           {contributorsData.studentWelfare.map((contributor, index) => (
@@ -203,15 +203,15 @@ const GaehwaPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('gaehwa.graduationPreparation')}</RoleName>
+        <RoleName>{t('makers.gaehwa.graduationPreparation')}</RoleName>
         <RoleDescription>
-          {t('gaehwa.graduationPreparationDescription1')}
+          {t('makers.gaehwa.graduationPreparationDescription1')}
           <br />
-          {t('gaehwa.graduationPreparationDescription2')}
+          {t('makers.gaehwa.graduationPreparationDescription2')}
           <br />
-          {t('gaehwa.graduationPreparationDescription3')}
+          {t('makers.gaehwa.graduationPreparationDescription3')}
           <br />
-          {t('gaehwa.graduationPreparationDescription4')}
+          {t('makers.gaehwa.graduationPreparationDescription4')}
         </RoleDescription>
         <CardWrapper $cardCount={graduationPreparation.length}>
           {contributorsData.graduationPreparation.map((contributor, index) => (
