@@ -4,6 +4,8 @@ import { FaHeart } from 'react-icons/fa6';
 import { axiosInstance } from '@/api/axios';
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
+import PageTitle from '@/components/common/PageTitle';
+import { useTranslation } from 'react-i18next';
 
 export default function BoothPage() {
   const [likes, setLikes] = useState({});
@@ -12,6 +14,8 @@ export default function BoothPage() {
   const [electronicLikes, setElectronicLikes] = useState(0);
   const [industrialLikes, setIndustrialLikes] = useState(0);
   const [mathLikes, setMathLikes] = useState(0);
+
+  const { t, i18n } = useTranslation();
 
   const sseUrl = import.meta.env.VITE_SSE_URL;
 
@@ -61,7 +65,7 @@ export default function BoothPage() {
 
   return (
     <Container>
-      <PageTitle>주점</PageTitle>
+      <PageTitle title={'주점'}>주점</PageTitle>
       <ContentContainer>
         <MapTitle>주점 위치</MapTitle>
         <MapImage src="src/assets/webps/booth/mapExample.webp" />
@@ -77,17 +81,6 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-`;
-
-const PageTitle = styled.div`
-  width: 33.5rem;
-  height: 4.8rem;
-  margin-top: 2.8rem;
-  font-size: 3.2rem;
-  margin-bottom: 2.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const MapContainer = styled.div`
