@@ -6,13 +6,17 @@ const NewPagination = ({ totalPages, currentPage, setCurrentPage }) => {
   const navigate = useNavigate();
 
   const handleClickBack = () => {
-    currentPage > 1 && navigate(`?page=${currentPage - 1}`);
-    setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      navigate(`?page=${currentPage - 1}`);
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   const handleClickFront = () => {
-    currentPage < totalPages && navigate(`?page=${currentPage + 1}`);
-    setCurrentPage(currentPage + 1);
+    if (currentPage < totalPages) {
+      navigate(`?page=${currentPage + 1}`);
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   return (
