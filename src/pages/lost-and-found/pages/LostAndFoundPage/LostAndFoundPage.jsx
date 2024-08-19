@@ -26,9 +26,11 @@ const LostAndFoundPage = () => {
   const getItemsApi = async () => {
     try {
       //전체 데이터를 받고 싶다면 params 안 넘겨도 됨 - 필터링 구현 때 로직 구체화하기
-      const response = await axios.get('https://api.2024hongikfestival.com/losts', { params: { date: '2024-08-14' } });
-      setItems(response.data.data);
-      setTotalItems(response.data.data.length);
+      // const response = await axios.get('https://api.2024hongikfestival.com/losts', { params: { date: '2024-08-14' } });
+      const response = await axios.get('https://api.2024hongikfestival.com/losts', { params: { page: page } });
+      console.log(response);
+      setItems(response.data.data.losts);
+      setTotalItems(response.data.data.losts.length);
     } catch (error) {
       console.error(error);
     }
