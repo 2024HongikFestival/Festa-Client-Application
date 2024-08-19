@@ -230,7 +230,7 @@ const Value = styled.span`
 `;
 
 const BackButton = styled.button`
-  margin-top: 5.375rem;
+  margin-top: 3.375rem;
   margin-bottom: 4.938rem;
   display: flex;
   align-items: center;

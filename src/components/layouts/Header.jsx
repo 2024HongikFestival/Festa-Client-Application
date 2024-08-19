@@ -73,19 +73,6 @@ export default function Header() {
   );
 }
 
-CommonMenuBar.propTypes = {
-  closeMenu: PropTypes.func.isRequired, // closeMenu prop 추가
-};
-
-AdminMenuBar.propTypes = {
-  nav: PropTypes.func.isRequired,
-  handleCancelLogout: PropTypes.func.isRequired,
-  handleConfirmLogout: PropTypes.func.isRequired,
-  showLogoutPopup: PropTypes.bool.isRequired,
-  setShowLogoutPopup: PropTypes.func.isRequired,
-  closeMenu: PropTypes.func.isRequired,
-};
-
 const AdminMenuBar = ({
   //어드민 페이지 메뉴바
   nav,
@@ -139,6 +126,19 @@ const CommonMenuBar = () => (
     </ul>
   </MenuBar>
 );
+
+CommonMenuBar.propTypes = {
+  closeMenu: PropTypes.func.isRequired, // closeMenu prop 추가
+};
+
+AdminMenuBar.propTypes = {
+  nav: PropTypes.func.isRequired,
+  handleCancelLogout: PropTypes.func.isRequired,
+  handleConfirmLogout: PropTypes.func.isRequired,
+  showLogoutPopup: PropTypes.bool.isRequired,
+  setShowLogoutPopup: PropTypes.func.isRequired,
+  closeMenu: PropTypes.func.isRequired,
+};
 
 const HeaderLayout = styled.div`
   width: 100%;
