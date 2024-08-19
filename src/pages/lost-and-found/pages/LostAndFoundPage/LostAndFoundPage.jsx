@@ -49,7 +49,6 @@ const LostAndFoundPage = () => {
   }, [page]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     getItemsApi();
   }, [currentPage]);
 
