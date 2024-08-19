@@ -3,5 +3,337 @@
   "goodbye": "안녕히 계세요!",
   "main": {
     "sorry": "ㅈㅅ ㅋㅋ"
+  },
+  "layouts": {
+    "footer": {
+      "prev": "이전 화면으로",
+      "toLikelion": "제작 멋쟁이사자처럼 >",
+      "toGaehwa": "총학생회 개화 ; 開花 >",
+      "toDaedongjeInsta": "대동제 채널 바로가기"
+    }
+  },
+  "makers": {
+    "likelion": {
+      "title1": "홍익대학교",
+      "title2": "멋쟁이 사자처럼",
+      "whoWeAre1": "'누구나 프로그래밍 기초 지식을 배워",
+      "whoWeAre2": "자신만의 웹서비스를 만들어 낼 수 있다!'",
+      "whoWeAre3": "멋쟁이사자처럼의 궁극적인 목표는",
+      "whoWeAre4": "모두에게 열린 배움의 기회입니다.",
+      "whoWeAre5": "홍익대학교 멋쟁이사자처럼 12기 구성원들이",
+      "whoWeAre6": "2024 대동제 [화양연화; 만개] 사이트의",
+      "whoWeAre7": "기획, 디자인, 개발을 주도했습니다.",
+      "whoWeAre8": "더 즐거운 축제가 될 수 있도록,",
+      "whoWeAre9": "그 찬란한 무대에 여러분을 초대합니다!",
+      "slogan": "# Possibility to Reality",
+      "pm": "총괄",
+      "pmDescription1": "프로젝트의 계획, 실행, 관리를 담당하며,",
+      "pmDescription2": "팀을 이끌어 목표 달성과 일정 준수를 책임집니다.",
+      "plan": "기획",
+      "planDescription1": "사용자 경험을 바탕으로 서비스를 기획하여",
+      "planDescription2": "사용자가 만족할 수 있는 서비스를 제공합니다.",
+      "design": "디자인",
+      "designDescription1": "사용자가 원하는 정보를 쉽게 얻을 수 있도록",
+      "designDescription2": "화면의 디자인을 담당합니다.",
+      "fe": "프론트엔드",
+      "feDescription1": "사용자와 가장 밀접하게 맞닿는",
+      "feDescription2": "서비스의 인터페이스를 구현하여,",
+      "feDescription3": "최적의 사용자 경험을 제공합니다.",
+      "be": "백엔드",
+      "beDescription1": "눈에 보이지 않는 비지니스 로직을 담당하며",
+      "beDescription2": "서비스가 원활히 동작할 수 있도록 뒷받침합니다."
+    },
+    "likelionContributors": {
+      "pm": [
+        {
+          "name": "장윤영",
+          "department": "컴퓨터공학과 21",
+          "ment": "🎁 링@크 열고 행운받기 ↓"
+        }
+      ],
+      "plan": [
+        {
+          "name": "김소영",
+          "department": "경영학과 23",
+          "ment": "🦆 멋사 업고 튀어"
+        },
+        {
+          "name": "진예원",
+          "department": "경영학과 21",
+          "ment": "🐥 챗지피티 기획해줘~"
+        }
+      ],
+      "design": [
+        {
+          "name": "박소은",
+          "department": "산업디자인학과 19",
+          "ment": "🦄 디자인팀짱!"
+        },
+        {
+          "name": "박하경",
+          "department": "시각디자인학과 23",
+          "ment": "🌱 짱머싯는 디쟌팀의 막내"
+        },
+        {
+          "name": "이나윤",
+          "department": "산업디자인학과 19",
+          "ment": "😼 홍익대학교 파이팅~!"
+        }
+      ],
+      "frontend": [
+        {
+          "name": "서가영",
+          "department": "컴퓨터공학과 21",
+          "ment": "👽 축제는 다가와 아오에"
+        },
+        {
+          "name": "공준혁",
+          "department": "컴퓨터공학과 19",
+          "ment": "✨ 졸려요 !"
+        },
+        {
+          "name": "김동욱",
+          "department": "컴퓨터공학과 22",
+          "ment": "🎸 잔나비 보고싶어요"
+        },
+        {
+          "name": "심수연",
+          "department": "컴퓨터공학과 20",
+          "ment": "💦 와디페 재밌겠다 ㅋㅋ"
+        },
+        {
+          "name": "원윤서",
+          "department": "컴퓨터공학과 21",
+          "ment": "👩🏻‍💻🔥"
+        },
+        {
+          "name": "원채영",
+          "department": "캠퍼스자율전공 22",
+          "ment": "🫧 무아지경으로 즐겨보아요~"
+        },
+        {
+          "name": "최정인",
+          "department": "컴퓨터공학과 22",
+          "ment": "🍀 와 축제다!"
+        }
+      ],
+      "backend": [
+        {
+          "name": "손지석",
+          "department": "컴퓨터공학과 20",
+          "ment": "🛜 튼튼한 서버, 즐거운 축제."
+        },
+        {
+          "name": "김민우",
+          "department": "컴퓨터공학과 19",
+          "ment": "🫡 축제 재밌게 즐겨봅시다~!"
+        },
+        {
+          "name": "김혁진",
+          "department": "컴퓨터공학과 17",
+          "ment": "🍀 대동제 개발자 럭키비키"
+        },
+        {
+          "name": "박소연",
+          "department": "컴퓨터공학과 23",
+          "ment": "🌰 멋쟁이 개발자를 꿈꿉니다"
+        },
+        {
+          "name": "이다인",
+          "department": "컴퓨터공학과 21",
+          "ment": "🐮 음메 어흥 🦁"
+        }
+      ]
+    },
+    "gaehwa": {
+      "title1": "홍익대학교",
+      "title2": "개화 ; 開花",
+      "whoWeAre1": "홍익대학교 총학생회 '개화 | 開花' 는",
+      "whoWeAre2": "민주적이고 자주적인 학생 자치 활동을 통해",
+      "whoWeAre3": "안으로는 홍익인들의 이해와 요구를 실현하며,",
+      "whoWeAre4": "나아가 대학의 건학정신인 홍익인간의 이념을",
+      "whoWeAre5": "바탕으로 사회 발전에 능동적으로 기여함을",
+      "whoWeAre6": "그 목적으로 합니다.",
+      "presidency": "회장단",
+      "executive": "집행위원회",
+      "executiveDescription1": "총학생회의 전반적인 업무 보조 등의 역할을 합니다.",
+      "executiveDescription2": "교내 다양한 협의체 활동에서 나온",
+      "executiveDescription3": "기록물들을 관리하고 게시합니다.",
+      "strategicPolicy": "전략정책국",
+      "strategicPolicyDescription1": "교내 교육환경과 학생사회 등의 문제점을 파악하여",
+      "strategicPolicyDescription2": "학우들에게 필요한 정책 및 개선안을 마련합니다.",
+      "strategicPolicyDescription3": "더 나은 홍익대학교를 이루어내기 위해",
+      "strategicPolicyDescription4": "학교본부와 지속적으로 논의합니다.",
+      "culturalPlanning": "문화기획국",
+      "culturalPlanningDescription1": "홍익대학교 학우들을 위한",
+      "culturalPlanningDescription2": "문화 콘텐츠 기획 및 진행을 담당합니다.",
+      "culturalPlanningDescription3": "홍익대학교만의 차별화된 새로운 대학 문화를",
+      "culturalPlanningDescription4": "창조하고 진행합니다.",
+      "mediaRelations": "미디어홍보국",
+      "mediaRelationsDescription1": "총학생회의 정보들을 신속하게 전달하기 위한",
+      "mediaRelationsDescription2": "홍보물을 제작합니다.",
+      "mediaRelationsDescription3": "총학생회에서 진행하는 행사 및 사업의",
+      "mediaRelationsDescription4": "시각 매체 제작을 총괄합니다.",
+      "finance": "재정사무국",
+      "financeDescription1": "총학생회의 전반적인 회계와 사무 업무를 담당합니다.",
+      "financeDescription2": "학생회칙 및 세칙을 포함하여",
+      "financeDescription3": "총학생회 운영의 기반이 되는 자료를 관리합니다.",
+      "rightsSolidarity": "권리연대국",
+      "rightsSolidarityDescription1": "홍익대학교 내 학우들의 권리를 위한",
+      "rightsSolidarityDescription2": "연대 활동을 진행합니다.",
+      "rightsSolidarityDescription3": "학우들의 편리한 학교 생활을 위하여",
+      "rightsSolidarityDescription4": "교내 시설 및 프로그램 소개를 진행하고",
+      "rightsSolidarityDescription5": "권리 증진을 위한 행사를 기획합니다.",
+      "studentWelfare": "학생복지위원회",
+      "studentWelfareDescription1": "홍익대학교 학우들의 편의를 위해",
+      "studentWelfareDescription2": "대외 업체들과 제휴를 맺고,",
+      "studentWelfareDescription3": "편리를 위해 상시 복지 사업 및 다양한 사업을 진행하여",
+      "studentWelfareDescription4": "학우들의 복지문제를 해결합니다.",
+      "graduationPreparation": "총졸업준비위원회",
+      "graduationPreparationDescription1": "홍익대학교 졸업 예정자들을 위한 업무를 총괄하며,",
+      "graduationPreparationDescription2": "졸업 관련 제반 업무를 진행합니다.",
+      "graduationPreparationDescription3": "졸업준비운영위원회, 졸업준비위원총회 등",
+      "graduationPreparationDescription4": "의결기구를 운영하여 졸업 관련 논의를 진행합니다."
+    },
+    "gaehwaContributors": {
+      "presidency": [
+        {
+          "name": "곽도현",
+          "department": "법학부 21",
+          "role": "학생회장"
+        },
+        {
+          "name": "양현서",
+          "department": "경제학과 19",
+          "role": "부학생회장"
+        }
+      ],
+      "executive": [
+        {
+          "name": "김영웅",
+          "department": "캠퍼스자율전공 21",
+          "role": "위원장"
+        },
+        {
+          "name": "구서연",
+          "department": "교육학과 22",
+          "role": "국원"
+        },
+        {
+          "name": "맹지수",
+          "department": "디자인예술경영학부 24",
+          "role": "국원"
+        },
+        {
+          "name": "임혜영",
+          "department": "캠퍼스자율전공 24",
+          "role": "국원"
+        }
+      ],
+      "strategicPolicy": [
+        {
+          "name": "권오혁",
+          "department": "화학공학전공 19",
+          "role": "국장"
+        },
+        {
+          "name": "강륜아",
+          "department": "화학공학전공 22",
+          "role": "국원"
+        },
+        {
+          "name": "윤예영",
+          "department": "캠퍼스자율전공 23",
+          "role": "국원"
+        }
+      ],
+      "culturalPlanning": [
+        {
+          "name": "박지윤",
+          "department": "불어불문학과 22",
+          "role": "국장"
+        },
+        {
+          "name": "김범수",
+          "department": "컴퓨터공학과 21",
+          "role": "국원"
+        },
+        {
+          "name": "김하은",
+          "department": "국어교육학과 23",
+          "role": "국원"
+        },
+        {
+          "name": "박건",
+          "department": "법학과 23",
+          "role": "국원"
+        }
+      ],
+      "mediaRelations": [
+        {
+          "name": "김민성",
+          "department": "시각디자인과 19",
+          "role": "국장"
+        },
+        {
+          "name": "유효선",
+          "department": "시각디자인과 19",
+          "role": "국원"
+        },
+        {
+          "name": "최승민",
+          "department": "캠퍼스자율전공 23",
+          "role": "국원"
+        }
+      ],
+      "finance": [
+        {
+          "name": "문희빈",
+          "department": "캠퍼스자율전공 24",
+          "role": "국원"
+        }
+      ],
+      "rightsSolidarity": [
+        {
+          "name": "김희은",
+          "department": "디자인예술경영학부 22",
+          "role": "국장"
+        },
+        {
+          "name": "고형석",
+          "department": "전자전기공학부 19",
+          "role": "국원"
+        },
+        {
+          "name": "유혜원",
+          "department": "경영학과 23",
+          "role": "국원"
+        }
+      ],
+      "studentWelfare": [
+        {
+          "name": "김수연",
+          "department": "교육학과 22",
+          "role": "위원장"
+        },
+        {
+          "name": "김현성",
+          "department": "전자전기공학부 24",
+          "role": "위원"
+        }
+      ],
+      "graduationPreparation": [
+        {
+          "name": "조준혁",
+          "department": "전자전기공학부 19",
+          "role": "위원장"
+        },
+        {
+          "name": "김선정",
+          "department": "역사교육과 23",
+          "role": "사무장"
+        }
+      ]
+    }
   }
 }
