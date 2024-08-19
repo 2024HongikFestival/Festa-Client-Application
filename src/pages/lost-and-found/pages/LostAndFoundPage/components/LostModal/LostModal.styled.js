@@ -180,6 +180,7 @@ export const LostItemMainContentLeft = styled.div`
   align-items: center;
   gap: 0.8rem;
 
+  white-space: nowrap;
   color: var(--HONGIK-BLUE, #1833db);
   ${({ theme }) => theme.fontStyles.basic.body1Bold};
 `;
@@ -192,6 +193,7 @@ export const BlueLine = styled.div`
 
 export const LostItemMainContentRight = styled.span`
   width: 208px;
+  white-space: nowrap;
   color: ${({ theme }) => theme.colors.gray100};
   ${({ theme }) => theme.fontStyles.basic.body1Med};
 `;

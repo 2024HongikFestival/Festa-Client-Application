@@ -24,8 +24,6 @@ const LostAndFoundPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemCountPerPage = 10;
 
-  //currentPage가 예상 외의 숫자일 경우 버그 처리
-
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const page = parseInt(query.get('page')) || 1; //  string -> int 로 변환
@@ -53,7 +51,8 @@ const LostAndFoundPage = () => {
   }, [currentPage]);
 
   const handleClickItem = (lostId) => () => {
-    navigate(`${lostId}`);
+    //navigate(`${lostId}`);
+    setIsItemModalOpen(true);
   };
 
   return (

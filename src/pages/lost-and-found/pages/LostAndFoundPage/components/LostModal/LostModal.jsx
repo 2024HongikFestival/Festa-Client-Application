@@ -37,37 +37,41 @@ export const LocationModal = ({ isOpen, setIsOpen }) => {
 };
 
 export const ItemModal = ({ isOpen, setIsOpen }) => {
-  <LostModal top={'7.9rem'} gap={'7.5rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
-    <S.LostItemWrapper>
-      <S.LostItemDateBox>
-        <S.LostItemDay>25일</S.LostItemDay>
-        <S.LostItemTime>11:23</S.LostItemTime>
-      </S.LostItemDateBox>
-      <S.LostItemLayout>
-        <S.LostItemImg src />
-        <S.LostItemContentWrapper>
-          <S.LostItemMainContentLayout>
-            <S.LostItemMainContentBox>
-              <S.LostItemMainContentLeft>
-                발견 위치
-                <S.BlueLine />
-              </S.LostItemMainContentLeft>
-              <S.LostItemMainContentRight>학생 회관 앞</S.LostItemMainContentRight>
-            </S.LostItemMainContentBox>
+  return (
+    <LostModal top={'7.9rem'} gap={'7.5rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
+      <S.LostItemWrapper>
+        <S.LostItemDateBox>
+          <S.LostItemDay>25일</S.LostItemDay>
+          <S.LostItemTime>11:23</S.LostItemTime>
+        </S.LostItemDateBox>
+        <S.LostItemLayout>
+          <S.LostItemImg src />
+          <S.LostItemContentWrapper>
+            <S.LostItemMainContentLayout>
+              <S.LostItemMainContentBox>
+                <S.LostItemMainContentLeft>
+                  발견 위치
+                  <S.BlueLine />
+                </S.LostItemMainContentLeft>
+                <S.LostItemMainContentRight>학생 회관 앞</S.LostItemMainContentRight>
+              </S.LostItemMainContentBox>
 
-            <S.LostItemMainContentBox>
-              <S.LostItemMainContentLeft>
-                보관 위치
-                <S.BlueLine />
-              </S.LostItemMainContentLeft>
-              <S.LostItemMainContentRight>총학 부스</S.LostItemMainContentRight>
-            </S.LostItemMainContentBox>
-          </S.LostItemMainContentLayout>
-          <S.ThreeLineTextContent>엄청 큰 가방 학생회관 앞에서 주웠는데 총학 부스에 맡겼습니다~</S.ThreeLineTextContent>
-        </S.LostItemContentWrapper>
-      </S.LostItemLayout>
-    </S.LostItemWrapper>
-  </LostModal>;
+              <S.LostItemMainContentBox>
+                <S.LostItemMainContentLeft>
+                  보관 위치
+                  <S.BlueLine />
+                </S.LostItemMainContentLeft>
+                <S.LostItemMainContentRight>총학 부스</S.LostItemMainContentRight>
+              </S.LostItemMainContentBox>
+            </S.LostItemMainContentLayout>
+            <S.ThreeLineTextContent>
+              엄청 큰 가방 학생회관 앞에서 주웠는데 총학 부스에 맡겼습니다~
+            </S.ThreeLineTextContent>
+          </S.LostItemContentWrapper>
+        </S.LostItemLayout>
+      </S.LostItemWrapper>
+    </LostModal>
+  );
 };
 
 LostModal.propTypes = {
