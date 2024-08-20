@@ -9,6 +9,7 @@ import { EVENTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
 const EventPage = () => {
   // 전역상태로 관리 필요
   const [eventId, setEventId] = useState(1);
+  const [stateData, setStateData] = useState();
 
   const navigate = useNavigate();
 
@@ -51,12 +52,20 @@ const EventPage = () => {
       }
     }
   };
+
+  const handleRandomState = () => {
+    const array = new Uint32Array(1);
+    self.crypto.getRandomValues(array);
+    setStateData(array[0]);
+  };
+
   const handleKakaoAuth = () => {
-    window.location.href = EVENTS_KAKAO_AUTH_URL;
+    window.location.href = EVENTS_KAKAO_AUTH_URL + `&state=${stateData}`;
   };
 
   useEffect(() => {
     getCurrentEvent();
+    handleRandomState();
   }, []);
 
   return (

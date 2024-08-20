@@ -73,26 +73,16 @@ const EnterEvent = () => {
   return (
     <div
       style={{
-        width: '50rem',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         height: '60rem',
-        border: 'solid 2px',
+        border: 'solid 1px',
         borderColor: 'black',
         position: 'relative',
       }}
     >
-      {/* 임시 헤더 */}
-      <div
-        style={{
-          width: '100%',
-          height: '3.4375rem',
-          backgroundColor: '#D9D9D9',
-          position: 'absolute',
-          top: '0',
-        }}
-      ></div>
       {/* body */}
       <div
         style={{
