@@ -5,9 +5,10 @@ import { useTranslation } from 'react-i18next';
 export default function MainPage() {
   const { t, i18n } = useTranslation();
 
-  const clickHandler = (lang) => {
-    console.log(`conver to ${lang}`);
-    i18n.changeLanguage(lang);
+  const clickHandler = (lng) => {
+    console.log(`conver to ${lng}`);
+    localStorage.setItem('language', lng);
+    i18n.changeLanguage(lng);
   };
   return (
     <>
