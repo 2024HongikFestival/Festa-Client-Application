@@ -104,6 +104,7 @@ const AdminMenuBar = ({
           <Menu
             onClick={() => {
               nav('/admin');
+              window.location.reload();
               closeMenu();
             }}
           >
