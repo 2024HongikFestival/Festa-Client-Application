@@ -27,9 +27,7 @@ export default function MainPage() {
         <br />
         오랫동안 기억될 것입니다.
       </Desc>
-      {/* <ImageWrapper> */}
       <Img src={mainImg} alt="main" />
-      {/* </ImageWrapper> */}
       <LineupTitleWrapper>
         <Date>9.25 (수)</Date>
         <LineupTitle>오늘의 라인업</LineupTitle>
@@ -83,12 +81,6 @@ const Desc = styled.div`
   ${(props) => props.theme.fontStyles.basic.body1Med}
   text-align: center;
 `;
-
-// const ImageWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   width: 100%;
-// `;
 
 const Img = styled.img`
   width: 37.8rem;
