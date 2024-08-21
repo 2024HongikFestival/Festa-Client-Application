@@ -4,6 +4,22 @@
 import React from 'react';
 import TimeTableWrapper, { TTConcert, TTDay, TTDays, TTHeader, TTNotice } from './styles';
 
+// 날짜가 지정한 시간 단위에서 특정 날짜와 일치하는지 구하기 - isSame()
+
+// const fromDt = moment('2022-10-19 10:23:09', 'YYYY-MM-DD HH:mm:ss');
+// const toDt = moment('2022-10-21 12:10:15', 'YYYY-MM-DD HH:mm:ss');
+
+// fromDt.isSame(moment('2022-10-19 10:23:09', 'YYYY-MM-DD HH:mm:ss'));
+//   >> true
+
+// fromDt.isSame(toDt);
+//   >> false
+// moment('20221010').isSame(moment('20221010'));
+//   >> true
+
+// moment('20221010').isSame(moment('20221022'));
+//   >> false
+
 const FlameTimeTablePage = () => {
   return (
     <TimeTableWrapper>
