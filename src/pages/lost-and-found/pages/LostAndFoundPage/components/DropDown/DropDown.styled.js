@@ -70,6 +70,8 @@ export const DropDownItem = styled.div`
 
   &:last-child {
     border-radius: 0px 0px 12px 12px;
+    height: 3.3rem; //2.9 + 0.4
+    padding-bottom: 0.4rem;
   }
 `;
 
