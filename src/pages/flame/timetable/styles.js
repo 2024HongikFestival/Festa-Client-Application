@@ -43,6 +43,7 @@ const flagWaving = keyframes`
 
 export const TTWrapper = styled.div`
   width: 100%;
+  padding-top: 2.4rem;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
 `;
 
