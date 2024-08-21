@@ -47,15 +47,6 @@ export const TTWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
 `;
 
-// 헤더 변경
-export const SchoolHeader = styled.div`
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 5.6rem;
-`;
-
 export const TTTitle = styled.div`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline3};
@@ -63,7 +54,7 @@ export const TTTitle = styled.div`
 `;
 
 export const TTBox = styled.div`
-  padding: 0 0 5.6rem;
+  padding-bottom: 5.6rem;
 `;
 
 export const DaysBox = styled.div`
@@ -179,10 +170,18 @@ export const NoticeText = styled.div`
   width: 100%;
   height: 100%;
   word-break: keep-all;
+  display: flex;
+  flex-direction: column;
   p {
     color: ${(props) => props.theme.colors.gray70};
     ${(props) => props.theme.fontStyles.basic.captionMed};
   }
+`;
+
+export const NoticeTextContent = styled.span`
+  display: flex;
+  color: ${(props) => props.theme.colors.gray70};
+  ${(props) => props.theme.fontStyles.basic.captionMed};
 `;
 
 export const LiveConcert = styled.div`
@@ -254,4 +253,13 @@ export const UnderlinedText = styled.span`
   color: ${(props) => props.theme.colors.gray70};
   ${(props) => props.theme.fontStyles.basic.captionMed};
   text-decoration: underline;
+`;
+
+export const NumberBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem;
+
+  color: ${(props) => props.theme.colors.gray70};
+  ${(props) => props.theme.fontStyles.basic.captionMed};
 `;
