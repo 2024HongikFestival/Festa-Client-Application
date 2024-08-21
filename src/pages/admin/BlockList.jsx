@@ -169,7 +169,7 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
             </div>
           ))
         ) : (
-          <p>차단된 사용자가 존재하지 않습니다.</p>
+          <p style={{ padding: '1rem' }}>차단된 사용자가 존재하지 않습니다.</p>
         )}
         {hasMore && (
           <LoadMoreButton onClick={handleLoadMore} disabled={loading}>

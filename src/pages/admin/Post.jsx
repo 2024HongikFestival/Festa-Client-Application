@@ -26,9 +26,14 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
   const userPosts = userId && posts ? posts : displayedLosts;
 
   const getLosts = async () => {
+    const token = getAdminToken();
     setLoading(true);
     try {
-      const response = await adminAxiosInstance.get('/losts');
+      const response = await adminAxiosInstance.get('/losts', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       console.log(response.data.data);
       setAllLosts(response.data.data.losts);
       setDisplayedLosts(response.data.data.losts.slice(0, postsPerPage));
@@ -179,7 +184,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
         <OptionButton
           onClick={(e) => {
             e.stopPropagation();
-            onUndo();
+            openPopup('undo');
           }}
         >
           삭제 취소
@@ -242,7 +247,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
           </Container>
         ))
       ) : (
-        <p>분실물 게시글이 존재하지 않습니다.</p>
+        <p style={{ padding: '1rem' }}>분실물 게시글이 존재하지 않습니다.</p>
       )}
       {posts !== userPosts && (
         <LoadMoreWrapper showButton={displayedLosts.length < allLosts.length}>

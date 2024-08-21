@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import hiuLogo from '@/assets/webps/layouts/hiuLogo.webp';
 import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
@@ -81,40 +81,57 @@ const AdminMenuBar = ({
   showLogoutPopup,
   setShowLogoutPopup,
   closeMenu,
-}) => (
-  <>
-    <AdminBar>
-      <PageMenu>
-        <Menu
-          onClick={() => {
-            nav('/admin');
-            closeMenu();
-          }}
-        >
-          분실물 게시판 관리
-        </Menu>
-        <Menu
-          onClick={() => {
-            nav('/admin/event');
-            closeMenu();
-          }}
-        >
-          이벤트 관리
-        </Menu>
-      </PageMenu>
-      <Logout onClick={() => setShowLogoutPopup(true)}>로그아웃</Logout>
-    </AdminBar>
-    {showLogoutPopup && (
-      <Popup
-        message="로그아웃 할까요?"
-        onConfirm={handleConfirmLogout}
-        onCancel={handleCancelLogout}
-        confirmText="로그아웃"
-        cancelText="취소"
-      />
-    )}
-  </>
-);
+}) => {
+  const adminMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [closeMenu]);
+
+  return (
+    <>
+      <AdminBar ref={adminMenuRef}>
+        <PageMenu>
+          <Menu
+            onClick={() => {
+              nav('/admin');
+              closeMenu();
+            }}
+          >
+            분실물 게시판 관리
+          </Menu>
+          <Menu
+            onClick={() => {
+              nav('/admin/event');
+              closeMenu();
+            }}
+          >
+            이벤트 관리
+          </Menu>
+        </PageMenu>
+        <Logout onClick={() => setShowLogoutPopup(true)}>로그아웃</Logout>
+      </AdminBar>
+      {showLogoutPopup && (
+        <Popup
+          message="로그아웃 할까요?"
+          onConfirm={handleConfirmLogout}
+          onCancel={handleCancelLogout}
+          confirmText="로그아웃"
+          cancelText="취소"
+        />
+      )}
+    </>
+  );
+};
 
 const CommonMenuBar = () => (
   // 기본 메뉴바
