@@ -229,7 +229,6 @@ export const LiveNowBox = styled.div`
   top: 1.2rem;
   right: 1.25rem;
   z-index: 5;
-
 `;
 
 export const LiveTime = styled.span`
