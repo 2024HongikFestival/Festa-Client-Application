@@ -118,6 +118,7 @@ const LineupCompWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 16.2rem;
+  gap: 1.2rem;
 `;
 
 const LineupComp = styled.div`
