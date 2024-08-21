@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import * as S from './LostAndFoundPage.styled';
+import DropDown from './components/DropDown/DropDown';
 import LostBottomSheet from './components/LostBottomSheet/LostBottomSheet';
 import { ItemModal, LocationModal } from './components/LostModal/LostModal';
 import NewPagination from './components/NewPagination/NewPagination';
@@ -79,7 +80,7 @@ const LostAndFoundPage = () => {
           <S.LostAndFoundSection>
             <S.LostAndFoundSectionTitle>분실물 찾아가기 🧸</S.LostAndFoundSectionTitle>
             <S.LostAndFoundArticleLayout>
-              {/*<DropDown></DropDown> */}
+              <DropDown />
               <S.LostAndFoundArticle>
                 {items.length > 0 &&
                   items.map((item, idx) => {

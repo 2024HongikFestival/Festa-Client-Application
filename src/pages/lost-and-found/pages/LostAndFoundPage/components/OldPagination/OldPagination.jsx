@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import * as S from './Pagination.styled';
+import * as S from './OldPagination.styled';
 /*
 totalItems: 총 게시물 수 (보여 줄 데이터의 총 개수)
 itemCountPerPage: 페이지마다 보여줄 게시물의 개수
