@@ -174,6 +174,9 @@ export const NoticeTitle = styled.span`
 `;
 
 export const NoticeText = styled.div`
+  width: 100%;
+  height: 100%;
+  word-break: keep-all;
   p {
     color: ${(props) => props.theme.colors.gray70};
     ${(props) => props.theme.fontStyles.basic.captionMed};
