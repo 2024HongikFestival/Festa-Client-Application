@@ -27,23 +27,27 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import redButtonTwo from '../../../assets/webps/wdTT/RedButton.webp';
 import redfullBtn from '../../../assets/webps/wdTT/timtablefullButtton.webp';
+import afterBtn from '../../../assets/webps/wdTT/afterBtn.webp';
 import DjImg from '../../../assets/webps/wdTT/DjImg.webp';
+import Now from '../../../assets/webps/wdTT/now.webp';
 
 const FlameTimeTablePage = () => {
   const [selectedDate, setSelectedDate] = useState(1);
+  const [isPassed, setIsPassed] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   const dates = [
-    { day: 1, date: '8.16 (수)' },
+    { day: 1, date: '8.21 (수)' },
     { day: 2, date: '9.26 (목)' },
     { day: 3, date: '9.27 (금)' },
   ];
 
   const dayOneTime = [
-    { dj: '첫째날디제이', time: '12:43 PM' },
-    { dj: 'AEFODENCE', time: '12:44 PM' },
-    { dj: 'NIRVANA', time: '5:56 PM' },
-    { dj: 'UWFHO', time: '5:57 PM' },
+    { dj: '첫째날디제이', time: '8:00 PM' },
+    { dj: 'AEFODENCE', time: '8:00 PM' },
+    { dj: 'NIRVANA', time: '9:00 PM' },
+    { dj: 'UWFHO', time: '10:00 PM' },
+    { dj: 'UWFHO', time: '11:00 PM' },
   ];
 
   const dayTwoTime = [
@@ -59,13 +63,6 @@ const FlameTimeTablePage = () => {
     { dj: 'NIRVANA', time: '10:00 PM' },
     { dj: 'UWFHO', time: '11:00 PM' },
     { dj: '셋째날 디제이', time: '8:00 PM' },
-    { dj: 'AEFODENCE', time: '9:00 PM' },
-    { dj: 'NIRVANA', time: '10:00 PM' },
-    { dj: 'UWFHO', time: '11:00 PM' },
-    { dj: '셋째날 디제이', time: '8:00 PM' },
-    { dj: 'AEFODENCE', time: '9:00 PM' },
-    { dj: 'NIRVANA', time: '10:00 PM' },
-    { dj: 'UWFHO', time: '11:00 PM' },
   ];
 
   const handleClick = (day) => {
@@ -77,12 +74,7 @@ const FlameTimeTablePage = () => {
   }, 1000);
 
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      delay: 30,
-      offset: 0,
-    });
+    AOS.init({});
   }, [currentTime]);
 
   const formatTime = (time) => {
@@ -97,8 +89,6 @@ const FlameTimeTablePage = () => {
 
     // 현재 시간 정보
     const currentHour = currentTime.getHours();
-    const currentMinute = currentTime.getMinutes();
-    const currentSecond = currentTime.getSeconds();
     const currentDate = `${currentTime.getMonth() + 1}.${currentTime.getDate()}`;
 
     // 날짜 비교
@@ -106,12 +96,24 @@ const FlameTimeTablePage = () => {
     const isDateMatching = currentDate === timeDate;
 
     // 시간 비교
-    const isTimeMatching =
-      hour === (currentHour % 12) + (currentHour >= 12 ? 12 : 0) &&
-      minute === currentMinute &&
-      isPM === currentHour >= 12;
-
+    const isTimeMatching = hour === currentHour % 12 && isPM === currentHour >= 12;
     return isDateMatching && isTimeMatching;
+  };
+
+  const isTimePassed = (time, date) => {
+    const { hour, isPM } = formatTime(time);
+
+    // 현재 시간 정보
+    const currentHour = currentTime.getHours();
+    const currentDate = `${currentTime.getMonth() + 1}.${currentTime.getDate()}`;
+
+    // 날짜 비교
+    const timeDate = date.split(' ')[0]; // '9.25' 형태로 추출
+    const isDateMatching = currentDate >= timeDate;
+
+    // 시간 비교
+    const isTimePassing = hour <= currentHour % 12 && isPM === currentHour >= 12;
+    return isDateMatching && isTimePassing;
   };
 
   const getDayTimeData = () => {
@@ -145,7 +147,6 @@ const FlameTimeTablePage = () => {
         <TimeTableBox>
           {timeTableData.map((item, index) => (
             <TimeTableOneBox
-              data-aos="fade-down"
               key={index}
               isActive={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date)}
             >
@@ -153,17 +154,24 @@ const FlameTimeTablePage = () => {
                 {isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) ? (
                   <img src={redfullBtn} className="fullBtn" alt="redButton" />
                 ) : (
-                  <img src={redButtonTwo} className="emptyBtn" alt="redButton" />
+                  <img
+                    src={
+                      isTimePassed(item.time, dates.find((d) => d.day === selectedDate).date) ? afterBtn : redButtonTwo
+                    }
+                    className="emptyBtn"
+                    alt="redButton"
+                  />
                 )}
               </RedLine>
               {isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) ? (
                 <LiveConcert isActive={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date)}>
+                  <LiveNowBox>
+                    <img src={Now} />
+                  </LiveNowBox>
+
                   <img src={DjImg} />
                   <LiveDj>{item.dj}</LiveDj>
-                  <LiveNowBox>
-                    <p>&lt; NOW</p>
-                    <LiveTime>{item.time}</LiveTime>
-                  </LiveNowBox>
+                  <LiveTime>{item.time}</LiveTime>
                 </LiveConcert>
               ) : (
                 <TimeTableText isActive={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date)}>

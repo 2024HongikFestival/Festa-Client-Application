@@ -109,18 +109,20 @@ export const TimeTableOneBox = styled.div`
 
 export const RedLine = styled.div`
   position: relative;
-  width: 2.5rem;
+  width: 2.2rem;
+  max-width: 2.5rem;
+  min-width: 2.672rem;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 0;
 
   .fullBtn {
-    min-width: 22px;
+    max-width: 22px;
   }
 
   .emptyBtn {
-    max-width: 12px;
+    max-width: 14px;
   }
 
   img {
@@ -218,24 +220,25 @@ export const LiveDj = styled.span`
   bottom: 1.2rem;
   ${(props) => props.theme.fontStyles.flame.headline5};
   text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.25);
-  animation: ${backgroundPulse} 2s infinite;
 `;
 
 export const LiveNowBox = styled.div`
   position: absolute;
-  bottom: 1.2rem;
-  right: 1.1rem;
+  width: 6.8rem;
+  height: 3.2rem;
+  top: 1.2rem;
+  right: 1.25rem;
   z-index: 5;
 
-  p {
-    text-align: right;
-    ${(props) => props.theme.fontStyles.basic.body1Bold};
-  }
 `;
 
 export const LiveTime = styled.span`
   color: #fff;
   ${(props) => props.theme.fontStyles.basic.body1Med};
+  position: absolute;
+  bottom: 1.8rem;
+  right: 1.25rem;
+  z-index: 5;
 `;
 
 // 임시 푸터
