@@ -15,7 +15,6 @@ const Popup = ({ message, onConfirm, onCancel, confirmText, cancelText }) => (
 );
 
 Popup.propTypes = {
-  title: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onConfirm: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,

@@ -20,6 +20,10 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
   const [selectedPostId, setSelectedPostId] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     getLists();
     getAllLosts();
   }, []);

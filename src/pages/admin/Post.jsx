@@ -18,6 +18,10 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
   const optionsMenuRef = useRef(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (Array.isArray(posts)) {
       setDisplayedLosts(posts.slice(0, currentPage * postsPerPage));
     }

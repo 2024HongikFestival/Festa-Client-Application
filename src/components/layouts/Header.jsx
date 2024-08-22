@@ -27,24 +27,25 @@ export default function Header() {
   };
 
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
-
   const handleLogout = () => {
+    console.log('Before logout:', localStorage.getItem('accessToken')); // 디버그용
     localStorage.removeItem('accessToken');
+    console.log('After logout:', localStorage.getItem('accessToken')); // 디버그용
     setIsLoggedIn(false);
     nav(0);
   };
-
   const handleConfirmLogout = () => {
+    console.log('Handle Confirm Logout called'); // 디버깅용 로그 추가
     handleLogout();
     setIsMenuOpen(false);
-    setShowLogoutPopup(false); // 팝업 닫기
+    setShowLogoutPopup(false);
   };
 
   const handleCancelLogout = () => {
+    console.log('Handle Cancel Logout called'); // 디버깅용 로그 추가
     setIsMenuOpen(false);
-    setShowLogoutPopup(false); // 팝업 닫기
+    setShowLogoutPopup(false);
   };
-
   return (
     <>
       <HeaderLayout path={location.pathname}>
