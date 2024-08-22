@@ -1,3 +1,4 @@
+# 자동으로 Reviewer와 Assignee를 추가해 주는 workflow
 name: Auto Assign Reviewer
 
 on:
