@@ -13,7 +13,6 @@ import testImage from '@/assets/webps/wdfLineup/test.webp';
 
 const Container = styled.div`
   display: flex;
-  width: 100%;
   flex-direction: column;
   align-items: center;
   gap: 2.8rem;
@@ -28,8 +27,8 @@ const Title = styled.h2`
 const DayContainer = styled.div`
   display: flex;
   justify-content: center;
+  gap: 4.8rem;
   align-items: center;
-  gap: 48px;
   align-self: stretch;
 `;
 const DayButton = styled.button`
@@ -42,6 +41,12 @@ const DayButton = styled.button`
   -webkit-background-clip: text;
   -webkit-text-fill-color: ${(props) => (props.selected ? 'transparent' : 'inherit')};
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
+  padding: 0;
+
+  span {
+    display: block; /* 텍스트를 줄바꿈합니다 */
+    ${(props) => props.theme.fontStyles.basic.subHeadBold};
+  }
 `;
 const CardContainer = styled.div`
   display: flex;
@@ -89,7 +94,7 @@ const CardDescriptionContainer = styled.div`
   width: 29.7rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.6rem;
+  gap: 1.4rem;
 `;
 const DjProfile = styled.div`
   align-self: stretch;
@@ -102,8 +107,8 @@ const Name = styled.p`
   ${(props) => props.theme.fontStyles.basic.headline5};
 `;
 const InstaLogo = styled.img`
-  width: 3rem;
-  height: 3rem;
+  width: 3.8rem;
+  height: 3.8rem;
 `;
 const Description = styled.div`
   align-self: stretch;
@@ -188,23 +193,24 @@ const FlameLineupPage = () => {
 
   return (
     <>
-      <Header></Header>
       <Container>
         <Title>라인업</Title>
         <DayContainer>
           <DayButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('Day1')}>
-            DAY 1 9.25 (수)
+            <span>DAY 1</span>
+            <span>9.25 (수)</span>
           </DayButton>
           <DayButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('Day2')}>
-            DAY 2 9.26 (목)
+            <span>DAY 2</span>
+            <span>9.26 (목)</span>
           </DayButton>
           <DayButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('Day3')}>
-            DAY 3 9.27 (금)
+            <span>DAY 3</span>
+            <span>9.27 (금)</span>
           </DayButton>
         </DayContainer>
         <CardContainer>{renderCards()}</CardContainer>
       </Container>
-      <Footer></Footer>
     </>
   );
 };
