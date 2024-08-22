@@ -36,10 +36,12 @@ export default function Header() {
 
   const handleConfirmLogout = () => {
     handleLogout();
-    setShowLogoutPopup(false); // 로그아웃 후 팝업 닫기
+    setIsMenuOpen(false);
+    setShowLogoutPopup(false); // 팝업 닫기
   };
 
   const handleCancelLogout = () => {
+    setIsMenuOpen(false);
     setShowLogoutPopup(false); // 팝업 닫기
   };
 
@@ -74,7 +76,6 @@ export default function Header() {
 }
 
 const AdminMenuBar = ({
-  //어드민 페이지 메뉴바
   nav,
   handleCancelLogout,
   handleConfirmLogout,
@@ -88,6 +89,7 @@ const AdminMenuBar = ({
     const handleClickOutside = (event) => {
       if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
         closeMenu();
+        setShowLogoutPopup(false); // 팝업 닫기
       }
     };
 
@@ -134,8 +136,7 @@ const AdminMenuBar = ({
   );
 };
 
-const CommonMenuBar = () => (
-  // 기본 메뉴바
+const CommonMenuBar = ({ closeMenu }) => (
   <MenuBar>
     <ul>
       <li>Common Menu 1</li>
@@ -146,7 +147,7 @@ const CommonMenuBar = () => (
 );
 
 CommonMenuBar.propTypes = {
-  closeMenu: PropTypes.func.isRequired, // closeMenu prop 추가
+  closeMenu: PropTypes.func.isRequired,
 };
 
 AdminMenuBar.propTypes = {
@@ -185,6 +186,15 @@ const HeaderLayout = styled.div`
     `}
 `;
 
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 98;
+  padding-left: 4.4rem;
+`;
 const HeaderBg = styled.div`
   width: 100%;
   max-width: 768px;
@@ -250,7 +260,7 @@ const MenuBar = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  max-width: 12rem;
+  max-width: 19.2rem;
   background-color: white;
   z-index: 99;
 `;
@@ -264,7 +274,7 @@ const AdminBar = styled.div`
   left: 0;
   width: 100%;
   height: calc(100vh - 5.6rem);
-  max-width: 12rem;
+  max-width: 19.2rem;
   background-color: white;
   z-index: 99;
 `;
@@ -275,10 +285,10 @@ const PageMenu = styled.div`
 `;
 
 const Menu = styled.span`
-  padding: 1rem;
+  padding: 1.6rem;
   text-align: left;
   ${(props) => props.theme.fontStyles.basic.body1Med};
-  font-size: 1rem;
+  font-size: 1.6rem;
   cursor: pointer;
   &:hover {
     background-color: ${(props) => props.theme.colors.gray20};
@@ -287,8 +297,8 @@ const Menu = styled.span`
 
 const Logout = styled.span`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  padding: 1rem;
-  font-size: 1rem;
+  padding: 1.6rem;
+  font-size: 1.6rem;
   text-align: center;
   color: ${(props) => props.theme.colors.white};
   background-color: ${(props) => props.theme.colors.gray70};

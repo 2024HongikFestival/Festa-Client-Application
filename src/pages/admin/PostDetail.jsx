@@ -1,32 +1,34 @@
-import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { adminAxiosInstance } from '@/api/axios';
 import Header from '@/components/layouts/Header';
+import styled from 'styled-components';
 
 const PostDetail = ({ postId, onBack }) => {
   const [lostDetails, setLostDetails] = useState(null);
 
-  const getAdminToken = () => {
-    return localStorage.getItem('accessToken');
-  };
-
-  const getLostDetails = async () => {
-    try {
-      const response = await adminAxiosInstance.get(`/losts/${postId}`, {
-        headers: {
-          Authorization: `Bearer ${getAdminToken()}`,
-        },
-      });
-      setLostDetails(response.data.data);
-    } catch (error) {
-      console.error('Error fetching lost details: ', error);
-    }
-  };
+  const getAdminToken = () => localStorage.getItem('accessToken');
 
   useEffect(() => {
+    const getLostDetails = async () => {
+      try {
+        const response = await adminAxiosInstance.get(`/losts/${postId}`, {
+          headers: {
+            Authorization: `Bearer ${getAdminToken()}`,
+          },
+        });
+        setLostDetails(response.data.data);
+      } catch (error) {
+        console.error('Error fetching lost details: ', error);
+      }
+    };
+
     getLostDetails();
   }, [postId]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [lostDetails]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -38,6 +40,7 @@ const PostDetail = ({ postId, onBack }) => {
     const seconds = String(date.getSeconds()).padStart(2, '0');
     return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
   };
+
   const handleDelete = async () => {
     try {
       const token = getAdminToken();
@@ -179,7 +182,6 @@ const FullPageContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
   background-color: ${(props) => props.theme.colors.white};
 `;
 
@@ -192,10 +194,10 @@ const DetailContainer = styled.div`
 `;
 
 const LostImg = styled.img`
-  width: 23.438rem;
-  height: 23.438rem;
+  width: 37.5rem;
+  height: 37.5rem;
   object-fit: cover;
-  margin-bottom: 1.563rem;
+  margin-bottom: 2.5rem;
 `;
 
 const InfoSection = styled.div`
@@ -204,12 +206,12 @@ const InfoSection = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3.2rem;
 `;
 
 const InfoRow = styled.div`
   display: flex;
-  width: 20rem;
+  width: 32rem;
   align-items: center;
   justify-content: space-between;
 `;
@@ -218,7 +220,7 @@ const Label = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Bold};
   font-weight: bold;
   color: ${(props) => props.theme.colors.gray80};
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   flex-shrink: 0;
 `;
 
@@ -226,39 +228,39 @@ const Value = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Med};
   display: flex;
   align-items: center;
-  width: 12.5rem;
-  height: 2rem;
+  width: 20rem;
+  height: 3.2rem;
   text-align: left;
   color: ${(props) => props.theme.colors.gray80};
-  font-size: 0.875rem;
+  font-size: 1.4rem;
 `;
 
 const BackButton = styled.button`
-  margin-top: 3.375rem;
-  margin-bottom: 4.938rem;
+  margin-top: 5.4rem;
+  margin-bottom: 7.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  width: 20rem;
-  height: 4rem;
+  width: 32rem;
+  height: 6.4rem;
   background: ${(props) => props.theme.colors.gray80};
   border: none;
   color: ${(props) => props.theme.colors.white};
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.6rem;
 `;
 
 const ActionButton = styled.button`
-  width: 6rem;
-  height: 2rem;
+  width: 9.6rem;
+  height: 3.2rem;
   ${(props) => props.theme.fontStyles.basic.body2Bold};
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   color: ${(props) => props.theme.colors.white};
   background-color: ${(props) => props.theme.colors.gray70};
   border: none;
-  border-radius: 0.625rem;
+  border-radius: 1rem;
   cursor: pointer;
 `;
 
@@ -266,5 +268,5 @@ const UserId = styled(Value)`
   font-weight: 500;
   color: ${(props) => (props.isBlocked ? props.theme.colors.gray30 : props.theme.colors.black)};
   text-decoration: ${(props) => (props.isBlocked ? 'line-through' : 'none')};
-  width: 6.5rem;
+  width: 10.4rem;
 `;

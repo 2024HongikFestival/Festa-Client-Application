@@ -65,25 +65,23 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
-
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.gray10};
-  height: 100vh;
 `;
 
 const SelectBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  gap: 4.8rem;
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
 `;
 
 const Title = styled.div`
   cursor: pointer;
   ${(props) => props.theme.fontStyles.subHeadBold};
-  font-size: 1.125rem;
+  font-size: 1.8rem;
   color: ${({ active, theme }) => (active ? theme.colors.gray80 : theme.colors.gray40)};
   transition: background-color 0.3s;
   font-weight: 700;

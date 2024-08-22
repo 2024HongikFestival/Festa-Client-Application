@@ -24,8 +24,6 @@ Popup.propTypes = {
 };
 
 export default Popup;
-
-// Styled components for Popup
 const PopupOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -43,33 +41,33 @@ const PopupContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: ${(props) => props.theme.colors.white};
-  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
-  border-radius: 1.25rem;
-  width: 18rem;
+  padding: 4rem 2.4rem 2.4rem 2.4rem;
+  border-radius: 2rem;
+  width: 28.8rem;
   text-align: center;
   z-index: 1001;
-  gap: 1rem;
+  gap: 1.6rem;
 `;
 
 const Message = styled.p`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   color: ${(props) => props.theme.colors.gray80};
-  font-size: 1rem;
+  font-size: 1.6rem;
 `;
 
 const Buttons = styled.div`
   display: flex;
   text-align: center;
   justify-content: space-around;
-  gap: 0.625rem;
+  gap: 1rem;
 `;
 
 const Button = styled.button`
   border: none;
-  width: 7.5rem;
+  width: 12rem;
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   color: ${(props) => props.theme.colors.gray80};
-  padding: 0.75rem 0;
+  padding: 1.2rem 0;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.6rem;
 `;

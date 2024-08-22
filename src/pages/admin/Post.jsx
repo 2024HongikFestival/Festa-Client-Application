@@ -316,14 +316,14 @@ Post.propTypes = {
 };
 
 export default Post;
-
 const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: ${({ noGap }) => (noGap ? '0' : '0.5rem')};
+  background-color: ${(props) => props.theme.colors.gray10};
+  gap: ${({ noGap }) => (noGap ? '0' : '0.8rem')}; /* 0.5rem → 0.8rem */
 `;
 
 const Wrapper = styled.div`
@@ -332,97 +332,98 @@ const Wrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding-left: 1rem;
+  padding-left: 1.6rem; /* 1rem → 1.6rem */
 `;
 
 const Container = styled.div`
   display: flex;
   background-color: ${(props) => props.theme.colors.white};
   justify-content: center;
-  width: 20rem;
-  height: 5rem;
+  width: 32rem; /* 20rem → 32rem */
+  height: 8rem; /* 5rem → 8rem */
   box-sizing: border-box;
   color: ${(props) => props.theme.colors.black};
   cursor: pointer;
-  border-bottom: ${({ border, theme }) => (border ? `0.063rem solid ${theme.colors.gray20}` : 'none')};
+  border-bottom: ${({ border, theme }) =>
+    border ? `0.1rem solid ${theme.colors.gray20}` : 'none'}; /* 0.063rem → 0.1rem */
   box-sizing: border-box;
   position: relative;
 `;
 
 const Img = styled.img`
-  width: 5rem;
-  height: 5rem;
+  width: 8rem; /* 5rem → 8rem */
+  height: 8rem; /* 5rem → 8rem */
   object-fit: cover;
 `;
 
 const UserInfo = styled.span`
   display: flex;
-  height: 1.5rem;
+  height: 2.4rem; /* 1.5rem → 2.4rem */
   flex-direction: row;
   align-items: center;
-  padding-left: 1rem;
-  gap: 0.5rem;
+  padding-left: 1.6rem; /* 1rem → 1.6rem */
+  gap: 0.8rem; /* 0.5rem → 0.8rem */
 `;
 
 const UserName = styled.span`
   ${(props) => props.theme.fontStyles.body2Bold};
   color: ${(props) => props.theme.colors.gray60};
-  font-size: 0.875rem;
+  font-size: 1.4rem; /* 0.875rem → 1.4rem */
   font-weight: 700;
 `;
 
 const UserId = styled.span`
   ${(props) => props.theme.fontStyles.body2Med};
-  font-size: 0.875rem;
+  font-size: 1.4rem; /* 0.875rem → 1.4rem */
   color: ${(props) => (props.isBlocked ? props.theme.colors.gray30 : props.theme.colors.gray80)};
   text-decoration: ${(props) => (props.isBlocked ? 'line-through' : 'none')};
 `;
 
 const PostDate = styled.span`
-  height: 1.3rem;
+  height: 2.08rem; /* 1.3rem → 2.08rem */
   display: flex;
   align-items: flex-end;
   ${(props) => props.theme.fontStyles.body2Med};
   color: ${(props) => props.theme.colors.gray40};
-  font-size: 0.875rem;
+  font-size: 1.4rem; /* 0.875rem → 1.4rem */
 `;
 
 const PostInfo = styled.div`
   display: flex;
   flex-direction: column;
-  width: 15rem;
-  padding-top: 0.5rem;
-  padding-right: 1rem;
+  width: 24rem; /* 15rem → 24rem */
+  padding-top: 0.8rem; /* 0.5rem → 0.8rem */
+  padding-right: 1.6rem; /* 1rem → 1.6rem */
   position: relative;
 `;
 
 const Status = styled.span`
   display: flex;
-  height: 1.125rem;
+  height: 1.8rem; /* 1.125rem → 1.8rem */
   justify-content: flex-end;
   align-items: center;
   ${(props) => props.theme.fontStyles.captionBold};
   text-align: right;
-  font-size: 0.75rem;
+  font-size: 1.2rem; /* 0.75rem → 1.2rem */
   color: ${(props) => (props.lostStatus === 'PUBLISHED' ? '#53cc7c' : '#F04949')};
   font-weight: 700;
 `;
 
 const LoadMoreButton = styled.button`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  width: 20rem;
-  height: 4rem;
+  width: 32rem; /* 20rem → 32rem */
+  height: 6.4rem; /* 4rem → 6.4rem */
   background-color: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.colors.gray70};
   border: none;
-  font-size: 1rem;
+  font-size: 1.6rem; /* 1rem → 1.6rem */
   cursor: pointer;
 `;
 
 const MoreBtn = styled.div`
   background: url(${morebtn});
-  width: 1.5rem;
-  height: 1.3rem;
+  width: 2.4rem; /* 1.5rem → 2.4rem */
+  height: 2.08rem; /* 1.3rem → 2.08rem */
   z-index: 10;
   background-repeat: no-repeat;
   background-size: contain;
@@ -430,10 +431,10 @@ const MoreBtn = styled.div`
 
 const OptionsContainer = styled.div`
   position: absolute;
-  top: calc(100% - 0.5rem);
-  right: -0.625rem;
+  top: calc(100% - 0.8rem); /* calc(100% - 0.5rem) → calc(100% - 0.8rem) */
+  right: -1rem; /* -0.625rem → -1rem */
   background-color: ${(props) => props.theme.colors.white};
-  width: 7rem;
+  width: 11.2rem; /* 7rem → 11.2rem */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -443,10 +444,10 @@ const OptionsContainer = styled.div`
 const OptionButton = styled.button`
   ${(props) => props.theme.fontStyles.basic.captionMed};
   width: 100%;
-  padding: 0.5rem 1rem;
-  height: 2.125rem;
+  padding: 0.8rem 1.6rem; /* 0.5rem 1rem → 0.8rem 1.6rem */
+  height: 3.4rem; /* 2.125rem → 3.4rem */
   border: none;
-  font-size: 0.75rem;
+  font-size: 1.2rem; /* 0.75rem → 1.2rem */
   background-color: ${(props) => props.theme.colors.gray60};
   color: ${(props) => props.theme.colors.white};
   cursor: pointer;
@@ -459,8 +460,8 @@ const OptionButton = styled.button`
 `;
 
 const LoadMoreWrapper = styled.div`
-  width: 20rem;
-  height: ${(props) => (props.showButton ? '4rem' : '0')};
+  width: 32rem; /* 20rem → 32rem */
+  height: ${(props) => (props.showButton ? '6.4rem' : '0')}; /* 4rem → 6.4rem */
   color: ${(props) => props.theme.colors.black};
   border: none;
   cursor: ${(props) => (props.showButton ? 'pointer' : 'default')};

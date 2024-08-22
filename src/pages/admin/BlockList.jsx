@@ -197,25 +197,26 @@ BlockList.propTypes = {
 };
 
 export default BlockList;
-
 const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
+  background-color: ${(props) => props.theme.colors.gray10};
+  height: 100vh;
 `;
 
 const Container = styled.div`
-  width: 20rem;
+  width: 32rem;
   display: flex;
   flex-direction: column;
 `;
 
 const SubTitle = styled.span`
-  width: 5rem;
+  width: 8rem;
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.basic.body2Bold};
-  font-size: 0.875rem;
+  font-size: 1.4rem;
 `;
 
 const TitleSection = styled.div`
@@ -223,38 +224,38 @@ const TitleSection = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  padding: 0.8rem 0.8rem 0.8rem 1.6rem;
   background-color: ${(props) => props.theme.colors.gray80};
 `;
 
 const UserId = styled.span`
   display: flex;
   align-items: center;
-  width: 5.5rem;
+  width: 8.8rem;
   color: ${(props) => props.theme.colors.gray30};
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   text-decoration: line-through;
 `;
 
 const BlockDate = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray40};
-  font-size: 0.875rem;
-  width: 8.5rem;
+  font-size: 1.4rem;
+  width: 13.6rem;
 `;
 
 const ArrowIcon = styled.img`
-  width: 1rem;
-  height: 1rem;
+  width: 1.6rem;
+  height: 1.6rem;
   cursor: pointer;
 `;
 
 const BlockBtn = styled.button`
   ${(props) => props.theme.fontStyles.basic.captionBold};
   color: ${(props) => props.theme.colors.gray70};
-  width: 4rem;
+  width: 6.4rem;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   text-decoration: underline;
 `;
 
@@ -263,9 +264,9 @@ const List = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 0.5rem 0.5rem;
+  padding: 0.8rem 0.8rem;
   background-color: ${(props) => props.theme.colors.white};
-  border-bottom: 0.063rem solid ${(props) => props.theme.colors.gray20};
+  border-bottom: 0.1rem solid ${(props) => props.theme.colors.gray20};
 `;
 
 const PostDetails = styled.div`
@@ -274,13 +275,13 @@ const PostDetails = styled.div`
 
 const LoadMoreButton = styled.button`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  width: 20rem;
-  height: 4rem;
+  width: 32rem;
+  height: 6.4rem;
   background-color: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.colors.gray70};
   border: none;
-  font-size: 1rem;
+  font-size: 1.6rem;
   cursor: pointer;
-  margin-top: 1rem;
-  margin-bottom: 4.813rem;
+  margin-top: 1.6rem;
+  margin-bottom: 7.7rem;
 `;
