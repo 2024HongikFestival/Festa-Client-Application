@@ -17,6 +17,8 @@ const Container = styled.div`
   align-items: center;
   gap: 2.8rem;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+  padding-bottom: 5.6rem;
+  padding-top: 2.4rem;
 `;
 const Title = styled.h2`
   align-self: stretch;
@@ -109,6 +111,7 @@ const Name = styled.p`
 const InstaLogo = styled.img`
   width: 3.8rem;
   height: 3.8rem;
+  cursor: pointer;
 `;
 const Description = styled.div`
   align-self: stretch;
