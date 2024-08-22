@@ -13,7 +13,11 @@ const PostDetail = ({ postId, onBack }) => {
 
   const getLostDetails = async () => {
     try {
-      const response = await adminAxiosInstance.get(`/losts/${postId}`);
+      const response = await adminAxiosInstance.get(`/losts/${postId}`, {
+        headers: {
+          Authorization: `Bearer ${getAdminToken()}`,
+        },
+      });
       setLostDetails(response.data.data);
     } catch (error) {
       console.error('Error fetching lost details: ', error);

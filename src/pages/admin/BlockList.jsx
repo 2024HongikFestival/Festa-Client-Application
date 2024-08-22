@@ -71,6 +71,16 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
       [userId]: filteredPosts,
     }));
   };
+  const updateLostsStatus = (userId, updatedPosts) => {
+    // updatedPosts에서 userId에 해당하는 게시물만 필터링
+    const filteredPosts = updatedPosts.filter((post) => post.userId === userId);
+
+    // 필터링된 게시물 리스트로 상태 업데이트
+    setDisplayedLosts((prevPosts) => ({
+      ...prevPosts,
+      [userId]: filteredPosts,
+    }));
+  };
 
   const deleteBlackLists = async (userId) => {
     try {
@@ -162,6 +172,7 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
                       userId={expandedItem}
                       setIsDetailView={handlePostClick}
                       setPostId={setPostId}
+                      updateLostsStatus={updateLostsStatus}
                     />
                   </PostDetails>
                 </>

@@ -5,7 +5,7 @@ import { adminAxiosInstance } from '@/api/axios';
 import PropTypes from 'prop-types';
 import Popup from './Popup';
 
-const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
+const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) => {
   const [allLosts, setAllLosts] = useState([]);
   const [displayedLosts, setDisplayedLosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,8 +23,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
     }
   }, [posts, currentPage]);
 
-  const userPosts = userId && posts ? posts : displayedLosts;
-
   const getLosts = async () => {
     const token = getAdminToken();
     setLoading(true);
@@ -34,19 +32,18 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data.data);
       setAllLosts(response.data.data.losts);
       setDisplayedLosts(response.data.data.losts.slice(0, postsPerPage));
-      setLoading(false);
     } catch (error) {
       console.error('Error fetching URL: ', error);
+    } finally {
       setLoading(false);
     }
   };
 
-  const getAdminToken = () => {
-    return localStorage.getItem('accessToken');
-  };
+  const userPosts = userId && posts ? posts : displayedLosts;
+  const getAdminToken = () => localStorage.getItem('accessToken');
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (optionsMenuRef.current && !optionsMenuRef.current.contains(event.target)) {
@@ -54,9 +51,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   useEffect(() => {
@@ -68,9 +63,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
     setIsDetailView(true);
   };
 
-  const formatId = (id) => {
-    return String(id).padStart(6, '0');
-  };
+  const formatId = (id) => String(id).padStart(6, '0');
 
   const loadMore = () => {
     if (displayedLosts.length < allLosts.length && !loading) {
@@ -92,7 +85,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
   };
 
   const openPopup = (type) => {
-    console.log('Opening popup of type:', type); // Debug log
     setPopupType(type);
     setShowPopup(true);
   };
@@ -104,8 +96,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
           Authorization: `Bearer ${getAdminToken()}`,
         },
       });
-      setAllLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
-      setDisplayedLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
+      handleStatusChange('DELETED');
       setShowOptions(null);
       setShowPopup(false);
     } catch (error) {
@@ -133,12 +124,12 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
         ),
         adminAxiosInstance.delete(`/admin/losts/${currentPostId}`),
       ]);
-
-      setAllLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
-      setDisplayedLosts((prev) => prev.filter((lost) => lost.lostId !== currentPostId));
+      handleStatusChange('DELETED', true);
       setShowOptions(null);
       setShowPopup(false);
     } catch (error) {
+      alert('이미 차단된 사용자입니다.');
+      setShowPopup(false);
       console.error('Error handling block and delete: ', error);
     }
   };
@@ -154,28 +145,45 @@ const Post = ({ posts, userId, setIsDetailView, setPostId }) => {
           },
         }
       );
-      setAllLosts((prev) =>
-        prev.map((lost) => (lost.lostId === currentPostId ? { ...lost, lostStatus: 'PUBLISHED' } : lost))
-      );
-      setDisplayedLosts((prev) =>
-        prev.map((lost) => (lost.lostId === currentPostId ? { ...lost, lostStatus: 'PUBLISHED' } : lost))
-      );
+      handleStatusChange('PUBLISHED');
       setShowOptions(null);
       setShowPopup(false);
     } catch (error) {
       console.error('Error undoing delete: ', error);
     }
   };
+  const handleStatusChange = (status, block = false) => {
+    const currentLost = allLosts.find((lost) => lost.lostId === currentPostId);
+    if (
+      currentLost &&
+      currentLost.lostStatus === status &&
+      currentLost.isUserBlocked === (block ? 'true' : currentLost.isUserBlocked)
+    ) {
+      return;
+    }
+
+    const updatedAllLosts = allLosts.map((lost) =>
+      lost.lostId === currentPostId
+        ? { ...lost, lostStatus: status, isUserBlocked: block ? 'true' : lost.isUserBlocked }
+        : lost
+    );
+
+    const updatedDisplayedLosts = displayedLosts.map((lost) =>
+      lost.lostId === currentPostId
+        ? { ...lost, lostStatus: status, isUserBlocked: block ? 'true' : lost.isUserBlocked }
+        : lost
+    );
+
+    setAllLosts(updatedAllLosts);
+    setDisplayedLosts(updatedDisplayedLosts);
+    if (updateLostsStatus) {
+      updateLostsStatus(userId, updatedDisplayedLosts);
+    }
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const year = String(date.getFullYear()).padStart(4, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-    return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
+    return `${date.getFullYear().toString().padStart(4, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
   };
 
   const OptionsMenu = ({ onUndo, isDeleted, onBlockAndDelete }) => (
@@ -296,12 +304,15 @@ Post.propTypes = {
       imageUrl: PropTypes.string.isRequired,
       content: PropTypes.string,
       lostStatus: PropTypes.oneOf(['PUBLISHED', 'DELETED']).isRequired,
-      // 기타 필요한 PropTypes 정의
+      isUserBlocked: PropTypes.string, // 추가된 prop
+      userId: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
     })
   ).isRequired,
   userId: PropTypes.string,
   setIsDetailView: PropTypes.func.isRequired,
   setPostId: PropTypes.func.isRequired,
+  updateLostsStatus: PropTypes.func.isRequired,
 };
 
 export default Post;
@@ -446,6 +457,7 @@ const OptionButton = styled.button`
     background-color: ${(props) => props.theme.colors.gray70};
   }
 `;
+
 const LoadMoreWrapper = styled.div`
   width: 20rem;
   height: ${(props) => (props.showButton ? '4rem' : '0')};
