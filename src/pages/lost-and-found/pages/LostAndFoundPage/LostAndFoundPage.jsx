@@ -15,13 +15,16 @@ import NewPagination from './components/NewPagination/NewPagination';
 // Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
 const LostAndFoundPage = () => {
   const navigate = useNavigate();
+  //모달 관련된 state
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [itemLostId, setItemLostId] = useState(-1);
 
+  //드롭다운 관련된 state
   const [selectedDay, setSelectedDay] = useState('');
 
+  //게시글 관련 state
   const [totalItems, setTotalItems] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
