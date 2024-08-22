@@ -202,18 +202,18 @@ const Flame = styled.div`
 
 const Title = styled.span`
   ${(props) => props.theme.fontStyles.flame.subHead};
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: 400;
-  text-shadow: 0px 0px 2rem rgba(255, 255, 255, 0.25);
+  text-shadow: 0px 0px 3.2rem rgba(255, 255, 255, 0.25);
   font-style: normal;
   font-style: italic;
   color: ${(props) => props.theme.colors.gray20};
-  margin-top: 2rem;
+  margin-top: 3.2rem;
 `;
 
 const WDFLogo = styled.img`
-  width: 14.813rem;
-  height: 4.688rem;
+  width: 23.7rem;
+  height: 7.5rem;
 `;
 
 const WDFContainer = styled.div`
@@ -221,25 +221,27 @@ const WDFContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 3.25rem;
+  gap: 1.2rem;
+  margin-bottom: 5.2rem;
 `;
 
 const SubTitle = styled.span`
-  left: -1.3rem;
-  text-shadow: 0px 0px 1rem rgba(255, 255, 255, 0.25);
-  padding-top: 1rem;
+  left: -2.08rem;
+  text-shadow: 0px 0px 1.6rem rgba(255, 255, 255, 0.25);
+  padding-top: 1.6rem;
   position: absolute;
   ${(props) => props.theme.fontStyles.flame.subHead};
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   color: ${(props) => props.theme.colors.gray20};
 `;
+
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   position: relative;
 `;
+
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -250,52 +252,53 @@ const TitleContainer = styled.div`
 const WDFIntroduction = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  width: 11.313rem;
+  gap: 0.4rem;
+  width: 18.1rem;
 `;
 
 const WDFImage = styled.img`
   display: flex;
-  width: 16.125rem;
-  height: 22.563rem;
+  width: 25.8rem;
+  height: 36.1rem;
 `;
 
 const Introduction = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Bold};
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   font-weight: 700;
   background: linear-gradient(281.55deg, #fcf661 1.09%, #ff0e2b 38.8%, #df2020 62.66%, #bc1700 96.55%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.25);
+  text-shadow: 0px 0px 12.8px rgba(255, 255, 255, 0.25);
   color: transparent;
   text-align: center;
 `;
+
 const Introduction1 = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Bold};
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   text-align: center;
   font-weight: 700;
   color: ${(props) => props.theme.colors.gray40};
-  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.25);
+  text-shadow: 0px 0px 12.8px rgba(255, 255, 255, 0.25);
 `;
 
 const WDFName = styled.span`
   ${(props) => props.theme.fontStyles.flame.headline6};
   color: ${(props) => props.theme.colors.white};
-  font-size: 1.25rem;
+  font-size: 2rem;
   text-align: center;
   font-weight: 900;
-  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.25);
+  text-shadow: 0px 0px 12.8px rgba(255, 255, 255, 0.25);
 `;
 
 const WDFDescription = styled.span`
   text-align: center;
   ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray60};
-  font-size: 0.875rem;
-  margin-bottom: 3.375rem;
+  font-size: 1.4rem;
+  margin-bottom: 5.4rem;
 `;
 
 const DateSection = styled.div`
@@ -303,14 +306,14 @@ const DateSection = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
-  margin-top: 2rem;
+  gap: 4.8rem;
+  margin-top: 3.2rem;
 `;
 
 const DateButton = styled.button`
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
   color: ${(props) => (props.selected ? props.theme.colors.flameMainColor : props.theme.colors.gray80)};
-  font-size: 1.125rem;
+  font-size: 1.8rem;
   cursor: pointer;
   border: none;
   letter-spacing: -0.001rem;
@@ -330,8 +333,8 @@ const DateButton = styled.button`
 `;
 
 const DayContent = styled.div`
-  margin-top: 1rem;
-  height: 42.938rem;
+  margin-top: 1.6rem;
+  height: 68.7rem;
 `;
 
 const IntroWrapper = styled.div`
@@ -352,34 +355,32 @@ const carouselSettings = {
   centerMode: true,
   variableWidth: true,
 };
-
 const CarouselContainer = styled.div`
   position: relative;
   width: 100%;
-  min-width: 23.438rem;
-  max-width: 48rem;
-  height: 27.313rem;
+  min-width: 37.5rem; /* 23.438rem에서 1.6배 */
+  max-width: 76.8rem; /* 48rem에서 1.6배 */
+  height: 43.7rem; /* 27.313rem에서 1.6배 */
 `;
 
 const CarouselImage = styled.img`
-  width: 12.875rem;
-  height: 12.75rem;
+  width: 20.6rem; /* 12.875rem에서 1.6배 */
+  height: 20.4rem; /* 12.75rem에서 1.6배 */
   object-fit: contain;
-  margin-top: 1.5rem;
+  margin-top: 2.4rem; /* 1.5rem에서 1.6배 */
 `;
 
 const ImageContainer = styled.div`
   display: flex !important;
   flex-direction: column;
   align-items: center;
-  width: 17.25rem !important;
-  height: 25.813rem;
-
-  border: 0.063rem solid;
+  width: 27.6rem !important; /* 17.25rem에서 1.6배 */
+  height: 41.3rem; /* 25.813rem에서 1.6배 */
+  border: 0.1rem solid; /* 0.063rem에서 1.6배 */
   border-image-source: linear-gradient(180deg, #df2121 0%, #cdb3b3 70%, #515356 100%);
   border-image-slice: 1;
   background: var(--UI-Background, #010304);
-  margin: 0 0.5rem;
+  margin: 0 0.8rem; /* 0.5rem에서 1.6배 */
   box-sizing: border-box;
   position: relative;
   outline: none;
@@ -395,14 +396,14 @@ const NavigationBar = styled.div`
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 0.375rem;
+  gap: 0.6rem; /* 0.375rem에서 1.6배 */
 `;
 
 const NavigationButton = styled.button`
   background-color: ${(props) => (props.active ? props.theme.colors.flameMainColor : props.theme.colors.gray80)};
   border: none;
-  width: ${(props) => (props.active ? '1.5rem' : '1rem')};
-  height: 0.25rem;
+  width: ${(props) => (props.active ? '2.4rem' : '1.6rem')}; /* 1.5rem과 1rem에서 1.6배 */
+  height: 0.4rem; /* 0.25rem에서 1.6배 */
   cursor: pointer;
 `;
 
@@ -412,34 +413,34 @@ const Content = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  min-width: 23.438rem;
-  max-width: 48rem;
-  height: 27.313rem;
-  margin-top: 1.75rem;
+  min-width: 37.5rem; /* 23.438rem에서 1.6배 */
+  max-width: 76.8rem; /* 48rem에서 1.6배 */
+  height: 43.7rem; /* 27.313rem에서 1.6배 */
+  margin-top: 2.8rem; /* 1.75rem에서 1.6배 */
 `;
 
 const Line = styled.div`
-  width: 15.25rem;
-  margin: 1rem 0;
+  width: 24.4rem; /* 15.25rem에서 1.6배 */
+  margin: 1.6rem 0; /* 1rem에서 1.6배 */
   box-sizing: border-box;
-  border-bottom: 0.063rem solid;
+  border-bottom: 0.1rem solid; /* 0.063rem에서 1.6배 */
   border-image-source: linear-gradient(90deg, #ffb801 0%, #df2020 100%);
   border-image-slice: 1;
 `;
 
 const DJName = styled.span`
   ${(props) => props.theme.fontStyles.basic.headline5};
-  width: 13.25rem;
+  width: 21.2rem; /* 13.25rem에서 1.6배 */
   color: ${(props) => props.theme.colors.white};
   text-align: left;
-  font-size: 1.25rem;
+  font-size: 2rem; /* 1.25rem에서 1.6배 */
 `;
 
 const DJInfo = styled.span`
   ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.gray50};
-  font-size: 1rem;
-  width: 15.25rem;
+  font-size: 1.6rem; /* 1rem에서 1.6배 */
+  width: 24.4rem; /* 15.25rem에서 1.6배 */
 `;
 
 const DJWrapper = styled.div`
@@ -447,14 +448,14 @@ const DJWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  width: 17.25rem;
-  padding-left: 1rem;
-  padding-right: 0.5rem;
+  width: 27.6rem; /* 17.25rem에서 1.6배 */
+  padding-left: 1.6rem; /* 1rem에서 1.6배 */
+  padding-right: 0.8rem; /* 0.5rem에서 1.6배 */
 `;
 
 const DJInsta = styled.img`
   display: flex !important;
   justify-content: flex-end;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 3.84rem; /* 2.4rem에서 1.6배 */
+  height: 3.84rem; /* 2.4rem에서 1.6배 */
 `;
