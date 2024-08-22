@@ -2,10 +2,17 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import * as S from './DropDown.styled';
 
-//바뀔 일 없으니 하드코딩
+const dates = [
+  { label: '전체 기간', value: '' }, //초기값
+  { label: '9월 25일', value: '2024-09-25' },
+  { label: '9월 26일', value: '2024-09-26' },
+  { label: '9월 27일', value: '2024-09-27' },
+  //만약 날짜 추가된다면 위의 형식대로 추가하면 됨
+];
+
 const DropDown = ({ setSelectedDay }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState('전체 기간');
+  const [selectedItem, setSelectedItem] = useState(dates[0].label);
 
   const handleToggle = () => {
     setIsOpen((prev) => !prev);
@@ -17,20 +24,8 @@ const DropDown = ({ setSelectedDay }) => {
   };
 
   useEffect(() => {
-    switch (selectedItem) {
-      case '9월 25일':
-        setSelectedDay('2024-09-25');
-        return;
-      case '9월 26일':
-        setSelectedDay('2024-09-26');
-        return;
-      case '9월 27일':
-        setSelectedDay('2024-09-27');
-        return;
-      default: //전체 기간
-        setSelectedDay('');
-        return;
-    }
+    const selectedDate = dates.find((date) => date.label === selectedItem);
+    setSelectedDay(selectedDate ? selectedDate.value : '');
   }, [selectedItem]);
 
   return (
@@ -41,21 +36,14 @@ const DropDown = ({ setSelectedDay }) => {
       </S.DropDownToggle>
       {isOpen && (
         <S.DropDownMenu>
-          <S.DropDownItem onClick={handleSelectItem('전체 기간')} $isSelected={selectedItem === '전체 기간'}>
-            전체 기간
-          </S.DropDownItem>
-          <S.ItemLine />
-          <S.DropDownItem onClick={handleSelectItem('9월 25일')} $isSelected={selectedItem === '9월 25일'}>
-            9월 25일
-          </S.DropDownItem>
-          <S.ItemLine />
-          <S.DropDownItem onClick={handleSelectItem('9월 26일')} $isSelected={selectedItem === '9월 26일'}>
-            9월 26일
-          </S.DropDownItem>
-          <S.ItemLine />
-          <S.DropDownItem onClick={handleSelectItem('9월 27일')} $isSelected={selectedItem === '9월 27일'}>
-            9월 27일
-          </S.DropDownItem>
+          {dates.map((date, idx) => (
+            <React.Fragment key={date.value}>
+              <S.DropDownItem onClick={handleSelectItem(date.label)} $isSelected={selectedItem === date.label}>
+                {date.label}
+              </S.DropDownItem>
+              {idx < dates.length - 1 && <S.ItemLine />}
+            </React.Fragment>
+          ))}
         </S.DropDownMenu>
       )}
     </S.DropDownContainer>
