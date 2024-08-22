@@ -20,6 +20,8 @@ const LostAndFoundPage = () => {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [itemLostId, setItemLostId] = useState(-1);
 
+  const [selectedDay, setSelectedDay] = useState('');
+
   const [totalItems, setTotalItems] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -62,8 +64,10 @@ const LostAndFoundPage = () => {
     <>
       <S.Wrapper>
         <Header></Header>
+
         <S.Main>
           <S.Title>분실물</S.Title>
+
           <S.ButtonWrapper>
             <S.AddLostItemButton onClick={() => setIsBottomSheetOpen(true)}>분실물 찾아주기 ✋🏻</S.AddLostItemButton>
             <S.ButtonDetailWrapper>
@@ -77,10 +81,11 @@ const LostAndFoundPage = () => {
               </S.ButtonDetailText>
             </S.ButtonDetailWrapper>
           </S.ButtonWrapper>
+
           <S.LostAndFoundSection>
             <S.LostAndFoundSectionTitle>분실물 찾아가기 🧸</S.LostAndFoundSectionTitle>
             <S.LostAndFoundArticleLayout>
-              <DropDown />
+              <DropDown setSelectedDay={setSelectedDay} />
               <S.LostAndFoundArticle>
                 {items.length > 0 &&
                   items.map((item, idx) => {
@@ -97,6 +102,7 @@ const LostAndFoundPage = () => {
             </S.LostAndFoundArticleLayout>
           </S.LostAndFoundSection>
         </S.Main>
+
         <S.FooterWrapper>
           <S.FooterLayout>
             <S.ManGaeSvg />
@@ -105,6 +111,7 @@ const LostAndFoundPage = () => {
         </S.FooterWrapper>
         <LostBottomSheet isOpen={isBottomSheetOpen} setIsOpen={setIsBottomSheetOpen} />
       </S.Wrapper>
+
       <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
       <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} lostId={itemLostId} />
     </>
