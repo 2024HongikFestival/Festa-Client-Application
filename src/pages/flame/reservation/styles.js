@@ -165,7 +165,7 @@ export const GrayBox = styled.div`
   width: 100%;
   background: rgba(81, 83, 86, 0.25);
   ${(props) => props.theme.fontStyles.basic.body1Med};
-  color: ${(props) => props.theme.colors.gray70};
+  color: ${(props) => props.theme.colors.gray80};
   border: 0.25rem solid var(--Grayscale-Gray_80, #3c3e41);
   display: flex;
   justify-content: center;
