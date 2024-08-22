@@ -37,13 +37,13 @@ const FlameTimeTablePage = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   const dates = [
-    { day: 1, date: '8.21 (수)' },
+    { day: 1, date: '9.25 (수)' },
     { day: 2, date: '9.26 (목)' },
     { day: 3, date: '9.27 (금)' },
   ];
 
   const dayOneTime = [
-    { dj: '첫째날디제이', time: '8:00 PM' },
+    { dj: '첫째날디제이', time: '7:00 PM' },
     { dj: 'AEFODENCE', time: '8:00 PM' },
     { dj: 'NIRVANA', time: '9:00 PM' },
     { dj: 'UWFHO', time: '10:00 PM' },
@@ -51,6 +51,7 @@ const FlameTimeTablePage = () => {
   ];
 
   const dayTwoTime = [
+    { dj: '둘쨋날 디제이', time: '7:00 PM' },
     { dj: '둘쨋날 디제이', time: '8:00 PM' },
     { dj: 'AEFODENCE', time: '9:00 PM' },
     { dj: 'NIRVANA', time: '10:00 PM' },
@@ -58,11 +59,11 @@ const FlameTimeTablePage = () => {
   ];
 
   const dayThreeTime = [
-    { dj: '셋째날 디제이', time: '8:00 PM' },
-    { dj: 'AEFODENCE', time: '9:00 PM' },
-    { dj: 'NIRVANA', time: '10:00 PM' },
-    { dj: 'UWFHO', time: '11:00 PM' },
-    { dj: '셋째날 디제이', time: '8:00 PM' },
+    { dj: '셋째날 디제이', time: '7:00 PM' },
+    { dj: 'AEFODENCE', time: '8:00 PM' },
+    { dj: 'NIRVANA', time: '9:00 PM' },
+    { dj: 'UWFHO', time: '10:00 PM' },
+    { dj: '셋째날 디제이', time: '11:00 PM' },
   ];
 
   const handleClick = (day) => {
@@ -111,9 +112,13 @@ const FlameTimeTablePage = () => {
     const timeDate = date.split(' ')[0]; // '9.25' 형태로 추출
     const isDateMatching = currentDate >= timeDate;
 
+    if (currentDate === timeDate) {
+      const isTimePassing = hour <= currentHour % 12 && isPM === currentHour >= 12;
+      return isTimePassing;
+    }
+
     // 시간 비교
-    const isTimePassing = hour <= currentHour % 12 && isPM === currentHour >= 12;
-    return isDateMatching && isTimePassing;
+    return isDateMatching;
   };
 
   const getDayTimeData = () => {

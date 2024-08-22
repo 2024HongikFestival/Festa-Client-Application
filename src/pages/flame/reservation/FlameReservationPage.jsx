@@ -87,7 +87,7 @@ const PreReservationBox = () => {
               (사전 예매 동일) <span className="underline">입장 티켓은 도장</span>으로 진행되며
               <br /> 와우 디제이 페스티벌 <span className="underline">당일 입장 부스에서</span>
               <br />
-              <span className="underline">톡캣 예매 완료 페이지 제시 후</span> 받으실 수 있습니다.
+              <span className="underline">톡캣 예매 완료 페이지 제시</span> 후 받으실 수 있습니다.
             </span>
           </NoticeContent>
           <NoticeContent>
