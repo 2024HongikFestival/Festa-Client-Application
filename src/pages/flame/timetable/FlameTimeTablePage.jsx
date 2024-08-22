@@ -12,7 +12,6 @@ import {
   NoticeTitle,
   NumberBox,
   RedLine,
-  SchoolHeader,
   TimeTableBox,
   TimeTableName,
   TimeTableOneBox,
