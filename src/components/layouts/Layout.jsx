@@ -1,7 +1,5 @@
-import styled, { css } from 'styled-components';
-import { Outlet, useLocation } from 'react-router-dom';
-import Header from '@/components/layouts/Header';
-import Footer from '@/components/layouts/Footer';
+import { Outlet } from 'react-router-dom';
+import styled from 'styled-components';
 
 export default function Layout() {
   const location = useLocation();
@@ -15,7 +13,9 @@ export default function Layout() {
   );
 }
 
-const Container = styled.div`
+const Continer = styled.div`
+  display: flex;
+  justify-content: center;
   min-width: 375px;
   max-width: 768px;
   min-height: calc(var(--vh, 1vh) * 100);
