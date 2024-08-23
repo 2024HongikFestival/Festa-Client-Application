@@ -15,11 +15,16 @@ import NewPagination from './components/NewPagination/NewPagination';
 // Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
 const LostAndFoundPage = () => {
   const navigate = useNavigate();
+  //모달 관련된 state
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [itemLostId, setItemLostId] = useState(-1);
 
+  //드롭다운 관련된 state
+  const [selectedDay, setSelectedDay] = useState('');
+
+  //게시글 관련 state
   const [totalItems, setTotalItems] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -32,9 +37,9 @@ const LostAndFoundPage = () => {
 
   const getItemsApi = async () => {
     try {
-      //전체 데이터를 받고 싶다면 params 안 넘겨도 됨 - 필터링 구현 때 로직 구체화하기
-      // const response = await axios.get('https://api.2024hongikfestival.com/losts', { params: { date: '2024-08-14' } });
-      const response = await axios.get('https://api.2024hongikfestival.com/losts', { params: { page: page } });
+      const response = await axios.get('https://api.2024hongikfestival.com/losts', {
+        params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
+      });
       console.log(response);
       setItems(response.data.data.losts);
       setTotalItems(response.data.data.losts.length);
@@ -50,7 +55,7 @@ const LostAndFoundPage = () => {
 
   useEffect(() => {
     getItemsApi();
-  }, [currentPage]);
+  }, [currentPage, selectedDay]);
 
   const handleClickItem = (lostId) => () => {
     //navigate(`${lostId}`);
@@ -62,8 +67,10 @@ const LostAndFoundPage = () => {
     <>
       <S.Wrapper>
         <Header></Header>
+
         <S.Main>
           <S.Title>분실물</S.Title>
+
           <S.ButtonWrapper>
             <S.AddLostItemButton onClick={() => setIsBottomSheetOpen(true)}>분실물 찾아주기 ✋🏻</S.AddLostItemButton>
             <S.ButtonDetailWrapper>
@@ -77,10 +84,11 @@ const LostAndFoundPage = () => {
               </S.ButtonDetailText>
             </S.ButtonDetailWrapper>
           </S.ButtonWrapper>
+
           <S.LostAndFoundSection>
             <S.LostAndFoundSectionTitle>분실물 찾아가기 🧸</S.LostAndFoundSectionTitle>
             <S.LostAndFoundArticleLayout>
-              <DropDown />
+              <DropDown setSelectedDay={setSelectedDay} />
               <S.LostAndFoundArticle>
                 {items.length > 0 &&
                   items.map((item, idx) => {
@@ -97,6 +105,7 @@ const LostAndFoundPage = () => {
             </S.LostAndFoundArticleLayout>
           </S.LostAndFoundSection>
         </S.Main>
+
         <S.FooterWrapper>
           <S.FooterLayout>
             <S.ManGaeSvg />
@@ -105,6 +114,7 @@ const LostAndFoundPage = () => {
         </S.FooterWrapper>
         <LostBottomSheet isOpen={isBottomSheetOpen} setIsOpen={setIsBottomSheetOpen} />
       </S.Wrapper>
+
       <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
       <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} lostId={itemLostId} />
     </>
