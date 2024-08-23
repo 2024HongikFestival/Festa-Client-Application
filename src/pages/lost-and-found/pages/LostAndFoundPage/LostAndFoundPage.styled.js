@@ -19,7 +19,7 @@ export const Header = styled.header`
 export const Main = styled.main`
   width: 39.3rem;
   min-height: 49.7rem; //852 - 55
-  margin-top: 5.6rem;
+  //margin-top: 5.6rem;
   display: flex;
   flex-direction: column;
   //justify-content: center;
