@@ -1,0 +1,17 @@
+# 자동으로 Reviewer와 Assignee를 추가해 주는 workflow
+name: Auto Assign Reviewer & Assignee
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+jobs:
+  assign-reviewer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hkusu/review-assign-action@v1.4.0
+        with:
+          assignees: ${{ github.event.pull_request.user.login }}  # PR 작성자를 assignee로 지정
+          reviewers: dbstj0403, caminobelllo  # 지정된 리뷰어
+          max-num-of-reviewers: 5  # 최대 리뷰어 수를 5로 설정 (필요에 따라 조정 가능)
+          github-token: ${{ secrets.ACCESS_TOKEN }}
