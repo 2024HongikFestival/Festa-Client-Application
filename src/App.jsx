@@ -34,14 +34,12 @@ import RedirectLosts from '@/auth/RedirectLosts';
 function App() {
   return (
     <>
-      {/* url 세그먼트 확정 후 수정 예정 */}
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}
             <Route path="/" element={<MainPage />} />
-            <Route path="*" element={<NotFoundPage />} />
             <Route path="/booth" element={<BoothPage />} />
             <Route path="/fleamarket" element={<Fleamarket />} />
             <Route path="/fleamarket/:marketId" element={<FleamarketDetail />} />
@@ -52,6 +50,7 @@ function App() {
             <Route path="/event/enter" element={<EnterEvent />} />
             <Route path="/event/submit" element={<CompleteEvent />} />
             <Route path="/oauth/events" element={<RedirectEvents />} />
+            <Route path="*" element={<NotFoundPage />} />
 
             {/* 정인 라우팅 🍀 */}
             <Route path="/map" element={<MapPage />} />
