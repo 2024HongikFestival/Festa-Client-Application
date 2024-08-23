@@ -44,7 +44,7 @@ const LostBottomSheet = ({ isOpen, setIsOpen }) => {
             <S.ContentNoticeLayout>
               <S.ContentNoticeTitle>분실물을 발견하셨나요?</S.ContentNoticeTitle>
               <S.ContentNoticeText>
-                {`대동제를 함께한 누군가가 애타게 찾고 있는 물건일 거예요!\n홍익대학교를 벗어나기 전 소중한 물건 되찾을 수 있도록\n따뜻한 마음으로 분실물을 제보해주세요 😍`}
+                {`대동제를 함께한 누군가가 애타게 찾고 있어요!\n학교를 벗어나기 전 소중한 물건 되찾을 수 있도록\n따뜻한 마음으로 분실물을 제보해주세요 😍`}
               </S.ContentNoticeText>
             </S.ContentNoticeLayout>
             <S.ButtonWrapper>

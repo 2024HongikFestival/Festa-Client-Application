@@ -95,15 +95,15 @@ export const ContentNoticeTitle = styled.span`
   align-self: stretch;
   color: ${({ theme }) => theme.colors.gray100};
   ${({ theme }) => theme.fontStyles.main.headline5}; //이거 폰트에 없음 S-Core Dream 사용해야 함
+  text-align: center;
 `;
 
 export const ContentNoticeText = styled.span`
   align-self: stretch; //일단 추가
   color: ${({ theme }) => theme.colors.gray70};
-  ${({ theme }) => theme.fontStyles.basic.body2Med}; //
+  ${({ theme }) => theme.fontStyles.basic.body1Med}; //
   white-space: pre-line;
-
-  font-size: 1.2rem;
+  text-align: center;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -140,6 +140,8 @@ export const ErrorIcon = styled(error_kakao)`
 
 export const ErrorText = styled.span`
   color: ${({ theme }) => theme.colors.gray30};
-  ${({ theme }) => theme.fontStyles.captionMed};
+  ${({ theme }) => theme.fontStyles.basic.captionMed};
   white-space: pre-line;
+
+  color: var(--Grayscale-Gray_30, #bfc2c8);
 `;
