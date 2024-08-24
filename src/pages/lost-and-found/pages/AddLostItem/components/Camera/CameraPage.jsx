@@ -26,6 +26,9 @@ const CameraPage = () => {
     const addLostPageFooter = allDivsWithPathLost[1];
     addLostPageFooter.remove();
 
+    //스크롤 약간 되는거 거슬리는데 다양한 환경에서 어떻게 조절?
+    //document.body.style.overflow = 'hidden';
+
     return () => {
       if (videoRef.current && videoRef.current.srcObject) {
         videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
