@@ -1,11 +1,12 @@
 // 대동제 분실물 (메인)
 // url: /lost-and-found
 
+import Header from '@/components/layouts/Header';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Header from '../../components/Header/Header';
 import * as S from './LostAndFoundPage.styled';
+//import DropDown from '@/pages/lost-and-found/pages/LostAndFoundPage/components/DropDown/DropDown';
 import DropDown from './components/DropDown/DropDown';
 import LostBottomSheet from './components/LostBottomSheet/LostBottomSheet';
 import { ItemModal, LocationModal } from './components/LostModal/LostModal';
