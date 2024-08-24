@@ -57,6 +57,11 @@ const LostAndFoundPage = () => {
     getItemsApi();
   }, [currentPage]);
 
+  //드롭다운(필터링) 바뀌면 기본적으로 1페이지부터
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedDay]);
+
   const handleClickItem = (lostId) => () => {
     //navigate(`${lostId}`);
     setIsItemModalOpen(true);
