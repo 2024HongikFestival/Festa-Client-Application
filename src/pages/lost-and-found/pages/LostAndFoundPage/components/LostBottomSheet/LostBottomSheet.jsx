@@ -1,3 +1,4 @@
+import { LOSTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './LostBottomSheet.styled';
@@ -5,6 +6,10 @@ import * as S from './LostBottomSheet.styled';
 const LostBottomSheet = ({ isOpen, setIsOpen }) => {
   const modalRef = useRef(null);
   const [isClosing, setIsClosing] = useState(false);
+
+  const handleKakaoAuth = () => {
+    window.location.href = LOSTS_KAKAO_AUTH_URL;
+  };
 
   const handleClose = () => {
     setIsClosing(true);
@@ -48,7 +53,7 @@ const LostBottomSheet = ({ isOpen, setIsOpen }) => {
               </S.ContentNoticeText>
             </S.ContentNoticeLayout>
             <S.ButtonWrapper>
-              <S.KakaoButton />
+              <S.KakaoButton onClick={handleKakaoAuth} />
               <S.ButtonFooterTextBox>
                 <S.ErrorIcon />
                 <S.ErrorText>
