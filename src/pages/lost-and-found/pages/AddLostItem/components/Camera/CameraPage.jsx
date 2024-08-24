@@ -21,6 +21,11 @@ const CameraPage = () => {
 
     startCamera();
 
+    //layout의 불필요한 푸터 제거
+    const allDivsWithPathLost = document.querySelectorAll('div[path="/lost-and-found/add"]');
+    const addLostPageFooter = allDivsWithPathLost[1];
+    addLostPageFooter.remove();
+
     return () => {
       if (videoRef.current && videoRef.current.srcObject) {
         videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
