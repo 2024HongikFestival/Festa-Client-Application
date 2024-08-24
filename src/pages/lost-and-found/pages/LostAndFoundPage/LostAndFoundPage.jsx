@@ -41,6 +41,11 @@ const LostAndFoundPage = () => {
   const query = new URLSearchParams(location.search);
   const page = parseInt(query.get('page')) || 1; //  string -> int 로 변환
 
+  const handlePage = (pageNumber) => {
+    navigate(`?page=${pageNumber}`);
+    setCurrentPage(pageNumber);
+  };
+
   const getItemsApi = async () => {
     try {
       const response = await axios.get('https://api.2024hongikfestival.com/losts', {
@@ -65,7 +70,7 @@ const LostAndFoundPage = () => {
 
   //드롭다운(필터링) 바뀌면 기본적으로 1페이지부터
   useEffect(() => {
-    setCurrentPage(1);
+    currentPage === 1 ? getItemsApi() : handlePage(1);
   }, [selectedDay]);
 
   const handleClickItem = (lostId) => () => {
