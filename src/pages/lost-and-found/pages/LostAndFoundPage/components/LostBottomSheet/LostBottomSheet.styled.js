@@ -39,7 +39,10 @@ export const ModalBox = styled.div`
   bottom: 0;
 
   display: flex;
-  width: 37.4rem;
+  width: 100%;
+  max-width: 76.8rem;
+  min-width: 37.5rem;
+
   height: 38.6rem;
   padding-bottom: 35rem;
   flex-direction: column;

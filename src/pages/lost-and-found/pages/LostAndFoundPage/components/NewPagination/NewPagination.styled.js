@@ -36,20 +36,11 @@ export const CurrentPageNumber = styled.div`
   align-items: center;
   gap: 1rem;
 
-  border-radius: 18px;
+  border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.gray10};
 
   color: ${({ theme }) => theme.colors.gray100};
   ${({ theme }) => theme.fontStyles.main.headline6};
-  /* text-align: center;
-  leading-trim: both;
-  text-edge: cap;
-  font-family: 'S-Core Dream';
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 160%; 
-  letter-spacing: -0.02px; */
 `;
 
 export const TotalPagesNumber = styled.span`

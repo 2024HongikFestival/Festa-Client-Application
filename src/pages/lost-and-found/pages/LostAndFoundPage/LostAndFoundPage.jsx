@@ -55,7 +55,7 @@ const LostAndFoundPage = () => {
 
   useEffect(() => {
     getItemsApi();
-  }, [currentPage, selectedDay]);
+  }, [currentPage]);
 
   const handleClickItem = (lostId) => () => {
     //navigate(`${lostId}`);

@@ -94,7 +94,10 @@ export const ButtonDetailText = styled.span`
 
   span {
     ${({ theme }) => theme.fontStyles.basic.captionBold};
+    color: ${({ theme }) => theme.colors.gray100};
+
     font-size: 1rem;
+    text-underline-offset: 4px;
 
     span {
       text-decoration: underline;

@@ -76,8 +76,8 @@ export const DropDownItem = styled.div`
 `;
 
 export const DropDownIcon = styled(dropDownV)`
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 1.8rem;
+  height: 1.8rem;
 `;
 export const ItemLine = styled.div`
   width: 8.6rem;
