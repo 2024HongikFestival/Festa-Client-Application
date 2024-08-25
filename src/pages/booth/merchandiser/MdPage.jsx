@@ -27,9 +27,9 @@ export default function MdPage() {
       </ContentContainer>
       {/* MD 컴포넌트 */}
       <MDContainer>
-        <ContentContainer>
+        {/* <ContentContainer>
           <p>md</p>
-        </ContentContainer>
+        </ContentContainer> */}
       </MDContainer>
       {/* 유의사항 컴포넌트 */}
       <ContentContainer>
@@ -45,7 +45,7 @@ export default function MdPage() {
           </NoteContentWrapper>
         </NoteContainer>
       </ContentContainer>
-      <BlueBtn text="테스트" onClick={clicked} />
+      {/* <BlueBtn text="테스트" onClick={clicked} /> */}
     </Container>
   );
 }

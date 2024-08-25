@@ -19,7 +19,7 @@ const Btn = styled.button`
   width: 33.5rem;
   height: 6.4rem;
   background-color: ${(props) => props.theme.colors.hongikBlue};
-  ${(props) => props.theme.fontStyles.main.headline5};
+  ${(props) => props.theme.fontStyles.main.headline6};
   border-radius: 1.2rem;
   color: white;
   cursor: pointer;
