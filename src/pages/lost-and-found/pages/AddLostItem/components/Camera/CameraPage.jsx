@@ -1,10 +1,10 @@
 // src/components/Camera.js
+import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './CameraPage.styled';
 
-const CameraPage = () => {
+const CameraPage = ({ setCapturedImage }) => {
   const videoRef = useRef(null);
-  const [capturedImage, setCapturedImage] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -68,3 +68,7 @@ const CameraPage = () => {
 };
 
 export default CameraPage;
+
+CameraPage.propTypes = {
+  setCapturedImage: PropTypes.func.isRequired,
+};
