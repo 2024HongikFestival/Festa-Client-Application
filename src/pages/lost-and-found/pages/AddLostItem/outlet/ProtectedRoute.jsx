@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { AuthProvider, useAuth } from '../context/AuthProvider';
+import { useAuth } from '../context/AuthProvider';
 
 const ProtectedRoute = () => {
   const { accessToken } = useAuth();
@@ -9,11 +9,7 @@ const ProtectedRoute = () => {
     return <Navigate to="/login" replace />;
   }
 
-  return (
-    <AuthProvider>
-      <Outlet />
-    </AuthProvider>
-  );
+  return <Outlet />;
 };
 
 export default ProtectedRoute;
