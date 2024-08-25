@@ -90,13 +90,11 @@ export const ButtonDetailText = styled.span`
 
   color: ${({ theme }) => theme.colors.gray70};
   ${({ theme }) => theme.fontStyles.basic.captionMed};
-  font-size: 1rem; //뷰랑 완전히 일치하지 않아서 폰트 조절
 
   span {
     ${({ theme }) => theme.fontStyles.basic.captionBold};
     color: ${({ theme }) => theme.colors.gray100};
 
-    font-size: 1rem;
     text-underline-offset: 4px;
 
     span {
