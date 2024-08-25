@@ -9,11 +9,11 @@ export const AuthProvider = ({ children }) => {
   const value = {
     accessToken,
     setAccessToken: (token) => {
-      localStorage.setItem('accessToken', token);
+      localStorage.setItem('lost_access_token', token);
       setAccessToken(token);
     },
     removeAccessToken: () => {
-      localStorage.removeItem('accessToken');
+      localStorage.removeItem('lost_access_token');
       setAccessToken(null);
     },
   };

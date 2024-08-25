@@ -1,3 +1,5 @@
+import RedirectEvents from '@/auth/RedirectEvents';
+import RedirectLosts from '@/auth/RedirectLosts';
 import Layout from '@/components/layouts/Layout';
 import ScrollToTop from '@/components/layouts/ScrollToTop';
 import AdminPage from '@/pages/admin/AdminPage';
@@ -28,12 +30,12 @@ import HongikZonePage from '@/pages/stage/HongikZonePage';
 import LineupPage from '@/pages/stage/LineupPage';
 import StageInfoPage from '@/pages/stage/StageInfoPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RedirectEvents from '@/auth/RedirectEvents';
-import RedirectLosts from '@/auth/RedirectLosts';
+import { AuthProvider } from './pages/lost-and-found/pages/AddLostItem/context/AuthProvider';
+import ProtectedRoute from './pages/lost-and-found/pages/AddLostItem/outlet/ProtectedRoute';
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       {/* url 세그먼트 확정 후 수정 예정 */}
       <BrowserRouter>
         <ScrollToTop />
@@ -67,7 +69,10 @@ function App() {
             {/* 준혁 라우팅 🐳 */}
             <Route path="/lost-and-found" element={<LostAndFoundPage />} />
             <Route path="/lost-and-found/:lostId" element={<LostAndFoundDetail />} />
-            <Route path="/lost-and-found/add" element={<AddLostItem />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/lost-and-found/add" element={<AddLostItem />} />
+            </Route>
+
             <Route path="/oauth/losts" element={<RedirectLosts />} />
 
             {/* 동욱 라우팅 🍷 */}
@@ -84,7 +89,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </AuthProvider>
   );
 }
 
