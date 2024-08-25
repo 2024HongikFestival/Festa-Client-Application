@@ -1,12 +1,18 @@
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-export default function BlueBtn({ text }) {
-  return <Btn>{text}</Btn>;
+export default function BlueBtn({ text, onClick }) {
+  return <Btn onClick={onClick}>{text}</Btn>;
 }
 
 BlueBtn.propTypes = {
   text: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+};
+
+BlueBtn.defaultProps = {
+  onClick: () => {},
 };
 
 const Btn = styled.button`
@@ -16,4 +22,5 @@ const Btn = styled.button`
   ${(props) => props.theme.fontStyles.main.headline5};
   border-radius: 1.2rem;
   color: white;
+  cursor: pointer;
 `;

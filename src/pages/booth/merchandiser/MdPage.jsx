@@ -2,8 +2,12 @@ import styled from 'styled-components';
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/error.webp';
+import BlueBtn from '@/components/common/BlueBtn';
 
 export default function MdPage() {
+  const clicked = () => {
+    console.log('clicked');
+  };
   return (
     <Container>
       <PageTitle title="MD 상품" />
@@ -41,6 +45,7 @@ export default function MdPage() {
           </NoteContentWrapper>
         </NoteContainer>
       </ContentContainer>
+      <BlueBtn text="테스트" onClick={clicked} />
     </Container>
   );
 }
