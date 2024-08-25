@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { axiosInstance } from '@/api/axios';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const RedirectLosts = () => {
