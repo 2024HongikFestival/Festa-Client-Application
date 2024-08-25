@@ -6,7 +6,7 @@ const ProtectedRoute = () => {
   const { accessToken } = useAuth();
 
   if (!accessToken) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/lost-and-found" replace />;
   }
 
   return <Outlet />;
