@@ -231,22 +231,22 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
   };
 
   return (
-    <PostContainer noGap={posts === userPosts}>
+    <PostContainer $nogap={posts === userPosts}>
       {Array.isArray(userPosts) && userPosts.length > 0 ? (
         userPosts.map((lost) => (
-          <Container key={lost.lostId} onClick={() => handleClick(lost.lostId)} border={posts === userPosts}>
+          <Container key={lost.lostId} onClick={() => handleClick(lost.lostId)} $hasborder={posts === userPosts}>
             <Img src={lost.imageUrl} alt={lost.content} />
             <PostInfo>
-              <Status lostStatus={lost.lostStatus}>
+              <Status $loststatus={lost.lostStatus}>
                 &middot; {lost.lostStatus === 'PUBLISHED' ? '게시중' : '삭제됨'}
               </Status>
               <UserInfo>
                 <UserName>작성자</UserName>
-                <UserId isBlocked={lost.isUserBlocked}>{formatId(lost.userId)}</UserId>
+                <UserId $isblocked={lost.isUserBlocked}>{formatId(lost.userId)}</UserId>
               </UserInfo>
               <Wrapper>
                 <PostDate>{formatDate(lost.createdAt)}</PostDate>
-                <MoreBtn lostStatus={lost.lostStatus} onClick={(e) => handleMoreClick(lost.lostId, e)} />
+                <MoreBtn $loststatus={lost.lostStatus} onClick={(e) => handleMoreClick(lost.lostId, e)} />
               </Wrapper>
               {showOptions === lost.lostId && (
                 <OptionsMenu
@@ -262,7 +262,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
         <p style={{ padding: '1rem' }}>분실물 게시글이 존재하지 않습니다.</p>
       )}
       {posts !== userPosts && (
-        <LoadMoreWrapper showButton={displayedLosts.length < allLosts.length}>
+        <LoadMoreWrapper $showbutton={displayedLosts.length < allLosts.length}>
           {displayedLosts.length < allLosts.length && (
             <LoadMoreButton onClick={loadMore} disabled={loading}>
               {loading ? 'Loading...' : '더보기'}
@@ -300,15 +300,14 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
     </PostContainer>
   );
 };
-
 Post.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
-      lostId: PropTypes.string.isRequired,
+      lostId: PropTypes.number.isRequired,
       imageUrl: PropTypes.string.isRequired,
       content: PropTypes.string,
       lostStatus: PropTypes.oneOf(['PUBLISHED', 'DELETED']).isRequired,
-      isUserBlocked: PropTypes.string, // 추가된 prop
+      isUserBlocked: PropTypes.bool, // 추가된 prop
       userId: PropTypes.string.isRequired,
       createdAt: PropTypes.string.isRequired,
     })
@@ -316,7 +315,7 @@ Post.propTypes = {
   userId: PropTypes.string,
   setIsDetailView: PropTypes.func.isRequired,
   setPostId: PropTypes.func.isRequired,
-  updateLostsStatus: PropTypes.func.isRequired,
+  updateLostsStatus: PropTypes.func,
 };
 
 export default Post;
@@ -327,7 +326,7 @@ const PostContainer = styled.div`
   justify-content: center;
   width: 100%;
   background-color: ${(props) => props.theme.colors.gray10};
-  gap: ${({ noGap }) => (noGap ? '0' : '0.8rem')}; /* 0.5rem → 0.8rem */
+  gap: ${({ $nogap }) => ($nogap ? '0' : '0.8rem')}; /* 0.5rem → 0.8rem */
 `;
 
 const Wrapper = styled.div`
@@ -348,8 +347,7 @@ const Container = styled.div`
   box-sizing: border-box;
   color: ${(props) => props.theme.colors.black};
   cursor: pointer;
-  border-bottom: ${({ border, theme }) =>
-    border ? `0.1rem solid ${theme.colors.gray20}` : 'none'}; /* 0.063rem → 0.1rem */
+  border-bottom: ${(props) => (props.$hasborder ? `0.1rem solid ${props.theme.colors.gray20}` : 'none')};
   box-sizing: border-box;
   position: relative;
 `;
@@ -379,8 +377,8 @@ const UserName = styled.span`
 const UserId = styled.span`
   ${(props) => props.theme.fontStyles.body2Med};
   font-size: 1.4rem; /* 0.875rem → 1.4rem */
-  color: ${(props) => (props.isBlocked ? props.theme.colors.gray30 : props.theme.colors.gray80)};
-  text-decoration: ${(props) => (props.isBlocked ? 'line-through' : 'none')};
+  color: ${(props) => (props.$isblocked ? props.theme.colors.gray30 : props.theme.colors.gray80)};
+  text-decoration: ${(props) => (props.$isblocked ? 'line-through' : 'none')};
 `;
 
 const PostDate = styled.span`
@@ -409,7 +407,7 @@ const Status = styled.span`
   ${(props) => props.theme.fontStyles.captionBold};
   text-align: right;
   font-size: 1.2rem; /* 0.75rem → 1.2rem */
-  color: ${(props) => (props.lostStatus === 'PUBLISHED' ? '#53cc7c' : '#F04949')};
+  color: ${(props) => (props.$loststatus === 'PUBLISHED' ? '#53cc7c' : '#F04949')};
   font-weight: 700;
 `;
 
@@ -464,11 +462,11 @@ const OptionButton = styled.button`
 `;
 
 const LoadMoreWrapper = styled.div`
-  width: 32rem; /* 20rem → 32rem */
-  height: ${(props) => (props.showButton ? '6.4rem' : '0')}; /* 4rem → 6.4rem */
+  width: 32rem;
+  height: ${({ $showbutton }) => ($showbutton ? '6.4rem' : '0')};
   color: ${(props) => props.theme.colors.black};
   border: none;
-  cursor: ${(props) => (props.showButton ? 'pointer' : 'default')};
+  cursor: ${({ $showbutton }) => ($showbutton ? 'pointer' : 'default')};
   display: flex;
   align-items: center;
   justify-content: center;

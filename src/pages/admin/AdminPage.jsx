@@ -10,6 +10,7 @@ const AdminPage = () => {
   const [activeComponent, setActiveComponent] = useState('posts');
   const [isDetailView, setIsDetailView] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
@@ -27,10 +28,10 @@ const AdminPage = () => {
       <Container>
         {!isDetailView && (
           <SelectBar>
-            <Title onClick={() => setActiveComponent('posts')} active={activeComponent === 'posts'}>
+            <Title onClick={() => setActiveComponent('posts')} $active={activeComponent === 'posts'}>
               게시글
             </Title>
-            <Title onClick={() => setActiveComponent('blockList')} active={activeComponent === 'blockList'}>
+            <Title onClick={() => setActiveComponent('blockList')} $active={activeComponent === 'blockList'}>
               차단 목록
             </Title>
           </SelectBar>
@@ -45,7 +46,7 @@ const AdminPage = () => {
               }}
             />
           ) : (
-            <Post setIsDetailView={setIsDetailView} setPostId={setSelectedPostId} />
+            <Post setIsDetailView={setIsDetailView} setPostId={setSelectedPostId} posts={posts} />
           ))}
         {activeComponent === 'blockList' &&
           (isDetailView ? (
@@ -82,7 +83,7 @@ const Title = styled.div`
   cursor: pointer;
   ${(props) => props.theme.fontStyles.subHeadBold};
   font-size: 1.8rem;
-  color: ${({ active, theme }) => (active ? theme.colors.gray80 : theme.colors.gray40)};
+  color: ${({ $active, theme }) => ($active ? theme.colors.gray80 : theme.colors.gray40)};
   transition: background-color 0.3s;
   font-weight: 700;
 `;

@@ -137,12 +137,12 @@ const PostDetail = ({ postId, onBack }) => {
           <InfoRow>
             <Label>작성자ID</Label>
             <Value
-              isBlocked={lostDetails.isUserBlocked}
+              $isblocked={lostDetails.isUserBlocked}
               style={{
                 justifyContent: 'space-between',
               }}
             >
-              <UserId isBlocked={lostDetails.isUserBlocked}>{lostDetails.userId}</UserId>
+              <UserId $isblocked={lostDetails.isUserBlocked}>{lostDetails.userId}</UserId>
               {lostDetails.isUserBlocked ? (
                 <ActionButton onClick={handleUnblockUser}>차단 해제</ActionButton>
               ) : (
@@ -266,7 +266,7 @@ const ActionButton = styled.button`
 
 const UserId = styled(Value)`
   font-weight: 500;
-  color: ${(props) => (props.isBlocked ? props.theme.colors.gray30 : props.theme.colors.black)};
-  text-decoration: ${(props) => (props.isBlocked ? 'line-through' : 'none')};
+  color: ${(props) => (props.$isblocked ? props.theme.colors.gray30 : props.theme.colors.black)};
+  text-decoration: ${(props) => (props.$isblocked ? 'line-through' : 'none')};
   width: 10.4rem;
 `;

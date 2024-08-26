@@ -63,8 +63,8 @@ export default function Header() {
 
   return (
     <>
-      <HeaderLayout path={location.pathname}>
-        <HeaderBg path={location.pathname}>
+      <HeaderLayout $path={location.pathname}>
+        <HeaderBg $path={location.pathname}>
           <HambergerMenu onClick={toggleMenu}>
             <img src={blackImages ? hambergerMenuBlack : hambergerMenu} alt="hambergerMenu" />
           </HambergerMenu>
@@ -160,7 +160,10 @@ AdminMenuBar.propTypes = {
   showLogoutPopup: PropTypes.bool.isRequired,
   setShowLogoutPopup: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,
-  adminMenuRef: PropTypes.func.isRequired,
+  adminMenuRef: PropTypes.oneOfType([
+    PropTypes.func, // ref로서의 함수 타입
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }), // ref로서의 객체 타입
+  ]).isRequired,
 };
 
 const HeaderLayout = styled.div`
@@ -175,14 +178,14 @@ const HeaderLayout = styled.div`
   z-index: 100;
 
   ${(props) =>
-    props.path === '/admin' &&
+    props.$path === '/admin' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
       background-position: center;
     `}
   ${(props) =>
-    props.path === '/admin/event' &&
+    props.$path === '/admin/event' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
@@ -206,14 +209,14 @@ const HeaderBg = styled.div`
   align-items: center;
 
   ${(props) =>
-    props.path === '/admin' &&
+    props.$path === '/admin' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
       background-position: center;
     `}
   ${(props) =>
-    props.path === '/admin/event' &&
+    props.$path === '/admin/event' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;

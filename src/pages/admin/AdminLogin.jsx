@@ -63,8 +63,20 @@ const AdminLogin = ({ onLoginSuccess }) => {
     <LoginContainer key={resetKey}>
       <Title>화양연화 관리자페이지</Title>
       <Form>
-        <LoginInput type="text" placeholder="ID" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <LoginInput type="password" placeholder="PW" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <LoginInput
+          type="text"
+          placeholder="ID"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          autoComplete="username"
+        />
+        <LoginInput
+          type="password"
+          placeholder="PW"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
+        />
       </Form>
       <LoginButton onClick={() => adminAccess(username, password)}>Login</LoginButton>
     </LoginContainer>
