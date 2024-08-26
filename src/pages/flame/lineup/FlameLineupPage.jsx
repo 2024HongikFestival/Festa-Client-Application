@@ -1,123 +1,25 @@
-// 와디페 라인업
-// url: /flame/lineup
-
-import Footer from '@/components/layouts/Footer';
-import Header from '@/components/layouts/Header';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import InstalogoImage from '@/assets/webps/wdfLineup/instagramLogo.webp';
 import testImage from '@/assets/webps/wdfLineup/test.webp';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.8rem;
-  background-color: ${(props) => props.theme.colors.flameBackgroundColor};
-  padding-bottom: 5.6rem;
-  padding-top: 2.4rem;
-`;
-const Title = styled.h2`
-  align-self: stretch;
-  color: ${(props) => props.theme.colors.white};
-  text-align: center;
-  ${(props) => props.theme.fontStyles.flame.headline3};
-`;
-const DayContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 4.8rem;
-  align-items: center;
-  align-self: stretch;
-`;
-const DayButton = styled.button`
-  background: none;
-  border: none;
-  color: ${(props) => (props.selected ? 'transparent' : props.theme.colors.gray80)};
-  cursor: pointer;
-  background: ${(props) => (props.selected ? 'linear-gradient(104deg, #df2020 35.72%, #ffb800 88.25%)' : 'none')};
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: ${(props) => (props.selected ? 'transparent' : 'inherit')};
-  ${(props) => props.theme.fontStyles.basic.subHeadBold};
-  padding: 0;
-
-  span {
-    display: block; /* 텍스트를 줄바꿈합니다 */
-    ${(props) => props.theme.fontStyles.basic.subHeadBold};
-  }
-`;
-const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 3.6rem;
-`;
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 33.5rem;
-  height: 37.4rem;
-  flex-shrink: 0;
-  background-color: ${(props) => props.theme.colors.flameBackgroundColor};
-  border: 0.1rem solid transparent;
-  border-image: linear-gradient(to bottom, #df2121 0%, rgba(255, 255, 255, 0.25) 75%, rgba(255, 255, 255, 0) 100%) 1;
-  gap: 1.6rem;
-`;
-const CardImageContainer = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 29.7rem;
-  margin-top: 1.8rem;
-  border-bottom: 0.1rem solid transparent;
-  border-image: linear-gradient(90deg, #ffb801 0%, #df2020 100%) 1;
-`;
-const DjImage = styled.img`
-  width: 20.1rem;
-  height: auto;
-`;
-const GradientOverlay = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 29.7rem;
-  height: 8.9rem;
-  background: linear-gradient(0deg, #010304 0%, rgba(0, 0, 0, 0) 100%);
-  pointer-events: none; /* 사용자 상호작용을 차단 */
-`;
-const CardDescriptionContainer = styled.div`
-  display: flex;
-  width: 29.7rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.4rem;
-`;
-const DjProfile = styled.div`
-  align-self: stretch;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-const Name = styled.p`
-  color: ${(props) => props.theme.colors.white};
-  ${(props) => props.theme.fontStyles.basic.headline5};
-`;
-const InstaLogo = styled.img`
-  width: 3.8rem;
-  height: 3.8rem;
-  cursor: pointer;
-`;
-const Description = styled.div`
-  align-self: stretch;
-  color: ${(props) => props.theme.colors.gray50};
-  ${(props) => props.theme.fontStyles.basic.body1Med};
-`;
+import {
+  Container,
+  Title,
+  DayContainer,
+  DayButton,
+  CardContainer,
+  Card,
+  CardImageContainer,
+  DjImage,
+  GradientOverlay,
+  CardDescriptionContainer,
+  DjProfile,
+  Name,
+  InstaLogo,
+  Description,
+} from './styles'; // 스타일 파일에서 스타일 컴포넌트를 가져옴
 
 const FlameLineupPage = () => {
   const [selectedDay, setSelectedDay] = useState('Day1');
@@ -152,6 +54,7 @@ const FlameLineupPage = () => {
     AOS.refresh();
   }, [selectedDay]);
 
+  // 수정 예정
   const dummyData = {
     Day1: [
       { id: 1, name: '디제이 이름 1', time: '10:00 AM', description: '디제이 1 소개글' },
