@@ -25,9 +25,6 @@ export const RegisterMain = styled.main`
 export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fontStyles.main.headline2}; //SCORE 어쩌구로 바뀜
-
-  margin-top: 2.8rem;
-  margin-bottom: 2.8rem;
 `;
 
 //경고 박스
