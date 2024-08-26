@@ -5,7 +5,7 @@ import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
 import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
 import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Popup from '@/pages/admin/Popup';
+import Popup from '@/components/admin/Popup';
 import PropTypes from 'prop-types';
 
 export default function Header() {

@@ -24,47 +24,48 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
   }, []);
 
   useEffect(() => {
-    getLists();
-    getAllLosts();
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('accessToken');
+
+        // getLists 정의 및 호출
+        const getLists = async () => {
+          const response = await adminAxiosInstance.get('/admin/blacklist', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setList(response.data.data);
+        };
+
+        // getAllLosts 정의 및 호출
+        const getAllLosts = async () => {
+          const response = await adminAxiosInstance.get('/losts', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setAllLosts(response.data.data.losts);
+        };
+
+        await getLists();
+        await getAllLosts();
+        window.scrollTo(0, 0);
+      } catch (error) {
+        console.error('Error fetching data:', error.response?.data || error.message);
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
-    // 페이지가 변경될 때마다 displayedList를 업데이트
     const nextPageItems = list.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
     setDisplayedList(nextPageItems);
     setHasMore(nextPageItems.length === PAGE_SIZE);
   }, [page, list]);
 
   const getAdminToken = () => localStorage.getItem('accessToken');
-
-  const getLists = async () => {
-    try {
-      const token = getAdminToken();
-      const response = await adminAxiosInstance.get('/admin/blacklist', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response.data.data);
-      setList(response.data.data);
-    } catch (error) {
-      console.error('Error fetching blacklist:', error.response?.data || error.message);
-    }
-  };
-
-  const getAllLosts = async () => {
-    try {
-      const token = getAdminToken();
-      const response = await adminAxiosInstance.get('/losts', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setAllLosts(response.data.data.losts);
-    } catch (error) {
-      console.error('Error fetching lost posts:', error.response?.data || error.message);
-    }
-  };
 
   const filterPostsByUserId = (userId) => allLosts.filter((lost) => lost.userId === userId);
 

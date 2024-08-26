@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AdminLogin from './AdminLogin';
-import Post from './Post';
-import BlockList from './BlockList';
-import PostDetail from './PostDetail';
+import Post from '@/components/admin/Post';
+import BlockList from '@/components/admin/BlockList';
+import PostDetail from '@/components/admin/PostDetail';
 
 const AdminPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
