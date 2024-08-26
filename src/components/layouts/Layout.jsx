@@ -27,7 +27,7 @@ const Container = styled.div`
   margin: ${({ $showheader }) => ($showheader ? '5.6rem auto 0' : '0 auto 0')};
 
   ${(props) =>
-    (props.$path === '/likelion' || props.path === '/gaehwa') &&
+    (props.$path === '/likelion' || props.$path === '/gaehwa') &&
     css`
       background-color: ${(props) => props.theme.colors.makersBackgroundColor};
       background-size: cover;
