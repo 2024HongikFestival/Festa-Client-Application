@@ -9,54 +9,62 @@ import 'slick-carousel/slick/slick-theme.css';
 import DJ from '@/assets/webps/wdfMain/DJ.webp';
 import speaker from '@/assets/webps/wdfMain/speaker.webp';
 import Insta from '@/assets/webps/wdfMain/insta.webp';
+import BgVideo from '@/assets/videos/flameMainBackGround.mp4';
 
 const FlameMainPage = () => {
   const [selectedDay, setSelectedDay] = useState('day1');
+
   return (
     <>
       <Flame>
-        <TitleContainer>
-          <Title>WOW DJ FESTIVAL</Title>
-          <TitleWrapper>
-            <SubTitle>the</SubTitle>
-            <WDFLogo src={FLAME} alt="flame" />
-          </TitleWrapper>
-          <WDFImage src={speaker}></WDFImage>
-        </TitleContainer>
-        <WDFContainer>
-          <WDFIntroduction>
-            <IntroWrapper>
-              <Introduction>ONE&nbsp;</Introduction>
-              <Introduction1>AND&nbsp;</Introduction1>
-              <Introduction> ONLY</Introduction>
-            </IntroWrapper>
-            <WDFName>와우 디제이 페스티벌</WDFName>
-          </WDFIntroduction>
-          <WDFDescription>
-            현실의 무게와 무력감에 깨져가는 청춘을 깨우고 <br />
-            가장 아름답게 빛나는 &apos;나&apos;를 마주할 시간입니다. <br />
-            청춘의 불꽃이 함께하는 그 유일무이한 순간에 <br />
-            여러분을 초대합니다.
-          </WDFDescription>
-        </WDFContainer>
+        <VideoContainer>
+          <BackGroundVideo autoPlay loop muted>
+            <source src={BgVideo} type="video/mp4" />
+          </BackGroundVideo>
+          <TitleContainer>
+            <Title>WOW DJ FESTIVAL</Title>
+            <TitleWrapper>
+              <SubTitle>the</SubTitle>
+              <WDFLogo src={FLAME} alt="flame" />
+            </TitleWrapper>
+            <WDFImage src={speaker}></WDFImage>
+          </TitleContainer>
+          <WDFContainer>
+            <WDFIntroduction>
+              <IntroWrapper>
+                <Introduction>ONE&nbsp;</Introduction>
+                <Introduction1>AND&nbsp;</Introduction1>
+                <Introduction> ONLY</Introduction>
+              </IntroWrapper>
+              <WDFName>와우 디제이 페스티벌</WDFName>
+            </WDFIntroduction>
+            <WDFDescription>
+              현실의 무게와 무력감에 깨져가는 청춘을 깨우고 <br />
+              가장 아름답게 빛나는 &apos;나&apos;를 마주할 시간입니다. <br />
+              청춘의 불꽃이 함께하는 그 유일무이한 순간에 <br />
+              여러분을 초대합니다.
+            </WDFDescription>
+          </WDFContainer>
+        </VideoContainer>
+        <LineUpSection>
+          <DateSection>
+            <DateButton selected={selectedDay === 'day1'} onClick={() => setSelectedDay('day1')}>
+              DAY 1 <br /> 9.25 (수)
+            </DateButton>
+            <DateButton selected={selectedDay === 'day2'} onClick={() => setSelectedDay('day2')}>
+              DAY 2 <br /> 9.26 (목)
+            </DateButton>
+            <DateButton selected={selectedDay === 'day3'} onClick={() => setSelectedDay('day3')}>
+              DAY 3<br /> 9.27 (금)
+            </DateButton>
+          </DateSection>
 
-        <DateSection>
-          <DateButton selected={selectedDay === 'day1'} onClick={() => setSelectedDay('day1')}>
-            DAY 1 <br /> 9.25 (수)
-          </DateButton>
-          <DateButton selected={selectedDay === 'day2'} onClick={() => setSelectedDay('day2')}>
-            DAY 2 <br /> 9.26 (목)
-          </DateButton>
-          <DateButton selected={selectedDay === 'day3'} onClick={() => setSelectedDay('day3')}>
-            DAY 3<br /> 9.27 (금)
-          </DateButton>
-        </DateSection>
-
-        <DayContent>
-          {selectedDay === 'day1' && <Day1Content />}
-          {selectedDay === 'day2' && <Day2Content />}
-          {selectedDay === 'day3' && <Day3Content />}
-        </DayContent>
+          <DayContent>
+            {selectedDay === 'day1' && <Day1Content />}
+            {selectedDay === 'day2' && <Day2Content />}
+            {selectedDay === 'day3' && <Day3Content />}
+          </DayContent>
+        </LineUpSection>
       </Flame>
     </>
   );
@@ -197,18 +205,30 @@ export default FlameMainPage;
 
 const Flame = styled.div`
   width: 100%;
-  background-color: ${(props) => props.theme.colors.black};
+  position: relative;
+  background-color: transparent;
 `;
-
+const VideoContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 70.7rem;
+  background: linear-gradient(
+    180deg,
+    rgba(1, 3, 4, 0.7) 0%,
+    rgba(1, 3, 4, 0.1) 69.95%,
+    rgba(1, 3, 4, 0.3) 90.29%,
+    #010304 98%
+  );
+`;
 const Title = styled.span`
   ${(props) => props.theme.fontStyles.flame.subHead};
   font-size: 1.6rem;
   font-weight: 400;
   text-shadow: 0px 0px 3.2rem rgba(255, 255, 255, 0.25);
-  font-style: normal;
   font-style: italic;
   color: ${(props) => props.theme.colors.gray20};
-  margin-top: 3.2rem;
+  background-color: transparent;
+  padding-top: 3.2rem;
 `;
 
 const WDFLogo = styled.img`
@@ -216,13 +236,18 @@ const WDFLogo = styled.img`
   height: 7.5rem;
 `;
 
+const LineUpSection = styled.div`
+  background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+  padding-bottom: 6.4rem;
+`;
 const WDFContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.2rem;
-  margin-bottom: 5.2rem;
+  z-index: 1;
+  padding-bottom: 5.2rem;
 `;
 
 const SubTitle = styled.span`
@@ -246,6 +271,7 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 1;
   align-items: center;
 `;
 
@@ -266,7 +292,8 @@ const Introduction = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Bold};
   font-size: 1.4rem;
   font-weight: 700;
-  background: linear-gradient(281.55deg, #fcf661 1.09%, #ff0e2b 38.8%, #df2020 62.66%, #bc1700 96.55%);
+  background: linear-gradient(281.55deg, #fcf661 1%, #ff0e2b 15%, #df2020 40%, #bc1700 100%);
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -298,7 +325,7 @@ const WDFDescription = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray60};
   font-size: 1.4rem;
-  margin-bottom: 5.4rem;
+  padding-bottom: 5.4rem;
 `;
 
 const DateSection = styled.div`
@@ -307,7 +334,7 @@ const DateSection = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4.8rem;
-  margin-top: 3.2rem;
+  padding-top: 8.4rem;
 `;
 
 const DateButton = styled.button`
@@ -334,7 +361,8 @@ const DateButton = styled.button`
 
 const DayContent = styled.div`
   margin-top: 1.6rem;
-  height: 68.7rem;
+  height: 46.9rem;
+  box-sizing: border-box;
 `;
 
 const IntroWrapper = styled.div`
@@ -358,29 +386,29 @@ const carouselSettings = {
 const CarouselContainer = styled.div`
   position: relative;
   width: 100%;
-  min-width: 37.5rem; /* 23.438rem에서 1.6배 */
-  max-width: 76.8rem; /* 48rem에서 1.6배 */
-  height: 43.7rem; /* 27.313rem에서 1.6배 */
+  min-width: 37.5rem;
+  max-width: 76.8rem;
+  height: 43.7rem;
 `;
 
 const CarouselImage = styled.img`
-  width: 20.6rem; /* 12.875rem에서 1.6배 */
-  height: 20.4rem; /* 12.75rem에서 1.6배 */
+  width: 20.6rem;
+  height: 20.4rem;
   object-fit: contain;
-  margin-top: 2.4rem; /* 1.5rem에서 1.6배 */
+  margin-top: 2.4rem;
 `;
 
 const ImageContainer = styled.div`
   display: flex !important;
   flex-direction: column;
   align-items: center;
-  width: 27.6rem !important; /* 17.25rem에서 1.6배 */
-  height: 41.3rem; /* 25.813rem에서 1.6배 */
-  border: 0.1rem solid; /* 0.063rem에서 1.6배 */
+  width: 27.6rem !important;
+  height: 41.3rem;
+  border: 0.1rem solid;
   border-image-source: linear-gradient(180deg, #df2121 0%, #cdb3b3 70%, #515356 100%);
   border-image-slice: 1;
   background: var(--UI-Background, #010304);
-  margin: 0 0.8rem; /* 0.5rem에서 1.6배 */
+  margin: 0 0.8rem;
   box-sizing: border-box;
   position: relative;
   outline: none;
@@ -396,14 +424,14 @@ const NavigationBar = styled.div`
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 0.6rem; /* 0.375rem에서 1.6배 */
+  gap: 0.6rem;
 `;
 
 const NavigationButton = styled.button`
   background-color: ${(props) => (props.active ? props.theme.colors.flameMainColor : props.theme.colors.gray80)};
   border: none;
-  width: ${(props) => (props.active ? '2.4rem' : '1.6rem')}; /* 1.5rem과 1rem에서 1.6배 */
-  height: 0.4rem; /* 0.25rem에서 1.6배 */
+  width: ${(props) => (props.active ? '2.4rem' : '1.6rem')};
+  height: 0.4rem;
   cursor: pointer;
 `;
 
@@ -413,27 +441,27 @@ const Content = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  min-width: 37.5rem; /* 23.438rem에서 1.6배 */
-  max-width: 76.8rem; /* 48rem에서 1.6배 */
-  height: 43.7rem; /* 27.313rem에서 1.6배 */
-  margin-top: 2.8rem; /* 1.75rem에서 1.6배 */
+  min-width: 37.5rem;
+  max-width: 76.8rem;
+  height: 43.7rem;
+  margin-top: 2.8rem;
 `;
 
 const Line = styled.div`
-  width: 24.4rem; /* 15.25rem에서 1.6배 */
-  margin: 1.6rem 0; /* 1rem에서 1.6배 */
+  width: 24.4rem;
+  margin: 1.6rem 0;
   box-sizing: border-box;
-  border-bottom: 0.1rem solid; /* 0.063rem에서 1.6배 */
+  border-bottom: 0.1rem solid;
   border-image-source: linear-gradient(90deg, #ffb801 0%, #df2020 100%);
   border-image-slice: 1;
 `;
 
 const DJName = styled.span`
   ${(props) => props.theme.fontStyles.basic.headline5};
-  width: 21.2rem; /* 13.25rem에서 1.6배 */
+  width: 21.2rem;
   color: ${(props) => props.theme.colors.white};
   text-align: left;
-  font-size: 2rem; /* 1.25rem에서 1.6배 */
+  font-size: 2rem;
 `;
 
 const DJInfo = styled.span`
@@ -448,14 +476,24 @@ const DJWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  width: 27.6rem; /* 17.25rem에서 1.6배 */
-  padding-left: 1.6rem; /* 1rem에서 1.6배 */
-  padding-right: 0.8rem; /* 0.5rem에서 1.6배 */
+  width: 27.6rem;
+  padding-left: 1.6rem;
+  padding-right: 0.8rem;
 `;
 
 const DJInsta = styled.img`
   display: flex !important;
   justify-content: flex-end;
-  width: 3.84rem; /* 2.4rem에서 1.6배 */
-  height: 3.84rem; /* 2.4rem에서 1.6배 */
+  width: 3.84rem;
+  height: 3.84rem;
+`;
+
+const BackGroundVideo = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 `;
