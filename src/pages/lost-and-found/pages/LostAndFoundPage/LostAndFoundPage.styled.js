@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Main = styled.main`
-  width: 39.3rem;
+  width: 37.5rem;
   min-height: 49.7rem; //852 - 55
   //margin-top: 5.6rem;
   display: flex;
