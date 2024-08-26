@@ -1,14 +1,39 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { adminAxiosInstance } from '@/api/axios';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import * as jwt_decode from 'jwt-decode';
 
 const AdminLogin = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [resetKey, setResetKey] = useState(0);
+
+  const checkTokenValidity = () => {
+    const token = localStorage.getItem('accessToken');
+    if (!token) return false;
+
+    try {
+      const decoded = jwt_decode(token);
+      const currentTime = Date.now() / 1000; // 현재 시간 (초 단위)
+      if (decoded.exp < currentTime) {
+        localStorage.removeItem('accessToken'); // 만료된 토큰 삭제
+        return false;
+      }
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    if (!checkTokenValidity()) {
+      setResetKey((prevKey) => prevKey + 1); // 키 값을 변경하여 컴포넌트를 리렌더링
+    }
+  }, []);
 
   const adminAccess = async (username, password) => {
     try {
@@ -35,7 +60,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
   };
 
   return (
-    <LoginContainer>
+    <LoginContainer key={resetKey}>
       <Title>화양연화 관리자페이지</Title>
       <Form>
         <LoginInput type="text" placeholder="ID" value={username} onChange={(e) => setUsername(e.target.value)} />

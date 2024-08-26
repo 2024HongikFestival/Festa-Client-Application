@@ -15,6 +15,8 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
 
+  const adminMenuRef = useRef(null);
+
   const useBlackImages = (path) => {
     // 검정색 홍익로고, 검정 메뉴바 로고 들어가는 path
     const blackImagePaths = ['/admin', '/admin/event'];
@@ -22,30 +24,43 @@ export default function Header() {
   };
   const blackImages = useBlackImages(location.pathname);
 
-  const toggleMenu = () => {
+  const toggleMenu = (event) => {
+    event.stopPropagation(); // 이벤트 전파를 막아 외부 클릭과의 충돌 방지
     setIsMenuOpen((prev) => !prev);
   };
 
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const handleLogout = () => {
-    console.log('Before logout:', localStorage.getItem('accessToken')); // 디버그용
     localStorage.removeItem('accessToken');
-    console.log('After logout:', localStorage.getItem('accessToken')); // 디버그용
     setIsLoggedIn(false);
     nav(0);
   };
+
   const handleConfirmLogout = () => {
-    console.log('Handle Confirm Logout called'); // 디버깅용 로그 추가
     handleLogout();
     setIsMenuOpen(false);
     setShowLogoutPopup(false);
   };
 
   const handleCancelLogout = () => {
-    console.log('Handle Cancel Logout called'); // 디버깅용 로그 추가
     setIsMenuOpen(false);
     setShowLogoutPopup(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+        setShowLogoutPopup(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <HeaderLayout path={location.pathname}>
@@ -56,11 +71,13 @@ export default function Header() {
           <HiuLogo onClick={() => nav('/')}>
             <img src={blackImages ? hiuLogoBlack : hiuLogo} alt="hiuLogo" />
           </HiuLogo>
+
           <Right></Right>
         </HeaderBg>
         {isMenuOpen &&
           (isAdminPath ? (
             <AdminMenuBar
+              adminMenuRef={adminMenuRef}
               handleCancelLogout={handleCancelLogout}
               handleConfirmLogout={handleConfirmLogout}
               showLogoutPopup={showLogoutPopup}
@@ -83,23 +100,8 @@ const AdminMenuBar = ({
   showLogoutPopup,
   setShowLogoutPopup,
   closeMenu,
+  adminMenuRef,
 }) => {
-  const adminMenuRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
-        closeMenu();
-        setShowLogoutPopup(false); // 팝업 닫기
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [closeMenu]);
-
   return (
     <>
       <AdminBar ref={adminMenuRef}>
@@ -107,7 +109,7 @@ const AdminMenuBar = ({
           <Menu
             onClick={() => {
               nav('/admin');
-              window.location.reload();
+              nav(0);
               closeMenu();
             }}
           >
@@ -158,6 +160,7 @@ AdminMenuBar.propTypes = {
   showLogoutPopup: PropTypes.bool.isRequired,
   setShowLogoutPopup: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,
+  adminMenuRef: PropTypes.func.isRequired,
 };
 
 const HeaderLayout = styled.div`
@@ -187,15 +190,6 @@ const HeaderLayout = styled.div`
     `}
 `;
 
-const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 98;
-  padding-left: 4.4rem;
-`;
 const HeaderBg = styled.div`
   width: 100%;
   max-width: 768px;
