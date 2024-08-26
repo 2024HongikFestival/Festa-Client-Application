@@ -2,12 +2,10 @@ import styled from 'styled-components';
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/error.webp';
-import BlueBtn from '@/components/common/BlueBtn';
+import MD from '@/components/booth/MD';
+import { MdList } from '@/assets/static/booth/mdList';
 
 export default function MdPage() {
-  const clicked = () => {
-    console.log('clicked');
-  };
   return (
     <Container>
       <PageTitle title="MD 상품" />
@@ -30,6 +28,9 @@ export default function MdPage() {
         {/* <ContentContainer>
           <p>md</p>
         </ContentContainer> */}
+        {MdList.map((item, index) => (
+          <MD key={index} img={item.img} name={item.name} price={item.price} width={item.width} height={item.height} />
+        ))}
       </MDContainer>
       {/* 유의사항 컴포넌트 */}
       <ContentContainer>
@@ -45,7 +46,6 @@ export default function MdPage() {
           </NoteContentWrapper>
         </NoteContainer>
       </ContentContainer>
-      {/* <BlueBtn text="테스트" onClick={clicked} /> */}
     </Container>
   );
 }
@@ -132,4 +132,8 @@ const NoteContentWrapper = styled.div`
 
 const MDContainer = styled.div`
   margin-top: 2.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.6rem;
+  margin-bottom: 5.2rem;
 `;
