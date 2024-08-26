@@ -1,7 +1,6 @@
 // 대동제 분실물 (메인)
 // url: /lost-and-found
 
-import Header from '@/components/layouts/Header';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -82,8 +81,6 @@ const LostAndFoundPage = () => {
   return (
     <>
       <S.Wrapper>
-        <Header></Header>
-
         <S.Main>
           <S.Title>분실물</S.Title>
 
