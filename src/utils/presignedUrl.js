@@ -4,7 +4,8 @@ import axios from 'axios';
 export const getPresignedUrl = async () => {
   try {
     const response = await presigendAxiosInstance.get('/losts/up');
-    const presignedUrl = response.data.url;
+    console.log(response);
+    const presignedUrl = response.data.data.url;
     return presignedUrl;
   } catch (err) {
     console.log(err);

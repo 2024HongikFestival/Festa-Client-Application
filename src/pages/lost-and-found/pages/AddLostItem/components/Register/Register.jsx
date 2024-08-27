@@ -63,8 +63,12 @@ const Register = ({ imgSrc }) => {
     inputState;
 
   useEffect(() => {
-    const presignedUrl = getPresignedUrl();
-    setUrl(presignedUrl);
+    const fetchPresignedUrl = async () => {
+      const presignedUrl = await getPresignedUrl();
+      console.log('pre사인', presignedUrl);
+      setUrl(presignedUrl);
+    };
+    fetchPresignedUrl();
   }, []);
 
   useEffect(() => {
@@ -78,6 +82,10 @@ const Register = ({ imgSrc }) => {
     console.log(storageLocationLength);
     console.log(contentLength);
   }, [inputState]);
+
+  useEffect(() => {
+    console.log(url);
+  }, [url]);
 
   const handleFoundChange = (e) => {
     const value = e.target.value;
