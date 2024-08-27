@@ -42,7 +42,7 @@ function App() {
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}
             <Route path="/" element={<MainPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+            {/* <Route path="*" element={<NotFoundPage />} /> */}
             <Route path="/booth" element={<BoothPage />} />
             <Route path="/fleamarket" element={<Fleamarket />} />
             <Route path="/fleamarket/:marketId" element={<FleamarketDetail />} />
