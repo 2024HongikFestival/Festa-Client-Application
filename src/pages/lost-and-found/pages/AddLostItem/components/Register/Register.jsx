@@ -1,11 +1,57 @@
+import { getGrapemeLength, truncateToMaxLength } from '@/utils/InputFilter';
 import { getPresignedUrl, putPresignedUrl } from '@/utils/presignedUrl';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import * as S from './Register.styled';
+
+const initialState = {
+  foundLocation: '',
+  storageLocation: '',
+  content: '',
+  foundLocationLength: 0,
+  storageLocationLength: 0,
+  contentLength: 0,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'UPDATE_FOUND':
+      return { ...state, foundLocation: action.payload, foundLocationLength: getGrapemeLength(action.payload) };
+    case 'UPDATE_STORAGE':
+      return { ...state, storageLocation: action.payload, storageLocationLength: getGrapemeLength(action.payload) };
+    case 'UPDATE_CONTENT':
+      return { ...state, content: action.payload, contentLength: getGrapemeLength(action.payload) };
+    case 'TRUNCATE_FOUND':
+      return {
+        ...state,
+        foundLocation: truncateToMaxLength(action.payload, 12),
+        foundLocationLength: getGrapemeLength(truncateToMaxLength(action.payload)),
+      };
+    case 'TRUNCATE_STORAGE':
+      return {
+        ...state,
+        storageLocation: truncateToMaxLength(action.payload, 12),
+        storageLocationLength: getGrapemeLength(truncateToMaxLength(action.payload)),
+      };
+    case 'TRUNCATE_CONTENT':
+      return {
+        ...state,
+        content: truncateToMaxLength(action.payload, 100),
+        contentLength: getGrapemeLength(truncateToMaxLength(action.payload)),
+      };
+    default:
+      throw new Error('Unknown action type!');
+  }
+};
 
 const Register = ({ imgSrc }) => {
   //해당 url은 미리 이미지를 등록한 뒤 해당 url을 서버에 api 요청을 보내는데 사용됨.
   const [url, setUrl] = useState('');
+
+  //input(3가지) 상태 관리 중앙화
+  const [inputState, dispatch] = useReducer(reducer, initialState);
+  const { foundLocation, storageLocation, content, foundLocationLength, storageLocationLength, contentLength } =
+    inputState;
 
   useEffect(() => {
     const presignedUrl = getPresignedUrl();
@@ -17,6 +63,27 @@ const Register = ({ imgSrc }) => {
       putPresignedUrl(url, imgSrc);
     }
   }, [url]);
+
+  useEffect(() => {
+    console.log(foundLocationLength);
+    console.log(storageLocationLength);
+    console.log(contentLength);
+  }, [inputState]);
+
+  const handleFoundChange = (e) => {
+    const value = e.target.value;
+    dispatch({ type: 'TRUNCATE_FOUND', payload: value });
+  };
+
+  const handleStorageChange = (e) => {
+    const value = e.target.value;
+    dispatch({ type: 'TRUNCATE_STORAGE', payload: value });
+  };
+
+  const handleCotentChange = (e) => {
+    const value = e.target.value;
+    dispatch({ type: 'TRUNCATE_CONTENT', payload: value });
+  };
 
   return (
     <S.Wrapper>
@@ -42,13 +109,21 @@ const Register = ({ imgSrc }) => {
           <S.RegisterArticle>
             <S.InputWrapper>
               <S.InputText>어디서 발견하셨나요?</S.InputText>
-              <S.Input placeholder={`ex. 운동장 구령대 아래 / 학생회관 앞`} />
+              <S.Input
+                value={foundLocation}
+                onChange={handleFoundChange}
+                placeholder={`ex. 운동장 구령대 아래 / 학생회관 앞`}
+              />
             </S.InputWrapper>
 
             <S.InputWrapper>
               <S.InputText>어디에 보관하셨나요?</S.InputText>
               <S.InputWithWarn>
-                <S.Input placeholder={`ex. 발견 위치 그대로 / 학생회관 1층 정수기 옆`} />
+                <S.Input
+                  value={storageLocation}
+                  onChange={handleStorageChange}
+                  placeholder={`ex. 발견 위치 그대로 / 학생회관 1층 정수기 옆`}
+                />
                 <S.InputWarningTextBox>
                   <S.InputWarningIcon />
                   전자기기, 카드, 지갑 등은 분실물 센터에 보관
@@ -62,9 +137,11 @@ const Register = ({ imgSrc }) => {
               </S.InputText>
               <S.InputWithCount>
                 <S.TextArea
+                  value={content}
+                  onChange={handleCotentChange}
                   placeholder={`ex. 홍X동님 학생증 발견했습니다 / A동 앞에 산리오 키링 떨어져있어요 주인 찾아가세요~`}
                 />
-                <S.TextLength>{`(0/100)`}</S.TextLength>
+                <S.TextLength>{`(${contentLength}/100)`}</S.TextLength>
               </S.InputWithCount>
             </S.InputWrapper>
 
