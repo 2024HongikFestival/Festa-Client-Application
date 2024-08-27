@@ -202,6 +202,14 @@ const theme = {
       line-height: 150%;
       letter-spacing: -0.0014rem;
     `,
+      body2Reg: `
+      font-family: 'Pretendard', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0014rem;
+      `,
       captionBold: `
       font-family: 'Pretendard', sans-serif;
       font-size: 1.2rem;
@@ -217,6 +225,13 @@ const theme = {
       font-style: normal;
       line-height: 150%;
       letter-spacing: -0.0012rem;
+  `,
+      eventTitle: `
+      font-family: "M PLUS 1";
+      font-size: 3.2rem;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 150%;
   `,
     },
   },

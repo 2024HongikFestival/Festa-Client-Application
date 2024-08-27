@@ -1,51 +1,10 @@
 import { useEffect, useState } from 'react';
-import { axiosInstance } from '@/api/axios';
 import { EVENTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
+import styled from 'styled-components';
+import raffle from '@/assets/webps/event/raffle.webp';
 
 const EventPage = () => {
-  // 전역상태로 관리 필요
-  const [eventId, setEventId] = useState(1);
   const [stateData, setStateData] = useState();
-
-  // 이벤트 데이터
-  const [title, setTitle] = useState('');
-  const [prize, setPrize] = useState('');
-  const [requires, setRequires] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [announcedDate, setAnnouncedDate] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-
-  const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
-
-  // 현재 이벤트 조회 (단건 조회)
-  const getCurrentEvent = async () => {
-    try {
-      const response = await axiosInstance.get(`/events/${eventId}`);
-      console.log(response.data);
-
-      console.log(response.data.message);
-
-      setTitle(response.data.data.title);
-      setPrize(response.data.data.prize);
-      setRequires(response.data.data.requires);
-      setStartDate(
-        `${new Date(response.data.data.startAt).getMonth() + 1}월 ${new Date(response.data.data.startAt).getDate()}일 ${new Date(response.data.data.startAt).getHours()}:${new Date(response.data.data.startAt).getMinutes()}`
-      );
-      setEndDate(
-        `${new Date(response.data.data.endAt).getMonth() + 1}월 ${new Date(response.data.data.endAt).getDate()}일 ${new Date(response.data.data.endAt).getHours()}:${new Date(response.data.data.endAt).getMinutes()}`
-      );
-      setAnnouncedDate(
-        `${new Date(response.data.data.announcedAt).getMonth() + 1}월 ${new Date(response.data.data.announcedAt).getDate()}일 ${new Date(response.data.data.announcedAt).getHours()}:${new Date(response.data.data.announcedAt).getMinutes()}`
-      );
-      setImageUrl(response.data.data.imageUrl);
-    } catch (error) {
-      console.error(error);
-      if (error.response.status === 404) {
-        console.log('존재하지 않는 이벤트입니다.');
-      }
-    }
-  };
 
   const handleRandomState = () => {
     const array = new Uint32Array(1);
@@ -58,106 +17,112 @@ const EventPage = () => {
   };
 
   useEffect(() => {
-    getCurrentEvent();
     handleRandomState();
   }, []);
 
   return (
-    <div
-      style={{
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        height: '60rem',
-        border: 'solid 1px',
-        borderColor: 'black',
-        position: 'relative',
-      }}
-    >
-      {/* body */}
-      <div style={{ marginTop: '3.4375rem' }}>
-        {/* 이벤트 기본 정보 */}
-        <div>
-          <p>이벤트 이름</p>
-          <p>{title}</p>
-        </div>
-        {/* 경품 사진 및 남은 기간(데이터로 계산) */}
-        <div style={{ position: 'relative' }}>
-          {/* 사진 */}
-          <img src={imageUrl} alt="prizeImage" height={`${120}rem`} />
-          {/* 남은 기간 */}
-          <div style={{ position: 'absolute', top: '0', right: '0' }}>마감까지 00:00:00</div>
-        </div>
-        {/* 현재 응모자 수  */}
-        <p>지금 n명이 응모했어요!</p>
-        {/* 경품 이름 및 공유 버튼*/}
-        <div>
-          {prize}
-          {/* 공유 아이콘 */}
-        </div>
-        {/* 경품 가격 */}
-        <div>
-          <p>가격</p>
-        </div>
-        {/* 이벤트 세부 정보 */}
-        <div>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
-            <p>응모 대상</p>
-            <p>
-              재학생 외부인 상관없이 <br />
-              지금 홍익대학교 축제를 즐기고 있다면 누구나
-            </p>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
-            <p>응모 조건</p>
-            <p>{requires}</p>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
-            <p>응모 기간</p>
-            {startDate} ~ {endDate}
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
-            <p>발표일</p>
-            {announcedDate}
-          </div>
-        </div>
-        {/* 하단 고정 플로팅 버튼 */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '0',
-            width: '100%',
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <p>유의 사항</p>
-
-            <button
-              style={{
-                backgroundColor: '#FADB34',
-                color: 'black',
-                border: 'none',
-                width: '20rem',
-                height: '3rem',
-              }}
-              onClick={handleKakaoAuth}
-            >
-              카카오 인증 후 응모하기
-            </button>
-          </div>
-        </div>
+    <Wrapper>
+      <Title>
+        <p>2024</p>
+        <p>홍익 대동제 래플</p>
+      </Title>
+      <div>
+        <img src={raffle} alt="raffle" height={184} />
       </div>
-    </div>
+      <NoticeText>매일 오전 10시 응모권 1장 부여</NoticeText>
+      <NoticeTimeBox>
+        <NoticeTime>마감까지 남은 시간</NoticeTime>
+        <NoticeTime>00:00:00</NoticeTime>
+      </NoticeTimeBox>
+      <QNABox>
+        <QText>Q. 홍익 래플이 뭐예요?</QText>
+        <AText>A. 응모자 추첨을 통해 경품을 지급하는 이벤트입니다.</AText>
+      </QNABox>
+
+      {/* <button
+            style={{
+              backgroundColor: '#FADB34',
+              color: 'black',
+              border: 'none',
+              width: '20rem',
+              height: '3rem',
+            }}
+            onClick={handleKakaoAuth}
+          >
+            카카오 인증 후 응모하기
+          </button> */}
+    </Wrapper>
   );
 };
 
 export default EventPage;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+`;
+
+const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.7rem;
+  color: ${(props) => props.theme.colors.white};
+  p {
+    ${(props) => props.theme.fontStyles.basic.eventTitle}
+  }
+`;
+
+const NoticeText = styled.div`
+  margin-top: 1.1rem;
+  margin-bottom: 2.3rem;
+  ${(props) => props.theme.fontStyles.basic.subHeadBold};
+  color: ${(props) => props.theme.colors.white};
+`;
+
+const NoticeTimeBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 33.5rem;
+  height: 13.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, #ffff24 0%, #a9ff1e 100%);
+`;
+
+const NoticeTime = styled.div`
+  ${(props) => props.theme.fontStyles.basic.body1Bold}
+  color: ${(props) => props.theme.colors.flameBackgroundColor};
+`;
+
+const QNABox = styled.div`
+  display: flex;
+  width: 33.5rem;
+  padding: 1.6rem 1.8rem;
+  margin-top: 2.8rem;
+  margin-bottom: 3.2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  background: ${(props) => props.theme.colors.gray100};
+`;
+
+const QText = styled.div`
+  text-align: center;
+  ${(props) => props.theme.fontStyles.basic.body1Bold};
+  color: ${(props) => props.theme.colors.gray10};
+`;
+
+const AText = styled.div`
+  text-align: center;
+  ${(props) => props.theme.fontStyles.basic.body2Reg};
+  color: ${(props) => props.theme.colors.gray10};
+`;
