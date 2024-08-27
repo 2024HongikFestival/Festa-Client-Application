@@ -6,8 +6,8 @@ import BoothPage from '@/pages/booth/BoothPage';
 import Fleamarket from '@/pages/booth/fleamarket/Fleamarket';
 import FleamarketDetail from '@/pages/booth/fleamarket/FleamarketDetail';
 import PromotionPage from '@/pages/booth/promotion/PromotionPage';
-import EnterEvent from '@/pages/event/EnterEvent';
-import EventPage from '@/pages/event/EventPage';
+import EnterEvent from '@/pages/event/enter/EnterEvent';
+import EventPage from '@/pages/event/main/EventPage';
 import CompleteEvent from '@/pages/event/SubmitEvent';
 import FacilitiesPage from '@/pages/facilities/FacilitiesPage';
 import FlameMainPage from '@/pages/flame/FlameMainPage';
@@ -35,7 +35,6 @@ import RedirectLosts from '@/auth/RedirectLosts';
 function App() {
   return (
     <>
-      {/* url 세그먼트 확정 후 수정 예정 */}
       <BrowserRouter>
         <ScrollToTop />
         <Routes>

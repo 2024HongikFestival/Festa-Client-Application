@@ -1,0 +1,116 @@
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+`;
+
+export const Image = styled.img`
+  width: 17.3rem;
+  height: 10.6rem;
+  margin-top: 4.8rem;
+  margin-bottom: 3.2rem;
+`;
+
+export const FormContainer = styled.div`
+  width: 33.5rem;
+  border-radius: 1rem;
+  padding: 2.4rem 2.4rem 7.7rem 2.4rem;
+  background: ${(props) => props.theme.colors.gray100};
+`;
+
+export const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-bottom: 3.2rem;
+`;
+
+export const ItemSection = styled(Section)`
+  gap: 1.6rem;
+`;
+
+export const SectionText = styled.p`
+  ${(props) => props.theme.fontStyles.basic.body1Bold}
+  color: ${(props) => props.theme.colors.gray10};
+  align-self: stretch;
+`;
+
+export const ItemContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 1.6rem;
+`;
+export const Item = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 6rem;
+  gap: 1.2rem;
+`;
+
+export const ItemCard = styled.div`
+  width: 6rem;
+  height: 7.2rem;
+  align-self: stretch;
+  border-radius: 1rem;
+  border: 0.1rem solid #cdff3f;
+`;
+
+export const ItemName = styled.div`
+  ${(props) => props.theme.fontStyles.basic.captionMed}
+  color: ${(props) => props.theme.colors.white};
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 4.8rem;
+  align-self: stretch;
+  border-radius: 1rem;
+  border: 0.1rem solid #cdff3f;
+  background-color: transparent;
+  color: ${(props) => props.theme.colors.white};
+`;
+
+export const TextArea = styled.textarea`
+  width: 100%;
+  height: 12.9rem;
+  align-self: stretch;
+  border-radius: 1rem;
+  border: 0.1rem solid #cdff3f;
+  background-color: transparent;
+  color: ${(props) => props.theme.colors.white};
+`;
+
+export const TextCount = styled.p`
+  width: 100%;
+  text-align: right;
+  color: ${(props) => props.theme.colors.gray50};
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`;
+
+export const EnterButton = styled.button`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 6.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #feff24 0%, #cdff3f 100%);
+
+  p {
+    ${(props) => props.theme.fontStyles.basic.headline5}
+    color: ${(props) => props.theme.colors.flameBackgroundColor};
+    text-align: center;
+  }
+`;

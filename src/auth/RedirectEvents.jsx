@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '@/api/axios';
-import EnterEvent from '@/pages/event/EnterEvent';
+import EnterEvent from '@/pages/event/enter/EnterEvent';
 import { useNavigate } from 'react-router-dom';
 
 const RedirectEvents = () => {
