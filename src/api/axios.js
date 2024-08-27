@@ -8,6 +8,9 @@ export const axiosInstance = axios.create({
 // presignedUrl을 받아올 때 사용하는 인스턴스
 export const presigendAxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json', // Content-Type을 JSON으로 설정
+  },
 });
 
 presigendAxiosInstance.interceptors.request.use((config) => {
@@ -17,6 +20,8 @@ presigendAxiosInstance.interceptors.request.use((config) => {
   } else {
     console.log('토큰 없음');
   }
+  console.log(presigendAxiosInstance);
+  console.log('요청 보내기 전 컨피그:', config);
   return config;
 });
 
