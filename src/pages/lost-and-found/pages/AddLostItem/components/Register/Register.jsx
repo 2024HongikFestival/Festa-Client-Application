@@ -21,24 +21,33 @@ const reducer = (state, action) => {
       return { ...state, storageLocation: action.payload, storageLocationLength: getGrapemeLength(action.payload) };
     case 'UPDATE_CONTENT':
       return { ...state, content: action.payload, contentLength: getGrapemeLength(action.payload) };
-    case 'TRUNCATE_FOUND':
+    case 'TRUNCATE_FOUND': {
+      const truncated = truncateToMaxLength(action.payload, 12);
       return {
         ...state,
-        foundLocation: truncateToMaxLength(action.payload, 12),
-        foundLocationLength: getGrapemeLength(truncateToMaxLength(action.payload)),
+        foundLocation: truncated,
+        foundLocationLength: getGrapemeLength(truncated),
       };
-    case 'TRUNCATE_STORAGE':
+    }
+
+    case 'TRUNCATE_STORAGE': {
+      const truncated = truncateToMaxLength(action.payload, 12);
       return {
         ...state,
-        storageLocation: truncateToMaxLength(action.payload, 12),
-        storageLocationLength: getGrapemeLength(truncateToMaxLength(action.payload)),
+        storageLocation: truncated,
+        storageLocationLength: getGrapemeLength(truncated),
       };
-    case 'TRUNCATE_CONTENT':
+    }
+
+    case 'TRUNCATE_CONTENT': {
+      const truncated = truncateToMaxLength(action.payload, 100);
       return {
         ...state,
-        content: truncateToMaxLength(action.payload, 100),
-        contentLength: getGrapemeLength(truncateToMaxLength(action.payload)),
+        content: truncated,
+        contentLength: getGrapemeLength(truncated),
       };
+    }
+
     default:
       throw new Error('Unknown action type!');
   }
