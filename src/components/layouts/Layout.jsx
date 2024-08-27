@@ -6,7 +6,8 @@ import Footer from '@/components/layouts/Footer';
 export default function Layout() {
   const location = useLocation();
   const isAdminPath = location.pathname === '/admin';
-  const isEventPath = location.pathname === '/event';
+  const isEventPath =
+    location.pathname === '/event' || location.pathname === '/event/enter' || location.pathname === '/event/submit';
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
