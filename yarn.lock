@@ -1428,10 +1428,11 @@ __metadata:
     husky: "npm:^9.1.4"
     i18next: "npm:^23.12.2"
     i18next-browser-languagedetector: "npm:^8.0.0"
+    jwt-decode: "npm:^4.0.0"
     lint-staged: "npm:^15.2.8"
     moment: "npm:^2.30.1"
     prettier: "npm:3.3.2"
-    prop-types: "npm:^15.8.1"
+    props-type: "npm:^1.0.1"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-i18next: "npm:^15.0.0"
@@ -3228,6 +3229,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jwt-decode@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "jwt-decode@npm:4.0.0"
+  checksum: 10c0/de75bbf89220746c388cf6a7b71e56080437b77d2edb29bae1c2155048b02c6b8c59a3e5e8d6ccdfd54f0b8bda25226e491a4f1b55ac5f8da04cfbadec4e546c
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.5.3":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
@@ -3996,6 +4004,15 @@ __metadata:
     object-assign: "npm:^4.1.1"
     react-is: "npm:^16.13.1"
   checksum: 10c0/59ece7ca2fb9838031d73a48d4becb9a7cc1ed10e610517c7d8f19a1e02fa47f7c27d557d8a5702bec3cfeccddc853579832b43f449e54635803f277b1c78077
+  languageName: node
+  linkType: hard
+
+"props-type@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "props-type@npm:1.0.1"
+  peerDependencies:
+    "@types/prop-types": ^15.5.4
+  checksum: 10c0/825528c08ed4c51fc91428e823e67c433f41870edd434b1d3200034187022484313bbf7a68f122a6aa4ab5f0a2a78b391a751cc2f174216b25966ed99e5b2375
   languageName: node
   linkType: hard
 
