@@ -8,9 +8,7 @@ import md6 from '@/assets/webps/wdfMD/frame_2608720.webp';
 import md7 from '@/assets/webps/wdfMD/frame_2608721.webp';
 import md8 from '@/assets/webps/wdfMD/frame_2608701.webp';
 import md9 from '@/assets/webps/wdfMD/frame_2608703.webp';
-import alertImage from '@/assets/webps/wdfMD/errorerror.webp';
-import Header from '@/components/layouts/Header';
-import Footer from '@/components/layouts/Footer';
+import alertImage from '@/assets/webps/wdfMD/error.webp';
 import { useEffect, useState } from 'react';
 import productsData from '@/assets/static/wdfMD/data.json';
 
@@ -87,7 +85,7 @@ const LocationAlert = styled.div`
   align-items: center;
   height: 1.8rem; /* 18px -> 1.8rem */
   color: ${(props) => props.theme.colors.gray60};
-  gap: 0.56rem;
+  gap: 0.8rem;
   ${(props) => props.theme.fontStyles.basic.captionMed};
 `;
 
@@ -224,7 +222,6 @@ const FlameMdPage = () => {
 
   return (
     <>
-      <Header />
       <MdProductsContainer>
         <ProductsSection>
           <Title>MD 상품</Title>
@@ -276,7 +273,6 @@ const FlameMdPage = () => {
           </NoticeList>
         </NoticeContainer>
       </MdProductsContainer>
-      <Footer />
     </>
   );
 };

@@ -62,7 +62,7 @@ export const TTTitle = styled.div`
 `;
 
 export const TTBox = styled.div`
-  margin: 2.4rem 0 5.6rem;
+  padding: 0 0 5.6rem;
 `;
 
 export const DaysBox = styled.div`

@@ -1,8 +1,8 @@
-import i18n from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import { initReactI18next } from "react-i18next";
-import TranslationEn from "./resource/en.json";
-import TranslationKo from "./resource/ko.json";
+import i18n from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
+import TranslationEn from './resource/en.json';
+import TranslationKo from './resource/ko.json';
 
 const resources = {
   en: {
@@ -18,8 +18,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: "ko",
-    fallbackLng: "ko",
+    lng: localStorage.getItem('language') || 'ko',
+    fallbackLng: 'ko',
     interpolation: {
       escapeValue: false,
     },

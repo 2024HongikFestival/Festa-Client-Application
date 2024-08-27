@@ -1,4 +1,5 @@
 import Layout from '@/components/layouts/Layout';
+import ScrollToTop from '@/components/layouts/ScrollToTop';
 import AdminPage from '@/pages/admin/AdminPage';
 import BoothPage from '@/pages/booth/BoothPage';
 import Fleamarket from '@/pages/booth/fleamarket/Fleamarket';
@@ -27,14 +28,15 @@ import HongikZonePage from '@/pages/stage/HongikZonePage';
 import LineupPage from '@/pages/stage/LineupPage';
 import StageInfoPage from '@/pages/stage/StageInfoPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RedirectEvents from './auth/RedirectEvents';
-import RedirectLosts from './auth/RedirectLosts';
+import RedirectEvents from '@/auth/RedirectEvents';
+import RedirectLosts from '@/auth/RedirectLosts';
 
 function App() {
   return (
     <>
       {/* url 세그먼트 확정 후 수정 예정 */}
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}
