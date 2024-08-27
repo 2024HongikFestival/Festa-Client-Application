@@ -1,64 +1,20 @@
-import { presigendAxiosInstance } from '@/api/axios';
-import axios from 'axios';
+import { getPresignedUrl, putPresignedUrl } from '@/utils/presignedUrl';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import * as S from './Register.styled';
 
 const Register = ({ imgSrc }) => {
-  //presigned URL 받아오는 로직
+  //해당 url은 미리 이미지를 등록한 뒤 해당 url을 서버에 api 요청을 보내는데 사용됨.
   const [url, setUrl] = useState('');
 
-  const getPresignedUrl = async () => {
-    try {
-      const response = await presigendAxiosInstance.get('/losts/up');
-      const presignedUrl = response.data.url;
-      setUrl(presignedUrl);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  //Base64 인코딩 값
-  //-> atob를 통해 이진 데이터로 디코딩(JS에서는 이진 데이터를 1Byte 문자열로 나타냄)
-  //-> 이를 유니코드값(a:65, b: 66 등등)으로 변경
-  const dataURLtoBlob = (dataUrl) => {
-    //MIME 타입과 Base64로 인코딩된 실제 데이터 분리
-    const arr = dataUrl.split(',');
-    const mime = arr[0].match(/:(.*?);/)[1];
-    const bstr = atob(arr[1]); //ASCII to Binary
-
-    let n = bstr.length;
-    const u8arr = new Uint8Array(n); //unsigned int 8bit arr
-
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-
-    //Blob 객체로 만듬(preSignedUrl에 저장할 형식)
-    return new Blob([u8arr], { type: mime });
-  };
-
-  const putPresignedUrl = async () => {
-    try {
-      const blob = dataURLtoBlob(imgSrc);
-      await axios.put(url, blob, {
-        headers: {
-          'Content-Type': blob.type,
-        },
-      });
-      console.log('이미지 업로드 성공');
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
-    getPresignedUrl();
+    const presignedUrl = getPresignedUrl();
+    setUrl(presignedUrl);
   }, []);
 
   useEffect(() => {
     if (url) {
-      putPresignedUrl();
+      putPresignedUrl(url, imgSrc);
     }
   }, [url]);
 
