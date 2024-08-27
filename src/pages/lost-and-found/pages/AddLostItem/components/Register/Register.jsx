@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useReducer, useState } from 'react';
 import * as S from './Register.styled';
 
-const MAX_LENGTH_INPUT = 12;
+const MAX_LENGTH_INPUT = 15;
 const MAX_LENGTH_TEXTAREA = 100;
 
 const initialState = {
@@ -128,7 +128,7 @@ const Register = ({ imgSrc }) => {
           <S.SectionTitle>분실물 찾아주기 ✋🏻</S.SectionTitle>
           <S.RegisterArticle>
             <S.InputWrapper>
-              <S.InputText>어디서 발견하셨나요?</S.InputText>
+              <S.InputText>어디서 발견하셨나요? (최대 15자)</S.InputText>
               <S.Input
                 value={foundLocation}
                 onChange={handleFoundChange}
@@ -137,7 +137,7 @@ const Register = ({ imgSrc }) => {
             </S.InputWrapper>
 
             <S.InputWrapper>
-              <S.InputText>어디에 보관하셨나요?</S.InputText>
+              <S.InputText>어디에 보관하셨나요? (최대 15자)</S.InputText>
               <S.InputWithWarn>
                 <S.Input
                   value={storageLocation}
