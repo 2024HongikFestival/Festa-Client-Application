@@ -22,14 +22,14 @@ export const RVOneBox = styled.div`
   gap: 32px;
 `;
 
-export const CostBox = styled.div``;
-
 export const DayRVBox = styled.div`
   width: calc(100% - 4rem);
 
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline5};
 `;
+
+export const CostBox = styled.div``;
 
 export const RedUnderLine = styled.div`
   background: linear-gradient(90deg, #f20d0d 0%, #8c0707 51.5%, #000 100%);
@@ -41,6 +41,7 @@ export const RedUnderLine = styled.div`
 export const RVPeriodBox = styled.div`
   display: flex;
   width: 100%;
+  margin-bottom: ${(props) => (props.marginBottom ? '3.2rem' : '0')};
 `;
 
 export const RVPeriodTitle = styled.span`
