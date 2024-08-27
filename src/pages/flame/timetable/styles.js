@@ -70,18 +70,17 @@ export const DayBox = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
   p {
     ${(props) => props.theme.fontStyles.basic.subHeadBold};
     color: ${(props) => props.theme.colors.gray80};
     background: none;
+  }
 
-    ${(props) =>
-      props.isActive &&
-      `
-    background: linear-gradient(104deg, #DF2020 35.72%, #FFB800 88.25%);
+  &.active p {
+    background: linear-gradient(104deg, #df2020 35.72%, #ffb800 88.25%);
     -webkit-background-clip: text;
     color: transparent;
-  `}
   }
 `;
 
@@ -95,7 +94,10 @@ export const TimeTableBox = styled.div`
 
 export const TimeTableOneBox = styled.div`
   display: flex;
-  min-height: ${(props) => (props.isActive ? '14rem' : '7.2rem')};
+  min-height: 7.2rem;
+  .active {
+    min-height: 14rem;
+  }
 `;
 
 export const RedLine = styled.div`
@@ -137,11 +139,37 @@ export const TimeTableText = styled.div`
   padding: 2rem 1rem 2rem 1.6rem;
   display: flex;
   justify-content: space-between;
+
+  .hot {
+    display: flex;
+    gap: 1.8rem;
+  }
+
+  .hotBox {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const TimeTableName = styled.span`
   ${(props) => props.theme.fontStyles.basic.headline5};
   color: ${(props) => props.theme.colors.gray70};
+`;
+
+export const TimeTableHot = styled.div`
+  display: flex;
+  width: 34px;
+  height: 25px;
+  padding: 4px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 15.5px;
+  background: linear-gradient(90deg, #4d0330 0%, #300304 100%);
+  color: #f53d3d;
+  ${(props) => props.theme.fontStyles.basic.headline5}
+  font-size: 10px;
 `;
 
 export const TimeTableTime = styled.span`
@@ -187,7 +215,7 @@ export const NoticeTextContent = styled.span`
 export const LiveConcert = styled.div`
   width: calc(100% - 2.4rem);
   margin-left: 2.4rem;
-  background: linear-gradient(282deg, #fcf661 1.09%, #ff0e2b 38.8%, #df2020 62.66%, #300c07 96.55%);
+  background: linear-gradient(282deg, #f00 1.09%, #ef1049 19.7%, #df2093 38.8%, #d020df 62.66%, #300720 96.55%);
   position: relative;
   z-index: 0;
 
@@ -200,7 +228,8 @@ export const LiveConcert = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(185deg, rgba(223, 32, 32, 0) 21.86%, #df2020 112.6%);
+    background: linear-gradient(185deg, rgba(239, 16, 73, 0) 21.86%, #ef1049 112.6%);
+
     z-index: 2;
   }
 

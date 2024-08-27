@@ -13,6 +13,7 @@ import {
   NumberBox,
   RedLine,
   TimeTableBox,
+  TimeTableHot,
   TimeTableName,
   TimeTableOneBox,
   TimeTableText,
@@ -27,44 +28,45 @@ import { useInterval } from 'react-use';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import redButtonTwo from '/src/assets/webps/wdTT/RedButton.webp';
-import redfullBtn from '/src/assets/webps/wdTT/timtablefullButtton.webp';
+import redfullBtn from '/src/assets/webps/wdTT/NewPinkBtn.webp';
 import afterBtn from '/src/assets/webps/wdTT/afterBtn.webp';
 import DjImg from '/src/assets/webps/wdTT/DjImg.webp';
 import Now from '/src/assets/webps/wdTT/now.webp';
 
 const FlameTimeTablePage = () => {
   const [selectedDate, setSelectedDate] = useState(1);
+  const [clickDate, setClickDate] = useState(1);
   const [isPassed, setIsPassed] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   const dates = [
-    { day: 1, date: '9.25 (수)' },
+    { day: 1, date: '8.27 (수)' },
     { day: 2, date: '9.26 (목)' },
     { day: 3, date: '9.27 (금)' },
   ];
 
   const dayOneTime = [
-    { dj: '첫째날디제이', time: '7:00 PM' },
-    { dj: 'AEFODENCE', time: '8:00 PM' },
-    { dj: 'NIRVANA', time: '9:00 PM' },
-    { dj: 'UWFHO', time: '10:00 PM' },
-    { dj: 'UWFHO', time: '11:00 PM' },
+    { dj: '첫째날디제이', time: '7:00 PM', isHot: false },
+    { dj: 'AEFODENCE', time: '8:00 PM', isHot: false },
+    { dj: 'NIRVANA', time: '9:00 PM', isHot: false },
+    { dj: 'UWFHO', time: '10:00 PM', isHot: true },
+    { dj: 'UWFHO', time: '11:00 PM', isHot: true },
   ];
 
   const dayTwoTime = [
-    { dj: '둘쨋날 디제이', time: '7:00 PM' },
-    { dj: '둘쨋날 디제이', time: '8:00 PM' },
-    { dj: 'AEFODENCE', time: '9:00 PM' },
-    { dj: 'NIRVANA', time: '10:00 PM' },
-    { dj: 'UWFHO', time: '11:16 PM' },
+    { dj: '둘쨋날 디제이', time: '7:00 PM', isHot: false },
+    { dj: '둘쨋날 디제이', time: '8:00 PM', isHot: false },
+    { dj: 'AEFODENCE', time: '9:00 PM', isHot: false },
+    { dj: 'NIRVANA', time: '10:00 PM', isHot: true },
+    { dj: 'UWFHO', time: '11:00 PM', isHot: true },
   ];
 
   const dayThreeTime = [
-    { dj: '셋째날 디제이', time: '7:00 PM' },
-    { dj: 'AEFODENCE', time: '8:00 PM' },
-    { dj: 'NIRVANA', time: '9:00 PM' },
-    { dj: 'UWFHO', time: '10:00 PM' },
-    { dj: '셋째날 디제이', time: '11:00 PM' },
+    { dj: '셋째날 디제이', time: '7:00 PM', isHot: false },
+    { dj: 'AEFODENCE', time: '8:00 PM', isHot: false },
+    { dj: 'NIRVANA', time: '9:00 PM', isHot: false },
+    { dj: 'UWFHO', time: '10:00 PM', isHot: true },
+    { dj: '셋째날 디제이', time: '11:00 PM', isHot: true },
   ];
 
   const handleClick = (day) => {
@@ -143,7 +145,7 @@ const FlameTimeTablePage = () => {
         <TTTitle>타임테이블</TTTitle>
         <DaysBox>
           {dates.map(({ day, date }) => (
-            <DayBox key={day} isActive={selectedDate === day} onClick={() => handleClick(day)}>
+            <DayBox key={day} className={selectedDate === day ? 'active' : ''} onClick={() => handleClick(day)}>
               <p>{`DAY ${day}`}</p>
               <p>{date}</p>
             </DayBox>
@@ -154,7 +156,7 @@ const FlameTimeTablePage = () => {
           {timeTableData.map((item, index) => (
             <TimeTableOneBox
               key={index}
-              isActive={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date)}
+              className={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) && 'active'}
             >
               <RedLine>
                 {isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) ? (
@@ -170,18 +172,29 @@ const FlameTimeTablePage = () => {
                 )}
               </RedLine>
               {isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) ? (
-                <LiveConcert isActive={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date)}>
+                <LiveConcert
+                  className={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) && 'active'}
+                >
                   <LiveNowBox>
                     <img src={Now} />
                   </LiveNowBox>
-
                   <img src={DjImg} />
                   <LiveDj>{item.dj}</LiveDj>
                   <LiveTime>{item.time}</LiveTime>
                 </LiveConcert>
               ) : (
-                <TimeTableText isActive={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date)}>
-                  <TimeTableName>{item.dj}</TimeTableName>
+                <TimeTableText
+                  className={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) && 'active'}
+                >
+                  <div className="hot">
+                    <TimeTableName>{item.dj}</TimeTableName>
+                    {item.isHot && (
+                      <div className="hotBox">
+                        {' '}
+                        <TimeTableHot>HOT</TimeTableHot>
+                      </div>
+                    )}
+                  </div>
                   <TimeTableTime>{item.time}</TimeTableTime>
                 </TimeTableText>
               )}

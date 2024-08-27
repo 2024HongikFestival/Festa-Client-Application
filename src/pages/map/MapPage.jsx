@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
 
 const MapPage = () => {
-  // State to track which map view is active
   const [activeView, setActiveView] = useState('all'); // 'all' or 'detail'
 
-  // Handlers for toggling map views
   const handleToggle = (view) => {
     setActiveView(view);
   };
