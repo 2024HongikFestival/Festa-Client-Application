@@ -1,17 +1,11 @@
-// // 대동제 이벤트
-// // url: /event/{event-id}
-
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '@/api/axios';
-import { useNavigate } from 'react-router-dom';
 import { EVENTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
 
 const EventPage = () => {
   // 전역상태로 관리 필요
   const [eventId, setEventId] = useState(1);
   const [stateData, setStateData] = useState();
-
-  const navigate = useNavigate();
 
   // 이벤트 데이터
   const [title, setTitle] = useState('');

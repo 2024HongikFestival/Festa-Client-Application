@@ -48,7 +48,7 @@ function App() {
             <Route path="/promotion" element={<PromotionPage />} />
 
             {/* 가영 라우팅 ✨ */}
-            <Route path="/event/:eventId" element={<EventPage />} />
+            <Route path="/event" element={<EventPage />} />
             <Route path="/event/enter" element={<EnterEvent />} />
             <Route path="/event/submit" element={<CompleteEvent />} />
             <Route path="/oauth/events" element={<RedirectEvents />} />
