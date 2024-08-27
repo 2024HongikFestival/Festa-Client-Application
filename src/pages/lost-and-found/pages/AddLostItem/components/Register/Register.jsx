@@ -71,7 +71,9 @@ const Register = ({ imgSrc }) => {
     const fetchPresignedUrl = async () => {
       const presignedUrl = await getPresignedUrl();
       console.log('pre사인', presignedUrl);
-
+      if (!presignedUrl) {
+        localStorage.removeItem('lost_access_token');
+      }
       setUrl(presignedUrl);
     };
     fetchPresignedUrl();
