@@ -17,6 +17,13 @@ export const RVBox = styled.div`
   margin: 2.8rem 2rem 6.4rem;
 `;
 
+export const RVOneBox = styled.div`
+  display: grid;
+  gap: 32px;
+`;
+
+export const CostBox = styled.div``;
+
 export const DayRVBox = styled.div`
   width: calc(100% - 4rem);
 
@@ -28,13 +35,12 @@ export const RedUnderLine = styled.div`
   background: linear-gradient(90deg, #f20d0d 0%, #8c0707 51.5%, #000 100%);
   height: 0.125rem;
   align-self: stretch;
-  margin-bottom: 2rem;
+  margin: 0.4rem 0 2rem;
 `;
 
 export const RVPeriodBox = styled.div`
   display: flex;
   width: 100%;
-  margin-bottom: 3.2rem;
 `;
 
 export const RVPeriodTitle = styled.span`
@@ -50,7 +56,6 @@ export const RVPeriod = styled.div`
 
 export const RVPeriodTitleP = styled.p`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  margin-top: 3.2rem;
   color: ${(props) => props.theme.colors.white};
   margin-bottom: 0.8rem;
 `;
@@ -58,6 +63,7 @@ export const RVPeriodTitleP = styled.p`
 export const PriceIntroBox = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: ${(props) => (props.marginBottom ? '0.4rem' : '0')};
 
   .wholeBox {
     display: flex;
@@ -98,7 +104,7 @@ export const DotBox = styled.span`
 `;
 
 export const NoticeBox = styled.div`
-  margin: 3.2rem 0 6.4rem;
+  margin-bottom: 6.4rem;
 `;
 export const NoticeContentBox = styled.div`
   margin-top: 0.8rem;
@@ -127,6 +133,7 @@ export const NoticeContent = styled.div`
 
   .underline {
     text-decoration: underline;
+    text-underline-offset: 0.22rem;
     color: ${(props) => props.theme.colors.gray60};
     ${(props) => props.theme.fontStyles.basic.body2Med};
   }
@@ -141,7 +148,7 @@ export const GrayUnderLine = styled.div`
   background: linear-gradient(90deg, #b0b1b5 0%, rgba(77, 77, 79, 0) 100%);
   height: 0.125rem;
   align-self: stretch;
-  margin-bottom: 2rem;
+  margin: 0.4rem 0 2rem;
 `;
 
 export const GrayTitle = styled.div`
