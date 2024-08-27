@@ -6,6 +6,7 @@ import Footer from '@/components/layouts/Footer';
 export default function Layout() {
   const location = useLocation();
   const isAdminPath = location.pathname === '/admin';
+  const isEventPath = location.pathname === '/event';
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
@@ -15,7 +16,7 @@ export default function Layout() {
     <Container $path={location.pathname} $showheader={showheader}>
       {showheader && <Header />}
       <Outlet />
-      {!isAdminPath && <Footer />}
+      {!isAdminPath && !isEventPath && <Footer />}
     </Container>
   );
 }
