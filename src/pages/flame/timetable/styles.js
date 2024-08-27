@@ -43,16 +43,8 @@ const flagWaving = keyframes`
 
 export const TTWrapper = styled.div`
   width: 100%;
+  padding-top: 2.4rem;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
-`;
-
-// 헤더 변경
-export const SchoolHeader = styled.div`
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 5.6rem;
 `;
 
 export const TTTitle = styled.div`
@@ -62,7 +54,7 @@ export const TTTitle = styled.div`
 `;
 
 export const TTBox = styled.div`
-  padding: 0 0 5.6rem;
+  padding-bottom: 5.6rem;
 `;
 
 export const DaysBox = styled.div`
@@ -108,18 +100,20 @@ export const TimeTableOneBox = styled.div`
 
 export const RedLine = styled.div`
   position: relative;
-  width: 2.5rem;
+  width: 2.2rem;
+  max-width: 2.5rem;
+  min-width: 2.672rem;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 0;
 
   .fullBtn {
-    min-width: 22px;
+    max-width: 22px;
   }
 
   .emptyBtn {
-    max-width: 12px;
+    max-width: 14px;
   }
 
   img {
@@ -146,7 +140,7 @@ export const TimeTableText = styled.div`
 `;
 
 export const TimeTableName = styled.span`
-  ${(props) => props.theme.fontStyles.flame.headline6};
+  ${(props) => props.theme.fontStyles.basic.headline5};
   color: ${(props) => props.theme.colors.gray70};
 `;
 
@@ -173,10 +167,21 @@ export const NoticeTitle = styled.span`
 `;
 
 export const NoticeText = styled.div`
+  width: 100%;
+  height: 100%;
+  word-break: keep-all;
+  display: flex;
+  flex-direction: column;
   p {
     color: ${(props) => props.theme.colors.gray70};
     ${(props) => props.theme.fontStyles.basic.captionMed};
   }
+`;
+
+export const NoticeTextContent = styled.span`
+  display: flex;
+  color: ${(props) => props.theme.colors.gray70};
+  ${(props) => props.theme.fontStyles.basic.captionMed};
 `;
 
 export const LiveConcert = styled.div`
@@ -217,24 +222,25 @@ export const LiveDj = styled.span`
   bottom: 1.2rem;
   ${(props) => props.theme.fontStyles.flame.headline5};
   text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.25);
-  animation: ${backgroundPulse} 2s infinite;
 `;
 
 export const LiveNowBox = styled.div`
   position: absolute;
-  bottom: 1.2rem;
-  right: 1.1rem;
+  width: 6.8rem;
+  height: 3.2rem;
+  top: 1.2rem;
+  right: 1.25rem;
   z-index: 5;
-
-  p {
-    text-align: right;
-    ${(props) => props.theme.fontStyles.basic.body1Bold};
-  }
+  animation: ${backgroundPulse} 1.3s infinite;
 `;
 
 export const LiveTime = styled.span`
   color: #fff;
   ${(props) => props.theme.fontStyles.basic.body1Med};
+  position: absolute;
+  bottom: 1.8rem;
+  right: 1.25rem;
+  z-index: 5;
 `;
 
 // 임시 푸터
@@ -248,4 +254,13 @@ export const UnderlinedText = styled.span`
   color: ${(props) => props.theme.colors.gray70};
   ${(props) => props.theme.fontStyles.basic.captionMed};
   text-decoration: underline;
+`;
+
+export const NumberBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem;
+
+  color: ${(props) => props.theme.colors.gray70};
+  ${(props) => props.theme.fontStyles.basic.captionMed};
 `;
