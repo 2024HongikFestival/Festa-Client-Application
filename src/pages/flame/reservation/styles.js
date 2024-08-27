@@ -35,7 +35,6 @@ export const RVPeriodBox = styled.div`
   display: flex;
   width: 100%;
   margin-bottom: 3.2rem;
-
 `;
 
 export const RVPeriodTitle = styled.span`
