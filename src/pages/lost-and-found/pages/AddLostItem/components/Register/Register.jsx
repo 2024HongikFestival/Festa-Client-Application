@@ -1,7 +1,9 @@
+import { presigendAxiosInstance } from '@/api/axios';
 import { getGrapemeLength, truncateToMaxLength } from '@/utils/InputFilter';
 import { getPresignedUrl, putPresignedUrl } from '@/utils/presignedUrl';
 import PropTypes from 'prop-types';
 import React, { useEffect, useReducer, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LocationModal } from '../../../LostAndFoundPage/components/LostModal/LostModal';
 import * as S from './Register.styled';
 
@@ -58,6 +60,7 @@ const reducer = (state, action) => {
 };
 
 const Register = ({ imgSrc }) => {
+  const navigate = useNavigate();
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
   //해당 url은 미리 이미지를 등록한 뒤 해당 url을 서버에 api 요청을 보내는데 사용됨.
   const [url, setUrl] = useState('');
@@ -108,6 +111,24 @@ const Register = ({ imgSrc }) => {
   const handleCotentChange = (e) => {
     const value = e.target.value;
     dispatch({ type: 'TRUNCATE_CONTENT', payload: value });
+  };
+
+  const handleComplete = async () => {
+    try {
+      const response = await presigendAxiosInstance.post('/losts', {
+        foundLocation: foundLocation,
+        storageLocation: storageLocation,
+        content: content,
+        imageUrl: url,
+      });
+      //추후 로컬 스토리지에 있는 값 없애고, navigate 필요
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+      alert('인증 만료 시간이 지났습니다. 재인증 후 시도해주세요');
+      navigate('/lost-and-found');
+      window.location.reload();
+    }
   };
 
   return (
@@ -173,7 +194,7 @@ const Register = ({ imgSrc }) => {
 
               <S.Picture src={imgSrc} />
 
-              <S.BlueButton>완료</S.BlueButton>
+              <S.BlueButton onClick={handleComplete}>완료</S.BlueButton>
             </S.RegisterArticle>
           </S.RegisterSection>
         </S.RegisterMain>
