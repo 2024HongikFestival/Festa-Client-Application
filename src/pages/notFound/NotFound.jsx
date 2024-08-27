@@ -35,10 +35,11 @@ export default function NotFoundPage() {
 
 const Wrapper = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-top: 18.8rem;
+  align-items: center;
+  overflow: hidden;
 `;
 
 const Title = styled.div`
