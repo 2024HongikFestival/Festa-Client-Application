@@ -140,7 +140,7 @@ export const TimeTableText = styled.div`
 `;
 
 export const TimeTableName = styled.span`
-  ${(props) => props.theme.fontStyles.flame.headline6};
+  ${(props) => props.theme.fontStyles.basic.headline5};
   color: ${(props) => props.theme.colors.gray70};
 `;
 
@@ -231,6 +231,7 @@ export const LiveNowBox = styled.div`
   top: 1.2rem;
   right: 1.25rem;
   z-index: 5;
+  animation: ${backgroundPulse} 1.3s infinite;
 `;
 
 export const LiveTime = styled.span`

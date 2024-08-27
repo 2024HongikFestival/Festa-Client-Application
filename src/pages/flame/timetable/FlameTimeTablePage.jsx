@@ -56,7 +56,7 @@ const FlameTimeTablePage = () => {
     { dj: '둘쨋날 디제이', time: '8:00 PM' },
     { dj: 'AEFODENCE', time: '9:00 PM' },
     { dj: 'NIRVANA', time: '10:00 PM' },
-    { dj: 'UWFHO', time: '11:00 PM' },
+    { dj: 'UWFHO', time: '11:16 PM' },
   ];
 
   const dayThreeTime = [
@@ -87,7 +87,7 @@ const FlameTimeTablePage = () => {
   };
 
   const isTimeActive = (time, date) => {
-    const { hour, minute, isPM } = formatTime(time);
+    const { hour, isPM } = formatTime(time);
 
     // 현재 시간 정보
     const currentHour = currentTime.getHours();
@@ -103,7 +103,7 @@ const FlameTimeTablePage = () => {
   };
 
   const isTimePassed = (time, date) => {
-    const { hour, isPM } = formatTime(time);
+    const { hour, minute, isPM } = formatTime(time);
 
     // 현재 시간 정보
     const currentHour = currentTime.getHours();
