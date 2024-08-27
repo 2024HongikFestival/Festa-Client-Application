@@ -20,4 +20,20 @@ const Container = styled.div`
   max-width: 768px;
   min-height: calc(var(--vh, 1vh) * 100);
   margin: 5.6rem auto 0;
+
+  ${(props) =>
+    (props.path === '/likelion' || props.path === '/gaehwa') &&
+    css`
+      background-color: ${(props) => props.theme.colors.makersBackgroundColor};
+      background-size: cover;
+      background-position: center;
+    `}
+
+  ${(props) =>
+    props.path.startsWith('/flame') &&
+    css`
+      background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+      background-size: cover;
+      background-position: center;
+    `}
 `;
