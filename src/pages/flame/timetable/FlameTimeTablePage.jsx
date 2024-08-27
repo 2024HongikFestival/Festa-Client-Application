@@ -8,9 +8,10 @@ import {
   LiveTime,
   NoticeBox,
   NoticeText,
+  NoticeTextContent,
   NoticeTitle,
+  NumberBox,
   RedLine,
-  SchoolHeader,
   TimeTableBox,
   TimeTableName,
   TimeTableOneBox,
@@ -55,7 +56,7 @@ const FlameTimeTablePage = () => {
     { dj: '둘쨋날 디제이', time: '8:00 PM' },
     { dj: 'AEFODENCE', time: '9:00 PM' },
     { dj: 'NIRVANA', time: '10:00 PM' },
-    { dj: 'UWFHO', time: '11:00 PM' },
+    { dj: 'UWFHO', time: '11:16 PM' },
   ];
 
   const dayThreeTime = [
@@ -86,7 +87,7 @@ const FlameTimeTablePage = () => {
   };
 
   const isTimeActive = (time, date) => {
-    const { hour, minute, isPM } = formatTime(time);
+    const { hour, isPM } = formatTime(time);
 
     // 현재 시간 정보
     const currentHour = currentTime.getHours();
@@ -102,7 +103,7 @@ const FlameTimeTablePage = () => {
   };
 
   const isTimePassed = (time, date) => {
-    const { hour, isPM } = formatTime(time);
+    const { hour, minute, isPM } = formatTime(time);
 
     // 현재 시간 정보
     const currentHour = currentTime.getHours();
@@ -191,28 +192,55 @@ const FlameTimeTablePage = () => {
         <NoticeBox>
           <NoticeTitle>관람 시 유의사항</NoticeTitle>
           <NoticeText>
-            <p>
-              1. 와우 디제이 페스티벌 내 <UnderlinedText>음식물(식수 제외) 반입은 금지</UnderlinedText>됩니다.
-            </p>
-            <p>
-              2. 와우 디제이 페스티벌은 주류가 제공되는 행사로 <UnderlinedText>미성년자 출입이 금지</UnderlinedText>
-              됩니다.
-            </p>
-            <p>
-              3. <UnderlinedText>입장 도장 확인 불가 시 재입장이 불가</UnderlinedText>할 수 있습니다.
-            </p>
-            <p>
-              4. 와우 디제이 페스티벌은 <UnderlinedText>금연 구역</UnderlinedText>으로 전자 담배를 포함한 모든 흡연
-              행위는 불가합니다.
-            </p>
-            <p>
-              5. <UnderlinedText>과도한 음주 상태</UnderlinedText>일 경우 스태프의 판단 하에{' '}
-              <UnderlinedText>입장 제한 또는 퇴장</UnderlinedText>될 수 있습니다.
-            </p>
-            <p>6. 와우 디제이 페스티벌 내 경사로에서 뛰는 행위는 자제 부탁드립니다.</p>
-            <p> 7. 원활한 행사 진행을 위하여 현장 스태프의 지시 및 안내에 따라 주시기 바랍니다.</p>
-            <p> 8. 현장 스태프의 지시에 반할 경우 퇴장 조치될 수 있습니다.</p>
-            <p>9. 출입 제한 구역 접근 및 출입 시 퇴장 조치될 수 있습니다.</p>
+            <NoticeTextContent>
+              <NumberBox>1.</NumberBox>
+              <p>
+                와우 디제이 페스티벌 내 <UnderlinedText>음식물(식수 제외) 반입은 금지</UnderlinedText>됩니다.
+              </p>
+            </NoticeTextContent>
+            <NoticeTextContent>
+              <NumberBox>2.</NumberBox>
+              <p>
+                와우 디제이 페스티벌은 주류가 제공되는 행사로 <UnderlinedText>미성년자 출입이 금지</UnderlinedText>
+                됩니다.
+              </p>
+            </NoticeTextContent>
+            <NoticeTextContent>
+              <NumberBox>3.</NumberBox>
+              <p>
+                <UnderlinedText>입장 도장 확인 불가 시 재입장이 불가</UnderlinedText>할 수 있습니다.
+              </p>
+            </NoticeTextContent>
+            <NoticeTextContent>
+              <NumberBox>4.</NumberBox>
+              <p>
+                와우 디제이 페스티벌은 <UnderlinedText>금연 구역</UnderlinedText>으로 전자 담배를 포함한 모든 흡연
+                행위는 불가합니다.
+              </p>
+            </NoticeTextContent>
+            <NoticeTextContent>
+              <NumberBox>5.</NumberBox>
+              <p>
+                <UnderlinedText>과도한 음주 상태</UnderlinedText>일 경우 스태프의 판단 하에{' '}
+                <UnderlinedText>입장 제한 또는 퇴장</UnderlinedText>될 수 있습니다.{' '}
+              </p>
+            </NoticeTextContent>
+            <NoticeTextContent>
+              <NumberBox>6.</NumberBox>
+              <p>와우 디제이 페스티벌 내 경사로에서 뛰는 행위는 자제 부탁드립니다.</p>
+            </NoticeTextContent>
+            <NoticeTextContent>
+              <NumberBox>7.</NumberBox>
+              <p>원활한 행사 진행을 위하여 현장 스태프의 지시 및 안내에 따라 주시기 바랍니다.</p>
+            </NoticeTextContent>
+            <NoticeTextContent>
+              <NumberBox>8.</NumberBox>
+              현장 스태프의 지시에 반할 경우 퇴장 조치될 수 있습니다.
+            </NoticeTextContent>
+            <NoticeTextContent>
+              <NumberBox>9.</NumberBox>
+              출입 제한 구역 접근 및 출입 시 퇴장 조치될 수 있습니다.
+            </NoticeTextContent>
           </NoticeText>
         </NoticeBox>
       </TTBox>

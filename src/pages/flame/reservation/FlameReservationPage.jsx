@@ -70,7 +70,7 @@ const PreReservationBox = () => {
           <NoticeContent>
             <NumberBox>1.</NumberBox>
             <span className="detail">
-              미성년자는 와우 디제이 페스티벌 예매가 불가하며 현장 예매 시{' '}
+              미성년자는 와우 디제이 페스티벌 예매가 불가하며 <br /> 현장 예매 시{' '}
               <span className="underline">신분증 확인</span>이 진행됩니다. <br />
               (성인 인증 불가 시 입장이 제한됩니다.)
             </span>
@@ -119,7 +119,7 @@ const PreReservationBox = () => {
           <NoticeContent>
             <NumberBox>8.</NumberBox>
             <span className="detail">
-              현장 예매는 각 일 <span className="underline">23시 30분에 마감</span>됩니다.
+              현장 예매는 각 일 <span className="underline">23시 50분에 마감</span>됩니다.
             </span>
           </NoticeContent>
         </NoticeContentBox>

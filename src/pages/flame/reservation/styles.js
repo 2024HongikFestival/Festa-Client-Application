@@ -52,6 +52,7 @@ export const RVPeriodTitleP = styled.p`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   margin-top: 3.2rem;
   color: ${(props) => props.theme.colors.white};
+  margin-bottom: 0.8rem;
 `;
 
 export const PriceIntroBox = styled.div`
