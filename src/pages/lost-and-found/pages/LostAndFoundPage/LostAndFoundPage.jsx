@@ -126,9 +126,9 @@ const LostAndFoundPage = () => {
           </S.FooterLayout>
         </S.FooterWrapper>
         <LostBottomSheet isOpen={isBottomSheetOpen} setIsOpen={setIsBottomSheetOpen} />
+        <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
       </S.Wrapper>
 
-      <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
       <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} lostId={itemLostId} />
     </>
   );

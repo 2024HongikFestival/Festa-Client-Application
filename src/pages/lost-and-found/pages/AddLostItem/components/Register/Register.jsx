@@ -205,8 +205,8 @@ const Register = ({ imgSrc }) => {
             </S.RegisterArticle>
           </S.RegisterSection>
         </S.RegisterMain>
+        <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
       </S.Wrapper>
-      <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
     </>
   );
 };
