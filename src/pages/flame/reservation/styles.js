@@ -29,7 +29,7 @@ export const DayRVBox = styled.div`
   ${(props) => props.theme.fontStyles.flame.headline5};
 `;
 
-export const CostBox = styled.div``; 
+export const CostBox = styled.div``;
 
 export const RedUnderLine = styled.div`
   background: linear-gradient(90deg, #f20d0d 0%, #8c0707 51.5%, #000 100%);
