@@ -41,4 +41,10 @@ const Container = styled.div`
       background-size: cover;
       background-position: center;
     `}
+
+    ${(props) =>
+    props.$path === '/flame' &&
+    css`
+      background-color: transparent;
+    `}
 `;

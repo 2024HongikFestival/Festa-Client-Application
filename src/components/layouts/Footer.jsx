@@ -45,7 +45,7 @@ export default function Footer() {
     location.pathname !== '/likelion' && location.pathname !== '/gaehwa' && !location.pathname.startsWith('/flame');
 
   return (
-    <FooterLayout path={location.pathname}>
+    <FooterLayout $path={location.pathname}>
       {flameMain && (
         <VideoContainer>
           <BackgroundVideo autoPlay loop muted>
@@ -63,7 +63,7 @@ export default function Footer() {
           <img src={mangae} alt="mangae" />
         </Mangae>
       )}
-      <LikelionBtn path={location.pathname} onClick={() => handleNavigation('/likelion')}>
+      <LikelionBtn $path={location.pathname} onClick={() => handleNavigation('/likelion')}>
         <span>{t('layouts.footer.toLikelion')}</span>
       </LikelionBtn>
       <GaehwaBtn onClick={() => handleNavigation('/gaehwa')}>
@@ -90,21 +90,22 @@ const FooterLayout = styled.div`
   overflow: hidden;
 
   ${(props) =>
-    (props.path === '/likelion' || props.path === '/gaehwa') &&
+    (props.$path === '/likelion' || props.$path === '/gaehwa') &&
     css`
       background-color: ${(props) => props.theme.colors.makersBackgroundColor};
     `}
 
   ${(props) =>
-    props.path.startsWith('/flame') &&
+    props.$path.startsWith('/flame') &&
     css`
       background-color: ${(props) => props.theme.colors.flameBackgroundColor};
       background-image: url(${flameFooterBg});
       background-size: cover;
       background-position: center 20%;
     `}
+
     ${(props) =>
-    props.path === '/flame' &&
+    props.$path === '/flame' &&
     css`
       background-color: transparent;
       background-image: none;
@@ -161,13 +162,13 @@ const LikelionBtn = styled.div`
   }
 
   ${(props) =>
-    (props.path === '/likelion' || props.path === '/gaehwa') &&
+    (props.$path === '/likelion' || props.$path === '/gaehwa') &&
     css`
       margin-top: 2.4rem;
     `}
 
   ${(props) =>
-    props.path.startsWith('/flame') &&
+    props.$path.startsWith('/flame') &&
     css`
       margin-top: 2.8rem;
     `}
