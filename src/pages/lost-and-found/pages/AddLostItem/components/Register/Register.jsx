@@ -195,7 +195,13 @@ const Register = ({ imgSrc }) => {
 
               <S.Picture src={imgSrc} />
 
-              <S.BlueButton onClick={handleComplete}>완료</S.BlueButton>
+              <S.BlueButton
+                $disabled={foundLocationLength < 1 || storageLocation < 1}
+                disabled={foundLocationLength < 1 || storageLocation < 1}
+                onClick={handleComplete}
+              >
+                완료
+              </S.BlueButton>
             </S.RegisterArticle>
           </S.RegisterSection>
         </S.RegisterMain>

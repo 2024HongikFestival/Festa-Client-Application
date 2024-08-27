@@ -1,5 +1,5 @@
 import warningIcon from '@/assets/svgs/lost/red_error.svg?react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -242,4 +242,11 @@ export const BlueButton = styled.button`
 
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fontStyles.main.headline6};
+
+  ${({ $disabled }) =>
+    $disabled &&
+    css`
+      cursor: not-allowed;
+      background: rgba(24, 51, 219, 0.5);
+    `};
 `;
