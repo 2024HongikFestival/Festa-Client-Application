@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useReducer, useState } from 'react';
 import * as S from './Register.styled';
 
+const MAX_LENGTH_INPUT = 12;
+const MAX_LENGTH_TEXTAREA = 100;
+
 const initialState = {
   foundLocation: '',
   storageLocation: '',
@@ -22,7 +25,7 @@ const reducer = (state, action) => {
     case 'UPDATE_CONTENT':
       return { ...state, content: action.payload, contentLength: getGrapemeLength(action.payload) };
     case 'TRUNCATE_FOUND': {
-      const truncated = truncateToMaxLength(action.payload, 12);
+      const truncated = truncateToMaxLength(action.payload, MAX_LENGTH_INPUT);
       return {
         ...state,
         foundLocation: truncated,
@@ -31,7 +34,7 @@ const reducer = (state, action) => {
     }
 
     case 'TRUNCATE_STORAGE': {
-      const truncated = truncateToMaxLength(action.payload, 12);
+      const truncated = truncateToMaxLength(action.payload, MAX_LENGTH_INPUT);
       return {
         ...state,
         storageLocation: truncated,
@@ -40,7 +43,7 @@ const reducer = (state, action) => {
     }
 
     case 'TRUNCATE_CONTENT': {
-      const truncated = truncateToMaxLength(action.payload, 100);
+      const truncated = truncateToMaxLength(action.payload, MAX_LENGTH_TEXTAREA);
       return {
         ...state,
         content: truncated,
@@ -158,7 +161,7 @@ const Register = ({ imgSrc }) => {
                   onChange={handleCotentChange}
                   placeholder={`ex. 홍X동님 학생증 발견했습니다 / A동 앞에 산리오 키링 떨어져있어요 주인 찾아가세요~`}
                 />
-                <S.TextLength>{`(${contentLength}/100)`}</S.TextLength>
+                <S.TextLength>{`(${contentLength}/${MAX_LENGTH_TEXTAREA})`}</S.TextLength>
               </S.InputWithCount>
             </S.InputWrapper>
 
