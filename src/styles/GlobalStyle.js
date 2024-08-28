@@ -49,10 +49,6 @@ const GlobalStyles = createGlobalStyle`
         }
     }
 
-    @font-face {
-      font-family: "PD-Thin";
-      src: url("./fonts/Pretendard-Thin");
-    }
 `;
 
 export default GlobalStyles;
