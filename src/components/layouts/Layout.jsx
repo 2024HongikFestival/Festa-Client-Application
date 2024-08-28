@@ -5,13 +5,7 @@ import Footer from '@/components/layouts/Footer';
 
 export default function Layout() {
   const location = useLocation();
-  const isAdminPath = location.pathname === '/admin';
-  const isLoggedIn = () => {
-    return !!localStorage.getItem('accessToken');
-  };
-  const showheader = isLoggedIn() || !isAdminPath;
-
-  const paths = [
+  const visiblePaths = [
     '/',
     '/booth',
     '/fleamarket',
@@ -38,16 +32,18 @@ export default function Layout() {
     '/flame/lineup',
     '/flame/md',
     '/flame/promotion',
-    '/admin',
     '/flame',
   ];
+  const isLoggedIn = () => {
+    return !!localStorage.getItem('accessToken');
+  };
+  const showheader = isLoggedIn() || visiblePaths.includes(location.pathname);
 
   return (
     <Container $path={location.pathname} $showheader={showheader}>
-      {/* {paths.includes(location.pathname) && <Header />} */}
       {showheader && <Header />}
       <Outlet />
-      {!isAdminPath && <Footer />}
+      {visiblePaths.includes(location.pathname) && <Footer />}
     </Container>
   );
 }
