@@ -15,7 +15,7 @@
   "makers": {
     "likelion": {
       "title1": "홍익대학교",
-      "title2": "멋쟁이 사자처럼",
+      "title2": "멋쟁이사자처럼",
       "whoWeAre1": "'누구나 프로그래밍 기초 지식을 배워",
       "whoWeAre2": "자신만의 웹서비스를 만들어 낼 수 있다!'",
       "whoWeAre3": "멋쟁이사자처럼의 궁극적인 목표는",
@@ -223,11 +223,6 @@
           "name": "맹지수",
           "department": "디자인예술경영학부 24",
           "role": "국원"
-        },
-        {
-          "name": "임혜영",
-          "department": "캠퍼스자율전공 24",
-          "role": "국원"
         }
       ],
       "strategicPolicy": [
@@ -238,7 +233,7 @@
         },
         {
           "name": "강륜아",
-          "department": "화학공학전공 22",
+          "department": "캠퍼스자율전공 22",
           "role": "국원"
         },
         {
@@ -287,6 +282,11 @@
         }
       ],
       "finance": [
+        {
+          "name": "양현서",
+          "department": "경제학과 19",
+          "role": "국장"
+        },
         {
           "name": "문희빈",
           "department": "캠퍼스자율전공 24",

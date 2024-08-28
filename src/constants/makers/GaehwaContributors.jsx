@@ -27,11 +27,6 @@ export const contributors = (t) => ({
       department: t('makers.gaehwaContributors.executive.2.department'),
       role: t('makers.gaehwaContributors.executive.2.role'),
     },
-    {
-      name: t('makers.gaehwaContributors.executive.3.name'),
-      department: t('makers.gaehwaContributors.executive.3.department'),
-      role: t('makers.gaehwaContributors.executive.3.role'),
-    },
   ],
   strategicPolicy: [
     {
@@ -94,6 +89,11 @@ export const contributors = (t) => ({
       name: t('makers.gaehwaContributors.finance.0.name'),
       department: t('makers.gaehwaContributors.finance.0.department'),
       role: t('makers.gaehwaContributors.finance.0.role'),
+    },
+    {
+      name: t('makers.gaehwaContributors.finance.1.name'),
+      department: t('makers.gaehwaContributors.finance.1.department'),
+      role: t('makers.gaehwaContributors.finance.1.role'),
     },
   ],
   rightsSolidarity: [

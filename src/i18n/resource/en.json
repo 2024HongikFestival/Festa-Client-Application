@@ -223,11 +223,6 @@
           "name": "",
           "department": "",
           "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
         }
       ],
       "strategicPolicy": [
@@ -287,6 +282,11 @@
         }
       ],
       "finance": [
+        {
+          "name": "",
+          "department": "",
+          "role": ""
+        },
         {
           "name": "",
           "department": "",
