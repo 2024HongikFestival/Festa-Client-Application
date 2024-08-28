@@ -40,8 +40,8 @@ export default function MdPage() {
             <NoteContent>&nbsp;• 계좌 이체 및 현금 결제만 가능합니다</NoteContent>
             <NoteContent>&nbsp;• 구매 완료 시 환불, 교환, 취소 불가능합니다</NoteContent>
             <NoteContent>
-              &nbsp;• 불량품은 현장에서 확인 후 바로 <br />
-              <Hidden>•&nbsp;</Hidden> 현장 관리 인원에게 말씀해 주시기 바랍니다
+              &nbsp;• 불량품은 현장에서 확인 후 <br />
+              <Hidden>•&nbsp;</Hidden> 바로 현장 관리 인원에게 말씀해 주시기 바랍니다
             </NoteContent>
           </NoteContentWrapper>
         </NoteContainer>
@@ -61,7 +61,7 @@ const InfoText = styled.div`
   margin-top: 1.6rem;
   margin-bottom: 0.8rem;
   text-align: center;
-  ${(props) => props.theme.fontStyles.basic.body1Bold};
+  ${(props) => props.theme.fontStyles.basic.body1Med};
 `;
 
 const Span = styled.span`

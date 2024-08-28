@@ -38,10 +38,10 @@ const imageTopMap = {
   bandana: '0.4rem',
   rugbyUniform: '1.2rem',
   stringBag: '0.2rem',
-  wdfSlogan: '-5.3rem',
+  wdfSlogan: '-3rem',
   wowBadge: '0.7rem',
-  wowWdfSeal: '-2.8rem',
-  wowWdfStickerPack: '-1.3rem',
+  wowWdfSeal: '-1.3rem',
+  wowWdfStickerPack: '-0.5rem',
   wowWdfTshirt: '0rem',
   wowTatto: '2.8rem',
 };
@@ -98,7 +98,7 @@ const Frame = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 `;
 
 const Img = styled.img`
@@ -108,7 +108,7 @@ const Img = styled.img`
   height: ${(props) => props.height}; */
   object-fit: cover;
   width: 100%;
-  height: 100%;
+  height: auto;
 `;
 
 const Desc = styled.div`
