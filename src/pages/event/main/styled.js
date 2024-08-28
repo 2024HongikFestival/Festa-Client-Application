@@ -166,7 +166,7 @@ export const CarouselWrapper = styled.div`
   width: 100%;
   min-width: 37.5rem;
   max-width: 76.8rem;
-  height: 43.7rem;
+  height: 28.7rem;
   padding-left: 2rem;
 `;
 
@@ -175,65 +175,83 @@ export const CarouselContainer = styled.div`
   width: 100%;
   min-width: 37.5rem;
   max-width: 76.8rem;
-  height: 43.7rem;
-`;
-
-export const CarouselImage = styled.img`
-  width: 20.6rem;
-  height: 20.4rem;
-  object-fit: contain;
-  margin-top: 2.4rem;
+  height: 28.7rem;
 `;
 
 export const ImageContainer = styled.div`
   display: flex !important;
   flex-direction: column;
   align-items: center;
-  width: 27.6rem !important;
-  height: 41.3rem;
-  border: 0.1rem solid;
-  border-image-source: linear-gradient(180deg, #df2121 0%, #cdb3b3 70%, #515356 100%);
-  border-image-slice: 1;
-  background: var(--UI-Background, #010304);
-  margin: 0 0.8rem;
-  box-sizing: border-box;
-  position: relative;
+  width: 18.5rem !important;
+  height: 28.7rem;
+  background-color: ${(props) => props.theme.colors.white};
+  margin: 0 1.6rem;
+  padding-top: 1.4rem;
+  border-radius: 1rem;
   outline: none;
+  position: relative;
 
   &:focus {
     outline: none;
   }
 `;
 
-export const DJContainer = styled.div`
+export const CarouselImage = styled.img`
+  width: 32rem;
+  height: 15rem;
+`;
+
+export const ItemInfoSection = styled.div`
+  width: 100%;
+  height: 10.2rem;
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: #ffff24;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  align-items: flex-start;
+  padding-left: 1.6rem;
+  padding-top: 1.6rem;
 `;
 
-export const DJName = styled.span`
-  ${(props) => props.theme.fontStyles.basic.headline5};
-  width: 21.2rem;
-  color: ${(props) => props.theme.colors.white};
-  text-align: left;
+export const ItemName = styled.p`
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 0.35rem;
+  color: ${(props) => props.theme.colors.gray100};
 `;
-
-export const DJInfo = styled.span`
-  ${(props) => props.theme.fontStyles.basic.body1Med};
+export const ItemPrice = styled.p`
   color: ${(props) => props.theme.colors.gray50};
-  width: 24.4rem;
-  padding-left: 1.6rem;
-  display: flex;
-  align-items: center;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.012px;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 0.1rem;
 `;
 
-export const DJWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  width: 27.6rem;
-  height: 3.2rem;
-  padding-left: 1.6rem;
-  padding-right: 0.8rem;
+export const RafflePrice = styled.div`
+  span {
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: -0.018px;
+    color: var(--HONGIK-BLUE, #1833db);
+    padding-right: 0.4rem;
+  }
+  #zero {
+    color: ${(props) => props.theme.colors.gray80};
+  }
 `;

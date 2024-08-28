@@ -1,31 +1,29 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import * as S from '@/pages/event/main/styled';
 
 export const ItemSlider = ({ carouselItems }) => {
-  const sliderRef = useRef(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // const sliderRef = useRef(null);
+  // const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
     <S.CarouselWrapper>
       <S.CarouselContainer>
-        <Slider {...carouselSettings} ref={sliderRef} afterChange={(index) => setCurrentSlide(index)}>
+        <Slider {...carouselSettings}>
+          {/*  ref={sliderRef} afterChange={(index) => setCurrentSlide(index)} 삭제 */}
           {carouselItems.map((item, index) => (
             <S.ImageContainer key={index}>
               <S.CarouselImage src={item.src} alt={item.alt} />
-              <S.DJContainer>
-                <S.DJWrapper>
-                  <S.DJName>디제이 이름</S.DJName>
-                </S.DJWrapper>
-                <S.DJInfo>
-                  국내외 페스티벌 섭외 1순위. <br />
-                  아시아 시장 섭렵 <br />
-                  트랜드를 이끌며 신 한류 문화가 될 <br /> K-EDM장르의 선두 DJ
-                </S.DJInfo>
-              </S.DJContainer>
+              <S.ItemInfoSection>
+                <S.ItemName>상품명</S.ItemName>
+                <S.ItemPrice>99,000원</S.ItemPrice>
+                <S.RafflePrice>
+                  <span>100%</span>
+                  <span id="zero">0원</span>
+                </S.RafflePrice>
+              </S.ItemInfoSection>
             </S.ImageContainer>
           ))}
         </Slider>
