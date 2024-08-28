@@ -25,7 +25,7 @@ export const FormContainer = styled.div`
 export const Section = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1.2rem;
   padding-bottom: 3.2rem;
 `;
 
@@ -72,8 +72,24 @@ export const Input = styled.input`
   align-self: stretch;
   border-radius: 1rem;
   border: 0.1rem solid #cdff3f;
-  background-color: transparent;
-  color: ${(props) => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+  color: ${(props) => props.theme.colors.gray5};
+  ${(props) => props.theme.fontStyles.basic.body2Reg}
+  padding: 1.2rem;
+
+  &::placeholder {
+    color: ${(props) => props.theme.colors.gray60};
+  }
+  &::-webkit-input-placeholder {
+    color: ${(props) => props.theme.colors.gray60};
+  }
+  &::-ms-input-placeholder {
+    color: ${(props) => props.theme.colors.gray60};
+  }
+
+  &:placeholder-shown {
+    border: 0.1rem solid #7b9a27;
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -82,8 +98,23 @@ export const TextArea = styled.textarea`
   align-self: stretch;
   border-radius: 1rem;
   border: 0.1rem solid #cdff3f;
-  background-color: transparent;
-  color: ${(props) => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+  color: ${(props) => props.theme.colors.gray5};
+  ${(props) => props.theme.fontStyles.basic.body2Reg}
+  padding: 1.2rem;
+
+  &::placeholder {
+    color: ${(props) => props.theme.colors.gray60};
+  }
+  &::-webkit-input-placeholder {
+    color: ${(props) => props.theme.colors.gray60};
+  }
+  &::-ms-input-placeholder {
+    color: ${(props) => props.theme.colors.gray60};
+  }
+  &:placeholder-shown {
+    border: 0.1rem solid #7b9a27;
+  }
 `;
 
 export const TextCount = styled.p`
@@ -107,10 +138,23 @@ export const EnterButton = styled.button`
   justify-content: center;
   align-items: center;
   background: linear-gradient(90deg, #feff24 0%, #cdff3f 100%);
+  cursor: pointer;
 
   p {
     ${(props) => props.theme.fontStyles.basic.headline5}
     color: ${(props) => props.theme.colors.flameBackgroundColor};
+    text-align: center;
+  }
+`;
+
+export const DisableButton = styled(EnterButton)`
+  background: ${(props) => props.theme.colors.gray60};
+  color: ${(props) => props.theme.colors.gray80};
+  cursor: not-allowed;
+
+  p {
+    ${(props) => props.theme.fontStyles.basic.headline5}
+    color: ${(props) => props.theme.colors.gray80};
     text-align: center;
   }
 `;

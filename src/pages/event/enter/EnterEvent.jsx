@@ -3,6 +3,7 @@ import { axiosInstance } from '@/api/axios';
 import { useNavigate } from 'react-router-dom';
 import * as S from './styled';
 import form from '@/assets/webps/event/form.webp';
+import PhoneNumBox from '@/components/event/PhoneNumBox';
 
 const EnterEvent = () => {
   const [textCount, setTextCount] = useState(0);
@@ -12,24 +13,44 @@ const EnterEvent = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [comment, setComment] = useState('');
+  const [isAvailable, setIsAvailable] = useState(false);
 
   // 이름 입력 관리
   const handleName = (e) => {
     setName(e.target.value);
   };
-  // 전화번호 입력 관리
+
+  // 전화번호 입력 관리 및 유효성 검사
   const handlePhone = (e) => {
-    // 유효성 검사
-    const regex = /^[0-9\b -]{0,13}$/;
-    if (regex.test(e.target.value)) {
-      setPhone(e.target.value);
+    const rawPhone = e.target.value.replace(/-/g, ''); // 하이픈 제거한 번호
+    const regex = /^[0-9\b]{0,11}$/; // 숫자만 허용, 최대 11자리
+    if (regex.test(rawPhone)) {
+      setPhone(rawPhone);
+
+      // 유효성 검사 후 하이픈 자동 추가
+      if (rawPhone.length === 10) {
+        setPhone(rawPhone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+      } else if (rawPhone.length === 11) {
+        setPhone(rawPhone.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+      }
     }
   };
+
   // 후기 입력 관리
   const handleComment = (e) => {
     e.preventDefault();
     setTextCount(e.target.value.length); // 글자수 세기
     setComment(e.target.value);
+  };
+
+  // 응모 가능 여부 관리
+  const isEntryAvailable = () => {
+    const isPhoneValid = phone.length === 12 || phone.length === 13; // 유효한 전화번호 길이 검사 (하이픈 포함)
+    if (name && isPhoneValid) {
+      setIsAvailable(true);
+    } else {
+      setIsAvailable(false);
+    }
   };
 
   const handleEventEntry = async (e) => {
@@ -69,18 +90,23 @@ const EnterEvent = () => {
     }
   }, [phone]);
 
+  useEffect(() => {
+    isEntryAvailable();
+  }, [name, phone]);
+
   return (
     <S.Wrapper>
       <S.Image src={form} alt="form" />
       <S.FormContainer>
         <form>
           <S.Section>
-            <S.SectionText>이름</S.SectionText>
+            <S.SectionText>이름을 알려주세요.</S.SectionText>
             <S.Input type="text" placeholder="ex. 홍길동" onChange={handleName} value={name} />
           </S.Section>
           <S.Section>
-            <S.SectionText>당첨 시 연락처</S.SectionText>
+            <S.SectionText>당첨 시 연락드릴 연락처를 적어주세요.</S.SectionText>
             <S.Input type="text" placeholder="‘-’ 없이 숫자만 (ex. 01012341234)" onChange={handlePhone} value={phone} />
+            {/* <PhoneNumBox /> */}
           </S.Section>
           <S.ItemSection>
             <S.SectionText>받고 싶은 선물을 골라주세요!</S.SectionText>
@@ -110,12 +136,24 @@ const EnterEvent = () => {
               <br />
               여러분들의 생생한 후기를 들려주세요! (선택)
             </S.SectionText>
-            <S.TextArea type="text" maxLength="100" onChange={handleComment} value={comment} />
+            <S.TextArea
+              type="text"
+              maxLength="100"
+              placeholder="해당 내용은 당첨과는 무관해요"
+              onChange={handleComment}
+              value={comment}
+            />
             <S.TextCount>({textCount}/100)</S.TextCount>
           </S.Section>
-          <S.EnterButton onClick={handleEventEntry}>
-            <p>응모 완료</p>
-          </S.EnterButton>
+          {isAvailable ? (
+            <S.EnterButton onClick={handleEventEntry}>
+              <p>응모하기</p>
+            </S.EnterButton>
+          ) : (
+            <S.DisableButton disabled>
+              <p>응모하기</p>
+            </S.DisableButton>
+          )}
         </form>
       </S.FormContainer>
     </S.Wrapper>
