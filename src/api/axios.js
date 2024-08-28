@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // 기본 axios 인스턴스 (baseURL만 설정)
 export const axiosInstance = axios.create({
@@ -36,11 +37,13 @@ adminAxiosInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
+    const navigate = useNavigate();
     // 토큰 리프레시 기능이 없기 때문에 별도에 refresh 로직은 없음
     if (error.response.status === 401) {
       localStorage.removeItem('accessToken');
       alert('인증되지 않은 사용자입니다. 로그인 후 사용가능합니다.');
-      // 어드민 홈으로 이동 (확정 url 나오면 코드 추가 필요)
+      window.location.href = '/admin';
+      navigate(0);
     }
     return Promise.reject(error);
   }

@@ -1,6 +1,7 @@
 import Layout from '@/components/layouts/Layout';
 import ScrollToTop from '@/components/layouts/ScrollToTop';
 import AdminPage from '@/pages/admin/AdminPage';
+import AdminEvent from '@/pages/admin/AdminEvent';
 import BoothPage from '@/pages/booth/BoothPage';
 import Fleamarket from '@/pages/booth/fleamarket/Fleamarket';
 import FleamarketDetail from '@/pages/booth/fleamarket/FleamarketDetail';
@@ -42,7 +43,7 @@ function App() {
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}
             <Route path="/" element={<MainPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+            {/* <Route path="*" element={<NotFoundPage />} /> */}
             <Route path="/booth" element={<BoothPage />} />
             <Route path="/fleamarket" element={<Fleamarket />} />
             <Route path="/fleamarket/:marketId" element={<FleamarketDetail />} />
@@ -82,6 +83,7 @@ function App() {
 
             {/* 채영 라우팅 💭 */}
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin/event" element={<AdminEvent />} />
             <Route path="/flame" element={<FlameMainPage />} />
           </Route>
         </Routes>
