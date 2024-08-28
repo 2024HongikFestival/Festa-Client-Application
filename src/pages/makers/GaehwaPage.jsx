@@ -27,6 +27,7 @@ const GaehwaPage = () => {
           {t('makers.gaehwa.title2')}
         </Title>
       </GaehwaBgImg>
+      <BlackBar />
       <WhoWeAreBg>
         <WhoWeAre>
           {t('makers.gaehwa.whoWeAre1')}
@@ -222,6 +223,14 @@ const GaehwaBgImg = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
+`;
+
+const BlackBar = styled.div`
+  width: 100%;
+  background-color: ${(props) => props.theme.colors.makersBackgroundColor};
+  height: 0.4rem;
+  margin-top: -0.3rem;
+  z-index: 10;
 `;
 
 const Title = styled.h1`
