@@ -72,7 +72,9 @@ const EventPage = () => {
       <S.NoticeText>
         매일 <span>오전 10시</span> 응모권 1장 부여
       </S.NoticeText>
+
       <NoticeTimeBox />
+
       <S.QNABox>
         <S.QText>Q. 홍익 래플이 뭐예요?</S.QText>
         <S.AText>A. 응모자 추첨을 통해 경품을 지급하는 이벤트입니다.</S.AText>
