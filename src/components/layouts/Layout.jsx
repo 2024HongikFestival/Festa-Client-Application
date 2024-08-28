@@ -5,6 +5,9 @@ import Footer from '@/components/layouts/Footer';
 
 export default function Layout() {
   const location = useLocation();
+  const isLoggedIn = () => {
+    return !!localStorage.getItem('accessToken');
+  };
   const visiblePaths = [
     '/',
     '/booth',
@@ -34,9 +37,6 @@ export default function Layout() {
     '/flame/promotion',
     '/flame',
   ];
-  const isLoggedIn = () => {
-    return !!localStorage.getItem('accessToken');
-  };
   const showheader = isLoggedIn() || visiblePaths.includes(location.pathname);
 
   return (
