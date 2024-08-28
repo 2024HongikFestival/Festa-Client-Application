@@ -10,6 +10,7 @@ import { ItemSlider } from '@/components/event/ItemSlider';
 import { axiosInstance } from '@/api/axios';
 
 const EventPage = () => {
+  // dummy item data
   const carouselItems = [
     { src: raffle, alt: 'Image 1' },
     { src: raffle, alt: 'Image 2' },
@@ -19,12 +20,20 @@ const EventPage = () => {
     { src: raffle, alt: 'Image 6' },
   ];
   const [stateData, setStateData] = useState();
+  const [currentUrl, setCurrentUrl] = useState('');
   //const [carouselItems, setCarouselItems] = useState([]);
 
   const handleRandomState = () => {
     const array = new Uint32Array(1);
     self.crypto.getRandomValues(array);
     setStateData(array[0]);
+  };
+
+  // 소셜 공유 기능 추가 예정
+  const handleShare = () => {
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      alert('링크가 복사되었습니다!');
+    });
   };
 
   const handleKakaoAuth = () => {
@@ -45,6 +54,7 @@ const EventPage = () => {
   useEffect(() => {
     handleRandomState();
     //getEventItems();
+    setCurrentUrl(window.location.href);
   }, []);
 
   return (
@@ -92,7 +102,7 @@ const EventPage = () => {
           <S.DetailDescription>9월 28일 14:00 총학 인스타 스토리</S.DetailDescription>
         </S.DetailSection>
       </S.NoticeDetail>
-      <S.ShareButton>
+      <S.ShareButton onClick={handleShare}>
         <S.ShareIcon src={shareIcon} alt="shareIcon" />
         <p>이벤트 공유</p>
       </S.ShareButton>
