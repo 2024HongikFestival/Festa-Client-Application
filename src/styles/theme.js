@@ -112,6 +112,13 @@ const theme = {
       font-style: normal;
       line-height: 150%;
     `,
+      subHead: `
+      font-family: sandoll-press-original, sans-serif;
+      font-size: 1.0rem;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 150%;
+    `,
     },
     basic: {
       headline1: `
