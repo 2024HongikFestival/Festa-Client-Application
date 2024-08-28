@@ -1,10 +1,48 @@
 import styled from 'styled-components';
+import dayjs from 'dayjs';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-const TimeCard = () => {
-  return <Card></Card>;
+const TimeCard = ({ time }) => {
+  TimeCard.propTypes = {
+    time: PropTypes.string.isRequired,
+  };
+
+  return (
+    <Card>
+      <CardText>{time}</CardText>
+    </Card>
+  );
 };
 
 const NoticeTimeBox = () => {
+  const [days, setDays] = useState('00');
+  const [hours, setHours] = useState('00');
+  const [minutes, setMinutes] = useState('00');
+  const [seconds, setSeconds] = useState('00');
+
+  const end = dayjs('2024-09-27 23:59:59');
+
+  const handleDate = () => {
+    const now = dayjs();
+    const dayDuration = end.diff(now, 'day');
+    const hourDuration = end.diff(now, 'hour') % 24;
+    const minuteDuration = end.diff(now, 'minute') % 60;
+    const secondDuration = end.diff(now, 'second') % 60;
+
+    setDays(dayDuration.toString().padStart(2, '0'));
+    setHours(hourDuration.toString().padStart(2, '0'));
+    setMinutes(minuteDuration.toString().padStart(2, '0'));
+    setSeconds(secondDuration.toString().padStart(2, '0'));
+  };
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      handleDate();
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <Wrapper>
       <NoticeTime>마감까지 남은 시간</NoticeTime>
@@ -12,32 +50,32 @@ const NoticeTimeBox = () => {
         <Box>
           <Text>DAYS</Text>
           <Container>
-            <TimeCard />
-            <TimeCard />
+            <TimeCard time={days[0]} />
+            <TimeCard time={days[1]} />
           </Container>
         </Box>
         <span>:</span>
         <Box>
           <Text>HOURS</Text>
           <Container>
-            <TimeCard />
-            <TimeCard />
+            <TimeCard time={hours[0]} />
+            <TimeCard time={hours[1]} />
           </Container>
         </Box>
         <span>:</span>
         <Box>
           <Text>MINUTES</Text>
           <Container>
-            <TimeCard />
-            <TimeCard />
+            <TimeCard time={minutes[0]} />
+            <TimeCard time={minutes[1]} />
           </Container>
         </Box>
         <span>:</span>
         <Box>
           <Text>SECONDS</Text>
           <Container>
-            <TimeCard />
-            <TimeCard />
+            <TimeCard time={seconds[0]} />
+            <TimeCard time={seconds[1]} />
           </Container>
         </Box>
       </CardBox>
@@ -49,11 +87,23 @@ export default NoticeTimeBox;
 
 const Card = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 3.2rem;
   height: 5.6rem;
   flex-shrink: 0;
   border-radius: 0.5rem;
   background-color: ${(props) => props.theme.colors.gray100};
+`;
+
+const CardText = styled.p`
+  color: ${(props) => props.theme.colors.gray10};
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
 const Wrapper = styled.div`

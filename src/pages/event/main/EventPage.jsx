@@ -11,6 +11,9 @@ import { axiosInstance } from '@/api/axios';
 import NoticeTimeBox from '@/components/event/NoticeTimeBox';
 
 const EventPage = () => {
+  const [stateData, setStateData] = useState();
+  const [currentUrl, setCurrentUrl] = useState('');
+  //const [carouselItems, setCarouselItems] = useState([]);
   // dummy item data
   const carouselItems = [
     { src: raffle, alt: 'Image 1' },
@@ -20,9 +23,6 @@ const EventPage = () => {
     { src: raffle, alt: 'Image 5' },
     { src: raffle, alt: 'Image 6' },
   ];
-  const [stateData, setStateData] = useState();
-  const [currentUrl, setCurrentUrl] = useState('');
-  //const [carouselItems, setCarouselItems] = useState([]);
 
   const handleRandomState = () => {
     const array = new Uint32Array(1);
