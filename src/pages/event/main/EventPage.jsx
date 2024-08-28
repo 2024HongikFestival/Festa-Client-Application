@@ -3,14 +3,23 @@ import { EVENTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
 import * as S from './styled';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import React, { Component } from 'react';
-import Slider from 'react-slick';
 import raffle from '@/assets/webps/event/raffle.webp';
 import shareIcon from '@/assets/webps/event/shareIcon.webp';
 import kakaoLogo from '@/assets/svgs/kakaoLogo.svg';
+import { ItemSlider } from '@/components/event/ItemSlider';
+import { axiosInstance } from '@/api/axios';
 
 const EventPage = () => {
+  const carouselItems = [
+    { src: raffle, alt: 'Image 1' },
+    { src: raffle, alt: 'Image 2' },
+    { src: raffle, alt: 'Image 3' },
+    { src: raffle, alt: 'Image 4' },
+    { src: raffle, alt: 'Image 5' },
+    { src: raffle, alt: 'Image 6' },
+  ];
   const [stateData, setStateData] = useState();
+  //const [carouselItems, setCarouselItems] = useState([]);
 
   const handleRandomState = () => {
     const array = new Uint32Array(1);
@@ -22,8 +31,20 @@ const EventPage = () => {
     window.location.href = EVENTS_KAKAO_AUTH_URL + `&state=${stateData}`;
   };
 
+  // 응모 상품 리스트
+  // const getEventItems = async () => {
+  //   try {
+  //     const response = await axiosInstance.get('/entries/prizes');
+  //     console.log(response.data.message);
+  //     setCarouselItems(response.data.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
     handleRandomState();
+    //getEventItems();
   }, []);
 
   return (
@@ -50,7 +71,7 @@ const EventPage = () => {
       </S.QNABox>
 
       {/* 더미 / 캐러셀로 수정 필요 */}
-      <div
+      {/* <div
         style={{
           display: 'flex',
           width: '100%',
@@ -123,7 +144,8 @@ const EventPage = () => {
             }}
           ></div>
         </div>
-      </div>
+      </div> */}
+      <ItemSlider carouselItems={carouselItems} />
 
       <S.NoticeDetail>
         <S.DetailSection>
