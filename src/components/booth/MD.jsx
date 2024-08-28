@@ -80,7 +80,6 @@ const MdWrapper = styled.div`
 `;
 
 const Radial = styled.div`
-  /* position: relative; */
   width: 33.5rem;
   height: 23.6rem;
   background: radial-gradient(56.38% 56.38% at 50.08% 56.38%, rgba(24, 51, 219, 0.15) 0%, rgba(24, 51, 219, 0) 100%);
@@ -98,14 +97,9 @@ const Frame = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* overflow: hidden; */
 `;
 
 const Img = styled.img`
-  /* position: absolute; */
-  /* top: ${(props) => props.top}; */
-  /* width: ${(props) => props.width};
-  height: ${(props) => props.height}; */
   object-fit: cover;
   width: 100%;
   height: auto;
@@ -115,7 +109,7 @@ const Desc = styled.div`
   position: absolute;
   width: 33.5rem;
   height: 11.5rem;
-  background-color: rgba(250, 250, 251, 1);
+  background-color: ${(props) => props.theme.colors.gray5};
   top: 22rem;
   padding: 1.6rem 2.4rem 2.4rem 1.6rem;
 `;
@@ -145,6 +139,6 @@ const Text = styled.p`
     props.kind === 'price' &&
     css`
       ${props.theme.fontStyles.basic.body1Med}
-      color: rgba(136, 142, 148, 1)
+      color:  ${props.theme.colors.gray50}
     `}
 `;

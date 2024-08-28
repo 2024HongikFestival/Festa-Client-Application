@@ -25,9 +25,6 @@ export default function MdPage() {
       </ContentContainer>
       {/* MD 컴포넌트 */}
       <MDContainer>
-        {/* <ContentContainer>
-          <p>md</p>
-        </ContentContainer> */}
         {MdList.map((item, index) => (
           <MD key={index} img={item.img} name={item.name} price={item.price} width={item.width} height={item.height} />
         ))}
@@ -35,7 +32,7 @@ export default function MdPage() {
       {/* 유의사항 컴포넌트 */}
       <ContentContainer>
         <NoteContainer>
-          <NoteTitle>현장 구매시 확인해주세요!</NoteTitle>
+          <NoteTitle>현장 구매시 확인해 주세요!</NoteTitle>
           <NoteContentWrapper>
             <NoteContent>&nbsp;• 계좌 이체 및 현금 결제만 가능합니다</NoteContent>
             <NoteContent>&nbsp;• 구매 완료 시 환불, 교환, 취소 불가능합니다</NoteContent>
@@ -93,7 +90,7 @@ const GuideWrapper = styled.div`
 
 const Caption = styled.div`
   ${(props) => props.theme.fontStyles.basic.captionMed};
-  color: #bfc2c8;
+  color: ${(props) => props.theme.colors.gray30};
 `;
 
 const NoteContainer = styled.div`
@@ -114,7 +111,7 @@ const NoteTitle = styled.div`
 
 const NoteContent = styled.p`
   ${(props) => props.theme.fontStyles.basic.body2Med}
-  color: #2C2D30;
+  color: ${(props) => props.theme.colors.gray90};
 `;
 
 const Hidden = styled.span`
