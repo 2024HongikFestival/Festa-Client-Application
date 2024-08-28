@@ -17,6 +17,8 @@ presigendAxiosInstance.interceptors.request.use((config) => {
   const lost_access_token = localStorage.getItem('lost_access_token');
   if (lost_access_token) {
     config.headers.Authorization = `Bearer ${lost_access_token}`;
+    console.log('메롱', config.headers.Authorization);
+    console.log(config.headers.Authorization);
   } else {
     console.log('토큰 없음');
   }
