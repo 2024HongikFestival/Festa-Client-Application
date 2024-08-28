@@ -38,22 +38,6 @@ export const NoticeText = styled.div`
   }
 `;
 
-export const NoticeTimeBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 33.5rem;
-  height: 13.5rem;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1rem;
-  background: linear-gradient(180deg, #ffff24 0%, #a9ff1e 100%);
-`;
-
-export const NoticeTime = styled.div`
-  ${(props) => props.theme.fontStyles.basic.body1Bold}
-  color: ${(props) => props.theme.colors.flameBackgroundColor};
-`;
-
 export const QNABox = styled.div`
   display: flex;
   width: 33.5rem;

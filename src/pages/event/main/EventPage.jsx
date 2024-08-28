@@ -8,6 +8,7 @@ import shareIcon from '@/assets/webps/event/shareIcon.webp';
 import kakaoLogo from '@/assets/svgs/kakaoLogo.svg';
 import { ItemSlider } from '@/components/event/ItemSlider';
 import { axiosInstance } from '@/api/axios';
+import NoticeTimeBox from '@/components/event/NoticeTimeBox';
 
 const EventPage = () => {
   // dummy item data
@@ -71,10 +72,7 @@ const EventPage = () => {
       <S.NoticeText>
         매일 <span>오전 10시</span> 응모권 1장 부여
       </S.NoticeText>
-      <S.NoticeTimeBox>
-        <S.NoticeTime>마감까지 남은 시간</S.NoticeTime>
-        <S.NoticeTime>00:00:00</S.NoticeTime>
-      </S.NoticeTimeBox>
+      <NoticeTimeBox />
       <S.QNABox>
         <S.QText>Q. 홍익 래플이 뭐예요?</S.QText>
         <S.AText>A. 응모자 추첨을 통해 경품을 지급하는 이벤트입니다.</S.AText>
