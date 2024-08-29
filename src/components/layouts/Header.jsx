@@ -651,7 +651,7 @@ const MenuItem = styled.li`
   color: ${(props) => props.theme.colors.gray80};
   span {
     /* UX 개선용 padding */
-    padding: 1rem 7rem;
+    padding: ${(props) => (props.$isOpen ? '0.8rem 7rem' : '1rem 7rem')};
     ${(props) => props.theme.fontStyles.basic.body1Med};
   }
 
