@@ -6,14 +6,14 @@
   },
   "layouts": {
     "header": {
-      "toRoadmap": "Roadmap",
+      "toRoadmap": "Road Map",
       "toStage": "Stage",
       "toBooth": "Booth",
       "toFacilities": "Facilities",
       "toEvent": "Event",
-      "toSitemap": "Sitemap",
+      "toSitemap": "Site Map",
       "toTimeTable": "Time Table",
-      "toTicket": "Ticket",
+      "toReservation": "Reservation",
       "toLineUp": "Line Up",
       "toMd": "MD",
       "toPromotion": "Promotion"

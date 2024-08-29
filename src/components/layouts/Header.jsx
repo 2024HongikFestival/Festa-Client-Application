@@ -183,12 +183,12 @@ export default function Header() {
             <CommonMenuBar
               className={menuClass}
               commonMenuRef={commonMenuRef}
-              closeMenu={toggleMenu}
+              closeMenu={() => setIsMenuOpen(false)}
               isKorActive={isKorActive}
               toggleLanguage={toggleLanguage}
               t={t}
               flame={flame}
-              $isMenuOpen={isMenuOpen}
+              nav={nav}
             />
           ))}
       </HeaderLayout>
@@ -243,33 +243,95 @@ const AdminMenuBar = ({
   );
 };
 
-const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t, flame, commonMenuRef, className }) => (
+const CommonMenuBar = ({ nav, closeMenu, isKorActive, toggleLanguage, t, flame, commonMenuRef, className }) => (
   <MenuBar ref={commonMenuRef} $flame={flame} className={className}>
     <MenuList $flame={flame}>
       <MenuItem $flame={flame}>
-        <span>{flame ? t('layouts.header.toSitemap') : t('layouts.header.toRoadmap')}</span>
+        {flame ? (
+          <span
+            onClick={() => {
+              nav('/flame/map');
+              closeMenu();
+            }}
+          >
+            {t('layouts.header.toSitemap')}
+          </span>
+        ) : (
+          <span>{t('layouts.header.toRoadmap')}</span>
+        )}
       </MenuItem>
       <Divider $flame={flame} />
       <MenuItem $flame={flame}>
-        <span>{flame ? t('layouts.header.toTimeTable') : t('layouts.header.toStage')}</span>
+        {flame ? (
+          <span
+            onClick={() => {
+              nav('/flame/timetable');
+              closeMenu();
+            }}
+          >
+            {t('layouts.header.toTimeTable')}
+          </span>
+        ) : (
+          <span>{t('layouts.header.toStage')}</span>
+        )}
       </MenuItem>
       <Divider $flame={flame} />
       <MenuItem $flame={flame}>
-        <span>{flame ? t('layouts.header.toTicket') : t('layouts.header.toBooth')}</span>
+        {flame ? (
+          <span
+            onClick={() => {
+              nav('/flame/reservation');
+              closeMenu();
+            }}
+          >
+            {t('layouts.header.toReservation')}
+          </span>
+        ) : (
+          <span>{t('layouts.header.toBooth')}</span>
+        )}
       </MenuItem>
       <Divider $flame={flame} />
       <MenuItem $flame={flame}>
-        <span>{flame ? t('layouts.header.toLineUp') : t('layouts.header.toFacilities')}</span>
+        {flame ? (
+          <span
+            onClick={() => {
+              nav('/flame/lineup');
+              closeMenu();
+            }}
+          >
+            {t('layouts.header.toLineUp')}
+          </span>
+        ) : (
+          <span>{t('layouts.header.toFacilities')}</span>
+        )}
       </MenuItem>
       <Divider $flame={flame} />
       <MenuItem $flame={flame}>
-        <span>{flame ? t('layouts.header.toMd') : t('layouts.header.toEvent')}</span>
+        {flame ? (
+          <span
+            onClick={() => {
+              nav('/flame/md');
+              closeMenu();
+            }}
+          >
+            {t('layouts.header.toMd')}
+          </span>
+        ) : (
+          <span>{t('layouts.header.toEvent')}</span>
+        )}
       </MenuItem>
       {flame && (
         <>
           <Divider $flame={flame} />
           <MenuItem $flame={flame}>
-            <span>{t('layouts.header.toPromotion')}</span>
+            <span
+              onClick={() => {
+                nav('/flame/promotion');
+                closeMenu();
+              }}
+            >
+              {t('layouts.header.toPromotion')}
+            </span>
           </MenuItem>
         </>
       )}
@@ -294,6 +356,7 @@ const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t, flame, commo
 );
 
 CommonMenuBar.propTypes = {
+  nav: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
   closeMenu: PropTypes.func.isRequired,
   isKorActive: PropTypes.bool.isRequired,
@@ -458,11 +521,14 @@ const MenuList = styled.ul`
 `;
 
 const MenuItem = styled.li`
-  margin: 2rem 0;
+  cursor: pointer;
+  margin: 1rem 0;
   display: flex;
   justify-content: center;
   color: ${(props) => props.theme.colors.gray80};
   span {
+    /* UX 개선용 padding */
+    padding: 1rem 7rem;
     ${(props) => props.theme.fontStyles.basic.body1Med};
   }
 
@@ -472,6 +538,10 @@ const MenuItem = styled.li`
       color: white;
       justify-content: inherit;
       margin-left: 2.4rem;
+      span {
+        /* UX 개선용 padding */
+        padding: 1rem 10rem 1rem 0;
+      }
     `}
 `;
 
