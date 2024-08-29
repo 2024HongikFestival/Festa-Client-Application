@@ -11,6 +11,20 @@ export const contributors = (t) => ({
       role: t('makers.gaehwaContributors.presidency.1.role'),
     },
   ],
+  executiveCommittee: [
+    {
+      name: t('makers.gaehwaContributors.executiveCommittee.0.name'),
+      department: t('makers.gaehwaContributors.executiveCommittee.0.department'),
+      role: t('makers.gaehwaContributors.executiveCommittee.0.role'),
+    },
+  ],
+  operation: [
+    {
+      name: t('makers.gaehwaContributors.operation.0.name'),
+      department: t('makers.gaehwaContributors.operation.0.department'),
+      role: t('makers.gaehwaContributors.operation.0.role'),
+    },
+  ],
   executive: [
     {
       name: t('makers.gaehwaContributors.executive.0.name'),
@@ -21,11 +35,6 @@ export const contributors = (t) => ({
       name: t('makers.gaehwaContributors.executive.1.name'),
       department: t('makers.gaehwaContributors.executive.1.department'),
       role: t('makers.gaehwaContributors.executive.1.role'),
-    },
-    {
-      name: t('makers.gaehwaContributors.executive.2.name'),
-      department: t('makers.gaehwaContributors.executive.2.department'),
-      role: t('makers.gaehwaContributors.executive.2.role'),
     },
   ],
   strategicPolicy: [

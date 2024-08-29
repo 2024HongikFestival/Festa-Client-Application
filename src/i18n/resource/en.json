@@ -157,6 +157,14 @@
       "whoWeAre5": "",
       "whoWeAre6": "",
       "presidency": "",
+      "executiveCommittee": "",
+      "executiveCommitteeDescription1": "",
+      "executiveCommitteeDescription2": "",
+      "executiveCommitteeDescription3": "",
+      "operation": "",
+      "operationDescription1": "",
+      "operationDescription2": "",
+      "operationDescription3": "",
       "executive": "",
       "executiveDescription1": "",
       "executiveDescription2": "",
@@ -210,12 +218,21 @@
           "role": ""
         }
       ],
-      "executive": [
+      "executiveCommittee": [
         {
           "name": "",
           "department": "",
           "role": ""
-        },
+        }
+      ],
+      "operation": [
+        {
+          "name": "",
+          "department": "",
+          "role": ""
+        }
+      ],
+      "executive": [
         {
           "name": "",
           "department": "",

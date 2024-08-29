@@ -9,6 +9,8 @@ const GaehwaPage = () => {
   const { t } = useTranslation();
   const contributorsData = contributors(t);
 
+  const executiveCommittee = contributorsData.executiveCommittee;
+  const operation = contributorsData.operation;
   const executive = contributorsData.executive;
   const strategicPolicy = contributorsData.strategicPolicy;
   const culturalPlanning = contributorsData.culturalPlanning;
@@ -55,6 +57,38 @@ const GaehwaPage = () => {
             <GaehwaCard key={index} {...contributor} />
           ))}
         </PresidencyWrapper>
+      </RoleSection>
+      <Divider />
+      <RoleSection>
+        <RoleName>{t('makers.gaehwa.executiveCommittee')}</RoleName>
+        <RoleDescription>
+          {t('makers.gaehwa.executiveCommitteeDescription1')}
+          <br />
+          {t('makers.gaehwa.executiveCommitteeDescription2')}
+          <br />
+          {t('makers.gaehwa.executiveCommitteeDescription3')}
+        </RoleDescription>
+        <CardWrapper $cardCount={executiveCommittee.length}>
+          {contributorsData.executiveCommittee.map((contributor, index) => (
+            <GaehwaCard key={index} {...contributor} />
+          ))}
+        </CardWrapper>
+      </RoleSection>
+      <Divider />
+      <RoleSection>
+        <RoleName>{t('makers.gaehwa.operation')}</RoleName>
+        <RoleDescription>
+          {t('makers.gaehwa.operationDescription1')}
+          <br />
+          {t('makers.gaehwa.operationDescription2')}
+          <br />
+          {t('makers.gaehwa.operationDescription3')}
+        </RoleDescription>
+        <CardWrapper $cardCount={operation.length}>
+          {contributorsData.operation.map((contributor, index) => (
+            <GaehwaCard key={index} {...contributor} />
+          ))}
+        </CardWrapper>
       </RoleSection>
       <Divider />
       <RoleSection>

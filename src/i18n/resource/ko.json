@@ -157,7 +157,15 @@
       "whoWeAre5": "바탕으로 사회 발전에 능동적으로 기여함을",
       "whoWeAre6": "그 목적으로 합니다.",
       "presidency": "회장단",
-      "executive": "집행위원회",
+      "executiveCommittee": "집행위원회",
+      "executiveCommitteeDescription1": "총학생회의 전반적인 업무 보조 등의 역할을 합니다.",
+      "executiveCommitteeDescription2": "교내 다양한 협의체 활동에서 나온",
+      "executiveCommitteeDescription3": "기록물들을 관리하고 게시합니다.",
+      "operation": "운영사무국",
+      "operationDescription1": "총학생회의 전반적인 업무 보조 등의 역할을 합니다.",
+      "operationDescription2": "교내 다양한 협의체 활동에서 나온",
+      "operationDescription3": "기록물들을 관리하고 게시합니다.",
+      "executive": "집행국",
       "executiveDescription1": "총학생회의 전반적인 업무 보조 등의 역할을 합니다.",
       "executiveDescription2": "교내 다양한 협의체 활동에서 나온",
       "executiveDescription3": "기록물들을 관리하고 게시합니다.",
@@ -210,12 +218,21 @@
           "role": "부학생회장"
         }
       ],
-      "executive": [
+      "executiveCommittee": [
         {
           "name": "김영웅",
           "department": "캠퍼스자율전공 21",
           "role": "위원장"
-        },
+        }
+      ],
+      "operation": [
+        {
+          "name": "모집중",
+          "department": "교육학과 22",
+          "role": "국원"
+        }
+      ],
+      "executive": [
         {
           "name": "구서연",
           "department": "교육학과 22",
