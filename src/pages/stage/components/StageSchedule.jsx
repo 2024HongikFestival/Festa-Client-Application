@@ -126,7 +126,7 @@ const DayContainer = styled.div`
 `;
 const StageContainer = styled.div`
   display: flex;
-  padding: 2rem 1.4rem;
+  padding: 0 1.4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -152,6 +152,7 @@ const Stage = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid ${(props) => props.theme.colors.gray20};
+  padding: 2rem 0;
 `;
 const StageBox = styled.div`
   display: flex;
@@ -172,7 +173,6 @@ const ArtistList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  padding-bottom: 2rem;
 `;
 const ArtistItem = styled.li`
   color: ${(props) => props.theme.colors.gray70};
