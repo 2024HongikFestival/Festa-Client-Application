@@ -30,8 +30,8 @@ import HongikZonePage from '@/pages/stage/HongikZonePage';
 import LineupPage from '@/pages/stage/LineupPage';
 import StageInfoPage from '@/pages/stage/StageInfoPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './pages/lost-and-found/pages/AddLostItem/context/AuthProvider';
-import ProtectedRoute from './pages/lost-and-found/pages/AddLostItem/outlet/ProtectedRoute';
+import { AuthProvider } from './components/lost-and-found/AddLostItem/context/AuthProvider';
+import ProtectedRoute from './components/lost-and-found/AddLostItem/outlet/ProtectedRoute';
 
 function App() {
   return (

@@ -4,7 +4,7 @@ import { getPresignedUrl, putPresignedUrl } from '@/utils/presignedUrl';
 import PropTypes from 'prop-types';
 import React, { useEffect, useReducer, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LocationModal } from '../../../LostAndFoundPage/components/LostModal/LostModal';
+import { LocationModal } from '../../LostAndFoundPage/LostModal/LostModal';
 import * as S from './Register.styled';
 
 const MAX_LENGTH_INPUT = 15;

@@ -21,7 +21,7 @@ export const Main = styled.main`
 
 export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.black};
-  ${({ theme }) => theme.fontStyles.main.headline2}; //SCORE 어쩌구로 바뀜
+  ${({ theme }) => theme.fontStyles.main.headline2};
 
   margin-top: 2.8rem;
   margin-bottom: 2.8rem;
@@ -54,7 +54,7 @@ export const AddLostItemButton = styled.button`
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
 
   color: ${({ theme }) => theme.colors.white};
-  ${({ theme }) => theme.fontStyles.main.headline6}; //아직 S-Core Dream로 업데이트 안됨
+  ${({ theme }) => theme.fontStyles.main.headline6};
   text-align: center;
 
   margin-bottom: 0.8rem;
