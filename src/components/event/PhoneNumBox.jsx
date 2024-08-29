@@ -4,9 +4,7 @@ import { PropTypes } from 'prop-types';
 
 const PhoneNumBox = (props) => {
   const { className, index, codeArr, onChange } = props;
-
   const inputRef = useRef(null);
-
   const value = codeArr[index];
 
   const setValue = (value, position = 0) => {
@@ -28,13 +26,11 @@ const PhoneNumBox = (props) => {
         setValue(value[1], +1);
         nextInput.focus();
       }
-
       if (inputRef.current?.selectionStart === 1) {
         setValue(value[0]);
       }
       return;
     }
-
     setValue(value);
   };
 
@@ -46,7 +42,6 @@ const PhoneNumBox = (props) => {
         nextInput.focus();
       }
     }
-
     if ((e.key === 'arrowLeft' || e.key === 'ArrowLeft') && previousInput) {
       if (inputRef.current?.selectionStart === 1) {
         inputRef.current?.setSelectionRange(0, 0);
@@ -54,7 +49,6 @@ const PhoneNumBox = (props) => {
         previousInput.focus();
       }
     }
-
     if (e.key === 'Backspace' && previousInput) {
       if (inputRef.current?.selectionStart === 1) {
         const nextCodeArr = [...codeArr];

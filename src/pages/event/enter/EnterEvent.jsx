@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './styled';
 import form from '@/assets/webps/event/form.webp';
 import PhoneNumBox from '@/components/event/PhoneNumBox';
-import SelectedBg from '@/components/event/SelectedBg';
+import check from '@/assets/svgs/event/check.svg';
 
 const EnterEvent = () => {
+  // 전화번호 관련 상태
   const [codeArr, setCodeArr] = useState(['', '', '', '', '', '', '', '', '', '', '']);
   const _onChangeCode = (code) => {
     // setCodeArr값은 codeArr.length로 잘라줍니다.
@@ -15,10 +16,17 @@ const EnterEvent = () => {
 
   const [textCount, setTextCount] = useState(0);
   const navigate = useNavigate();
-  const [isSelected, setIsSelected] = useState(false);
 
-  const handleItemSelected = () => {
-    setIsSelected(!isSelected);
+  // 이벤트 상품 관련 상태
+  const [isSelected, setIsSelected] = useState('');
+
+  const itemArr = [1, 2, 3, 4]; // 경품 수 확정 X
+
+  const handleItemSelected = (e) => {
+    e.preventDefault();
+    setIsSelected((prev) => {
+      return e.target.value;
+    });
   };
 
   // input & textarea 상태 관리
@@ -135,22 +143,20 @@ const EnterEvent = () => {
             <S.SectionText>받고 싶은 선물을 골라주세요!</S.SectionText>
             {/* 경품 확정 X */}
             <S.ItemContainer>
-              <S.Item>
-                {isSelected ? <SelectedBg onClick={handleItemSelected} /> : <S.ItemCard onClick={handleItemSelected} />}
-                <S.ItemName>물품 이름</S.ItemName>
-              </S.Item>
-              <S.Item>
-                {isSelected ? <SelectedBg onClick={handleItemSelected} /> : <S.ItemCard onClick={handleItemSelected} />}
-                <S.ItemName>물품 이름</S.ItemName>
-              </S.Item>
-              <S.Item>
-                {isSelected ? <SelectedBg onClick={handleItemSelected} /> : <S.ItemCard onClick={handleItemSelected} />}
-                <S.ItemName>물품 이름</S.ItemName>
-              </S.Item>
-              <S.Item>
-                {isSelected ? <SelectedBg onClick={handleItemSelected} /> : <S.ItemCard onClick={handleItemSelected} />}
-                <S.ItemName>물품 이름</S.ItemName>
-              </S.Item>
+              {itemArr.map((item, idx) => {
+                return (
+                  <S.Item key={idx} onClick={handleItemSelected}>
+                    <S.ItemCard
+                      value={idx}
+                      className={'btn' + (idx == isSelected ? ' active' : '')}
+                      onClick={handleItemSelected}
+                    >
+                      <img src={check} alt="check" />
+                    </S.ItemCard>
+                    <S.ItemName>물품 {item}</S.ItemName>
+                  </S.Item>
+                );
+              })}
             </S.ItemContainer>
           </S.ItemSection>
           <S.Section>

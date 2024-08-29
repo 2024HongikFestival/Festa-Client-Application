@@ -54,12 +54,31 @@ export const Item = styled.div`
   gap: 1.2rem;
 `;
 
-export const ItemCard = styled.div`
+export const ItemCard = styled.button`
   width: 6rem;
   height: 7.2rem;
   align-self: stretch;
   border-radius: 1rem;
   border: 0.1rem solid #7b9a27;
+
+  img {
+    display: none;
+  }
+
+  &.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border: 1px solid var(--on, #cdff3f);
+    background: rgba(205, 255, 63, 0.4);
+
+    img {
+      display: flex;
+      width: 2rem;
+      height: 1.42rem;
+    }
+  }
 `;
 
 export const ItemName = styled.div`
