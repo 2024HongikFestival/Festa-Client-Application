@@ -131,6 +131,17 @@ export default function Header() {
     }, 100);
   };
 
+  // language toggle 초기화
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem('language');
+    if (storedLanguage) {
+      setIsKorActive(storedLanguage === 'ko');
+    } else {
+      setIsKorActive(true); // 기본값: 한국어
+      localStorage.setItem('language', 'ko');
+    }
+  }, []);
+
   // language toggle
   const clickHandler = (lng) => {
     setIsKorActive(lng === 'ko');
