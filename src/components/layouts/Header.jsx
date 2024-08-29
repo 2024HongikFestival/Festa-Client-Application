@@ -15,6 +15,7 @@ export default function Header() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isKorActive, setIsKorActive] = useState(true); // language toggle
   const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
 
   const adminMenuRef = useRef(null);
@@ -78,6 +79,10 @@ export default function Header() {
 
   const makers = location.pathname === '/likelion' || location.pathname === '/gaehwa';
 
+  const handleLanguageToggle = () => {
+    setIsKorActive((prev) => !prev); // 토글 상태 변경
+  };
+
   return (
     <>
       <HeaderLayout $path={location.pathname}>
@@ -110,7 +115,11 @@ export default function Header() {
               closeMenu={() => setIsMenuOpen(false)}
             />
           ) : (
-            <CommonMenuBar closeMenu={toggleMenu} />
+            <CommonMenuBar
+              closeMenu={toggleMenu}
+              isKorActive={isKorActive}
+              handleLanguageToggle={handleLanguageToggle}
+            />
           ))}
       </HeaderLayout>
     </>
@@ -163,7 +172,7 @@ const AdminMenuBar = ({
   );
 };
 
-const CommonMenuBar = ({ closeMenu }) => (
+const CommonMenuBar = ({ closeMenu, isKorActive, handleLanguageToggle }) => (
   <MenuBar>
     <MenuList>
       <MenuItem>
@@ -191,11 +200,12 @@ const CommonMenuBar = ({ closeMenu }) => (
       <LanguageBox>
         <img src={globe} alt="globe" />
         <span className="language">Language</span>
-        <ToggleBox>
-          <KorBox>
+        <ToggleBox onClick={handleLanguageToggle}>
+          <Slider $isKorActive={isKorActive} />
+          <KorBox $isKorActive={isKorActive}>
             <span>KOR</span>
           </KorBox>
-          <EngBox>
+          <EngBox $isKorActive={!isKorActive}>
             <span>ENG</span>
           </EngBox>
         </ToggleBox>
@@ -206,6 +216,8 @@ const CommonMenuBar = ({ closeMenu }) => (
 
 CommonMenuBar.propTypes = {
   closeMenu: PropTypes.func.isRequired,
+  isKorActive: PropTypes.bool.isRequired,
+  handleLanguageToggle: PropTypes.func.isRequired,
 };
 
 AdminMenuBar.propTypes = {
@@ -378,25 +390,43 @@ const LanguageBox = styled.div`
 const ToggleBox = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 8.2rem;
   height: 2.8rem;
   border-radius: 1.5rem;
   border: 0.05rem solid #b0dbf3;
   background-color: white;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  justify-content: space-between;
 `;
-const KorBox = styled.div`
+
+const Slider = styled.div`
+  margin: 0 0.5rem;
+  position: absolute;
   width: 3.6rem;
   height: 2rem;
-  border-radius: 10px;
+  border-radius: 1.5rem;
   background: linear-gradient(110deg, #27b0eb 40.84%, #d1dbfa 81.65%);
-  margin-right: 0.1rem;
+  transition: transform 0.3s ease;
+  transform: ${({ $isKorActive }) => ($isKorActive ? 'translateX(0)' : 'translateX(100%)')};
+`;
+
+const KorBox = styled.div`
+  margin-left: 0.5rem;
+  position: relative;
+  width: 3.6rem;
+  height: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  z-index: 1;
+  color: ${({ $isKorActive }) => ($isKorActive ? 'white' : '#27b0eb')};
+  transition: color 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   span {
-    color: white;
     text-align: center;
     font-family: 'Pretendard', sans-serif;
     font-size: 1rem;
@@ -406,16 +436,22 @@ const KorBox = styled.div`
     letter-spacing: -0.001rem;
   }
 `;
+
 const EngBox = styled.div`
+  margin-right: 0.5rem;
+  position: relative;
   width: 3.6rem;
   height: 2rem;
-  border-radius: 10px;
+  border-radius: 1rem;
+  text-align: center;
+  z-index: 1;
+  color: ${({ $isKorActive }) => ($isKorActive ? 'white' : '#27b0eb')};
+  transition: color 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   span {
-    color: #b0dbf3;
     text-align: center;
     font-family: 'Pretendard', sans-serif;
     font-size: 1rem;
