@@ -265,7 +265,7 @@ const CommonMenuBar = ({
 }) => (
   <MenuBar ref={commonMenuRef} $flame={flame} className={className}>
     <MenuList $flame={flame}>
-      <MenuItem $flame={flame}>
+      <MenuItem $flame={flame} $isOpen={openAccordion === 0}>
         {flame ? (
           <span
             onClick={() => {
@@ -280,6 +280,7 @@ const CommonMenuBar = ({
             onClick={() => {
               nav('/map');
               closeMenu();
+              toggleAccordion(0);
             }}
           >
             {t('layouts.header.toRoadmap')}
@@ -287,7 +288,7 @@ const CommonMenuBar = ({
         )}
       </MenuItem>
       <Divider $flame={flame} />
-      <MenuItem $flame={flame}>
+      <MenuItem $flame={flame} $isOpen={openAccordion === 1}>
         {flame ? (
           <span
             onClick={() => {
@@ -298,10 +299,10 @@ const CommonMenuBar = ({
             {t('layouts.header.toTimeTable')}
           </span>
         ) : (
-          <span onClick={() => toggleAccordion(0)}>{t('layouts.header.toStage')}</span>
+          <span onClick={() => toggleAccordion(1)}>{t('layouts.header.toStage')}</span>
         )}
       </MenuItem>
-      {openAccordion === 0 && (
+      {openAccordion === 1 && (
         <AccordionContent>
           <SubMenuItem
             onClick={() => {
@@ -330,7 +331,7 @@ const CommonMenuBar = ({
         </AccordionContent>
       )}
       <Divider $flame={flame} />
-      <MenuItem $flame={flame}>
+      <MenuItem $flame={flame} $isOpen={openAccordion === 2}>
         {flame ? (
           <span
             onClick={() => {
@@ -341,10 +342,10 @@ const CommonMenuBar = ({
             {t('layouts.header.toReservation')}
           </span>
         ) : (
-          <span onClick={() => toggleAccordion(1)}>{t('layouts.header.toBooth')}</span>
+          <span onClick={() => toggleAccordion(2)}>{t('layouts.header.toBooth')}</span>
         )}
       </MenuItem>
-      {openAccordion === 1 && (
+      {openAccordion === 2 && (
         <AccordionContent>
           <SubMenuItem
             onClick={() => {
@@ -381,7 +382,7 @@ const CommonMenuBar = ({
         </AccordionContent>
       )}
       <Divider $flame={flame} />
-      <MenuItem $flame={flame}>
+      <MenuItem $flame={flame} $isOpen={openAccordion === 3}>
         {flame ? (
           <span
             onClick={() => {
@@ -392,10 +393,10 @@ const CommonMenuBar = ({
             {t('layouts.header.toLineUp')}
           </span>
         ) : (
-          <span onClick={() => toggleAccordion(2)}>{t('layouts.header.toFacilities')}</span>
+          <span onClick={() => toggleAccordion(3)}>{t('layouts.header.toFacilities')}</span>
         )}
       </MenuItem>
-      {openAccordion === 2 && (
+      {openAccordion === 3 && (
         <AccordionContent>
           <SubMenuItem
             onClick={() => {
@@ -416,7 +417,7 @@ const CommonMenuBar = ({
         </AccordionContent>
       )}
       <Divider $flame={flame} />
-      <MenuItem $flame={flame}>
+      <MenuItem $flame={flame} $isOpen={openAccordion === 4}>
         {flame ? (
           <span
             onClick={() => {
@@ -431,6 +432,7 @@ const CommonMenuBar = ({
             onClick={() => {
               nav('/event/:eventId');
               closeMenu();
+              toggleAccordion(4);
             }}
           >
             {t('layouts.header.toEvent')}
@@ -644,6 +646,8 @@ const MenuItem = styled.li`
   margin: 1rem 0;
   display: flex;
   justify-content: center;
+  background-color: ${(props) => (props.$isOpen ? '#def2fd;' : 'transparent')};
+  border-radius: ${(props) => (props.$isOpen ? '1rem' : '0')};
   color: ${(props) => props.theme.colors.gray80};
   span {
     /* UX 개선용 padding */
