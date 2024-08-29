@@ -87,6 +87,11 @@ export default function Header() {
     i18n.changeLanguage(lng);
   };
 
+  const toggleLanguage = () => {
+    const newLanguage = isKorActive ? 'en' : 'ko';
+    clickHandler(newLanguage);
+  };
+
   return (
     <>
       <HeaderLayout $path={location.pathname}>
@@ -119,7 +124,7 @@ export default function Header() {
               closeMenu={() => setIsMenuOpen(false)}
             />
           ) : (
-            <CommonMenuBar closeMenu={toggleMenu} isKorActive={isKorActive} clickHandler={clickHandler} t={t} />
+            <CommonMenuBar closeMenu={toggleMenu} isKorActive={isKorActive} toggleLanguage={toggleLanguage} t={t} />
           ))}
       </HeaderLayout>
     </>
@@ -172,7 +177,7 @@ const AdminMenuBar = ({
   );
 };
 
-const CommonMenuBar = ({ closeMenu, isKorActive, clickHandler, t }) => (
+const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t }) => (
   <MenuBar>
     <MenuList>
       <MenuItem>
@@ -200,12 +205,12 @@ const CommonMenuBar = ({ closeMenu, isKorActive, clickHandler, t }) => (
       <LanguageBox>
         <img src={globe} alt="globe" />
         <span className="language">Language</span>
-        <ToggleBox>
+        <ToggleBox onClick={toggleLanguage}>
           <Slider $isKorActive={isKorActive} />
-          <KorBox $isKorActive={isKorActive} onClick={() => clickHandler('ko')}>
+          <KorBox $isKorActive={isKorActive}>
             <span>KOR</span>
           </KorBox>
-          <EngBox $isKorActive={!isKorActive} onClick={() => clickHandler('en')}>
+          <EngBox $isKorActive={!isKorActive}>
             <span>ENG</span>
           </EngBox>
         </ToggleBox>
@@ -217,7 +222,7 @@ const CommonMenuBar = ({ closeMenu, isKorActive, clickHandler, t }) => (
 CommonMenuBar.propTypes = {
   closeMenu: PropTypes.func.isRequired,
   isKorActive: PropTypes.bool.isRequired,
-  clickHandler: PropTypes.func.isRequired,
+  toggleLanguage: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };
 
