@@ -19,6 +19,7 @@ export default function Header() {
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [menuClass, setMenuClass] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isKorActive, setIsKorActive] = useState(true); // language toggle
@@ -37,8 +38,10 @@ export default function Header() {
   };
   const whiteImages = useWhiteImages(location.pathname);
 
+  // 메뉴바 여닫기
   const toggleMenu = (event) => {
     event.stopPropagation(); // 이벤트 전파를 막아 외부 클릭과의 충돌 방지
+    setIsAnimating(true);
     setIsMenuOpen((prev) => !prev);
   };
 
@@ -53,13 +56,15 @@ export default function Header() {
     }
   }, [isMenuOpen]);
 
+  // 메뉴바 닫을 때 애니메이션
   useEffect(() => {
-    if (isMenuOpen) {
-      setMenuClass('open');
-    } else {
-      setMenuClass('close');
+    if (menuClass === 'close' && isAnimating) {
+      const timer = setTimeout(() => {
+        setIsAnimating(false);
+      }, 300);
+      return () => clearTimeout(timer);
     }
-  }, [isMenuOpen]);
+  }, [menuClass, isAnimating]);
 
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const handleLogout = () => {
@@ -84,6 +89,7 @@ export default function Header() {
     const handleClickOutside = (event) => {
       if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
+        setIsAnimating(true);
         setShowLogoutPopup(false);
       }
     };
@@ -99,6 +105,7 @@ export default function Header() {
     const handleClickOutside = (event) => {
       if (commonMenuRef.current && !commonMenuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
+        setIsAnimating(true);
       }
     };
 
@@ -108,6 +115,7 @@ export default function Header() {
     };
   }, []);
 
+  // backBtn
   const handleGoBack = () => {
     nav(-1);
     setTimeout(() => {
@@ -118,9 +126,11 @@ export default function Header() {
     }, 100);
   };
 
+  // path
   const makers = location.pathname === '/likelion' || location.pathname === '/gaehwa';
   const flame = location.pathname.startsWith('/flame');
 
+  // language toggle
   const clickHandler = (lng) => {
     setIsKorActive(lng === 'ko');
     localStorage.setItem('language', lng);
@@ -157,7 +167,7 @@ export default function Header() {
 
           <Right></Right>
         </HeaderBg>
-        {isMenuOpen &&
+        {(isMenuOpen || isAnimating) &&
           (isAdminPath ? (
             <AdminMenuBar
               className={menuClass}
