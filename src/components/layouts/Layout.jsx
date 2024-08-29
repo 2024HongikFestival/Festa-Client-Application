@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
 import { Outlet, useLocation } from 'react-router-dom';
-import Header from '@/components/layouts/Header';
-import Footer from '@/components/layouts/Footer';
+import styled, { css } from 'styled-components';
+import Footer from './Footer';
+import Header from './Header';
 
 export default function Layout() {
   const location = useLocation();

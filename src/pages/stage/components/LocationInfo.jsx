@@ -21,7 +21,6 @@ const LocationInfo = () => {
             홍익존은 <Highlight>사전예매</Highlight>하신
             <br /> 홍익대학교 학생들만 입장 가능해요
           </InfoText>
-          {/* 온클릭 구현해야 함 */}
           <Button onClick={() => navigate('/hongik-zone')}>홍익존</Button>
         </Info>
       </InfoContainer>
