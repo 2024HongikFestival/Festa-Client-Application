@@ -19,6 +19,7 @@ export default function Header() {
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuClass, setMenuClass] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isKorActive, setIsKorActive] = useState(true); // language toggle
   const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
@@ -45,13 +46,19 @@ export default function Header() {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
+      setMenuClass('open');
     } else {
       document.body.style.overflow = '';
+      setMenuClass('close');
     }
+  }, [isMenuOpen]);
 
-    return () => {
-      document.body.style.overflow = '';
-    };
+  useEffect(() => {
+    if (isMenuOpen) {
+      setMenuClass('open');
+    } else {
+      setMenuClass('close');
+    }
   }, [isMenuOpen]);
 
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
@@ -153,6 +160,7 @@ export default function Header() {
         {isMenuOpen &&
           (isAdminPath ? (
             <AdminMenuBar
+              className={menuClass}
               adminMenuRef={adminMenuRef}
               handleCancelLogout={handleCancelLogout}
               handleConfirmLogout={handleConfirmLogout}
@@ -163,12 +171,14 @@ export default function Header() {
             />
           ) : (
             <CommonMenuBar
+              className={menuClass}
               commonMenuRef={commonMenuRef}
               closeMenu={toggleMenu}
               isKorActive={isKorActive}
               toggleLanguage={toggleLanguage}
               t={t}
               flame={flame}
+              $isMenuOpen={isMenuOpen}
             />
           ))}
       </HeaderLayout>
@@ -177,6 +187,7 @@ export default function Header() {
 }
 
 const AdminMenuBar = ({
+  className,
   nav,
   handleCancelLogout,
   handleConfirmLogout,
@@ -187,7 +198,7 @@ const AdminMenuBar = ({
 }) => {
   return (
     <>
-      <AdminBar ref={adminMenuRef}>
+      <AdminBar ref={adminMenuRef} className={className}>
         <PageMenu>
           <Menu
             onClick={() => {
@@ -222,8 +233,8 @@ const AdminMenuBar = ({
   );
 };
 
-const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t, flame, commonMenuRef }) => (
-  <MenuBar ref={commonMenuRef} $flame={flame}>
+const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t, flame, commonMenuRef, className }) => (
+  <MenuBar ref={commonMenuRef} $flame={flame} className={className}>
     <MenuList $flame={flame}>
       <MenuItem $flame={flame}>
         <span>{flame ? t('layouts.header.toSitemap') : t('layouts.header.toRoadmap')}</span>
@@ -273,6 +284,7 @@ const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t, flame, commo
 );
 
 CommonMenuBar.propTypes = {
+  className: PropTypes.string.isRequired,
   closeMenu: PropTypes.func.isRequired,
   isKorActive: PropTypes.bool.isRequired,
   toggleLanguage: PropTypes.func.isRequired,
@@ -282,6 +294,7 @@ CommonMenuBar.propTypes = {
 };
 
 AdminMenuBar.propTypes = {
+  className: PropTypes.string.isRequired,
   nav: PropTypes.func.isRequired,
   handleCancelLogout: PropTypes.func.isRequired,
   handleConfirmLogout: PropTypes.func.isRequired,
@@ -322,6 +335,7 @@ const HeaderBg = styled.div`
   background: ${({ $isMenuOpen, $flame }) => ($isMenuOpen && !$flame ? '#F1FBFD' : 'rgba(255, 255, 255, 0.05)')};
   box-shadow: 0 0 0.4rem 0 rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(0.2rem);
+  transition: background 0.3s ease;
 
   ${(props) =>
     (props.$path === '/likelion' || props.$path === '/gaehwa') &&
@@ -401,6 +415,15 @@ const MenuBar = styled.div`
   background-color: #f1fbfd;
   border-right: 0.1rem solid #d1c2f3;
   z-index: 99;
+  transition: transform 0.3s ease;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  &.close {
+    transform: translateX(-100%);
+  }
 
   ${({ $flame }) =>
     $flame &&
@@ -413,11 +436,11 @@ const MenuBar = styled.div`
         position: absolute;
         top: 0;
         right: 0;
-        width: 0.1rem; /* border-right처럼 보이는 너비 */
+        width: 0.1rem;
         height: 100%;
         background: linear-gradient(180deg, #fff7f7 0%, #ff7711 69%);
       }
-    `}
+    `};
 `;
 
 const MenuList = styled.ul`
@@ -589,6 +612,15 @@ const AdminBar = styled.div`
   max-width: 19.2rem;
   background-color: white;
   z-index: 99;
+  transition: transform 0.3s ease;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  &.close {
+    transform: translateX(-100%);
+  }
 `;
 
 const PageMenu = styled.div`
