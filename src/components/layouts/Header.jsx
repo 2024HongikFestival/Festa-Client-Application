@@ -23,10 +23,15 @@ export default function Header() {
   const [menuClass, setMenuClass] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isKorActive, setIsKorActive] = useState(true); // language toggle
-  const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
+  const [openAccordion, setOpenAccordion] = useState(null);
 
   const adminMenuRef = useRef(null);
   const commonMenuRef = useRef(null);
+
+  // path
+  const makers = location.pathname === '/likelion' || location.pathname === '/gaehwa';
+  const flame = location.pathname.startsWith('/flame');
+  const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
 
   const useWhiteImages = (path) => {
     // 하얀색 홍익로고, 메뉴바 로고 들어가는 path
@@ -126,10 +131,6 @@ export default function Header() {
     }, 100);
   };
 
-  // path
-  const makers = location.pathname === '/likelion' || location.pathname === '/gaehwa';
-  const flame = location.pathname.startsWith('/flame');
-
   // language toggle
   const clickHandler = (lng) => {
     setIsKorActive(lng === 'ko');
@@ -140,6 +141,11 @@ export default function Header() {
   const toggleLanguage = () => {
     const newLanguage = isKorActive ? 'en' : 'ko';
     clickHandler(newLanguage);
+  };
+
+  // 대동제 메뉴바 아코디언 토글
+  const toggleAccordion = (index) => {
+    setOpenAccordion(openAccordion === index ? null : index);
   };
 
   return (
@@ -189,6 +195,8 @@ export default function Header() {
               t={t}
               flame={flame}
               nav={nav}
+              openAccordion={openAccordion}
+              toggleAccordion={toggleAccordion}
             />
           ))}
       </HeaderLayout>
@@ -243,7 +251,18 @@ const AdminMenuBar = ({
   );
 };
 
-const CommonMenuBar = ({ nav, closeMenu, isKorActive, toggleLanguage, t, flame, commonMenuRef, className }) => (
+const CommonMenuBar = ({
+  nav,
+  closeMenu,
+  isKorActive,
+  toggleLanguage,
+  t,
+  flame,
+  commonMenuRef,
+  className,
+  openAccordion,
+  toggleAccordion,
+}) => (
   <MenuBar ref={commonMenuRef} $flame={flame} className={className}>
     <MenuList $flame={flame}>
       <MenuItem $flame={flame}>
@@ -257,7 +276,14 @@ const CommonMenuBar = ({ nav, closeMenu, isKorActive, toggleLanguage, t, flame, 
             {t('layouts.header.toSitemap')}
           </span>
         ) : (
-          <span>{t('layouts.header.toRoadmap')}</span>
+          <span
+            onClick={() => {
+              nav('/map');
+              closeMenu();
+            }}
+          >
+            {t('layouts.header.toRoadmap')}
+          </span>
         )}
       </MenuItem>
       <Divider $flame={flame} />
@@ -272,9 +298,37 @@ const CommonMenuBar = ({ nav, closeMenu, isKorActive, toggleLanguage, t, flame, 
             {t('layouts.header.toTimeTable')}
           </span>
         ) : (
-          <span>{t('layouts.header.toStage')}</span>
+          <span onClick={() => toggleAccordion(0)}>{t('layouts.header.toStage')}</span>
         )}
       </MenuItem>
+      {openAccordion === 0 && (
+        <AccordionContent>
+          <SubMenuItem
+            onClick={() => {
+              nav('/lineup');
+              closeMenu();
+            }}
+          >
+            라인업
+          </SubMenuItem>
+          <SubMenuItem
+            onClick={() => {
+              nav('/stage-info');
+              closeMenu();
+            }}
+          >
+            관람정보
+          </SubMenuItem>
+          <SubMenuItem
+            onClick={() => {
+              nav('/hongik-zone');
+              closeMenu();
+            }}
+          >
+            홍익존
+          </SubMenuItem>
+        </AccordionContent>
+      )}
       <Divider $flame={flame} />
       <MenuItem $flame={flame}>
         {flame ? (
@@ -287,9 +341,45 @@ const CommonMenuBar = ({ nav, closeMenu, isKorActive, toggleLanguage, t, flame, 
             {t('layouts.header.toReservation')}
           </span>
         ) : (
-          <span>{t('layouts.header.toBooth')}</span>
+          <span onClick={() => toggleAccordion(1)}>{t('layouts.header.toBooth')}</span>
         )}
       </MenuItem>
+      {openAccordion === 1 && (
+        <AccordionContent>
+          <SubMenuItem
+            onClick={() => {
+              nav('/booth');
+              closeMenu();
+            }}
+          >
+            주점
+          </SubMenuItem>
+          <SubMenuItem
+            onClick={() => {
+              nav('/fleamarket');
+              closeMenu();
+            }}
+          >
+            플리마켓
+          </SubMenuItem>
+          <SubMenuItem
+            onClick={() => {
+              nav('/promotion');
+              closeMenu();
+            }}
+          >
+            프로모션 부스
+          </SubMenuItem>
+          <SubMenuItem
+            onClick={() => {
+              nav('/md');
+              closeMenu();
+            }}
+          >
+            MD 상품
+          </SubMenuItem>
+        </AccordionContent>
+      )}
       <Divider $flame={flame} />
       <MenuItem $flame={flame}>
         {flame ? (
@@ -302,9 +392,29 @@ const CommonMenuBar = ({ nav, closeMenu, isKorActive, toggleLanguage, t, flame, 
             {t('layouts.header.toLineUp')}
           </span>
         ) : (
-          <span>{t('layouts.header.toFacilities')}</span>
+          <span onClick={() => toggleAccordion(2)}>{t('layouts.header.toFacilities')}</span>
         )}
       </MenuItem>
+      {openAccordion === 2 && (
+        <AccordionContent>
+          <SubMenuItem
+            onClick={() => {
+              nav('/facilities');
+              closeMenu();
+            }}
+          >
+            편의시설
+          </SubMenuItem>
+          <SubMenuItem
+            onClick={() => {
+              nav('/lost-and-found');
+              closeMenu();
+            }}
+          >
+            분실물
+          </SubMenuItem>
+        </AccordionContent>
+      )}
       <Divider $flame={flame} />
       <MenuItem $flame={flame}>
         {flame ? (
@@ -317,7 +427,14 @@ const CommonMenuBar = ({ nav, closeMenu, isKorActive, toggleLanguage, t, flame, 
             {t('layouts.header.toMd')}
           </span>
         ) : (
-          <span>{t('layouts.header.toEvent')}</span>
+          <span
+            onClick={() => {
+              nav('/event/:eventId');
+              closeMenu();
+            }}
+          >
+            {t('layouts.header.toEvent')}
+          </span>
         )}
       </MenuItem>
       {flame && (
@@ -364,6 +481,8 @@ CommonMenuBar.propTypes = {
   t: PropTypes.func.isRequired,
   flame: PropTypes.bool,
   commonMenuRef: PropTypes.object.isRequired,
+  openAccordion: PropTypes.number,
+  toggleAccordion: PropTypes.func.isRequired,
 };
 
 AdminMenuBar.propTypes = {
@@ -517,7 +636,7 @@ const MenuBar = styled.div`
 `;
 
 const MenuList = styled.ul`
-  margin: 5.5rem 2.2rem 0;
+  margin: 3.5rem 2.2rem 0;
 `;
 
 const MenuItem = styled.li`
@@ -545,6 +664,36 @@ const MenuItem = styled.li`
     `}
 `;
 
+const AccordionContent = styled.div`
+  margin-top: 0.6rem;
+  margin-bottom: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      max-height: 0;
+      opacity: 0;
+    }
+    to {
+      max-height: 100px;
+      opacity: 1;
+    }
+  }
+`;
+
+const SubMenuItem = styled.div`
+  ${(props) => props.theme.fontStyles.basic.body2Med};
+  color: ${(props) => props.theme.colors.gray60};
+  margin-bottom: 1.6rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+`;
+
 const Divider = styled.div`
   height: 0.1rem;
   width: 100%;
@@ -559,7 +708,7 @@ const Divider = styled.div`
 
 const LanguageWrapper = styled.div`
   height: 6.5rem;
-  margin: 0 2.2rem 6.4rem;
+  margin: 0 2.2rem 3.2rem;
   display: flex;
   flex-direction: column;
 `;
