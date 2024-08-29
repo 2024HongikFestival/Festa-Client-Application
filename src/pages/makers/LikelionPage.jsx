@@ -129,10 +129,10 @@ export default LikelionPage;
 
 const LikelionLayout = styled.div`
   width: 100%;
-  /* height: auto; */
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.makersBackgroundColor};
+  margin-bottom: 6.4rem;
 `;
 
 const LikelionBgImg = styled.div`

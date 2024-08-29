@@ -206,10 +206,10 @@ export default GaehwaPage;
 
 const GaehwaLayout = styled.div`
   width: 100%;
-  height: auto;
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.makersBackgroundColor};
+  margin-bottom: 6.4rem;
 `;
 
 const GaehwaBgImg = styled.div`
