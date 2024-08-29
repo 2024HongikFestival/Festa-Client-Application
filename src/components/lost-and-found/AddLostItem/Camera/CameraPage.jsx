@@ -21,11 +21,6 @@ const CameraPage = ({ setCapturedImage }) => {
 
     startCamera();
 
-    //layout의 불필요한 푸터 제거
-    const allDivsWithPathLost = document.querySelectorAll('div[path="/lost-and-found/add"]');
-    const addLostPageFooter = allDivsWithPathLost[1];
-    addLostPageFooter.remove();
-
     //스크롤 약간 되는거 거슬리는데 다양한 환경에서 어떻게 조절?
     //document.body.style.overflow = 'hidden';
 

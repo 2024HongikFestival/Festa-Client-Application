@@ -1,22 +1,23 @@
 const theme = {
   colors: {
-    white: '#ffffff',
-    gray5: '#fafafb',
-    gray10: '#edf1f5',
-    gray20: '#dde1e8',
-    gray30: '#bfc2c8',
-    gray40: '#a3a8ae',
-    gray50: '#888e94',
-    gray60: '#6b7276',
+    white: '#FFFFFF',
+    gray5: '#FAFAFB',
+    gray10: '#EDF1F5',
+    gray20: '#DDE1E8',
+    gray30: '#BFC2C8',
+    gray40: '#A3A8AE',
+    gray50: '#888E94',
+    gray60: '#6B7276',
     gray70: '#515356',
-    gray80: '#3c3e41',
-    gray90: '#2c2d30',
-    gray100: '#181a1b',
+    gray80: '#3C3E41',
+    gray90: '#2C2D30',
+    gray100: '#181A1B',
     black: '#000000',
     makersBackgroundColor: '#121212',
     flameBackgroundColor: '#010304',
     flameSubBackgroundColor: 'rgba(24, 24, 24, 0.60)',
     flameMainColor: '#f20d0d',
+    hongikBlue: '#1833DB',
   },
   fontStyles: {
     main: {
@@ -109,6 +110,13 @@ const theme = {
       font-family: 'NanumSquare Neo', sans-serif;
       font-size: 2.0rem;
       font-weight: 900;
+      font-style: normal;
+      line-height: 150%;
+    `,
+      subHead: `
+      font-family: sandoll-press-original, sans-serif;
+      font-size: 1.0rem;
+      font-weight: 400;
       font-style: normal;
       line-height: 150%;
     `,
@@ -221,5 +229,4 @@ const theme = {
     },
   },
 };
-
 export default theme;

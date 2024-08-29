@@ -23,6 +23,7 @@ const LikelionPage = () => {
           {t('makers.likelion.title2')}
         </Title>
       </LikelionBgImg>
+      <BlackBar />
       <WhoWeAreBg>
         <WhoWeAre>
           {t('makers.likelion.whoWeAre1')}
@@ -145,6 +146,14 @@ const LikelionBgImg = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
+`;
+
+const BlackBar = styled.div`
+  width: 100%;
+  background-color: ${(props) => props.theme.colors.makersBackgroundColor};
+  height: 0.4rem;
+  margin-top: -0.3rem;
+  z-index: 10;
 `;
 
 const Title = styled.h1`
