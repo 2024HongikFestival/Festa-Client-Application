@@ -18,9 +18,6 @@ import FlameMdPage from '@/pages/flame/merchandiser/FlameMdPage';
 import FlamePromotionPage from '@/pages/flame/promotion/FlamePromotionPage';
 import FlameReservationPage from '@/pages/flame/reservation/FlameReservationPage';
 import FlameTimeTablePage from '@/pages/flame/timetable/FlameTimeTablePage';
-import AddLostItem from '@/pages/lost-and-found/pages/AddLostItem/AddLostItem';
-import LostAndFoundDetail from '@/pages/lost-and-found/pages/LostAndFoundDetail/LostAndFoundDetail';
-import LostAndFoundPage from '@/pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
 import MainPage from '@/pages/main/MainPage';
 import GaehwaPage from '@/pages/makers/GaehwaPage';
 import LikelionPage from '@/pages/makers/LikelionPage';
@@ -32,6 +29,8 @@ import StageInfoPage from '@/pages/stage/StageInfoPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './components/lost-and-found/AddLostItem/context/AuthProvider';
 import ProtectedRoute from './components/lost-and-found/AddLostItem/outlet/ProtectedRoute';
+import AddLostItem from './pages/lost-and-found/pages/AddLostItem/AddLostItem';
+import LostAndFoundPage from './pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
 
 function App() {
   return (
@@ -68,7 +67,6 @@ function App() {
 
             {/* 준혁 라우팅 🐳 */}
             <Route path="/lost-and-found" element={<LostAndFoundPage />} />
-            <Route path="/lost-and-found/:lostId" element={<LostAndFoundDetail />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/lost-and-found/add" element={<AddLostItem />} />
             </Route>
