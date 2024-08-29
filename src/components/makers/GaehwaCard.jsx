@@ -38,7 +38,7 @@ const Name = styled.h5`
 
 const Department = styled.div`
   margin-top: 0.8rem;
-  padding: ${(props) => (props.name === '맹지수' ? '0.55rem 0.8rem' : '0.4rem 0.8rem')};
+  padding: ${(props) => (props.name === '맹지수' || props.name === '김수현' ? '0.55rem 0.8rem' : '0.4rem 0.8rem')};
 
   width: auto;
   text-align: center;
@@ -52,7 +52,9 @@ const Department = styled.div`
 
   span {
     ${(props) =>
-      props.name === '맹지수' ? props.theme.fontStyles.basic.captionMed : props.theme.fontStyles.basic.body2Med};
+      props.name === '맹지수' || props.name === '김수현'
+        ? props.theme.fontStyles.basic.captionMed
+        : props.theme.fontStyles.basic.body2Med};
   }
 `;
 

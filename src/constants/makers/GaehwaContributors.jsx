@@ -24,6 +24,21 @@ export const contributors = (t) => ({
       department: t('makers.gaehwaContributors.operation.0.department'),
       role: t('makers.gaehwaContributors.operation.0.role'),
     },
+    {
+      name: t('makers.gaehwaContributors.operation.1.name'),
+      department: t('makers.gaehwaContributors.operation.1.department'),
+      role: t('makers.gaehwaContributors.operation.1.role'),
+    },
+    {
+      name: t('makers.gaehwaContributors.operation.2.name'),
+      department: t('makers.gaehwaContributors.operation.2.department'),
+      role: t('makers.gaehwaContributors.operation.2.role'),
+    },
+    {
+      name: t('makers.gaehwaContributors.operation.3.name'),
+      department: t('makers.gaehwaContributors.operation.3.department'),
+      role: t('makers.gaehwaContributors.operation.3.role'),
+    },
   ],
   executive: [
     {
@@ -86,6 +101,11 @@ export const contributors = (t) => ({
       name: t('makers.gaehwaContributors.mediaRelations.2.name'),
       department: t('makers.gaehwaContributors.mediaRelations.2.department'),
       role: t('makers.gaehwaContributors.mediaRelations.2.role'),
+    },
+    {
+      name: t('makers.gaehwaContributors.mediaRelations.3.name'),
+      department: t('makers.gaehwaContributors.mediaRelations.3.department'),
+      role: t('makers.gaehwaContributors.mediaRelations.3.role'),
     },
   ],
   finance: [
