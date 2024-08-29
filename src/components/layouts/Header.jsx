@@ -97,7 +97,7 @@ export default function Header() {
   return (
     <>
       <HeaderLayout $path={location.pathname}>
-        <HeaderBg $path={location.pathname}>
+        <HeaderBg $path={location.pathname} isMenuOpen={isMenuOpen} flame={flame}>
           {makers && (
             <HambergerMenu onClick={handleGoBack}>
               <img src={backBtn} alt="backBtb" />
@@ -281,7 +281,7 @@ const HeaderBg = styled.div`
   align-items: center;
 
   border-bottom: 1px solid ${(props) => props.theme.colors.gray20};
-  background: rgba(255, 255, 255, 0.05);
+  background: ${({ isMenuOpen, flame }) => (isMenuOpen && !flame ? '#F1FBFD' : 'rgba(255, 255, 255, 0.05)')};
   box-shadow: 0 0 0.4rem 0 rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(0.2rem);
 
