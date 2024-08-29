@@ -24,13 +24,14 @@ import MainPage from '@/pages/main/MainPage';
 import GaehwaPage from '@/pages/makers/GaehwaPage';
 import LikelionPage from '@/pages/makers/LikelionPage';
 import MapPage from '@/pages/map/MapPage';
-import NotFoundPage from '@/pages/notFound/NotFound';
+import NotFoundPage from '@/pages/not-found/NotFoundPage';
 import HongikZonePage from '@/pages/stage/HongikZonePage';
 import LineupPage from '@/pages/stage/LineupPage';
 import StageInfoPage from '@/pages/stage/StageInfoPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RedirectEvents from '@/auth/RedirectEvents';
 import RedirectLosts from '@/auth/RedirectLosts';
+import MdPage from '@/pages/booth/merchandiser/MDpage';
 
 function App() {
   return (
@@ -38,14 +39,18 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
+          {/* 404 */}
+          <Route path="*" element={<NotFoundPage />} />
+
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}
             <Route path="/" element={<MainPage />} />
-            {/* <Route path="*" element={<NotFoundPage />} /> */}
+            <Route path="*" element={<NotFoundPage />} />
             <Route path="/booth" element={<BoothPage />} />
             <Route path="/fleamarket" element={<Fleamarket />} />
             <Route path="/fleamarket/:marketId" element={<FleamarketDetail />} />
             <Route path="/promotion" element={<PromotionPage />} />
+            <Route path="md" element={<MdPage />} />
 
             {/* 가영 라우팅 ✨ */}
             <Route path="/event" element={<EventPage />} />
