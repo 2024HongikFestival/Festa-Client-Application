@@ -18,6 +18,7 @@ export default function Layout() {
       {showheader && <Header />}
       <Outlet />
       {!isAdminPath && !isCamera && <Footer />}
+
     </Container>
   );
 }

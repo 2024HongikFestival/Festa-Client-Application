@@ -4,6 +4,7 @@ import Layout from '@/components/layouts/Layout';
 import ScrollToTop from '@/components/layouts/ScrollToTop';
 import AdminEvent from '@/pages/admin/AdminEvent';
 import AdminPage from '@/pages/admin/AdminPage';
+import AdminEvent from '@/pages/admin/AdminEvent';
 import BoothPage from '@/pages/booth/BoothPage';
 import Fleamarket from '@/pages/booth/fleamarket/Fleamarket';
 import FleamarketDetail from '@/pages/booth/fleamarket/FleamarketDetail';
@@ -37,6 +38,7 @@ import LostAndFoundPage from './pages/lost-and-found/pages/LostAndFoundPage/Lost
 function App() {
   return (
     <AuthProvider>
+
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
