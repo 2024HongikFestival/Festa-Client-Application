@@ -184,6 +184,7 @@ export default function Header() {
               setShowLogoutPopup={setShowLogoutPopup}
               nav={nav}
               closeMenu={() => setIsMenuOpen(false)}
+              t={t}
             />
           ) : (
             <CommonMenuBar
@@ -213,6 +214,7 @@ const AdminMenuBar = ({
   setShowLogoutPopup,
   closeMenu,
   adminMenuRef,
+  t,
 }) => {
   return (
     <>
@@ -225,7 +227,7 @@ const AdminMenuBar = ({
               closeMenu();
             }}
           >
-            분실물 게시판 관리
+            {t('layouts.header.toAdmin')}
           </Menu>
           <Menu
             onClick={() => {
@@ -233,7 +235,7 @@ const AdminMenuBar = ({
               closeMenu();
             }}
           >
-            이벤트 관리
+            {t('layouts.header.toAdminEvent')}
           </Menu>
         </PageMenu>
         <Logout onClick={() => setShowLogoutPopup(true)}>로그아웃</Logout>
@@ -310,7 +312,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            라인업
+            {t('layouts.header.toLineUp')}
           </SubMenuItem>
           <SubMenuItem
             onClick={() => {
@@ -318,7 +320,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            관람정보
+            {t('layouts.header.toStageInfo')}
           </SubMenuItem>
           <SubMenuItem
             onClick={() => {
@@ -326,7 +328,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            홍익존
+            {t('layouts.header.toHongikZone')}
           </SubMenuItem>
         </AccordionContent>
       )}
@@ -353,7 +355,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            주점
+            {t('layouts.header.toDrink')}
           </SubMenuItem>
           <SubMenuItem
             onClick={() => {
@@ -361,7 +363,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            플리마켓
+            {t('layouts.header.toFleaMarket')}
           </SubMenuItem>
           <SubMenuItem
             onClick={() => {
@@ -369,7 +371,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            프로모션 부스
+            {t('layouts.header.toPromotion')}
           </SubMenuItem>
           <SubMenuItem
             onClick={() => {
@@ -377,7 +379,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            MD 상품
+            {t('layouts.header.toMd')}
           </SubMenuItem>
         </AccordionContent>
       )}
@@ -393,7 +395,7 @@ const CommonMenuBar = ({
             {t('layouts.header.toLineUp')}
           </span>
         ) : (
-          <span onClick={() => toggleAccordion(3)}>{t('layouts.header.toFacilities')}</span>
+          <span onClick={() => toggleAccordion(3)}>{t('layouts.header.toFacilityInfo')}</span>
         )}
       </MenuItem>
       {openAccordion === 3 && (
@@ -404,7 +406,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            편의시설
+            {t('layouts.header.toFacilities')}
           </SubMenuItem>
           <SubMenuItem
             onClick={() => {
@@ -412,7 +414,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            분실물
+            {t('layouts.header.toLostAndFound')}
           </SubMenuItem>
         </AccordionContent>
       )}
@@ -499,6 +501,7 @@ AdminMenuBar.propTypes = {
     PropTypes.func, // ref로서의 함수 타입
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }), // ref로서의 객체 타입
   ]).isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 const HeaderLayout = styled.div`
