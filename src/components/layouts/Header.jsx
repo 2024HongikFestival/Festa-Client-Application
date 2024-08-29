@@ -24,6 +24,7 @@ export default function Header() {
   const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
 
   const adminMenuRef = useRef(null);
+  const commonMenuRef = useRef(null);
 
   const useWhiteImages = (path) => {
     // 하얀색 홍익로고, 메뉴바 로고 들어가는 path
@@ -40,7 +41,7 @@ export default function Header() {
     setIsMenuOpen((prev) => !prev);
   };
 
-  // 메뉴바 열었을 때 스크롤 막기
+  // 메뉴바 열렸을 때 스크롤 막기
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -71,11 +72,26 @@ export default function Header() {
     setShowLogoutPopup(false);
   };
 
+  // admin 메뉴바 열렸을 때 바깥 클릭시 메뉴바 닫기
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
         setShowLogoutPopup(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
+  // common 메뉴바 열렸을 때 바깥 클릭시 메뉴바 닫기
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (commonMenuRef.current && !commonMenuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
       }
     };
 
@@ -147,6 +163,7 @@ export default function Header() {
             />
           ) : (
             <CommonMenuBar
+              commonMenuRef={commonMenuRef}
               closeMenu={toggleMenu}
               isKorActive={isKorActive}
               toggleLanguage={toggleLanguage}
@@ -205,8 +222,8 @@ const AdminMenuBar = ({
   );
 };
 
-const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t, flame }) => (
-  <MenuBar $flame={flame}>
+const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t, flame, commonMenuRef }) => (
+  <MenuBar ref={commonMenuRef} $flame={flame}>
     <MenuList $flame={flame}>
       <MenuItem $flame={flame}>
         <span>{flame ? t('layouts.header.toSitemap') : t('layouts.header.toRoadmap')}</span>
@@ -261,6 +278,7 @@ CommonMenuBar.propTypes = {
   toggleLanguage: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   flame: PropTypes.bool,
+  commonMenuRef: PropTypes.object.isRequired,
 };
 
 AdminMenuBar.propTypes = {
