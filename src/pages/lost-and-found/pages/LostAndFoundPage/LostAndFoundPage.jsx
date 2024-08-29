@@ -5,11 +5,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as S from './LostAndFoundPage.styled';
-//import DropDown from '@/pages/lost-and-found/pages/LostAndFoundPage/components/DropDown/DropDown';
-import DropDown from '../../../../components/lost-and-found/LostAndFoundPage/DropDown/DropDown';
-import LostBottomSheet from '../../../../components/lost-and-found/LostAndFoundPage/LostBottomSheet/LostBottomSheet';
-import { ItemModal, LocationModal } from '../../../../components/lost-and-found/LostAndFoundPage/LostModal/LostModal';
-import NewPagination from '../../../../components/lost-and-found/LostAndFoundPage/NewPagination/NewPagination';
+
+import DropDown from '@/components/lost-and-found/LostAndFoundPage/DropDown/DropDown';
+import LostBottomSheet from '@/components/lost-and-found/LostAndFoundPage/LostBottomSheet/LostBottomSheet';
+import { ItemModal, LocationModal } from '@/components/lost-and-found/LostAndFoundPage/LostModal/LostModal';
+import NewPagination from '@/components/lost-and-found/LostAndFoundPage/NewPagination/NewPagination';
 
 // [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
 // Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
