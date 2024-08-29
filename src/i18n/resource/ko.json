@@ -5,6 +5,13 @@
     "sorry": "ㅈㅅ ㅋㅋ"
   },
   "layouts": {
+    "header": {
+      "toRoadmap": "로드맵",
+      "toStage": "공연",
+      "toBooth": "부스",
+      "toFacilities": "편의정보",
+      "toEvent": "이벤트"
+    },
     "footer": {
       "contributors": "Contributors Page",
       "likelion": "제작",

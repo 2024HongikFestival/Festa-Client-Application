@@ -5,6 +5,13 @@
     "sorry": "Sorry, this page is under construction."
   },
   "layouts": {
+    "header": {
+      "toRoadmap": "Roadmap",
+      "toStage": "Stage",
+      "toBooth": "Booth",
+      "toFacilities": "Facilities",
+      "toEvent": "Event"
+    },
     "footer": {
       "contributors": "",
       "likelion": "",

@@ -9,10 +9,12 @@ import globe from '@/assets/webps/layouts/globe.webp';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Popup from '@/components/admin/Popup';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
   const nav = useNavigate();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isKorActive, setIsKorActive] = useState(true); // language toggle
@@ -79,8 +81,10 @@ export default function Header() {
 
   const makers = location.pathname === '/likelion' || location.pathname === '/gaehwa';
 
-  const handleLanguageToggle = () => {
-    setIsKorActive((prev) => !prev); // 토글 상태 변경
+  const clickHandler = (lng) => {
+    setIsKorActive(lng === 'ko');
+    localStorage.setItem('language', lng);
+    i18n.changeLanguage(lng);
   };
 
   return (
@@ -115,11 +119,7 @@ export default function Header() {
               closeMenu={() => setIsMenuOpen(false)}
             />
           ) : (
-            <CommonMenuBar
-              closeMenu={toggleMenu}
-              isKorActive={isKorActive}
-              handleLanguageToggle={handleLanguageToggle}
-            />
+            <CommonMenuBar closeMenu={toggleMenu} isKorActive={isKorActive} clickHandler={clickHandler} t={t} />
           ))}
       </HeaderLayout>
     </>
@@ -172,27 +172,27 @@ const AdminMenuBar = ({
   );
 };
 
-const CommonMenuBar = ({ closeMenu, isKorActive, handleLanguageToggle }) => (
+const CommonMenuBar = ({ closeMenu, isKorActive, clickHandler, t }) => (
   <MenuBar>
     <MenuList>
       <MenuItem>
-        <span>로드맵</span>
+        <span>{t('layouts.header.toRoadmap')}</span>
       </MenuItem>
       <Divider />
       <MenuItem>
-        <span>공연</span>
+        <span>{t('layouts.header.toStage')}</span>
       </MenuItem>
       <Divider />
       <MenuItem>
-        <span>부스</span>
+        <span>{t('layouts.header.toBooth')}</span>
       </MenuItem>
       <Divider />
       <MenuItem>
-        <span>편의정보</span>
+        <span>{t('layouts.header.toFacilities')}</span>
       </MenuItem>
       <Divider />
       <MenuItem>
-        <span>이벤트</span>
+        <span>{t('layouts.header.toEvent')}</span>
       </MenuItem>
     </MenuList>
     <LanguageWrapper>
@@ -200,12 +200,12 @@ const CommonMenuBar = ({ closeMenu, isKorActive, handleLanguageToggle }) => (
       <LanguageBox>
         <img src={globe} alt="globe" />
         <span className="language">Language</span>
-        <ToggleBox onClick={handleLanguageToggle}>
+        <ToggleBox>
           <Slider $isKorActive={isKorActive} />
-          <KorBox $isKorActive={isKorActive}>
+          <KorBox $isKorActive={isKorActive} onClick={() => clickHandler('ko')}>
             <span>KOR</span>
           </KorBox>
-          <EngBox $isKorActive={!isKorActive}>
+          <EngBox $isKorActive={!isKorActive} onClick={() => clickHandler('en')}>
             <span>ENG</span>
           </EngBox>
         </ToggleBox>
@@ -217,7 +217,8 @@ const CommonMenuBar = ({ closeMenu, isKorActive, handleLanguageToggle }) => (
 CommonMenuBar.propTypes = {
   closeMenu: PropTypes.func.isRequired,
   isKorActive: PropTypes.bool.isRequired,
-  handleLanguageToggle: PropTypes.func.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 AdminMenuBar.propTypes = {
