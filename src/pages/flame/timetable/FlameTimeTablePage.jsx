@@ -40,7 +40,7 @@ const FlameTimeTablePage = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   const dates = [
-    { day: 1, date: '8.27 (수)' },
+    { day: 1, date: '9.25 (수)' },
     { day: 2, date: '9.26 (목)' },
     { day: 3, date: '9.27 (금)' },
   ];
@@ -100,7 +100,7 @@ const FlameTimeTablePage = () => {
     const isDateMatching = currentDate === timeDate;
 
     // 시간 비교
-    const isTimeMatching = hour === currentHour % 12 && isPM === currentHour >= 12;
+    const isTimeMatching = hour === currentHour % 12;
     return isDateMatching && isTimeMatching;
   };
 
