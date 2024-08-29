@@ -39,11 +39,6 @@ export const contributors = (t) => ({
       department: t('makers.gaehwaContributors.strategicPolicy.1.department'),
       role: t('makers.gaehwaContributors.strategicPolicy.1.role'),
     },
-    {
-      name: t('makers.gaehwaContributors.strategicPolicy.2.name'),
-      department: t('makers.gaehwaContributors.strategicPolicy.2.department'),
-      role: t('makers.gaehwaContributors.strategicPolicy.2.role'),
-    },
   ],
   culturalPlanning: [
     {
