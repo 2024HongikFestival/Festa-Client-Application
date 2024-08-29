@@ -286,7 +286,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            {t('layouts.header.toSitemap')}
+            {t('layouts.header.toFlameSitemap')}
           </span>
         ) : (
           <span
@@ -309,7 +309,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            {t('layouts.header.toTimeTable')}
+            {t('layouts.header.toFlameTimeTable')}
           </span>
         ) : (
           <span onClick={() => toggleAccordion(1)}>{t('layouts.header.toStage')}</span>
@@ -352,7 +352,7 @@ const CommonMenuBar = ({
               closeMenu();
             }}
           >
-            {t('layouts.header.toReservation')}
+            {t('layouts.header.toFlameReservation')}
           </span>
         ) : (
           <span onClick={() => toggleAccordion(2)}>{t('layouts.header.toBooth')}</span>

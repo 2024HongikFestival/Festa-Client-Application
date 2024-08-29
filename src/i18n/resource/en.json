@@ -14,7 +14,7 @@
       "toBooth": "Booth",
       "toDrink": "Tavern",
       "toFleaMarket": "Flea Market",
-      "toPromotion": "Promotion Booth",
+      "toPromotion": "Promotion",
       "toMd": "MD",
       "toFacilityInfo": "Convenience",
       "toFacilities": "Facilities",
@@ -30,12 +30,12 @@
       "toAdminEvent": "Event 관리"
     },
     "footer": {
-      "contributors": "",
+      "contributors": "Contributors Page",
       "likelion": "",
       "toLikelion": "",
       "gaehwa": "",
       "toGaehwa": "",
-      "instagram": ""
+      "instagram": "Instagram"
     }
   },
   "makers": {

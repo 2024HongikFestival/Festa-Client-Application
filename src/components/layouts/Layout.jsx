@@ -38,10 +38,4 @@ const Container = styled.div`
     css`
       background-color: ${(props) => props.theme.colors.flameBackgroundColor};
     `}
-
-    ${(props) =>
-    props.$path === '/flame' &&
-    css`
-      background-color: transparent;
-    `}
 `;
