@@ -18,12 +18,15 @@ export default function Header() {
 
   const adminMenuRef = useRef(null);
 
-  const useBlackImages = (path) => {
-    // 검정색 홍익로고, 검정 메뉴바 로고 들어가는 path
-    const blackImagePaths = ['/admin', '/admin/event'];
-    return blackImagePaths.includes(path);
+  const useWhiteImages = (path) => {
+    // 하얀색 홍익로고, 메뉴바 로고 들어가는 path
+    const whiteImagePaths = ['/likelion', '/gaehwa'];
+    if (path.startsWith('/flame')) {
+      return true;
+    }
+    return whiteImagePaths.includes(path);
   };
-  const blackImages = useBlackImages(location.pathname);
+  const whiteImages = useWhiteImages(location.pathname);
 
   const toggleMenu = (event) => {
     event.stopPropagation(); // 이벤트 전파를 막아 외부 클릭과의 충돌 방지
@@ -85,11 +88,11 @@ export default function Header() {
           )}
           {!makers && (
             <HambergerMenu onClick={toggleMenu}>
-              <img src={blackImages ? hambergerMenuBlack : hambergerMenu} alt="hambergerMenu" />
+              <img src={whiteImages ? hambergerMenu : hambergerMenuBlack} alt="hambergerMenu" />
             </HambergerMenu>
           )}
           <HiuLogo onClick={() => nav('/')}>
-            <img src={blackImages ? hiuLogoBlack : hiuLogo} alt="hiuLogo" />
+            <img src={whiteImages ? hiuLogo : hiuLogoBlack} alt="hiuLogo" />
           </HiuLogo>
 
           <Right></Right>
@@ -196,35 +199,6 @@ const HeaderLayout = styled.div`
   position: fixed;
   top: 0rem;
   z-index: 100;
-
-  ${(props) =>
-    (props.$path === '/likelion' || props.$path === '/gaehwa') &&
-    css`
-      background-color: ${(props) => props.theme.colors.black};
-    `}
-
-  ${(props) =>
-    props.$path.startsWith('/flame') &&
-    css`
-      background-color: ${(props) => props.theme.colors.flameBackgroundColor};
-    `}
-
-    
-  ${(props) =>
-    props.$path === '/admin' &&
-    css`
-      background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
-    `}
-
-  ${(props) =>
-    props.$path === '/admin/event' &&
-    css`
-      background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
-    `}
 `;
 
 const HeaderBg = styled.div`
@@ -239,17 +213,25 @@ const HeaderBg = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  border-bottom: 1px solid ${(props) => props.theme.colors.gray20};
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0.4rem 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(0.2rem);
+
   ${(props) =>
     (props.$path === '/likelion' || props.$path === '/gaehwa') &&
     css`
-      background: rgba(22, 22, 22, 0.1);
+      border: none;
+      background-color: ${(props) => props.theme.colors.black};
       box-shadow: 0rem 0rem 0.4rem 0rem rgba(255, 255, 255, 0.12) inset;
       backdrop-filter: blur(0.2rem);
     `}
 
   ${(props) =>
-    props.$path.startsWith('flame/') &&
+    props.$path.startsWith('/flame') &&
     css`
+      border: none;
+      background-color: ${(props) => props.theme.colors.flameBackgroundColor};
       box-shadow: 0 0 0.4rem 0 rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(0.2rem);
     `}
@@ -257,6 +239,7 @@ const HeaderBg = styled.div`
   ${(props) =>
     props.$path === '/admin' &&
     css`
+      border: none;
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
       background-position: center;
@@ -265,6 +248,7 @@ const HeaderBg = styled.div`
   ${(props) =>
     props.$path === '/admin/event' &&
     css`
+      border: none;
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
       background-position: center;
