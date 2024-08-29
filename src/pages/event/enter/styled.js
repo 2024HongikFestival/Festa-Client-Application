@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
 `;
 
@@ -129,7 +130,7 @@ export const TextCount = styled.p`
 `;
 
 export const EnterButton = styled.button`
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;

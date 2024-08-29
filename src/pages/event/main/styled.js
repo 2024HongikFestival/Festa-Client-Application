@@ -99,7 +99,7 @@ export const ShareButton = styled.button`
   border-radius: 1rem;
   border: 0.1rem solid #ffff24;
   background: ${(props) => props.theme.colors.gray100};
-  margin-bottom: 10.9rem; // 기존 margin + 버튼 높이
+  margin-bottom: 4.4rem;
 
   p {
     color: #ffff24;
@@ -120,8 +120,6 @@ export const ShareIcon = styled.img`
 `;
 
 export const KakaoAuthButton = styled.button`
-  position: fixed;
-  bottom: 0;
   width: 100%;
   height: 6.5rem;
   display: flex;
