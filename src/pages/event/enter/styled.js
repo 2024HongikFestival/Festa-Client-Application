@@ -59,7 +59,7 @@ export const ItemCard = styled.div`
   height: 7.2rem;
   align-self: stretch;
   border-radius: 1rem;
-  border: 0.1rem solid #cdff3f;
+  border: 0.1rem solid #7b9a27;
 `;
 
 export const ItemName = styled.div`
@@ -158,4 +158,12 @@ export const DisableButton = styled(EnterButton)`
     color: ${(props) => props.theme.colors.gray80};
     text-align: center;
   }
+`;
+
+// 전화번호 입력 관련
+export const PhoneContainer = styled.div`
+  display: flex;
+  gap: 0.4rem;
+  justify-content: start;
+  align-items: center;
 `;

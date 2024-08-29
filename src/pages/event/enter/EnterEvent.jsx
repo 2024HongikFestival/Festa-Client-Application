@@ -6,6 +6,12 @@ import form from '@/assets/webps/event/form.webp';
 import PhoneNumBox from '@/components/event/PhoneNumBox';
 
 const EnterEvent = () => {
+  const [codeArr, setCodeArr] = useState(['', '', '', '', '', '', '', '', '', '', '']);
+  const _onChangeCode = (code) => {
+    // setCodeArr값은 codeArr.length로 잘라줍니다.
+    setCodeArr(code.slice(0, codeArr.length));
+  };
+
   const [textCount, setTextCount] = useState(0);
   const navigate = useNavigate();
 
@@ -20,7 +26,7 @@ const EnterEvent = () => {
     setName(e.target.value);
   };
 
-  // 전화번호 입력 관리 및 유효성 검사
+  // 전화번호 입력 관리 및 유효성 검사 => 로직 수정!!!!
   const handlePhone = (e) => {
     const rawPhone = e.target.value.replace(/-/g, ''); // 하이픈 제거한 번호
     const regex = /^[0-9\b]{0,11}$/; // 숫자만 허용, 최대 11자리
@@ -45,7 +51,14 @@ const EnterEvent = () => {
 
   // 응모 가능 여부 관리
   const isEntryAvailable = () => {
-    const isPhoneValid = phone.length === 12 || phone.length === 13; // 유효한 전화번호 길이 검사 (하이픈 포함)
+    // 전화번호 유효성 검사
+    const isPhoneValid = codeArr.forEach((element) => {
+      if (element === '') {
+        return false;
+      } else {
+        return true;
+      }
+    });
     if (name && isPhoneValid) {
       setIsAvailable(true);
     } else {
@@ -105,8 +118,12 @@ const EnterEvent = () => {
           </S.Section>
           <S.Section>
             <S.SectionText>당첨 시 연락드릴 연락처를 적어주세요.</S.SectionText>
-            <S.Input type="text" placeholder="‘-’ 없이 숫자만 (ex. 01012341234)" onChange={handlePhone} value={phone} />
-            {/* <PhoneNumBox /> */}
+            {/* <S.Input type="text" placeholder="‘-’ 없이 숫자만 (ex. 01012341234)" onChange={handlePhone} value={phone} /> */}
+            <S.PhoneContainer>
+              {codeArr.map((item, index) => (
+                <PhoneNumBox key={index} item={item} index={index} codeArr={codeArr} onChange={_onChangeCode} />
+              ))}
+            </S.PhoneContainer>
           </S.Section>
           <S.ItemSection>
             <S.SectionText>받고 싶은 선물을 골라주세요!</S.SectionText>
