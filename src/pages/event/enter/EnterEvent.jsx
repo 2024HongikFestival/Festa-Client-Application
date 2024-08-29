@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { axiosInstance } from '@/api/axios';
 import { useNavigate } from 'react-router-dom';
 import * as S from './styled';
@@ -7,53 +7,34 @@ import PhoneNumBox from '@/components/event/PhoneNumBox';
 import check from '@/assets/svgs/event/check.svg';
 
 const EnterEvent = () => {
-  // 전화번호 관련 상태
-  const [codeArr, setCodeArr] = useState(['', '', '', '', '', '', '', '', '', '', '']);
-  const _onChangeCode = (code) => {
-    // setCodeArr값은 codeArr.length로 잘라줍니다.
-    setCodeArr(code.slice(0, codeArr.length));
-  };
-
-  const [textCount, setTextCount] = useState(0);
   const navigate = useNavigate();
-
-  // 이벤트 상품 관련 상태
-  const [isSelected, setIsSelected] = useState('');
-
-  const itemArr = [1, 2, 3, 4]; // 경품 수 확정 X
-
-  const handleItemSelected = (e) => {
-    e.preventDefault();
-    setIsSelected((prev) => {
-      return e.target.value;
-    });
-  };
 
   // input & textarea 상태 관리
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [comment, setComment] = useState('');
+  const [textCount, setTextCount] = useState(0);
   const [isAvailable, setIsAvailable] = useState(false);
+
+  // 전화번호 관련 상태
+  const [isPhoneValid, setIsPhoneValid] = useState(false);
+  const [codeArr, setCodeArr] = useState(Array(11).fill('')); // 11자리로 초기화
+  const _onChangeCode = (code) => {
+    // setCodeArr값은 codeArr.length로 잘라줌
+    setCodeArr(code.slice(0, codeArr.length));
+  };
 
   // 이름 입력 관리
   const handleName = (e) => {
     setName(e.target.value);
   };
 
-  // 전화번호 입력 관리 및 유효성 검사 => 로직 수정!!!!
-  const handlePhone = (e) => {
-    const rawPhone = e.target.value.replace(/-/g, ''); // 하이픈 제거한 번호
-    const regex = /^[0-9\b]{0,11}$/; // 숫자만 허용, 최대 11자리
-    if (regex.test(rawPhone)) {
-      setPhone(rawPhone);
+  // 이벤트 상품 관련 상태
+  const [isSelected, setIsSelected] = useState(null);
+  const itemArr = [1, 2, 3, 4]; // 경품 수 확정 X
 
-      // 유효성 검사 후 하이픈 자동 추가
-      if (rawPhone.length === 10) {
-        setPhone(rawPhone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
-      } else if (rawPhone.length === 11) {
-        setPhone(rawPhone.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
-      }
-    }
+  const handleItemSelected = (idx) => {
+    setIsSelected(idx);
   };
 
   // 후기 입력 관리
@@ -66,14 +47,16 @@ const EnterEvent = () => {
   // 응모 가능 여부 관리
   const isEntryAvailable = () => {
     // 전화번호 유효성 검사
-    const isPhoneValid = codeArr.forEach((element) => {
-      if (element === '') {
-        return false;
-      } else {
-        return true;
-      }
-    });
-    if (name && isPhoneValid) {
+    const isPhoneValid = codeArr.every((element) => element !== '');
+
+    if (isPhoneValid) {
+      let rawPhoneStr = codeArr.join('');
+      const dash = '-';
+      const phoneStr = rawPhoneStr.slice(0, 3) + dash + rawPhoneStr.slice(3, 7) + dash + rawPhoneStr.slice(7, 11);
+      setPhone(phoneStr);
+      console.log(phoneStr);
+    }
+    if (name && isPhoneValid && isSelected !== null) {
       setIsAvailable(true);
     } else {
       setIsAvailable(false);
@@ -84,7 +67,7 @@ const EnterEvent = () => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post(
-        `/events/entries`,
+        '/entries',
         {
           name: name,
           phone: phone,
@@ -108,18 +91,16 @@ const EnterEvent = () => {
   };
 
   useEffect(() => {
-    // 전화번호 하이픈 자동 생성
-    if (phone.length === 10) {
-      setPhone(phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
-    }
-    if (phone.length === 13) {
-      setPhone(phone.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
-    }
-  }, [phone]);
+    isEntryAvailable();
+  }, [name, codeArr, isSelected]);
 
   useEffect(() => {
-    isEntryAvailable();
-  }, [name, phone]);
+    if (codeArr.length !== 11 || codeArr.some((element) => element === '') || phone.length !== 13) {
+      setIsPhoneValid(false);
+    } else {
+      setIsPhoneValid(true);
+    }
+  }, [codeArr, phone]);
 
   return (
     <S.Wrapper>
@@ -132,10 +113,18 @@ const EnterEvent = () => {
           </S.Section>
           <S.Section>
             <S.SectionText>당첨 시 연락드릴 연락처를 적어주세요.</S.SectionText>
-            {/* <S.Input type="text" placeholder="‘-’ 없이 숫자만 (ex. 01012341234)" onChange={handlePhone} value={phone} /> */}
             <S.PhoneContainer>
               {codeArr.map((item, index) => (
-                <PhoneNumBox key={index} item={item} index={index} codeArr={codeArr} onChange={_onChangeCode} />
+                <Fragment key={index}>
+                  <PhoneNumBox
+                    item={item}
+                    index={index}
+                    codeArr={codeArr}
+                    onChange={_onChangeCode}
+                    className={isPhoneValid ? ' active' : ''}
+                  />
+                  {(index === 2 || index === 6) && <S.Dash />}
+                </Fragment>
               ))}
             </S.PhoneContainer>
           </S.Section>
@@ -145,12 +134,14 @@ const EnterEvent = () => {
             <S.ItemContainer>
               {itemArr.map((item, idx) => {
                 return (
-                  <S.Item key={idx} onClick={handleItemSelected}>
-                    <S.ItemCard
-                      value={idx}
-                      className={'btn' + (idx == isSelected ? ' active' : '')}
-                      onClick={handleItemSelected}
-                    >
+                  <S.Item
+                    key={idx}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleItemSelected(idx);
+                    }}
+                  >
+                    <S.ItemCard value={idx} className={isSelected !== null && idx === isSelected ? ' active' : ''}>
                       <img src={check} alt="check" />
                     </S.ItemCard>
                     <S.ItemName>물품 {item}</S.ItemName>

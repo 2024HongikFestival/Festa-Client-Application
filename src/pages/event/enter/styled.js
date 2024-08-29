@@ -186,3 +186,9 @@ export const PhoneContainer = styled.div`
   justify-content: start;
   align-items: center;
 `;
+
+export const Dash = styled.div`
+  width: 0.8rem;
+  height: 0.1rem;
+  background: var(--off, #7b9a27);
+`;
