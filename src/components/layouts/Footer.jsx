@@ -8,6 +8,7 @@ import flameLogo from '@/assets/svgs/makers/flame.svg';
 import mangaeInsta from '@/assets/svgs/makers/mangaeInsta.svg';
 import wdfInsta from '@/assets/svgs/makers/wdfInsta.svg';
 import gaehwaInsta from '@/assets/svgs/makers/gaehwaInsta.svg';
+import flameVideo from '@/assets/videos/flameMainFooter.mp4';
 
 export default function Footer() {
   const nav = useNavigate();
@@ -34,8 +35,17 @@ export default function Footer() {
   };
 
   const flame = location.pathname.startsWith('/flame');
+  const flameMain = location.pathname === '/flame' || location.pathname === '/flame/';
+
   return (
-    <FooterLayout>
+    <FooterLayout $path={location.pathname}>
+      {flameMain && (
+        <VideoContainer>
+          <BackgroundVideo autoPlay loop muted>
+            <source src={flameVideo} type="video/mp4" />
+          </BackgroundVideo>
+        </VideoContainer>
+      )}
       {!flame && (
         <Mangae>
           <img src={mangaeLogo} alt="mangae" />
@@ -89,6 +99,8 @@ const FooterLayout = styled.div`
   flex-direction: column;
   position: relative;
   background-color: transparent;
+  overflow: hidden;
+  z-index: 0;
 `;
 
 const Mangae = styled.div`
@@ -97,7 +109,7 @@ const Mangae = styled.div`
   margin-bottom: 4.8rem;
   width: 9.9rem;
   overflow: hidden;
-
+  z-index: 1;
   img {
     width: 100%;
     height: 100%;
@@ -110,7 +122,7 @@ const Flame = styled.div`
   margin-bottom: 4rem;
   width: 11.5rem;
   overflow: hidden;
-
+  z-index: 1;
   img {
     width: 100%;
     height: 100%;
@@ -121,6 +133,7 @@ const Contributor = styled.div`
   margin-left: 3.2rem;
   margin-bottom: 1.2rem;
   height: 1.8rem;
+  z-index: 1;
   span {
     color: ${(props) => props.theme.colors.white};
     ${(props) => props.theme.fontStyles.basic.captionMed};
@@ -139,6 +152,7 @@ const LikelionBtn = styled.div`
   display: flex;
   align-items: center;
   color: ${(props) => props.theme.colors.white};
+  z-index: 1;
 
   .likelion {
     width: 4.9rem;
@@ -175,6 +189,7 @@ const GaehwaBtn = styled.div`
   display: flex;
   align-items: center;
   color: ${(props) => props.theme.colors.white};
+  z-index: 1;
 
   .gaehwa {
     width: 4.9rem;
@@ -208,7 +223,7 @@ const InstaContainer = styled.div`
   margin-left: 3.2rem;
   display: flex;
   flex-direction: column;
-
+  z-index: 1;
   span {
     color: ${(props) => props.theme.colors.white};
     ${(props) => props.theme.fontStyles.basic.captionMed};
@@ -236,4 +251,29 @@ const InstaContainer = styled.div`
 const Instagrams = styled.div`
   display: flex;
   margin-bottom: 6.65rem;
+`;
+
+const VideoContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 35.1rem;
+  pointer-events: none;
+  background-color: transparent;
+  background: linear-gradient(
+    180deg,
+    #010304 10.06%,
+    rgba(1, 3, 4, 0.1) 41.26%,
+    rgba(1, 3, 4, 0.45) 62.62%,
+    #010304 99.93%
+  );
+`;
+
+const BackgroundVideo = styled.video`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 `;
