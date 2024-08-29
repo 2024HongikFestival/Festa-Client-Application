@@ -30,15 +30,11 @@ const Container = styled.div`
     (props.$path === '/likelion' || props.$path === '/gaehwa') &&
     css`
       background-color: ${(props) => props.theme.colors.makersBackgroundColor};
-      background-size: cover;
-      background-position: center;
     `}
 
   ${(props) =>
     props.$path.startsWith('/flame') &&
     css`
       background-color: ${(props) => props.theme.colors.flameBackgroundColor};
-      background-size: cover;
-      background-position: center;
     `}
 `;

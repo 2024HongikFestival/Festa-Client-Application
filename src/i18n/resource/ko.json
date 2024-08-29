@@ -6,10 +6,12 @@
   },
   "layouts": {
     "footer": {
-      "prev": "이전 화면으로",
-      "toLikelion": "제작 멋쟁이사자처럼 >",
-      "toGaehwa": "총학생회 개화 ; 開花 >",
-      "toDaedongjeInsta": "대동제 채널 바로가기"
+      "contributors": "Contributors Page",
+      "likelion": "제작",
+      "toLikelion": "멋쟁이사자처럼 홍익대학교",
+      "gaehwa": "총학생회",
+      "toGaehwa": "개화 ; 開花",
+      "instagram": "Instagram"
     }
   },
   "makers": {

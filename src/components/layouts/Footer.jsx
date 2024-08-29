@@ -1,9 +1,13 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import instaLogo from '@/assets/webps/layouts/instaLogo.webp';
-import flameFooterBg from '@/assets/webps/layouts/flameFooterBg.webp';
-import mangae from '@/assets/webps/layouts/mangae.webp';
+import mangaeLogo from '@/assets/webps/layouts/mangae.webp';
 import { useTranslation } from 'react-i18next';
+import rightArrow from '@/assets/svgs/makers/rightArrow.svg';
+import rightArrowGray from '@/assets/svgs/makers/rightArrowGray.svg';
+import flameLogo from '@/assets/svgs/makers/flame.svg';
+import mangaeInsta from '@/assets/svgs/makers/mangaeInsta.svg';
+import wdfInsta from '@/assets/svgs/makers/wdfInsta.svg';
+import gaehwaInsta from '@/assets/svgs/makers/gaehwaInsta.svg';
 
 export default function Footer() {
   const nav = useNavigate();
@@ -29,76 +33,69 @@ export default function Footer() {
     }
   };
 
-  const handleGoBack = () => {
-    nav(-1);
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    }, 100);
-  };
-
-  const showPreviousBtn = location.pathname == '/likelion' || location.pathname == '/gaehwa';
-  const daedongje =
-    location.pathname !== '/likelion' && location.pathname !== '/gaehwa' && !location.pathname.startsWith('/flame');
-
+  const flame = location.pathname.startsWith('/flame');
   return (
-    <FooterLayout path={location.pathname}>
-      {showPreviousBtn && (
-        <PreviousBtn onClick={handleGoBack}>
-          <span>{t('layouts.footer.prev')}</span>
-        </PreviousBtn>
-      )}
-      {daedongje && (
+    <FooterLayout>
+      {!flame && (
         <Mangae>
-          <img src={mangae} alt="mangae" />
+          <img src={mangaeLogo} alt="mangae" />
         </Mangae>
       )}
-      <LikelionBtn path={location.pathname} onClick={() => handleNavigation('/likelion')}>
-        <span>{t('layouts.footer.toLikelion')}</span>
+      {flame && (
+        <Flame>
+          <img src={flameLogo} alt="flame" />
+        </Flame>
+      )}
+      <Contributor $path={location.pathname}>
+        <span>{t('layouts.footer.contributors')}</span>
+      </Contributor>
+      <LikelionBtn $path={location.pathname}>
+        <span className="likelion">{t('layouts.footer.likelion')}</span>
+        <span onClick={() => handleNavigation('/likelion')} className="toLikelion">
+          {t('layouts.footer.toLikelion')}
+        </span>
+        {!flame && <img onClick={() => handleNavigation('/likelion')} src={rightArrow} alt="rightArrow" />}
+        {flame && <img onClick={() => handleNavigation('/likelion')} src={rightArrowGray} alt="rightArrowGray" />}
       </LikelionBtn>
-      <GaehwaBtn onClick={() => handleNavigation('/gaehwa')}>
-        <span>{t('layouts.footer.toGaehwa')}</span>
+      <GaehwaBtn $path={location.pathname}>
+        <span className="gaehwa">{t('layouts.footer.gaehwa')}</span>
+        <span onClick={() => handleNavigation('/gaehwa')} className="toGaehwa">
+          {t('layouts.footer.toGaehwa')}
+        </span>
+        {!flame && <img onClick={() => handleNavigation('/gaehwa')} src={rightArrow} alt="rightArrow" />}
+        {flame && <img onClick={() => handleNavigation('/gaehwa')} src={rightArrowGray} alt="rightArrowGray" />}
       </GaehwaBtn>
-      <DaedongjeContainer>
-        <span>{t('layouts.footer.toDaedongjeInsta')}</span>
-        <a href="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
-          <img src={instaLogo} alt="instaLogo" />
-        </a>
-      </DaedongjeContainer>
+      <InstaContainer $path={location.pathname}>
+        <span>{t('layouts.footer.instagram')}</span>
+        <Instagrams>
+          <a href="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
+            <img src={mangaeInsta} alt="mangaeInsta" />
+          </a>
+          <a href="https://www.instagram.com/hiu_wodf_official/" target="_blank" rel="noopener noreferrer">
+            <img src={wdfInsta} alt="wdfInsta" />
+          </a>
+          <a href="https://www.instagram.com/hiu_student_council/" target="_blank" rel="noopener noreferrer">
+            <img src={gaehwaInsta} alt="gaehwaInsta" />
+          </a>
+        </Instagrams>
+      </InstaContainer>
     </FooterLayout>
   );
 }
 
 const FooterLayout = styled.div`
   width: 100%;
-  /* height: auto; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
   position: relative;
   background-color: transparent;
-
-  ${(props) =>
-    (props.path === '/likelion' || props.path === '/gaehwa') &&
-    css`
-      background-color: ${(props) => props.theme.colors.makersBackgroundColor};
-    `}
-
-  ${(props) =>
-    props.path.startsWith('/flame') &&
-    css`
-      background-color: ${(props) => props.theme.colors.flameBackgroundColor};
-      background-image: url(${flameFooterBg});
-      background-size: cover;
-      background-position: center 20%;
-    `}
 `;
 
 const Mangae = styled.div`
-  width: 10rem;
-  margin: 2.8rem auto 0;
+  margin-top: 3.2rem;
+  margin-left: 3.2rem;
+  margin-bottom: 4.8rem;
+  width: 9.9rem;
   overflow: hidden;
 
   img {
@@ -107,89 +104,136 @@ const Mangae = styled.div`
   }
 `;
 
-const PreviousBtn = styled.div`
-  z-index: 100;
-  margin: 2rem auto 0;
-  cursor: pointer;
-  width: 10.9rem;
-  height: 4.5rem;
-  border-radius: 5rem;
-  border: 0.1rem solid ${(props) => props.theme.colors.gray80};
-  background: ${(props) => props.theme.colors.gray100};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+const Flame = styled.div`
+  margin-top: 2.4rem;
+  margin-left: 2.45rem;
+  margin-bottom: 4rem;
+  width: 11.5rem;
+  overflow: hidden;
 
-  span {
-    color: ${(props) => props.theme.colors.gray5};
-    font-family: 'Pretendard', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 2.1rem;
+  img {
+    width: 100%;
+    height: 100%;
   }
 `;
 
-const LikelionBtn = styled.div`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 3.6rem;
-
+const Contributor = styled.div`
+  margin-left: 3.2rem;
+  margin-bottom: 1.2rem;
+  height: 1.8rem;
   span {
     color: ${(props) => props.theme.colors.white};
-    text-align: center;
-    ${(props) => props.theme.fontStyles.basic.body2Bold};
+    ${(props) => props.theme.fontStyles.basic.captionMed};
+    font-weight: 300;
   }
-
   ${(props) =>
-    (props.path === '/likelion' || props.path === '/gaehwa') &&
+    props.$path.startsWith('/flame') &&
     css`
-      margin-top: 2.4rem;
-    `}
+      span {
+        color: ${(props) => props.theme.colors.gray10};
+      }
+    `};
+`;
+const LikelionBtn = styled.div`
+  margin-left: 3.2rem;
+  display: flex;
+  align-items: center;
+  color: ${(props) => props.theme.colors.white};
 
-  ${(props) =>
-    props.path.startsWith('/flame') &&
-    css`
-      margin-top: 2.8rem;
-    `}
+  .likelion {
+    width: 4.9rem;
+    ${(props) => props.theme.fontStyles.basic.body2Bold};
+    margin-right: 2rem;
+    ${(props) =>
+      props.$path.startsWith('/flame') &&
+      css`
+        color: ${(props) => props.theme.colors.gray40};
+      `};
+  }
+  .toLikelion {
+    cursor: pointer;
+    ${(props) => props.theme.fontStyles.basic.body2Med};
+    font-weight: 400;
+    margin-right: 0.6rem;
+    ${(props) =>
+      props.$path.startsWith('/flame') &&
+      css`
+        color: ${(props) => props.theme.colors.gray40};
+      `};
+  }
+  img {
+    cursor: pointer;
+    width: 0.6rem;
+    height: 1rem;
+  }
 `;
 
 const GaehwaBtn = styled.div`
-  cursor: pointer;
-  margin-top: 0.8rem;
+  margin-left: 3.2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 4rem;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  color: ${(props) => props.theme.colors.white};
 
-  span {
-    color: ${(props) => props.theme.colors.white};
-    text-align: center;
+  .gaehwa {
+    width: 4.9rem;
     ${(props) => props.theme.fontStyles.basic.body2Bold};
+    margin-right: 2rem;
+    ${(props) =>
+      props.$path.startsWith('/flame') &&
+      css`
+        color: ${(props) => props.theme.colors.gray40};
+      `};
+  }
+  .toGaehwa {
+    cursor: pointer;
+    ${(props) => props.theme.fontStyles.basic.body2Med};
+    font-weight: 400;
+    margin-right: 0.6rem;
+    ${(props) =>
+      props.$path.startsWith('/flame') &&
+      css`
+        color: ${(props) => props.theme.colors.gray40};
+      `};
+  }
+  img {
+    cursor: pointer;
+    width: 0.6rem;
+    height: 1rem;
   }
 `;
 
-const DaedongjeContainer = styled.div`
-  margin: 8rem 2rem 6.4rem;
+const InstaContainer = styled.div`
+  margin-left: 3.2rem;
   display: flex;
   flex-direction: column;
 
   span {
     color: ${(props) => props.theme.colors.white};
-    ${(props) => props.theme.fontStyles.basic.captionBold};
-    margin-bottom: 0.8rem;
+    ${(props) => props.theme.fontStyles.basic.captionMed};
+    font-weight: 300;
+    margin-bottom: 1.15rem;
+    ${(props) =>
+      props.$path.startsWith('/flame') &&
+      css`
+        color: ${(props) => props.theme.colors.gray30};
+      `};
   }
 
   a {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: 1.1rem;
   }
 
   img {
     width: 100%;
     height: 100%;
   }
+`;
+
+const Instagrams = styled.div`
+  display: flex;
+  margin-bottom: 6.65rem;
 `;

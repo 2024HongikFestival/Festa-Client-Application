@@ -6,10 +6,12 @@
   },
   "layouts": {
     "footer": {
-      "prev": "",
+      "contributors": "",
+      "likelion": "",
       "toLikelion": "",
+      "gaehwa": "",
       "toGaehwa": "",
-      "toDaedongjeInsta": ""
+      "instagram": ""
     }
   },
   "makers": {
