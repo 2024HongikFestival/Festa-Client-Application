@@ -5,6 +5,7 @@ import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
 import backBtn from '@/assets/webps/layouts/backBtn.webp';
 import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
 import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
+import globe from '@/assets/webps/layouts/globe.webp';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Popup from '@/components/admin/Popup';
 import PropTypes from 'prop-types';
@@ -164,11 +165,42 @@ const AdminMenuBar = ({
 
 const CommonMenuBar = ({ closeMenu }) => (
   <MenuBar>
-    <ul>
-      <li>Common Menu 1</li>
-      <li>Common Menu 2</li>
-      <li>Common Menu 3</li>
-    </ul>
+    <MenuList>
+      <MenuItem>
+        <span>로드맵</span>
+      </MenuItem>
+      <Divider />
+      <MenuItem>
+        <span>공연</span>
+      </MenuItem>
+      <Divider />
+      <MenuItem>
+        <span>부스</span>
+      </MenuItem>
+      <Divider />
+      <MenuItem>
+        <span>편의정보</span>
+      </MenuItem>
+      <Divider />
+      <MenuItem>
+        <span>이벤트</span>
+      </MenuItem>
+    </MenuList>
+    <LanguageWrapper>
+      <Divider />
+      <LanguageBox>
+        <img src={globe} alt="globe" />
+        <span className="language">Language</span>
+        <ToggleBox>
+          <KorBox>
+            <span>KOR</span>
+          </KorBox>
+          <EngBox>
+            <span>ENG</span>
+          </EngBox>
+        </ToggleBox>
+      </LanguageBox>
+    </LanguageWrapper>
   </MenuBar>
 );
 
@@ -284,16 +316,115 @@ const Right = styled.div`
 `;
 
 const MenuBar = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: absolute;
   top: 5.6rem;
   left: 0;
   width: 100%;
-  height: 100vh;
-  max-width: 19.2rem;
-  background-color: white;
+  height: calc(100vh - 5.6rem);
+  max-width: 26.1rem;
+  background-color: #f1fbfd;
+  border-right: 0.1rem solid #d1c2f3;
   z-index: 99;
 `;
 
+const MenuList = styled.ul`
+  margin: 5.5rem 2.2rem 0;
+`;
+
+const MenuItem = styled.li`
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  span {
+    ${(props) => props.theme.fontStyles.basic.body1Med};
+  }
+`;
+
+const Divider = styled.div`
+  height: 0.1rem;
+  width: 100%;
+  background: linear-gradient(90deg, #85daff 0%, #a9f2dd 25.9%, #becdf9 43.9%, #ece6f0 89.4%);
+`;
+
+const LanguageWrapper = styled.div`
+  height: 6.5rem;
+  margin: 0 2.2rem 6.4rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+const LanguageBox = styled.div`
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 1.8rem 0;
+  img {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 0.8rem;
+  }
+  .language {
+    color: rgba(0, 115, 180, 0.8);
+    ${(props) => props.theme.fontStyles.basic.body2Med};
+    text-align: center;
+    margin-right: 1.6rem;
+  }
+`;
+
+const ToggleBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8.2rem;
+  height: 2.8rem;
+  border-radius: 1.5rem;
+  border: 0.05rem solid #b0dbf3;
+  background-color: white;
+`;
+const KorBox = styled.div`
+  width: 3.6rem;
+  height: 2rem;
+  border-radius: 10px;
+  background: linear-gradient(110deg, #27b0eb 40.84%, #d1dbfa 81.65%);
+  margin-right: 0.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  span {
+    color: white;
+    text-align: center;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: -0.001rem;
+  }
+`;
+const EngBox = styled.div`
+  width: 3.6rem;
+  height: 2rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  span {
+    color: #b0dbf3;
+    text-align: center;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: -0.001rem;
+  }
+`;
 const AdminBar = styled.div`
   display: flex;
   flex-direction: column;
