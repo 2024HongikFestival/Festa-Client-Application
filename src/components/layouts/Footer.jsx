@@ -232,7 +232,7 @@ const InstaContainer = styled.div`
     ${(props) =>
       props.$path.startsWith('/flame') &&
       css`
-        color: ${(props) => props.theme.colors.gray30};
+        color: ${(props) => props.theme.colors.gray10};
       `};
   }
 
