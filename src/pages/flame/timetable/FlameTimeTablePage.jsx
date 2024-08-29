@@ -38,13 +38,13 @@ const FlameTimeTablePage = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   const dates = [
-    { day: 1, date: '9.25 (수)' },
+    { day: 1, date: '8.29 (수)' },
     { day: 2, date: '9.26 (목)' },
     { day: 3, date: '9.27 (금)' },
   ];
 
   const dayOneTime = [
-    { dj: '첫째날디제이', time: '7:00 PM' },
+    { dj: '첫째날디제이', time: '11:00 PM' },
     { dj: 'AEFODENCE', time: '8:00 PM' },
     { dj: 'NIRVANA', time: '9:00 PM' },
     { dj: 'UWFHO', time: '10:00 PM' },
