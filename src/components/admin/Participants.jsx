@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import morebtn from '@/assets/webps/admin/more_vert.webp';
-import { adminAxiosInstance } from '@/api/axios';
+import { adminAxiosInstance, axiosInstance } from '@/api/axios';
 import PropTypes from 'prop-types';
 import Popup from './Popup';
 
@@ -28,13 +28,13 @@ const Participants = () => {
     const token = localStorage.getItem('accessToken');
     setLoading(true);
     try {
-      const response = await adminAxiosInstance.get('/entries/prizes', {
+      const response = await axiosInstance.get('/entries/prizes', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setAllLists(response.data.data.entries);
-      setDisplayedLists(response.data.data.entries.slice(0, postsPerPage));
+      setAllLists(response.data.data);
+      setDisplayedLists(response.data.data.slice(0, postsPerPage));
     } catch (error) {
       console.error('Error fetching URL: ', error);
     } finally {

@@ -5,60 +5,61 @@ import Participants from '@/components/admin/Participants';
 import Winners from '@/components/admin/Winners';
 
 const AdminEvent = () => {
-  //   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  //   const [activeComponent, setActiveComponent] = useState('posts');
-  //   const [isDetailView, setIsDetailView] = useState(false);
-  //   const [selectedPostId, setSelectedPostId] = useState(null);
-  //   const [posts, setPosts] = useState([]);
-  //   useEffect(() => {
-  //     const accessToken = localStorage.getItem('accessToken');
-  //     if (accessToken) {
-  //       setIsLoggedIn(true);
-  //     }
-  //   }, []);
-  //   if (!isLoggedIn) {
-  //     return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
-  //   }
-  //   return (
-  //     <>
-  //       <Container>
-  //         {!isDetailView && (
-  //           <SelectBar>
-  //             <Title onClick={() => setActiveComponent('participants')} $active={activeComponent === 'participants'}>
-  //               응모 목록
-  //             </Title>
-  //             <Title onClick={() => setActiveComponent('winners')} $active={activeComponent === 'winners'}>
-  //               당첨자
-  //             </Title>
-  //           </SelectBar>
-  //         )}
-  //         {activeComponent === 'participants' &&
-  //           (isDetailView ? (
-  //             <PostDetail
-  //               postId={selectedPostId}
-  //               onBack={() => {
-  //                 setIsDetailView(false);
-  //                 setSelectedPostId(null);
-  //               }}
-  //             />
-  //           ) : (
-  //             <Participants setIsDetailView={setIsDetailView} setPostId={setSelectedPostId} posts={posts} />
-  //           ))}
-  //         {activeComponent === 'winners' &&
-  //           (isDetailView ? (
-  //             <PostDetail
-  //               postId={selectedPostId}
-  //               onBack={() => {
-  //                 setIsDetailView(false);
-  //                 setSelectedPostId(null);
-  //               }}
-  //             />
-  //           ) : (
-  //             <Winners setIsDetailView={setIsDetailView} setPostId={setSelectedPostId} />
-  //           ))}
-  //       </Container>
-  //     </>
-  //   );
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [activeComponent, setActiveComponent] = useState('participants');
+  const [isDetailView, setIsDetailView] = useState(false);
+  const [selectedListId, setSelectedListId] = useState(null);
+  const [lists, setLists] = useState([]);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+  if (!isLoggedIn) {
+    return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
+  }
+  return (
+    <>
+      <Container>
+        {!isDetailView && (
+          <SelectBar>
+            <Title onClick={() => setActiveComponent('participants')} $active={activeComponent === 'participants'}>
+              응모 목록
+            </Title>
+            <Title onClick={() => setActiveComponent('winners')} $active={activeComponent === 'winners'}>
+              당첨자
+            </Title>
+          </SelectBar>
+        )}
+        {/* {activeComponent === 'participants' && */}
+        {/* //   (isDetailView ? ( */}
+        {/* //     <PostDetail */}
+        {/* //       postId={selectedListId}
+        //       onBack={() => {
+        //         setIsDetailView(false);
+        //         setSelectedListId(null);
+        //       }}
+        //     />
+        //   ) : (
+        //     <Participants setIsDetailView={setIsDetailView} setPostId={setSelectedListId} lists={lists} />
+        //   ))}
+        // {activeComponent === 'winners' &&
+        //   (isDetailView ? ( */}
+        {/* //     <PostDetail
+        //       postId={selectedListId}
+        //       onBack={() => {
+        //         setIsDetailView(false);
+        //         setSelectedListId(null);
+        //       }}
+        //     />
+        //   ) : (
+        //     <Winners setIsDetailView={setIsDetailView} setPostId={setSelectedListId} />
+        //   ))} */}
+      </Container>
+    </>
+  );
 };
 export default AdminEvent;
 

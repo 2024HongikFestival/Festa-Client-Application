@@ -208,7 +208,7 @@ const ListContainer = styled.div`
   width: 100%;
   align-items: center;
   background-color: ${(props) => props.theme.colors.gray10};
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 const Container = styled.div`
