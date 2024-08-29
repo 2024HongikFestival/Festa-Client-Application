@@ -40,6 +40,19 @@ export default function Header() {
     setIsMenuOpen((prev) => !prev);
   };
 
+  // 메뉴바 열었을 때 스크롤 막기
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
