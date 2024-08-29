@@ -8,7 +8,6 @@ const RedirectEvents = () => {
   localStorage.setItem('kakao_code', code);
 
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
-  const [eventId, setEventId] = useState(1);
 
   const navigate = useNavigate();
 
@@ -25,13 +24,13 @@ const RedirectEvents = () => {
   const getEventToken = async () => {
     try {
       getLocation();
-      const response = await axiosInstance.post(`/events/${eventId}/token`, {
+      const response = await axiosInstance.post('/entries/token', {
         // 현재 홍대 내부 좌표로 임의 설정
         code: localStorage.getItem('kakao_code'),
         // latitude: location.latitude,
         // longtitude: location.longitude,
         latitude: 37.5512242,
-        longtitude: 126.9255396,
+        longitude: 126.9255396,
       });
       console.log(response.data.message);
       // 이벤트 토큰 저장
@@ -50,7 +49,7 @@ const RedirectEvents = () => {
       } else {
         console.log('알 수 없는 오류');
       }
-      navigate(`/event/${eventId}`);
+      navigate('/event/enter');
     }
   };
   useEffect(() => {

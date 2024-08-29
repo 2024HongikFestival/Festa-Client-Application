@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './styled';
 import form from '@/assets/webps/event/form.webp';
 import PhoneNumBox from '@/components/event/PhoneNumBox';
+import SelectedBg from '@/components/event/SelectedBg';
 
 const EnterEvent = () => {
   const [codeArr, setCodeArr] = useState(['', '', '', '', '', '', '', '', '', '', '']);
@@ -14,6 +15,11 @@ const EnterEvent = () => {
 
   const [textCount, setTextCount] = useState(0);
   const navigate = useNavigate();
+  const [isSelected, setIsSelected] = useState(false);
+
+  const handleItemSelected = () => {
+    setIsSelected(!isSelected);
+  };
 
   // input & textarea 상태 관리
   const [name, setName] = useState('');
@@ -130,19 +136,19 @@ const EnterEvent = () => {
             {/* 경품 확정 X */}
             <S.ItemContainer>
               <S.Item>
-                <S.ItemCard></S.ItemCard>
+                {isSelected ? <SelectedBg onClick={handleItemSelected} /> : <S.ItemCard onClick={handleItemSelected} />}
                 <S.ItemName>물품 이름</S.ItemName>
               </S.Item>
               <S.Item>
-                <S.ItemCard></S.ItemCard>
+                {isSelected ? <SelectedBg onClick={handleItemSelected} /> : <S.ItemCard onClick={handleItemSelected} />}
                 <S.ItemName>물품 이름</S.ItemName>
               </S.Item>
               <S.Item>
-                <S.ItemCard></S.ItemCard>
+                {isSelected ? <SelectedBg onClick={handleItemSelected} /> : <S.ItemCard onClick={handleItemSelected} />}
                 <S.ItemName>물품 이름</S.ItemName>
               </S.Item>
               <S.Item>
-                <S.ItemCard></S.ItemCard>
+                {isSelected ? <SelectedBg onClick={handleItemSelected} /> : <S.ItemCard onClick={handleItemSelected} />}
                 <S.ItemName>물품 이름</S.ItemName>
               </S.Item>
             </S.ItemContainer>

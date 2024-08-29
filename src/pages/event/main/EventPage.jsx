@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import raffle from '@/assets/webps/event/raffle.webp';
 import shareIcon from '@/assets/webps/event/shareIcon.webp';
-import kakaoLogo from '@/assets/svgs/kakaoLogo.svg';
+import kakaoLogo from '@/assets/svgs/event/kakaoLogo.svg';
 import { ItemSlider } from '@/components/event/ItemSlider';
 import { axiosInstance } from '@/api/axios';
 import NoticeTimeBox from '@/components/event/NoticeTimeBox';
@@ -38,7 +38,8 @@ const EventPage = () => {
   };
 
   const handleKakaoAuth = () => {
-    window.location.href = EVENTS_KAKAO_AUTH_URL + `&state=${stateData}`;
+    // window.location.href = EVENTS_KAKAO_AUTH_URL + `&state=${stateData}`;
+    window.location.href = EVENTS_KAKAO_AUTH_URL;
   };
 
   // 응모 상품 리스트
