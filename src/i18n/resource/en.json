@@ -10,7 +10,13 @@
       "toStage": "Stage",
       "toBooth": "Booth",
       "toFacilities": "Facilities",
-      "toEvent": "Event"
+      "toEvent": "Event",
+      "toSitemap": "Sitemap",
+      "toTimeTable": "Time Table",
+      "toTicket": "Ticket",
+      "toLineUp": "Line Up",
+      "toMd": "MD",
+      "toPromotion": "Promotion"
     },
     "footer": {
       "contributors": "",

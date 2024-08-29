@@ -10,7 +10,13 @@
       "toStage": "공연",
       "toBooth": "부스",
       "toFacilities": "편의정보",
-      "toEvent": "이벤트"
+      "toEvent": "이벤트",
+      "toSitemap": "사이트맵",
+      "toTimeTable": "타임테이블",
+      "toTicket": "티켓",
+      "toLineUp": "라인업",
+      "toMd": "MD 상품",
+      "toPromotion": "프로모션"
     },
     "footer": {
       "contributors": "Contributors Page",

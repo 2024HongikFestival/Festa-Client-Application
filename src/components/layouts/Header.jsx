@@ -6,6 +6,7 @@ import backBtn from '@/assets/webps/layouts/backBtn.webp';
 import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
 import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
 import globe from '@/assets/webps/layouts/globe.webp';
+import globeGray from '@/assets/webps/layouts/globeGray.webp';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Popup from '@/components/admin/Popup';
 import PropTypes from 'prop-types';
@@ -80,6 +81,7 @@ export default function Header() {
   };
 
   const makers = location.pathname === '/likelion' || location.pathname === '/gaehwa';
+  const flame = location.pathname.startsWith('/flame');
 
   const clickHandler = (lng) => {
     setIsKorActive(lng === 'ko');
@@ -124,7 +126,13 @@ export default function Header() {
               closeMenu={() => setIsMenuOpen(false)}
             />
           ) : (
-            <CommonMenuBar closeMenu={toggleMenu} isKorActive={isKorActive} toggleLanguage={toggleLanguage} t={t} />
+            <CommonMenuBar
+              closeMenu={toggleMenu}
+              isKorActive={isKorActive}
+              toggleLanguage={toggleLanguage}
+              t={t}
+              flame={flame}
+            />
           ))}
       </HeaderLayout>
     </>
@@ -177,40 +185,48 @@ const AdminMenuBar = ({
   );
 };
 
-const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t }) => (
-  <MenuBar>
-    <MenuList>
-      <MenuItem>
-        <span>{t('layouts.header.toRoadmap')}</span>
+const CommonMenuBar = ({ closeMenu, isKorActive, toggleLanguage, t, flame }) => (
+  <MenuBar $flame={flame}>
+    <MenuList $flame={flame}>
+      <MenuItem $flame={flame}>
+        <span>{flame ? t('layouts.header.toSitemap') : t('layouts.header.toRoadmap')}</span>
       </MenuItem>
-      <Divider />
-      <MenuItem>
-        <span>{t('layouts.header.toStage')}</span>
+      <Divider $flame={flame} />
+      <MenuItem $flame={flame}>
+        <span>{flame ? t('layouts.header.toTimeTable') : t('layouts.header.toStage')}</span>
       </MenuItem>
-      <Divider />
-      <MenuItem>
-        <span>{t('layouts.header.toBooth')}</span>
+      <Divider $flame={flame} />
+      <MenuItem $flame={flame}>
+        <span>{flame ? t('layouts.header.toTicket') : t('layouts.header.toBooth')}</span>
       </MenuItem>
-      <Divider />
-      <MenuItem>
-        <span>{t('layouts.header.toFacilities')}</span>
+      <Divider $flame={flame} />
+      <MenuItem $flame={flame}>
+        <span>{flame ? t('layouts.header.toLineUp') : t('layouts.header.toFacilities')}</span>
       </MenuItem>
-      <Divider />
-      <MenuItem>
-        <span>{t('layouts.header.toEvent')}</span>
+      <Divider $flame={flame} />
+      <MenuItem $flame={flame}>
+        <span>{flame ? t('layouts.header.toMd') : t('layouts.header.toEvent')}</span>
       </MenuItem>
+      {flame && (
+        <>
+          <Divider $flame={flame} />
+          <MenuItem $flame={flame}>
+            <span>{t('layouts.header.toPromotion')}</span>
+          </MenuItem>
+        </>
+      )}
     </MenuList>
-    <LanguageWrapper>
-      <Divider />
-      <LanguageBox>
-        <img src={globe} alt="globe" />
+    <LanguageWrapper $flame={flame}>
+      <Divider $flame={flame} />
+      <LanguageBox $flame={flame}>
+        {flame ? <img src={globeGray} alt="globeGray" /> : <img src={globe} alt="globe" />}
         <span className="language">Language</span>
-        <ToggleBox onClick={toggleLanguage}>
-          <Slider $isKorActive={isKorActive} />
-          <KorBox $isKorActive={isKorActive}>
+        <ToggleBox $flame={flame} onClick={toggleLanguage}>
+          <Slider $flame={flame} $isKorActive={isKorActive} />
+          <KorBox $flame={flame} $isKorActive={isKorActive}>
             <span>KOR</span>
           </KorBox>
-          <EngBox $isKorActive={!isKorActive}>
+          <EngBox $flame={flame} $isKorActive={!isKorActive}>
             <span>ENG</span>
           </EngBox>
         </ToggleBox>
@@ -224,6 +240,7 @@ CommonMenuBar.propTypes = {
   isKorActive: PropTypes.bool.isRequired,
   toggleLanguage: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
+  flame: PropTypes.bool,
 };
 
 AdminMenuBar.propTypes = {
@@ -346,6 +363,23 @@ const MenuBar = styled.div`
   background-color: #f1fbfd;
   border-right: 0.1rem solid #d1c2f3;
   z-index: 99;
+
+  ${({ $flame }) =>
+    $flame &&
+    css`
+      position: relative;
+      background: rgba(1, 3, 4, 0.9);
+      border-right: none;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0.1rem; /* border-right처럼 보이는 너비 */
+        height: 100%;
+        background: linear-gradient(180deg, #fff7f7 0%, #ff7711 69%);
+      }
+    `}
 `;
 
 const MenuList = styled.ul`
@@ -356,15 +390,30 @@ const MenuItem = styled.li`
   margin: 2rem 0;
   display: flex;
   justify-content: center;
+  color: ${(props) => props.theme.colors.gray80};
   span {
     ${(props) => props.theme.fontStyles.basic.body1Med};
   }
+
+  ${({ $flame }) =>
+    $flame &&
+    css`
+      color: white;
+      justify-content: inherit;
+      margin-left: 2.4rem;
+    `}
 `;
 
 const Divider = styled.div`
   height: 0.1rem;
   width: 100%;
   background: linear-gradient(90deg, #85daff 0%, #a9f2dd 25.9%, #becdf9 43.9%, #ece6f0 89.4%);
+
+  ${({ $flame }) =>
+    $flame &&
+    css`
+      background: #2c2d30;
+    `}
 `;
 
 const LanguageWrapper = styled.div`
@@ -386,7 +435,7 @@ const LanguageBox = styled.div`
     margin-right: 0.8rem;
   }
   .language {
-    color: rgba(0, 115, 180, 0.8);
+    color: ${({ $flame, theme }) => ($flame ? theme.colors.gray40 : 'rgba(0, 115, 180, 0.8)')};
     ${(props) => props.theme.fontStyles.basic.body2Med};
     text-align: center;
     margin-right: 1.6rem;
@@ -405,6 +454,12 @@ const ToggleBox = styled.div`
   cursor: pointer;
   overflow: hidden;
   justify-content: space-between;
+  ${({ $flame }) =>
+    $flame &&
+    css`
+      border: none;
+      background-color: ${(props) => props.theme.colors.gray100};
+    `}
 `;
 
 const Slider = styled.div`
@@ -416,6 +471,12 @@ const Slider = styled.div`
   background: linear-gradient(110deg, #27b0eb 40.84%, #d1dbfa 81.65%);
   transition: transform 0.3s ease;
   transform: ${({ $isKorActive }) => ($isKorActive ? 'translateX(0)' : 'translateX(100%)')};
+
+  ${({ $flame }) =>
+    $flame &&
+    css`
+      background: linear-gradient(180deg, rgba(255, 15, 0, 0.8) 0%, rgba(255, 229, 0, 0.8) 236.05%);
+    `}
 `;
 
 const KorBox = styled.div`
@@ -441,6 +502,11 @@ const KorBox = styled.div`
     line-height: 150%;
     letter-spacing: -0.001rem;
   }
+  ${({ $flame }) =>
+    $flame &&
+    css`
+      color: ${({ $isKorActive, theme }) => ($isKorActive ? 'white' : theme.colors.gray20)};
+    `}
 `;
 
 const EngBox = styled.div`
@@ -466,7 +532,13 @@ const EngBox = styled.div`
     line-height: 150%;
     letter-spacing: -0.001rem;
   }
+  ${({ $flame }) =>
+    $flame &&
+    css`
+      color: ${({ $isKorActive, theme }) => ($isKorActive ? 'white' : theme.colors.gray20)};
+    `}
 `;
+
 const AdminBar = styled.div`
   display: flex;
   flex-direction: column;
