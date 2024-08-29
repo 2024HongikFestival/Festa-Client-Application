@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import hiuLogo from '@/assets/webps/layouts/hiuLogo.webp';
 import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
+import backBtn from '@/assets/webps/layouts/backBtn.webp';
 import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
 import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -61,13 +62,32 @@ export default function Header() {
     };
   }, []);
 
+  const handleGoBack = () => {
+    nav(-1);
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 100);
+  };
+
+  const makers = location.pathname === '/likelion' || location.pathname === '/gaehwa';
+
   return (
     <>
       <HeaderLayout $path={location.pathname}>
         <HeaderBg $path={location.pathname}>
-          <HambergerMenu onClick={toggleMenu}>
-            <img src={blackImages ? hambergerMenuBlack : hambergerMenu} alt="hambergerMenu" />
-          </HambergerMenu>
+          {makers && (
+            <HambergerMenu onClick={handleGoBack}>
+              <img src={backBtn} alt="backBtb" />
+            </HambergerMenu>
+          )}
+          {!makers && (
+            <HambergerMenu onClick={toggleMenu}>
+              <img src={blackImages ? hambergerMenuBlack : hambergerMenu} alt="hambergerMenu" />
+            </HambergerMenu>
+          )}
           <HiuLogo onClick={() => nav('/')}>
             <img src={blackImages ? hiuLogoBlack : hiuLogo} alt="hiuLogo" />
           </HiuLogo>
