@@ -5,45 +5,17 @@ import Footer from '@/components/layouts/Footer';
 
 export default function Layout() {
   const location = useLocation();
+  const isAdminPath = location.pathname === '/admin';
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
-  const visiblePaths = [
-    '/',
-    '/booth',
-    '/fleamarket',
-    '/fleamarket/:marketId',
-    '/promotion',
-    '/event/:eventId',
-    '/event/enter',
-    '/event/submit',
-    '/oauth/events',
-    '/map',
-    '/flame/map',
-    '/flame/timetable',
-    '/flame/reservation',
-    '/facilities',
-    '/likelion',
-    '/gaehwa',
-    '/lost-and-found',
-    '/lost-and-found/:lostId',
-    '/lost-and-found/add',
-    '/oauth/losts',
-    '/lineup',
-    '/stage-info',
-    '/hongik-zone',
-    '/flame/lineup',
-    '/flame/md',
-    '/flame/promotion',
-    '/flame',
-  ];
-  const showheader = isLoggedIn() || visiblePaths.includes(location.pathname);
+  const showheader = isLoggedIn() || !isAdminPath;
 
   return (
     <Container $path={location.pathname} $showheader={showheader}>
       {showheader && <Header />}
       <Outlet />
-      {visiblePaths.includes(location.pathname) && <Footer />}
+      {!isAdminPath && <Footer />}
     </Container>
   );
 }

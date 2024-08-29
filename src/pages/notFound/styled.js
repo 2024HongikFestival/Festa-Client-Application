@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
-  padding-top: 18.8rem;
+  justify-content: center;
   align-items: center;
+  padding-top: 18.8rem;
+  padding-bottom: 18.8rem;
   background-color: ${(props) => props.theme.colors.makersBackgroundColor};
 `;
 

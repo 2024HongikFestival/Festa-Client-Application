@@ -38,6 +38,9 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
+          {/* 404 */}
+          <Route path="*" element={<NotFoundPage />} />
+
           <Route element={<Layout />}>
             {/* 윤서 라우팅 😽 */}
             <Route path="/" element={<MainPage />} />
@@ -52,7 +55,6 @@ function App() {
             <Route path="/event/enter" element={<EnterEvent />} />
             <Route path="/event/submit" element={<CompleteEvent />} />
             <Route path="/oauth/events" element={<RedirectEvents />} />
-            <Route path="*" element={<NotFoundPage />} />
 
             {/* 정인 라우팅 🍀 */}
             <Route path="/map" element={<MapPage />} />
