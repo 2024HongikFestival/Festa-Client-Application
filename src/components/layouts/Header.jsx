@@ -192,11 +192,24 @@ const HeaderLayout = styled.div`
   min-width: 375px;
   margin: 0 auto;
   height: 5.6rem;
-  background-color: ${(props) => props.theme.colors.black};
+  background-color: transparent;
   position: fixed;
   top: 0rem;
   z-index: 100;
 
+  ${(props) =>
+    (props.$path === '/likelion' || props.$path === '/gaehwa') &&
+    css`
+      background-color: ${(props) => props.theme.colors.black};
+    `}
+
+  ${(props) =>
+    props.$path.startsWith('/flame') &&
+    css`
+      background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+    `}
+
+    
   ${(props) =>
     props.$path === '/admin' &&
     css`
@@ -204,6 +217,7 @@ const HeaderLayout = styled.div`
       background-size: cover;
       background-position: center;
     `}
+
   ${(props) =>
     props.$path === '/admin/event' &&
     css`
@@ -218,9 +232,6 @@ const HeaderBg = styled.div`
   max-width: 768px;
   min-width: 375px;
   height: 5.6rem;
-  background: rgba(22, 22, 22, 0.1);
-  box-shadow: 0rem 0rem 0.4rem 0rem rgba(255, 255, 255, 0.12) inset;
-  backdrop-filter: blur(0.2rem);
   position: fixed;
   top: 0rem;
   z-index: 100;
@@ -229,12 +240,28 @@ const HeaderBg = styled.div`
   align-items: center;
 
   ${(props) =>
+    (props.$path === '/likelion' || props.$path === '/gaehwa') &&
+    css`
+      background: rgba(22, 22, 22, 0.1);
+      box-shadow: 0rem 0rem 0.4rem 0rem rgba(255, 255, 255, 0.12) inset;
+      backdrop-filter: blur(0.2rem);
+    `}
+
+  ${(props) =>
+    props.$path.startsWith('flame/') &&
+    css`
+      box-shadow: 0 0 0.4rem 0 rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(0.2rem);
+    `}
+
+  ${(props) =>
     props.$path === '/admin' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
       background-position: center;
     `}
+
   ${(props) =>
     props.$path === '/admin/event' &&
     css`
