@@ -114,11 +114,6 @@ export const contributors = (t) => ({
       department: t('makers.gaehwaContributors.finance.0.department'),
       role: t('makers.gaehwaContributors.finance.0.role'),
     },
-    {
-      name: t('makers.gaehwaContributors.finance.1.name'),
-      department: t('makers.gaehwaContributors.finance.1.department'),
-      role: t('makers.gaehwaContributors.finance.1.role'),
-    },
   ],
   rightsSolidarity: [
     {
