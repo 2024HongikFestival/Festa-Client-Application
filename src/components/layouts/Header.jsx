@@ -7,6 +7,8 @@ import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
 import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
 import globe from '@/assets/webps/layouts/globe.webp';
 import globeGray from '@/assets/webps/layouts/globeGray.webp';
+import xBtnBlack from '@/assets/svgs/layouts/xBtnBlack.svg';
+import xBtnWhite from '@/assets/svgs/layouts/xBtnWhite.svg';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Popup from '@/components/admin/Popup';
 import PropTypes from 'prop-types';
@@ -105,7 +107,12 @@ export default function Header() {
           )}
           {!makers && (
             <HambergerMenu onClick={toggleMenu}>
-              <img src={whiteImages ? hambergerMenu : hambergerMenuBlack} alt="hambergerMenu" />
+              <img
+                src={
+                  whiteImages ? (isMenuOpen ? xBtnWhite : hambergerMenu) : isMenuOpen ? xBtnBlack : hambergerMenuBlack
+                }
+                alt="hambergerMenu"
+              />
             </HambergerMenu>
           )}
           <HiuLogo onClick={() => nav('/')}>
