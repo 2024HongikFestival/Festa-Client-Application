@@ -40,7 +40,7 @@ const FlameTimeTablePage = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   const dates = [
-    { day: 1, date: '9.25 (수)' },
+    { day: 1, date: '8.29 (수)' },
     { day: 2, date: '9.26 (목)' },
     { day: 3, date: '9.27 (금)' },
   ];

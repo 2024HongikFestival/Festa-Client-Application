@@ -43,8 +43,10 @@ const flagWaving = keyframes`
 
 export const TTWrapper = styled.div`
   width: 100%;
-  padding-top: 2.4rem;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const TTTitle = styled.div`
@@ -55,6 +57,7 @@ export const TTTitle = styled.div`
 
 export const TTBox = styled.div`
   padding-bottom: 5.6rem;
+  margin-top: 2.4rem;
 `;
 
 export const DaysBox = styled.div`
