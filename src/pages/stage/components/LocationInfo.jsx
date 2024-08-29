@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const LocationInfo = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <MapContainer>
@@ -18,7 +21,8 @@ const LocationInfo = () => {
             홍익존은 <Highlight>사전예매</Highlight>하신
             <br /> 홍익대학교 학생들만 입장 가능해요
           </InfoText>
-          <Button>홍익존</Button>
+          {/* 온클릭 구현해야 함 */}
+          <Button onClick={() => navigate('/hongik-zone')}>홍익존</Button>
         </Info>
       </InfoContainer>
     </Container>

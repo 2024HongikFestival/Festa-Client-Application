@@ -76,15 +76,15 @@ const StageSchedule = () => {
   const renderStage = () => {
     return dummyData[selectedDay].map((event) => (
       <Stage key={event.id}>
-        <div>
-          <h2>{event.stageName}</h2>
-          <p>{event.totalDuration}</p>
-        </div>
-        <ul>
+        <StageBox>
+          <StageName>{event.stageName}</StageName>
+          <Duration>{event.totalDuration}</Duration>
+        </StageBox>
+        <ArtistList>
           {event.artists.map((artist, index) => (
-            <li key={index}>{artist}</li>
+            <ArtistItem key={index}>{artist}</ArtistItem>
           ))}
-        </ul>
+        </ArtistList>
       </Stage>
     ));
   };
@@ -152,4 +152,29 @@ const Stage = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid ${(props) => props.theme.colors.gray20};
+`;
+const StageBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+`;
+const StageName = styled.h2`
+  ${(props) => props.theme.fontStyles.basic.subHeadBold};
+  color: ${(props) => props.theme.colors.gray100};
+`;
+const Duration = styled.p`
+  color: ${(props) => props.theme.colors.gray70};
+  ${(props) => props.theme.fontStyles.basic.captionMed};
+`;
+const ArtistList = styled.ul`
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-bottom: 2rem;
+`;
+const ArtistItem = styled.li`
+  color: ${(props) => props.theme.colors.gray70};
+  ${(props) => props.theme.fontStyles.basic.body2Med};
 `;
