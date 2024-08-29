@@ -247,6 +247,7 @@ export const BlueButton = styled.button`
     $disabled &&
     css`
       cursor: not-allowed;
-      background: rgba(24, 51, 219, 0.5);
+      background: ${({ theme }) => theme.colors.gray30};
+      color: ${({ theme }) => theme.colors.gray10};
     `};
 `;
