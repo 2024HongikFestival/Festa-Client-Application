@@ -167,7 +167,7 @@ export const ImageContainer = styled.div`
   width: 18.5rem !important;
   height: 28.7rem;
   background-color: ${(props) => props.theme.colors.white};
-  margin: 0 1.6rem;
+  margin: 0 0.8rem;
   padding-top: 1.4rem;
   border-radius: 1rem;
   outline: none;

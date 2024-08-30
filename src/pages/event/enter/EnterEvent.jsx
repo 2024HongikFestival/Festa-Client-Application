@@ -40,7 +40,11 @@ const EnterEvent = () => {
   // 후기 입력 관리
   const handleComment = (e) => {
     e.preventDefault();
-    setTextCount(e.target.value.length); // 글자수 세기
+    // 글자수 제한
+    if (e.target.value.length > 100) {
+      e.target.value = e.target.value.slice(0, 100);
+    }
+    setTextCount(e.target.value.length);
     setComment(e.target.value);
   };
 
@@ -108,11 +112,11 @@ const EnterEvent = () => {
       <S.FormContainer>
         <form>
           <S.Section>
-            <S.SectionText>이름을 알려주세요.</S.SectionText>
+            <S.SectionText>이름을 알려주세요</S.SectionText>
             <S.Input type="text" placeholder="ex. 홍길동" onChange={handleName} value={name} />
           </S.Section>
           <S.Section>
-            <S.SectionText>당첨 시 연락드릴 연락처를 적어주세요.</S.SectionText>
+            <S.SectionText>당첨 시 연락드릴 연락처를 적어주세요</S.SectionText>
             <S.PhoneContainer>
               {codeArr.map((item, index) => (
                 <Fragment key={index}>
@@ -150,20 +154,22 @@ const EnterEvent = () => {
               })}
             </S.ItemContainer>
           </S.ItemSection>
-          <S.Section>
+          <S.Section className="last">
             <S.SectionText>
               축제 재밌게 즐기고 계신가요?
               <br />
-              여러분들의 생생한 후기를 들려주세요! (선택)
+              여러분들의 생생한 후기를 들려주세요! <span>(선택)</span>
             </S.SectionText>
-            <S.TextArea
-              type="text"
-              maxLength="100"
-              placeholder="해당 내용은 당첨과는 무관해요"
-              onChange={handleComment}
-              value={comment}
-            />
-            <S.TextCount>({textCount}/100)</S.TextCount>
+            <S.TextAreaWrapper>
+              <S.TextArea
+                type="text"
+                maxLength="100"
+                placeholder="해당 내용은 당첨과는 무관해요"
+                onChange={handleComment}
+                value={comment}
+              />
+              <S.TextCount id="count">({textCount}/100)</S.TextCount>
+            </S.TextAreaWrapper>
           </S.Section>
           {isAvailable ? (
             <S.EnterButton onClick={handleEventEntry}>

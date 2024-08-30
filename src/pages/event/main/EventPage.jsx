@@ -68,7 +68,7 @@ const EventPage = () => {
         </span>
       </S.Title>
       <div>
-        <img src={raffle} alt="raffle" height={184} />
+        <img src={raffle} alt="raffle" height={214} />
       </div>
       <S.NoticeText>
         매일 <span>오전 10시</span> 응모권 1장 부여
@@ -87,7 +87,9 @@ const EventPage = () => {
         <S.DetailSection>
           <S.DetailTitle>응모 대상</S.DetailTitle>
           <S.DetailDescription>
-            지금 ‘홍익대학교 내에서’ 축제를 즐기고 있다면 재학생 외부인 상관없이 누구나
+            지금 ‘홍익대학교 내에서’ 축제를 즐기고
+            <br />
+            있다면 재학생 외부인 상관없이 누구나
           </S.DetailDescription>
         </S.DetailSection>
         <S.DetailSection>
@@ -96,7 +98,11 @@ const EventPage = () => {
         </S.DetailSection>
         <S.DetailSection>
           <S.DetailTitle>응모 기간</S.DetailTitle>
-          <S.DetailDescription>9월 25일 09:00 ~ 9월 27일 24:00 매일 오전 10시 응모권 1장 제공</S.DetailDescription>
+          <S.DetailDescription>
+            9월 25일 09:00 ~ 9월 27일 24:00
+            <br />
+            매일 오전 10시 응모권 1장 제공
+          </S.DetailDescription>
         </S.DetailSection>
         <S.DetailSection>
           <S.DetailTitle>당첨 발표</S.DetailTitle>

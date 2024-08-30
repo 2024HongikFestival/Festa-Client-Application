@@ -49,28 +49,36 @@ const NoticeTimeBox = () => {
       <CardBox>
         <Box>
           <Text>DAYS</Text>
-          <Container>
-            <TimeCard time={days[0]} />
-            <TimeCard time={days[1]} />
-          </Container>
+          <TimeContainer>
+            <Container>
+              <TimeCard time={days[0]} />
+              <TimeCard time={days[1]} />
+            </Container>
+            <span>:</span>
+          </TimeContainer>
         </Box>
-        <span>:</span>
         <Box>
           <Text>HOURS</Text>
-          <Container>
-            <TimeCard time={hours[0]} />
-            <TimeCard time={hours[1]} />
-          </Container>
+          <TimeContainer>
+            <Container>
+              <TimeCard time={hours[0]} />
+              <TimeCard time={hours[1]} />
+            </Container>
+            <span>:</span>
+          </TimeContainer>
         </Box>
-        <span>:</span>
+
         <Box>
           <Text>MINUTES</Text>
-          <Container>
-            <TimeCard time={minutes[0]} />
-            <TimeCard time={minutes[1]} />
-          </Container>
+          <TimeContainer>
+            <Container>
+              <TimeCard time={minutes[0]} />
+              <TimeCard time={minutes[1]} />
+            </Container>
+            <span>:</span>
+          </TimeContainer>
         </Box>
-        <span>:</span>
+
         <Box>
           <Text>SECONDS</Text>
           <Container>
@@ -139,6 +147,11 @@ const CardBox = styled.div`
     line-height: normal;
     padding-right: 0.2rem;
   }
+`;
+const TimeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const Container = styled.div`
   display: flex;

@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  padding-bottom: 8.9rem;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
 `;
 
@@ -19,7 +20,10 @@ export const Image = styled.img`
 export const FormContainer = styled.div`
   width: 33.5rem;
   border-radius: 1rem;
-  padding: 2.4rem 2.4rem 7.7rem 2.4rem;
+  padding: 2.4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: ${(props) => props.theme.colors.gray100};
 `;
 
@@ -27,17 +31,26 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  padding-bottom: 3.2rem;
+  padding-bottom: 3.6rem;
+
+  &.last {
+    padding-bottom: 0;
+  }
 `;
 
 export const ItemSection = styled(Section)`
-  gap: 1.6rem;
+  gap: 1.2rem;
 `;
 
 export const SectionText = styled.p`
   ${(props) => props.theme.fontStyles.basic.body1Bold}
   color: ${(props) => props.theme.colors.gray10};
   align-self: stretch;
+
+  span {
+    ${(props) => props.theme.fontStyles.basic.body1Bold}
+    color: ${(props) => props.theme.colors.gray30};
+  }
 `;
 
 export const ItemContainer = styled.div`
@@ -75,8 +88,8 @@ export const ItemCard = styled.button`
 
     img {
       display: flex;
-      width: 2rem;
-      height: 1.42rem;
+      width: 2.4rem;
+      height: 2.4rem;
     }
   }
 `;
@@ -135,6 +148,10 @@ export const TextArea = styled.textarea`
   &:placeholder-shown {
     border: 0.1rem solid #7b9a27;
   }
+`;
+
+export const TextAreaWrapper = styled.div`
+  gap: 0.4rem;
 `;
 
 export const TextCount = styled.p`
