@@ -14,7 +14,7 @@ jobs:
       - name: Read user mapping
         id: user_mapping
         run: |
-          content=$(cat .github/workflows/githubSlackUers.json)
+          content=$(cat .github/workflows/githubSlackUsers.json)
           echo "mapping<<EOF" >> $GITHUB_OUTPUT
           echo "$content" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
