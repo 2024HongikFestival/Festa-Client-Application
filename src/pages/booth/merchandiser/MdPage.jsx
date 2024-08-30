@@ -3,7 +3,7 @@ import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/error.webp';
 import MD from '@/components/booth/MD';
-import { MdList } from '@/assets/static/booth/mdList';
+import { MdList } from '@/constants/booth/mdList';
 
 export default function MdPage() {
   return (

@@ -13,15 +13,15 @@ export default function StageInfo() {
           <TextContainer>
             <TextWrapper>
               <Text>학부 찬조 공연</Text>
-              <Text time>17:30 - 18:00</Text>
+              <Text time="true">17:30 - 18:00</Text>
             </TextWrapper>
             <TextWrapper>
               <Text>학부 찬조 공연</Text>
-              <Text time>17:30 - 18:00</Text>
+              <Text time="true">17:30 - 18:00</Text>
             </TextWrapper>
             <TextWrapper>
               <Text>학부 찬조 공연</Text>
-              <Text time>17:30 - 18:00</Text>
+              <Text time="true">17:30 - 18:00</Text>
             </TextWrapper>
           </TextContainer>
         </Bubble>
@@ -65,10 +65,13 @@ const Piece = styled.img`
   width: 1.975rem;
   height: 2.7rem;
   margin-top: 1rem;
+  position: relative;
+  left: 0.1rem;
+  z-index: 5;
 `;
 
 const Bubble = styled.div`
-  width: 26.7rem;
+  width: 26.6rem;
   height: 13.5rem;
   background-color: white;
   border-radius: 1.2rem;

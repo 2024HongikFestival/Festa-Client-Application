@@ -3,14 +3,12 @@ import MoveToWdfBtn from '@/components/main/MoveToWdfBtn';
 import { useTranslation } from 'react-i18next';
 import mainImg from '@/assets/webps/main/mainExample.webp';
 import StageInfo from '@/components/main/StageInfo';
+import HibsLogo from '@/assets/webps/main/hibs.webp';
+import youtubeIcon from '@/assets/webps/main/youtubeIcon.webp';
+import OperatingHours from '@/components/main/OperatingHours';
+
 export default function MainPage() {
   // const { t, i18n } = useTranslation();
-
-  // const clickHandler = (lng) => {
-  //   console.log(`conver to ${lng}`);
-  //   localStorage.setItem('language', lng);
-  //   i18n.changeLanguage(lng);
-  // };
 
   return (
     <Container>
@@ -35,24 +33,7 @@ export default function MainPage() {
         <Date>9.25 (수)</Date>
         <LineupTitle>오늘의 라인업</LineupTitle>
       </LineupTitleWrapper>
-      {/* <LineupInfoWrapper>
-        <LineupCompWrapper>
-          <LineupComp height={'long'}>
-            <LineupText>이름텍스트영역</LineupText>
-          </LineupComp>
-          <LineupComp height={'short'}>
-            <LineupText>이름텍스트영역</LineupText>
-          </LineupComp>
-        </LineupCompWrapper>
-        <LineupCompWrapper>
-          <LineupComp height={'short'}>
-            <LineupText>이름텍스트영역</LineupText>
-          </LineupComp>
-          <LineupComp height={'long'}>
-            <LineupText>이름텍스트영역</LineupText>
-          </LineupComp>
-        </LineupCompWrapper>
-      </LineupInfoWrapper> */}
+
       <LineupInfoWrapper></LineupInfoWrapper>
       <GoLineupPageBtn>전체 라인업 보러가기 {'>'}</GoLineupPageBtn>
       <Hr />
@@ -61,18 +42,25 @@ export default function MainPage() {
         <StageInfo />
         <StageInfo />
         <StageInfo />
-        <GoHibsBtn />
+        <GoHibsBtn>
+          <BtnWrapper>
+            <BtnText>
+              <LogoContainer>
+                <Logo src={HibsLogo} alt="hibsLogo" />
+                <TopText>HIBS 홍대방송국</TopText>
+              </LogoContainer>
+              <BottomText>실시간 공연 보러가기 !</BottomText>
+            </BtnText>
+            <YoutubeIconWrapper>
+              <YoutubeIcon src={youtubeIcon} alt="youtube" />
+            </YoutubeIconWrapper>
+          </BtnWrapper>
+        </GoHibsBtn>
       </StageContainer>
+      <Hr />
+      <OperatingHours />
     </Container>
   );
-}
-
-{
-  /* <p>{t('hello')}</p>
-      <p>{t('goodbye')}</p>
-      <p>{t('main.sorry')}</p>
-      <button onClick={() => clickHandler('ko')}>ko</button>
-      <button onClick={() => clickHandler('en')}>en</button> */
 }
 
 const Container = styled.div`
@@ -139,23 +127,6 @@ const LineupInfoWrapper = styled.div`
   border: 1px solid black;
 `;
 
-const LineupCompWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 16.2rem;
-  gap: 1.2rem;
-`;
-
-const LineupComp = styled.div`
-  width: 16.2rem;
-  height: ${(props) => (props.height === 'long' ? '27.7rem' : '20.8rem')};
-  box-shadow: 0px 0px 0.8rem 0 rgba(0, 0, 0, 0.12);
-  border-radius: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-`;
-
 const GoLineupPageBtn = styled.button`
   margin-top: 4.4rem;
   width: 33.5rem;
@@ -163,15 +134,6 @@ const GoLineupPageBtn = styled.button`
   box-shadow: 0px 0px 0.8rem 0 rgba(0, 0, 0, 0.12);
   ${(props) => props.theme.fontStyles.basic.headline5}
   margin-bottom: 6.4rem;
-`;
-
-const LineupText = styled.div`
-  width: 16.2rem;
-  height: 6.9rem;
-  ${(props) => props.theme.fontStyles.main.headline6}
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const Hr = styled.div`
@@ -187,6 +149,7 @@ const StageContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 6.4rem;
+  margin-bottom: 6.4rem;
 `;
 
 const StageTitle = styled.div`
@@ -194,15 +157,18 @@ const StageTitle = styled.div`
   margin-bottom: 2.8rem;
 `;
 
-const GoHibsBtn = styled.button`
-  width: 33.2rem;
-  height: 7.8rem;
+const GoHibsBtn = styled.div`
+  width: 33.6rem;
+  height: 8.2rem;
   margin-top: 3.6rem;
   border: none;
   border-radius: 1.2rem;
   background: linear-gradient(91.85deg, rgba(3, 124, 158, 0.32) 5.35%, rgba(22, 170, 234, 0.32) 102.2%);
   position: relative;
   overflow: hidden;
+  display: flex;
+  padding-top: 0.8rem;
+  justify-content: center;
 
   &::before {
     content: '';
@@ -221,6 +187,54 @@ const GoHibsBtn = styled.button`
     -webkit-mask-composite: xor;
     pointer-events: none;
   }
-
   box-shadow: 0 0 0.8rem 0 rgba(0, 0, 0, 0.12);
+`;
+
+const BtnWrapper = styled.div`
+  width: 29.1rem;
+  height: 6.5rem;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Logo = styled.img`
+  width: 2.4rem;
+  height: 2.4rem;
+`;
+
+const BtnText = styled.div`
+  width: 19.7rem;
+  height: 5.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const TopText = styled.p`
+  ${({ theme }) => theme.fontStyles.basic.captionBold};
+  margin-left: 0.8rem;
+  color: white;
+`;
+
+const BottomText = styled.p`
+  ${({ theme }) => theme.fontStyles.main.headline6};
+  color: white;
+`;
+
+const YoutubeIconWrapper = styled.div`
+  width: 7rem;
+  height: 6.5rem;
+  border-left: 0.1rem solid white;
+`;
+
+const YoutubeIcon = styled.img`
+  width: 3.825rem;
+  height: 2.677rem;
+  margin-left: 2.784rem;
+  margin-top: 1.911rem;
 `;
