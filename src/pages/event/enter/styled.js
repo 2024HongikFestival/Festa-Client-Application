@@ -163,6 +163,7 @@ export const TextCount = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin-top: 0.4rem;
 `;
 
 export const EnterButton = styled.button`
