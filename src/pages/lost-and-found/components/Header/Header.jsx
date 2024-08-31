@@ -1,5 +1,5 @@
-import hambergerMenu from '@/assets/webp/layouts/hambergerMenu_black.webp';
-import hiuLogo from '@/assets/webp/layouts/hiulogo_black.webp';
+import hambergerMenu from '@/assets/webps/layouts/hambergerMenuBlack.webp';
+import hiuLogo from '@/assets/webps/layouts/hiulogoBlack.webp';
 import * as S from './Header.styled';
 
 export default function Header() {
