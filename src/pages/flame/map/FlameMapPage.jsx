@@ -1,14 +1,14 @@
 // 와디페 사이트맵
 // url: /flame/map
-import { BoothBox, BoothOne, MapBox, MapTitle, MapWrapper } from './styles.js';
-
+import { BoothBox, BoothOne, MapBox, MapImgBox, MapTitle, MapWrapper } from './styles.js';
 import React from 'react';
+import mapImg from '/src/assets/webps/map/sitemap.webp';
 
 const FlameMapPage = () => {
   return (
     <MapWrapper>
       <MapTitle>사이트맵</MapTitle>
-      <MapBox></MapBox>
+      <MapImgBox src={mapImg} />
       <BoothBox>
         <BoothOne>A. 금군양조</BoothOne>
         <BoothOne>B. 레드불</BoothOne>
