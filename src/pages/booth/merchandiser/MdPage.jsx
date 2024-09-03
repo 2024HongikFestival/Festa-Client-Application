@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
-import error from '@/assets/webps/booth/error.webp';
+import error from '@/assets/webps/booth/icon/error.webp';
 import MD from '@/components/booth/MD';
 import { MdList } from '@/constants/booth/mdList';
 import * as S from './MdPage.styled';

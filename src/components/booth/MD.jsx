@@ -52,24 +52,22 @@ export default function MD({ img, name, price, width, height }) {
   const imageTop = imageTopMap[img];
 
   return (
-    <>
-      <ContentContainer>
-        <MdWrapper>
-          <Radial>
-            <Frame width={width} height={height} top={imageTop}>
-              <Img src={imageSrc} alt="mdImg" top={imageTop} width={width} height={height} />
-            </Frame>
-          </Radial>
-          <Desc>
-            <TextContainer>
-              <Text kind={'limited'}>한정판매</Text>
-              <Text kind={'mdName'}>{name}</Text>
-              <Text kind={'price'}>₩ {formattedPrice}</Text>
-            </TextContainer>
-          </Desc>
-        </MdWrapper>
-      </ContentContainer>
-    </>
+    <ContentContainer>
+      <MdWrapper>
+        <Radial>
+          <Frame width={width} height={height} top={imageTop}>
+            <Img src={imageSrc} alt="mdImg" top={imageTop} width={width} height={height} />
+          </Frame>
+        </Radial>
+        <Desc>
+          <TextContainer>
+            <Text kind={'limited'}>한정판매</Text>
+            <Text kind={'mdName'}>{name}</Text>
+            <Text kind={'price'}>₩ {formattedPrice}</Text>
+          </TextContainer>
+        </Desc>
+      </MdWrapper>
+    </ContentContainer>
   );
 }
 
