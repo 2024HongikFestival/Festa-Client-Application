@@ -186,6 +186,14 @@ const theme = {
       line-height: 150%;
       letter-spacing: -0.0016rem;
     `,
+      body1Semi: `
+      font-family: 'Pretendard', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0016rem;
+    `,
       body1Med: `
       font-family: 'Pretendard', sans-serif;
       font-size: 1.6rem;
