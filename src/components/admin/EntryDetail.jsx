@@ -5,16 +5,6 @@ import { adminAxiosInstance } from '@/api/axios';
 import deleteBtn from '@/assets/webps/admin/deleteBtn.webp';
 import Popup from './Popup';
 
-const formatPhoneNumber = (phoneNumber) => {
-  const cleanedNumber = phoneNumber.replace(/-/g, '');
-  const match = cleanedNumber.match(/^(\d{3})(\d{4})(\d{4})$/);
-  if (match) {
-    return `${match[1]}${match[2]}${match[3]}`;
-  }
-
-  return phoneNumber;
-};
-
 const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
@@ -267,6 +257,16 @@ EntryDetail.propTypes = {
 };
 
 export default EntryDetail;
+
+const formatPhoneNumber = (phoneNumber) => {
+  const cleanedNumber = phoneNumber.replace(/-/g, '');
+  const match = cleanedNumber.match(/^(\d{3})(\d{4})(\d{4})$/);
+  if (match) {
+    return `${match[1]}${match[2]}${match[3]}`;
+  }
+
+  return phoneNumber;
+};
 
 const ListContainer = styled.div`
   display: flex;
