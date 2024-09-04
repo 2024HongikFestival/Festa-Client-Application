@@ -240,8 +240,8 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
           }
           onConfirm={confirmPopup}
           onCancel={closePopup}
-          confirmText="확인"
-          cancelText="취소"
+          confirmText={popupType === 'undo' ? '당첨 취소' : '추첨'}
+          cancelText={popupType === 'undo' ? '아니요' : '취소'}
         />
       )}
     </ListContainer>
