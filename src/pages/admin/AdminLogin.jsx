@@ -30,10 +30,11 @@ const AdminLogin = ({ onLoginSuccess }) => {
   };
 
   useEffect(() => {
-    if (!checkTokenValidity()) {
+    if (checkTokenValidity()) {
+      navigate('/admin');
       setResetKey((prevKey) => prevKey + 1); // 키 값을 변경하여 컴포넌트를 리렌더링
     }
-  }, []);
+  }, [navigate]);
 
   const adminAccess = async (username, password) => {
     try {

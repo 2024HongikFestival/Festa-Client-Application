@@ -148,10 +148,10 @@ const EntryName = styled.span`
 const EntryInfo = styled.span`
   height: 2.08rem;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   ${(props) => props.theme.fontStyles.body2Med};
   color: ${(props) => props.theme.colors.gray40};
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;
 
 const InfoWrapper = styled.div`
@@ -198,4 +198,5 @@ const LoadMoreWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 8rem;
 `;

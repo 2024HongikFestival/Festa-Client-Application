@@ -213,6 +213,7 @@ const ListContainer = styled.div`
 
 const Container = styled.div`
   width: 32rem;
+  margin-bottom: 7.7rem;
   display: flex;
   flex-direction: column;
 `;
