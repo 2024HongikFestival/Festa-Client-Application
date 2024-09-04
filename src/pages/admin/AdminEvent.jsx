@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import AdminLogin from './AdminLogin';
 import Participants from '@/components/admin/Participants';
 import Winners from '@/components/admin/Winners';
+import EntryDetail from '@/components/admin/EntryDetail';
 
 const AdminEvent = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeComponent, setActiveComponent] = useState('participants');
   const [isDetailView, setIsDetailView] = useState(false);
-  const [selectedListId, setSelectedListId] = useState(null);
+  const [selectedList, setSelectedList] = useState(null);
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const AdminEvent = () => {
       setIsLoggedIn(true);
     }
   }, []);
+
   if (!isLoggedIn) {
     return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
   }
@@ -33,30 +35,21 @@ const AdminEvent = () => {
             </Title>
           </SelectBar>
         )}
-        {/* {activeComponent === 'participants' && */}
-        {/* //   (isDetailView ? ( */}
-        {/* //     <PostDetail */}
-        {/* //       postId={selectedListId}
-        //       onBack={() => {
-        //         setIsDetailView(false);
-        //         setSelectedListId(null);
-        //       }}
-        //     />
-        //   ) : (
-        //     <Participants setIsDetailView={setIsDetailView} setPostId={setSelectedListId} lists={lists} />
-        //   ))}
-        // {activeComponent === 'winners' &&
-        //   (isDetailView ? ( */}
-        {/* //     <PostDetail
-        //       postId={selectedListId}
-        //       onBack={() => {
-        //         setIsDetailView(false);
-        //         setSelectedListId(null);
-        //       }}
-        //     />
-        //   ) : (
-        //     <Winners setIsDetailView={setIsDetailView} setPostId={setSelectedListId} />
-        //   ))} */}
+        {activeComponent === 'participants' &&
+          (isDetailView ? (
+            selectedList && (
+              <EntryDetail
+                prizeName={selectedList.prizeName}
+                title={selectedList.prizeName}
+                titleDescription={`수량 ${selectedList.quantity}개 / ${selectedList.entryCount}명 응모`}
+                quantity={selectedList.quantity}
+                entryCount={selectedList.entryCount}
+              />
+            )
+          ) : (
+            <Participants setIsDetailView={setIsDetailView} setPostId={setSelectedList} lists={lists} />
+          ))}
+        {activeComponent === 'winners' && <Winners setIsDetailView={setIsDetailView} setPostId={setSelectedList} />}
       </Container>
     </>
   );
@@ -65,6 +58,8 @@ export default AdminEvent;
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.gray10};
+
+  min-height: 100vh;
 `;
 
 const SelectBar = styled.div`

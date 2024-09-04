@@ -1,40 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import morebtn from '@/assets/webps/admin/more_vert.webp';
-import { adminAxiosInstance, axiosInstance } from '@/api/axios';
 import PropTypes from 'prop-types';
-import Popup from './Popup';
+import { adminAxiosInstance } from '@/api/axios';
 
-const Participants = () => {
+const Participants = ({ setIsDetailView, setPostId, lists }) => {
   const [allLists, setAllLists] = useState([]);
   const [displayedLists, setDisplayedLists] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  const [entriesPerpage] = useState(10);
   const [loading, setLoading] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupType, setPopupType] = useState(null);
-  const [selectedId, setSelectedId] = useState(null);
-
   useEffect(() => {
     window.scrollTo(0, 0);
     getLists();
   }, []);
 
   useEffect(() => {
-    setDisplayedLists(allLists.slice(0, currentPage * postsPerPage));
+    setDisplayedLists(allLists.slice(0, currentPage * entriesPerpage));
   }, [allLists, currentPage]);
 
   const getLists = async () => {
     const token = localStorage.getItem('accessToken');
     setLoading(true);
     try {
-      const response = await axiosInstance.get('/entries/prizes', {
+      const response = await adminAxiosInstance.get('/admin/entries/prizes', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setAllLists(response.data.data);
-      setDisplayedLists(response.data.data.slice(0, postsPerPage));
+      setDisplayedLists(response.data.data.slice(0, entriesPerpage));
     } catch (error) {
       console.error('Error fetching URL: ', error);
     } finally {
@@ -45,92 +39,59 @@ const Participants = () => {
   const loadMore = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
-
-  const handleClick = (id) => {
-    setSelectedId(id);
-    setShowPopup(true);
-  };
-
-  const handleDeletePost = () => {
-    // Handle delete post logic here
-    setShowPopup(false);
-  };
-
-  const handleBlockAndDelete = () => {
-    // Handle block and delete logic here
-    setShowPopup(false);
-  };
-
-  const handleUndoDelete = () => {
-    // Handle undo delete logic here
-    setShowPopup(false);
+  const handleClick = (entry) => {
+    setPostId({
+      prizeName: entry.prizeName,
+      quantity: entry.quantity,
+      entryCount: entry.entryCount,
+    });
+    setIsDetailView(true); // 상세 보기로 전환
   };
 
   return (
     <>
-      <PostContainer>
+      <EntryContainer>
         {Array.isArray(displayedLists) && displayedLists.length > 0 ? (
-          displayedLists.map((lost) => (
-            <Container key={lost.lostId} onClick={() => handleClick(lost.lostId)} $hasborder={false}>
-              <Img src={lost.imageUrl} alt={lost.content} />
-              <PostInfo>
-                <Status $loststatus={lost.lostStatus}>
-                  &middot; {lost.lostStatus === 'PUBLISHED' ? '추첨 완료' : '추첨 전'}
+          displayedLists.map((entry, index) => (
+            <Container key={entry.id || index} onClick={() => handleClick(entry)}>
+              <Img src={entry.imageUrl} alt={entry.prizeName} />
+              <InfoWrapper>
+                <Status $drawstatus={entry.drawCompleted ? 'PUBLISHED' : 'NOT_PUBLISHED'}>
+                  &middot; {entry.drawCompleted ? '추첨 완료' : '추첨 전'}
                 </Status>
-                <UserInfo>
-                  <UserName>1번 경품 이름</UserName>
-                </UserInfo>
+                <NameBox>
+                  <EntryName>{entry.prizeName}</EntryName>
+                </NameBox>
                 <Wrapper>
-                  <PostDate>수량 3개 / 119명 응모</PostDate>
+                  <EntryInfo>
+                    수량 {entry.quantity}개 / {entry.entryCount}명 응모
+                  </EntryInfo>
                 </Wrapper>
-              </PostInfo>
+              </InfoWrapper>
             </Container>
           ))
         ) : (
           <p style={{ padding: '1rem' }}>응모 목록이 존재하지 않습니다.</p>
         )}
-        <LoadMoreWrapper $showbutton={displayedLists.length < allLists.length}>
-          {displayedLists.length < allLists.length && (
+        <LoadMoreWrapper $showbutton={displayedLists.length < lists.length}>
+          {displayedLists.length < lists.length && (
             <LoadMoreButton onClick={loadMore} disabled={loading}>
               {loading ? 'Loading...' : '더보기'}
             </LoadMoreButton>
           )}
         </LoadMoreWrapper>
-        {showPopup && (
-          <Popup
-            message={
-              popupType === 'delete' ? (
-                '글을 삭제할까요?'
-              ) : popupType === 'blockAndDelete' ? (
-                <>
-                  사용자를 차단하고
-                  <br />
-                  해당 글을 삭제할까요?
-                </>
-              ) : (
-                '삭제된 게시물을 복구할까요?'
-              )
-            }
-            onConfirm={
-              popupType === 'delete'
-                ? handleDeletePost
-                : popupType === 'blockAndDelete'
-                  ? handleBlockAndDelete
-                  : handleUndoDelete
-            }
-            onCancel={() => setShowPopup(false)}
-            confirmText={popupType === 'delete' ? '삭제' : popupType === 'blockAndDelete' ? '차단 후 삭제' : '복구'}
-            cancelText="취소"
-          />
-        )}
-      </PostContainer>
+      </EntryContainer>
     </>
   );
 };
 
 export default Participants;
-
-const PostContainer = styled.div`
+Participants.propTypes = {
+  setIsDetailView: PropTypes.func.isRequired,
+  setPostId: PropTypes.func.isRequired,
+  lists: PropTypes.array.isRequired,
+};
+const EntryContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -168,7 +129,7 @@ const Img = styled.img`
   object-fit: cover;
 `;
 
-const UserInfo = styled.span`
+const NameBox = styled.span`
   display: flex;
   height: 2.4rem;
   flex-direction: row;
@@ -177,14 +138,14 @@ const UserInfo = styled.span`
   gap: 0.8rem;
 `;
 
-const UserName = styled.span`
+const EntryName = styled.span`
   ${(props) => props.theme.fontStyles.body2Bold};
   color: ${(props) => props.theme.colors.gray60};
   font-size: 1.4rem;
   font-weight: 700;
 `;
 
-const PostDate = styled.span`
+const EntryInfo = styled.span`
   height: 2.08rem;
   display: flex;
   align-items: flex-end;
@@ -193,24 +154,27 @@ const PostDate = styled.span`
   font-size: 1.4rem;
 `;
 
-const PostInfo = styled.div`
+const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 24rem;
+  justify-content: center;
   padding-top: 0.8rem;
   padding-right: 1.6rem;
   position: relative;
 `;
 
 const Status = styled.span`
+  position: absolute;
   display: flex;
+  right: 1.6rem;
   height: 1.8rem;
   justify-content: flex-end;
   align-items: center;
   ${(props) => props.theme.fontStyles.captionBold};
   text-align: right;
   font-size: 1.2rem;
-  color: ${(props) => (props.$loststatus === 'PUBLISHED' ? '#3586D7' : '#888E94')};
+  color: ${(props) => (props.$drawstatus === 'PUBLISHED' ? '#3586D7' : '#888E94')};
   font-weight: 700;
 `;
 
@@ -234,43 +198,4 @@ const LoadMoreWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const MoreBtn = styled.div`
-  background: url(${morebtn});
-  width: 2.4rem;
-  height: 2.08rem;
-  z-index: 10;
-  background-repeat: no-repeat;
-  background-size: contain;
-`;
-
-const OptionsContainer = styled.div`
-  position: absolute;
-  top: calc(100% - 0.8rem); /* calc(100% - 0.5rem) → calc(100% - 0.8rem) */
-  right: -1rem; /* -0.625rem → -1rem */
-  background-color: ${(props) => props.theme.colors.white};
-  width: 11.2rem; /* 7rem → 11.2rem */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 11;
-`;
-
-const OptionButton = styled.button`
-  ${(props) => props.theme.fontStyles.basic.captionMed};
-  width: 100%;
-  padding: 0.8rem 1.6rem; /* 0.5rem 1rem → 0.8rem 1.6rem */
-  height: 3.4rem; /* 2.125rem → 3.4rem */
-  border: none;
-  font-size: 1.2rem; /* 0.75rem → 1.2rem */
-  background-color: ${(props) => props.theme.colors.gray60};
-  color: ${(props) => props.theme.colors.white};
-  cursor: pointer;
-  text-align: left;
-  z-index: 11;
-
-  &:hover {
-    background-color: ${(props) => props.theme.colors.gray70};
-  }
 `;
