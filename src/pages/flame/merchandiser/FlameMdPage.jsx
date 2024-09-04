@@ -40,7 +40,7 @@ import md8 from '@/assets/webps/wdfMD/md8.webp';
 import md9 from '@/assets/webps/wdfMD/md9.webp';
 import md10 from '@/assets/webps/wdfMD/md10.webp';
 import alertImage from '@/assets/webps/wdfMD/error.webp';
-import productsData from '@/assets/static/wdfMD/data.json';
+import productsData from '@/constants/wdfMD/data.json';
 
 const FlameMdPage = () => {
   const [products, setProducts] = useState([]);
