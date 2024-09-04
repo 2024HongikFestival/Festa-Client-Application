@@ -74,16 +74,16 @@ const LineupPage = () => {
       <Title>라인업</Title>
       <DayContainer>
         <DayButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('Day1')}>
-          <span>DAY 1</span>
-          <span>9.25 (수)</span>
+          <span className="day">DAY 1</span>
+          <span className="date">9.25 (수)</span>
         </DayButton>
         <DayButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('Day2')}>
-          <span>DAY 2</span>
-          <span>9.26 (목)</span>
+          <span className="day">DAY 2</span>
+          <span className="date">9.26 (목)</span>
         </DayButton>
         <DayButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('Day3')}>
-          <span>DAY 3</span>
-          <span>9.27 (금)</span>
+          <span className="day">DAY 3</span>
+          <span className="date">9.27 (금)</span>
         </DayButton>
       </DayContainer>
       <CardContainer>{renderCards()}</CardContainer>

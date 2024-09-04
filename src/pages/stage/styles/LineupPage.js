@@ -26,12 +26,16 @@ export const DayContainer = styled.div`
 export const DayButton = styled.button`
   background: none;
   border: none;
+  color: ${(props) => (props.selected ? props.theme.colors.hongikBlue : props.theme.colors.gray50)};
   cursor: pointer;
   padding: 0;
-  color: ${(props) => (props.selected ? props.theme.colors.hongikBlue : props.theme.colors.gray60)};
-  span {
+  .day {
     display: block;
-    ${(props) => props.theme.fontStyles.basic.subHeadBold};
+    ${(props) => props.theme.fontStyles.basic.body2Bold}; // DAY 1 스타일
+  }
+  .date {
+    display: block;
+    ${(props) => props.theme.fontStyles.basic.subHeadBold}; // 9.25 (수) 스타일
   }
 `;
 export const CardContainer = styled.div`
