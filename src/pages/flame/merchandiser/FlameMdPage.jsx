@@ -47,9 +47,9 @@ const FlameMdPage = () => {
 
   useEffect(() => {
     setProducts(productsData.products);
-    AOS.init({
-      duration: 900, // 애니메이션 지속 시간 (밀리초)
-    });
+    // AOS.init({
+    //   duration: 900, // 애니메이션 지속 시간 (밀리초)
+    // });
   }, []);
 
   const imageMap = {

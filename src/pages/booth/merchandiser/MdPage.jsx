@@ -36,7 +36,7 @@ export default function MdPage() {
               height={item.height}
             />
           ) : (
-            <div key={index} data-aos="flip-up">
+            <div key={index} data-aos="zoom-in-up">
               <MD img={item.img} name={item.name} price={item.price} width={item.width} height={item.height} />
             </div>
           )
