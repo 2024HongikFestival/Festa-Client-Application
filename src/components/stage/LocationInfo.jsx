@@ -8,12 +8,14 @@ const LocationInfo = () => {
   return (
     <Container>
       <MapContainer>
-        <Map>
+        <MapBox>
           <MapTitle>무대 주변 지도</MapTitle>
-        </Map>
-        <Map>
+          <Map></Map>
+        </MapBox>
+        <MapBox>
           <MapTitle>출입구 정보</MapTitle>
-        </Map>
+          <Map></Map>
+        </MapBox>
       </MapContainer>
       <InfoContainer>
         <Info>
@@ -43,29 +45,34 @@ const MapContainer = styled.div`
 `;
 const InfoContainer = styled.div`
   display: flex;
-  padding: 1.6rem 7.2rem;
+  padding: 1.8rem 7.2rem;
   justify-content: center;
   align-items: center;
-  border-radius: 1.2rem;
+  border-radius: 1.6rem;
   background-color: ${(props) => props.theme.colors.white};
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12); */
 `;
-const Map = styled.div`
+const MapBox = styled.div`
   display: flex;
   padding: 2.4rem 0;
   flex-direction: column;
+  gap: 1.6rem;
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  border-radius: 1.2rem;
+  border-radius: 1.6rem;
   background-color: ${(props) => props.theme.colors.white};
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12); */
 `;
 const MapTitle = styled.p`
   text-align: center;
   color: ${(props) => props.theme.colors.gray100};
   text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.25);
   ${(props) => props.theme.fontStyles.main.headline6};
+`;
+const Map = styled.div`
+  width: 33.5rem;
+  height: 25rem;
 `;
 const Info = styled.div`
   display: flex;
@@ -87,7 +94,7 @@ const Highlight = styled.span`
 `;
 const Button = styled.button`
   width: 11.4rem;
-  height: 4.4rem;
+  height: 4rem;
   padding: 0.8rem 2.9rem;
   border-radius: 10rem;
   background-color: ${(props) => props.theme.colors.hongikBlue};

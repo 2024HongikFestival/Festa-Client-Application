@@ -31,43 +31,43 @@ const StageSchedule = () => {
     Day1: [
       {
         id: '1',
-        stageName: 'Summer Music Festival',
+        stageName: '학부 찬조 공연',
         totalDuration: '17:30 ~ 18:30',
-        artists: ['The Rolling Waves', 'Echoes of Harmony', 'Sunset Riders', 'Lunar Groove'],
+        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
       },
       {
         id: '2',
-        stageName: 'Acoustic Vibes Evening',
+        stageName: '재주꾼 선발 대회',
         totalDuration: '15:00 ~ 17:30',
-        artists: ['Whispering Pines', 'The Acoustic Strings', 'Harmony & Co.', 'Folk Stories'],
+        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
       },
     ],
     Day2: [
       {
         id: '3',
-        stageName: 'Night Beats Extravaganza',
+        stageName: '연예인 초청 무대',
         totalDuration: '19:00 ~ 23:00',
-        artists: ['Moonlight Symphony', 'Electric Dreams', 'Starlight Jazz', 'Aurora Beats'],
+        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
       },
       {
         id: '4',
-        stageName: 'Rock Legends Live',
+        stageName: '학부 찬조 공연',
         totalDuration: '18:00 ~ 21:30',
-        artists: ['Thunderstruck', 'Wild Hearts', 'The Screaming Eagles', 'Metal Warriors'],
+        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
       },
     ],
     Day3: [
       {
         id: '5',
-        stageName: 'Jazz and Blues Night',
+        stageName: '재주꾼 선발 대회',
         totalDuration: '20:00 ~ 23:00',
-        artists: ['Blue Notes Trio', 'The Swing Kings', 'Jazz Junction', 'Blues Brothers Revival'],
+        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
       },
       {
         id: '6',
-        stageName: 'Indie Spotlight',
+        stageName: '연예인 초청 공연',
         totalDuration: '17:00 ~ 19:00',
-        artists: ['The Indie Collective', 'Silent Echoes', 'Retro Revival', 'Neon Nightmares'],
+        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
       },
     ],
   };
@@ -93,16 +93,16 @@ const StageSchedule = () => {
     <Container>
       <DayContainer>
         <DayButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('Day1')}>
-          <span>DAY 1</span>
-          <span>9.25 (수)</span>
+          <span className="day">DAY 1</span>
+          <span className="date">9.25 (수)</span>
         </DayButton>
         <DayButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('Day2')}>
-          <span>DAY 2</span>
-          <span>9.26 (목)</span>
+          <span className="day">DAY 2</span>
+          <span className="date">9.26 (목)</span>
         </DayButton>
         <DayButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('Day3')}>
-          <span>DAY 3</span>
-          <span>9.27 (금)</span>
+          <span className="day">DAY 3</span>
+          <span className="date">9.27 (금)</span>
         </DayButton>
       </DayContainer>
       <StageContainer>{renderStage()}</StageContainer>
@@ -122,7 +122,7 @@ const DayContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4.8rem;
+  gap: 3.2rem;
 `;
 const StageContainer = styled.div`
   display: flex;
@@ -130,9 +130,9 @@ const StageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 1.2rem;
+  border-radius: 1.6rem;
   background-color: ${(props) => props.theme.colors.white};
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12); */
 `;
 const DayButton = styled.button`
   background: none;
@@ -140,12 +140,15 @@ const DayButton = styled.button`
   color: ${(props) => (props.selected ? props.theme.colors.hongikBlue : props.theme.colors.gray50)};
   cursor: pointer;
   padding: 0;
-  span {
+  .day {
     display: block;
-    ${(props) => props.theme.fontStyles.basic.subHeadBold};
+    ${(props) => props.theme.fontStyles.basic.body2Bold}; // DAY 1 스타일
+  }
+  .date {
+    display: block;
+    ${(props) => props.theme.fontStyles.basic.subHeadBold}; // 9.25 (수) 스타일
   }
 `;
-// 수정해야함
 const Stage = styled.div`
   width: 28.7rem;
   display: flex;
@@ -159,6 +162,7 @@ const StageBox = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 0.4rem;
+  width: 11.8rem;
 `;
 const StageName = styled.h2`
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
@@ -172,6 +176,7 @@ const ArtistList = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  align-items: flex-start; // 추후 변경 예정 (정렬 관련)
   gap: 0.8rem;
 `;
 const ArtistItem = styled.li`
