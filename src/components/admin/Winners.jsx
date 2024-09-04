@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { adminAxiosInstance } from '@/api/axios';
 import deleteBtn from '@/assets/webps/admin/deleteBtn.webp';
+import * as XLSX from 'xlsx';
 
 const prizeMapping = {
   에어팟: 'A',
@@ -76,6 +77,25 @@ const Winners = () => {
 
   const groupedWinners = getGroupedWinners();
 
+  const handleDownload = () => {
+    const formattedData = winners.map((winner) => {
+      const prizeName = Object.keys(prizeMapping).find((key) => prizeMapping[key] === winner.prize);
+
+      return {
+        당첨자: winner.name,
+        전화번호: winner.phone,
+        '당첨 상품': prizeName, // 상품 이름 매핑
+        '당첨 여부': winner.winner ? 'O' : 'X',
+        '중복 여부': winner.duplicate ? 'O' : 'X',
+      };
+    });
+
+    const worksheet = XLSX.utils.json_to_sheet(formattedData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, '대동제 이벤트 당첨자');
+    XLSX.writeFile(workbook, '대동제 이벤트 당첨자.xlsx');
+  };
+
   const handleCancelWinner = async (entryId) => {
     if (!entryId) return;
 
@@ -130,7 +150,7 @@ const Winners = () => {
         ))}
       </Container>
       <ButtonContainer>
-        <PrintButton>당첨자 정보 출력</PrintButton>
+        <PrintButton onClick={handleDownload}>당첨자 정보 출력</PrintButton>
       </ButtonContainer>
     </ListContainer>
   );
