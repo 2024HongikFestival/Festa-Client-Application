@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { adminAxiosInstance } from '@/api/axios';
 import deleteBtn from '@/assets/webps/admin/deleteBtn.webp';
+import Popup from './Popup';
 
 const formatPhoneNumber = (phoneNumber) => {
   const cleanedNumber = phoneNumber.replace(/-/g, '');
@@ -22,6 +23,9 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
   const [hasMore, setHasMore] = useState(true);
   const [drawnCount, setDrawnCount] = useState(0);
   const [showCancelButton, setShowCancelButton] = useState(false);
+  const [popupType, setPopupType] = useState(null); // 팝업 타입 상태 추가
+  const [selectedEntry, setSelectedEntry] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   const PAGE_SIZE = 10;
 
@@ -123,16 +127,20 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
     }
   };
 
-  const handleCancelWinner = async (entryId) => {
+  const handleCancelWinner = async () => {
+    if (!selectedEntry) return;
+
     try {
       const token = localStorage.getItem('accessToken');
-      await adminAxiosInstance.delete(`/admin/entries/${entryId}`, {
+      await adminAxiosInstance.delete(`/admin/entries/${selectedEntry.entryId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      const updatedList = list.map((item) => (item.entryId === entryId ? { ...item, winner: false } : item));
+      const updatedList = list.map((item) =>
+        item.entryId === selectedEntry.entryId ? { ...item, winner: false } : item
+      );
 
       const winners = updatedList.filter((item) => item.winner);
       const nonWinners = updatedList.filter((item) => !item.winner);
@@ -143,10 +151,35 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
       setDisplayedList(sortedList.slice(0, PAGE_SIZE));
       setDrawnCount(winners.length);
       setShowCancelButton(winners.length > 0);
+      setShowPopup(false);
     } catch (error) {
       console.error('Error canceling winner: ', error);
     }
   };
+
+  const openPopup = (type, entry = null) => {
+    setPopupType(type);
+    setSelectedEntry(entry);
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+    setSelectedEntry(null);
+    setPopupType(null);
+  };
+
+  const confirmPopup = () => {
+    if (popupType === 'undo') {
+      handleCancelWinner();
+    } else if (popupType === 'one') {
+      handleDraw('one');
+    } else if (popupType === 'full') {
+      handleDraw('all');
+    }
+    closePopup();
+  };
+
   const isSingleDrawEnabled = drawnCount < quantity;
   const isFullDrawEnabled = drawnCount === 0;
 
@@ -175,9 +208,7 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
               <Status $isWinner={item.winner}>{item.winner ? '당첨' : '응모'}</Status>
               <Name>{item.name}</Name>
               <Phone>{formatPhoneNumber(item.phone)}</Phone>
-              {item.winner && (
-                <CancelButton onClick={() => handleCancelWinner(item.entryId)} src={deleteBtn} alt="Cancel" />
-              )}
+              {item.winner && <CancelButton onClick={() => openPopup('undo', item)} src={deleteBtn} alt="Cancel" />}
             </List>
           ))
         ) : (
@@ -191,7 +222,7 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
       </Container>
       <ButtonContainer>
         <ActionButton
-          onClick={() => handleDraw('one')}
+          onClick={() => openPopup('one')}
           $buttonType="singleDraw"
           $isEnabled={isSingleDrawEnabled}
           $isComplete={isSingleDrawComplete}
@@ -200,7 +231,7 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
         </ActionButton>
 
         <ActionButton
-          onClick={() => handleDraw('all')}
+          onClick={() => openPopup('full')}
           $buttonType="fullDraw"
           $isEnabled={isFullDrawEnabled}
           $isComplete={isFullDrawComplete}
@@ -208,6 +239,21 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
           {isFullDrawComplete ? '추첨 완료' : '전체 추첨'}
         </ActionButton>
       </ButtonContainer>
+      {showPopup && (
+        <Popup
+          message={
+            popupType === 'undo'
+              ? `${selectedEntry?.name} 님의 당첨을 취소할까요?`
+              : popupType === 'one'
+                ? '경품 당첨자 1인을 추가 추첨합니다'
+                : '경품 당첨자를 추첨합니다'
+          }
+          onConfirm={confirmPopup}
+          onCancel={closePopup}
+          confirmText="확인"
+          cancelText="취소"
+        />
+      )}
     </ListContainer>
   );
 };
@@ -357,4 +403,5 @@ const ActionButton = styled.button`
 const CancelButton = styled.img`
   width: 2.4rem;
   height: 2.4rem;
+  cursor: pointer;
 `;

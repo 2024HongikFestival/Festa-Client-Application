@@ -118,6 +118,7 @@ const AdminMenuBar = ({
           <Menu
             onClick={() => {
               nav('/admin/event');
+              nav(0);
               closeMenu();
             }}
           >
