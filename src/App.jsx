@@ -33,7 +33,19 @@ import RedirectEvents from '@/auth/RedirectEvents';
 import RedirectLosts from '@/auth/RedirectLosts';
 import MdPage from '@/pages/booth/merchandiser/MdPage';
 
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      mirror: false,
+    });
+  }, []);
+
   return (
     <>
       <BrowserRouter>

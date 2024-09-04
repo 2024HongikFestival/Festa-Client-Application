@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/icon/error.webp';
@@ -19,31 +18,46 @@ export default function MdPage() {
         </S.InfoText>
         <S.GuideWrapper>
           <S.IconWrapper>
-            <S.Icon src={error} alt="errer" />
+            <S.Icon src={error} alt="error" />
           </S.IconWrapper>
           <S.Caption>현장 구매만 가능합니다.</S.Caption>
         </S.GuideWrapper>
       </ContentContainer>
       {/* MD 컴포넌트 */}
       <S.MDContainer>
-        {MdList.map((item, index) => (
-          <MD key={index} img={item.img} name={item.name} price={item.price} width={item.width} height={item.height} />
-        ))}
+        {MdList.map((item, index) =>
+          index === 0 ? (
+            <MD
+              key={index}
+              img={item.img}
+              name={item.name}
+              price={item.price}
+              width={item.width}
+              height={item.height}
+            />
+          ) : (
+            <div key={index} data-aos="flip-up">
+              <MD img={item.img} name={item.name} price={item.price} width={item.width} height={item.height} />
+            </div>
+          )
+        )}
       </S.MDContainer>
       {/* 유의사항 컴포넌트 */}
-      <ContentContainer>
-        <S.NoteContainer>
-          <S.NoteTitle>현장 구매시 확인해 주세요!</S.NoteTitle>
-          <S.NoteContentWrapper>
-            <S.NoteContent>&nbsp;• 계좌 이체 및 현금 결제만 가능합니다</S.NoteContent>
-            <S.NoteContent>&nbsp;• 구매 완료 시 환불, 교환, 취소 불가능합니다</S.NoteContent>
-            <S.NoteContent>
-              &nbsp;• 불량품은 현장에서 확인 후 <br />
-              <S.Hidden>•&nbsp;</S.Hidden> 바로 현장 관리 인원에게 말씀해 주시기 바랍니다
-            </S.NoteContent>
-          </S.NoteContentWrapper>
-        </S.NoteContainer>
-      </ContentContainer>
+      <div data-aos="fade-up">
+        <ContentContainer>
+          <S.NoteContainer>
+            <S.NoteTitle>현장 구매시 확인해 주세요!</S.NoteTitle>
+            <S.NoteContentWrapper>
+              <S.NoteContent>&nbsp;• 계좌 이체 및 현금 결제만 가능합니다</S.NoteContent>
+              <S.NoteContent>&nbsp;• 구매 완료 시 환불, 교환, 취소 불가능합니다</S.NoteContent>
+              <S.NoteContent>
+                &nbsp;• 불량품은 현장에서 확인 후 <br />
+                <S.Hidden>•&nbsp;</S.Hidden> 바로 현장 관리 인원에게 말씀해 주시기 바랍니다
+              </S.NoteContent>
+            </S.NoteContentWrapper>
+          </S.NoteContainer>
+        </ContentContainer>
+      </div>
     </S.Container>
   );
 }

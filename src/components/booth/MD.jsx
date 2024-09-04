@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import ContentContainer from '@/components/common/ContentContainer';
@@ -50,6 +53,10 @@ export default function MD({ img, name, price, width, height }) {
   const formattedPrice = price.toLocaleString();
   const imageSrc = imageMap[img];
   const imageTop = imageTopMap[img];
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   return (
     <ContentContainer>
