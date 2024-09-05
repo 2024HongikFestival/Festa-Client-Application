@@ -166,7 +166,7 @@ export const LostAndFoundPost = styled.article`
   background-image: url(${({ $imgSrc }) => $imgSrc});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 `;
 
 export const FooterWrapper = styled.footer`
