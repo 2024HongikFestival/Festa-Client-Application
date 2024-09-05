@@ -32,7 +32,7 @@ const Container = styled.div`
   margin: ${({ $showheader }) => ($showheader ? '5.6rem auto 0' : '0 auto 0')};
 
   ${(props) =>
-    props.$path === '/lost-and-found' &&
+    (props.$path === '/lost-and-found' || props.$path === '/lost-and-found/') &&
     css`
       background-image: url(${LostAndFoundBg});
       background-size: cover;

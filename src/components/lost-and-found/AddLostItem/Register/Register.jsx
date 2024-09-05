@@ -114,6 +114,7 @@ const Register = ({ imgSrc }) => {
   };
 
   const handleComplete = async () => {
+    console.log('보내는 이미지 url:', url);
     try {
       const response = await presigendAxiosInstance.post('/losts', {
         foundLocation: foundLocation,

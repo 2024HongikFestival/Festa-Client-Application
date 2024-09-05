@@ -58,6 +58,20 @@ export const AddLostItemButton = styled.button`
   text-align: center;
 
   margin-bottom: 0.8rem;
+
+  @keyframes shadowBlink {
+    0% {
+      box-shadow: 0 0 2rem 1.5rem rgba(255, 255, 255, 0.8);
+    }
+    50% {
+      box-shadow: none;
+    }
+    100% {
+      box-shadow: 0 0 2rem 1.5rem rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  animation: shadowBlink 1.5s infinite;
 `;
 
 export const ButtonDetailWrapper = styled.div`
