@@ -119,12 +119,15 @@ const LostAndFoundPage = () => {
           </S.LostAndFoundSection>
         </S.Main>
 
-        <S.FooterWrapper>
-          <S.FooterLayout>
-            <S.ManGaeSvg />
-            <S.FooterIntroduction></S.FooterIntroduction>
-          </S.FooterLayout>
-        </S.FooterWrapper>
+        {/*
+          <S.FooterWrapper>
+            <S.FooterLayout>
+              <S.ManGaeSvg />
+              <S.FooterIntroduction></S.FooterIntroduction>
+            </S.FooterLayout>
+          </S.FooterWrapper>
+        */}
+
         <LostBottomSheet isOpen={isBottomSheetOpen} setIsOpen={setIsBottomSheetOpen} />
         <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
         <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} lostId={itemLostId} />
