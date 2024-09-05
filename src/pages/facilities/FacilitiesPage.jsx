@@ -1,10 +1,12 @@
 import ContentContainer from '@/components/common/ContentContainer';
 import PageTitle from '@/components/common/PageTitle';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FacilitiesPage = () => {
   const [selectedFacility, setSelectedFacility] = useState('toilet');
+  const nav = useNavigate();
 
   const handleToggleClick = (facility) => {
     setSelectedFacility(facility);
@@ -28,9 +30,70 @@ const FacilitiesPage = () => {
           </Toggle>
         </ContentContainer>
       </ToggleWrapper>
-      <ContentContainer>
-        <p>주점 위치</p>
-      </ContentContainer>
+      {selectedFacility === 'toilet' && (
+        <>
+          <ContentContainer>
+            <Title>
+              화장실 <span>위치</span>
+            </Title>
+            <Map />
+            <ToiletDetail>
+              <DetailItem>
+                <Number>1</Number>
+                <GrayBar />
+                <Building>M동</Building>
+                <Floor>1층</Floor>
+              </DetailItem>
+              <DetailItem>
+                <Number>2</Number>
+                <GrayBar />
+                <Building>Z4동</Building>
+                <Floor>1층 (장애인 화장실)</Floor>
+              </DetailItem>
+              <DetailItem>
+                <Number>3</Number>
+                <GrayBar />
+                <Building>Z4동</Building>
+                <Floor>2층</Floor>
+              </DetailItem>
+            </ToiletDetail>
+          </ContentContainer>
+          <MarginBottom />
+        </>
+      )}
+      {selectedFacility === 'medical' && (
+        <>
+          <ContentContainer>
+            <Title>
+              의료 시설 <span>위치</span>
+            </Title>
+            <Map />
+            <Description>
+              <span>정보통신센터(Q동) 계단 앞 건강관리센터</span>에서
+              <br />
+              비상시 응급 치료를 받으실 수 있습니다.
+            </Description>
+          </ContentContainer>
+          <MarginBottom />
+        </>
+      )}
+      {selectedFacility === 'lostAndFound' && (
+        <>
+          <ContentContainer>
+            <Title>
+              분실물 센터 <span>위치</span>
+            </Title>
+            <Map />
+            <Description>
+              <span>대운동장 구령대 중앙</span>에
+              <br />
+              분실물 센터가 위치해 있습니다.
+            </Description>
+          </ContentContainer>
+          <GoLostAndFoundBtn onClick={() => nav('/lost-and-found')}>온라인 분실물 센터 바로가기</GoLostAndFoundBtn>
+          <MarginBottom />
+        </>
+      )}
     </FacilitiesLayout>
   );
 };
@@ -47,7 +110,7 @@ const FacilitiesLayout = styled.div`
 `;
 
 const ToggleWrapper = styled.div`
-  margin-bottom: 2.8rem;
+  margin-bottom: 2rem;
 `;
 
 const Toggle = styled.div`
@@ -73,4 +136,103 @@ const ToggleBtn = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  cursor: pointer;
+`;
+
+const Title = styled.p`
+  margin-top: 2.4rem;
+  margin-bottom: 2rem;
+  ${(props) => props.theme.fontStyles.main.headline6};
+  color: ${(props) => props.theme.colors.hongikBlue};
+
+  span {
+    ${(props) => props.theme.fontStyles.main.headline6};
+    color: ${(props) => props.theme.colors.gray100};
+  }
+`;
+
+const Map = styled.div`
+  width: 100%;
+  height: 25rem;
+  border-top: 1px solid ${(props) => props.theme.colors.gray30};
+  border-bottom: 1px solid ${(props) => props.theme.colors.gray30};
+`;
+
+const ToiletDetail = styled.ul`
+  width: 100%;
+  padding: 1.8rem 2.4rem 2.4rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+`;
+
+const Number = styled.span`
+  margin-right: 0.9rem;
+  ${(props) => props.theme.fontStyles.basic.body1Bold};
+  color: ${(props) => props.theme.colors.gray100};
+`;
+
+const DetailItem = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+
+  &:nth-child(1) ${Number} {
+    margin-right: 0.9rem; /* 1의 Number와 GrayBar 간 간격 0.9rem */
+  }
+
+  &:nth-child(n + 2) ${Number} {
+    margin-right: 0.8rem; /* 2 이후 항목의 Number와 GrayBar 간 간격 0.8rem */
+  }
+`;
+
+const GrayBar = styled.div`
+  width: 0.1rem;
+  height: 1.6rem;
+  margin-right: 1.2rem;
+  background-color: ${(props) => props.theme.colors.gray40};
+`;
+
+const Building = styled.span`
+  ${(props) => props.theme.fontStyles.basic.body1Med};
+  color: ${(props) => props.theme.colors.gray100};
+  margin-right: 0.4rem;
+`;
+
+const Floor = styled.span`
+  ${(props) => props.theme.fontStyles.basic.body1Bold};
+  color: ${(props) => props.theme.colors.hongikBlue};
+`;
+
+const Description = styled.div`
+  width: 100%;
+  padding: 1.8rem 2.4rem 2.4rem;
+  ${(props) => props.theme.fontStyles.basic.body1Med};
+  color: ${(props) => props.theme.colors.gray70};
+  span {
+    ${(props) => props.theme.fontStyles.basic.body1Bold};
+    color: ${(props) => props.theme.colors.gray100};
+  }
+`;
+
+const GoLostAndFoundBtn = styled.div`
+  margin-top: 2.4rem;
+  cursor: pointer;
+  width: 33.5rem;
+  height: 5.2rem;
+  border-radius: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: ${(props) => props.theme.colors.hongikBlue};
+  ${(props) => props.theme.fontStyles.basic.subHeadBold};
+  color: ${(props) => props.theme.colors.white};
+  box-shadow: 0 0 2rem 0 rgba(255, 255, 255, 0.8);
+`;
+
+const MarginBottom = styled.div`
+  margin-bottom: 6.4rem;
 `;
