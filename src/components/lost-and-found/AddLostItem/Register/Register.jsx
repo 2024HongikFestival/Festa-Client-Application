@@ -120,7 +120,7 @@ const Register = ({ imgSrc }) => {
         foundLocation: foundLocation,
         storageLocation: storageLocation,
         content: content,
-        imageUrl: url,
+        imageUrl: url.split('?')[0],
       });
       //추후 로컬 스토리지에 있는 값 없애고, navigate 필요
       //객체 형태 좀 더 단순화 & 적절한 navigate 및 주석 해제 필요
