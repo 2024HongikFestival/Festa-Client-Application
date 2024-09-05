@@ -31,7 +31,7 @@ import StageInfoPage from '@/pages/stage/StageInfoPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RedirectEvents from '@/auth/RedirectEvents';
 import RedirectLosts from '@/auth/RedirectLosts';
-import MdPage from '@/pages/booth/merchandiser/MDpage';
+import MdPage from '@/pages/booth/merchandiser/MdPage';
 
 function App() {
   return (
