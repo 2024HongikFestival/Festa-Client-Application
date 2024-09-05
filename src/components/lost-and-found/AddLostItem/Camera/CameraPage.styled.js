@@ -3,7 +3,11 @@ import styled from 'styled-components';
 
 export const CameraPageWrapper = styled.div`
   width: 100%;
+  max-width: 76.8rem;
+  min-width: 37.5rem;
   min-height: calc(var(--vh, 1vh) * 100);
+
+  position: fixed;
 
   display: flex;
   flex-direction: column;
