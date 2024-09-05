@@ -73,7 +73,6 @@ const Register = ({ imgSrc }) => {
   useEffect(() => {
     const fetchPresignedUrl = async () => {
       const presignedUrl = await getPresignedUrl();
-      console.log('pre사인', presignedUrl);
       if (!presignedUrl) {
         localStorage.removeItem('lost_access_token');
       }
@@ -86,16 +85,6 @@ const Register = ({ imgSrc }) => {
     if (url) {
       putPresignedUrl(url, imgSrc);
     }
-  }, [url]);
-
-  useEffect(() => {
-    console.log(foundLocationLength);
-    console.log(storageLocationLength);
-    console.log(contentLength);
-  }, [inputState]);
-
-  useEffect(() => {
-    console.log(url);
   }, [url]);
 
   const handleFoundChange = (e) => {
@@ -114,7 +103,6 @@ const Register = ({ imgSrc }) => {
   };
 
   const handleComplete = async () => {
-    console.log('보내는 이미지 url:', url);
     try {
       const response = await presigendAxiosInstance.post('/losts', {
         foundLocation: foundLocation,
@@ -122,14 +110,15 @@ const Register = ({ imgSrc }) => {
         content: content,
         imageUrl: url.split('?')[0],
       });
-      //추후 로컬 스토리지에 있는 값 없애고, navigate 필요
-      //객체 형태 좀 더 단순화 & 적절한 navigate 및 주석 해제 필요
-      console.log(response);
+      localStorage.removeItem('kakao_code');
+      localStorage.removeItem('lost_access_token');
+      navigate('/lost-and-found');
+      window.location.reload();
     } catch (err) {
       console.log(err);
       alert('인증 만료 시간이 지났습니다. 재인증 후 시도해주세요');
-      //navigate('/lost-and-found');
-      //window.location.reload();
+      navigate('/lost-and-found');
+      window.location.reload();
     }
   };
 

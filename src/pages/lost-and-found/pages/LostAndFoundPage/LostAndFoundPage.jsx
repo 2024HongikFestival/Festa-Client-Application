@@ -50,7 +50,6 @@ const LostAndFoundPage = () => {
       const response = await axios.get('https://api.2024hongikfestival.com/losts', {
         params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
       });
-      console.log(response);
       setItems(response.data.data.losts);
       setTotalItems(response.data.data.losts.length);
       setTotalPages(response.data.data.totalPage);
