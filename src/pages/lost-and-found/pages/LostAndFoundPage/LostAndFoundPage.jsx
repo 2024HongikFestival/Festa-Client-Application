@@ -55,6 +55,8 @@ const LostAndFoundPage = () => {
       setTotalPages(response.data.data.totalPage);
     } catch (error) {
       console.error(error);
+      alert('해당 필터링에 해당되는 게시글이 존재하지 않습니다.');
+      window.location.reload();
     }
   };
 
