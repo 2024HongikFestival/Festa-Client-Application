@@ -1,10 +1,7 @@
-// 대동제 공연 (관람 정보)
-// url: /stage-info
-
 import React, { useState } from 'react';
-import { Container, SelectionBar, SelectionButton, Title } from './styles/StageInfoPage';
-import StageSchedule from './components/StageSchedule';
-import LocationInfo from './components/LocationInfo';
+import { Container, SelectionBar, SelectionButton, Title, ActiveBackground } from './styles/StageInfoPage';
+import StageSchedule from '@/components/stage/StageSchedule';
+import LocationInfo from '@/components/stage/LocationInfo';
 
 const StageInfoPage = () => {
   const [selectedTab, setSelectedTab] = useState('schedule');
@@ -14,6 +11,7 @@ const StageInfoPage = () => {
       <Container>
         <Title>관람 정보</Title>
         <SelectionBar>
+          <ActiveBackground activeTab={selectedTab} /> {/* 슬라이딩 배경 */}
           <SelectionButton onClick={() => setSelectedTab('schedule')} active={selectedTab === 'schedule'}>
             중앙 무대 일정
           </SelectionButton>
