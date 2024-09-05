@@ -54,7 +54,7 @@ export const AddLostItemButton = styled.button`
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
 
   color: ${({ theme }) => theme.colors.white};
-  ${({ theme }) => theme.fontStyles.main.headline6};
+  ${({ theme }) => theme.fontStyles.basic.subHeadBold};
   text-align: center;
 
   margin-bottom: 0.8rem;
