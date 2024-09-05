@@ -1,3 +1,6 @@
+import AddLostItemBg from '@/assets/webp/lost/AddLostItemBg.webp';
+import LostAndFoundBg from '@/assets/webp/lost/LostAndFoundBg.webp';
+
 import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import Footer from './Footer';
@@ -18,7 +21,6 @@ export default function Layout() {
       {showheader && <Header />}
       <Outlet />
       {!isAdminPath && !isCamera && <Footer />}
-
     </Container>
   );
 }
@@ -28,6 +30,22 @@ const Container = styled.div`
   max-width: 768px;
   min-height: calc(var(--vh, 1vh) * 100);
   margin: ${({ $showheader }) => ($showheader ? '5.6rem auto 0' : '0 auto 0')};
+
+  ${(props) =>
+    props.$path === '/lost-and-found' &&
+    css`
+      background-image: url(${LostAndFoundBg});
+      background-size: cover;
+      background-position: center;
+    `}
+
+  ${(props) =>
+    props.$path === '/lost-and-found/add' &&
+    css`
+      background-image: url(${AddLostItemBg});
+      background-size: cover;
+      background-position: center;
+    `}
 
   ${(props) =>
     (props.$path === '/likelion' || props.$path === '/gaehwa') &&
