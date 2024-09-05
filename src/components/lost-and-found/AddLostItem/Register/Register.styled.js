@@ -237,7 +237,7 @@ export const BlueButton = styled.button`
   align-self: stretch;
 
   border-radius: 0px 0px 12px 12px;
-  background: var(--HONGIK-BLUE, #1833db);
+  background: ${({ theme }) => theme.colors.hongikBlue};
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
 
   color: ${({ theme }) => theme.colors.white};

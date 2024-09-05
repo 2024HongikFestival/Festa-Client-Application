@@ -794,7 +794,7 @@ Error generating stack: `+o.message+`
   align-self: stretch;
 
   border-radius: 12px;
-  background: var(--HONGIK-BLUE, #1833db); //아직 theme에 없어서 하드 코딩
+  background: ${({ theme }) => theme.colors.hongikBlue}; //아직 theme에 없어서 하드 코딩
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
 
   color: ${({theme:e})=>e.colors.white};
@@ -1140,7 +1140,7 @@ Error generating stack: `+o.message+`
   align-self: stretch;
 
   border-radius: 0px 0px 12px 12px;
-  background: var(--HONGIK-BLUE, #1833db);
+  background: ${({ theme }) => theme.colors.hongikBlue};
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
 
   color: ${({theme:e})=>e.colors.white};
@@ -1153,7 +1153,7 @@ Error generating stack: `+o.message+`
   gap: 2rem;
 `,hw=w.span`
   align-self: stretch;
-  color: var(--Grayscale-Gray_100, var(--HONGIK-BLUE, #1833db));
+  color: var(--Grayscale-Gray_100, ${({ theme }) => theme.colors.hongikBlue});
   text-align: center;
   ${({theme:e})=>e.fontStyles.main.headline6};
 
@@ -1240,12 +1240,12 @@ Error generating stack: `+o.message+`
   gap: 0.8rem;
 
   white-space: nowrap;
-  color: var(--HONGIK-BLUE, #1833db);
+  color: ${({ theme }) => theme.colors.hongikBlue};
   ${({theme:e})=>e.fontStyles.basic.body1Bold};
 `,hf=w.div`
   width: 1px;
   height: 16px;
-  background: var(--HONGIK-BLUE, #1833db);
+  background: ${({ theme }) => theme.colors.hongikBlue};
 `,mf=w.span`
   width: 208px;
   white-space: nowrap;

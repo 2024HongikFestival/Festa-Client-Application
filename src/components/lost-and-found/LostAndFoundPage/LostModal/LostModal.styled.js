@@ -28,7 +28,7 @@ export const ModalLayout = styled.div`
   align-items: center;
   gap: ${({ $gap }) => $gap};
 
-  border-radius: 12px;
+  border-radius: 16px;
   background: ${({ theme }) => theme.colors.white};
 
   /* 대동제 요소 그림자 */
@@ -37,7 +37,7 @@ export const ModalLayout = styled.div`
 
 export const BlueButton = styled.button`
   width: 33.5rem;
-  height: 6.4rem;
+  height: 5.2rem;
 
   display: flex;
   padding: 2.4rem 4.3rem;
@@ -46,8 +46,8 @@ export const BlueButton = styled.button`
   gap: 1rem;
   align-self: stretch;
 
-  border-radius: 0px 0px 12px 12px;
-  background: var(--HONGIK-BLUE, #1833db);
+  border-radius: 0px 0px 16px 16px;
+  background: ${({ theme }) => theme.colors.hongikBlue};
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
 
   color: ${({ theme }) => theme.colors.white};
@@ -69,7 +69,7 @@ export const LostCenterLayout = styled.div`
 
 export const LostCenterTitle = styled.span`
   align-self: stretch;
-  color: var(--Grayscale-Gray_100, var(--HONGIK-BLUE, #1833db));
+  color: var(--Grayscale-Gray_100, ${({ theme }) => theme.colors.hongikBlue});
   text-align: center;
   ${({ theme }) => theme.fontStyles.main.headline6};
 
@@ -181,14 +181,14 @@ export const LostItemMainContentLeft = styled.div`
   gap: 0.8rem;
 
   white-space: nowrap;
-  color: var(--HONGIK-BLUE, #1833db);
+  color: ${({ theme }) => theme.colors.hongikBlue};
   ${({ theme }) => theme.fontStyles.basic.body1Bold};
 `;
 
 export const BlueLine = styled.div`
   width: 1px;
   height: 16px;
-  background: var(--HONGIK-BLUE, #1833db);
+  background: ${({ theme }) => theme.colors.hongikBlue};
 `;
 
 export const LostItemMainContentRight = styled.span`

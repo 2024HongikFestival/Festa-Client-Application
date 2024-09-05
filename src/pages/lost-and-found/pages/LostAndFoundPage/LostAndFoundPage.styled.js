@@ -42,15 +42,15 @@ export const ButtonWrapper = styled.div`
 export const AddLostItemButton = styled.button`
   display: flex;
   width: 33.5rem;
-  height: 6.4rem;
+  height: 5.2rem;
   padding: 2.4rem 4.3rem;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   align-self: stretch;
 
-  border-radius: 12px;
-  background: var(--HONGIK-BLUE, #1833db); //아직 theme에 없어서 하드 코딩
+  border-radius: 16px;
+  background: ${({ theme }) => theme.colors.hongikBlue}; //아직 theme에 없어서 하드 코딩 hongikBlue
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
 
   color: ${({ theme }) => theme.colors.white};
