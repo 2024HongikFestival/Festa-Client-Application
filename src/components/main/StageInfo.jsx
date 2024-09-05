@@ -39,10 +39,11 @@ const Container = styled.div`
 `;
 
 const Date = styled.div`
-  width: 3.5rem;
-  height: 4.9rem;
+  width: 3.9rem;
+  height: 4.5rem;
   display: flex;
   flex-direction: column;
+  text-align: center;
 `;
 
 const Day = styled.p`

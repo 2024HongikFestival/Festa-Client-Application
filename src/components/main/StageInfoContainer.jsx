@@ -47,7 +47,7 @@ const StageTitle = styled.div`
 const GoHibsBtn = styled.div`
   width: 33.6rem;
   height: 8.2rem;
-  margin-top: 3.6rem;
+  margin-top: 2rem;
   border: none;
   border-radius: 1.2rem;
   background: linear-gradient(91.85deg, rgba(3, 124, 158, 0.32) 5.35%, rgba(22, 170, 234, 0.32) 102.2%);
@@ -110,6 +110,7 @@ const TopText = styled.p`
 
 const BottomText = styled.p`
   ${({ theme }) => theme.fontStyles.main.headline6};
+  font-size: 1.8rem;
   color: white;
 `;
 
