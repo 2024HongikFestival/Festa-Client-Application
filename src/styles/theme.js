@@ -17,54 +17,54 @@ const theme = {
     flameBackgroundColor: '#010304',
     flameSubBackgroundColor: 'rgba(24, 24, 24, 0.60)',
     flameMainColor: '#F20D0D',
-    hongikBlue: '#1833DB',
+    hongikBlue: '#0276FE',
   },
   fontStyles: {
     main: {
       headline1: `
-      font-family: 'SCoreDream', sans-serif;;
+      font-family: 'Pretendard', sans-serif;;
       font-size: 3.6rem;
-      font-weight: 800;
+      font-weight: 900;
       font-style: normal;
       line-height: 150%;
       letter-spacing: -0.0036rem;
     `,
       headline2: `
-      font-family: 'SCoreDream', sans-serif;;
+      font-family: 'Pretendard', sans-serif;;
       font-size: 3.2rem;
-      font-weight: 800;
+      font-weight: 900;
       font-style: normal;
       line-height: 150%;
       letter-spacing: -0.0032rem;
     `,
       headline3: `
-      font-family: 'SCoreDream', sans-serif;;
+      font-family: 'Pretendard', sans-serif;;
       font-size: 2.8rem;
-      font-weight: 800;
+      font-weight: 900;
       font-style: normal;
       line-height: 150%;
       letter-spacing: -0.0028rem;
     `,
       headline4: `
-      font-family: 'SCoreDream', sans-serif;;
+      font-family: 'Pretendard', sans-serif;;
+      font-size: 2.4rem;
+      font-weight: 900;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0024rem;
+    `,
+      headline5: `
+      font-family: 'Pretendard', sans-serif;;
       font-size: 2.4rem;
       font-weight: 800;
       font-style: normal;
       line-height: 150%;
       letter-spacing: -0.0024rem;
     `,
-      headline5: `
-      font-family: 'SCoreDream', sans-serif;;
-      font-size: 2.4rem;
-      font-weight: 700;
-      font-style: normal;
-      line-height: 150%;
-      letter-spacing: -0.0024rem;
-    `,
       headline6: `
-      font-family: 'SCoreDream', sans-serif;;
+      font-family: 'Pretendard', sans-serif;;
       font-size: 2rem;
-      font-weight: 700;
+      font-weight: 800;
       font-style: normal;
       line-height: 150%;
       letter-spacing: -0.002rem;
@@ -182,6 +182,14 @@ const theme = {
       font-family: 'Pretendard', sans-serif;
       font-size: 1.6rem;
       font-weight: 700;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0016rem;
+    `,
+      body1Semi: `
+      font-family: 'Pretendard', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
       font-style: normal;
       line-height: 150%;
       letter-spacing: -0.0016rem;
