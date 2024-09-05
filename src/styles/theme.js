@@ -16,7 +16,7 @@ const theme = {
     makersBackgroundColor: '#121212',
     flameBackgroundColor: '#010304',
     flameSubBackgroundColor: 'rgba(24, 24, 24, 0.60)',
-    flameMainColor: '#f20d0d',
+    flameMainColor: '#F20D0D',
     hongikBlue: '#0276FE',
   },
   fontStyles: {
