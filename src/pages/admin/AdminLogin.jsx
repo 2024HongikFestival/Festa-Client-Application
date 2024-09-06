@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as jwt_decode from 'jwt-decode';
 
-const AdminLogin = ({ onLoginSuccess }) => {
+const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [resetKey, setResetKey] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   const checkTokenValidity = () => {
     const token = localStorage.getItem('accessToken');
@@ -18,23 +19,29 @@ const AdminLogin = ({ onLoginSuccess }) => {
 
     try {
       const decoded = jwt_decode(token);
+      console.log(decoded);
       const currentTime = Date.now() / 1000; // 현재 시간 (초 단위)
       if (decoded.exp < currentTime) {
         localStorage.removeItem('accessToken'); // 만료된 토큰 삭제
+        setError('세션이 만료되었습니다. 다시 로그인해 주세요.');
         return false;
       }
       return true;
     } catch (error) {
+      setError('유효하지 않은 토큰입니다. 다시 로그인해 주세요.');
       return false;
     }
   };
 
   useEffect(() => {
-    if (checkTokenValidity()) {
+    const tokenValid = checkTokenValidity();
+    setIsLoggedIn(tokenValid); // 유효한 토큰 여부에 따라 isLoggedIn 설정
+    if (!tokenValid) {
       navigate('/admin');
-      setResetKey((prevKey) => prevKey + 1); // 키 값을 변경하여 컴포넌트를 리렌더링
+    } else {
+      navigate('/admin/losts');
     }
-  }, [navigate]);
+  }, []);
 
   const adminAccess = async (username, password) => {
     try {
@@ -42,8 +49,8 @@ const AdminLogin = ({ onLoginSuccess }) => {
       if (response.status === 200) {
         const { accessToken } = response.data.data;
         localStorage.setItem('accessToken', accessToken);
-        onLoginSuccess();
-        navigate('/admin');
+        setIsLoggedIn(true);
+        navigate('/admin/losts');
       }
     } catch (err) {
       if (err.response) {
@@ -82,10 +89,6 @@ const AdminLogin = ({ onLoginSuccess }) => {
       <LoginButton onClick={() => adminAccess(username, password)}>Login</LoginButton>
     </LoginContainer>
   );
-};
-
-AdminLogin.propTypes = {
-  onLoginSuccess: PropTypes.func.isRequired,
 };
 
 export default AdminLogin;

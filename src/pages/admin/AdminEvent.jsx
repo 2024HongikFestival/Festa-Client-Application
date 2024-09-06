@@ -19,9 +19,6 @@ const AdminEvent = () => {
     }
   }, []);
 
-  if (!isLoggedIn) {
-    return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
-  }
   return (
     <>
       <Container>

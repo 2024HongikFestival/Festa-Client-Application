@@ -12,14 +12,15 @@ export default function Header() {
   const nav = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const isAdminPath =
+    location.pathname === '/admin' || location.pathname === '/admin/event' || location.pathname === '/admin/losts';
 
   const adminMenuRef = useRef(null);
 
   const useBlackImages = (path) => {
     // 검정색 홍익로고, 검정 메뉴바 로고 들어가는 path
-    const blackImagePaths = ['/admin', '/admin/event'];
+    const blackImagePaths = ['/admin/losts', '/admin/event'];
     return blackImagePaths.includes(path);
   };
   const blackImages = useBlackImages(location.pathname);
@@ -59,6 +60,13 @@ export default function Header() {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
+  }, []);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      setIsLoggedIn(true);
+    }
   }, []);
 
   return (
@@ -108,7 +116,7 @@ const AdminMenuBar = ({
         <PageMenu>
           <Menu
             onClick={() => {
-              nav('/admin');
+              nav('/admin/losts');
               nav(0);
               closeMenu();
             }}
@@ -179,7 +187,7 @@ const HeaderLayout = styled.div`
   z-index: 100;
 
   ${(props) =>
-    props.$path === '/admin' &&
+    props.$path === '/admin/losts' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
@@ -210,7 +218,7 @@ const HeaderBg = styled.div`
   align-items: center;
 
   ${(props) =>
-    props.$path === '/admin' &&
+    props.$path === '/admin/losts' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;

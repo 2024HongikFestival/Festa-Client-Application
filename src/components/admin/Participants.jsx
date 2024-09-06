@@ -56,17 +56,17 @@ const Participants = ({ setIsDetailView, setPostId, lists }) => {
             <Container key={entry.id || index} onClick={() => handleClick(entry)}>
               <Img src={entry.imageUrl} alt={entry.prizeName} />
               <InfoWrapper>
-                <Status $drawstatus={entry.drawCompleted ? 'PUBLISHED' : 'NOT_PUBLISHED'}>
-                  &middot; {entry.drawCompleted ? '추첨 완료' : '추첨 전'}
-                </Status>
-                <NameBox>
-                  <EntryName>{entry.prizeName}</EntryName>
-                </NameBox>
                 <Wrapper>
+                  <EntryName>{entry.prizeName}</EntryName>
                   <EntryInfo>
                     수량 {entry.quantity}개 / {entry.entryCount}명 응모
                   </EntryInfo>
                 </Wrapper>
+                <StatusBox>
+                  <Status $drawstatus={entry.drawCompleted ? 'PUBLISHED' : 'NOT_PUBLISHED'}>
+                    &middot; {entry.drawCompleted ? '추첨 완료' : '추첨 전'}
+                  </Status>
+                </StatusBox>
               </InfoWrapper>
             </Container>
           ))
@@ -103,11 +103,10 @@ const EntryContainer = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 1.6rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 14.5rem;
 `;
 
 const Container = styled.div`
@@ -129,13 +128,10 @@ const Img = styled.img`
   object-fit: cover;
 `;
 
-const NameBox = styled.span`
+const StatusBox = styled.span`
   display: flex;
-  height: 2.4rem;
-  flex-direction: row;
   align-items: center;
-  padding-left: 1.6rem;
-  gap: 0.8rem;
+  justify-content: center;
 `;
 
 const EntryName = styled.span`
@@ -143,12 +139,15 @@ const EntryName = styled.span`
   color: ${(props) => props.theme.colors.gray60};
   font-size: 1.4rem;
   font-weight: 700;
+  height: 2.1rem;
+  display: flex;
+  align-items: center;
 `;
 
 const EntryInfo = styled.span`
-  height: 2.08rem;
   display: flex;
   align-items: center;
+  height: 1.8rem;
   ${(props) => props.theme.fontStyles.body2Med};
   color: ${(props) => props.theme.colors.gray40};
   font-size: 1.2rem;
@@ -156,20 +155,15 @@ const EntryInfo = styled.span`
 
 const InfoWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 24rem;
-  justify-content: center;
-  padding-top: 0.8rem;
-  padding-right: 1.6rem;
-  position: relative;
+  justify-content: space-between;
+  padding: 0.8rem 1.6rem;
 `;
 
 const Status = styled.span`
-  position: absolute;
   display: flex;
-  right: 1.6rem;
   height: 1.8rem;
-  justify-content: flex-end;
   align-items: center;
   ${(props) => props.theme.fontStyles.captionBold};
   text-align: right;
