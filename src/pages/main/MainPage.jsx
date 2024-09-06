@@ -109,7 +109,7 @@ const LineupInfoWrapper = styled.div`
 `;
 
 const GoLineupPageBtn = styled.button`
-  margin-top: 4.4rem;
+  margin-top: 3.2rem;
   width: 33.5rem;
   height: 5.4rem;
   box-shadow: 0px 0px 0.8rem 0 rgba(0, 0, 0, 0.12);
