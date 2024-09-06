@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, SelectionBar, SelectionButton, Title, ActiveBackground } from './styles/StageInfoPage';
+import * as S from './styles/StageInfoPage';
 import StageSchedule from '@/components/stage/StageSchedule';
 import LocationInfo from '@/components/stage/LocationInfo';
 
@@ -8,20 +8,20 @@ const StageInfoPage = () => {
 
   return (
     <>
-      <Container>
-        <Title>관람 정보</Title>
-        <SelectionBar>
-          <ActiveBackground activeTab={selectedTab} /> {/* 슬라이딩 배경 */}
-          <SelectionButton onClick={() => setSelectedTab('schedule')} active={selectedTab === 'schedule'}>
+      <S.Container>
+        <S.Title>관람 정보</S.Title>
+        <S.SelectionBar>
+          <S.ActiveBackground activeTab={selectedTab} /> {/* 슬라이딩 배경 */}
+          <S.SelectionButton onClick={() => setSelectedTab('schedule')} active={selectedTab === 'schedule'}>
             중앙 무대 일정
-          </SelectionButton>
-          <SelectionButton onClick={() => setSelectedTab('location')} active={selectedTab === 'location'}>
+          </S.SelectionButton>
+          <S.SelectionButton onClick={() => setSelectedTab('location')} active={selectedTab === 'location'}>
             위치
-          </SelectionButton>
-        </SelectionBar>
+          </S.SelectionButton>
+        </S.SelectionBar>
         {selectedTab === 'schedule' && <StageSchedule />}
         {selectedTab === 'location' && <LocationInfo />}
-      </Container>
+      </S.Container>
     </>
   );
 };
