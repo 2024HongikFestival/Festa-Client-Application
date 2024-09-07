@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
-  const { t, i18n } = useTranslation();
   const [openAccordion, setOpenAccordion] = useState(null);
-  const [isKorActive, setIsKorActive] = useState(true); // language toggle
+  const [isKorActive, setIsKorActive] = useState(localStorage.getItem('language') === 'ko');
+  const { t, i18n } = useTranslation();
 
   // 대동제 메뉴바 아코디언 토글
   const toggleAccordion = (index) => {
@@ -26,17 +26,6 @@ const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
     const newLanguage = isKorActive ? 'en' : 'ko';
     clickHandler(newLanguage);
   };
-
-  // language toggle 초기화
-  useEffect(() => {
-    const storedLanguage = localStorage.getItem('language');
-    if (storedLanguage) {
-      setIsKorActive(storedLanguage === 'ko');
-    } else {
-      setIsKorActive(true); // 기본값: 한국어
-      localStorage.setItem('language', 'ko');
-    }
-  }, []);
 
   // common 메뉴바 열렸을 때 바깥 클릭시 메뉴바 닫기
   useEffect(() => {

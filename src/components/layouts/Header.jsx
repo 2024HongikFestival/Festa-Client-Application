@@ -12,11 +12,11 @@ import AdminMenuBar from './AdminMenuBar';
 import CommonMenuBar from './CommonMenuBar';
 
 export default function Header() {
-  const nav = useNavigate();
-  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [menuClass, setMenuClass] = useState('');
+  const nav = useNavigate();
+  const location = useLocation();
   const adminMenuRef = useRef(null);
   const commonMenuRef = useRef(null);
 
@@ -43,6 +43,17 @@ export default function Header() {
     setIsMenuOpen((prev) => !prev);
   };
 
+  // backBtn
+  const handleGoBack = () => {
+    nav(-1);
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 100);
+  };
+
   // 메뉴바 열렸을 때 스크롤 막기
   useEffect(() => {
     if (isMenuOpen) {
@@ -63,17 +74,6 @@ export default function Header() {
       return () => clearTimeout(timer);
     }
   }, [menuClass, isAnimating]);
-
-  // backBtn
-  const handleGoBack = () => {
-    nav(-1);
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    }, 100);
-  };
 
   return (
     <>
