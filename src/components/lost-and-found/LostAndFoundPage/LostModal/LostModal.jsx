@@ -22,7 +22,7 @@ const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
 
 export const LocationModal = ({ isOpen, setIsOpen }) => {
   return (
-    <LostModal top={'16.3rem'} gap={'1.6rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
+    <LostModal top={'16.3rem'} gap={'0rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
       <S.LostCenterLayout>
         <S.LostCenterTitle>
           분실물 센터&nbsp;<span>위치</span>
@@ -67,7 +67,7 @@ export const ItemModal = ({ isOpen, setIsOpen, lostId }) => {
   };
 
   return (
-    <LostModal top={'7.9rem'} gap={'7.5rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
+    <LostModal top={'7.9rem'} gap={'3.6rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
       <S.LostItemWrapper>
         <S.LostItemDateBox>
           <S.LostItemDay>{extractDate(item.createdAt)}</S.LostItemDay>

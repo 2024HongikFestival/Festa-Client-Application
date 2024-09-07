@@ -48,7 +48,6 @@ export const BlueButton = styled.button`
 
   border-radius: 0px 0px 16px 16px;
   background: ${({ theme }) => theme.colors.hongikBlue};
-  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
 
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fontStyles.basic.subHeadBold};
@@ -94,6 +93,8 @@ export const LostCenterMap = styled.div`
 export const LostCenterContent = styled.span`
   width: 28.7rem;
   height: 4.8rem;
+  margin-top: 1.8rem;
+  margin-bottom: 2.8rem;
   align-self: center;
 
   ${({ theme }) => theme.fontStyles.basic.body1Med};
@@ -164,7 +165,7 @@ export const LostItemMainContentLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.6rem;
+  gap: 0.8rem;
   align-self: stretch;
 `;
 

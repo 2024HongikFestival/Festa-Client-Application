@@ -100,21 +100,24 @@ const LostAndFoundPage = () => {
           </S.ButtonWrapper>
 
           <S.LostAndFoundSection>
-            <S.LostAndFoundSectionTitle>분실물 찾아가기 🧸</S.LostAndFoundSectionTitle>
+            <S.LostAndFoundSectionTitle>&nbsp;&nbsp;분실물 찾아가기🧸</S.LostAndFoundSectionTitle>
             <S.LostAndFoundArticleLayout>
-              <DropDown setSelectedDay={setSelectedDay} />
-              <S.LostAndFoundArticle>
-                {items.length > 0 &&
-                  items.map((item, idx) => {
-                    return (
-                      <S.LostAndFoundPost
-                        onClick={handleClickItem(item.lostId)}
-                        key={`item_${idx}`}
-                        $imgSrc={item.imageUrl}
-                      />
-                    );
-                  })}
-              </S.LostAndFoundArticle>
+              <S.Gap8px>
+                <DropDown setSelectedDay={setSelectedDay} />
+                <S.LostAndFoundArticle>
+                  {items.length > 0 &&
+                    items.map((item, idx) => {
+                      return (
+                        <S.LostAndFoundPost
+                          onClick={handleClickItem(item.lostId)}
+                          key={`item_${idx}`}
+                          $imgSrc={item.imageUrl}
+                        />
+                      );
+                    })}
+                </S.LostAndFoundArticle>
+              </S.Gap8px>
+
               <NewPagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </S.LostAndFoundArticleLayout>
           </S.LostAndFoundSection>

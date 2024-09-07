@@ -99,7 +99,7 @@ export const SectionTitle = styled.h3`
   ${({ theme }) => theme.fontStyles.main.headline6};
   text-align: center;
 
-  margin-bottom: 2.4rem;
+  margin-bottom: 3.2rem;
 `;
 
 export const RegisterArticle = styled.article`
@@ -146,7 +146,7 @@ export const Input = styled.input`
   ${({ theme }) => theme.fontStyles.basic.body2Med};
   font-weight: 400; //body2reg
 
-  ::placeholder {
+  &::placeholder {
     color: ${({ theme }) => theme.colors.gray30};
   }
 `;
@@ -176,7 +176,7 @@ export const TextArea = styled.textarea`
   font-weight: 400; //body2reg
 
   resize: none;
-  ::placeholder {
+  &::placeholder {
     color: ${({ theme }) => theme.colors.gray30};
   }
 `;
@@ -244,7 +244,6 @@ export const BlueButton = styled.button`
 
   border-radius: 0px 0px 12px 12px;
   background: ${({ theme }) => theme.colors.hongikBlue};
-  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
 
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fontStyles.main.headline6};

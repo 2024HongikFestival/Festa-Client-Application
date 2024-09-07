@@ -36,7 +36,7 @@ export const ButtonWrapper = styled.div`
   width: 33.6rem;
   height: auto;
 
-  margin-bottom: 20px;
+  margin-bottom: 2.4rem;
 `;
 
 export const AddLostItemButton = styled.button`
@@ -114,8 +114,6 @@ export const ButtonDetailText = styled.span`
 export const FilterWrapper = styled.div``;
 
 export const LostAndFoundSection = styled.section`
-  margin-top: 2.8rem;
-
   display: flex;
   width: 33.5rem;
   padding: 2.4rem 1.7rem;
@@ -123,7 +121,7 @@ export const LostAndFoundSection = styled.section`
   justify-content: center;
   align-items: center;
 
-  border-radius: 12px;
+  border-radius: 16px;
   background: ${({ theme }) => theme.colors.white};
 
   /* 대동제 요소 그림자 */
@@ -137,7 +135,7 @@ export const LostAndFoundSectionTitle = styled.span`
   text-align: center;
 
   ${({ theme }) => theme.fontStyles.main.headline6};
-  margin-bottom: 2rem;
+  margin-bottom: 0.8rem;
 `;
 
 export const LostAndFoundArticleLayout = styled.div`
@@ -148,13 +146,19 @@ export const LostAndFoundArticleLayout = styled.div`
   align-self: stretch;
 `;
 
+export const Gap8px = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
 export const LostAndFoundArticle = styled.article`
   display: grid;
   min-width: 30.1rem;
   grid-template-columns: repeat(3, 1fr);
 
   row-gap: 1.2rem;
-  column-gap: 1.2rem;
+  column-gap: 0.8rem;
 `;
 
 export const LostAndFoundPost = styled.article`

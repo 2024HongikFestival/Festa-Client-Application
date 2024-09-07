@@ -85,6 +85,7 @@ export const ModalBoxContent = styled.div`
 `;
 
 export const ContentNoticeLayout = styled.div`
+  margin-top: 2.2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -97,7 +98,7 @@ export const ContentNoticeLayout = styled.div`
 export const ContentNoticeTitle = styled.span`
   align-self: stretch;
   color: ${({ theme }) => theme.colors.gray100};
-  ${({ theme }) => theme.fontStyles.basic.headline4};
+  ${({ theme }) => theme.fontStyles.main.headline4};
   text-align: center;
 `;
 
