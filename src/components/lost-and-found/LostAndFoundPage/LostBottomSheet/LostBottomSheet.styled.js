@@ -88,7 +88,7 @@ export const ContentNoticeLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 1.2rem;
   align-self: stretch;
 
   width: 100%;
@@ -97,12 +97,12 @@ export const ContentNoticeLayout = styled.div`
 export const ContentNoticeTitle = styled.span`
   align-self: stretch;
   color: ${({ theme }) => theme.colors.gray100};
-  ${({ theme }) => theme.fontStyles.main.headline5}; //이거 폰트에 없음 S-Core Dream 사용해야 함
+  ${({ theme }) => theme.fontStyles.basic.headline4};
   text-align: center;
 `;
 
 export const ContentNoticeText = styled.span`
-  align-self: stretch; //일단 추가
+  align-self: stretch;
   color: ${({ theme }) => theme.colors.gray70};
   ${({ theme }) => theme.fontStyles.basic.body1Med}; //
   white-space: pre-line;
