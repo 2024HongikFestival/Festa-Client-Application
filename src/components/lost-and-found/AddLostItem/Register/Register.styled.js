@@ -6,6 +6,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin-bottom: 6.4rem;
 `;
 
 export const RegisterMain = styled.main`

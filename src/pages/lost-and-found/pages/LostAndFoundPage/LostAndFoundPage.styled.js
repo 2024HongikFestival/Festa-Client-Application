@@ -7,6 +7,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin-bottom: 7rem;
 `;
 
 export const Main = styled.main`
