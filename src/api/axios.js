@@ -6,6 +6,26 @@ export const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
 });
 
+// presignedUrl을 받아올 때 사용하는 인스턴스
+export const presigendAxiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json', // Content-Type을 JSON으로 설정
+  },
+});
+
+presigendAxiosInstance.interceptors.request.use((config) => {
+  const lost_access_token = localStorage.getItem('lost_access_token');
+  if (lost_access_token) {
+    config.headers.Authorization = `Bearer ${lost_access_token}`;
+    //console.log(config.headers.Authorization);
+  } else {
+    console.log('토큰 없음');
+  }
+
+  return config;
+});
+
 // 어드민 전용 axios 인스턴스
 export const adminAxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
