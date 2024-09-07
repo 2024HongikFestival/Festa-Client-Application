@@ -97,7 +97,6 @@ export const MenuBar = styled.div`
   justify-content: space-between;
   position: fixed;
   top: 5.6rem;
-  left: 0;
   bottom: 0;
   width: 100%;
   max-width: 26.1rem;
@@ -334,7 +333,6 @@ export const AdminBar = styled.div`
   justify-content: space-between;
   position: fixed;
   top: 5.6rem;
-  left: 0;
   bottom: 0;
   width: 100%;
   max-width: 19.2rem;
