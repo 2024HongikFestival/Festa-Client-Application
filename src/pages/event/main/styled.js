@@ -26,6 +26,15 @@ export const Title = styled.div`
   }
 `;
 
+export const ImageWrapper = styled.div`
+  width: 37.5rem;
+  height: 18.5rem;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 export const NoticeText = styled.div`
   margin-top: 1.1rem;
   margin-bottom: 2.3rem;

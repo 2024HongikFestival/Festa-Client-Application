@@ -7,23 +7,12 @@ import raffle from '@/assets/webps/event/raffle.webp';
 import shareIcon from '@/assets/webps/event/shareIcon.webp';
 import kakaoLogo from '@/assets/svgs/event/kakaoLogo.svg';
 import { ItemSlider } from '@/components/event/ItemSlider';
-import { axiosInstance } from '@/api/axios';
 import NoticeTimeBox from '@/components/event/NoticeTimeBox';
 import { handleShare } from '@/utils/event/handleShare';
 
 const EventPage = () => {
   const [stateData, setStateData] = useState();
   const [currentUrl, setCurrentUrl] = useState('');
-  //const [carouselItems, setCarouselItems] = useState([]);
-  // dummy item data
-  const carouselItems = [
-    { src: raffle, alt: 'Image 1' },
-    { src: raffle, alt: 'Image 2' },
-    { src: raffle, alt: 'Image 3' },
-    { src: raffle, alt: 'Image 4' },
-    { src: raffle, alt: 'Image 5' },
-    { src: raffle, alt: 'Image 6' },
-  ];
 
   const handleRandomState = () => {
     const array = new Uint32Array(1);
@@ -36,20 +25,8 @@ const EventPage = () => {
     window.location.href = EVENTS_KAKAO_AUTH_URL;
   };
 
-  // 응모 상품 리스트
-  // const getEventItems = async () => {
-  //   try {
-  //     const response = await axiosInstance.get('/entries/prizes');
-  //     console.log(response.data.message);
-  //     setCarouselItems(response.data.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   useEffect(() => {
     handleRandomState();
-    //getEventItems();
     setCurrentUrl(window.location.href);
   }, []);
 
@@ -61,9 +38,9 @@ const EventPage = () => {
           홍익&nbsp;<span id="highlight">대동제 래플</span>
         </span>
       </S.Title>
-      <div>
-        <img src={raffle} alt="raffle" height={214} />
-      </div>
+      <S.ImageWrapper>
+        <S.Image src={raffle} alt="raffle" />
+      </S.ImageWrapper>
       <S.NoticeText>
         매일 <span>오전 10시</span> 응모권 1장 부여
       </S.NoticeText>
@@ -75,7 +52,7 @@ const EventPage = () => {
         <S.AText>A. 응모자 추첨을 통해 경품을 지급하는 이벤트입니다.</S.AText>
       </S.QNABox>
 
-      <ItemSlider carouselItems={carouselItems} />
+      {/* 경품 디자인 수정 */}
 
       <S.NoticeDetail>
         <S.DetailSection>

@@ -51,7 +51,6 @@ export default SubmitEvent;
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 100vh;
   flex-direction: column;
   justify-content: center;
   justify-content: center;
