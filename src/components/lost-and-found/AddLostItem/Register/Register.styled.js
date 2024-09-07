@@ -36,7 +36,7 @@ export const WarningBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1.2rem;
 
   border-radius: 12px;
   background: ${({ theme }) => theme.colors.white};
@@ -50,7 +50,7 @@ export const WarningMainText = styled.h4`
 
   span {
     ${({ theme }) => theme.fontStyles.basic.body1Bold};
-    color: #1833db;
+    color: ${({ theme }) => theme.colors.hongikBlue};
     span {
       text-decoration: underline;
       text-underline-offset: 4px;
@@ -67,6 +67,12 @@ export const WarningSubText = styled.p`
   }
 
   white-space: nowrap;
+`;
+
+export const WarningBoxAndRegisterSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
 `;
 
 // 분실물 찾아주기 섹션
