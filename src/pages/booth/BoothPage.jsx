@@ -74,7 +74,7 @@ export default function BoothPage() {
           <MapImage src="src/assets/webps/booth/mapExample.webp" />
         </ContentContainer>
         {/* 실시간 랭킹 정보 컴포넌트 */}
-        <Ranking />
+        <Ranking kind="122" />
       </ForGapWrapper>
     </Container>
   );
