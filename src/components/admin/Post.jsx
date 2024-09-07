@@ -116,25 +116,32 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
     }
 
     try {
-      await Promise.all([
-        adminAxiosInstance.post(
-          '/admin/blacklist',
-          { userId: lost.userId },
-          {
-            headers: {
-              Authorization: `Bearer ${getAdminToken()}`,
-            },
-          }
-        ),
-        adminAxiosInstance.delete(`/admin/losts/${currentPostId}`),
-      ]);
+      // 먼저 블랙리스트 추가 시도
+      await adminAxiosInstance.post(
+        '/admin/blacklist',
+        { userId: lost.userId },
+        {
+          headers: {
+            Authorization: `Bearer ${getAdminToken()}`,
+          },
+        }
+      );
+
+      // 블랙리스트 추가가 성공한 경우에만 글 삭제 실행
+      await adminAxiosInstance.delete(`/admin/losts/${currentPostId}`, {
+        headers: {
+          Authorization: `Bearer ${getAdminToken()}`,
+        },
+      });
+
+      // 상태 변경 및 UI 업데이트
       handleStatusChange('DELETED', true);
       setShowOptions(null);
       setShowPopup(false);
     } catch (error) {
       alert('이미 차단된 사용자입니다.');
-      setShowPopup(false);
       console.error('Error handling block and delete: ', error);
+      setShowPopup(false);
     }
   };
 
@@ -470,4 +477,5 @@ const LoadMoreWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 8rem;
 `;

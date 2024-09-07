@@ -6,7 +6,7 @@ import BlockList from '@/components/admin/BlockList';
 import PostDetail from '@/components/admin/PostDetail';
 
 const AdminPage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [activeComponent, setActiveComponent] = useState('posts');
   const [isDetailView, setIsDetailView] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
@@ -18,10 +18,6 @@ const AdminPage = () => {
       setIsLoggedIn(true);
     }
   }, []);
-
-  if (!isLoggedIn) {
-    return <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />;
-  }
 
   return (
     <>
