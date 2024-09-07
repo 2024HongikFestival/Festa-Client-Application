@@ -43,17 +43,18 @@ export const BoothBox = styled.div`
   width: calc(100% - 4rem);
   margin: 0 2rem 0;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 2.4rem;
 `;
 
 export const BoothOne = styled.div`
+  width: calc(100% / 2 - 2.4rem);
   ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.white};
   display: flex;
   justify-content: space-between;
-  animation: ${fadeInUp} 0.8s ease-out;
+  /* animation: ${fadeInUp} 0.8s ease-out; */
 
   gap: 4.4rem;
   img {
@@ -81,10 +82,22 @@ export const BoothIntro = styled.div`
   width: 100%;
   display: flex;
   text-align: left;
-  flex-direction: column;
-  justify-content: space-between;
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
 
+  gap: 0.3rem;
+
+  .al {
+    /* margin-right: 0.15rem; */
+    ${(props) => props.theme.fontStyles.basic.subHeadBold}
+    color: ${(props) => props.theme.colors.white};
+  }
+`;
+
+export const BoothNameAndIntro = styled.div`
   gap: 0.8rem;
+  display: flex;
+  text-align: left;
   .name {
     ${(props) => props.theme.fontStyles.basic.subHeadBold};
     color: ${(props) => props.theme.colors.white};
@@ -94,4 +107,7 @@ export const BoothIntro = styled.div`
     ${(props) => props.theme.fontStyles.basic.body2Med};
     color: ${(props) => props.theme.colors.gray60};
   }
+
+  flex-direction: column;
+  /* justify-content: space-between; */
 `;
