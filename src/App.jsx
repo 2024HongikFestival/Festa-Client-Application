@@ -28,6 +28,14 @@ import HongikZonePage from '@/pages/stage/HongikZonePage';
 import LineupPage from '@/pages/stage/LineupPage';
 import StageInfoPage from '@/pages/stage/StageInfoPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import RedirectEvents from '@/auth/RedirectEvents';
+import RedirectLosts from '@/auth/RedirectLosts';
+import MdPage from '@/pages/booth/merchandiser/MdPage';
+import AdminLogin from './pages/admin/AdminLogin';
+
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { AuthProvider } from './components/lost-and-found/AddLostItem/context/AuthProvider';
 import ProtectedRoute from './components/lost-and-found/AddLostItem/outlet/ProtectedRoute';
 import MdPage from './pages/booth/merchandiser/MdPage';
@@ -35,6 +43,14 @@ import AddLostItem from './pages/lost-and-found/pages/AddLostItem/AddLostItem';
 import LostAndFoundPage from './pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      mirror: false,
+    });
+  }, []);
+
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -87,7 +103,8 @@ function App() {
             <Route path="/flame/promotion" element={<FlamePromotionPage />} />
 
             {/* 채영 라우팅 💭 */}
-            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/losts" element={<AdminPage />} />
             <Route path="/admin/event" element={<AdminEvent />} />
             <Route path="/flame" element={<FlameMainPage />} />
           </Route>
