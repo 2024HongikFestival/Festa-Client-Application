@@ -346,7 +346,7 @@ const PostContainer = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.colors.gray10};
   gap: ${({ $nogap }) => ($nogap ? '0' : '0.8rem')}; /* 0.5rem → 0.8rem */
-  padding-bottom: 8rem;
+  padding-bottom: ${({ $nogap }) => ($nogap ? '0' : '8rem')};
 `;
 
 const Wrapper = styled.div`
