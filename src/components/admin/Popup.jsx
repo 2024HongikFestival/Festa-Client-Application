@@ -15,7 +15,10 @@ const Popup = ({ message, onConfirm, onCancel, confirmText, cancelText }) => (
 );
 
 Popup.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node, // JSX 요소도 허용
+  ]).isRequired,
   onConfirm: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   confirmText: PropTypes.string.isRequired,

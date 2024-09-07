@@ -4,22 +4,7 @@ import 'aos/dist/aos.css';
 
 import InstalogoImage from '@/assets/webps/wdfLineup/instagramLogo.webp';
 import testImage from '@/assets/webps/wdfLineup/test.webp';
-import {
-  Container,
-  Title,
-  DayContainer,
-  DayButton,
-  CardContainer,
-  Card,
-  CardImageContainer,
-  DjImage,
-  GradientOverlay,
-  CardDescriptionContainer,
-  DjProfile,
-  Name,
-  InstaLogo,
-  Description,
-} from './styles'; // 스타일 파일에서 스타일 컴포넌트를 가져옴
+import * as S from './styles'; // 스타일 파일에서 스타일 컴포넌트를 가져옴
 
 const FlameLineupPage = () => {
   const [selectedDay, setSelectedDay] = useState('Day1');
@@ -81,42 +66,42 @@ const FlameLineupPage = () => {
 
   const renderCards = () => {
     return dummyData[selectedDay].map((event) => (
-      <Card key={event.id} data-aos="fade-up">
-        <CardImageContainer>
-          <DjImage src={testImage} alt="testImage" />
-          <GradientOverlay />
-        </CardImageContainer>
-        <CardDescriptionContainer>
-          <DjProfile>
-            <Name>{event.name}</Name>
-            <InstaLogo src={InstalogoImage} alt="instagram link" />
-          </DjProfile>
-          <Description>{event.description}</Description>
-        </CardDescriptionContainer>
-      </Card>
+      <S.Card key={event.id} data-aos="fade-up">
+        <S.CardImageContainer>
+          <S.DjImage src={testImage} alt="testImage" />
+          <S.GradientOverlay />
+        </S.CardImageContainer>
+        <S.CardDescriptionContainer>
+          <S.DjProfile>
+            <S.Name>{event.name}</S.Name>
+            <S.InstaLogo src={InstalogoImage} alt="instagram link" />
+          </S.DjProfile>
+          <S.Description>{event.description}</S.Description>
+        </S.CardDescriptionContainer>
+      </S.Card>
     ));
   };
 
   return (
     <>
-      <Container>
-        <Title>라인업</Title>
-        <DayContainer>
-          <DayButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('Day1')}>
+      <S.Container>
+        <S.Title>라인업</S.Title>
+        <S.DayContainer>
+          <S.DayButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('Day1')}>
             <span>DAY 1</span>
             <span>9.25 (수)</span>
-          </DayButton>
-          <DayButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('Day2')}>
+          </S.DayButton>
+          <S.DayButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('Day2')}>
             <span>DAY 2</span>
             <span>9.26 (목)</span>
-          </DayButton>
-          <DayButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('Day3')}>
+          </S.DayButton>
+          <S.DayButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('Day3')}>
             <span>DAY 3</span>
             <span>9.27 (금)</span>
-          </DayButton>
-        </DayContainer>
-        <CardContainer>{renderCards()}</CardContainer>
-      </Container>
+          </S.DayButton>
+        </S.DayContainer>
+        <S.CardContainer>{renderCards()}</S.CardContainer>
+      </S.Container>
     </>
   );
 };

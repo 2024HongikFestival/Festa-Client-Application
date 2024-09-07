@@ -1,7 +1,8 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import Footer from './Footer';
-import Header from './Header';
+import Footer from '@/components/layouts/Footer';
+import Header from '@/components/layouts/Header';
+import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 
 export default function Layout() {
   const location = useLocation();
@@ -44,9 +45,16 @@ const Container = styled.div`
       background-position: center;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.$path === '/flame' &&
     css`
       background-color: transparent;
+    `}
+  
+  ${(props) =>
+    props.$path === '/facilities' &&
+    css`
+      background-image: url(${facilitiesBG});
+      background-size: cover;
     `}
 `;

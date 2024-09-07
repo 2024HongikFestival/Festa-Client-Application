@@ -208,11 +208,12 @@ const ListContainer = styled.div`
   width: 100%;
   align-items: center;
   background-color: ${(props) => props.theme.colors.gray10};
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 const Container = styled.div`
   width: 32rem;
+  margin-bottom: 7.7rem;
   display: flex;
   flex-direction: column;
 `;

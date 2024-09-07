@@ -32,8 +32,21 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RedirectEvents from '@/auth/RedirectEvents';
 import RedirectLosts from '@/auth/RedirectLosts';
 import MdPage from '@/pages/booth/merchandiser/MdPage';
+import AdminLogin from './pages/admin/AdminLogin';
+
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      mirror: false,
+    });
+  }, []);
+
   return (
     <>
       <BrowserRouter>
@@ -84,7 +97,8 @@ function App() {
             <Route path="/flame/promotion" element={<FlamePromotionPage />} />
 
             {/* 채영 라우팅 💭 */}
-            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/losts" element={<AdminPage />} />
             <Route path="/admin/event" element={<AdminEvent />} />
             <Route path="/flame" element={<FlameMainPage />} />
           </Route>

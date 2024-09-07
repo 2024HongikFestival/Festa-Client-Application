@@ -9,7 +9,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import DJ from '@/assets/webps/wdfMain/DJ.webp';
 import speaker from '@/assets/webps/wdfMain/speaker.webp';
 import Insta from '@/assets/webps/wdfMain/insta.webp';
-import BgVideo from '@/assets/videos/flameMainBackGround.mp4';
+// 여기 mp4 파일명 잘못되어서 고쳤습니다.
+import BgVideo from '@/assets/videos/flameMainBackground.mp4';
 import PropTypes from 'prop-types';
 
 const FlameMainPage = () => {
@@ -23,11 +24,13 @@ const FlameMainPage = () => {
             <source src={BgVideo} type="video/mp4" />
           </S.BackGroundVideo>
           <S.TitleContainer>
-            <S.Title>WOW DJ FESTIVAL</S.Title>
-            <S.TitleWrapper>
-              <S.SubTitle>the</S.SubTitle>
-              <S.WDFLogo src={FLAME} alt="flame" />
-            </S.TitleWrapper>
+            <S.LogoContainer>
+              <S.Title>WOW DJ FESTIVAL</S.Title>
+              <S.TitleWrapper>
+                <S.SubTitle>the</S.SubTitle>
+                <S.WDFLogo src={FLAME} alt="flame" />
+              </S.TitleWrapper>
+            </S.LogoContainer>
             <S.WDFImage src={speaker}></S.WDFImage>
           </S.TitleContainer>
           <S.WDFContainer>
@@ -49,15 +52,17 @@ const FlameMainPage = () => {
         </S.VideoContainer>
         <S.LineUpSection>
           <S.DateSection>
-            <S.DateButton selected={selectedDay === 'day1'} onClick={() => setSelectedDay('day1')}>
-              DAY 1 <br /> 9.25 (수)
-            </S.DateButton>
-            <S.DateButton selected={selectedDay === 'day2'} onClick={() => setSelectedDay('day2')}>
-              DAY 2 <br /> 9.26 (목)
-            </S.DateButton>
-            <S.DateButton selected={selectedDay === 'day3'} onClick={() => setSelectedDay('day3')}>
-              DAY 3<br /> 9.27 (금)
-            </S.DateButton>
+            <S.BtnWrapper>
+              <S.DateButton selected={selectedDay === 'day1'} onClick={() => setSelectedDay('day1')}>
+                DAY 1 <br /> 9.25 (수)
+              </S.DateButton>
+              <S.DateButton selected={selectedDay === 'day2'} onClick={() => setSelectedDay('day2')}>
+                DAY 2 <br /> 9.26 (목)
+              </S.DateButton>
+              <S.DateButton selected={selectedDay === 'day3'} onClick={() => setSelectedDay('day3')}>
+                DAY 3<br /> 9.27 (금)
+              </S.DateButton>
+            </S.BtnWrapper>
           </S.DateSection>
 
           <S.DayContent>
