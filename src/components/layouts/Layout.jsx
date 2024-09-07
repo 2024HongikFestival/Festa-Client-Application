@@ -1,22 +1,32 @@
-import { Outlet, useLocation } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import AddLostItemBg from '@/assets/webps/lost/AddLostItemBg.webp';
+import LostAndFoundBg from '@/assets/webps/lost/LostAndFoundBg.webp';
+
+import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
-import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
+import { Outlet, useLocation } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 export default function Layout() {
   const location = useLocation();
-  const isAdminPath = location.pathname === '/admin' || '/admin/event' || '/admin/losts';
+
+  const adminPaths = ['/admin', '/admin/event', '/admin/losts'];
+  const isAdminPath = adminPaths.includes(location.pathname);
+
+  const isCamera = location.pathname === '/lost-and-found/add';
+
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
+  console.log(isAdminPath);
   const showheader = isLoggedIn() || !isAdminPath;
+  console.log('showheader:', showheader);
 
   return (
     <Container $path={location.pathname} $showheader={showheader}>
       {showheader && <Header />}
       <Outlet />
-      {!isAdminPath && <Footer />}
+      {!isAdminPath && !isCamera && <Footer />}
     </Container>
   );
 }
@@ -26,6 +36,22 @@ const Container = styled.div`
   max-width: 768px;
   min-height: calc(var(--vh, 1vh) * 100);
   margin: ${({ $showheader }) => ($showheader ? '5.6rem auto 0' : '0 auto 0')};
+
+  ${(props) =>
+    (props.$path === '/lost-and-found' || props.$path === '/lost-and-found/') &&
+    css`
+      background-image: url(${LostAndFoundBg});
+      background-size: cover;
+      background-position: center;
+    `}
+
+  ${(props) =>
+    props.$path === '/lost-and-found/add' &&
+    css`
+      background-image: url(${AddLostItemBg});
+      background-size: cover;
+      background-position: center;
+    `}
 
   ${(props) =>
     (props.$path === '/likelion' || props.$path === '/gaehwa') &&
