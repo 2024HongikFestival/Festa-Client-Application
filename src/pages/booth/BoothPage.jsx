@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import PageTitle from '@/components/common/PageTitle';
 import { useTranslation } from 'react-i18next';
+import Ranking from '@/components/booth/Ranking';
 
 export default function BoothPage() {
   const [likes, setLikes] = useState({});
@@ -66,10 +67,15 @@ export default function BoothPage() {
   return (
     <Container>
       <PageTitle title={'주점'}>주점</PageTitle>
-      <ContentContainer>
-        <MapTitle>주점 위치</MapTitle>
-        <MapImage src="src/assets/webps/booth/mapExample.webp" />
-      </ContentContainer>
+      <ForGapWrapper>
+        {/* 주점 지도 컴포넌트 */}
+        <ContentContainer>
+          <MapTitle>주점 위치</MapTitle>
+          <MapImage src="src/assets/webps/booth/mapExample.webp" />
+        </ContentContainer>
+        {/* 실시간 랭킹 정보 컴포넌트 */}
+        <Ranking />
+      </ForGapWrapper>
     </Container>
   );
 }
@@ -83,11 +89,14 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const MapContainer = styled.div`
-  width: 33.5rem;
-  height: 34.6rem;
-  border-radius: 1.2rem;
-  box-shadow: 0px 0px 0.8rem 0.8rem rgba(0, 0, 0, 0.12);
+const ForGapWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.8rem;
 `;
 
 const MapImage = styled.img`
@@ -110,10 +119,6 @@ const MapTitle = styled.div`
   ${(props) => props.theme.fontStyles.main.headline6};
 `;
 
-const PageName = styled.div`
-  ${(props) => props.theme.fontStyles.basic.body1Bold};
-`;
-
 const Btn = styled.div`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   width: 25rem;
@@ -126,23 +131,3 @@ const Btn = styled.div`
   align-items: center;
   margin: 1rem;
 `;
-
-{
-  /* <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <PageName>Booth Page</PageName>
-        <Btn onClick={() => onClickLikes(1)}>컴퓨터공학과 주점 좋아요 ❤️ {computerLikes}</Btn>
-        <Btn onClick={() => onClickLikes(2)}>경영학과 주점 좋아요 ❤️ {businessLikes}</Btn>
-        <Btn onClick={() => onClickLikes(3)}>수학교육과 주점 좋아요 ❤️ {mathLikes}</Btn>
-        <Btn onClick={() => onClickLikes(4)}>전자전기공학과 주점 좋아요 ❤️ {electronicLikes}</Btn>
-        <Btn onClick={() => onClickLikes(5)}>산업공학과 주점 좋아요 ❤️ {industrialLikes}</Btn>
-      </div> */
-}

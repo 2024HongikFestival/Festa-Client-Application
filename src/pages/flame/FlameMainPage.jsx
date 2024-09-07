@@ -9,7 +9,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import DJ from '@/assets/webps/wdfMain/DJ.webp';
 import speaker from '@/assets/webps/wdfMain/speaker.webp';
 import Insta from '@/assets/webps/wdfMain/insta.webp';
-import BgVideo from '@/assets/videos/flameMainBackGround.mp4';
+// 여기 mp4 파일명 잘못되어서 고쳤습니다.
+import BgVideo from '@/assets/videos/flameMainBackground.mp4';
 import PropTypes from 'prop-types';
 
 const FlameMainPage = () => {

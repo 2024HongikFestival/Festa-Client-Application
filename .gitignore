@@ -34,3 +34,4 @@ dist-ssr
 
 .vscode
 .env
+/build/
