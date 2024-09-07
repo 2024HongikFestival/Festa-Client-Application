@@ -4,12 +4,14 @@ import * as S from '@/components/layouts/HeaderStyles';
 import AdminMenuBar from '@/components/layouts/AdminMenuBar';
 import CommonMenuBar from '@/components/layouts/CommonMenuBar';
 import routeConfig from '@/constants/layouts/routeConfig';
+import { useCamera } from '@/components/lost-and-found/AddLostItem/context/AuthProvider';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [menuClass, setMenuClass] = useState('');
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const { isCamera } = useCamera();
   const nav = useNavigate();
   const location = useLocation();
   const headerRef = useRef(null);
@@ -18,6 +20,7 @@ export default function Header() {
 
   let currentRoute = routeConfig.default;
 
+  // 경로
   const flamePaths = [
     '/flame',
     '/flame/',
@@ -65,27 +68,27 @@ export default function Header() {
   };
 
   // 메뉴바 & 헤더 밖 클릭 범위 지정 & admin 로직
-  const handleClickOutside = (event) => {
-    if (
-      (commonMenuRef.current && !commonMenuRef.current.contains(event.target)) ||
-      (adminMenuRef.current && !adminMenuRef.current.contains(event.target))
-    ) {
-      if (headerRef.current && !headerRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-        if (isAdminPath) {
-          setShowLogoutPopup(false);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        (commonMenuRef.current && !commonMenuRef.current.contains(event.target)) ||
+        (adminMenuRef.current && !adminMenuRef.current.contains(event.target))
+      ) {
+        if (headerRef.current && !headerRef.current.contains(event.target)) {
+          setIsMenuOpen(false);
+          if (isAdminPath) {
+            setShowLogoutPopup(false);
+          }
         }
       }
-    }
-  };
+    };
 
-  // 메뉴바 열렸을 때 바깥 클릭 시 메뉴바 '닫기'
-  useEffect(() => {
+    // -> 범위 밖 누르면 닫기
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  }, [isAdminPath, commonMenuRef, adminMenuRef, headerRef, setIsMenuOpen, setShowLogoutPopup]);
 
   // 메뉴바 열렸을 때 스크롤 막기
   useEffect(() => {
@@ -111,7 +114,7 @@ export default function Header() {
   return (
     <>
       <S.HeaderLayout ref={headerRef} $path={location.pathname}>
-        <S.HeaderBg $path={location.pathname} $isMenuOpen={isMenuOpen}>
+        <S.HeaderBg $path={location.pathname} $isMenuOpen={isMenuOpen} $isCamera={isCamera}>
           {currentRoute.showBackButton ? (
             <S.HambergerMenu onClick={handleGoBack}>
               <img src={currentRoute.menuIcon} alt="backBtn" />

@@ -61,6 +61,12 @@ export const HeaderBg = styled.div`
       border: none;
       background-color: ${(props) => props.theme.colors.white};
     `}
+
+  ${(props) =>
+    props.$isCamera &&
+    css`
+      background-color: ${(props) => props.theme.colors.white};
+    `}
 `;
 
 export const HambergerMenu = styled.div`
