@@ -1,4 +1,4 @@
-import lostCenterLocation from '@/assets/webp/lost/lostCenterLocation.webp';
+import lostCenterLocation from '@/assets/webps/lost/lostCenterLocation.webp';
 import styled from 'styled-components';
 
 /*

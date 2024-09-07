@@ -1,11 +1,11 @@
-import AddLostItemBg from '@/assets/webp/lost/AddLostItemBg.webp';
-import LostAndFoundBg from '@/assets/webp/lost/LostAndFoundBg.webp';
+import AddLostItemBg from '@/assets/webps/lost/AddLostItemBg.webp';
+import LostAndFoundBg from '@/assets/webps/lost/LostAndFoundBg.webp';
 
-import { Outlet, useLocation } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
-import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
+import { Outlet, useLocation } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 export default function Layout() {
   const location = useLocation();

@@ -1,6 +1,6 @@
 //vite-plugin-svgr 설치 후, vite.config.js에 적절한 설정을 해준 후 아래와 같이 사용.
 import error_kakao from '@/assets/svgs/lost/error_kakao.svg?react';
-import kakaoAuth from '@/assets/webp/lost/kakaoAuth.webp';
+import kakaoAuth from '@/assets/webps/lost/kakaoAuth.webp';
 import styled, { keyframes } from 'styled-components';
 
 const slideUp = keyframes`
