@@ -43,7 +43,7 @@ export const BoothBox = styled.div`
   width: calc(100% - 4rem);
   margin: 0 2rem 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   gap: 2.4rem;
 `;

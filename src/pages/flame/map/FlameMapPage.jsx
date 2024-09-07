@@ -5,10 +5,8 @@ import React from 'react';
 import mapImg from '/src/assets/webps/map/sitemap.webp';
 import Lottie from 'react-lottie';
 import arrowAnimation from './siteMap.json';
-import gmLogo from '/src/assets/webps/map/gm.webp';
-import masterLogo from '/src/assets/webps/map/master.webp';
-import redBullLogo from '/src/assets/webps/map/redBull.webp';
-import snolLogo from '/src/assets/webps/map/image02_1.webp';
+
+import AOS from 'aos';
 
 const FlameMapPage = () => {
   const arrowMotion = {
