@@ -1,80 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+// JSON 파일을 import
+import scheduleData from '@/constants/stage/stageSchedule.json';
+import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
 
 const StageSchedule = () => {
   const [selectedDay, setSelectedDay] = useState('Day1');
+  const [data, setData] = useState(scheduleData); // JSON 데이터를 상태로 설정
 
   useEffect(() => {
-    // 현재 날짜 가져오기
-    const today = new Date();
-    const month = today.getMonth() + 1; // 월 (0부터 시작하므로 1 더함)
-    const day = today.getDate(); // 일
-
-    // 날짜에 따른 Day 선택
-    if (month === 9) {
-      if (day === 25) {
-        setSelectedDay('Day1');
-      } else if (day === 26) {
-        setSelectedDay('Day2');
-      } else if (day === 27) {
-        setSelectedDay('Day3');
-      } else {
-        setSelectedDay('Day1'); // 9월 25-27일이 아닌 경우 Day1으로 설정
-      }
-    } else {
-      setSelectedDay('Day1'); // 9월이 아닌 경우 Day1으로 설정
-    }
+    setSelectedDay(getSelectedDayByDate()); // 컴포넌트가 마운트될 때 함수를 호출
   }, []);
 
-  // 더미 데이터
-  const dummyData = {
-    Day1: [
-      {
-        id: '1',
-        stageName: '학부 찬조 공연',
-        totalDuration: '17:30 ~ 18:30',
-        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
-      },
-      {
-        id: '2',
-        stageName: '재주꾼 선발 대회',
-        totalDuration: '15:00 ~ 17:30',
-        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
-      },
-    ],
-    Day2: [
-      {
-        id: '3',
-        stageName: '연예인 초청 무대',
-        totalDuration: '19:00 ~ 23:00',
-        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
-      },
-      {
-        id: '4',
-        stageName: '학부 찬조 공연',
-        totalDuration: '18:00 ~ 21:30',
-        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
-      },
-    ],
-    Day3: [
-      {
-        id: '5',
-        stageName: '재주꾼 선발 대회',
-        totalDuration: '20:00 ~ 23:00',
-        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
-      },
-      {
-        id: '6',
-        stageName: '연예인 초청 공연',
-        totalDuration: '17:00 ~ 19:00',
-        artists: ['아티스트이름', '아티스트이름', '아티스트이름', '아티스트이름'],
-      },
-    ],
-  };
-
-  // 스타일 수정해야함
   const renderStage = () => {
-    return dummyData[selectedDay].map((event) => (
+    if (!data || !data[selectedDay]) {
+      return <div>Loading...</div>;
+    }
+
+    return data[selectedDay].map((event) => (
       <Stage key={event.id}>
         <StageBox>
           <StageName>{event.stageName}</StageName>
@@ -132,7 +75,6 @@ const StageContainer = styled.div`
   align-items: center;
   border-radius: 1.6rem;
   background-color: ${(props) => props.theme.colors.white};
-  /* box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12); */
 `;
 const DayButton = styled.button`
   background: none;
@@ -142,11 +84,11 @@ const DayButton = styled.button`
   padding: 0;
   .day {
     display: block;
-    ${(props) => props.theme.fontStyles.basic.body2Bold}; // DAY 1 스타일
+    ${(props) => props.theme.fontStyles.basic.body2Bold};
   }
   .date {
     display: block;
-    ${(props) => props.theme.fontStyles.basic.subHeadBold}; // 9.25 (수) 스타일
+    ${(props) => props.theme.fontStyles.basic.subHeadBold};
   }
 `;
 const Stage = styled.div`
@@ -176,7 +118,7 @@ const ArtistList = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; // 추후 변경 예정 (정렬 관련)
+  align-items: flex-end;
   gap: 0.8rem;
 `;
 const ArtistItem = styled.li`
