@@ -5,6 +5,7 @@ import * as S from './styled';
 import form from '@/assets/webps/event/form.webp';
 import PhoneNumBox from '@/components/event/PhoneNumBox';
 import check from '@/assets/svgs/event/check.svg';
+import SubmitEvent from '@/pages/event/SubmitEvent';
 
 const EnterEvent = () => {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ const EnterEvent = () => {
         {
           name: name,
           phone: phone,
-          // prize
+          prize: '티빙 한 달 이용권',
           comment: comment,
         },
         {
@@ -89,6 +90,7 @@ const EnterEvent = () => {
       localStorage.removeItem('kakao_code');
       localStorage.removeItem('event_access_token');
       navigate('/event/submit');
+      //return <SubmitEvent date={response.data.data.date} />;
     } catch (error) {
       console.log(error);
     }
