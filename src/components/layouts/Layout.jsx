@@ -9,13 +9,18 @@ import styled, { css } from 'styled-components';
 
 export default function Layout() {
   const location = useLocation();
-  const isAdminPath = location.pathname === '/admin' || '/admin/event' || '/admin/losts';
+
+  const adminPaths = ['/admin', '/admin/event', '/admin/losts'];
+  const isAdminPath = adminPaths.includes(location.pathname);
+
   const isCamera = location.pathname === '/lost-and-found/add';
 
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
+  console.log(isAdminPath);
   const showheader = isLoggedIn() || !isAdminPath;
+  console.log('showheader:', showheader);
 
   return (
     <Container $path={location.pathname} $showheader={showheader}>

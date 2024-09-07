@@ -12,15 +12,14 @@ export default function Header() {
   const nav = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
-  const isAdminPath =
-    location.pathname === '/admin' || location.pathname === '/admin/event' || location.pathname === '/admin/losts';
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
 
   const adminMenuRef = useRef(null);
 
   const useBlackImages = (path) => {
     // 검정색 홍익로고, 검정 메뉴바 로고 들어가는 path
-    const blackImagePaths = ['/admin/losts', '/admin/event'];
+    const blackImagePaths = ['/admin', '/admin/event'];
     return blackImagePaths.includes(path);
   };
   const blackImages = useBlackImages(location.pathname);
@@ -60,13 +59,6 @@ export default function Header() {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
-
-  useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      setIsLoggedIn(true);
-    }
   }, []);
 
   return (
@@ -116,7 +108,7 @@ const AdminMenuBar = ({
         <PageMenu>
           <Menu
             onClick={() => {
-              nav('/admin/losts');
+              nav('/admin');
               nav(0);
               closeMenu();
             }}
@@ -126,7 +118,6 @@ const AdminMenuBar = ({
           <Menu
             onClick={() => {
               nav('/admin/event');
-              nav(0);
               closeMenu();
             }}
           >
@@ -187,7 +178,7 @@ const HeaderLayout = styled.div`
   z-index: 100;
 
   ${(props) =>
-    props.$path === '/admin/losts' &&
+    props.$path === '/admin' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
@@ -218,7 +209,7 @@ const HeaderBg = styled.div`
   align-items: center;
 
   ${(props) =>
-    props.$path === '/admin/losts' &&
+    props.$path === '/admin' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
