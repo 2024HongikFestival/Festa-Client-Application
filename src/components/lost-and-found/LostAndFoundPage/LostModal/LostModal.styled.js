@@ -199,8 +199,9 @@ export const LostItemMainContentRight = styled.span`
 `;
 
 export const ThreeLineTextContent = styled.span`
-  height: 4.8rem;
+  height: 7.2rem; //한 줄에 대략 2.4rem * 3
   align-self: stretch;
+  overflow-y: scroll;
 
   color: ${({ theme }) => theme.colors.gray50};
   ${({ theme }) => theme.fontStyles.basic.body1Med};
