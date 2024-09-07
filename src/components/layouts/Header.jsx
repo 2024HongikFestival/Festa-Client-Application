@@ -35,7 +35,13 @@ export default function Header() {
 
   // backBtn
   const handleGoBack = () => {
-    nav(-1);
+    if (location.pathname === '/lost-and-found/add') {
+      // /lost-and-found/add에서는 /lost-and-found로 이동
+      nav('/lost-and-found');
+    } else {
+      // 그 외: -1로 이동
+      nav(-1);
+    }
     setTimeout(() => {
       window.scrollTo({
         top: 0,
