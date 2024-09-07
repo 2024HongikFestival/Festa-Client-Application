@@ -100,7 +100,7 @@ export const LostCenterContent = styled.span`
   color: ${({ theme }) => theme.colors.gray70};
 
   span {
-    ${({ theme }) => theme.fontStyles.basic.body1Med};
+    ${({ theme }) => theme.fontStyles.basic.body1Bold};
     color: ${({ theme }) => theme.colors.black};
   }
 `;

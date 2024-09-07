@@ -30,7 +30,7 @@ export const LocationModal = ({ isOpen, setIsOpen }) => {
         <S.LostCenterMap />
       </S.LostCenterLayout>
       <S.LostCenterContent>
-        <span>대운동장 구령대 중앙에</span>
+        <span>대운동장 구령대 중앙</span>에
         <br />
         분실물 센터가 위치해 있습니다.
       </S.LostCenterContent>
