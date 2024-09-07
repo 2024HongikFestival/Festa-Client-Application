@@ -1,9 +1,9 @@
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import globe from '@/assets/webps/layouts/globe.webp';
 import globeGray from '@/assets/webps/layouts/globeGray.webp';
-import * as S from './HeaderStyles';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import * as S from '@/components/layouts/HeaderStyles';
 
 const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
   const [openAccordion, setOpenAccordion] = useState(null);

@@ -1,7 +1,7 @@
+import { useEffect, useState } from 'react';
 import Popup from '@/components/admin/Popup';
 import PropTypes from 'prop-types';
-import * as S from './HeaderStyles';
-import { useEffect, useState } from 'react';
+import * as S from '@/components/layouts/HeaderStyles';
 
 const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);

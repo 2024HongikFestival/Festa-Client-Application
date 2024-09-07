@@ -53,8 +53,6 @@ export const HeaderBg = styled.div`
     css`
       border: none;
       background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
     `}
 
   ${(props) =>
@@ -62,8 +60,6 @@ export const HeaderBg = styled.div`
     css`
       border: none;
       background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
     `}
 `;
 

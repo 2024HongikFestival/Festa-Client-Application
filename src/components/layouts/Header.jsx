@@ -1,15 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import * as S from './HeaderStyles';
-import hiuLogo from '@/assets/webps/layouts/hiuLogo.webp';
-import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
-import backBtn from '@/assets/webps/layouts/backBtn.webp';
-import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
-import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
-import xBtnBlack from '@/assets/svgs/layouts/xBtnBlack.svg';
-import xBtnWhite from '@/assets/svgs/layouts/xBtnWhite.svg';
 import { useNavigate, useLocation } from 'react-router-dom';
-import AdminMenuBar from './AdminMenuBar';
-import CommonMenuBar from './CommonMenuBar';
+import * as S from '@/components/layouts/HeaderStyles';
+import AdminMenuBar from '@/components/layouts/AdminMenuBar';
+import CommonMenuBar from '@/components/layouts/CommonMenuBar';
+import routeConfig from '@/constants/layouts/routeConfig';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,21 +14,15 @@ export default function Header() {
   const adminMenuRef = useRef(null);
   const commonMenuRef = useRef(null);
 
-  // path
-  const makers = location.pathname === '/likelion' || location.pathname === '/gaehwa';
-  const flame = location.pathname.startsWith('/flame');
-  const isAdminPath =
-    location.pathname === '/admin' || location.pathname === '/admin/event' || location.pathname === '/admin/losts';
+  let currentRoute = routeConfig.default;
 
-  const useWhiteImages = (path) => {
-    // 하얀색 홍익로고, 메뉴바 로고 들어가는 path
-    const whiteImagePaths = ['/likelion', '/gaehwa'];
-    if (path.startsWith('/flame')) {
-      return true;
-    }
-    return whiteImagePaths.includes(path);
-  };
-  const whiteImages = useWhiteImages(location.pathname);
+  if (location.pathname.startsWith('/flame')) {
+    currentRoute = routeConfig['/flame'];
+  } else if (location.pathname.startsWith('/admin')) {
+    currentRoute = routeConfig['/admin'];
+  } else if (routeConfig[location.pathname]) {
+    currentRoute = routeConfig[location.pathname];
+  }
 
   // 메뉴바 여닫기
   const toggleMenu = (event) => {
@@ -78,30 +66,24 @@ export default function Header() {
   return (
     <>
       <S.HeaderLayout $path={location.pathname}>
-        <S.HeaderBg $path={location.pathname} $isMenuOpen={isMenuOpen} $flame={flame}>
-          {makers && (
+        <S.HeaderBg $path={location.pathname} $isMenuOpen={isMenuOpen}>
+          {currentRoute.showBackButton ? (
             <S.HambergerMenu onClick={handleGoBack}>
-              <img src={backBtn} alt="backBtb" />
+              <img src={currentRoute.menuIcon} alt="backBtn" />
             </S.HambergerMenu>
-          )}
-          {!makers && (
+          ) : (
             <S.HambergerMenu onClick={toggleMenu}>
-              <img
-                src={
-                  whiteImages ? (isMenuOpen ? xBtnWhite : hambergerMenu) : isMenuOpen ? xBtnBlack : hambergerMenuBlack
-                }
-                alt="hambergerMenu"
-              />
+              <img src={isMenuOpen ? currentRoute.xBtn : currentRoute.menuIcon} alt="menuIcon" />
             </S.HambergerMenu>
           )}
           <S.HiuLogo onClick={() => nav('/')}>
-            <img src={whiteImages ? hiuLogo : hiuLogoBlack} alt="hiuLogo" />
+            <img src={currentRoute.logo} alt="logo" />
           </S.HiuLogo>
 
           <S.Right></S.Right>
         </S.HeaderBg>
         {(isMenuOpen || isAnimating) &&
-          (isAdminPath ? (
+          (location.pathname.startsWith('/admin') ? (
             <AdminMenuBar
               className={menuClass}
               nav={nav}
@@ -113,7 +95,7 @@ export default function Header() {
               className={menuClass}
               nav={nav}
               closeMenu={() => setIsMenuOpen(false)}
-              flame={flame}
+              flame={location.pathname.startsWith('/flame')}
               commonMenuRef={commonMenuRef}
             />
           ))}
