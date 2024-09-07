@@ -25,9 +25,7 @@
       "toFlameReservation": "예매",
       "toFlameLineUp": "라인업",
       "toFlameMd": "MD 상품",
-      "toFlamePromotion": "프로모션",
-      "toAdmin": "분실물 게시판 관리",
-      "toAdminEvent": "이벤트 관리"
+      "toFlamePromotion": "프로모션"
     },
     "footer": {
       "contributors": "Contributors Page",

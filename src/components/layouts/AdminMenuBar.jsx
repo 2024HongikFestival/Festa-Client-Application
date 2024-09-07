@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as S from './HeaderStyles';
 import { useEffect, useState } from 'react';
 
-const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, t }) => {
+const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
@@ -57,7 +57,7 @@ const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, t }) => {
               closeMenu();
             }}
           >
-            {t('layouts.header.toAdmin')}
+            분실물 게시판 관리
           </S.Menu>
           <S.Menu
             onClick={() => {
@@ -66,7 +66,7 @@ const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, t }) => {
               closeMenu();
             }}
           >
-            {t('layouts.header.toAdminEvent')}
+            이벤트 관리
           </S.Menu>
         </S.PageMenu>
         <S.Logout onClick={() => setShowLogoutPopup(true)}>로그아웃</S.Logout>
@@ -92,7 +92,6 @@ AdminMenuBar.propTypes = {
     PropTypes.func, // ref로서의 함수 타입
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }), // ref로서의 객체 타입
   ]).isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 export default AdminMenuBar;

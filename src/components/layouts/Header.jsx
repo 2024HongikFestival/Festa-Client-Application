@@ -8,20 +8,15 @@ import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
 import xBtnBlack from '@/assets/svgs/layouts/xBtnBlack.svg';
 import xBtnWhite from '@/assets/svgs/layouts/xBtnWhite.svg';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import AdminMenuBar from './AdminMenuBar';
 import CommonMenuBar from './CommonMenuBar';
 
 export default function Header() {
   const nav = useNavigate();
   const location = useLocation();
-  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [menuClass, setMenuClass] = useState('');
-  const [isKorActive, setIsKorActive] = useState(true); // language toggle
-  const [openAccordion, setOpenAccordion] = useState(null);
-
   const adminMenuRef = useRef(null);
   const commonMenuRef = useRef(null);
 
@@ -69,21 +64,6 @@ export default function Header() {
     }
   }, [menuClass, isAnimating]);
 
-  // common 메뉴바 열렸을 때 바깥 클릭시 메뉴바 닫기
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (commonMenuRef.current && !commonMenuRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-        setIsAnimating(true);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
   // backBtn
   const handleGoBack = () => {
     nav(-1);
@@ -93,34 +73,6 @@ export default function Header() {
         behavior: 'smooth',
       });
     }, 100);
-  };
-
-  // language toggle 초기화
-  useEffect(() => {
-    const storedLanguage = localStorage.getItem('language');
-    if (storedLanguage) {
-      setIsKorActive(storedLanguage === 'ko');
-    } else {
-      setIsKorActive(true); // 기본값: 한국어
-      localStorage.setItem('language', 'ko');
-    }
-  }, []);
-
-  // language toggle
-  const clickHandler = (lng) => {
-    setIsKorActive(lng === 'ko');
-    localStorage.setItem('language', lng);
-    i18n.changeLanguage(lng);
-  };
-
-  const toggleLanguage = () => {
-    const newLanguage = isKorActive ? 'en' : 'ko';
-    clickHandler(newLanguage);
-  };
-
-  // 대동제 메뉴바 아코디언 토글
-  const toggleAccordion = (index) => {
-    setOpenAccordion(openAccordion === index ? null : index);
   };
 
   return (
@@ -155,20 +107,14 @@ export default function Header() {
               nav={nav}
               closeMenu={() => setIsMenuOpen(false)}
               adminMenuRef={adminMenuRef}
-              t={t}
             />
           ) : (
             <CommonMenuBar
               className={menuClass}
-              commonMenuRef={commonMenuRef}
-              closeMenu={() => setIsMenuOpen(false)}
-              isKorActive={isKorActive}
-              toggleLanguage={toggleLanguage}
-              t={t}
-              flame={flame}
               nav={nav}
-              openAccordion={openAccordion}
-              toggleAccordion={toggleAccordion}
+              closeMenu={() => setIsMenuOpen(false)}
+              flame={flame}
+              commonMenuRef={commonMenuRef}
             />
           ))}
       </S.HeaderLayout>
