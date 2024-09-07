@@ -9,8 +9,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [menuClass, setMenuClass] = useState('');
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const nav = useNavigate();
   const location = useLocation();
+  const headerRef = useRef(null);
   const adminMenuRef = useRef(null);
   const commonMenuRef = useRef(null);
 
@@ -42,6 +44,29 @@ export default function Header() {
     }, 100);
   };
 
+  // 메뉴바 & 헤더 밖 클릭 범위 지정 & admin 로직
+  const handleClickOutside = (event) => {
+    if (
+      (commonMenuRef.current && !commonMenuRef.current.contains(event.target)) ||
+      (adminMenuRef.current && !adminMenuRef.current.contains(event.target))
+    ) {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+        if (location.pathname.startsWith('/admin')) {
+          setShowLogoutPopup(false);
+        }
+      }
+    }
+  };
+
+  // 메뉴바 열렸을 때 바깥 클릭 시 메뉴바 '닫기'
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   // 메뉴바 열렸을 때 스크롤 막기
   useEffect(() => {
     if (isMenuOpen) {
@@ -65,7 +90,7 @@ export default function Header() {
 
   return (
     <>
-      <S.HeaderLayout $path={location.pathname}>
+      <S.HeaderLayout ref={headerRef} $path={location.pathname}>
         <S.HeaderBg $path={location.pathname} $isMenuOpen={isMenuOpen}>
           {currentRoute.showBackButton ? (
             <S.HambergerMenu onClick={handleGoBack}>
@@ -89,6 +114,8 @@ export default function Header() {
               nav={nav}
               closeMenu={() => setIsMenuOpen(false)}
               adminMenuRef={adminMenuRef}
+              setShowLogoutPopup={setShowLogoutPopup}
+              showLogoutPopup={showLogoutPopup}
             />
           ) : (
             <CommonMenuBar

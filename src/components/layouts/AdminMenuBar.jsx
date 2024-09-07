@@ -3,9 +3,8 @@ import Popup from '@/components/admin/Popup';
 import PropTypes from 'prop-types';
 import * as S from '@/components/layouts/HeaderStyles';
 
-const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef }) => {
+const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, showLogoutPopup, setShowLogoutPopup }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
-  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -23,21 +22,6 @@ const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef }) => {
     closeMenu();
     setShowLogoutPopup(false);
   };
-
-  // admin 메뉴바 열렸을 때 바깥 클릭시 메뉴바 닫기
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
-        closeMenu();
-        setShowLogoutPopup(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [adminMenuRef, closeMenu]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
@@ -92,6 +76,8 @@ AdminMenuBar.propTypes = {
     PropTypes.func, // ref로서의 함수 타입
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }), // ref로서의 객체 타입
   ]).isRequired,
+  showLogoutPopup: PropTypes.bool.isRequired,
+  setShowLogoutPopup: PropTypes.func.isRequired,
 };
 
 export default AdminMenuBar;

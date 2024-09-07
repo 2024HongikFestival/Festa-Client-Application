@@ -27,20 +27,6 @@ const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
     clickHandler(newLanguage);
   };
 
-  // common 메뉴바 열렸을 때 바깥 클릭시 메뉴바 닫기
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (commonMenuRef.current && !commonMenuRef.current.contains(event.target)) {
-        closeMenu();
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [closeMenu, commonMenuRef]);
-
   return (
     <S.MenuBar ref={commonMenuRef} $flame={flame} className={className}>
       <S.MenuList $flame={flame}>
