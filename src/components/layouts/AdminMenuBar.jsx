@@ -1,18 +1,51 @@
 import Popup from '@/components/admin/Popup';
 import PropTypes from 'prop-types';
 import * as S from './HeaderStyles';
+import { useEffect, useState } from 'react';
 
-const AdminMenuBar = ({
-  className,
-  nav,
-  handleCancelLogout,
-  handleConfirmLogout,
-  showLogoutPopup,
-  setShowLogoutPopup,
-  closeMenu,
-  adminMenuRef,
-  t,
-}) => {
+const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, t }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    setIsLoggedIn(false);
+    nav(0);
+  };
+
+  const handleConfirmLogout = () => {
+    handleLogout();
+    closeMenu();
+    setShowLogoutPopup(false);
+  };
+
+  const handleCancelLogout = () => {
+    closeMenu();
+    setShowLogoutPopup(false);
+  };
+
+  // admin 메뉴바 열렸을 때 바깥 클릭시 메뉴바 닫기
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
+        closeMenu();
+        setShowLogoutPopup(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [adminMenuRef, closeMenu]);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <>
       <S.AdminBar ref={adminMenuRef} className={className}>
@@ -54,10 +87,6 @@ const AdminMenuBar = ({
 AdminMenuBar.propTypes = {
   className: PropTypes.string.isRequired,
   nav: PropTypes.func.isRequired,
-  handleCancelLogout: PropTypes.func.isRequired,
-  handleConfirmLogout: PropTypes.func.isRequired,
-  showLogoutPopup: PropTypes.bool.isRequired,
-  setShowLogoutPopup: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,
   adminMenuRef: PropTypes.oneOfType([
     PropTypes.func, // ref로서의 함수 타입

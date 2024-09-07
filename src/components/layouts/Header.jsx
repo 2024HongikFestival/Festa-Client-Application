@@ -21,7 +21,7 @@ export default function Header() {
   const [menuClass, setMenuClass] = useState('');
   const [isKorActive, setIsKorActive] = useState(true); // language toggle
   const [openAccordion, setOpenAccordion] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
   const adminMenuRef = useRef(null);
   const commonMenuRef = useRef(null);
 
@@ -68,40 +68,6 @@ export default function Header() {
       return () => clearTimeout(timer);
     }
   }, [menuClass, isAnimating]);
-
-  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
-  const handleLogout = () => {
-    localStorage.removeItem('accessToken');
-    setIsLoggedIn(false);
-    nav(0);
-  };
-
-  const handleConfirmLogout = () => {
-    handleLogout();
-    setIsMenuOpen(false);
-    setShowLogoutPopup(false);
-  };
-
-  const handleCancelLogout = () => {
-    setIsMenuOpen(false);
-    setShowLogoutPopup(false);
-  };
-
-  // admin 메뉴바 열렸을 때 바깥 클릭시 메뉴바 닫기
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-        setIsAnimating(true);
-        setShowLogoutPopup(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
 
   // common 메뉴바 열렸을 때 바깥 클릭시 메뉴바 닫기
   useEffect(() => {
@@ -157,13 +123,6 @@ export default function Header() {
     setOpenAccordion(openAccordion === index ? null : index);
   };
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      setIsLoggedIn(true);
-    }
-  }, []);
-
   return (
     <>
       <S.HeaderLayout $path={location.pathname}>
@@ -193,13 +152,9 @@ export default function Header() {
           (isAdminPath ? (
             <AdminMenuBar
               className={menuClass}
-              adminMenuRef={adminMenuRef}
-              handleCancelLogout={handleCancelLogout}
-              handleConfirmLogout={handleConfirmLogout}
-              showLogoutPopup={showLogoutPopup}
-              setShowLogoutPopup={setShowLogoutPopup}
               nav={nav}
               closeMenu={() => setIsMenuOpen(false)}
+              adminMenuRef={adminMenuRef}
               t={t}
             />
           ) : (
