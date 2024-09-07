@@ -8,7 +8,7 @@ import FleamarketDetail from '@/pages/booth/fleamarket/FleamarketDetail';
 import PromotionPage from '@/pages/booth/promotion/PromotionPage';
 import EnterEvent from '@/pages/event/enter/EnterEvent';
 import EventPage from '@/pages/event/main/EventPage';
-import CompleteEvent from '@/pages/event/SubmitEvent';
+import SubmitEvent from '@/pages/event/SubmitEvent';
 import FacilitiesPage from '@/pages/facilities/FacilitiesPage';
 import FlameMainPage from '@/pages/flame/FlameMainPage';
 import FlameLineupPage from '@/pages/flame/lineup/FlameLineupPage';
@@ -68,7 +68,7 @@ function App() {
             {/* 가영 라우팅 ✨ */}
             <Route path="/event" element={<EventPage />} />
             <Route path="/event/enter" element={<EnterEvent />} />
-            <Route path="/event/submit" element={<CompleteEvent />} />
+            <Route path="/event/submit" element={<SubmitEvent />} />
             <Route path="/oauth/events" element={<RedirectEvents />} />
 
             {/* 정인 라우팅 🍀 */}
