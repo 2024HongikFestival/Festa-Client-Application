@@ -1,33 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import {
-  MdProductsContainer,
-  ProductsSection,
-  Title,
-  ProductList,
-  ProductLocation,
-  LocationDescription,
-  MainDescription,
-  Highlight,
-  SubDescription,
-  LocationAlert,
-  CardContainer,
-  AlertImage,
-  ProductCard,
-  ImageContainer,
-  ProductImage,
-  ProductInfo,
-  ProductDetails,
-  ProductTag,
-  ProductName,
-  ProductPrice,
-  NoticeContainer,
-  NoticeTitle,
-  NoticeList,
-  NoticeItem,
-  HighlightedText,
-} from './styles';
+import * as S from './styles';
 
 import md1 from '@/assets/webps/wdfMD/md1.webp';
 import md2 from '@/assets/webps/wdfMD/md2.webp';
@@ -47,9 +21,9 @@ const FlameMdPage = () => {
 
   useEffect(() => {
     setProducts(productsData.products);
-    AOS.init({
-      duration: 900, // 애니메이션 지속 시간 (밀리초)
-    });
+    // AOS.init({
+    //   duration: 900, // 애니메이션 지속 시간 (밀리초)
+    // });
   }, []);
 
   const imageMap = {
@@ -67,65 +41,66 @@ const FlameMdPage = () => {
 
   return (
     <>
-      <MdProductsContainer>
-        <ProductsSection>
-          <Title>MD 상품</Title>
-          <ProductList>
-            <ProductLocation>
-              <LocationDescription>
-                <MainDescription>
-                  홍문관(R동) 앞 & 아트앤디자인밸리 측면<Highlight>에서</Highlight>
-                </MainDescription>
-                <SubDescription>구매하실 수 있습니다!</SubDescription>
-              </LocationDescription>
-              <LocationAlert>
-                <AlertImage src={alertImage} />
+      <S.MdProductsContainer>
+        <S.ProductsSection>
+          <S.Title>MD 상품</S.Title>
+          <S.ProductList>
+            <S.ProductLocation>
+              <S.LocationDescription>
+                <S.MainDescription>
+                  홍문관(R동) 앞 & 아트앤디자인밸리 측면<S.Highlight>에서</S.Highlight>
+                </S.MainDescription>
+                <S.SubDescription>구매하실 수 있습니다!</S.SubDescription>
+              </S.LocationDescription>
+              <S.LocationAlert>
+                <S.AlertImage src={alertImage} />
                 현장 구매만 가능합니다
-              </LocationAlert>
-            </ProductLocation>
-            <CardContainer>
+              </S.LocationAlert>
+            </S.ProductLocation>
+            <S.CardContainer>
               {products.map((product) => (
-                <ProductCard key={product.id} data-aos="fade-up">
-                  <ImageContainer>
-                    <ProductImage
+                <S.ProductCard key={product.id} data-aos="fade-up">
+                  <S.ImageContainer>
+                    <S.ProductImage
                       src={imageMap[product.image]}
                       alt={product.name}
                       width={product.width}
                       height={product.height}
                       top={product.imageTop}
                     />
-                  </ImageContainer>
-                  <ProductInfo>
-                    <ProductDetails>
-                      <ProductTag>한정판매</ProductTag>
-                      <ProductName>{product.name}</ProductName>
-                    </ProductDetails>
-                    <ProductPrice>{product.price}</ProductPrice>
-                  </ProductInfo>
-                </ProductCard>
+                  </S.ImageContainer>
+                  <S.ProductInfo>
+                    <S.ProductDetails>
+                      <S.ProductTag>한정판매</S.ProductTag>
+                      <S.ProductName>{product.name}</S.ProductName>
+                    </S.ProductDetails>
+                    <S.ProductPrice>{product.price}</S.ProductPrice>
+                  </S.ProductInfo>
+                </S.ProductCard>
               ))}
-            </CardContainer>
-          </ProductList>
-        </ProductsSection>
-        <NoticeContainer>
-          <NoticeTitle>현장 구매 시 유의 사항</NoticeTitle>
-          <NoticeList>
-            <NoticeItem>
-              계좌 이체 <HighlightedText>및</HighlightedText> 현금 결제<HighlightedText>만 가능합니다.</HighlightedText>
-            </NoticeItem>
-            <NoticeItem>
-              구매 완료 시 환불, 교환, 취소 불가능<HighlightedText>합니다.</HighlightedText>
-            </NoticeItem>
-            <NoticeItem>
+            </S.CardContainer>
+          </S.ProductList>
+        </S.ProductsSection>
+        <S.NoticeContainer>
+          <S.NoticeTitle>현장 구매 시 유의 사항</S.NoticeTitle>
+          <S.NoticeList>
+            <S.NoticeItem>
+              계좌 이체 <S.HighlightedText>및</S.HighlightedText> 현금 결제
+              <S.HighlightedText>만 가능합니다.</S.HighlightedText>
+            </S.NoticeItem>
+            <S.NoticeItem>
+              구매 완료 시 환불, 교환, 취소 불가능<S.HighlightedText>합니다.</S.HighlightedText>
+            </S.NoticeItem>
+            <S.NoticeItem>
               불량품
-              <HighlightedText>
+              <S.HighlightedText>
                 은 현장에서 확인 후 바로 현장 관리 인원에게
                 <br /> 말씀해 주시기 바랍니다.
-              </HighlightedText>
-            </NoticeItem>
-          </NoticeList>
-        </NoticeContainer>
-      </MdProductsContainer>
+              </S.HighlightedText>
+            </S.NoticeItem>
+          </S.NoticeList>
+        </S.NoticeContainer>
+      </S.MdProductsContainer>
     </>
   );
 };

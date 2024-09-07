@@ -22,16 +22,21 @@ export const VideoContainer = styled.div`
 export const Title = styled.span`
   ${(props) => props.theme.fontStyles.flame.subHead};
   font-size: 1.6rem;
+  margin-left: 1.2rem;
+  position: absolute;
+  top: 0;
   text-shadow: 0px 0px 3.2rem rgba(255, 255, 255, 0.25);
   font-style: italic;
   color: ${(props) => props.theme.colors.gray20};
   background-color: transparent;
-  padding-top: 3.2rem;
 `;
 
 export const WDFLogo = styled.img`
-  width: 23.7rem;
-  height: 7.5rem;
+  width: 28.5rem;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const LineUpSection = styled.div`
@@ -48,8 +53,19 @@ export const WDFContainer = styled.div`
   padding-bottom: 5.2rem;
 `;
 
+export const LogoContainer = styled.div`
+  height: 9.7rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  margin-top: 3.2rem;
+`;
+
 export const SubTitle = styled.span`
-  left: -2.08rem;
+  left: -1.5rem;
+  top: 0;
   text-shadow: 0px 0px 1.6rem rgba(255, 255, 255, 0.25);
   padding-top: 1.6rem;
   position: absolute;
@@ -60,9 +76,12 @@ export const SubTitle = styled.span`
 
 export const TitleWrapper = styled.div`
   display: flex;
+  top: 1.8rem;
+  left: 1rem;
+  position: relative;
   flex-direction: row;
   justify-content: center;
-  position: relative;
+  align-items: center;
 `;
 
 export const TitleContainer = styled.div`
@@ -82,6 +101,7 @@ export const WDFIntroduction = styled.div`
 
 export const WDFImage = styled.img`
   display: flex;
+  margin-left: 1rem;
   width: 25.8rem;
   height: 36.1rem;
 `;
@@ -147,6 +167,12 @@ export const DateButton = styled.button`
   }
 `;
 
+export const BtnWrapper = styled.div`
+  width: 32.5rem;
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const DayContent = styled.div`
   height: 46.9rem;
   box-sizing: border-box;
@@ -183,7 +209,7 @@ export const ImageContainer = styled.div`
   border: 0.1rem solid;
   border-image-source: linear-gradient(180deg, #df2121 0%, #cdb3b3 70%, #515356 100%);
   border-image-slice: 1;
-  background: var(--UI-Background, #010304);
+  background-color: ${(props) => props.theme.colors.flameBackgroundColor};
   margin: 0 0.8rem;
   box-sizing: border-box;
   position: relative;

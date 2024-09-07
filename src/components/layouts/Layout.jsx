@@ -6,7 +6,8 @@ import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 
 export default function Layout() {
   const location = useLocation();
-  const isAdminPath = location.pathname === '/admin';
+  const isAdminPath =
+    location.pathname === '/admin' || location.pathname === '/admin/event' || location.pathname === '/admin/losts';
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };

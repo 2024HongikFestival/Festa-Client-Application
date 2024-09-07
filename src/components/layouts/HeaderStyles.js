@@ -49,7 +49,7 @@ export const HeaderBg = styled.div`
     `}
 
   ${(props) =>
-    props.$path === '/admin' &&
+    props.$path === '/admin/losts' &&
     css`
       border: none;
       background-color: ${(props) => props.theme.colors.white};

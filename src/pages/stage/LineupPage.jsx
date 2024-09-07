@@ -1,18 +1,5 @@
-// 대동제 공연 (라인업)
-// url: /lineup
-
 import React, { useEffect, useState } from 'react';
-import {
-  Card,
-  CardContainer,
-  CardDescription,
-  CardImage,
-  DayButton,
-  DayContainer,
-  Name,
-  PageContainer,
-  Title,
-} from './styles/LineupPage';
+import * as S from './styles/LineupPage';
 
 // 날짜에 따른 Day 선택 함수
 const getSelectedDayByDate = () => {
@@ -65,34 +52,34 @@ const LineupPage = () => {
 
   const renderCards = () => {
     return dummyData[selectedDay].map((data) => (
-      <Card key={data.id}>
-        <CardImage></CardImage>
-        <CardDescription>
-          <Name>{data.name}</Name>
-        </CardDescription>
-      </Card>
+      <S.Card key={data.id}>
+        <S.CardImage></S.CardImage>
+        <S.CardDescription>
+          <S.Name>{data.name}</S.Name>
+        </S.CardDescription>
+      </S.Card>
     ));
   };
 
   return (
-    <PageContainer>
-      <Title>라인업</Title>
-      <DayContainer>
-        <DayButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('Day1')}>
+    <S.PageContainer>
+      <S.Title>라인업</S.Title>
+      <S.DayContainer>
+        <S.DayButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('Day1')}>
           <span className="day">DAY 1</span>
           <span className="date">9.25 (수)</span>
-        </DayButton>
-        <DayButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('Day2')}>
+        </S.DayButton>
+        <S.DayButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('Day2')}>
           <span className="day">DAY 2</span>
           <span className="date">9.26 (목)</span>
-        </DayButton>
-        <DayButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('Day3')}>
+        </S.DayButton>
+        <S.DayButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('Day3')}>
           <span className="day">DAY 3</span>
           <span className="date">9.27 (금)</span>
-        </DayButton>
-      </DayContainer>
-      <CardContainer>{renderCards()}</CardContainer>
-    </PageContainer>
+        </S.DayButton>
+      </S.DayContainer>
+      <S.CardContainer>{renderCards()}</S.CardContainer>
+    </S.PageContainer>
   );
 };
 

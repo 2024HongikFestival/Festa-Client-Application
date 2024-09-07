@@ -21,17 +21,17 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [menuClass, setMenuClass] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isKorActive, setIsKorActive] = useState(true); // language toggle
   const [openAccordion, setOpenAccordion] = useState(null);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   const adminMenuRef = useRef(null);
   const commonMenuRef = useRef(null);
 
   // path
   const makers = location.pathname === '/likelion' || location.pathname === '/gaehwa';
   const flame = location.pathname.startsWith('/flame');
-  const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
+  const isAdminPath =
+    location.pathname === '/admin' || location.pathname === '/admin/event' || location.pathname === '/admin/losts';
 
   const useWhiteImages = (path) => {
     // 하얀색 홍익로고, 메뉴바 로고 들어가는 path
@@ -159,6 +159,13 @@ export default function Header() {
     setOpenAccordion(openAccordion === index ? null : index);
   };
 
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <>
       <S.HeaderLayout $path={location.pathname}>
@@ -233,7 +240,7 @@ const AdminMenuBar = ({
         <S.PageMenu>
           <S.Menu
             onClick={() => {
-              nav('/admin');
+              nav('/admin/losts');
               nav(0);
               closeMenu();
             }}
@@ -243,6 +250,7 @@ const AdminMenuBar = ({
           <S.Menu
             onClick={() => {
               nav('/admin/event');
+              nav(0);
               closeMenu();
             }}
           >
