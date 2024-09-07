@@ -17,16 +17,22 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
   const [popupType, setPopupType] = useState(null);
   const optionsMenuRef = useRef(null);
   const [hasMore, setHasMore] = useState(true);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     getLosts(1);
   }, []);
+
   useEffect(() => {
     if (Array.isArray(allLosts)) {
       setDisplayedLosts(allLosts.slice(0, currentPage * postsPerPage));
     }
   }, [allLosts, currentPage]);
+
+  useEffect(() => {
+    setHasMore(currentPage < totalPages);
+  }, [currentPage, totalPages]);
 
   const getLosts = async (page = 1) => {
     const token = getAdminToken();
@@ -39,15 +45,19 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
       });
 
       const newLosts = response.data.data.losts;
+      setTotalPages(response.data.data.totalPage);
 
       if (newLosts.length === 0) {
         setHasMore(false); // 더 이상 게시글이 없으면 hasMore를 false로 설정
+        console.log('게시글이 더 이상 없습니다. hasMore를 false로 설정합니다.');
       } else {
         setAllLosts((prevLosts) => [...prevLosts, ...newLosts]);
         setDisplayedLosts((prevDisplayedLosts) => [...prevDisplayedLosts, ...newLosts]);
+        setHasMore(page < totalPages);
       }
     } catch (error) {
-      console.error('분실물 데이터를 가져오는 중 오류가 발생했습니다: ', error);
+      setHasMore(false);
+      console.log('404 오류 발생. 더 이상 게시글이 없습니다.');
     } finally {
       setLoading(false);
     }
@@ -79,6 +89,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
       setCurrentPage(nextPage);
       getLosts(nextPage);
     }
+    console.log('hasMore:', hasMore);
   };
 
   const handleMoreClick = (lostId, e) => {
@@ -335,6 +346,7 @@ const PostContainer = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.colors.gray10};
   gap: ${({ $nogap }) => ($nogap ? '0' : '0.8rem')}; /* 0.5rem → 0.8rem */
+  padding-bottom: 8rem;
 `;
 
 const Wrapper = styled.div`
@@ -477,5 +489,4 @@ const LoadMoreWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8rem;
 `;

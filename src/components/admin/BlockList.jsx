@@ -53,7 +53,6 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
             return acc;
           }, {})
         );
-        console.log(allLosts);
       } catch (error) {
         console.error('Error fetching all losts:', error);
       }
