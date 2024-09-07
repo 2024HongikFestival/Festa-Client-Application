@@ -1,13 +1,17 @@
 // src/components/Camera.js
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
+import { useCamera } from '../context/AuthProvider';
 import * as S from './CameraPage.styled';
 
 const CameraPage = ({ setCapturedImage }) => {
+  const { setIsCamera } = useCamera();
   const videoRef = useRef(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setIsCamera(true);
+
     const startCamera = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -22,6 +26,7 @@ const CameraPage = ({ setCapturedImage }) => {
     startCamera();
 
     return () => {
+      setIsCamera(false);
       if (videoRef.current && videoRef.current.srcObject) {
         videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
       }

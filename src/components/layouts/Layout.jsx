@@ -6,14 +6,14 @@ import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
 
 export default function Layout() {
+  const { isCamera } = useCamera();
   const location = useLocation();
 
   const adminPaths = ['/admin', '/admin/event', '/admin/losts'];
   const isAdminPath = adminPaths.includes(location.pathname);
-
-  const isCamera = location.pathname === '/lost-and-found/add';
 
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
