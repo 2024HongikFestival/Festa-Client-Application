@@ -95,12 +95,13 @@ export const MenuBar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   top: 5.6rem;
   left: 0;
+  bottom: 0;
   width: 100%;
-  height: calc(100vh - 5.6rem);
   max-width: 26.1rem;
+  overflow-y: scroll;
   background-color: #f1fbfd;
   border-right: 0.1rem solid #d1c2f3;
   z-index: 99;
@@ -117,7 +118,6 @@ export const MenuBar = styled.div`
   ${({ $flame }) =>
     $flame &&
     css`
-      position: relative;
       background: rgba(1, 3, 4, 0.9);
       border-right: none;
       &::before {
@@ -332,11 +332,11 @@ export const AdminBar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   top: 5.6rem;
   left: 0;
+  bottom: 0;
   width: 100%;
-  height: calc(100vh - 5.6rem);
   max-width: 19.2rem;
   background-color: white;
   z-index: 99;

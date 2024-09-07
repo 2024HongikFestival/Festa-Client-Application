@@ -104,9 +104,9 @@ export default function Header() {
           <S.HiuLogo onClick={() => nav('/')}>
             <img src={currentRoute.logo} alt="logo" />
           </S.HiuLogo>
-
           <S.Right></S.Right>
         </S.HeaderBg>
+
         {(isMenuOpen || isAnimating) &&
           (location.pathname.startsWith('/admin') ? (
             <AdminMenuBar
