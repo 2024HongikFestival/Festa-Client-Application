@@ -33,7 +33,7 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
     setIsLoggedIn(false);
-    nav(0);
+    nav('/admin');
   };
 
   const handleConfirmLogout = () => {

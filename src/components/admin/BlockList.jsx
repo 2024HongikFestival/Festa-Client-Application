@@ -24,33 +24,55 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
   }, []);
 
   useEffect(() => {
+    const fetchAllLosts = async () => {
+      try {
+        const token = localStorage.getItem('accessToken');
+        let allLosts = [];
+        let page = 1;
+        let hasMore = true;
+
+        while (hasMore) {
+          const response = await adminAxiosInstance.get(`/losts?page=${page}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          const fetchedLosts = response.data.data.losts;
+          allLosts = [...allLosts, ...fetchedLosts];
+
+          hasMore = fetchedLosts.length === 9;
+          page += 1;
+        }
+
+        setAllLosts(allLosts);
+        setDisplayedLosts(
+          allLosts.reduce((acc, lost) => {
+            if (!acc[lost.userId]) acc[lost.userId] = [];
+            acc[lost.userId].push(lost);
+            return acc;
+          }, {})
+        );
+        console.log(allLosts);
+      } catch (error) {
+        console.error('Error fetching all losts:', error);
+      }
+    };
+
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('accessToken');
 
-        // getLists 정의 및 호출
-        const getLists = async () => {
-          const response = await adminAxiosInstance.get('/admin/blacklist', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setList(response.data.data);
-        };
+        // 블랙리스트 데이터 가져오기
+        const responseBlacklist = await adminAxiosInstance.get('/admin/blacklist', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setList(responseBlacklist.data.data);
 
-        // getAllLosts 정의 및 호출
-        const getAllLosts = async () => {
-          const response = await adminAxiosInstance.get('/losts', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setAllLosts(response.data.data.losts);
-        };
-
-        await getLists();
-        await getAllLosts();
-        window.scrollTo(0, 0);
+        // 모든 분실물 데이터 가져오기
+        await fetchAllLosts();
       } catch (error) {
         console.error('Error fetching data:', error.response?.data || error.message);
       }
@@ -67,15 +89,14 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
 
   const getAdminToken = () => localStorage.getItem('accessToken');
 
-  const filterPostsByUserId = (userId) => allLosts.filter((lost) => lost.userId === userId);
-
   const handleFilterByUserId = (userId) => {
-    const filteredPosts = filterPostsByUserId(userId);
+    const filteredPosts = allLosts.filter((lost) => lost.userId === userId);
     setDisplayedLosts((prevPosts) => ({
       ...prevPosts,
       [userId]: filteredPosts,
     }));
   };
+
   const updateLostsStatus = (userId, updatedPosts) => {
     // updatedPosts에서 userId에 해당하는 게시물만 필터링
     const filteredPosts = updatedPosts.filter((post) => post.userId === userId);
@@ -144,6 +165,7 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
       }
     }
   };
+
   const handlePostClick = (postId) => {
     setIsDetailView(true);
     setSelectedPostId(postId);
@@ -196,6 +218,7 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
     </ListContainer>
   );
 };
+
 BlockList.propTypes = {
   setIsDetailView: PropTypes.func.isRequired,
   setPostId: PropTypes.func.isRequired,

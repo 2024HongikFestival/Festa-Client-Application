@@ -9,37 +9,45 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
   const [allLosts, setAllLosts] = useState([]);
   const [displayedLosts, setDisplayedLosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  const [postsPerPage] = useState(9);
   const [loading, setLoading] = useState(false);
   const [showOptions, setShowOptions] = useState(null);
   const [currentPostId, setCurrentPostId] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [popupType, setPopupType] = useState(null);
   const optionsMenuRef = useRef(null);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    getLosts(1);
   }, []);
-
   useEffect(() => {
-    if (Array.isArray(posts)) {
-      setDisplayedLosts(posts.slice(0, currentPage * postsPerPage));
+    if (Array.isArray(allLosts)) {
+      setDisplayedLosts(allLosts.slice(0, currentPage * postsPerPage));
     }
-  }, [posts, currentPage]);
+  }, [allLosts, currentPage]);
 
-  const getLosts = async () => {
+  const getLosts = async (page = 1) => {
     const token = getAdminToken();
     setLoading(true);
     try {
-      const response = await adminAxiosInstance.get('/losts', {
+      const response = await adminAxiosInstance.get(`/losts?page=${page}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setAllLosts(response.data.data.losts);
-      setDisplayedLosts(response.data.data.losts.slice(0, postsPerPage));
+
+      const newLosts = response.data.data.losts;
+
+      if (newLosts.length === 0) {
+        setHasMore(false); // 더 이상 게시글이 없으면 hasMore를 false로 설정
+      } else {
+        setAllLosts((prevLosts) => [...prevLosts, ...newLosts]);
+        setDisplayedLosts((prevDisplayedLosts) => [...prevDisplayedLosts, ...newLosts]);
+      }
     } catch (error) {
-      console.error('Error fetching URL: ', error);
+      console.error('분실물 데이터를 가져오는 중 오류가 발생했습니다: ', error);
     } finally {
       setLoading(false);
     }
@@ -58,10 +66,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    getLosts();
-  }, []);
-
   const handleClick = (lostId) => {
     setPostId(lostId);
     setIsDetailView(true);
@@ -70,15 +74,10 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
   const formatId = (id) => String(id).padStart(6, '0');
 
   const loadMore = () => {
-    if (displayedLosts.length < allLosts.length && !loading) {
-      setLoading(true);
-      setCurrentPage((prevPage) => {
-        const nextPage = prevPage + 1;
-        const newDisplayedLosts = allLosts.slice(0, nextPage * postsPerPage);
-        setDisplayedLosts(newDisplayedLosts);
-        setLoading(false);
-        return nextPage;
-      });
+    if (!loading && hasMore) {
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      getLosts(nextPage);
     }
   };
 
@@ -240,8 +239,12 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
   return (
     <PostContainer $nogap={posts === userPosts}>
       {Array.isArray(userPosts) && userPosts.length > 0 ? (
-        userPosts.map((lost) => (
-          <Container key={lost.lostId} onClick={() => handleClick(lost.lostId)} $hasborder={posts === userPosts}>
+        userPosts.map((lost, index) => (
+          <Container
+            key={`${lost.lostId}-${index}`}
+            onClick={() => handleClick(lost.lostId)}
+            $hasborder={posts === userPosts}
+          >
             <Img src={lost.imageUrl} alt={lost.content} />
             <PostInfo>
               <Status $loststatus={lost.lostStatus}>
@@ -268,13 +271,11 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
       ) : (
         <p style={{ padding: '1rem' }}>분실물 게시글이 존재하지 않습니다.</p>
       )}
-      {posts !== userPosts && (
-        <LoadMoreWrapper $showbutton={displayedLosts.length < allLosts.length}>
-          {displayedLosts.length < allLosts.length && (
-            <LoadMoreButton onClick={loadMore} disabled={loading}>
-              {loading ? 'Loading...' : '더보기'}
-            </LoadMoreButton>
-          )}
+      {posts !== userPosts && hasMore && (
+        <LoadMoreWrapper>
+          <LoadMoreButton onClick={loadMore} disabled={loading}>
+            {loading ? '로딩 중...' : '더보기'}
+          </LoadMoreButton>
         </LoadMoreWrapper>
       )}
       {showPopup && (
@@ -470,7 +471,6 @@ const OptionButton = styled.button`
 
 const LoadMoreWrapper = styled.div`
   width: 32rem;
-  height: ${({ $showbutton }) => ($showbutton ? '6.4rem' : '0')};
   color: ${(props) => props.theme.colors.black};
   border: none;
   cursor: ${({ $showbutton }) => ($showbutton ? 'pointer' : 'default')};
