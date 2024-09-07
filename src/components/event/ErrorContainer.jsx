@@ -38,9 +38,13 @@ export const DuplicationErrorBox = () => {
 
   return (
     <ErrorContainer>
-      <Title>이미 응모 완료했어요!</Title>
+      <Title>
+        <HighlitedText>
+          이미 응모 <ShortHighlight src={highlight_short} alt="highlight_short" />
+        </HighlitedText>
+        완료 했어요!
+      </Title>
 
-      <img src={highlight_short} alt="highlight_short" width="9.3rem" height="1.2rem" />
       <Description>
         축제 기간동안 매일 주어지는 응모권으로
         <br />
@@ -65,7 +69,6 @@ const ErrorContainer = styled.div`
   border-radius: 1rem;
   border: 1px solid var(---on, #cdff3f);
   background: ${(props) => props.theme.colors.gray90};
-  gap: 1.6rem;
 `;
 
 const Title = styled.div`
@@ -87,6 +90,15 @@ const LongHighlight = styled.img`
   position: absolute;
   bottom: 0;
   right: 0;
+  z-index: 10;
+`;
+
+const ShortHighlight = styled.img`
+  width: 8rem;
+  height: 1.2rem;
+  position: absolute;
+  bottom: 0;
+  right: 0.2rem;
   z-index: 10;
 `;
 

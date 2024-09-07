@@ -38,10 +38,6 @@ export const Section = styled.div`
   }
 `;
 
-export const ItemSection = styled(Section)`
-  gap: 1.2rem;
-`;
-
 export const SectionText = styled.p`
   ${(props) => props.theme.fontStyles.basic.body1Bold}
   color: ${(props) => props.theme.colors.gray10};
@@ -51,52 +47,6 @@ export const SectionText = styled.p`
     ${(props) => props.theme.fontStyles.basic.body1Bold}
     color: ${(props) => props.theme.colors.gray30};
   }
-`;
-
-export const ItemContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: 1.6rem;
-`;
-export const Item = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 6rem;
-  gap: 1.2rem;
-`;
-
-export const ItemCard = styled.button`
-  width: 6rem;
-  height: 7.2rem;
-  align-self: stretch;
-  border-radius: 1rem;
-  border: 0.1rem solid #7b9a27;
-
-  img {
-    display: none;
-  }
-
-  &.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    border: 1px solid var(--on, #cdff3f);
-    background: rgba(205, 255, 63, 0.4);
-
-    img {
-      display: flex;
-      width: 2.4rem;
-      height: 2.4rem;
-    }
-  }
-`;
-
-export const ItemName = styled.div`
-  ${(props) => props.theme.fontStyles.basic.captionMed}
-  color: ${(props) => props.theme.colors.white};
 `;
 
 export const Input = styled.input`

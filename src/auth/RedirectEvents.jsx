@@ -28,10 +28,10 @@ const RedirectEvents = () => {
       const response = await axiosInstance.post('/entries/token', {
         // 현재 홍대 내부 좌표로 임의 설정
         code: localStorage.getItem('kakao_code'),
-        latitude: location.latitude,
-        longtitude: location.longitude,
-        // latitude: 37.5512242,
-        // longitude: 126.9255396,
+        // latitude: location.latitude,
+        // longtitude: location.longitude,
+        latitude: 37.5512242,
+        longitude: 126.9255396,
       });
       console.log(response.data.message);
       // 이벤트 토큰 저장
@@ -52,9 +52,9 @@ const RedirectEvents = () => {
       } else if (error.response.status === 403) {
         console.log('위치 확인 실패');
         setErrorStatus(403); // 403 에러 상태 설정
-      } else if (error.response.status === 404) {
+      } else if (error.response.status === 409) {
         console.log('중복 응모');
-        setErrorStatus(404); // 404 에러 상태 설정
+        setErrorStatus(409); // 409 에러 상태 설정
       } else {
         console.log('알 수 없는 오류');
       }
@@ -77,7 +77,7 @@ const RedirectEvents = () => {
       {errorStatus && (
         <Wrapper>
           {errorStatus === 403 && <LocationErrorBox />} {/* 403 에러 시 LocationErrorBox 표시 */}
-          {errorStatus === 404 && <DuplicationErrorBox />} {/* 404 에러 시 DuplicationErrorBox 표시 */}
+          {errorStatus === 409 && <DuplicationErrorBox />} {/* 404 에러 시 DuplicationErrorBox 표시 */}
         </Wrapper>
       )}
     </>
@@ -91,7 +91,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed; /* 화면 상단에 고정 */
+  position: fixed;
   top: 0;
   width: 100vw;
   height: 100%;

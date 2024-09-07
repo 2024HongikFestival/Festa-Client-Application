@@ -35,7 +35,7 @@ const SubmitEvent = () => {
         </ContentBox>
       )} */}
       <ContentBox>
-        <span>오전 10시</span>에 응모권 1장 받고
+        내일&nbsp;<span>오전 10시</span>에 응모권 1장 받고
         <br />또 도전해보세요!
       </ContentBox>
       <ShareButton>

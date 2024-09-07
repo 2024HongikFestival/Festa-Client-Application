@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './styled';
 import form from '@/assets/webps/event/form.webp';
 import PhoneNumBox from '@/components/event/PhoneNumBox';
-import check from '@/assets/svgs/event/check.svg';
 import SubmitEvent from '@/pages/event/SubmitEvent';
 
 const EnterEvent = () => {
@@ -30,14 +29,6 @@ const EnterEvent = () => {
     setName(e.target.value);
   };
 
-  // 이벤트 상품 관련 상태
-  const [isSelected, setIsSelected] = useState(null);
-  const itemArr = [1, 2, 3, 4]; // 경품 수 확정 X
-
-  const handleItemSelected = (idx) => {
-    setIsSelected(idx);
-  };
-
   // 후기 입력 관리
   const handleComment = (e) => {
     e.preventDefault();
@@ -61,7 +52,7 @@ const EnterEvent = () => {
       setPhone(phoneStr);
       console.log(phoneStr);
     }
-    if (name && isPhoneValid && isSelected !== null) {
+    if (name && isPhoneValid) {
       setIsAvailable(true);
     } else {
       setIsAvailable(false);
@@ -76,7 +67,7 @@ const EnterEvent = () => {
         {
           name: name,
           phone: phone,
-          prize: '티빙 한 달 이용권',
+          prize: 'A',
           comment: comment,
         },
         {
@@ -98,7 +89,7 @@ const EnterEvent = () => {
 
   useEffect(() => {
     isEntryAvailable();
-  }, [name, codeArr, isSelected]);
+  }, [name, codeArr]);
 
   useEffect(() => {
     if (codeArr.length !== 11 || codeArr.some((element) => element === '') || phone.length !== 13) {
@@ -134,28 +125,7 @@ const EnterEvent = () => {
               ))}
             </S.PhoneContainer>
           </S.Section>
-          <S.ItemSection>
-            <S.SectionText>받고 싶은 선물을 골라주세요!</S.SectionText>
-            {/* 경품 확정 X */}
-            <S.ItemContainer>
-              {itemArr.map((item, idx) => {
-                return (
-                  <S.Item
-                    key={idx}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleItemSelected(idx);
-                    }}
-                  >
-                    <S.ItemCard value={idx} className={isSelected !== null && idx === isSelected ? ' active' : ''}>
-                      <img src={check} alt="check" />
-                    </S.ItemCard>
-                    <S.ItemName>물품 {item}</S.ItemName>
-                  </S.Item>
-                );
-              })}
-            </S.ItemContainer>
-          </S.ItemSection>
+
           <S.Section className="last">
             <S.SectionText>
               축제 재밌게 즐기고 계신가요?
