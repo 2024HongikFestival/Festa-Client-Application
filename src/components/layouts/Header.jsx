@@ -18,9 +18,23 @@ export default function Header() {
 
   let currentRoute = routeConfig.default;
 
-  if (location.pathname.startsWith('/flame')) {
+  const flamePaths = [
+    '/flame',
+    '/flame/',
+    '/flame/map',
+    '/flame/timetable',
+    'flame/reservation',
+    'flame/lineup',
+    'flame/md',
+    'flame/promotion',
+  ];
+  const adminPaths = ['/admin', '/admin/event', '/admin/losts'];
+  const isFlamePath = flamePaths.includes(location.pathname);
+  const isAdminPath = adminPaths.includes(location.pathname);
+
+  if (isFlamePath) {
     currentRoute = routeConfig['/flame'];
-  } else if (location.pathname.startsWith('/admin')) {
+  } else if (isAdminPath) {
     currentRoute = routeConfig['/admin'];
   } else if (routeConfig[location.pathname]) {
     currentRoute = routeConfig[location.pathname];
@@ -58,7 +72,7 @@ export default function Header() {
     ) {
       if (headerRef.current && !headerRef.current.contains(event.target)) {
         setIsMenuOpen(false);
-        if (location.pathname.startsWith('/admin')) {
+        if (isAdminPath) {
           setShowLogoutPopup(false);
         }
       }
@@ -114,7 +128,7 @@ export default function Header() {
         </S.HeaderBg>
 
         {(isMenuOpen || isAnimating) &&
-          (location.pathname.startsWith('/admin') ? (
+          (isAdminPath ? (
             <AdminMenuBar
               className={menuClass}
               nav={nav}
@@ -128,7 +142,7 @@ export default function Header() {
               className={menuClass}
               nav={nav}
               closeMenu={() => setIsMenuOpen(false)}
-              flame={location.pathname.startsWith('/flame')}
+              flame={isFlamePath}
               commonMenuRef={commonMenuRef}
             />
           ))}
