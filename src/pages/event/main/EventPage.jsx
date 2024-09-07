@@ -9,6 +9,7 @@ import kakaoLogo from '@/assets/svgs/event/kakaoLogo.svg';
 import { ItemSlider } from '@/components/event/ItemSlider';
 import { axiosInstance } from '@/api/axios';
 import NoticeTimeBox from '@/components/event/NoticeTimeBox';
+import { handleShare } from '@/utils/event/handleShare';
 
 const EventPage = () => {
   const [stateData, setStateData] = useState();
@@ -28,13 +29,6 @@ const EventPage = () => {
     const array = new Uint32Array(1);
     self.crypto.getRandomValues(array);
     setStateData(array[0]);
-  };
-
-  // 소셜 공유 기능 추가 예정
-  const handleShare = () => {
-    navigator.clipboard.writeText(currentUrl).then(() => {
-      alert('링크가 복사되었습니다!');
-    });
   };
 
   const handleKakaoAuth = () => {
@@ -109,7 +103,11 @@ const EventPage = () => {
           <S.DetailDescription>9월 28일 14:00 총학 인스타 스토리</S.DetailDescription>
         </S.DetailSection>
       </S.NoticeDetail>
-      <S.ShareButton onClick={handleShare}>
+      <S.ShareButton
+        onClick={() => {
+          handleShare(currentUrl);
+        }}
+      >
         <S.ShareIcon src={shareIcon} alt="shareIcon" />
         <p>이벤트 공유</p>
       </S.ShareButton>
