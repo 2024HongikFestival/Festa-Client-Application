@@ -2,30 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 // JSON 파일을 import
 import scheduleData from '@/constants/stage/stageSchedule.json';
+import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
 
 const StageSchedule = () => {
   const [selectedDay, setSelectedDay] = useState('Day1');
   const [data, setData] = useState(scheduleData); // JSON 데이터를 상태로 설정
 
   useEffect(() => {
-    // 현재 날짜 가져오기
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const day = today.getDate();
-
-    if (month === 9) {
-      if (day === 25) {
-        setSelectedDay('Day1');
-      } else if (day === 26) {
-        setSelectedDay('Day2');
-      } else if (day === 27) {
-        setSelectedDay('Day3');
-      } else {
-        setSelectedDay('Day1');
-      }
-    } else {
-      setSelectedDay('Day1');
-    }
+    setSelectedDay(getSelectedDayByDate()); // 컴포넌트가 마운트될 때 함수를 호출
   }, []);
 
   const renderStage = () => {
