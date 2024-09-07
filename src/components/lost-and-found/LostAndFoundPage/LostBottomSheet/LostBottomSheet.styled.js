@@ -81,7 +81,7 @@ export const ModalBoxContent = styled.div`
   width: 32.6rem;
   flex-direction: column;
   align-items: center;
-  gap: 4.8rem;
+  gap: 3.6rem;
 `;
 
 export const ContentNoticeLayout = styled.div`

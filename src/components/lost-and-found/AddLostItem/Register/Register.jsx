@@ -144,7 +144,7 @@ const Register = ({ imgSrc }) => {
             </S.WarningBox>
 
             <S.RegisterSection>
-              <S.SectionTitle>분실물 찾아주기 ✋🏻</S.SectionTitle>
+              <S.SectionTitle>분실물 찾아주기 </S.SectionTitle>
               <S.RegisterArticle>
                 <S.InputWrapper>
                   <S.InputText>어디서 발견하셨나요? (최대 15자)</S.InputText>
