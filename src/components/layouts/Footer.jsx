@@ -46,15 +46,14 @@ export default function Footer() {
           </BackgroundVideo>
         </VideoContainer>
       )}
-      {!flame && (
-        <Mangae>
-          <img src={mangaeLogo} alt="mangae" />
-        </Mangae>
-      )}
-      {flame && (
+      {flame ? (
         <Flame>
           <img src={flameLogo} alt="flame" />
         </Flame>
+      ) : (
+        <Mangae>
+          <img src={mangaeLogo} alt="mangae" />
+        </Mangae>
       )}
       <Contributor $path={location.pathname}>
         <span>{t('layouts.footer.contributors')}</span>
@@ -64,16 +63,22 @@ export default function Footer() {
         <span onClick={() => handleNavigation('/likelion')} className="toLikelion">
           {t('layouts.footer.toLikelion')}
         </span>
-        {!flame && <img onClick={() => handleNavigation('/likelion')} src={rightArrow} alt="rightArrow" />}
-        {flame && <img onClick={() => handleNavigation('/likelion')} src={rightArrowGray} alt="rightArrowGray" />}
+        <img
+          onClick={() => handleNavigation('/likelion')}
+          src={flame ? rightArrowGray : rightArrow}
+          alt={flame ? 'rightArrowGray' : 'rightArrow'}
+        />
       </LikelionBtn>
       <GaehwaBtn $path={location.pathname}>
         <span className="gaehwa">{t('layouts.footer.gaehwa')}</span>
         <span onClick={() => handleNavigation('/gaehwa')} className="toGaehwa">
           {t('layouts.footer.toGaehwa')}
         </span>
-        {!flame && <img onClick={() => handleNavigation('/gaehwa')} src={rightArrow} alt="rightArrow" />}
-        {flame && <img onClick={() => handleNavigation('/gaehwa')} src={rightArrowGray} alt="rightArrowGray" />}
+        <img
+          onClick={() => handleNavigation('/gaehwa')}
+          src={flame ? rightArrowGray : rightArrow}
+          alt={flame ? 'rightArrowGray' : 'rightArrow'}
+        />
       </GaehwaBtn>
       <InstaContainer $path={location.pathname}>
         <span>{t('layouts.footer.instagram')}</span>
