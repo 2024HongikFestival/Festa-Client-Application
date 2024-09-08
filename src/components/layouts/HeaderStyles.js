@@ -273,45 +273,15 @@ export const Slider = styled.div`
     `}
 `;
 
-export const KorBox = styled.div`
-  margin-left: 0.5rem;
+export const LanguageItem = styled.div`
+  margin: ${({ $isEng }) => ($isEng ? '0 0.5rem 0 0' : '0 0 0 0.5rem')};
   position: relative;
   width: 3.6rem;
   height: 2rem;
   border-radius: 1rem;
   text-align: center;
   z-index: 1;
-  color: ${({ $isKorActive }) => ($isKorActive ? 'white' : '#27b0eb')};
-  transition: color 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  span {
-    text-align: center;
-    font-family: 'Pretendard', sans-serif;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%;
-    letter-spacing: -0.001rem;
-  }
-  ${({ $flame }) =>
-    $flame &&
-    css`
-      color: ${({ $isKorActive, theme }) => ($isKorActive ? 'white' : theme.colors.gray20)};
-    `}
-`;
-
-export const EngBox = styled.div`
-  margin-right: 0.5rem;
-  position: relative;
-  width: 3.6rem;
-  height: 2rem;
-  border-radius: 1rem;
-  text-align: center;
-  z-index: 1;
-  color: ${({ $isKorActive }) => ($isKorActive ? 'white' : '#27b0eb')};
+  color: ${({ $isKorActive }) => ($isKorActive ? 'white' : '#B0DBF3')};
   transition: color 0.3s ease;
   display: flex;
   justify-content: center;

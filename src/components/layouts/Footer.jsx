@@ -14,6 +14,8 @@ export default function Footer() {
   const nav = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
+  const flame = location.pathname.startsWith('/flame');
+  const flameMain = location.pathname === '/flame' || location.pathname === '/flame/';
 
   const handleNavigation = (path) => {
     if (location.pathname === path) {
@@ -33,9 +35,6 @@ export default function Footer() {
       }, 100);
     }
   };
-
-  const flame = location.pathname.startsWith('/flame');
-  const flameMain = location.pathname === '/flame' || location.pathname === '/flame/';
 
   return (
     <FooterLayout $path={location.pathname}>

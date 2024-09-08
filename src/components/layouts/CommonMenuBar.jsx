@@ -62,12 +62,12 @@ const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
           <span className="language">Language</span>
           <S.ToggleBox $flame={flame} onClick={toggleLanguage}>
             <S.Slider $flame={flame} $isKorActive={isKorActive} />
-            <S.KorBox $flame={flame} $isKorActive={isKorActive}>
+            <S.LanguageItem $flame={flame} $isKorActive={isKorActive}>
               <span>KOR</span>
-            </S.KorBox>
-            <S.EngBox $flame={flame} $isKorActive={!isKorActive}>
+            </S.LanguageItem>
+            <S.LanguageItem $flame={flame} $isKorActive={!isKorActive} $isEng>
               <span>ENG</span>
-            </S.EngBox>
+            </S.LanguageItem>
           </S.ToggleBox>
         </S.LanguageBox>
       </S.LanguageWrapper>
