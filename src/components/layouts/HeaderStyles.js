@@ -195,30 +195,24 @@ export const MenuItem = styled.li`
 /* Accordion */
 
 export const AccordionContent = styled.div`
-  margin-top: 0.6rem;
-  margin-bottom: 0.9rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  animation: fadeIn 0.3s ease-in-out;
+  height: var(--accordion-height, 0);
+  transition: height 0.3s ease;
+`;
 
-  @keyframes fadeIn {
-    from {
-      max-height: 0;
-      opacity: 0;
-    }
-    to {
-      max-height: 100px;
-      opacity: 1;
-    }
-  }
+export const SubMenuItemWrapper = styled.div`
+  margin-bottom: 1.9rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const SubMenuItem = styled.div`
   ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray60};
-  margin-bottom: 1.6rem;
+  margin: 0.8rem 0;
   cursor: pointer;
   width: 100%;
   text-align: center;

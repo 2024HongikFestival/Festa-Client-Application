@@ -1,14 +1,22 @@
+import { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as S from '@/components/layouts/HeaderStyles';
 
 const RenderMenuItem = ({ item, index, openAccordion, setOpenAccordion, flame, nav, closeMenu, t }) => {
   const isAccordionOpen = openAccordion === index;
-  const label = flame ? t(item.flameLabel) : t(item.daedongjeLabel);
+  const contentRef = useRef(null);
 
   // 아코디언 메뉴 toggle
   const toggleAccordion = (index) => {
     setOpenAccordion(openAccordion === index ? null : index);
   };
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const newHeight = isAccordionOpen ? `${contentRef.current.scrollHeight}px` : '0';
+      contentRef.current.style.setProperty('--accordion-height', newHeight);
+    }
+  }, [isAccordionOpen]);
 
   return (
     <div key={index}>
@@ -27,25 +35,26 @@ const RenderMenuItem = ({ item, index, openAccordion, setOpenAccordion, flame, n
           }
         }}
       >
-        <span>{label}</span>
+        <span>{flame ? t(item.flameLabel) : t(item.daedongjeLabel)}</span>
       </S.MenuItem>
 
-      {/* 아코디언 메뉴 */}
-      {item.accordion && !flame && isAccordionOpen && (
-        <S.AccordionContent>
-          {item.daedongjeAccordion.map((subItem, subIndex) => (
-            <S.SubMenuItem
-              key={subIndex}
-              onClick={() => {
-                nav(subItem.path);
-                closeMenu();
-              }}
-            >
-              {t(subItem.label)}
-            </S.SubMenuItem>
-          ))}
-        </S.AccordionContent>
-      )}
+      <S.AccordionContent ref={contentRef}>
+        <S.SubMenuItemWrapper>
+          {item.accordion &&
+            item.daedongjeAccordion.map((subItem, subIndex) => (
+              <S.SubMenuItem
+                key={subIndex}
+                onClick={() => {
+                  nav(subItem.path);
+                  closeMenu();
+                }}
+              >
+                {t(subItem.label)}
+              </S.SubMenuItem>
+            ))}
+        </S.SubMenuItemWrapper>
+      </S.AccordionContent>
+
       <S.Divider $flame={flame} />
     </div>
   );
