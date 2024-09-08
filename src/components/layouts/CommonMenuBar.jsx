@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import globe from '@/assets/webps/layouts/globe.webp';
@@ -6,6 +6,7 @@ import globeGray from '@/assets/webps/layouts/globeGray.webp';
 import * as S from '@/components/layouts/HeaderStyles';
 import { commonMenuItems, flameMenuItems } from '@/constants/layouts/menuItems';
 import RenderMenuItem from '@/components/layouts/RenderMenuItem';
+import { useUpdateBeforeHeight } from '@/components/layouts/useUpdateBeforeHeight';
 
 const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
   const [openAccordion, setOpenAccordion] = useState(null);
@@ -24,32 +25,7 @@ const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
     clickHandler(newLanguage);
   };
 
-  const useUpdateBeforeHeight = (menuRef) => {
-    useEffect(() => {
-      const updateBeforeHeight = () => {
-        if (menuRef.current) {
-          const scrollHeight = menuRef.current.scrollHeight;
-          menuRef.current.style.setProperty('--before-height', `${scrollHeight}px`);
-        }
-      };
-
-      // 초기 높이 설정
-      updateBeforeHeight();
-
-      // 스크롤이나 윈도우 크기 변경 시 높이 업데이트
-      window.addEventListener('resize', updateBeforeHeight);
-      menuRef.current.addEventListener('scroll', updateBeforeHeight);
-
-      return () => {
-        window.removeEventListener('resize', updateBeforeHeight);
-        if (menuRef.current) {
-          menuRef.current.removeEventListener('scroll', updateBeforeHeight);
-        }
-      };
-    }, [menuRef]);
-  };
-
-  // before-height 업데이트 Hook 사용
+  // flame ::before 스크롤 시 늘어나게
   useUpdateBeforeHeight(commonMenuRef);
 
   return (
