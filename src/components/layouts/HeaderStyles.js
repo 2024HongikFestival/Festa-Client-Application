@@ -100,8 +100,7 @@ export const Right = styled.div`
   height: 2.4rem;
 `;
 
-/* MenuBar */
-
+/* CommonMenuBar */
 export const MenuBar = styled.div`
   display: flex;
   flex-direction: column;
@@ -111,18 +110,23 @@ export const MenuBar = styled.div`
   bottom: 0;
   width: 100%;
   max-width: 26.1rem;
-  overflow-y: scroll;
   background-color: #f1fbfd;
   border-right: 0.1rem solid #d1c2f3;
   z-index: 99;
-  transition: transform 0.3s ease;
+  overflow-y: auto;
+  opacity: 1;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 
   &.open {
     transform: translateX(0);
+    opacity: 1;
   }
 
   &.close {
-    transform: translateX(-100%);
+    transform: translateX(-70%);
+    opacity: 0;
   }
 
   ${({ $flame }) =>
@@ -325,14 +329,18 @@ export const AdminBar = styled.div`
   max-width: 19.2rem;
   background-color: white;
   z-index: 99;
-  transition: transform 0.3s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 
   &.open {
     transform: translateX(0);
+    opacity: 1;
   }
 
   &.close {
-    transform: translateX(-100%);
+    transform: translateX(-70%);
+    opacity: 0;
   }
 `;
 
