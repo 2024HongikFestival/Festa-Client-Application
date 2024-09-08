@@ -36,7 +36,7 @@ const Container = styled.div`
   min-height: calc(var(--vh, 1vh) * 100);
   margin: 0 auto 0;
   padding-top: ${({ $showheader }) => ($showheader ? '5.6rem' : '0')};
-
+  clip-path: inset(0 0 0 0);
   ${(props) =>
     (props.$path === '/lost-and-found' || props.$path === '/lost-and-found/') &&
     css`

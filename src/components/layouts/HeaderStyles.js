@@ -116,8 +116,8 @@ export const MenuBar = styled.div`
   overflow-y: auto;
   opacity: 1;
   transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+    transform 0.3s ease,
+    opacity 0.3s ease;
 
   &.open {
     transform: translateX(0);
@@ -125,7 +125,7 @@ export const MenuBar = styled.div`
   }
 
   &.close {
-    transform: translateX(-70%);
+    transform: translateX(-100%);
     opacity: 0;
   }
 
@@ -140,7 +140,8 @@ export const MenuBar = styled.div`
         top: 0;
         right: 0;
         width: 0.1rem;
-        height: 100%;
+        height: auto;
+        min-height: 100%;
         background: linear-gradient(180deg, #fff7f7 0%, #ff7711 69%);
       }
     `};
@@ -330,8 +331,8 @@ export const AdminBar = styled.div`
   background-color: white;
   z-index: 99;
   transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+    transform 0.3s ease,
+    opacity 0.3s ease;
 
   &.open {
     transform: translateX(0);
@@ -339,7 +340,7 @@ export const AdminBar = styled.div`
   }
 
   &.close {
-    transform: translateX(-70%);
+    transform: translateX(-100%);
     opacity: 0;
   }
 `;
