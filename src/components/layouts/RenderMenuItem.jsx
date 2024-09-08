@@ -12,22 +12,22 @@ const RenderMenuItem = ({ item, index, openAccordion, setOpenAccordion, flame, n
 
   return (
     <div key={index}>
-      <S.MenuItem $flame={flame} $isOpen={isAccordionOpen}>
-        <span
-          onClick={() => {
-            if (flame) {
-              nav(item.flamePath);
-              closeMenu();
-            } else if (item.accordion) {
-              toggleAccordion(index);
-            } else {
-              nav(item.daedongjePath);
-              closeMenu();
-            }
-          }}
-        >
-          {label}
-        </span>
+      <S.MenuItem
+        $flame={flame}
+        $isOpen={isAccordionOpen}
+        onClick={() => {
+          if (flame) {
+            nav(item.flamePath);
+            closeMenu();
+          } else if (item.accordion) {
+            toggleAccordion(index);
+          } else {
+            nav(item.daedongjePath);
+            closeMenu();
+          }
+        }}
+      >
+        <span>{label}</span>
       </S.MenuItem>
 
       {/* 아코디언 메뉴 */}

@@ -26,10 +26,10 @@ export default function Header() {
     '/flame/',
     '/flame/map',
     '/flame/timetable',
-    'flame/reservation',
-    'flame/lineup',
-    'flame/md',
-    'flame/promotion',
+    '/flame/reservation',
+    '/flame/lineup',
+    '/flame/md',
+    '/flame/promotion',
   ];
   const adminPaths = ['/admin', '/admin/event', '/admin/losts'];
   const isFlamePath = flamePaths.includes(location.pathname);

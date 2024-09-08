@@ -160,8 +160,7 @@ export const MenuItem = styled.li`
   border-radius: ${(props) => (props.$isOpen ? '1rem' : '0')};
   color: ${(props) => props.theme.colors.gray80};
   span {
-    /* UX 개선용 padding */
-    padding: ${(props) => (props.$isOpen ? '0.8rem 7rem' : '1rem 7rem')};
+    padding: ${(props) => (props.$isOpen ? '0.8rem 0' : '1rem 0')};
     ${(props) => props.theme.fontStyles.basic.body1Med};
   }
 
@@ -170,10 +169,9 @@ export const MenuItem = styled.li`
     css`
       color: white;
       justify-content: inherit;
-      margin-left: 2.4rem;
+      padding-left: 2.4rem;
       span {
-        /* UX 개선용 padding */
-        padding: 1rem 10rem 1rem 0;
+        padding: 1rem 0;
       }
     `}
 `;
