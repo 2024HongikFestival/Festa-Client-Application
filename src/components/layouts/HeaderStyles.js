@@ -129,6 +129,19 @@ export const MenuBar = styled.div`
     opacity: 0;
   }
 
+  &::-webkit-scrollbar {
+    width: 0.3rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0.4rem;
+  }
+
   ${({ $flame }) =>
     $flame &&
     css`
@@ -143,6 +156,9 @@ export const MenuBar = styled.div`
         width: 0.1rem;
         height: var(--before-height);
         background: linear-gradient(180deg, #fff7f7 0%, #ff7711 69%);
+      }
+      &::-webkit-scrollbar {
+        width: 0rem;
       }
     `};
 `;
