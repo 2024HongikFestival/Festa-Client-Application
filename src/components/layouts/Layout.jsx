@@ -20,7 +20,6 @@ export default function Layout() {
   };
 
   const showheader = isLoggedIn() || !isAdminPath;
-  console.log('showheader:', showheader);
 
   return (
     <Container $path={location.pathname} $showheader={showheader}>

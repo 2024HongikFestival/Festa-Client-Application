@@ -111,7 +111,8 @@ const Mangae = styled.div`
   margin-top: 3.2rem;
   margin-left: 3.2rem;
   margin-bottom: 4.8rem;
-  width: 9.9rem;
+  width: 9.85rem;
+  height: 4rem;
   overflow: hidden;
   z-index: 1;
   img {
@@ -125,6 +126,7 @@ const Flame = styled.div`
   margin-left: 2.45rem;
   margin-bottom: 4rem;
   width: 11.5rem;
+  height: 3.3rem;
   overflow: hidden;
   z-index: 1;
   img {

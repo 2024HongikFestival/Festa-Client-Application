@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+/* Header */
+
 export const HeaderLayout = styled.div`
   width: 100%;
   max-width: 768px;
@@ -84,6 +86,7 @@ export const HambergerMenu = styled.div`
 export const HiuLogo = styled.div`
   cursor: pointer;
   width: 14.7rem;
+  height: 1.8rem;
   overflow: hidden;
   img {
     width: 100%;
@@ -96,6 +99,8 @@ export const Right = styled.div`
   width: 2.4rem;
   height: 2.4rem;
 `;
+
+/* MenuBar */
 
 export const MenuBar = styled.div`
   display: flex;
@@ -168,6 +173,8 @@ export const MenuItem = styled.li`
     `}
 `;
 
+/* Accordion */
+
 export const AccordionContent = styled.div`
   margin-top: 0.6rem;
   margin-bottom: 0.9rem;
@@ -209,6 +216,8 @@ export const Divider = styled.div`
       background: #2c2d30;
     `}
 `;
+
+/* Language Toggle */
 
 export const LanguageWrapper = styled.div`
   height: 6.5rem;
@@ -302,6 +311,8 @@ export const LanguageItem = styled.div`
       color: ${({ $isKorActive, theme }) => ($isKorActive ? 'white' : theme.colors.gray20)};
     `}
 `;
+
+/* AdminMenuBar */
 
 export const AdminBar = styled.div`
   display: flex;
