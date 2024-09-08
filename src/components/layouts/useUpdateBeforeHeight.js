@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 
 export const useUpdateBeforeHeight = (menuRef) => {
   useEffect(() => {
+    const menuElement = menuRef.current; // effect 실행 시의 menuRef.current 값을 저장
+
     const updateBeforeHeight = () => {
-      if (menuRef.current) {
-        const scrollHeight = menuRef.current.scrollHeight;
-        menuRef.current.style.setProperty('--before-height', `${scrollHeight}px`);
+      if (menuElement) {
+        const scrollHeight = menuElement.scrollHeight;
+        menuElement.style.setProperty('--before-height', `${scrollHeight}px`);
       }
     };
 
@@ -14,12 +16,12 @@ export const useUpdateBeforeHeight = (menuRef) => {
 
     // 스크롤이나 윈도우 크기 변경 시 높이 업데이트
     window.addEventListener('resize', updateBeforeHeight);
-    menuRef.current.addEventListener('scroll', updateBeforeHeight);
+    menuElement.addEventListener('scroll', updateBeforeHeight);
 
     return () => {
       window.removeEventListener('resize', updateBeforeHeight);
-      if (menuRef.current) {
-        menuRef.current.removeEventListener('scroll', updateBeforeHeight);
+      if (menuElement) {
+        menuElement.removeEventListener('scroll', updateBeforeHeight);
       }
     };
   }, [menuRef]);
