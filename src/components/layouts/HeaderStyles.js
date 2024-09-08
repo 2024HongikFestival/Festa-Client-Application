@@ -138,10 +138,10 @@ export const MenuBar = styled.div`
         content: '';
         position: absolute;
         top: 0;
+        bottom: 0;
         right: 0;
         width: 0.1rem;
-        height: auto;
-        min-height: 100%;
+        height: var(--before-height);
         background: linear-gradient(180deg, #fff7f7 0%, #ff7711 69%);
       }
     `};

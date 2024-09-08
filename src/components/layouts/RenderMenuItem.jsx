@@ -54,9 +54,9 @@ const RenderMenuItem = ({ item, index, openAccordion, setOpenAccordion, flame, n
 RenderMenuItem.propTypes = {
   item: PropTypes.shape({
     flamePath: PropTypes.string,
-    flameLabel: PropTypes.string.isRequired,
+    flameLabel: PropTypes.string,
     daedongjePath: PropTypes.string,
-    daedongjeLabel: PropTypes.string.isRequired,
+    daedongjeLabel: PropTypes.string,
     accordion: PropTypes.bool,
     daedongjeAccordion: PropTypes.arrayOf(
       PropTypes.shape({
