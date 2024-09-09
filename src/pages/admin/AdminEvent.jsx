@@ -17,7 +17,7 @@ const AdminEvent = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const queryParams = new URLSearchParams(location.search);
+  const queryParams = new URLSearchParams(window.location.search);
   const view = queryParams.get('view') || 'participants';
   const detailId = queryParams.get('detailId');
 
@@ -69,13 +69,14 @@ const AdminEvent = () => {
   }
   const handleChangeView = (view) => {
     setActiveComponent(view);
-    navigate(`?view=${view}`, { replace: true });
+    setIsDetailView(false); // 디테일 모드 종료
+    navigate(`?view=${view}`); // URL 쿼리 업데이트
   };
 
   const handleOpenDetailView = (entry) => {
     setSelectedList(entry);
     setIsDetailView(true);
-    navigate(`?view=${activeComponent}&detailId=${entry.prizeName}`, { replace: true });
+    navigate(`?view=${activeComponent}&detailId=${entry.prizeName}`);
   };
 
   return (
@@ -103,7 +104,7 @@ const AdminEvent = () => {
                 onBack={() => {
                   setIsDetailView(false);
                   setSelectedList(null);
-                  navigate('?view=participants', { replace: true }); // 디테일 모드 종료 후 기본 페이지로 이동
+                  navigate('?view=participants'); // 디테일 모드 종료 후 기본 페이지로 이동
                 }}
               />
             )

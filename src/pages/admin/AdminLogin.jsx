@@ -10,8 +10,35 @@ const AdminLogin = () => {
   const [error, setError] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const [resetKey, setResetKey] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+  useEffect(() => {
+    const checkToken = async () => {
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken) {
+        try {
+          const response = await adminAxiosInstance.get('/test/admin', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          if (response.status === 200) {
+            if (location.pathname === '/admin/event') {
+              navigate(location.state?.from || location.pathname);
+            } else if (location.pathname === '/admin/' || location.pathname === '/admin') {
+              navigate(location.state?.from || '/admin/losts');
+            } else {
+              navigate(location.state?.from);
+            }
+          }
+        } catch (err) {
+          // 토큰이 유효하지 않으면 로그인 페이지에 머무름
+        }
+      }
+    };
+
+    checkToken();
+  }, [navigate]);
 
   const adminAccess = async (username, password) => {
     try {
@@ -38,7 +65,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <LoginContainer key={resetKey}>
+    <LoginContainer>
       <Title>화양연화 관리자페이지</Title>
       <Form>
         <LoginInput
