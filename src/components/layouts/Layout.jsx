@@ -31,7 +31,6 @@ export default function Layout() {
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
-  console.log(isAdminPath);
   const showheader = isLoggedIn() || !isAdminPath;
 
   useEffect(() => {
