@@ -963,6 +963,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/webrtc@npm:0.0.25":
+  version: 0.0.25
+  resolution: "@types/webrtc@npm:0.0.25"
+  checksum: 10c0/7d7653bf0a2318e62e6b0953d4a532adf6591bc00c533f02e0200cf94ee74d0c22a683203b98de4d1655be5f427a8f1b9935104ea44f820e96807735159db475
+  languageName: node
+  linkType: hard
+
 "@ungap/structured-clone@npm:^1.2.0":
   version: 1.2.0
   resolution: "@ungap/structured-clone@npm:1.2.0"
@@ -1459,6 +1466,7 @@ __metadata:
     prettier: "npm:3.3.2"
     props-type: "npm:^1.0.1"
     react: "npm:^18.3.1"
+    react-camera-pro: "npm:^1.4.0"
     react-dom: "npm:^18.3.1"
     react-i18next: "npm:^15.0.0"
     react-icons: "npm:^5.2.1"
@@ -1727,6 +1735,13 @@ __metadata:
   version: 1.0.0
   resolution: "delayed-stream@npm:1.0.0"
   checksum: 10c0/d758899da03392e6712f042bec80aa293bbe9e9ff1b2634baae6a360113e708b91326594c8a486d475c69d6259afb7efacdc3537bfcda1c6c648e390ce601b19
+  languageName: node
+  linkType: hard
+
+"detectrtc@npm:^1.3.9":
+  version: 1.4.1
+  resolution: "detectrtc@npm:1.4.1"
+  checksum: 10c0/d679dba7d9eaceacd0b4c09ec8e97f2987d6435f650c6d1b23484cf8f4fcf96a12864bf4b8e9826aef660fcaea3af0860d11f1efe55d1bd1249fa02401f57c33
   languageName: node
   linkType: hard
 
@@ -4108,6 +4123,20 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: 10c0/900a93d3cdae3acd7d16f642c29a642aea32c2026446151f0778c62ac089d4b8e6c986811076e1ae180a694cedf077d453a11b58ff0a865629a4f82ab558e102
+  languageName: node
+  linkType: hard
+
+"react-camera-pro@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "react-camera-pro@npm:1.4.0"
+  dependencies:
+    "@types/webrtc": "npm:0.0.25"
+    detectrtc: "npm:^1.3.9"
+  peerDependencies:
+    react: ^18.3.1
+    react-dom: ^18.3.1
+    styled-components: ^5.1.34
+  checksum: 10c0/68da26c620b67420dc9e07838bb9f72c7e80cfee375e3cabed3693a49a22413277979f00c60b35889ffa000de4e4005ba03a678a31cf4bfdc0eee16b31cfefc5
   languageName: node
   linkType: hard
 

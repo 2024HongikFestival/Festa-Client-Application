@@ -1,10 +1,13 @@
+import RedirectEvents from '@/auth/RedirectEvents';
+import RedirectLosts from '@/auth/RedirectLosts';
 import Layout from '@/components/layouts/Layout';
 import ScrollToTop from '@/components/layouts/ScrollToTop';
-import AdminPage from '@/pages/admin/AdminPage';
 import AdminEvent from '@/pages/admin/AdminEvent';
+import AdminPage from '@/pages/admin/AdminPage';
 import BoothPage from '@/pages/booth/BoothPage';
 import Fleamarket from '@/pages/booth/fleamarket/Fleamarket';
 import FleamarketDetail from '@/pages/booth/fleamarket/FleamarketDetail';
+import MdPage from '@/pages/booth/merchandiser/MdPage';
 import PromotionPage from '@/pages/booth/promotion/PromotionPage';
 import EnterEvent from '@/pages/event/enter/EnterEvent';
 import EventPage from '@/pages/event/main/EventPage';
@@ -17,9 +20,6 @@ import FlameMdPage from '@/pages/flame/merchandiser/FlameMdPage';
 import FlamePromotionPage from '@/pages/flame/promotion/FlamePromotionPage';
 import FlameReservationPage from '@/pages/flame/reservation/FlameReservationPage';
 import FlameTimeTablePage from '@/pages/flame/timetable/FlameTimeTablePage';
-import AddLostItem from '@/pages/lost-and-found/pages/AddLostItem/AddLostItem';
-import LostAndFoundDetail from '@/pages/lost-and-found/pages/LostAndFoundDetail/LostAndFoundDetail';
-import LostAndFoundPage from '@/pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
 import MainPage from '@/pages/main/MainPage';
 import GaehwaPage from '@/pages/makers/GaehwaPage';
 import LikelionPage from '@/pages/makers/LikelionPage';
@@ -29,14 +29,15 @@ import HongikZonePage from '@/pages/stage/HongikZonePage';
 import LineupPage from '@/pages/stage/LineupPage';
 import StageInfoPage from '@/pages/stage/StageInfoPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RedirectEvents from '@/auth/RedirectEvents';
-import RedirectLosts from '@/auth/RedirectLosts';
-import MdPage from '@/pages/booth/merchandiser/MdPage';
 import AdminLogin from './pages/admin/AdminLogin';
 
-import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+import { AuthProvider } from './components/lost-and-found/AddLostItem/context/AuthProvider';
+import ProtectedRoute from './components/lost-and-found/AddLostItem/outlet/ProtectedRoute';
+import AddLostItem from './pages/lost-and-found/pages/AddLostItem/AddLostItem';
+import LostAndFoundPage from './pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
 
 function App() {
   useEffect(() => {
@@ -48,7 +49,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <AuthProvider>
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
@@ -84,8 +85,10 @@ function App() {
 
             {/* 준혁 라우팅 🐳 */}
             <Route path="/lost-and-found" element={<LostAndFoundPage />} />
-            <Route path="/lost-and-found/:lostId" element={<LostAndFoundDetail />} />
-            <Route path="/lost-and-found/add" element={<AddLostItem />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/lost-and-found/add" element={<AddLostItem />} />
+            </Route>
+
             <Route path="/oauth/losts" element={<RedirectLosts />} />
 
             {/* 동욱 라우팅 🍷 */}
@@ -104,7 +107,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </AuthProvider>
   );
 }
 
