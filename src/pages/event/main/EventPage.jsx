@@ -10,10 +10,24 @@ import NoticeTimeBox from '@/components/event/NoticeTimeBox';
 import { handleShare } from '@/utils/event/handleShare';
 import frame from '@/assets/svgs/event/frame.svg';
 import tvingLogo from '@/assets/svgs/event/tvingLogo.svg';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+// 시간대를 한국 표준시로 설정
+dayjs.tz.setDefault('Asia/Seoul');
+
+// 이벤트 시작과 종료 시간
+const eventStart = dayjs.tz('2024-09-25 09:00:00', 'Asia/Seoul');
+const eventEnd = dayjs.tz('2024-09-27 23:59:59', 'Asia/Seoul');
 
 const EventPage = () => {
   const [stateData, setStateData] = useState();
   const [currentUrl, setCurrentUrl] = useState('');
+  const [isEventPeriod, setIsEventPeriod] = useState(false); // 이벤트 기간 여부
 
   const handleRandomState = () => {
     const array = new Uint32Array(1);
@@ -29,6 +43,12 @@ const EventPage = () => {
   useEffect(() => {
     handleRandomState();
     setCurrentUrl(window.location.href);
+
+    // 현재 시간이 이벤트 기간 내에 있는지 확인
+    const now = dayjs();
+    if (now.isAfter(eventStart) && now.isBefore(eventEnd)) {
+      setIsEventPeriod(true); // 이벤트 기간 중이면 true
+    }
   }, []);
 
   return (
@@ -106,13 +126,16 @@ const EventPage = () => {
         <S.ShareIcon src={shareIcon} alt="shareIcon" />
         <p>이벤트 공유</p>
       </S.ShareButton>
-      {/* <S.KakaoAuthButton onClick={handleKakaoAuth}>
-        <img src={kakaoLogo} alt="kakaoLogo" />
-        <p>카카오 인증 후 응모하기</p>
-      </S.KakaoAuthButton> */}
-      <S.DisabledEnterButton>
-        <p>응모 기간이 아니에요</p>
-      </S.DisabledEnterButton>
+      {isEventPeriod ? (
+        <S.KakaoAuthButton onClick={handleKakaoAuth}>
+          <img src={kakaoLogo} alt="kakaoLogo" />
+          <p>카카오 인증 후 응모하기</p>
+        </S.KakaoAuthButton>
+      ) : (
+        <S.DisabledEnterButton>
+          <p>응모 기간이 아니에요</p>
+        </S.DisabledEnterButton>
+      )}
     </S.Wrapper>
   );
 };
