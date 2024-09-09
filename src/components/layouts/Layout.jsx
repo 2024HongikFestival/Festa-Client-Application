@@ -6,7 +6,7 @@ import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
+import { useCamera } from '../../context/AuthProvider';
 import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';

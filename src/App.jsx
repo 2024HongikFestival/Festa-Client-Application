@@ -34,8 +34,8 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
-import { AuthProvider } from './components/lost-and-found/AddLostItem/context/AuthProvider';
-import ProtectedRoute from './components/lost-and-found/AddLostItem/outlet/ProtectedRoute';
+import { AuthProvider } from './context/AuthProvider';
+import ProtectedRoute from './outlet/ProtectedRoute';
 import AddLostItem from './pages/lost-and-found/pages/AddLostItem/AddLostItem';
 import LostAndFoundPage from './pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
 

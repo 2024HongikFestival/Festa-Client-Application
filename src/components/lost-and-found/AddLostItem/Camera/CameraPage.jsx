@@ -1,7 +1,7 @@
 // src/components/Camera.js
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
-import { useCamera } from '../context/AuthProvider';
+import { useCamera } from '../../../../context/AuthProvider';
 import * as S from './CameraPage.styled';
 
 const CameraPage = ({ setCapturedImage }) => {
