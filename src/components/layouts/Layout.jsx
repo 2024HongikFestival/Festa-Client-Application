@@ -1,15 +1,11 @@
 import AddLostItemBg from '@/assets/webps/lost/AddLostItemBg.webp';
 import LostAndFoundBg from '@/assets/webps/lost/LostAndFoundBg.webp';
-
 import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { useCamera } from '../../context/AuthProvider';
-import Footer from '@/components/layouts/Footer';
-import Header from '@/components/layouts/Header';
-import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 import { useEffect, useState } from 'react';
 
 export default function Layout() {

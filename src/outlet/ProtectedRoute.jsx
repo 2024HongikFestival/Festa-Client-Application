@@ -1,16 +1,26 @@
-import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '@/context/AuthProvider';
+import { useAuth, useEvent } from '@/context/AuthProvider';
 
-const ProtectedRoute = () => {
-  const { getAccessToken } = useAuth();
-  const hasToken = getAccessToken();
+const LostProtectedRoute = () => {
+  const { getLostAccessToken } = useAuth();
+  const hasLostToken = getLostAccessToken();
 
-  if (!hasToken) {
+  if (!hasLostToken) {
     return <Navigate to="/lost-and-found" replace />;
   }
 
   return <Outlet />;
 };
 
-export default ProtectedRoute;
+const EventProtectedRoute = () => {
+  const { getEventAccessToken } = useEvent();
+  const hasEventToken = getEventAccessToken();
+
+  if (!hasEventToken) {
+    return <Navigate to="/event" replace />;
+  }
+
+  return <Outlet />;
+};
+
+export { LostProtectedRoute, EventProtectedRoute };

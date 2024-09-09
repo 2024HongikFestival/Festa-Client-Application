@@ -3,23 +3,49 @@ import { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext(null);
 
-//CameraProvider, AuthProvider로 나누어야 하지만 AuthProvider에 모아둠
+// CameraProvider, AuthProvider, EventProvider 관련 내용을 모두 AuthProvider에서 관리
 export const AuthProvider = ({ children }) => {
   //CameraProvider 관련 내용
   const [isCamera, setIsCamera] = useState(false);
 
-  //AuthProvider 관련 내용
+  // lost_access_token 관련 함수
+  const setLostAccessToken = (token) => {
+    localStorage.setItem('lost_access_token', token);
+  };
+
+  const getLostAccessToken = () => {
+    return localStorage.getItem('lost_access_token');
+  };
+
+  const removeLostAccessToken = () => {
+    localStorage.removeItem('lost_access_token');
+  };
+
+  // event_access_token 관련 함수
+  const setEventAccessToken = (token) => {
+    localStorage.setItem('event_access_token', token);
+  };
+
+  const getEventAccessToken = () => {
+    return localStorage.getItem('event_access_token');
+  };
+
+  const removeEventAccessToken = () => {
+    localStorage.removeItem('event_access_token');
+  };
+
   const value = {
-    setAccessToken: (token) => {
-      localStorage.setItem('lost_access_token', token);
-    },
-    getAccessToken: () => {
-      const token = localStorage.getItem('lost_access_token');
-      return token;
-    },
-    removeAccessToken: () => {
-      localStorage.removeItem('lost_access_token');
-    },
+    // lost_access_token 관련 함수
+    setLostAccessToken,
+    getLostAccessToken,
+    removeLostAccessToken,
+
+    // event_access_token 관련 함수
+    setEventAccessToken,
+    getEventAccessToken,
+    removeEventAccessToken,
+
+    // 카메라 상태 관련 함수
     isCamera,
     setIsCamera,
   };
@@ -27,11 +53,34 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-//사용하는 곳에서 value를 쉽게 가져올 수 있도록 커스텀 훅 제작
-export const useAuth = () => useContext(AuthContext);
+// lost_access_token 관련 값을 가져오는 커스텀 훅
+export const useAuth = () => {
+  const { setLostAccessToken, getLostAccessToken, removeLostAccessToken } = useContext(AuthContext);
 
-//위랑 로직이 같지만, 사용성을 위해 새로운 이름으로 만듬
-export const useCamera = () => useContext(AuthContext);
+  return {
+    setLostAccessToken,
+    getLostAccessToken,
+    removeLostAccessToken,
+  };
+};
+
+// Camera 관련 값을 가져오는 커스텀 훅
+export const useCamera = () => {
+  const { isCamera, setIsCamera } = useContext(AuthContext);
+
+  return { isCamera, setIsCamera };
+};
+
+// event_access_token 관련 값을 가져오는 커스텀 훅
+export const useEvent = () => {
+  const { setEventAccessToken, getEventAccessToken, removeEventAccessToken } = useContext(AuthContext);
+
+  return {
+    setEventAccessToken,
+    getEventAccessToken,
+    removeEventAccessToken,
+  };
+};
 
 AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,

@@ -34,10 +34,10 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
-import { AuthProvider } from './context/AuthProvider';
-import ProtectedRoute from './outlet/ProtectedRoute';
-import AddLostItem from './pages/lost-and-found/pages/AddLostItem/AddLostItem';
-import LostAndFoundPage from './pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
+import { AuthProvider } from '@/context/AuthProvider';
+import { LostProtectedRoute, EventProtectedRoute } from '@/outlet/ProtectedRoute';
+import AddLostItem from '@/pages/lost-and-found/pages/AddLostItem/AddLostItem';
+import LostAndFoundPage from '@/pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
 
 function App() {
   useEffect(() => {
@@ -68,9 +68,11 @@ function App() {
 
             {/* 가영 라우팅 ✨ */}
             <Route path="/event" element={<EventPage />} />
-            <Route path="/event/enter" element={<EnterEvent />} />
-            <Route path="/event/submit" element={<SubmitEvent />} />
-            <Route path="/oauth/events" element={<RedirectEvents />} />
+            <Route element={<EventProtectedRoute />}>
+              <Route path="/event/enter" element={<EnterEvent />} />
+              <Route path="/event/submit" element={<SubmitEvent />} />
+              <Route path="/oauth/events" element={<RedirectEvents />} />
+            </Route>
 
             {/* 정인 라우팅 🍀 */}
             <Route path="/map" element={<MapPage />} />
@@ -85,7 +87,7 @@ function App() {
 
             {/* 준혁 라우팅 🐳 */}
             <Route path="/lost-and-found" element={<LostAndFoundPage />} />
-            <Route element={<ProtectedRoute />}>
+            <Route element={<LostProtectedRoute />}>
               <Route path="/lost-and-found/add" element={<AddLostItem />} />
             </Route>
 
