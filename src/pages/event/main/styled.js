@@ -209,6 +209,7 @@ export const ShareIcon = styled.img`
 `;
 
 export const KakaoAuthButton = styled.button`
+  cursor: pointer;
   width: 100%;
   height: 6.5rem;
   display: flex;
@@ -225,6 +226,15 @@ export const KakaoAuthButton = styled.button`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+`;
+
+export const DisabledEnterButton = styled(KakaoAuthButton)`
+  cursor: not-allowed;
+  background-color: ${(props) => props.theme.colors.gray60};
+  p {
+    color: ${(props) => props.theme.colors.gray80};
+    ${(props) => props.theme.fontStyles.basic.headline5};
   }
 `;
 

@@ -106,10 +106,13 @@ const EventPage = () => {
         <S.ShareIcon src={shareIcon} alt="shareIcon" />
         <p>이벤트 공유</p>
       </S.ShareButton>
-      <S.KakaoAuthButton onClick={handleKakaoAuth}>
+      {/* <S.KakaoAuthButton onClick={handleKakaoAuth}>
         <img src={kakaoLogo} alt="kakaoLogo" />
         <p>카카오 인증 후 응모하기</p>
-      </S.KakaoAuthButton>
+      </S.KakaoAuthButton> */}
+      <S.DisabledEnterButton>
+        <p>응모 기간이 아니에요</p>
+      </S.DisabledEnterButton>
     </S.Wrapper>
   );
 };
