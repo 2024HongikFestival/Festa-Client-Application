@@ -1,8 +1,18 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export default function PageTitle({ title }) {
-  return <Title>{title}</Title>;
+  return (
+    <Title>
+      {title.split('\n').map((line, idx) => (
+        <React.Fragment key={idx}>
+          {line}
+          <br />
+        </React.Fragment>
+      ))}
+    </Title>
+  );
 }
 
 PageTitle.propTypes = {
@@ -17,5 +27,6 @@ const Title = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   ${(props) => props.theme.fontStyles.main.headline2};
 `;

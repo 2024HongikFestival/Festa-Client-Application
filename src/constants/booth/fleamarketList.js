@@ -10,9 +10,9 @@ export const fleamarketList = [
     intro: '자연에서 영감을 받은 도자와 유리 소재의\n 핸드메이드 주얼리와 소품을 팝니다',
   },
   {
-    key: 'hyena',
-    name: '혜나 해놔',
-    intro: '마 혜나해봤나',
+    key: 'henna',
+    name: '헤나 해놔',
+    intro: '마 헤나해봤나',
   },
   {
     key: 'modori',

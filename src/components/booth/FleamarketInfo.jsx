@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 FleamarketInfo.propTypes = {
   item: PropTypes.shape({
@@ -11,8 +12,13 @@ FleamarketInfo.propTypes = {
   index: PropTypes.number.isRequired,
 };
 export default function FleamarketInfo({ item, index }) {
+  const naviagate = useNavigate();
+  const moveToDetailPage = (key) => {
+    naviagate(`/fleamarket/${key}`);
+  };
+
   return (
-    <MarketInfoContainer>
+    <MarketInfoContainer onClick={() => moveToDetailPage(item.key)}>
       <Index>{index + 1}</Index>
       <MarketTextWrapper>
         <Title>{item.name}</Title>
@@ -57,6 +63,6 @@ const Title = styled.div`
 
 const Intro = styled.div`
   margin-top: 0.8rem;
-  ${({ theme }) => theme.fontStyles.basic.body1Bold}
+  ${({ theme }) => theme.fontStyles.basic.body2Reg}
   color: ${({ theme }) => theme.colors.gray50}
 `;

@@ -1,7 +1,6 @@
 // 대동제 플리마켓
 // url: /fleamarket
 
-import React from 'react';
 import PageTitle from '@/components/common/PageTitle';
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
