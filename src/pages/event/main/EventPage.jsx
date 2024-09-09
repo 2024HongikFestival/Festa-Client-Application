@@ -21,7 +21,7 @@ dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Seoul');
 
 // 이벤트 시작과 종료 시간
-const eventStart = dayjs.tz('2024-09-25 09:00:00', 'Asia/Seoul');
+const eventStart = dayjs.tz('2024-09-25 10:00:00', 'Asia/Seoul');
 const eventEnd = dayjs.tz('2024-09-27 23:59:59', 'Asia/Seoul');
 
 const EventPage = () => {
@@ -108,7 +108,7 @@ const EventPage = () => {
         <S.DetailSection>
           <S.DetailTitle>응모 기간</S.DetailTitle>
           <S.DetailDescription>
-            9월 25일 09:00 ~ 9월 27일 24:00
+            9월 25일 10:00 ~ 9월 27일 23:59:59
             <br />
             매일 오전 10시 응모권 1장 제공
           </S.DetailDescription>
