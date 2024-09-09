@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './styled';
 import form from '@/assets/webps/event/form.webp';
 import PhoneNumBox from '@/components/event/PhoneNumBox';
-import SubmitEvent from '@/pages/event/SubmitEvent';
 
 const EnterEvent = () => {
   const navigate = useNavigate();
@@ -80,8 +79,8 @@ const EnterEvent = () => {
       // 응모 완료 시 응모 관련 localStorage 초기화 후 응모 완료 페이지로 이동
       localStorage.removeItem('kakao_code');
       localStorage.removeItem('event_access_token');
-      navigate('/event/submit');
-      //return <SubmitEvent date={response.data.data.date} />;
+      // response.data.date를 state로 전달
+      navigate('/event/submit', { state: { date: response.data.date } });
     } catch (error) {
       console.log(error);
     }
