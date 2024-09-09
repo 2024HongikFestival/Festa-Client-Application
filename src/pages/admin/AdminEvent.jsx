@@ -8,7 +8,7 @@ import EntryDetail from '@/components/admin/EntryDetail';
 import { adminAxiosInstance } from '@/api/axios';
 
 const AdminEvent = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [activeComponent, setActiveComponent] = useState('participants');
   const [isDetailView, setIsDetailView] = useState(false);
   const [selectedList, setSelectedList] = useState(null);
@@ -64,6 +64,13 @@ const AdminEvent = () => {
     }
   }, []);
 
+  if (loading) {
+    return (
+      <SpinnerContainer>
+        <div className="spinner"></div>
+      </SpinnerContainer> // 또는 로딩 스피너를 표시할 수 있습니다
+    );
+  }
   if (!isLoggedIn) {
     return <AdminLogin state={{ from: '/admin/event' }} />;
   }
@@ -140,4 +147,30 @@ const Title = styled.div`
   color: ${({ $active, theme }) => ($active ? theme.colors.gray80 : theme.colors.gray40)};
   transition: background-color 0.3s;
   font-weight: 700;
+`;
+
+const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: ${(props) => props.theme.colors.gray10};
+
+  .spinner {
+    border: 5px solid ${(props) => props.theme.colors.gray20}; /* Light gray */
+    border-top: 5px solid ${(props) => props.theme.colors.gray80}; /* Dark gray */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;
