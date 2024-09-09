@@ -3,6 +3,7 @@ import highlight_long from '@/assets/svgs/event/highlight_long.svg';
 import highlight_short from '@/assets/svgs/event/highlight_short.svg';
 import { useNavigate } from 'react-router-dom';
 
+// 홍대 내부 아닌 경우 팝업창
 export const LocationErrorBox = () => {
   const navigate = useNavigate();
 
@@ -33,6 +34,7 @@ export const LocationErrorBox = () => {
   );
 };
 
+// 중복 응모 시 팝업창
 export const DuplicationErrorBox = () => {
   const navigate = useNavigate();
 

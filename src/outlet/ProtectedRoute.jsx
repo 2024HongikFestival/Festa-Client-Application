@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth, useEvent } from '@/context/AuthProvider';
 
+// 분실물 페이지 접근 권한
 const LostProtectedRoute = () => {
   const { getLostAccessToken } = useAuth();
   const hasLostToken = getLostAccessToken();
@@ -12,6 +13,7 @@ const LostProtectedRoute = () => {
   return <Outlet />;
 };
 
+// 이벤트 페이지 접근 권한
 const EventProtectedRoute = () => {
   const { getEventAccessToken } = useEvent();
   const hasEventToken = getEventAccessToken();

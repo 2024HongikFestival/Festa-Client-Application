@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { PropTypes } from 'prop-types';
 
+// 전화번호 입력 박스
 const PhoneNumBox = ({ className, index, codeArr, onChange }) => {
   const inputRef = useRef(null);
   const value = codeArr[index];

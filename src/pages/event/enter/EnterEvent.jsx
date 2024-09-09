@@ -31,7 +31,7 @@ const EnterEvent = () => {
   // 후기 입력 관리
   const handleComment = (e) => {
     e.preventDefault();
-    // 글자수 제한
+    // 글자수 (100자) 제한
     if (e.target.value.length > 100) {
       e.target.value = e.target.value.slice(0, 100);
     }

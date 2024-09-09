@@ -37,6 +37,7 @@ const NoticeTimeBox = () => {
   };
 
   useEffect(() => {
+    // 1초마다 시간 갱신
     const id = setInterval(() => {
       handleDate();
     }, 1000);

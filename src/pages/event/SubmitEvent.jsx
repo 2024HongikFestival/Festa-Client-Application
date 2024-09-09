@@ -7,7 +7,7 @@ const SubmitEvent = () => {
   const location = useLocation();
   const { date } = location.state || {}; // 전달받은 date 값
 
-  // 조건에 따라 내용 변경
+  // 응모 날짜 조건에 따라 내용 변경 (state에 따라 다른 내용)
   const renderContent = () => {
     if (date === 1 || date === 2) {
       return (
@@ -30,6 +30,7 @@ const SubmitEvent = () => {
         </ContentBox2>
       );
     } else {
+      // 축제 기간이 아닌 경우 (지금 date === 0) 임의로 1,2일차와 동일하게 설정
       return (
         <ContentBox1>
           내일&nbsp;<span>오전 10시</span>에 응모권 1장 받고
