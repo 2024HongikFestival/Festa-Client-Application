@@ -6,9 +6,10 @@ import 'slick-carousel/slick/slick-theme.css';
 import raffle from '@/assets/webps/event/raffle.webp';
 import shareIcon from '@/assets/webps/event/shareIcon.webp';
 import kakaoLogo from '@/assets/svgs/event/kakaoLogo.svg';
-import { ItemSlider } from '@/components/event/ItemSlider';
 import NoticeTimeBox from '@/components/event/NoticeTimeBox';
 import { handleShare } from '@/utils/event/handleShare';
+import frame from '@/assets/svgs/event/frame.svg';
+import tvingLogo from '@/assets/svgs/event/tvingLogo.svg';
 
 const EventPage = () => {
   const [stateData, setStateData] = useState();
@@ -52,7 +53,24 @@ const EventPage = () => {
         <S.AText>A. 응모자 추첨을 통해 경품을 지급하는 이벤트입니다.</S.AText>
       </S.QNABox>
 
-      {/* 경품 디자인 수정 */}
+      <S.Raffle>
+        <S.Quantity>
+          <p>당첨 수량 10장</p>
+        </S.Quantity>
+        <S.RaffleTitle>
+          TVING 스탠다드 요금제
+          <br />
+          <span>3개월 이용권</span> 증정!
+        </S.RaffleTitle>
+        <S.RaffleWrapper>
+          <S.RaffleImage src={frame} alt="frame" />
+          <S.RaffleContainer>
+            <p id="top">Standard</p>
+            <S.Logo src={tvingLogo} alt="tving" />
+            <p id="description">3개월 이용권</p>
+          </S.RaffleContainer>
+        </S.RaffleWrapper>
+      </S.Raffle>
 
       <S.NoticeDetail>
         <S.DetailSection>

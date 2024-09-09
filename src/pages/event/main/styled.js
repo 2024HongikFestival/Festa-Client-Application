@@ -72,6 +72,86 @@ export const AText = styled.div`
   color: ${(props) => props.theme.colors.gray10};
 `;
 
+export const Raffle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Quantity = styled.div`
+  display: flex;
+  width: 13rem;
+  height: 3.2rem;
+  padding: 0.4rem 1.7rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 44px;
+  border: 1px solid var(--button-grad, #feff24);
+  background: ${(props) => props.theme.colors.gray100};
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+
+  p {
+    color: var(---on, #cdff3f);
+    text-align: center;
+    ${(props) => props.theme.fontStyles.basic.body1Med};
+  }
+`;
+
+export const RaffleTitle = styled.div`
+  align-self: stretch;
+  text-align: center;
+  ${(props) => props.theme.fontStyles.main.headline3};
+  color: ${(props) => props.theme.colors.gray10};
+  margin-bottom: 1.6rem;
+
+  span {
+    ${(props) => props.theme.fontStyles.main.headline3};
+    color: var(---on, #cdff3f);
+  }
+`;
+
+export const RaffleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
+export const RaffleImage = styled.img`
+  z-index: 10;
+  width: 29rem;
+  height: 15.1rem;
+  flex-shrink: 0;
+`;
+
+export const RaffleContainer = styled.div`
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  #top {
+    color: ${(props) => props.theme.colors.gray80};
+    ${(props) => props.theme.fontStyles.basic.body2Bold};
+  }
+
+  #description {
+    color: ${(props) => props.theme.colors.gray90};
+    ${(props) => props.theme.fontStyles.main.headline4};
+  }
+`;
+
+export const Logo = styled.img`
+  width: 16.4rem;
+  height: 5.26rem;
+  flex-shrink: 0;
+`;
+
 export const NoticeDetail = styled(QNABox)`
   padding: 1.6rem 1.9rem;
   gap: 0.8rem;
@@ -174,7 +254,8 @@ export const ImageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 18.5rem !important;
-  height: 28.7rem;
+  height: 28.7rem;import { Raffle } from './styled';
+
   background-color: ${(props) => props.theme.colors.white};
   margin: 0 0.8rem;
   padding-top: 1.4rem;
