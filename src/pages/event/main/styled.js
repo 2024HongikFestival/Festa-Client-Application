@@ -254,7 +254,7 @@ export const ImageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 18.5rem !important;
-  height: 28.7rem;import { Raffle } from './styled';
+  height: 28.7rem;
 
   background-color: ${(props) => props.theme.colors.white};
   margin: 0 0.8rem;

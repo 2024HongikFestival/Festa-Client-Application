@@ -1,6 +1,3 @@
-// 대동제 응모 (완료)
-// url: /event/submit
-
 import styled from 'styled-components';
 import graphicBg from '@/assets/webps/event/graphic.webp';
 import shareIcon from '@/assets/webps/event/shareIcon.webp';
@@ -14,30 +11,20 @@ const SubmitEvent = () => {
       <TitleBox>
         <Title>응모 완료!</Title>
       </TitleBox>
-      {/* {date === 3 ? (
-        <ContentBox>
-          <p>
-            <span>오전 10시</span>에 응모권 1장 받고
-            <br />또 도전해보세요!
-          </p>
-        </ContentBox>
-      ) : (
-        <ContentBox>
-          <p>
-            당첨자는
-            <span>
-              0월 0일
-              <br />
-              000를 통해 발표
-            </span>
-            됩니다
-          </p>
-        </ContentBox>
-      )} */}
-      <ContentBox>
+      {/* <ContentBox1>
         내일&nbsp;<span>오전 10시</span>에 응모권 1장 받고
         <br />또 도전해보세요!
-      </ContentBox>
+      </ContentBox1> */}
+      <ContentBox2>
+        <p>축제가 끝났어요</p>
+        당첨자는{' '}
+        <span>
+          0월 0일
+          <br />
+          000를 통해 발표
+        </span>
+        됩니다
+      </ContentBox2>
       <ShareButton>
         <ShareIcon src={shareIcon} alt="shareIcon" />
         <p>이벤트 공유</p>
@@ -84,7 +71,7 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const ContentBox = styled.div`
+const ContentBox1 = styled.div`
   position: absolute;
   top: 45.4rem;
 
@@ -96,6 +83,17 @@ const ContentBox = styled.div`
   span {
     ${(props) => props.theme.fontStyles.basic.subHeadMed};
     color: var(--Schemes-On-Primary, #cdff3f);
+  }
+`;
+
+const ContentBox2 = styled(ContentBox1)`
+  top: 43.7rem;
+
+  p {
+    color: ${(props) => props.theme.colors.white};
+    text-align: center;
+    ${(props) => props.theme.fontStyles.basic.headline5};
+    padding-bottom: 2rem;
   }
 `;
 
