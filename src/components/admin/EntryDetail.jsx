@@ -5,7 +5,7 @@ import { adminAxiosInstance } from '@/api/axios';
 import deleteBtn from '@/assets/webps/admin/deleteBtn.webp';
 import Popup from './Popup';
 
-const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
+const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
   const prizeMap = {
     에어팟: 'A',
     변신로봇: 'B',
-    단검: 'C',
+    장검: 'C',
   };
 
   const getPrizeParam = (prizeName) => prizeMap[prizeName] || '';
@@ -254,6 +254,7 @@ EntryDetail.propTypes = {
   titleDescription: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired, // Added prop types for quantity
   entryCount: PropTypes.number.isRequired, // Added prop types for entry count
+  onBack: PropTypes.func.isRequired,
 };
 
 export default EntryDetail;

@@ -13,13 +13,18 @@ export default function Header() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const isAdminPath = location.pathname === '/admin' || location.pathname === '/admin/event';
+  const isAdminPath =
+    location.pathname === '/admin' || location.pathname === '/admin/event' || location.pathname === '/admin/losts';
 
   const adminMenuRef = useRef(null);
 
+  const handleMenuClick = (path) => {
+    nav(path, { state: { from: path } });
+  };
+
   const useBlackImages = (path) => {
     // 검정색 홍익로고, 검정 메뉴바 로고 들어가는 path
-    const blackImagePaths = ['/admin', '/admin/event'];
+    const blackImagePaths = ['/admin', '/admin/event', '/admin/losts'];
     return blackImagePaths.includes(path);
   };
   const blackImages = useBlackImages(location.pathname);
@@ -83,6 +88,7 @@ export default function Header() {
               showLogoutPopup={showLogoutPopup}
               setShowLogoutPopup={setShowLogoutPopup}
               nav={nav}
+              handleMenuClick={handleMenuClick}
               closeMenu={() => setIsMenuOpen(false)}
             />
           ) : (
@@ -101,6 +107,7 @@ const AdminMenuBar = ({
   setShowLogoutPopup,
   closeMenu,
   adminMenuRef,
+  handleMenuClick,
 }) => {
   return (
     <>
@@ -108,8 +115,7 @@ const AdminMenuBar = ({
         <PageMenu>
           <Menu
             onClick={() => {
-              nav('/admin');
-              nav(0);
+              handleMenuClick('/admin/losts');
               closeMenu();
             }}
           >
@@ -117,7 +123,7 @@ const AdminMenuBar = ({
           </Menu>
           <Menu
             onClick={() => {
-              nav('/admin/event');
+              handleMenuClick('/admin/event');
               closeMenu();
             }}
           >
@@ -160,6 +166,7 @@ AdminMenuBar.propTypes = {
   showLogoutPopup: PropTypes.bool.isRequired,
   setShowLogoutPopup: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,
+  handleMenuClick: PropTypes.func.isRequired,
   adminMenuRef: PropTypes.oneOfType([
     PropTypes.func, // ref로서의 함수 타입
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }), // ref로서의 객체 타입
@@ -191,6 +198,14 @@ const HeaderLayout = styled.div`
       background-size: cover;
       background-position: center;
     `}
+
+  ${(props) =>
+    props.$path === '/admin/losts' &&
+    css`
+      background-color: ${(props) => props.theme.colors.white};
+      background-size: cover;
+      background-position: center;
+    `}
 `;
 
 const HeaderBg = styled.div`
@@ -217,6 +232,13 @@ const HeaderBg = styled.div`
     `}
   ${(props) =>
     props.$path === '/admin/event' &&
+    css`
+      background-color: ${(props) => props.theme.colors.white};
+      background-size: cover;
+      background-position: center;
+    `}
+    ${(props) =>
+    props.$path === '/admin/losts' &&
     css`
       background-color: ${(props) => props.theme.colors.white};
       background-size: cover;
