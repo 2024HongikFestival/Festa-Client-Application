@@ -1,4 +1,4 @@
-export const MdList = [
+export const mdList = [
   {
     img: 'baseballUniform',
     name: '야구 유니폼',
