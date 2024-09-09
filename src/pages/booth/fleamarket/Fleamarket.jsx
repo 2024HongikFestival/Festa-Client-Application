@@ -5,7 +5,7 @@ import PageTitle from '@/components/common/PageTitle';
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import { fleamarketList } from '@/constants/booth/fleamarketList';
-import FleamarketInfo from '@/components/booth/\bFleamarketInfo';
+import FleamarketInfo from '@/components/booth/FleamarketInfo';
 
 const Fleamarket = () => {
   return (

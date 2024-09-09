@@ -2,11 +2,12 @@
 // url: /fleamarket/{market-id}
 
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import { useParams } from 'react-router-dom';
 import { fleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
+import FleamarketEvent from '@/components/booth/FleamarketEvent';
 
 const FleamarketDetail = () => {
   const { marketId } = useParams();
@@ -15,6 +16,7 @@ const FleamarketDetail = () => {
   return (
     <Container>
       <PageTitle title={item.name} />
+      {/* 마켓 소개 컴포넌트 */}
       <ContentContainer>
         <TextContainer>
           {item.intro.split('\n').map((line, idx) => (
@@ -25,7 +27,10 @@ const FleamarketDetail = () => {
           ))}
         </TextContainer>
       </ContentContainer>
-      <GoodsWrapper>
+      {/* 이벤트 소개 컴포넌트 */}
+      <FleamarketEvent which={item.name} />
+      {/* 판매 제품 사진 컴포넌트 */}
+      <GoodsWrapper marketId={marketId}>
         {item.goods?.map((good, index) => (
           <Goods key={index}>
             <ExampleImg src={good.img} alt={good.name} />
@@ -59,7 +64,7 @@ const TextContainer = styled.div`
 `;
 
 const GoodsWrapper = styled.div`
-  margin-top: 2.8rem;
+  margin-top: ${({ marketId }) => (marketId === 'kawaii' || marketId === 'henna' ? '1.6rem' : '2.8rem')};
   width: 33.2rem;
   display: flex;
   flex-wrap: wrap;
@@ -88,7 +93,6 @@ const Goods = styled.div`
 const ExampleImg = styled.img`
   width: 14rem;
   height: 14rem;
-  /* background-color: rgba(217, 217, 217, 1); */
   border-radius: 0.8rem;
 `;
 
