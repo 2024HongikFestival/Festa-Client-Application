@@ -58,6 +58,19 @@ const AdminPage = () => {
       setLoading(false);
     }
   }, []);
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === 'accessToken' && event.newValue === null) {
+        setIsLoggedIn(false);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   if (loading) {
     return (
@@ -67,7 +80,7 @@ const AdminPage = () => {
     ); // 또는 로딩 스피너를 표시할 수 있습니다
   }
   if (!isLoggedIn) {
-    return <AdminLogin state={{ from: '/admin/losts' }} />;
+    return <AdminLogin state={{ from: location.pathname }} />;
   }
 
   const handleChangeView = (view) => {

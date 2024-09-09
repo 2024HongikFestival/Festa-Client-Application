@@ -47,7 +47,8 @@ const AdminLogin = () => {
         const { accessToken } = response.data.data;
         localStorage.setItem('accessToken', accessToken);
         setIsLoggedIn(true);
-        navigate(location.state?.from || '/admin/losts'); // 로그인 후 리디렉션
+        navigate('/admin/losts');
+        window.location.reload();
       }
     } catch (err) {
       if (err.response) {

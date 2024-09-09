@@ -64,6 +64,20 @@ const AdminEvent = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === 'accessToken' && event.newValue === null) {
+        setIsLoggedIn(false);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
   if (loading) {
     return (
       <SpinnerContainer>
@@ -72,7 +86,7 @@ const AdminEvent = () => {
     );
   }
   if (!isLoggedIn) {
-    return <AdminLogin state={{ from: '/admin/event' }} />;
+    return <AdminLogin state={{ from: location.pathname }} />;
   }
   const handleChangeView = (view) => {
     setActiveComponent(view);
