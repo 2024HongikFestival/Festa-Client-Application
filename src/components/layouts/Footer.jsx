@@ -16,6 +16,7 @@ export default function Footer() {
   const { t } = useTranslation();
   const flame = location.pathname.startsWith('/flame');
   const flameMain = location.pathname === '/flame' || location.pathname === '/flame/';
+  const showPreviousBtn = location.pathname == '/likelion' || location.pathname == '/gaehwa';
 
   const handleNavigation = (path) => {
     if (location.pathname === path) {
@@ -36,8 +37,23 @@ export default function Footer() {
     }
   };
 
+  const handleGoBack = () => {
+    nav(-1);
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 100);
+  };
+
   return (
     <FooterLayout $path={location.pathname}>
+      {showPreviousBtn && (
+        <PreviousBtn onClick={handleGoBack}>
+          <span>{t('layouts.footer.prev')}</span>
+        </PreviousBtn>
+      )}
       {flameMain && (
         <VideoContainer>
           <BackgroundVideo autoPlay loop muted>
@@ -107,6 +123,52 @@ const FooterLayout = styled.div`
   z-index: 0;
 `;
 
+const PreviousBtn = styled.div`
+  z-index: 100;
+  margin: 0.1rem auto 0;
+  cursor: pointer;
+  width: 10.6rem;
+  height: 4.3rem;
+  border-radius: 5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(0.4rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  position: fixed;
+  bottom: 5.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: bottom 0.3s ease;
+
+  span {
+    color: ${(props) => props.theme.colors.gray5};
+    ${(props) => props.theme.fontStyles.basic.body2Med};
+  }
+
+  /* ::before로 그라데이션 테두리 추가 */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -0.1rem;
+    left: -0.1rem;
+    width: 10.6rem;
+    height: 4.3rem;
+    border-radius: 5rem;
+    padding: 1px; /* 테두리 두께 */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+`;
 const Mangae = styled.div`
   margin-top: 3.2rem;
   margin-left: 3.2rem;
