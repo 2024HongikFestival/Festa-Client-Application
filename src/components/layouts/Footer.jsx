@@ -22,6 +22,7 @@ export default function Footer() {
   const daedongjeMain = location.pathname === '/';
   const showPreviousBtn = location.pathname == '/likelion' || location.pathname == '/gaehwa';
 
+  // navigation
   const handleNavigation = (path) => {
     if (location.pathname === path) {
       // 같은 페이지로 이동할 때
@@ -41,6 +42,7 @@ export default function Footer() {
     }
   };
 
+  // 이전 화면으로
   const handleGoBack = () => {
     nav(-1);
     setTimeout(() => {
@@ -51,6 +53,7 @@ export default function Footer() {
     }, 100);
   };
 
+  // footer 만날 때 고정
   useEffect(() => {
     const handleScroll = () => {
       const footer = document.getElementById('footer');
@@ -76,20 +79,24 @@ export default function Footer() {
     <S.FooterLayout id="footer" $path={location.pathname}>
       {daedongjeMain && (
         <>
-          <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => nav('/flame')} className="floatingDedongje">
+          <S.FloatingBtn
+            $isAtFooter={isAtFooter}
+            onClick={() => handleNavigation('/flame')}
+            className="floatingDedongje"
+          >
             <span>{t('layouts.footer.goFlame')}</span>
           </S.FloatingBtn>
-          <S.UpBtn $isAtFooter={isAtFooter} className="floatingDaedongje">
+          <S.UpBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/')} className="floatingDaedongje">
             <img src={up} alt="up"></img>
           </S.UpBtn>
         </>
       )}
       {flameMain && (
         <>
-          <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => nav('/')}>
+          <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/')}>
             <span>{t('layouts.footer.goDaedongje')}</span>
           </S.FloatingBtn>
-          <S.UpBtn $isAtFooter={isAtFooter}>
+          <S.UpBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/flame')}>
             <img src={up} alt="up"></img>
           </S.UpBtn>
         </>
