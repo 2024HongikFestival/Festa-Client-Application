@@ -67,7 +67,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 6.4rem;
+  padding-bottom: 6.4rem;
 `;
 
 const TextContainer = styled.div`
@@ -98,6 +98,7 @@ const Goods = styled.div`
   gap: 1.2rem;
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
+  background-color: white;
 
   &:last-child:nth-child(odd) {
     margin-right: auto;

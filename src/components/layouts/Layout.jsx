@@ -4,6 +4,11 @@ import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 
+import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
+import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketSangsuBackground.webp';
+
+import mdBg from '@/assets/webps/booth/background/mdBackground.webp';
+
 export default function Layout() {
   const location = useLocation();
   const isAdminPath = location.pathname === '/admin' || '/admin/event' || '/admin/losts';
@@ -24,7 +29,8 @@ export default function Layout() {
 const Container = styled.div`
   min-width: 375px;
   max-width: 768px;
-  min-height: calc(var(--vh, 1vh) * 100);
+
+  /* min-height: calc(var(--vh, 1vh) * 100); */
   margin: ${({ $showheader }) => ($showheader ? '5.6rem auto 0' : '0 auto 0')};
 
   ${(props) =>
@@ -54,5 +60,40 @@ const Container = styled.div`
     css`
       background-image: url(${facilitiesBG});
       background-size: cover;
+    `}
+
+    ${(props) =>
+    props.$path === '/md' &&
+    css`
+      background-image: url(${mdBg});
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    `}
+
+    ${(props) =>
+    props.$path === '/fleamarket' &&
+    css`
+      background-image: url(${facilitiesBG});
+      background-size: cover;
+    `}
+
+    ${(props) =>
+    props.$path.startsWith('/fleamarket/') &&
+    props.$path !== '/fleamarket/sangsu' &&
+    css`
+      background-image: url(${fleamarketBg1});
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    `}
+
+    ${(props) =>
+    props.$path === '/fleamarket/sangsu' &&
+    css`
+      background-image: url(${fleamarketBg2});
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
     `}
 `;
