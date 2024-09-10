@@ -10,6 +10,8 @@ import { fleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
 import FleamarketTop from '@/components/booth/FleamarketTop';
 import FleamarketEvent from '@/components/booth/FleamarketEvent';
 import FleamarketBottom from '@/components/booth/FleamarketBottom';
+import PriceTable from '@/components/booth/PriceTable';
+import RecordList from '@/components/booth/RecordList';
 
 const FleamarketDetail = () => {
   const { marketId } = useParams();
@@ -32,22 +34,28 @@ const FleamarketDetail = () => {
       </ContentContainer>
       {/* 탑 이미지 컴포넌트 (상수좌판, 홍입 하입보이 마켓)) */}
       {(marketId === 'sangsu' || marketId === 'hypeBoy') && <FleamarketTop item={item.topImg} />}
+      {/* 상수좌판 레코드 목록 컴포넌트 */}
+      {marketId === 'sangsu' && <RecordList record={item.record} />}
+      {/* 가격표 컴포넌트 */}
+      {marketId === 'hypeBoy' && <PriceTable bottomImg={item.bottomImg} />}
       {/* 이벤트 소개 컴포넌트 */}
-      {(marketId === 'henna' || marketId === 'kawaii') && <FleamarketEvent />}
+      <FleamarketEvent />
       {/* 판매 제품 사진 컴포넌트 */}
-      <GoodsWrapper $isSpecialMarket={isSpecialMarket}>
-        {item.goods?.map((good, index) => (
-          <Goods key={index}>
-            <ExampleImg src={good.img} alt={good.name} />
-            <GoodsInfo>
-              <Name>{good.name}</Name>
-              <Price>₩{good.price.toLocaleString()}</Price>
-            </GoodsInfo>
-          </Goods>
-        ))}
-        {/* 밑부분 추가 텍스트 컴포넌트 */}
-        {(marketId === 'henna' || marketId === 'kawaii') && <FleamarketBottom item={item} />}
-      </GoodsWrapper>
+      {item.goods && item.goods.length > 0 && (
+        <GoodsWrapper $isSpecialMarket={isSpecialMarket}>
+          {item.goods.map((good, index) => (
+            <Goods key={index}>
+              <ExampleImg src={good.img} alt={good.name} />
+              <GoodsInfo>
+                <Name>{good.name}</Name>
+                <Price>₩{good.price.toLocaleString()}</Price>
+              </GoodsInfo>
+            </Goods>
+          ))}
+        </GoodsWrapper>
+      )}
+      {/* 밑부분 추가 텍스트 컴포넌트 */}
+      {(marketId === 'henna' || marketId === 'kawaii') && <FleamarketBottom item={item} />}
     </Container>
   );
 };
@@ -59,6 +67,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 6.4rem;
 `;
 
 const TextContainer = styled.div`
@@ -76,7 +85,6 @@ const GoodsWrapper = styled.div`
   flex-wrap: wrap;
   gap: 1.6rem 1.2rem; // 세로 간격 1.6rem, 가로 간격 1.2rem
   justify-content: space-between; // 아이템들을 양쪽 끝으로 정렬
-  margin-bottom: 6.4rem;
 `;
 
 const Goods = styled.div`

@@ -7,14 +7,7 @@ FleamarketBottom.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string.isRequired,
     intro: PropTypes.string.isRequired,
-    goods: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        img: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-      })
-    ).isRequired,
-    hennaOtherImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    hennaOtherImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     wideImgGoods: PropTypes.shape({
       name: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
@@ -27,7 +20,7 @@ export default function FleamarketBottom({ item }) {
   const { marketId } = useParams();
   if (marketId === 'kawaii') {
     return (
-      <Container marketId={marketId}>
+      <Container $marketId={marketId}>
         <ContentContainer>
           <TextWrapper>
             이외에도 다양한 뜨개 작품들과
@@ -53,6 +46,8 @@ export default function FleamarketBottom({ item }) {
         </ContentContainer>
       </Container>
     );
+  } else {
+    return null;
   }
 }
 
