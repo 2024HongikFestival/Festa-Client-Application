@@ -277,7 +277,7 @@ export const BackgroundVideo = styled.video`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 99%; // 선 생김 이슈 해결용
   object-fit: cover;
   z-index: -1;
 `;
