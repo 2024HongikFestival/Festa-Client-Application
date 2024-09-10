@@ -2,16 +2,19 @@
 // url: /fleamarket/{market-id}
 
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import { useParams } from 'react-router-dom';
 import { fleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
+import FleamarketTop from '@/components/booth/FleamarketTop';
 import FleamarketEvent from '@/components/booth/FleamarketEvent';
+import FleamarketBottom from '@/components/booth/FleamarketBottom';
 
 const FleamarketDetail = () => {
   const { marketId } = useParams();
   const item = fleamarketDetailList[marketId];
+  const isSpecialMarket = marketId === 'kawaii' || marketId === 'henna';
 
   return (
     <Container>
@@ -19,18 +22,20 @@ const FleamarketDetail = () => {
       {/* 마켓 소개 컴포넌트 */}
       <ContentContainer>
         <TextContainer>
-          {item.intro.split('\n').map((line, idx) => (
-            <React.Fragment key={idx}>
+          {item.intro.split('\n').map((line, index) => (
+            <React.Fragment key={index}>
               {line}
               <br />
             </React.Fragment>
           ))}
         </TextContainer>
       </ContentContainer>
+      {/* 탑 이미지 컴포넌트 (상수좌판, 홍입 하입보이 마켓)) */}
+      {(marketId === 'sangsu' || marketId === 'hypeBoy') && <FleamarketTop item={item.topImg} />}
       {/* 이벤트 소개 컴포넌트 */}
-      <FleamarketEvent which={item.name} />
+      {(marketId === 'henna' || marketId === 'kawaii') && <FleamarketEvent />}
       {/* 판매 제품 사진 컴포넌트 */}
-      <GoodsWrapper marketId={marketId}>
+      <GoodsWrapper $isSpecialMarket={isSpecialMarket}>
         {item.goods?.map((good, index) => (
           <Goods key={index}>
             <ExampleImg src={good.img} alt={good.name} />
@@ -40,6 +45,8 @@ const FleamarketDetail = () => {
             </GoodsInfo>
           </Goods>
         ))}
+        {/* 밑부분 추가 텍스트 컴포넌트 */}
+        {(marketId === 'henna' || marketId === 'kawaii') && <FleamarketBottom item={item} />}
       </GoodsWrapper>
     </Container>
   );
@@ -55,7 +62,6 @@ const Container = styled.div`
 `;
 
 const TextContainer = styled.div`
-  width: 28.3rem;
   ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${({ theme }) => theme.colors.gray90};
   text-align: center;
@@ -64,12 +70,13 @@ const TextContainer = styled.div`
 `;
 
 const GoodsWrapper = styled.div`
-  margin-top: ${({ marketId }) => (marketId === 'kawaii' || marketId === 'henna' ? '1.6rem' : '2.8rem')};
-  width: 33.2rem;
+  margin-top: ${(props) => (props.isSpecialMarket ? '1.6rem' : '2.8rem')};
+  width: 33.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1.6rem 1.2rem; // 세로 간격 1.6rem, 가로 간격 1.2rem
   justify-content: space-between; // 아이템들을 양쪽 끝으로 정렬
+  margin-bottom: 6.4rem;
 `;
 
 const Goods = styled.div`

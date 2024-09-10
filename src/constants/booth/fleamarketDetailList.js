@@ -31,6 +31,7 @@ import henna4 from '@/assets/webps/booth/fleamarket/henna/henna4.webp';
 import henna5 from '@/assets/webps/booth/fleamarket/henna/henna5.webp';
 import henna6 from '@/assets/webps/booth/fleamarket/henna/henna6.webp';
 import henna7 from '@/assets/webps/booth/fleamarket/henna/henna7.webp';
+import hennaOtherImg from '@/assets/webps/booth/fleamarket/henna/hennaOtherImg.webp';
 
 import modori1 from '@/assets/webps/booth/fleamarket/modori/modori1.webp';
 import modori2 from '@/assets/webps/booth/fleamarket/modori/modori2.webp';
@@ -48,6 +49,9 @@ import sajuraplz4 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz4.web
 import sajuraplz5 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz5.webp';
 import sajuraplz6 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz6.webp';
 import sajuraplz7 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz7.webp';
+
+import sangsu1 from '@/assets/webps/booth/fleamarket/sangsu/sangsu1.webp';
+import sangsu2 from '@/assets/webps/booth/fleamarket/sangsu/sangsu2.webp';
 
 export const fleamarketDetailList = {
   ccJuice: {
@@ -81,8 +85,9 @@ export const fleamarketDetailList = {
       { name: 'AA-41', price: 3000, img: henna4 },
       { name: 'PP-53', price: 7000, img: henna5 },
       { name: 'PP-43', price: 7000, img: henna6 },
-      { name: '레 5-22', price: 8000, img: henna7 },
     ],
+    wideImgGoods: { name: '레 5-22', price: 8000, img: henna7 },
+    hennaOtherImg: hennaOtherImg,
   },
   modori: {
     name: '모도리',
@@ -118,6 +123,7 @@ export const fleamarketDetailList = {
   sangsu: {
     name: '상수좌판',
     intro: '국내외 각종 중고 LP와 CD 등\n음반 판매 💿🎶',
+    topImg: [sangsu1, sangsu2],
   },
   kawaii: {
     name: '겨운거 ^..^',
