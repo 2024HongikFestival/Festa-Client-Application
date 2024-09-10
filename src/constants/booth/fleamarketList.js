@@ -7,7 +7,7 @@ export const fleamarketList = [
   {
     key: 'almak',
     name: '올막 (almak)',
-    intro: '자연에서 영감을 받은 도자와 유리 소재의\n 핸드메이드 주얼리와 소품을 팝니다',
+    intro: '자연에서 영감을 받은 도자기와 유리 소재의\n 핸드메이드 주얼리와 소품을 팝니다',
   },
   {
     key: 'henna',

@@ -117,10 +117,12 @@ const GoodsInfo = styled.div`
   gap: 0.4rem;
 `;
 
-const Name = styled.p`
+const Name = styled.div`
+  width: 14rem;
   ${(props) => props.theme.fontStyles.basic.body1Bold};
+  margin-bottom: 0.4rem;
 `;
 
-const Price = styled.p`
+const Price = styled.div`
   ${(props) => props.theme.fontStyles.basic.body2Med};
 `;
