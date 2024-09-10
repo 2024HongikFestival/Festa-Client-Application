@@ -130,16 +130,7 @@ export const MenuBar = styled.div`
   }
 
   &::-webkit-scrollbar {
-    width: 0.3rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 0.4rem;
+    display: none;
   }
 
   ${({ $flame }) =>
