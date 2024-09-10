@@ -66,16 +66,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
   const userPosts = userId && posts ? posts : displayedLosts;
   const getAdminToken = () => localStorage.getItem('accessToken');
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (optionsMenuRef.current && !optionsMenuRef.current.contains(event.target)) {
-        setShowOptions(null);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
   const handleClick = (lostId) => {
     setPostId(lostId);
     setIsDetailView(true);
@@ -246,6 +236,16 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
     isDeleted: PropTypes.bool.isRequired,
     onBlockAndDelete: PropTypes.func.isRequired,
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (optionsMenuRef.current && !optionsMenuRef.current.contains(event.target)) {
+        setShowOptions(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <PostContainer $nogap={posts === userPosts}>

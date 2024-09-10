@@ -9,14 +9,6 @@ const Participants = ({ setIsDetailView, setPostId, lists }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [entriesPerpage] = useState(10);
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    getLists();
-  }, []);
-
-  useEffect(() => {
-    setDisplayedLists(allLists.slice(0, currentPage * entriesPerpage));
-  }, [allLists, currentPage]);
 
   const getLists = async () => {
     const token = localStorage.getItem('accessToken');
@@ -47,6 +39,15 @@ const Participants = ({ setIsDetailView, setPostId, lists }) => {
     });
     setIsDetailView(true); // 상세 보기로 전환
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    getLists();
+  }, []);
+
+  useEffect(() => {
+    setDisplayedLists(allLists.slice(0, currentPage * entriesPerpage));
+  }, [allLists, currentPage]);
 
   return (
     <>

@@ -19,73 +19,6 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
   const [hasMore, setHasMore] = useState(true);
   const [selectedPostId, setSelectedPostId] = useState(null);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    const fetchAllLosts = async () => {
-      try {
-        const token = localStorage.getItem('accessToken');
-        let allLosts = [];
-        let page = 1;
-        let hasMore = true;
-
-        while (hasMore) {
-          const response = await adminAxiosInstance.get(`/losts?page=${page}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-
-          const fetchedLosts = response.data.data.losts;
-          allLosts = [...allLosts, ...fetchedLosts];
-
-          hasMore = fetchedLosts.length === 9;
-          page += 1;
-        }
-
-        setAllLosts(allLosts);
-        setDisplayedLosts(
-          allLosts.reduce((acc, lost) => {
-            if (!acc[lost.userId]) acc[lost.userId] = [];
-            acc[lost.userId].push(lost);
-            return acc;
-          }, {})
-        );
-      } catch (error) {
-        console.error('Error fetching all losts:', error);
-      }
-    };
-
-    const fetchData = async () => {
-      try {
-        const token = localStorage.getItem('accessToken');
-
-        // 블랙리스트 데이터 가져오기
-        const responseBlacklist = await adminAxiosInstance.get('/admin/blacklist', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setList(responseBlacklist.data.data);
-
-        // 모든 분실물 데이터 가져오기
-        await fetchAllLosts();
-      } catch (error) {
-        console.error('Error fetching data:', error.response?.data || error.message);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const nextPageItems = list.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-    setDisplayedList(nextPageItems);
-    setHasMore(nextPageItems.length === PAGE_SIZE);
-  }, [page, list]);
-
   const getAdminToken = () => localStorage.getItem('accessToken');
 
   const handleFilterByUserId = (userId) => {
@@ -169,6 +102,73 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
     setIsDetailView(true);
     setSelectedPostId(postId);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const fetchAllLosts = async () => {
+      try {
+        const token = localStorage.getItem('accessToken');
+        let allLosts = [];
+        let page = 1;
+        let hasMore = true;
+
+        while (hasMore) {
+          const response = await adminAxiosInstance.get(`/losts?page=${page}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          const fetchedLosts = response.data.data.losts;
+          allLosts = [...allLosts, ...fetchedLosts];
+
+          hasMore = fetchedLosts.length === 9;
+          page += 1;
+        }
+
+        setAllLosts(allLosts);
+        setDisplayedLosts(
+          allLosts.reduce((acc, lost) => {
+            if (!acc[lost.userId]) acc[lost.userId] = [];
+            acc[lost.userId].push(lost);
+            return acc;
+          }, {})
+        );
+      } catch (error) {
+        console.error('Error fetching all losts:', error);
+      }
+    };
+
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('accessToken');
+
+        // 블랙리스트 데이터 가져오기
+        const responseBlacklist = await adminAxiosInstance.get('/admin/blacklist', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setList(responseBlacklist.data.data);
+
+        // 모든 분실물 데이터 가져오기
+        await fetchAllLosts();
+      } catch (error) {
+        console.error('Error fetching data:', error.response?.data || error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const nextPageItems = list.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+    setDisplayedList(nextPageItems);
+    setHasMore(nextPageItems.length === PAGE_SIZE);
+  }, [page, list]);
 
   return (
     <ListContainer>

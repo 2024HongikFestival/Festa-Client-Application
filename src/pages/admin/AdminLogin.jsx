@@ -12,6 +12,31 @@ const AdminLogin = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
+  const adminAccess = async (username, password) => {
+    try {
+      const response = await adminAxiosInstance.post('/admin/token', { username, password });
+      if (response.status === 200) {
+        const { accessToken } = response.data.data;
+        localStorage.setItem('accessToken', accessToken);
+        setIsLoggedIn(true);
+        navigate('/admin/losts');
+        window.location.reload();
+      }
+    } catch (err) {
+      if (err.response) {
+        if (err.response.status === 401) {
+          setError('어드민 인증 실패');
+        } else {
+          setError('서버 오류');
+        }
+      } else if (err.request) {
+        setError('서버에 응답이 없습니다.');
+      } else {
+        setError('요청 설정 중 오류 발생');
+      }
+    }
+  };
+
   useEffect(() => {
     const checkToken = async () => {
       const accessToken = localStorage.getItem('accessToken');
@@ -39,32 +64,6 @@ const AdminLogin = () => {
 
     checkToken();
   }, [navigate]);
-
-  const adminAccess = async (username, password) => {
-    try {
-      const response = await adminAxiosInstance.post('/admin/token', { username, password });
-      if (response.status === 200) {
-        const { accessToken } = response.data.data;
-        localStorage.setItem('accessToken', accessToken);
-        setIsLoggedIn(true);
-        navigate('/admin/losts');
-        window.location.reload();
-      }
-    } catch (err) {
-      if (err.response) {
-        if (err.response.status === 401) {
-          setError('어드민 인증 실패');
-        } else {
-          setError('서버 오류');
-        }
-      } else if (err.request) {
-        setError('서버에 응답이 없습니다.');
-      } else {
-        setError('요청 설정 중 오류 발생');
-      }
-    }
-  };
-
   return (
     <LoginContainer>
       <Title>화양연화 관리자페이지</Title>
