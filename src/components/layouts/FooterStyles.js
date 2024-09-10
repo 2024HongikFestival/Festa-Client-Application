@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const FooterLayout = styled.div`
+export const FooterLayout = styled.footer`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,14 +9,15 @@ export const FooterLayout = styled.div`
   z-index: 0;
 `;
 
-export const PreviousBtn = styled.div`
+export const FloatingBtn = styled.div`
   z-index: 100;
   margin: 0.1rem auto 0;
   cursor: pointer;
   width: 10.6rem;
   height: 4.3rem;
   border-radius: 5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: ${({ className }) =>
+    className === 'goFlameBtn' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
   backdrop-filter: blur(0.4rem);
   display: flex;
   justify-content: center;

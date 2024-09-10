@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 /* Header */
 
-export const HeaderLayout = styled.div`
+export const HeaderLayout = styled.header`
   width: 100%;
   max-width: 768px;
   min-width: 375px;
@@ -14,7 +14,7 @@ export const HeaderLayout = styled.div`
   z-index: 100;
 `;
 
-export const HeaderBg = styled.div`
+export const HeaderBg = styled.header`
   width: 100%;
   max-width: 768px;
   min-width: 375px;

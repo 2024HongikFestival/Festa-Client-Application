@@ -18,6 +18,7 @@ export default function Footer() {
   const { t } = useTranslation();
   const flame = location.pathname.startsWith('/flame');
   const flameMain = location.pathname === '/flame' || location.pathname === '/flame/';
+  const daedongjeMain = location.pathname === '/';
   const showPreviousBtn = location.pathname == '/likelion' || location.pathname == '/gaehwa';
 
   const handleNavigation = (path) => {
@@ -72,10 +73,20 @@ export default function Footer() {
 
   return (
     <S.FooterLayout id="footer" $path={location.pathname}>
+      {daedongjeMain && (
+        <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => nav('/flame')} className="goFlameBtn">
+          <span>{t('layouts.footer.goFlame')}</span>
+        </S.FloatingBtn>
+      )}
+      {flameMain && (
+        <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => nav('/')}>
+          <span>{t('layouts.footer.goDaedongje')}</span>
+        </S.FloatingBtn>
+      )}
       {showPreviousBtn && (
-        <S.PreviousBtn $isAtFooter={isAtFooter} onClick={handleGoBack}>
+        <S.FloatingBtn $isAtFooter={isAtFooter} onClick={handleGoBack}>
           <span>{t('layouts.footer.prev')}</span>
-        </S.PreviousBtn>
+        </S.FloatingBtn>
       )}
       {flameMain && (
         <S.VideoContainer>
