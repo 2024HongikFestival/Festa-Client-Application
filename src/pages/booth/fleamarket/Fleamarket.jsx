@@ -18,11 +18,11 @@ const Fleamarket = () => {
       </ContentContainer>
       {/* 플리마켓 리스트 컴포넌트 */}
       <FleamarketList>
-        <ContentContainer>
-          {fleamarketList.map((item, index) => (
-            <FleamarketInfo key={item.key} index={index} item={item} />
-          ))}
-        </ContentContainer>
+        {fleamarketList.map((item, index) => (
+          <ContentContainer key={item.key}>
+            <FleamarketInfo index={index} item={item} />
+          </ContentContainer>
+        ))}
       </FleamarketList>
     </Container>
   );
