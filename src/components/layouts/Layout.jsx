@@ -8,10 +8,13 @@ import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
 
-import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
-import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketSangsuBackground.webp';
+// import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackground.webp';
+// import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
+// import fleamarketBg3 from '@/assets/webps/booth/background/fleamarketSangsuBackground.webp';
+import fleamarketBg2 from '@/assets/svgs/booth/background/fleamarketCommonBackground.svg';
+import fleamarketBg3 from '@/assets/svgs/booth/background/fleamarketSangsuBackground.svg';
 
-import mdBg from '@/assets/webps/booth/background/mdBackground.webp';
+import mdBg from '@/assets/svgs/booth/background/mdBackground.svg';
 
 export default function Layout() {
   const { isCamera } = useCamera();
@@ -108,7 +111,7 @@ const Container = styled.div`
     props.$path.startsWith('/fleamarket/') &&
     props.$path !== '/fleamarket/sangsu' &&
     css`
-      background-image: url(${fleamarketBg1});
+      background-image: url(${fleamarketBg2});
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -117,7 +120,7 @@ const Container = styled.div`
     ${(props) =>
     props.$path === '/fleamarket/sangsu' &&
     css`
-      background-image: url(${fleamarketBg2});
+      background-image: url(${fleamarketBg3});
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
