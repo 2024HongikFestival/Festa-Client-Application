@@ -9,15 +9,63 @@ export const FooterLayout = styled.footer`
   z-index: 0;
 `;
 
+export const UpBtn = styled.div`
+  z-index: 100;
+  cursor: pointer;
+  width: 4.3rem;
+  height: 4.3rem;
+  border-radius: 50%;
+  background: ${({ className }) =>
+    className === 'floatingDaedongje' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
+  backdrop-filter: blur(0.4rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: ${({ $isAtFooter }) => ($isAtFooter ? 'absolute' : 'fixed')};
+  bottom: ${({ $isAtFooter }) => ($isAtFooter ? 'inherit' : '5.2rem')};
+  margin-top: ${({ $isAtFooter }) => ($isAtFooter ? '-4.3rem' : 'inherit')};
+  right: 2rem;
+  transition: bottom 0.3s ease;
+
+  img {
+    width: 1.7rem;
+    padding-right: 0.1rem;
+  }
+  /* ::before로 그라데이션 테두리 추가 */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -0.1rem;
+    left: -0.1rem;
+    width: 4.3rem;
+    height: 4.3rem;
+    border-radius: 5rem;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  @media (min-width: 768px) {
+    right: ${({ $isAtFooter }) => ($isAtFooter ? '2rem' : 'calc((100vw - 768px) / 2 + 2rem)')};
+  }
+`;
+
 export const FloatingBtn = styled.div`
   z-index: 100;
-  margin: 0.1rem auto 0;
+  margin: 0 auto;
   cursor: pointer;
   width: 10.6rem;
   height: 4.3rem;
   border-radius: 5rem;
   background: ${({ className }) =>
-    className === 'goFlameBtn' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
+    className === 'floatingDaedongje' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
   backdrop-filter: blur(0.4rem);
   display: flex;
   justify-content: center;
@@ -44,7 +92,7 @@ export const FloatingBtn = styled.div`
     width: 10.6rem;
     height: 4.3rem;
     border-radius: 5rem;
-    padding: 1px; /* 테두리 두께 */
+    padding: 1px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -56,6 +104,7 @@ export const FloatingBtn = styled.div`
     mask-composite: exclude;
   }
 `;
+
 export const Mangae = styled.div`
   margin-top: 3.2rem;
   margin-left: 3.2rem;
@@ -211,7 +260,7 @@ export const Instagrams = styled.div`
 export const VideoContainer = styled.div`
   position: absolute;
   width: 100%;
-  height: 35.1rem;
+  height: 34.9rem;
   pointer-events: none;
   background-color: transparent;
   background: linear-gradient(

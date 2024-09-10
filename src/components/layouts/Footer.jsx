@@ -7,6 +7,7 @@ import flameLogo from '@/assets/svgs/makers/flame.svg';
 import mangaeInsta from '@/assets/svgs/makers/mangaeInsta.svg';
 import wdfInsta from '@/assets/svgs/makers/wdfInsta.svg';
 import gaehwaInsta from '@/assets/svgs/makers/gaehwaInsta.svg';
+import up from '@/assets/svgs/layouts/up.svg';
 import flameVideo from '@/assets/videos/flameMainFooter.mp4';
 import * as S from '@/components/layouts/FooterStyles';
 import { useEffect, useState } from 'react';
@@ -74,14 +75,24 @@ export default function Footer() {
   return (
     <S.FooterLayout id="footer" $path={location.pathname}>
       {daedongjeMain && (
-        <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => nav('/flame')} className="goFlameBtn">
-          <span>{t('layouts.footer.goFlame')}</span>
-        </S.FloatingBtn>
+        <>
+          <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => nav('/flame')} className="floatingDedongje">
+            <span>{t('layouts.footer.goFlame')}</span>
+          </S.FloatingBtn>
+          <S.UpBtn $isAtFooter={isAtFooter} className="floatingDaedongje">
+            <img src={up} alt="up"></img>
+          </S.UpBtn>
+        </>
       )}
       {flameMain && (
-        <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => nav('/')}>
-          <span>{t('layouts.footer.goDaedongje')}</span>
-        </S.FloatingBtn>
+        <>
+          <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => nav('/')}>
+            <span>{t('layouts.footer.goDaedongje')}</span>
+          </S.FloatingBtn>
+          <S.UpBtn $isAtFooter={isAtFooter}>
+            <img src={up} alt="up"></img>
+          </S.UpBtn>
+        </>
       )}
       {showPreviousBtn && (
         <S.FloatingBtn $isAtFooter={isAtFooter} onClick={handleGoBack}>
