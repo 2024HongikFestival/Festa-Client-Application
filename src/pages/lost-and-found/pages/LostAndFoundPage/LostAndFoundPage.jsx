@@ -1,16 +1,15 @@
 // 대동제 분실물 (메인)
 // url: /lost-and-found
 
-import Header from '@/components/layouts/Header';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as S from './LostAndFoundPage.styled';
-//import DropDown from '@/pages/lost-and-found/pages/LostAndFoundPage/components/DropDown/DropDown';
-import DropDown from './components/DropDown/DropDown';
-import LostBottomSheet from './components/LostBottomSheet/LostBottomSheet';
-import { ItemModal, LocationModal } from './components/LostModal/LostModal';
-import NewPagination from './components/NewPagination/NewPagination';
+
+import DropDown from '@/components/lost-and-found/LostAndFoundPage/DropDown/DropDown';
+import LostBottomSheet from '@/components/lost-and-found/LostAndFoundPage/LostBottomSheet/LostBottomSheet';
+import { ItemModal, LocationModal } from '@/components/lost-and-found/LostAndFoundPage/LostModal/LostModal';
+import NewPagination from '@/components/lost-and-found/LostAndFoundPage/NewPagination/NewPagination';
 
 // [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
 // Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
@@ -51,12 +50,13 @@ const LostAndFoundPage = () => {
       const response = await axios.get('https://api.2024hongikfestival.com/losts', {
         params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
       });
-      console.log(response);
       setItems(response.data.data.losts);
       setTotalItems(response.data.data.losts.length);
       setTotalPages(response.data.data.totalPage);
     } catch (error) {
       console.error(error);
+      alert('해당 필터링에 해당되는 게시글이 존재하지 않습니다.');
+      window.location.reload();
     }
   };
 
@@ -82,8 +82,6 @@ const LostAndFoundPage = () => {
   return (
     <>
       <S.Wrapper>
-        <Header></Header>
-
         <S.Main>
           <S.Title>분실물</S.Title>
 
@@ -102,37 +100,42 @@ const LostAndFoundPage = () => {
           </S.ButtonWrapper>
 
           <S.LostAndFoundSection>
-            <S.LostAndFoundSectionTitle>분실물 찾아가기 🧸</S.LostAndFoundSectionTitle>
+            <S.LostAndFoundSectionTitle>&nbsp;&nbsp;분실물 찾아가기🧸</S.LostAndFoundSectionTitle>
             <S.LostAndFoundArticleLayout>
-              <DropDown setSelectedDay={setSelectedDay} />
-              <S.LostAndFoundArticle>
-                {items.length > 0 &&
-                  items.map((item, idx) => {
-                    return (
-                      <S.LostAndFoundPost
-                        onClick={handleClickItem(item.lostId)}
-                        key={`item_${idx}`}
-                        $imgSrc={item.imageUrl}
-                      />
-                    );
-                  })}
-              </S.LostAndFoundArticle>
+              <S.Gap8px>
+                <DropDown setSelectedDay={setSelectedDay} />
+                <S.LostAndFoundArticle>
+                  {items.length > 0 &&
+                    items.map((item, idx) => {
+                      return (
+                        <S.LostAndFoundPost
+                          onClick={handleClickItem(item.lostId)}
+                          key={`item_${idx}`}
+                          $imgSrc={item.imageUrl}
+                        />
+                      );
+                    })}
+                </S.LostAndFoundArticle>
+              </S.Gap8px>
+
               <NewPagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </S.LostAndFoundArticleLayout>
           </S.LostAndFoundSection>
         </S.Main>
 
-        <S.FooterWrapper>
-          <S.FooterLayout>
-            <S.ManGaeSvg />
-            <S.FooterIntroduction></S.FooterIntroduction>
-          </S.FooterLayout>
-        </S.FooterWrapper>
-        <LostBottomSheet isOpen={isBottomSheetOpen} setIsOpen={setIsBottomSheetOpen} />
-      </S.Wrapper>
+        {/*
+          <S.FooterWrapper>
+            <S.FooterLayout>
+              <S.ManGaeSvg />
+              <S.FooterIntroduction></S.FooterIntroduction>
+            </S.FooterLayout>
+          </S.FooterWrapper>
+        */}
 
-      <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
-      <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} lostId={itemLostId} />
+        <LostBottomSheet isOpen={isBottomSheetOpen} setIsOpen={setIsBottomSheetOpen} />
+        <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
+        <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} lostId={itemLostId} />
+      </S.Wrapper>
     </>
   );
 };
