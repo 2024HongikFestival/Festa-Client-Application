@@ -9,8 +9,10 @@ import wdfInsta from '@/assets/svgs/makers/wdfInsta.svg';
 import gaehwaInsta from '@/assets/svgs/makers/gaehwaInsta.svg';
 import flameVideo from '@/assets/videos/flameMainFooter.mp4';
 import * as S from '@/components/layouts/FooterStyles';
+import { useEffect, useState } from 'react';
 
 export default function Footer() {
+  const [isAtFooter, setIsAtFooter] = useState(false);
   const nav = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
@@ -47,10 +49,31 @@ export default function Footer() {
     }, 100);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.getElementById('footer');
+      const footerTop = footer.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      const buttonHeight = 45;
+
+      // 푸터가 화면 상단에서 보이기 시작할 때 버튼을 고정
+      if (footerTop <= windowHeight - buttonHeight) {
+        setIsAtFooter(true);
+      } else {
+        setIsAtFooter(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <S.FooterLayout $path={location.pathname}>
+    <S.FooterLayout id="footer" $path={location.pathname}>
       {showPreviousBtn && (
-        <S.PreviousBtn onClick={handleGoBack}>
+        <S.PreviousBtn $isAtFooter={isAtFooter} onClick={handleGoBack}>
           <span>{t('layouts.footer.prev')}</span>
         </S.PreviousBtn>
       )}

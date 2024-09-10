@@ -6,7 +6,6 @@ export const FooterLayout = styled.div`
   flex-direction: column;
   position: relative;
   background-color: transparent;
-  overflow: hidden;
   z-index: 0;
 `;
 
@@ -23,9 +22,9 @@ export const PreviousBtn = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  position: relative;
-  position: fixed;
-  bottom: 5.2rem;
+  position: ${({ $isAtFooter }) => ($isAtFooter ? 'absolute' : 'fixed')};
+  bottom: ${({ $isAtFooter }) => ($isAtFooter ? '' : '5.2rem')};
+  margin-top: ${({ $isAtFooter }) => ($isAtFooter ? '-4.4rem' : '')};
   left: 50%;
   transform: translateX(-50%);
   transition: bottom 0.3s ease;
