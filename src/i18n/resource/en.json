@@ -361,8 +361,8 @@
     "content": "The Lost and Found Center is located <2></2>in <1>the center of the playground podium.</1>"
   },
   "LostModal": {
-    "found": "발견 위치",
-    "stored": "보관 위치"
+    "found": "Found ",
+    "stored": "Stored "
   },
   "FooterModal": {
     "DidYouFindAnyLostItems": "Did you find any lost items?",
@@ -385,5 +385,6 @@
     "OptionalExplanation2": "(optional)",
     "PlaceholderText": "ex. This is Jack's ID Card / Mac-pro was found in Building T! The cover is labeled 'Jun'.",
     "Complete": "Complete"
-  }
+  },
+  "Close": "Close"
 }

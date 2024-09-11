@@ -16,7 +16,7 @@ const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
       <S.ModalWrapper>
         <S.ModalLayout $top={top} $gap={gap}>
           {children}
-          <S.BlueButton onClick={handleCloseModal}>닫기</S.BlueButton>
+          <S.BlueButton onClick={handleCloseModal}>{t('Close')}</S.BlueButton>
         </S.ModalLayout>
       </S.ModalWrapper>
     )
