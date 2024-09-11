@@ -23,8 +23,8 @@ export const UpBtn = styled.div`
   align-items: center;
   text-align: center;
   position: ${({ $isAtFooter }) => ($isAtFooter ? 'absolute' : 'fixed')};
-  bottom: ${({ $isAtFooter }) => ($isAtFooter ? 'inherit' : '5.2rem')};
-  margin-top: ${({ $isAtFooter }) => ($isAtFooter ? '-4.3rem' : 'inherit')};
+  bottom: ${({ $isAtFooter }) => ($isAtFooter ? '' : '5.2rem')};
+  margin-top: ${({ $isAtFooter }) => ($isAtFooter ? '-4.6rem' : '')};
   right: 2rem;
   transition: bottom 0.3s ease;
 
@@ -73,7 +73,7 @@ export const FloatingBtn = styled.div`
   text-align: center;
   position: ${({ $isAtFooter }) => ($isAtFooter ? 'absolute' : 'fixed')};
   bottom: ${({ $isAtFooter }) => ($isAtFooter ? '' : '5.2rem')};
-  margin-top: ${({ $isAtFooter }) => ($isAtFooter ? '-4.4rem' : '')};
+  margin-top: ${({ $isAtFooter }) => ($isAtFooter ? '-4.6rem' : '')};
   left: 50%;
   transform: translateX(-50%);
   transition: bottom 0.3s ease;

@@ -153,7 +153,7 @@ const BlackBar = styled.div`
   background-color: ${(props) => props.theme.colors.makersBackgroundColor};
   height: 0.4rem;
   margin-top: -0.3rem;
-  z-index: 10;
+  z-index: 0;
 `;
 
 const Title = styled.h1`
