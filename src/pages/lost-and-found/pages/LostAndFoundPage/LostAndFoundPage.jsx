@@ -12,8 +12,8 @@ import { ItemModal, LocationModal } from '@/components/lost-and-found/LostAndFou
 import NewPagination from '@/components/lost-and-found/LostAndFoundPage/NewPagination/NewPagination';
 import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import i18n from '../../../../i18n/setting';
-i18n.changeLanguage('en');
+//import i18n from '../../../../i18n/setting';
+//i18n.changeLanguage('en');
 
 // [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
 // Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
