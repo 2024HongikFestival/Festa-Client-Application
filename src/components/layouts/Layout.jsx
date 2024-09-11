@@ -15,6 +15,7 @@ import fleamarketBg2 from '@/assets/svgs/booth/background/fleamarketCommonBackgr
 import fleamarketBg3 from '@/assets/svgs/booth/background/fleamarketSangsuBackground.svg';
 
 import mdBg from '@/assets/svgs/booth/background/mdBackground.svg';
+import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
 
 export default function Layout() {
   const { isCamera } = useCamera();
@@ -26,9 +27,8 @@ export default function Layout() {
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
-  console.log(isAdminPath);
+
   const showheader = isLoggedIn() || !isAdminPath;
-  console.log('showheader:', showheader);
 
   return (
     <Container $path={location.pathname} $showheader={showheader}>
@@ -89,6 +89,15 @@ const Container = styled.div`
     css`
       background-image: url(${facilitiesBG});
       background-size: cover;
+    `}
+
+    ${(props) =>
+    props.$path === '/booth' &&
+    css`
+      background-image: url(${boothBg});
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
     `}
 
     ${(props) =>
