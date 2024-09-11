@@ -87,6 +87,7 @@ export default function BoothPage() {
           </ContentContainer>
         )}
         {/* 주점 운영시간 정보 컴포넌트 */}
+
         {/* 실시간 랭킹 정보 컴포넌트 */}
         {selectedTab === 'pub' && <Ranking kind="122" />}
       </ForGapWrapper>
