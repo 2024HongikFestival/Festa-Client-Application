@@ -40,8 +40,8 @@ export const UpBtn = styled.div`
     left: -0.1rem;
     width: 4.3rem;
     height: 4.3rem;
-    border-radius: 5rem;
-    padding: 1px;
+    border-radius: 50%;
+    padding: 0.1rem;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -63,7 +63,7 @@ export const FloatingBtn = styled.div`
   cursor: pointer;
   width: 10.6rem;
   height: 4.3rem;
-  border-radius: 5rem;
+  border-radius: 50px;
   background: ${({ className }) =>
     className === 'floatingDaedongje' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
   backdrop-filter: blur(0.4rem);
@@ -91,8 +91,8 @@ export const FloatingBtn = styled.div`
     left: -0.1rem;
     width: 10.6rem;
     height: 4.3rem;
-    border-radius: 5rem;
-    padding: 1px;
+    border-radius: 50px;
+    padding: 0.1rem;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
