@@ -335,5 +335,37 @@
         }
       ]
     }
+  },
+  "Amenities": {
+    "Amenities": "Amenities",
+    "RestRoom": "Rest room",
+    "MedicalFacility": "Medical facility",
+    "LostAndFoundCenter": "Lost and found center",
+    "LocationOfLostAndFoundCenter": "Location of Lost and Found Center",
+    "LostAndFoundCenterLocationDescription": "The Lost and Found Center is located in the center of the playground podium.",
+    "ClickToAccessOnlineLostAndFoundCenter": "Click to access online Lost and Found center"
+  },
+  "LostAndFound": {
+    "FooterModal": {
+      "DidYouFindAnyLostItems": "Did you find any lost items?",
+      "SomeoneAnxiouslyLookingForIt": "Someone at the festival is anxiously looking for it! Please report the lost items with a warm heart so that they can get their precious items back before they leave university.",
+      "UserAuthenticationRequired": "To prevent indiscriminate use of the board, user authentication is required, and all data will be securely deleted after the festival period."
+    },
+    "AddLostAndFound": {
+      "TakeAPictureOfLostItem": "Please take a picture so that you can see the characteristics of the lost item and the surrounding place well!",
+      "LostAndFoundReport": "A lost and found report",
+      "KeepAtRiskItemsAtCenter": "Please keep items that are at risk of theft at the lost and found center.",
+      "DoNotWriteIfDifficultToMove": "*If it is difficult to move to the center, please do not write.",
+      "FindingLostAndFound": "Finding the Lost and Found",
+      "FoundLocation": "Where did you find it? (15 char)",
+      "StoredLocation": "Where did you keep it? (15 char)",
+      "KeepValuablesAtCenter": "Keep electronic devices, cards, wallets, etc. in the lost and found center",
+      "OptionalExplanation": "Please write down your explanation if you need it! (optional)",
+      "PlaceholderText": {
+        "FoundLocation": "ex. under the playground podium / in front of the student center",
+        "StoreLocation": "ex. same as the found location / next to the water dispenser on the 1st floor of the student center",
+        "Explain": "ex. Found a student ID of Hong x Dong / Found a Sanrio keyring in front of Building A, please claim it!"
+      }
+    }
   }
 }
