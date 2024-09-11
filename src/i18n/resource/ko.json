@@ -345,27 +345,45 @@
     "LostAndFoundCenterLocationDescription": "대운동장 구령대 중앙에 분실물 센터가 위치해 있습니다.",
     "ClickToAccessOnlineLostAndFoundCenter": "온라인 분실물 센터 바로가기"
   },
+
   "LostAndFound": {
-    "FooterModal": {
-      "DidYouFindAnyLostItems": "분실물을 발견하셨나요?",
-      "SomeoneAnxiouslyLookingForIt": "대동제를 함께한 누군가가 애타게 찾고 있어요! 학교를 벗어나기 전 소중한 물건 되찾을 수 있도록 따뜻한 마음으로 분실물을 제보해주세요 😍",
-      "UserAuthenticationRequired": "무분별한 게시판 이용 방지를 위해 사용자 인증을 받고 있으며, 모든 데이터는 축제 기간 후 안전하게 삭제됩니다."
-    },
-    "AddLostAndFound": {
-      "TakeAPictureOfLostItem": "분실물의 특징과 주변 장소가 잘 보이도록 사진을 찍어주세요!",
-      "LostAndFoundReport": "분실물 제보",
-      "KeepAtRiskItemsAtCenter": "도난 위험이 있는 물건은 분실물 센터에 보관해 주시기 바랍니다",
-      "DoNotWriteIfDifficultToMove": "센터로 이동이 어렵다면 글을 작성하지 말아주세요",
-      "FindingLostAndFound": "분실물 찾아주기",
-      "FoundLocation": "어디서 발견하셨나요? (최대 15자)",
-      "StoredLocation": "어디에 보관하셨나요? (최대 15자)",
-      "KeepValuablesAtCenter": "전자기기, 카드, 지갑 등은 분실물 센터에 보관",
-      "OptionalExplanation": "필요 시 설명도 적어주세요! (선택)",
-      "PlaceholderText": {
-        "FoundLocation": "ex. 운동장 구령대 아래 / 학생회관 앞",
-        "StoreLocation": "ex. 발견 위치 그대로 / 학생회관 1층 정수기 옆",
-        "Explain": "ex. 홍x동님 학생증 발견했습니다 / A동 앞에 산리오 키링 떨어져있어요 주인 찾아가세요 ~"
-      }
-    }
+    "LostAndFound": "분실물",
+    "buttonDetailText": "전자기기, 카드, 지갑 등은 제보 후<1><2>분실물 센터</2>에 보관</1> 해 주세요.",
+    "ReportLostItems": "분실물 찾아주기 ✋🏻",
+    "FindLostItem": "분실물 찾아가기🧸"
+  },
+  "DropDown": {
+    "AllTime": "전체 기간"
+  },
+  "LocationModal": {
+    "location1": "분실물 센터",
+    "location2": "위치",
+    "content": "<1>대운동장 구령대 중앙에</1> <2/>분실물 센터가 위치해있습니다."
+  },
+  "LostModal": {
+    "found": "발견 위치",
+    "stored": "보관 위치"
+  },
+  "FooterModal": {
+    "DidYouFindAnyLostItems": "분실물을 발견하셨나요?",
+    "SomeoneAnxiouslyLookingForIt": "대동제를 함께한 누군가가 애타게 찾고 있어요! 학교를 벗어나기 전 소중한 물건 되찾을 수 있도록 따뜻한 마음으로 분실물을 제보해주세요 😍",
+    "UserAuthenticationRequired": "무분별한 게시판 이용 방지를 위해 사용자 인증을 받고 있으며, \n 모든 데이터는 축제 기간 후 안전하게 삭제됩니다."
+  },
+  "AddLostAndFound": {
+    "TakeAPictureOfLostItem": "분실물의 특징과 주변 장소가\n잘 보이도록 사진을 찍어주세요!",
+    "LostAndFoundReport": "분실물 제보",
+    "KeepAtRiskItemsAtCenter": "도난 위험이 있는 물건은 <1/> <2><3>분실물 센터</3>에 보관</2>해 주시기 바랍니다",
+    "DoNotWriteIfDifficultToMove1": "※ 센터로 이동이 어렵다면 ",
+    "DoNotWriteIfDifficultToMove2": "글을 작성하지 말아주세요",
+    "FindingLostAndFound": "분실물 찾아주기",
+    "FoundLocation": "어디서 발견하셨나요? (최대 15자)",
+    "FoundPlaceHolder": "ex. 운동장 구령대 아래 / 학생회관 앞",
+    "StoredLocation": "어디에 보관하셨나요? (최대 15자)",
+    "StoredPlaceHolder": "ex. 발견 위치 그대로 / 학생회관 1층 정수기 옆",
+    "KeepValuablesAtCenter": "전자기기, 카드, 지갑 등은 분실물 센터에 보관해 주세요",
+    "OptionalExplanation1": "필요 시 설명도 적어주세요! ",
+    "OptionalExplanation2": "(선택)",
+    "PlaceholderText": "ex. 홍X동님 학생증 발견했습니다 / A동 앞에 산리오 키링 떨어져있어요 주인 찾아가세요~",
+    "Complete": "완료"
   }
 }

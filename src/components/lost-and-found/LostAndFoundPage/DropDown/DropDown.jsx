@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as S from './DropDown.styled';
 
-const dates = [
-  { label: '전체 기간', value: '' }, //초기값
-  { label: '9월 25일', value: '2024-09-25' },
-  { label: '9월 26일', value: '2024-09-26' },
-  { label: '9월 27일', value: '2024-09-27' },
-  //만약 날짜 추가된다면 위의 형식대로 추가하면 됨
-];
-
 const DropDown = ({ setSelectedDay }) => {
+  const { t } = useTranslation();
+
+  const dates = [
+    { label: t('DropDown.AllTime'), value: '' }, //초기값
+    { label: '9월 25일', value: '2024-09-25' },
+    { label: '9월 26일', value: '2024-09-26' },
+    { label: '9월 27일', value: '2024-09-27' },
+    //만약 날짜 추가된다면 위의 형식대로 추가하면 됨
+  ];
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(dates[0].label);
 
