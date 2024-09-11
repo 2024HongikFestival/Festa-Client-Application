@@ -86,8 +86,9 @@ export default function BoothPage() {
             <MapImage src="src/assets/webps/booth/mapExample.webp" />
           </ContentContainer>
         )}
+        {/* 주점 운영시간 정보 컴포넌트 */}
         {/* 실시간 랭킹 정보 컴포넌트 */}
-        <Ranking kind="122" />
+        {selectedTab === 'pub' && <Ranking kind="122" />}
       </ForGapWrapper>
     </Container>
   );
@@ -155,7 +156,6 @@ const SelectionBar = styled.div`
   align-items: center;
   border-radius: 1.6rem;
   background-color: ${(props) => props.theme.colors.white};
-  margin-bottom: 2.4rem;
 `;
 
 const ActiveBackground = styled.div`

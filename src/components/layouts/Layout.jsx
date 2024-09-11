@@ -11,6 +11,8 @@ import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
 // import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackground.webp';
 // import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
 // import fleamarketBg3 from '@/assets/webps/booth/background/fleamarketSangsuBackground.webp';
+
+import fleamarketBg1 from '@/assets/svgs/booth/background/fleamarketMainBackground.svg';
 import fleamarketBg2 from '@/assets/svgs/booth/background/fleamarketCommonBackground.svg';
 import fleamarketBg3 from '@/assets/svgs/booth/background/fleamarketSangsuBackground.svg';
 
@@ -96,7 +98,7 @@ const Container = styled.div`
     css`
       background-image: url(${boothBg});
       background-size: cover;
-      background-position: center center;
+      background-position: top center;
       background-repeat: no-repeat;
     `}
 
@@ -105,24 +107,27 @@ const Container = styled.div`
     css`
       background-image: url(${mdBg});
       background-size: cover;
-      background-position: center center;
+      background-position: top center;
       background-repeat: no-repeat;
     `}
 
     ${(props) =>
     props.$path === '/fleamarket' &&
     css`
-      background-image: url(${facilitiesBG});
+      background-image: url(${fleamarketBg1});
       background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
     `}
 
     ${(props) =>
     props.$path.startsWith('/fleamarket/') &&
     props.$path !== '/fleamarket/sangsu' &&
+    props.$path !== '/fleamarket' &&
     css`
       background-image: url(${fleamarketBg2});
       background-size: cover;
-      background-position: center center;
+      background-position: top center;
       background-repeat: no-repeat;
     `}
 
@@ -131,7 +136,7 @@ const Container = styled.div`
     css`
       background-image: url(${fleamarketBg3});
       background-size: cover;
-      background-position: center center;
+      background-position: top center;
       background-repeat: no-repeat;
     `}
 `;
