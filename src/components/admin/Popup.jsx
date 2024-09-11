@@ -6,8 +6,8 @@ const Popup = ({ message, onConfirm, onCancel, confirmText, cancelText }) => (
   <PopupOverlay>
     <PopupContainer>
       <Message>{message}</Message>
-      <Buttons>
-        <Button onClick={onCancel}>{cancelText}</Button>
+      <Buttons $hasCancel={!!onCancel}>
+        {onCancel && <Button onClick={onCancel}>{cancelText}</Button>}
         <Button onClick={onConfirm}>{confirmText}</Button>
       </Buttons>
     </PopupContainer>
@@ -60,7 +60,8 @@ const Message = styled.p`
 const Buttons = styled.div`
   display: flex;
   text-align: center;
-  justify-content: space-around;
+  justify-content: ${({ $hasCancel }) => ($hasCancel ? 'space-around' : 'center')};
+
   gap: 1rem;
 `;
 

@@ -5,9 +5,7 @@ import styled from 'styled-components';
 import * as XLSX from 'xlsx';
 
 const prizeMapping = {
-  에어팟: 'A',
-  변신로봇: 'B',
-  장검: 'C',
+  '티빙 구독권': '티빙구독권',
 };
 
 const Winners = () => {
