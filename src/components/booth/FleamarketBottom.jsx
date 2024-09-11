@@ -85,6 +85,7 @@ const Text = styled.div`
   ${({ theme }) => theme.fontStyles.basic.body2Med};
   color: ${({ theme }) => theme.colors.gray80};
   margin-top: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const GoodsInfo = styled.div`
