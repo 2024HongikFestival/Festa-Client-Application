@@ -8,7 +8,7 @@ const HongikZonePage = () => {
       <S.BoxContainer>
         <S.Info>
           <S.TextBox>
-            <S.SubTitle>홍익존이 뭐에요?</S.SubTitle>
+            <S.SubTitle>홍익존이 뭐예요?</S.SubTitle>
             <S.List>
               <li>
                 <S.BlackHighlight>홍익존</S.BlackHighlight>은 <S.BlackHighlight>사전 예매가 확인</S.BlackHighlight>된

@@ -67,7 +67,7 @@ export const List = styled.ul`
   padding-left: 1.9rem;
   li {
     ${(props) => props.theme.fontStyles.basic.body2Med};
-    color: ${(props) => props.theme.colors.gray70};
+    color: ${(props) => props.theme.colors.gray90};
     margin-bottom: 0.4rem;
   }
   li:last-child {
