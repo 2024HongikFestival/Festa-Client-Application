@@ -338,33 +338,33 @@
   },
   "Amenities": {
     "Amenities": "편의시설",
-    "Rest room": "화장실",
-    "medical facility": "의료 시설",
-    "Lost and found center": "분실물 센터",
-    "Location of Lost and Found Center": "분실물 센터 위치",
-    "The Lost and Found Center is located in the center of the playground podium.": "대운동장 구령대 중앙에 분실물 센터가 위치해 있습니다.",
-    "click to access online Lost and Found center": "온라인 분실물 센터 바로가기"
+    "RestRoom": "화장실",
+    "MedicalFacility": "의료 시설",
+    "LostAndFoundCenter": "분실물 센터",
+    "LocationOfLostAndFoundCenter": "분실물 센터 위치",
+    "LostAndFoundCenterLocationDescription": "대운동장 구령대 중앙에 분실물 센터가 위치해 있습니다.",
+    "ClickToAccessOnlineLostAndFoundCenter": "온라인 분실물 센터 바로가기"
   },
-  "lostAndFound": {
-    "footerModal": {
-      "Did you find any lost items?": "분실물을 발견하셨나요?",
-      "Someone at the festival is anxiously looking for it! Please report the lost items with a warm heart so that they can get their precious items back before they leave university": "대동제를 함께한 누군가가 애타게 찾고 있어요! 학교를 벗어나기 전 소중한 물건 되찾을 수 있도록 따뜻한 마음으로 분실물을 제보해주세요 😍",
-      "To prevent indiscriminate use of the board, user authentication is required, and all data will be securely deleted after the festival period.": "무분별한 게시판 이용 방지를 위해 사용자 인증을 받고 있으며, 모든 데이터는 축제 기간 후 안전하게 삭제됩니다."
+  "LostAndFound": {
+    "FooterModal": {
+      "DidYouFindAnyLostItems": "분실물을 발견하셨나요?",
+      "SomeoneAnxiouslyLookingForIt": "대동제를 함께한 누군가가 애타게 찾고 있어요! 학교를 벗어나기 전 소중한 물건 되찾을 수 있도록 따뜻한 마음으로 분실물을 제보해주세요 😍",
+      "UserAuthenticationRequired": "무분별한 게시판 이용 방지를 위해 사용자 인증을 받고 있으며, 모든 데이터는 축제 기간 후 안전하게 삭제됩니다."
     },
-    "addLostAndFound": {
-      "Please take a picture so that you can see the characteristics of the lost item and the surrounding place well!": "분실물의 특징과 주변 장소가 잘 보이도록 사진을 찍어주세요!",
-      "a lost and found report": "분실물 제보",
-      "Please keep items that are at risk of theft at the lost and found center.": "도난 위험이 있는 물건은 분실물 센터에 보관해 주시기 바랍니다",
-      "*If it is difficult to move to the center, please do not write.": "센터로 이동이 어렵다면 글을 작성하지 말아주세요",
-      "Finding the Lost and Found": "분실물 찾아주기",
-      "Where did you find it? (15 char)": "어디서 발견하셨나요? (최대 15자)",
-      "Where did you keep it? (15 char)": "어디에 보관하셨나요? (최대 15자)",
-      "Keep electronic devices, cards, wallets, etc. in the lost and found center": "전자기기, 카드, 지갑 등은 분실물 센터에 보관",
-      "Please write down your explanation if you need it!(optional)": "필요 시 설명도 적어주세요! (선택)",
-      "placeholdertext": {
-        "foundlocation": "ex. 운동장 구령대 아래 / 학생회관 앞",
-        "storelocation": "ex. 발견 위치 그대로 / 학생회관 1층 정수기 옆",
-        "explain": "ex. 홍x동님 학생증 발견했습니다 / A동 앞에 산리오 키링 떨어져있어요 주인 찾아가세요 ~"
+    "AddLostAndFound": {
+      "TakeAPictureOfLostItem": "분실물의 특징과 주변 장소가 잘 보이도록 사진을 찍어주세요!",
+      "LostAndFoundReport": "분실물 제보",
+      "KeepAtRiskItemsAtCenter": "도난 위험이 있는 물건은 분실물 센터에 보관해 주시기 바랍니다",
+      "DoNotWriteIfDifficultToMove": "센터로 이동이 어렵다면 글을 작성하지 말아주세요",
+      "FindingLostAndFound": "분실물 찾아주기",
+      "FoundLocation": "어디서 발견하셨나요? (최대 15자)",
+      "StoredLocation": "어디에 보관하셨나요? (최대 15자)",
+      "KeepValuablesAtCenter": "전자기기, 카드, 지갑 등은 분실물 센터에 보관",
+      "OptionalExplanation": "필요 시 설명도 적어주세요! (선택)",
+      "PlaceholderText": {
+        "FoundLocation": "ex. 운동장 구령대 아래 / 학생회관 앞",
+        "StoreLocation": "ex. 발견 위치 그대로 / 학생회관 1층 정수기 옆",
+        "Explain": "ex. 홍x동님 학생증 발견했습니다 / A동 앞에 산리오 키링 떨어져있어요 주인 찾아가세요 ~"
       }
     }
   }
