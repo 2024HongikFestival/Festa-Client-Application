@@ -22,18 +22,18 @@ const FacilitiesPage = () => {
         <S.ToggleWrapper>
           <ContentContainer>
             <S.Toggle>
-              <S.ToggleBtn $isActive={selectedFacility === 'restroom'} onClick={() => handleToggleClick('restroom')}>
+              <S.RestroomBtn $isActive={selectedFacility === 'restroom'} onClick={() => handleToggleClick('restroom')}>
                 {t('facilities.restroomToggle')}
-              </S.ToggleBtn>
-              <S.ToggleBtn $isActive={selectedFacility === 'medical'} onClick={() => handleToggleClick('medical')}>
+              </S.RestroomBtn>
+              <S.MedicalBtn $isActive={selectedFacility === 'medical'} onClick={() => handleToggleClick('medical')}>
                 {t('facilities.medicalFacilityToggle')}
-              </S.ToggleBtn>
-              <S.ToggleBtn
+              </S.MedicalBtn>
+              <S.LostAndFoundBtn
                 $isActive={selectedFacility === 'lostAndFound'}
                 onClick={() => handleToggleClick('lostAndFound')}
               >
                 {t('facilities.lostAndFoundCenterToggle')}
-              </S.ToggleBtn>
+              </S.LostAndFoundBtn>
             </S.Toggle>
           </ContentContainer>
         </S.ToggleWrapper>
