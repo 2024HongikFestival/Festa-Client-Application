@@ -12,13 +12,12 @@ export default function Layout() {
   const { isCamera } = useCamera();
   const location = useLocation();
 
-  const adminPaths = ['/admin', '/admin/event', '/admin/losts'];
+  const adminPaths = ['/admin', '/admin/', '/admin/event', '/admin/losts'];
   const isAdminPath = adminPaths.includes(location.pathname);
 
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
-
   const showheader = isLoggedIn() || !isAdminPath;
 
   return (

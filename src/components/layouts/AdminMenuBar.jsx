@@ -6,10 +6,14 @@ import * as S from '@/components/layouts/HeaderStyles';
 const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, showLogoutPopup, setShowLogoutPopup }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
+  const handleMenuClick = (path) => {
+    nav(path, { state: { from: path } });
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
     setIsLoggedIn(false);
-    nav(0);
+    nav('/admin');
   };
 
   const handleConfirmLogout = () => {
@@ -36,8 +40,7 @@ const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, showLogoutPopup
         <S.PageMenu>
           <S.Menu
             onClick={() => {
-              nav('/admin/losts');
-              nav(0);
+              handleMenuClick('/admin/losts');
               closeMenu();
             }}
           >
@@ -45,8 +48,7 @@ const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, showLogoutPopup
           </S.Menu>
           <S.Menu
             onClick={() => {
-              nav('/admin/event');
-              nav(0);
+              handleMenuClick('/admin/event');
               closeMenu();
             }}
           >

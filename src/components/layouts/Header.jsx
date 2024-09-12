@@ -31,7 +31,7 @@ export default function Header() {
     '/flame/md',
     '/flame/promotion',
   ];
-  const adminPaths = ['/admin', '/admin/event', '/admin/losts'];
+  const adminPaths = ['/admin', '/admin/', '/admin/event', '/admin/losts'];
   const isFlamePath = flamePaths.includes(location.pathname);
   const isAdminPath = adminPaths.includes(location.pathname);
 

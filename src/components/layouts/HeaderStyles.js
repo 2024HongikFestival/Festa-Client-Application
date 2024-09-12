@@ -51,18 +51,12 @@ export const HeaderBg = styled.header`
     `}
 
   ${(props) =>
-    props.$path === '/admin/losts' &&
+    (props.$path === '/admin/losts' || props.$path === '/admin/event') &&
     css`
       border: none;
       background-color: ${(props) => props.theme.colors.white};
     `}
 
-  ${(props) =>
-    props.$path === '/admin/event' &&
-    css`
-      border: none;
-      background-color: ${(props) => props.theme.colors.white};
-    `}
 
   ${(props) =>
     props.$isCamera &&
