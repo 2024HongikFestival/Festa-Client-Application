@@ -163,9 +163,8 @@ export const LikelionBtn = styled.div`
   z-index: 1;
 
   .likelion {
-    width: 4.9rem;
+    width: 6.9rem;
     ${(props) => props.theme.fontStyles.basic.body2Bold};
-    margin-right: 2rem;
     ${(props) =>
       props.$path.startsWith('/flame') &&
       css`
@@ -200,9 +199,8 @@ export const GaehwaBtn = styled.div`
   z-index: 1;
 
   .gaehwa {
-    width: 4.9rem;
+    width: 6.9rem;
     ${(props) => props.theme.fontStyles.basic.body2Bold};
-    margin-right: 2rem;
     ${(props) =>
       props.$path.startsWith('/flame') &&
       css`
