@@ -15,8 +15,12 @@ export const UpBtn = styled.div`
   width: 4.3rem;
   height: 4.3rem;
   border-radius: 50%;
-  background: ${({ className }) =>
-    className === 'floatingDaedongje' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
+  background: rgba(255, 255, 255, 0.3);
+  ${(props) =>
+    (props.$path.startsWith('/flame') || props.$path.startsWith('/event')) &&
+    css`
+      background: rgba(255, 255, 255, 0.1);
+    `}
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;

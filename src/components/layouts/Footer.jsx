@@ -21,8 +21,14 @@ export default function Footer() {
   const flame = location.pathname.startsWith('/flame');
   const flameMain = location.pathname === '/flame' || location.pathname === '/flame/';
   const daedongjeMain = location.pathname === '/';
-  const showPreviousBtn = location.pathname == '/likelion' || location.pathname == '/gaehwa';
+  const makers = location.pathname == '/likelion' || location.pathname == '/gaehwa';
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   // navigation
   const handleNavigation = (path) => {
     if (location.pathname === path) {
@@ -86,6 +92,11 @@ export default function Footer() {
 
   return (
     <S.FooterLayout id="footer" $path={location.pathname}>
+      {!makers && (
+        <S.UpBtn $path={location.pathname} $show={showUpBtn} $isAtFooter={isAtFooter} onClick={() => scrollToTop()}>
+          <img src={up} alt="up"></img>
+        </S.UpBtn>
+      )}
       {daedongjeMain && (
         <>
           <S.FloatingBtn
@@ -95,14 +106,6 @@ export default function Footer() {
           >
             <span>{t('layouts.footer.goFlame')}</span>
           </S.FloatingBtn>
-          <S.UpBtn
-            $show={showUpBtn}
-            $isAtFooter={isAtFooter}
-            onClick={() => handleNavigation('/')}
-            className="floatingDaedongje"
-          >
-            <img src={up} alt="up"></img>
-          </S.UpBtn>
         </>
       )}
       {flameMain && (
@@ -110,12 +113,9 @@ export default function Footer() {
           <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/')}>
             <span>{t('layouts.footer.goDaedongje')}</span>
           </S.FloatingBtn>
-          <S.UpBtn $show={showUpBtn} $isAtFooter={isAtFooter} onClick={() => handleNavigation('/flame')}>
-            <img src={up} alt="up"></img>
-          </S.UpBtn>
         </>
       )}
-      {showPreviousBtn && (
+      {makers && (
         <S.FloatingBtn $isAtFooter={isAtFooter} onClick={handleGoBack}>
           <span>{t('layouts.footer.prev')}</span>
         </S.FloatingBtn>
