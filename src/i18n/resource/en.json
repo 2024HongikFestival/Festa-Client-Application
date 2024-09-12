@@ -358,6 +358,14 @@
       "description1": "",
       "description2": "You can receive emergency treatment at the Health care Center in front of the stairs of the Information and Communication Center (Building Q).",
       "description3": ""
+    },
+    "lostAndFound": {
+      "title1": "",
+      "title2": "Location of lost and found center",
+      "description1": "",
+      "description2": "The Lost and Found Center is located in the center of the playground podium.",
+      "description3": "",
+      "goLostAndFoundBtn": "go to online Lost and Found center"
     }
   }
 }
