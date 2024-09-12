@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 
 export default function Footer() {
   const [isAtFooter, setIsAtFooter] = useState(false);
+  const [showUpBtn, setShowUpBtn] = useState(false);
   const nav = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
@@ -53,13 +54,21 @@ export default function Footer() {
     }, 100);
   };
 
-  // footer 만날 때 고정
+  // 일정 스크롤 이후에 upBtn 노출 및 footer 만날 때 고정
   useEffect(() => {
     const handleScroll = () => {
+      const scrollY = window.scrollY;
       const footer = document.getElementById('footer');
       const footerTop = footer.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
       const buttonHeight = 45;
+
+      // Up 버튼을 일정 스크롤 이후에 노출
+      if (scrollY > 200) {
+        setShowUpBtn(true);
+      } else {
+        setShowUpBtn(false);
+      }
 
       // 푸터가 화면 상단에서 보이기 시작할 때 버튼을 고정
       if (footerTop <= windowHeight - buttonHeight) {
@@ -86,9 +95,11 @@ export default function Footer() {
           >
             <span>{t('layouts.footer.goFlame')}</span>
           </S.FloatingBtn>
-          <S.UpBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/')} className="floatingDaedongje">
-            <img src={up} alt="up"></img>
-          </S.UpBtn>
+          {showUpBtn && (
+            <S.UpBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/')} className="floatingDaedongje">
+              <img src={up} alt="up"></img>
+            </S.UpBtn>
+          )}
         </>
       )}
       {flameMain && (
@@ -96,9 +107,11 @@ export default function Footer() {
           <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/')}>
             <span>{t('layouts.footer.goDaedongje')}</span>
           </S.FloatingBtn>
-          <S.UpBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/flame')}>
-            <img src={up} alt="up"></img>
-          </S.UpBtn>
+          {showUpBtn && (
+            <S.UpBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/flame')}>
+              <img src={up} alt="up"></img>
+            </S.UpBtn>
+          )}
         </>
       )}
       {showPreviousBtn && (
