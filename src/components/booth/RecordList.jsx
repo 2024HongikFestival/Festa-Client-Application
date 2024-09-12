@@ -12,7 +12,6 @@ RecordList.propTypes = {
 };
 
 export default function RecordList({ record }) {
-  console.log(record);
   return (
     <RecordContainer>
       {record.map((recordItem, index) => (
@@ -58,6 +57,7 @@ const RecordListWrapper = styled.div`
   flex-direction: column;
   gap: 0.4rem;
   width: 28rem;
+  color: ${({ theme }) => theme.colors.gray100};
 `;
 
 const Record = styled.div`

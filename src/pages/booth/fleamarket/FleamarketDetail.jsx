@@ -3,7 +3,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import PageTitle from '@/components/common/PageTitle';
+// import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import { useParams } from 'react-router-dom';
 import { fleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
@@ -20,7 +20,14 @@ const FleamarketDetail = () => {
 
   return (
     <Container>
-      <PageTitle title={item.name} />
+      <PageTitle>
+        {item.name.split('\n').map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            <br />
+          </React.Fragment>
+        ))}
+      </PageTitle>
       {/* 마켓 소개 컴포넌트 */}
       <ContentContainer>
         <TextContainer>
@@ -70,6 +77,14 @@ const Container = styled.div`
   padding-bottom: 6.4rem;
 `;
 
+const PageTitle = styled.div`
+  width: 100%;
+  margin-top: 2.4rem;
+  margin-bottom: 2.8rem;
+  ${(props) => props.theme.fontStyles.main.headline2};
+  text-align: center;
+`;
+
 const TextContainer = styled.div`
   ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${({ theme }) => theme.colors.gray90};
@@ -79,7 +94,7 @@ const TextContainer = styled.div`
 `;
 
 const GoodsWrapper = styled.div`
-  margin-top: ${(props) => (props.isSpecialMarket ? '1.6rem' : '2.8rem')};
+  margin-top: ${({ $isSpecialMarket }) => ($isSpecialMarket ? '1.6rem' : '2.8rem')};
   width: 33.5rem;
   display: flex;
   flex-wrap: wrap;
@@ -89,7 +104,8 @@ const GoodsWrapper = styled.div`
 
 const Goods = styled.div`
   width: 16rem;
-  height: 22.5rem;
+  /* height: 22.5rem; */
+  height: auto;
   border-radius: 1.6rem;
   justify-content: center;
   align-items: center;
@@ -114,7 +130,8 @@ const ExampleImg = styled.img`
 
 const GoodsInfo = styled.div`
   width: 13.6rem;
-  height: 4.9rem;
+  /* height: 4.9rem; */
+  height: auto;
   gap: 0.4rem;
 `;
 

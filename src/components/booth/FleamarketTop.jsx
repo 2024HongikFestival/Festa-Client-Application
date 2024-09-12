@@ -43,6 +43,7 @@ const TopWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 `;
 
 const TopImgWrapper = styled.div`

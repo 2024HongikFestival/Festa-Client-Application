@@ -44,6 +44,7 @@ export default function Layout() {
 const Container = styled.div`
   min-width: 375px;
   max-width: 768px;
+  height: 100%;
 
   /* min-height: calc(var(--vh, 1vh) * 100); */
   margin: ${({ $showheader }) => ($showheader ? '5.6rem auto 0' : '0 auto 0')};

@@ -94,6 +94,7 @@ const GoodsInfo = styled.div`
   gap: 0.4rem;
   margin-right: 18.7rem;
   margin-left: 1.2rem;
+  margin-bottom: 1.2rem;
 `;
 
 const Name = styled.p`

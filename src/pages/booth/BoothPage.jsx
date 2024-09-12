@@ -7,6 +7,8 @@ import ContentContainer from '@/components/common/ContentContainer';
 import PageTitle from '@/components/common/PageTitle';
 import { useTranslation } from 'react-i18next';
 import Ranking from '@/components/booth/Ranking';
+import PubOperatingHour from '@/components/booth/PubOperatingHour';
+import PubCard from '@/components/booth/PubCard';
 
 export default function BoothPage() {
   const [likes, setLikes] = useState({});
@@ -64,7 +66,7 @@ export default function BoothPage() {
     };
   }, []);
 
-  const [selectedTab, setSelectedTab] = useState('schedule');
+  const [selectedTab, setSelectedTab] = useState('pub');
   return (
     <Container>
       <PageTitle title={'주점'}>주점</PageTitle>
@@ -86,10 +88,11 @@ export default function BoothPage() {
             <MapImage src="src/assets/webps/booth/mapExample.webp" />
           </ContentContainer>
         )}
-        {/* 주점 운영시간 정보 컴포넌트 */}
-
+        {selectedTab === 'pub' && <PubCard />}
         {/* 실시간 랭킹 정보 컴포넌트 */}
         {selectedTab === 'pub' && <Ranking kind="122" />}
+        {/* 주점 운영시간 정보 컴포넌트 */}
+        {selectedTab === 'pub' && <PubOperatingHour />}
       </ForGapWrapper>
     </Container>
   );

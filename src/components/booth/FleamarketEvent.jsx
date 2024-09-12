@@ -79,6 +79,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const EventTextContainer = styled.div`
   margin: 2rem 2.4rem 2rem 2.4rem;
   display: flex;
