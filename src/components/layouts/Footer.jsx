@@ -64,7 +64,7 @@ export default function Footer() {
       const buttonHeight = 45;
 
       // Up 버튼을 일정 스크롤 이후에 노출
-      if (scrollY > 200) {
+      if (scrollY > 500) {
         setShowUpBtn(true);
       } else {
         setShowUpBtn(false);
@@ -95,11 +95,14 @@ export default function Footer() {
           >
             <span>{t('layouts.footer.goFlame')}</span>
           </S.FloatingBtn>
-          {showUpBtn && (
-            <S.UpBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/')} className="floatingDaedongje">
-              <img src={up} alt="up"></img>
-            </S.UpBtn>
-          )}
+          <S.UpBtn
+            show={showUpBtn}
+            $isAtFooter={isAtFooter}
+            onClick={() => handleNavigation('/')}
+            className="floatingDaedongje"
+          >
+            <img src={up} alt="up"></img>
+          </S.UpBtn>
         </>
       )}
       {flameMain && (
@@ -107,11 +110,9 @@ export default function Footer() {
           <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/')}>
             <span>{t('layouts.footer.goDaedongje')}</span>
           </S.FloatingBtn>
-          {showUpBtn && (
-            <S.UpBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/flame')}>
-              <img src={up} alt="up"></img>
-            </S.UpBtn>
-          )}
+          <S.UpBtn show={showUpBtn} $isAtFooter={isAtFooter} onClick={() => handleNavigation('/flame')}>
+            <img src={up} alt="up"></img>
+          </S.UpBtn>
         </>
       )}
       {showPreviousBtn && (

@@ -26,7 +26,11 @@ export const UpBtn = styled.div`
   bottom: ${({ $isAtFooter }) => ($isAtFooter ? '' : '5.2rem')};
   margin-top: ${({ $isAtFooter }) => ($isAtFooter ? '-4.5rem' : '')};
   right: 2rem;
-  transition: bottom 0.3s ease;
+  transition:
+    opacity 0.5s ease-in-out,
+    bottom 0.3s ease;
+  opacity: ${({ show }) => (show ? '1' : '0')}; /* fadeIn, fadeOut 효과 */
+  pointer-events: ${({ show }) => (show ? 'auto' : 'none')}; /* 버튼이 보이지 않을 때 클릭 방지 */
 
   img {
     width: 1.7rem;
