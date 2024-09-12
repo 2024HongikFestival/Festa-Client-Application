@@ -29,7 +29,6 @@ export default function Layout() {
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
-
   const showheader = isLoggedIn() || !isAdminPath;
 
   return (
