@@ -1,5 +1,5 @@
 import ContentContainer from '@/components/common/ContentContainer';
-import * as S from './styles';
+import * as S from '@/pages/facilities/styles';
 import { useNavigate } from 'react-router-dom';
 
 const LostAndFoundSection = () => {

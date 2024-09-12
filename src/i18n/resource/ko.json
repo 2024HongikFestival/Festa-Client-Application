@@ -335,5 +335,11 @@
         }
       ]
     }
+  },
+  "facilities": {
+    "amenities": "편의시설",
+    "restroom": "화장실",
+    "medicalFacility": "의료 시설",
+    "lostAndFoundCenter": "분실물 센터"
   }
 }

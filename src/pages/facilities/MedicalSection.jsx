@@ -1,5 +1,5 @@
 import ContentContainer from '@/components/common/ContentContainer';
-import * as S from './styles';
+import * as S from '@/pages/facilities/styles';
 
 const MedicalSection = () => {
   return (

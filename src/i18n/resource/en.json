@@ -335,5 +335,11 @@
         }
       ]
     }
+  },
+  "facilities": {
+    "amenities": "Amenities",
+    "restroom": "Restroom",
+    "medicalFacility": "Medical Facility",
+    "lostAndFoundCenter": "Lost and found center"
   }
 }
