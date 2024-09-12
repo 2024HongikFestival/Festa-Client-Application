@@ -339,33 +339,38 @@
   "facilities": {
     "amenities": "Amenities",
     "restroomToggle": "Restroom",
-    "medicalFacilityToggle": "Medical Facility",
-    "lostAndFoundCenterToggle": "Lost and found center",
+    "medicalFacilityToggle": "Med center",
+    "lostAndFoundCenterToggle": "Lost & Found",
     "restroom": {
       "title1": "",
-      "title2": "Location of restrooms",
-      "building1": "1st floor of Building M",
+      "title2": "Restroom",
+      "building1-1": "1st floor ",
+      "building1-2": "of Building M",
       "floor1": "",
-      "building2": "1st floor of Building Z4",
-      "building2-2": "(a handicapped toilet)",
+      "building2-1": "1st floor ",
+      "building2-2": "of Building Z4",
+      "building2-3": "(a handicapped toilet)",
       "floor2": "",
-      "building3": "2nd floor of Building Z4",
+      "building3-1": "2nd floor ",
+      "building3-2": "of Building Z4",
       "floor3": ""
     },
     "medical": {
       "title1": "",
-      "title2": "Location of medical facility",
+      "title2": "Medical center",
       "description1": "",
-      "description2": "You can receive emergency treatment at the Health care Center in front of the stairs of the Information and Communication Center (Building Q).",
+      "description2": "You can receive emergency treatment at the ",
+      "description2-2": "Health care Center in front of the stairs of the Information and Communication Center (Building Q).",
       "description3": ""
     },
     "lostAndFound": {
       "title1": "",
-      "title2": "Location of lost and found center",
+      "title2": "Lost and Found center",
       "description1": "",
-      "description2": "The Lost and Found Center is located in the center of the playground podium.",
+      "description2": "The Lost and Found Center is located in ",
+      "description2-2": "the center of the playground podium.",
       "description3": "",
-      "goLostAndFoundBtn": "go to online Lost and Found center"
+      "goLostAndFoundBtn": "Go to Online Lost and Found center"
     }
   }
 }

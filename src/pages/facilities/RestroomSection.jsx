@@ -16,23 +16,30 @@ const RestroomSection = () => {
           <S.DetailItem>
             <S.Number>1</S.Number>
             <S.GrayBar />
-            <S.Building>{t('facilities.restroom.building1')}</S.Building>
+            <S.Building>
+              <span>{t('facilities.restroom.building1-1')}</span>
+              {t('facilities.restroom.building1-2')}
+            </S.Building>
             <S.Floor>{t('facilities.restroom.floor1')}</S.Floor>
           </S.DetailItem>
           <S.DetailItem>
             <S.Number>2</S.Number>
             <S.GrayBar />
             <S.Building>
-              {t('facilities.restroom.building2')}
-              <br />
+              <span>{t('facilities.restroom.building2-1')}</span>
               {t('facilities.restroom.building2-2')}
+              <br />
+              <span>{t('facilities.restroom.building2-3')}</span>
             </S.Building>
             <S.Floor>{t('facilities.restroom.floor2')}</S.Floor>
           </S.DetailItem>
           <S.DetailItem>
             <S.Number>3</S.Number>
             <S.GrayBar />
-            <S.Building>{t('facilities.restroom.building3')}</S.Building>
+            <S.Building>
+              <span>{t('facilities.restroom.building3-1')}</span>
+              {t('facilities.restroom.building3-2')}
+            </S.Building>
             <S.Floor>{t('facilities.restroom.floor3')}</S.Floor>
           </S.DetailItem>
         </S.RestroomDetail>

@@ -15,6 +15,7 @@ const MedicalSection = () => {
         <S.Description>
           <span>{t('facilities.medical.description1')}</span>
           {t('facilities.medical.description2')}
+          <span>{t('facilities.medical.description2-2')}</span>
           <br />
           {t('facilities.medical.description3')}
         </S.Description>

@@ -17,6 +17,7 @@ export const Toggle = styled.div`
   display: flex;
   padding: 0.8rem 1.5rem;
 `;
+
 const ToggleButton = styled.div`
   width: ${({ width }) => width};
   height: 3.6rem;
@@ -27,7 +28,7 @@ const ToggleButton = styled.div`
   color: ${({ $isActive, theme }) => ($isActive ? theme.colors.hongikBlue : theme.colors.gray60)};
   ${({ $isActive, theme }) => ($isActive ? theme.fontStyles.basic.body1Bold : theme.fontStyles.basic.body1Semi)};
   background: ${({ $isActive }) => ($isActive ? 'rgba(24, 51, 219, 0.05)' : 'transparent')};
-  border-radius: ${({ $isActive }) => ($isActive ? '3rem' : '0')};
+  border-radius: 3rem;
   opacity: ${({ $isActive }) => ($isActive ? '1' : '0.6')};
   cursor: pointer;
 `;
@@ -96,6 +97,11 @@ export const Building = styled.span`
   ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.gray100};
   margin-right: 0.4rem;
+
+  span {
+    ${(props) => props.theme.fontStyles.basic.body1Bold};
+    color: ${(props) => props.theme.colors.hongikBlue};
+  }
 `;
 
 export const Floor = styled.span`
