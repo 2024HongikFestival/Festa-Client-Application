@@ -340,6 +340,17 @@
     "amenities": "편의시설",
     "restroom": "화장실",
     "medicalFacility": "의료 시설",
-    "lostAndFoundCenter": "분실물 센터"
+    "lostAndFoundCenter": "분실물 센터",
+    "toilet": {
+      "title1": "화장실",
+      "title2": "위치",
+      "building1": "M동",
+      "floor1": "1층",
+      "building2": "Z4동",
+      "building2-2": "",
+      "floor2": "1층 (장애인 화장실)",
+      "building3": "Z4동",
+      "floor3": "2층"
+    }
   }
 }

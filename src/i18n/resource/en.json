@@ -340,6 +340,17 @@
     "amenities": "Amenities",
     "restroom": "Restroom",
     "medicalFacility": "Medical Facility",
-    "lostAndFoundCenter": "Lost and found center"
+    "lostAndFoundCenter": "Lost and found center",
+    "toilet": {
+      "title1": "",
+      "title2": "Location of restrooms",
+      "building1": "1st floor of Building M",
+      "floor1": "",
+      "building2": "1st floor of Building Z4",
+      "building2-2": "(a handicapped toilet)",
+      "floor2": "",
+      "building3": "2nd floor of Building Z4",
+      "floor3": ""
+    }
   }
 }
