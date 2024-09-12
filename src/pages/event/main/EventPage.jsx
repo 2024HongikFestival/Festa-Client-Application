@@ -115,7 +115,7 @@ const EventPage = () => {
         </S.DetailSection>
         <S.DetailSection>
           <S.DetailTitle>당첨 발표</S.DetailTitle>
-          <S.DetailDescription>9월 28일 14:00 총학 인스타 스토리</S.DetailDescription>
+          <S.DetailDescription>9월 28일 14:00 대동제 인스타 스토리</S.DetailDescription>
         </S.DetailSection>
       </S.NoticeDetail>
       <S.ShareButton

@@ -7,6 +7,8 @@ const SubmitEvent = () => {
   const location = useLocation();
   const { date } = location.state || {}; // 전달받은 date 값
 
+  const instagramUrl = 'https://www.instagram.com/hiufestival_official/';
+
   // 응모 날짜 조건에 따라 내용 변경 (state에 따라 다른 내용)
   const renderContent = () => {
     if (date === 1 || date === 2) {
@@ -22,20 +24,34 @@ const SubmitEvent = () => {
           <p>축제가 끝났어요</p>
           당첨자는{' '}
           <span>
-            0월 0일
+            9월 28일 오후 2시
             <br />
-            000를 통해 발표
+            스토리에 발표
           </span>
           됩니다
         </ContentBox2>
       );
     } else {
-      // 축제 기간이 아닌 경우 (지금 date === 0) 임의로 1,2일차와 동일하게 설정
+      // 축제 기간이 아닌 경우 (지금 date === 0) 임의로 3일차와 동일하게 설정
       return (
-        <ContentBox1>
-          내일&nbsp;<span>오전 10시</span>에 응모권 1장 받고
-          <br />또 도전해보세요!
-        </ContentBox1>
+        <ContentBox2>
+          <p>축제가 끝났어요</p>
+          당첨자는{' '}
+          <span>
+            9월 28일 오후 2시
+            <br />
+            <span
+              onClick={() => {
+                window.open(instagramUrl);
+              }}
+              style={{ textDecoration: 'underline', textUnderlineOffset: '2px', cursor: 'pointer' }}
+            >
+              @hiufestival_official
+            </span>
+            &nbsp;스토리에 발표
+          </span>
+          됩니다
+        </ContentBox2>
       );
     }
   };
@@ -61,12 +77,12 @@ export default SubmitEvent;
 
 const Wrapper = styled.div`
   display: flex;
-  width: 100%;
   flex-direction: column;
-  justify-content: center;
-  justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
 `;
 
 const BackGroundContainer = styled.div`
@@ -99,13 +115,13 @@ const ContentBox1 = styled.div`
   position: absolute;
   top: 45.4rem;
 
-  ${(props) => props.theme.fontStyles.basic.subHeadMed};
+  ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.white};
 
   text-align: center;
 
   span {
-    ${(props) => props.theme.fontStyles.basic.subHeadMed};
+    ${(props) => props.theme.fontStyles.basic.body1Med};
     color: var(--Schemes-On-Primary, #cdff3f);
   }
 `;

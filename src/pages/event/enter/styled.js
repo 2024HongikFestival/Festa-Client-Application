@@ -3,11 +3,13 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: relative;
   padding-bottom: 8.9rem;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
 `;
 
 export const Image = styled.img`

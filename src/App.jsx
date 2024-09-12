@@ -68,10 +68,10 @@ function App() {
 
             {/* 가영 라우팅 ✨ */}
             <Route path="/event" element={<EventPage />} />
-            {/*<Route element={<EventProtectedRoute />}>
+            {/* <Route element={<EventProtectedRoute />}>
               <Route path="/event/enter" element={<EnterEvent />} />
               <Route path="/event/submit" element={<SubmitEvent />} />
-            </Route>*/}
+            </Route> */}
             <Route path="/event/enter" element={<EnterEvent />} />
             <Route path="/event/submit" element={<SubmitEvent />} />
             <Route path="/oauth/events" element={<RedirectEvents />} />

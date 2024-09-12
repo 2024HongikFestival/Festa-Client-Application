@@ -66,7 +66,7 @@ const EnterEvent = () => {
         {
           name: name,
           phone: phone,
-          prize: 'A',
+          prize: '티빙구독권',
           comment: comment,
         },
         {
