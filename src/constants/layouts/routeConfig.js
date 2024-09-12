@@ -33,6 +33,24 @@ const routeConfig = {
     menuIcon: backBtnBlack,
     showBackButton: true,
   },
+  '/event/:eventId': {
+    logo: hiuLogo,
+    menuIcon: hambergerMenu,
+    xBtn: xBtnBlack,
+    showBackButton: false,
+  },
+  '/event/enter': {
+    logo: hiuLogo,
+    menuIcon: hambergerMenu,
+    xBtn: xBtnBlack,
+    showBackButton: false,
+  },
+  '/event/submit': {
+    logo: hiuLogo,
+    menuIcon: hambergerMenu,
+    xBtn: xBtnBlack,
+    showBackButton: false,
+  },
   default: {
     logo: hiuLogoBlack,
     menuIcon: hambergerMenuBlack,

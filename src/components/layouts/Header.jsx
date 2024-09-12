@@ -5,6 +5,8 @@ import AdminMenuBar from '@/components/layouts/AdminMenuBar';
 import CommonMenuBar from '@/components/layouts/CommonMenuBar';
 import routeConfig from '@/constants/layouts/routeConfig';
 import { useCamera } from '@/components/lost-and-found/AddLostItem/context/AuthProvider';
+import xBtnBlack from '@/assets/svgs/layouts/xBtnBlack.svg';
+import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,6 +43,15 @@ export default function Header() {
     currentRoute = routeConfig['/admin'];
   } else if (routeConfig[location.pathname]) {
     currentRoute = routeConfig[location.pathname];
+  }
+
+  // 대동제 페이지에서 메뉴 오픈 시 header logo, xBtn 검정으로 고정
+  if (isMenuOpen && !isFlamePath && !isAdminPath) {
+    currentRoute = {
+      ...currentRoute,
+      logo: hiuLogoBlack, // 검정 로고
+      xBtn: xBtnBlack, // 검정 xBtn
+    };
   }
 
   // 메뉴바 여닫기
