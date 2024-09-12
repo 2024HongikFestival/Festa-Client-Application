@@ -31,7 +31,8 @@ import henna4 from '@/assets/webps/booth/fleamarket/henna/henna4.webp';
 import henna5 from '@/assets/webps/booth/fleamarket/henna/henna5.webp';
 import henna6 from '@/assets/webps/booth/fleamarket/henna/henna6.webp';
 import henna7 from '@/assets/webps/booth/fleamarket/henna/henna7.webp';
-import hennaOtherImg from '@/assets/webps/booth/fleamarket/henna/hennaOtherImg.webp';
+// 제발 좀 가져오겠니
+import hennaOtherImg from '@/assets/webps/booth/fleamarket/henna/hennaExample.webp';
 
 import modori1 from '@/assets/webps/booth/fleamarket/modori/modori1.webp';
 import modori2 from '@/assets/webps/booth/fleamarket/modori/modori2.webp';
