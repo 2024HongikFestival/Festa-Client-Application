@@ -91,12 +91,12 @@ export default function Footer() {
           <S.FloatingBtn
             $isAtFooter={isAtFooter}
             onClick={() => handleNavigation('/flame')}
-            className="floatingDedongje"
+            className="floatingDaedongje"
           >
             <span>{t('layouts.footer.goFlame')}</span>
           </S.FloatingBtn>
           <S.UpBtn
-            show={showUpBtn}
+            $show={showUpBtn}
             $isAtFooter={isAtFooter}
             onClick={() => handleNavigation('/')}
             className="floatingDaedongje"
@@ -110,7 +110,7 @@ export default function Footer() {
           <S.FloatingBtn $isAtFooter={isAtFooter} onClick={() => handleNavigation('/')}>
             <span>{t('layouts.footer.goDaedongje')}</span>
           </S.FloatingBtn>
-          <S.UpBtn show={showUpBtn} $isAtFooter={isAtFooter} onClick={() => handleNavigation('/flame')}>
+          <S.UpBtn $show={showUpBtn} $isAtFooter={isAtFooter} onClick={() => handleNavigation('/flame')}>
             <img src={up} alt="up"></img>
           </S.UpBtn>
         </>

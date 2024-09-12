@@ -17,7 +17,7 @@ export const UpBtn = styled.div`
   border-radius: 50%;
   background: ${({ className }) =>
     className === 'floatingDaedongje' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
-  backdrop-filter: blur(0.4rem);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,13 +29,14 @@ export const UpBtn = styled.div`
   transition:
     opacity 0.5s ease-in-out,
     bottom 0.3s ease;
-  opacity: ${({ show }) => (show ? '1' : '0')}; /* fadeIn, fadeOut 효과 */
-  pointer-events: ${({ show }) => (show ? 'auto' : 'none')}; /* 버튼이 보이지 않을 때 클릭 방지 */
+  opacity: ${({ $show }) => ($show ? '1' : '0')}; /* fadeIn, fadeOut 효과 */
+  pointer-events: ${({ $show }) => ($show ? 'auto' : 'none')}; /* 버튼이 보이지 않을 때 클릭 방지 */
 
   img {
     width: 1.7rem;
     padding-right: 0.1rem;
   }
+
   /* ::before로 그라데이션 테두리 추가 */
   &::before {
     content: '';
@@ -65,12 +66,11 @@ export const FloatingBtn = styled.div`
   z-index: 100;
   margin: 0 auto;
   cursor: pointer;
-  width: 10.6rem;
   height: 4.3rem;
   border-radius: 50px;
   background: ${({ className }) =>
     className === 'floatingDaedongje' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
-  backdrop-filter: blur(0.4rem);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,6 +83,8 @@ export const FloatingBtn = styled.div`
   transition: bottom 0.3s ease;
 
   span {
+    white-space: nowrap;
+    padding: 0 1.6rem;
     color: ${(props) => props.theme.colors.gray5};
     ${(props) => props.theme.fontStyles.basic.body2Med};
   }
@@ -93,7 +95,7 @@ export const FloatingBtn = styled.div`
     position: absolute;
     top: -0.1rem;
     left: -0.1rem;
-    width: 10.6rem;
+    width: 100%;
     height: 4.3rem;
     border-radius: 50px;
     padding: 0.1rem;
@@ -155,6 +157,7 @@ export const Contributor = styled.div`
       }
     `};
 `;
+
 export const LikelionBtn = styled.div`
   margin-left: 3.2rem;
   display: flex;
