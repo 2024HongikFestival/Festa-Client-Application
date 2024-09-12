@@ -338,10 +338,10 @@
   },
   "facilities": {
     "amenities": "편의시설",
-    "restroom": "화장실",
-    "medicalFacility": "의료 시설",
-    "lostAndFoundCenter": "분실물 센터",
-    "toilet": {
+    "restroomToggle": "화장실",
+    "medicalFacilityToggle": "의료 시설",
+    "lostAndFoundCenterToggle": "분실물 센터",
+    "restroom": {
       "title1": "화장실",
       "title2": "위치",
       "building1": "M동",

@@ -15,7 +15,7 @@ export const ToggleWrapper = styled.div`
 
 export const Toggle = styled.div`
   display: flex;
-  padding: 0.8rem 3.2rem;
+  padding: 0.8rem 1rem;
   gap: 2.4rem;
 `;
 
@@ -58,7 +58,7 @@ export const Map = styled.div`
   border-bottom: 1px solid ${(props) => props.theme.colors.gray30};
 `;
 
-export const ToiletDetail = styled.ul`
+export const RestroomDetail = styled.ul`
   width: 100%;
   padding: 1.8rem 2.4rem 2.4rem 2.4rem;
   display: flex;

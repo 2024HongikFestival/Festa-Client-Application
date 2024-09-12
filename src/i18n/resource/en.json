@@ -338,10 +338,10 @@
   },
   "facilities": {
     "amenities": "Amenities",
-    "restroom": "Restroom",
-    "medicalFacility": "Medical Facility",
-    "lostAndFoundCenter": "Lost and found center",
-    "toilet": {
+    "restroomToggle": "Restroom",
+    "medicalFacilityToggle": "Medical Facility",
+    "lostAndFoundCenterToggle": "Lost and found center",
+    "restroom": {
       "title1": "",
       "title2": "Location of restrooms",
       "building1": "1st floor of Building M",
