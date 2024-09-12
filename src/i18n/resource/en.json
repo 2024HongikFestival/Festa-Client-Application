@@ -351,6 +351,13 @@
       "floor2": "",
       "building3": "2nd floor of Building Z4",
       "floor3": ""
+    },
+    "medical": {
+      "title1": "",
+      "title2": "Location of medical facility",
+      "description1": "",
+      "description2": "You can receive emergency treatment at the Health care Center in front of the stairs of the Information and Communication Center (Building Q).",
+      "description3": ""
     }
   }
 }

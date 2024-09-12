@@ -352,5 +352,12 @@
       "building3": "Z4동",
       "floor3": "2층"
     }
+  },
+  "medical": {
+    "title1": "의료 시설",
+    "title2": "위치",
+    "description1": "정보통신센터(Q동) 계단 앞 건강관리센터",
+    "description2": "에서",
+    "description3": "비상시 응급 치료를 받으실 수 있습니다."
   }
 }
