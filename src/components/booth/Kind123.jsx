@@ -121,7 +121,8 @@ const Wow = styled.img`
 `;
 
 const Box = styled.div`
-  background: linear-gradient(180deg, #d7dcff 0%, #f1f3ff 50.04%, #fbfcff 100.08%);
+  /* background: linear-gradient(180deg, #d7dcff 0%, #f1f3ff 50.04%, #fbfcff 100.08%); */
+  background: linear-gradient(to bottom, #d4edff 0%, #eaf6ff 50%, #fbfcff 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;

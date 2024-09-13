@@ -111,7 +111,7 @@ const InfoText = styled.div`
   display: flex;
   align-items: center;
   ${({ theme }) => theme.fontStyles.basic.body2Med};
-  color: ${({ theme }) => theme.colors.gray50};
+  color: ${({ theme }) => theme.colors.gray40};
 `;
 
 const ErrorIcon = styled.img`

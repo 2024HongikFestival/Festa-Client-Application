@@ -1,9 +1,9 @@
 {
-  "hello": "안녕하세요!",
-  "goodbye": "안녕히 계세요!",
   "main": {
     "sorry": "ㅈㅅ ㅋㅋ"
   },
+  "booth": {},
+
   "layouts": {
     "footer": {
       "prev": "이전 화면으로",
