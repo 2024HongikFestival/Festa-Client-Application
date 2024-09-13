@@ -372,5 +372,15 @@
       "description3": "",
       "goLostAndFoundBtn": "Go to Online Lost and Found center"
     }
+  },
+  "wdfMain": {
+    "wdfName": "WOW DJ FESTIVAL",
+    "wdfDescription1": "It's time to wake up the youth that is fading away under the weight and ",
+    "wdfDescription2": "helplessness of reality and to face the most beautifully shining 'I'.",
+    "wdfDescription3": "We invite you to this unique moment",
+    "wdfDescription4": "where the fireworks of youth flame.",
+    "day1": "9.25 wed.ß",
+    "day2": "9.26 thu.",
+    "day3": "9.25 fri."
   }
 }

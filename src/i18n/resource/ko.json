@@ -372,5 +372,15 @@
       "description3": "분실물 센터가 위치해 있습니다.",
       "goLostAndFoundBtn": "온라인 분실물 센터 바로가기"
     }
+  },
+  "wdfMain": {
+    "wdfName": "와우 디제이 페스티벌",
+    "wdfDescription1": "현실의 무게와 무력감에 깨져가는 청춘을 깨우고",
+    "wdfDescription2": "가장 아름답게 빛나는 '나'를 마주할 시간입니다.",
+    "wdfDescription3": "청춘의 불꽃이 함께하는 그 유일무이한 순간에",
+    "wdfDescription4": "여러분을 초대합니다.",
+    "day1": "9.25 (수)",
+    "day2": "9.26 (목)",
+    "day3": " 9.27 (금)"
   }
 }
