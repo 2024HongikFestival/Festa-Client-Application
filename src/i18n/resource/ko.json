@@ -12,6 +12,18 @@
       "toDaedongjeInsta": "대동제 채널 바로가기"
     }
   },
+  "flame": {
+    "map": {
+      "title": "사이트맵",
+      "booth1": "입장부스",
+      "booth2": "레드불",
+      "booth3": "예거 마이스터",
+      "booth4": "금군양조",
+      "booth5": "스놀",
+      "product1": "프루팁스 상품 제공",
+      "product5": "슈가로로 상품 제공"
+    }
+  },
   "makers": {
     "likelion": {
       "title1": "홍익대학교",

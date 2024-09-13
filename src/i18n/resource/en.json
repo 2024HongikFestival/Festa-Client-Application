@@ -12,6 +12,18 @@
       "toDaedongjeInsta": ""
     }
   },
+  "flame": {
+    "map": {
+      "title": "Site Map",
+      "booth1": "Entrance Booth",
+      "booth2": "Red Bull",
+      "booth3": "Jägermeiſter",
+      "booth4": "GEUMGUN BREWERY",
+      "booth5": "SNoL",
+      "product1": "offering of FRUTIPS products",
+      "product5": "offering of sugarlolo products"
+    }
+  },
   "makers": {
     "likelion": {
       "title1": "",

@@ -15,11 +15,14 @@ import React from 'react';
 import mapImg from '/src/assets/webps/map/sitemap.webp';
 import Lottie from 'react-lottie';
 import arrowAnimation from './siteMap.json';
+import { useTranslation } from 'react-i18next';
 
 import AOS from 'aos';
 import { useEffect } from 'react';
 
 const FlameMapPage = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     AOS.init({});
   }, []);
@@ -31,7 +34,7 @@ const FlameMapPage = () => {
   };
   return (
     <MapWrapper>
-      <MapTitle>사이트맵</MapTitle>
+      <MapTitle>{t('flame.map.title')}</MapTitle>
       <MapBox>
         <MapImgBox src={mapImg} />
         <LottieBox>
@@ -43,11 +46,8 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">A.</p>
             <BoothNameAndIntro>
-              <p className="name">
-                입장부스 <br />
-                (프루틱스)
-              </p>
-              <p className="intro">프루틱스 상품 제공</p>
+              <p className="name">{t('flame.map.booth1')}</p>
+              <p className="intro">{t('flame.map.product1')}</p>
             </BoothNameAndIntro>
           </BoothIntro>
         </BoothOne>
@@ -55,8 +55,8 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">B.</p>
             <BoothNameAndIntro>
-              <p className="name">레드불</p>
-              <p className="intro">슈가로로 상품 제공</p>
+              <p className="name">{t('flame.map.booth2')}</p>
+              <p className="intro">-</p>
             </BoothNameAndIntro>
           </BoothIntro>
         </BoothOne>
@@ -64,8 +64,8 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">C.</p>
             <BoothNameAndIntro>
-              <p className="name">예거 마이스터</p>
-              <p className="intro">슈가로로 상품 제공</p>
+              <p className="name">{t('flame.map.booth3')}</p>
+              <p className="intro">-</p>
             </BoothNameAndIntro>
           </BoothIntro>
         </BoothOne>
@@ -73,8 +73,8 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">D.</p>
             <BoothNameAndIntro>
-              <p className="name">금군양조</p>
-              <p className="intro">슈가로로 상품 제공</p>
+              <p className="name">{t('flame.map.booth4')}</p>
+              <p className="intro">-</p>
             </BoothNameAndIntro>
           </BoothIntro>
         </BoothOne>
@@ -82,8 +82,8 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">E.</p>
             <BoothNameAndIntro>
-              <p className="name">스놀</p>
-              <p className="intro">슈가로로 상품 제공</p>
+              <p className="name">{t('flame.map.booth5')}</p>
+              <p className="intro">{t('flame.map.product5')}</p>
             </BoothNameAndIntro>
           </BoothIntro>
         </BoothOne>
