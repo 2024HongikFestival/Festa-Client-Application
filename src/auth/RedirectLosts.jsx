@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { axiosInstance } from '@/api/axios';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const RedirectLosts = () => {
@@ -22,6 +22,7 @@ const RedirectLosts = () => {
       // 세부 에러 처리 필요 시 추가
       if (error.response.status === 400) {
         console.log('요청 양식 불량 및 차단된 사용자');
+        alert('⚠️ 부적절한 게시판 활용으로 인해 게시판 이용이 제한되었습니다');
       } else if (error.response.status === 401) {
         console.log('일반 사용자 인증 실패');
       } else {
