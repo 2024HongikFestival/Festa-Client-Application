@@ -339,7 +339,7 @@
   "stageInfoPage": {
     "title": "Viewing Information",
     "selectionBar": {
-      "schedule": "Central Stage",
+      "schedule": "Main Stage",
       "location": "Location"
     }
   },
@@ -350,9 +350,9 @@
     "date1": "9.25(Wed)",
     "date2": "9.26(Thu)",
     "date3": "9.27(Fri)",
-    "talentContest": "Talent selection contest",
-    "studentCenterStage": "Student center stage",
-    "celebrityStage": "Invitation stage for celebrities",
+    "talentContest": "Talent Contest",
+    "studentCenterStage": "Student Main Stage",
+    "celebrityStage": "Celebrities",
     "artistName": "Artist name",
     "loading": "Loading...",
     "eventDetails": {
@@ -390,7 +390,7 @@
     }
   },
   "locationInfo": {
-    "mapTitle": "Map around the stage",
+    "mapTitle": "Stage Map",
     "entranceInfo": "Entrance information",
     "hongikZoneInfo": "Only Hongik University students <highlight>who made a reservation</highlight> can enter the Hongik Zone",
     "hongikZoneButton": "Hongik Zone"
