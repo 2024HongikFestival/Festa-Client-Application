@@ -146,7 +146,7 @@ const FlameReservationPage = () => {
         <GrayUnderLine></GrayUnderLine>
         <RVPeriodBox style={{ marginBottom: '3.2rem' }}>
           <GrayPeriodTitle>예매 기간</GrayPeriodTitle>
-          <GrayPeriod>2024.x.xx-2024.x.xx</GrayPeriod>
+          <GrayPeriod>2024.09.19-09.20</GrayPeriod>
         </RVPeriodBox>
         <GrayBox>사전 예매가 마감되었습니다.</GrayBox>
       </PreRvBox>
