@@ -335,5 +335,64 @@
         }
       ]
     }
+  },
+  "stageInfoPage": {
+    "title": "Viewing Information",
+    "selectionBar": {
+      "schedule": "Central Stage",
+      "location": "Location"
+    }
+  },
+  "stageSchedule": {
+    "day1": "DAY 1",
+    "day2": "DAY 2",
+    "day3": "DAY 3",
+    "date1": "9.25(Wed)",
+    "date2": "9.26(Thu)",
+    "date3": "9.27(Fri)",
+    "talentContest": "Talent selection contest",
+    "studentCenterStage": "Student center stage",
+    "celebrityStage": "Invitation stage for celebrities",
+    "artistName": "Artist name",
+    "loading": "Loading...",
+    "eventDetails": {
+      "time1": "17:00 ~ 19:30",
+      "time2": "20:00 ~ 22:00",
+      "talentEvents": {
+        "melodyBand": "<Melody> (Band)",
+        "gr8Dance": "<GR8> (Dance)",
+        "royKimSolo": "<Roy Kim of Business School> (Solo)",
+        "yuZiYeBand": "<Yu Zi Ye Band> (Band)",
+        "backToBackDance": "<Back to Back Homerun> (Dance)",
+        "leeMinGyuSolo": "<Lee Min Gyu> (Solo)",
+        "academicWarningBand": "<academic warning> (Band)",
+        "ryukMarinSolo": "<Ryuk Marin> (Solo)",
+        "cheongRamBand": "<Cheong Ram> (Band)"
+      },
+      "studentCenterEventsDay1": {
+        "hwangInSeongBand": "Hwang In Seong Band",
+        "afterBand": "After",
+        "kaiserBand": "Kaiser’",
+        "imagineBand": "Imagine Band",
+        "brainsWars": "Brain’s wars",
+        "performingArtsMusical": "Performing arts musical",
+        "ohHyeonSongAndTomato": "Oh hyeon song and tomato"
+      },
+      "studentCenterEventsDay2": {
+        "illEquippedWord": "An ill-equipped word",
+        "oneNightTwoDays": "One night two days",
+        "woonerBand": "Wooner Band",
+        "hongGroove": "Hong groove",
+        "performingArtsBand": "A performing arts band",
+        "blackTetra": "Black Tetra",
+        "bitzFlow": "Bitz Flow"
+      }
+    }
+  },
+  "locationInfo": {
+    "mapTitle": "Map around the stage",
+    "entranceInfo": "Entrance information",
+    "hongikZoneInfo": "Only Hongik University students <highlight>who made a reservation</highlight> can enter the Hongik Zone",
+    "hongikZoneButton": "Hongik Zone"
   }
 }

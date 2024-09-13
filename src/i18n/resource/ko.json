@@ -335,5 +335,64 @@
         }
       ]
     }
+  },
+  "stageInfoPage": {
+    "title": "관람 정보",
+    "selectionBar": {
+      "schedule": "중앙 무대 일정",
+      "location": "위치"
+    }
+  },
+  "stageSchedule": {
+    "day1": "DAY 1",
+    "day2": "DAY 2",
+    "day3": "DAY 3",
+    "date1": "9.25(수)",
+    "date2": "9.26(목)",
+    "date3": "9.27(금)",
+    "talentContest": "재주꾼 선발 대회",
+    "studentCenterStage": "학생 중앙 무대",
+    "celebrityStage": "연예인 초청 무대",
+    "artistName": "아티스트 이름",
+    "loading": "Loading...",
+    "eventDetails": {
+      "time1": "17:00 ~ 19:30",
+      "time2": "20:00 ~ 22:00",
+      "talentEvents": {
+        "melodyBand": "<멜로디> (밴드)",
+        "gr8Dance": "<GR8> (댄스)",
+        "royKimSolo": "<경영대 로이킴> (솔로)",
+        "yuZiYeBand": "<유지예 밴드> (밴드)",
+        "backToBackDance": "<백투백홈런> (댄스)",
+        "leeMinGyuSolo": "<이민규> (솔로)",
+        "academicWarningBand": "<학사경고> (밴드)",
+        "ryukMarinSolo": "<육마린> (솔로)",
+        "cheongRamBand": "<청람> (밴드)"
+      },
+      "studentCenterEventsDay1": {
+        "hwangInSeongBand": "황인성 밴드",
+        "afterBand": "나중에",
+        "kaiserBand": "카이저",
+        "imagineBand": "이매진 밴드",
+        "brainsWars": "브레인스워즈",
+        "performingArtsMusical": "공연예술 뮤지컬",
+        "ohHyeonSongAndTomato": "오현성과 토마토"
+      },
+      "studentCenterEventsDay2": {
+        "illEquippedWord": "못갖춘 마디",
+        "oneNightTwoDays": "1박 2일",
+        "woonerBand": "우나밴드",
+        "hongGroove": "홍그루브",
+        "performingArtsBand": "공연예술 밴드",
+        "blackTetra": "블랙테트라",
+        "bitzFlow": "비츠플로우"
+      }
+    }
+  },
+  "locationInfo": {
+    "mapTitle": "무대 주변 지도",
+    "entranceInfo": "출입구 정보",
+    "hongikZoneInfo": "홍익존은 <highlight>사전예매</highlight>하신<br/> 홍익대학교 학생들만 입장 가능해요",
+    "hongikZoneButton": "홍익존"
   }
 }

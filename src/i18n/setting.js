@@ -25,4 +25,7 @@ i18n
     },
   });
 
+// i18n을 전역으로 설정
+window.i18n = i18n;
+
 export default i18n;
