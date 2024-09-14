@@ -29,6 +29,11 @@ const GlobalStyles = createGlobalStyle`
         flex-direction: column;
         justify-content: center; 
     }
+
+    body::-webkit-scrollbar {
+        display: none; /* 웹 브라우저에서 스크롤 바 숨기기 */
+    }
+
     ol, ul{
         list-style: none;
     }

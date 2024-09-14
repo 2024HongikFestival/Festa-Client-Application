@@ -4,6 +4,7 @@ export const Flame = styled.div`
   width: 100%;
   position: relative;
   background-color: transparent;
+  z-index: 0;
 `;
 export const VideoContainer = styled.div`
   position: relative;

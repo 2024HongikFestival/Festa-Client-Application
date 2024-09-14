@@ -63,7 +63,7 @@ function App() {
             <Route path="/fleamarket" element={<Fleamarket />} />
             <Route path="/fleamarket/:marketId" element={<FleamarketDetail />} />
             <Route path="/promotion" element={<PromotionPage />} />
-            <Route path="md" element={<MdPage />} />
+            <Route path="/md" element={<MdPage />} />
 
             {/* 가영 라우팅 ✨ */}
             <Route path="/event/:eventId" element={<EventPage />} />
