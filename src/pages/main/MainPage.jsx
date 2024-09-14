@@ -1,57 +1,124 @@
 import styled from 'styled-components';
-import MoveToWdfBtn from '@/components/main/MoveToWdfBtn';
 import { useTranslation } from 'react-i18next';
+import mainImg from '@/assets/webps/main/mainExample.webp';
+import OperatingHours from '@/components/main/OperatingHours';
+import StageInfoContainer from '@/components/main/StageInfoContainer';
 
 export default function MainPage() {
-  const { t, i18n } = useTranslation();
+  // const { t, i18n } = useTranslation();
 
-  const clickHandler = (lang) => {
-    console.log(`conver to ${lang}`);
-    i18n.changeLanguage(lang);
-  };
   return (
-    <>
-      <p>홍익 대동제 메인 페이지!</p>
-      <div>아이오에오</div>
-      <p>{t('hello')}</p>
-      <p>{t('goodbye')}</p>
-      <p>{t('main.sorry')}</p>
-      <button onClick={() => clickHandler('ko')}>ko</button>
-      <button onClick={() => clickHandler('en')}>en</button>
-      <MoveToWdfBtn />
-      <div>출근하기 싫어요</div>
-      <p>2024 hongik fetival</p>
-      <p>힝구힝구</p>
-      <Text>라인업</Text>
-      <Text2>와디페 타이포 적용 중</Text2>
-      <Text3>히히히히</Text3>
-      <Text4>헤헤ㅔ헤헤</Text4>
-      <Text5>개귀찮다진짜</Text5>
-      <Text6>럭키비키잔앙</Text6>
-    </>
+    <Container>
+      <Wrapper>
+        <Title>
+          2024
+          <br />
+          홍익대동제
+        </Title>
+        <Desc>
+          활짝 피어있는 지금
+          <br />
+          있는 그대로 만개한 청춘인 이 순간을
+          <br />
+          2024 화양연화 ; 만개로 하여금 기록되어
+          <br />
+          오랫동안 기억될 것입니다.
+        </Desc>
+        <Img src={mainImg} alt="main" />
+      </Wrapper>
+      {/* 라인업 정보 컴포넌트 */}
+      <LineupTitleWrapper>
+        <Date>9.25 (수)</Date>
+        <LineupTitle>오늘의 라인업</LineupTitle>
+      </LineupTitleWrapper>
+      {/* 이 부분은 아직 확정나지 않아서 크기만 잡아두었습니다. */}
+      <LineupInfoWrapper></LineupInfoWrapper>
+      <GoLineupPageBtn>전체 라인업 보러가기 {'>'}</GoLineupPageBtn>
+      <Hr />
+      {/* 중앙 무대 일정 컴포넌트 */}
+      <StageInfoContainer />
+      <Hr />
+      {/* 운영 시간 컴포넌트 */}
+      <OperatingHours />
+    </Container>
   );
 }
 
-const Text = styled.p`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+const Title = styled.div`
   ${(props) => props.theme.fontStyles.main.headline1}
+  text-align: center;
+  margin-top: 4.4rem;
 `;
 
-const Text2 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline2}
+const Desc = styled.div`
+  ${(props) => props.theme.fontStyles.basic.body1Med}
+  text-align: center;
 `;
 
-const Text3 = styled.p`
+const Img = styled.img`
+  width: 37.8rem;
+  height: 42.3rem;
+  object-fit: contain;
+`;
+
+const LineupTitleWrapper = styled.div`
+  width: 100%;
+  height: 7.7rem;
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const Date = styled.p`
+  ${(props) => props.theme.fontStyles.basic.subHeadBold}
+  color: ${(props) => props.theme.colors.gray10};
+  text-align: center;
+`;
+
+const LineupTitle = styled.p`
   ${(props) => props.theme.fontStyles.main.headline3}
+  text-align: center;
 `;
 
-const Text4 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline4}
+const LineupInfoWrapper = styled.div`
+  width: 33.5rem;
+  height: 50.9rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 1.2rem;
+  border: 1px solid black;
 `;
 
-const Text5 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline5}
+const GoLineupPageBtn = styled.button`
+  margin-top: 3.2rem;
+  width: 33.5rem;
+  height: 5.4rem;
+  box-shadow: 0px 0px 0.8rem 0 rgba(0, 0, 0, 0.12);
+  ${(props) => props.theme.fontStyles.basic.headline5}
+  margin-bottom: 6.4rem;
 `;
 
-const Text6 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline6}
+const Hr = styled.div`
+  width: 100%;
+  height: 1.2rem;
+  background-color: rgba(160, 227, 255, 0.5);
 `;

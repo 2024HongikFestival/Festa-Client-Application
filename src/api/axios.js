@@ -1,8 +1,29 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // 기본 axios 인스턴스 (baseURL만 설정)
 export const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
+});
+
+// presignedUrl을 받아올 때 사용하는 인스턴스
+export const presigendAxiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json', // Content-Type을 JSON으로 설정
+  },
+});
+
+presigendAxiosInstance.interceptors.request.use((config) => {
+  const lost_access_token = localStorage.getItem('lost_access_token');
+  if (lost_access_token) {
+    config.headers.Authorization = `Bearer ${lost_access_token}`;
+    //console.log(config.headers.Authorization);
+  } else {
+    console.log('토큰 없음');
+  }
+
+  return config;
 });
 
 // 어드민 전용 axios 인스턴스
@@ -36,11 +57,13 @@ adminAxiosInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
+    const navigate = useNavigate();
     // 토큰 리프레시 기능이 없기 때문에 별도에 refresh 로직은 없음
     if (error.response.status === 401) {
       localStorage.removeItem('accessToken');
       alert('인증되지 않은 사용자입니다. 로그인 후 사용가능합니다.');
-      // 어드민 홈으로 이동 (확정 url 나오면 코드 추가 필요)
+      window.location.href = '/admin';
+      navigate(0);
     }
     return Promise.reject(error);
   }
