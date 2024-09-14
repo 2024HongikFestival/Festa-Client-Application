@@ -110,7 +110,7 @@ const Highlight = styled.span`
 const Button = styled.button`
   width: 11.4rem;
   height: 4rem;
-  padding: 0.8rem 2.9rem;
+  padding: 0.8rem;
   border-radius: 10rem;
   background-color: ${(props) => props.theme.colors.hongikBlue};
   color: ${(props) => props.theme.colors.white};

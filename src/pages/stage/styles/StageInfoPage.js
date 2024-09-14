@@ -21,7 +21,7 @@ export const Title = styled.p`
 `;
 
 export const SelectionBar = styled.div`
-  position: relative; /* 슬라이딩 배경이 절대 위치로 작동하기 위한 상대 위치 */
+  position: relative;
   width: 33.5rem;
   height: 5.6rem;
   padding: 0.8rem;
@@ -43,16 +43,18 @@ export const ActiveBackground = styled.div`
   border-radius: 3rem;
   transition: transform 0.25s ease;
 
-  /* 탭에 따라 슬라이딩 배경의 위치를 설정 */
-  transform: ${(props) => (props.activeTab === 'schedule' ? 'translateX(0)' : 'translateX(15.8rem)')};
+  /* Transient Prop으로 탭에 따라 슬라이딩 배경의 위치를 설정 */
+  transform: ${({ $activeTab }) => ($activeTab === 'schedule' ? 'translateX(0)' : 'translateX(15.8rem)')};
 `;
 
 export const SelectionButton = styled.button`
   width: 15.8rem;
   padding: 0.6rem 2rem;
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
-  color: ${(props) => (props.active ? props.theme.colors.hongikBlue : 'rgba(107, 114, 118, 0.6)')};
-  background-color: transparent; /* 버튼 자체는 투명하게 유지 */
+
+  /* 여기서 props를 사용하여 Transient Props로 접근 */
+  color: ${(props) => (props.$active ? props.theme.colors.hongikBlue : 'rgba(107, 114, 118, 0.6)')};
+  background-color: transparent;
   border: none;
   border-radius: 3rem;
   cursor: pointer;
