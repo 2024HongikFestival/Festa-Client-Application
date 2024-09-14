@@ -68,25 +68,25 @@ const djData = {
 };
 const djLogos = {
   day1: [
-    { src: DJ1Logo, width: '11.9rem' },
-    { src: DJ2Logo, width: '11.5rem' },
-    { src: DJ3Logo, width: '11.5rem' },
-    { src: DJ4Logo, width: '14.7rem' },
-    { src: DJ5Logo, width: '14.6rem' },
+    { src: DJ1Logo, width: '11.9rem', height: '4.9rem' },
+    { src: DJ2Logo, width: '11.5rem', height: '5.3rem' },
+    { src: DJ3Logo, width: '11.5rem', height: '9.8rem' },
+    { src: DJ4Logo, width: '14.7rem', height: '3.2rem' },
+    { src: DJ5Logo, width: '14.6rem', height: '5.4rem' },
   ],
   day2: [
-    { src: DJ6Logo, width: '12.5rem' },
-    { src: DJ7Logo, width: '14.4rem' },
-    { src: DJ8Logo, width: '12.3rem' },
-    { src: DJ9Logo, width: '23.9rem' },
-    { src: DJ10Logo, width: '11.5rem' },
+    { src: DJ6Logo, width: '12.5rem', height: '3.5rem' },
+    { src: DJ7Logo, width: '14.4rem', height: '4.7rem' },
+    { src: DJ8Logo, width: '12.3rem', height: '2.3rem' },
+    { src: DJ9Logo, width: '23.9rem', height: '1.9rem' },
+    { src: DJ10Logo, width: '11.5rem', height: '4.1rem' },
   ],
   day3: [
-    { src: DJ11Logo, width: '21.8rem' },
-    { src: DJ12Logo, width: '12.8rem' },
-    { src: DJ13Logo, width: '12.8rem' },
-    { src: DJ14Logo, width: '11.2rem' },
-    { src: DJ15Logo, width: '14.3rem' },
+    { src: DJ11Logo, width: '21.8rem', height: '2rem' },
+    { src: DJ12Logo, width: '12.8rem', height: '2.5rem' },
+    { src: DJ13Logo, width: '12.8rem', height: '3.7rem' },
+    { src: DJ14Logo, width: '11.2rem', height: '5.3rem' },
+    { src: DJ15Logo, width: '14.3rem', height: '3.6rem' },
   ],
 };
 

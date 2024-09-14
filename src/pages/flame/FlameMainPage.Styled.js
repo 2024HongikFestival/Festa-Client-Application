@@ -302,6 +302,5 @@ export const LogoImage = styled.img`
   bottom: 8.7rem;
   left: 1.6rem;
   z-index: 4;
-  height: auto; /* 자동으로 높이 조정 */
   object-fit: contain;
 `;
