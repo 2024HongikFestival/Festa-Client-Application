@@ -5,335 +5,38 @@
     "sorry": "Sorry, this page is under construction."
   },
   "layouts": {
+    "header": {
+      "toRoadmap": "ROAD MAP",
+      "toStage": "PERFORMANCE",
+      "toLineUp": "LINE UP",
+      "toStageInfo": "VIEWING INFORMATION",
+      "toHongikZone": "HONGIK ZONE",
+      "toBooth": "BOOTH",
+      "toDrink": "PUB",
+      "toFleaMarket": "FLEA MARKET",
+      "toPromotion": "PROMOTION BOOTH",
+      "toMd": "MD PRODUCT",
+      "toFacilityInfo": "CONVENIENCE",
+      "toFacilities": "AMENITIES",
+      "toLostAndFound": "LOST AND FOUND",
+      "toEvent": "EVENTS",
+      "toFlameSitemap": "SITE MAP",
+      "toFlameTimeTable": "TIME TABLE",
+      "toFlameReservation": "RESERVATION",
+      "toFlameLineUp": "LINE UP",
+      "toFlameMd": "MD PRODUCT",
+      "toFlamePromotion": "PROMOTION"
+    },
     "footer": {
-      "prev": "",
-      "toLikelion": "",
-      "toGaehwa": "",
-      "toDaedongjeInsta": ""
-    }
-  },
-  "makers": {
-    "likelion": {
-      "title1": "",
-      "title2": "",
-      "whoWeAre1": "",
-      "whoWeAre2": "",
-      "whoWeAre3": "",
-      "whoWeAre4": "",
-      "whoWeAre5": "",
-      "whoWeAre6": "",
-      "whoWeAre7": "",
-      "whoWeAre8": "",
-      "whoWeAre9": "",
-      "slogan": "",
-      "pm": "",
-      "pmDescription1": "",
-      "pmDescription2": "",
-      "plan": "",
-      "planDescription1": "",
-      "planDescription2": "",
-      "design": "",
-      "designDescription1": "",
-      "designDescription2": "",
-      "fe": "",
-      "feDescription1": "",
-      "feDescription2": "",
-      "feDescription3": "",
-      "be": "",
-      "beDescription1": "",
-      "beDescription2": ""
-    },
-    "likelionContributors": {
-      "pm": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ],
-      "plan": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ],
-      "design": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ],
-      "frontend": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": "👩🏻"
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ],
-      "backend": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ]
-    },
-    "gaehwa": {
-      "title1": "",
-      "title2": "",
-      "whoWeAre1": "",
-      "whoWeAre2": "",
-      "whoWeAre3": "",
-      "whoWeAre4": "",
-      "whoWeAre5": "",
-      "whoWeAre6": "",
-      "presidency": "",
-      "executive": "",
-      "executiveDescription1": "",
-      "executiveDescription2": "",
-      "executiveDescription3": "",
-      "strategicPolicy": "",
-      "strategicPolicyDescription1": "",
-      "strategicPolicyDescription2": "",
-      "strategicPolicyDescription3": "",
-      "strategicPolicyDescription4": "",
-      "culturalPlanning": "",
-      "culturalPlanningDescription1": "",
-      "culturalPlanningDescription2": "",
-      "culturalPlanningDescription3": "",
-      "culturalPlanningDescription4": "",
-      "mediaRelations": "",
-      "mediaRelationsDescription1": "",
-      "mediaRelationsDescription2": "",
-      "mediaRelationsDescription3": "",
-      "mediaRelationsDescription4": "",
-      "finance": "",
-      "financeDescription1": "",
-      "financeDescription2": "",
-      "financeDescription3": "",
-      "rightsSolidarity": "",
-      "rightsSolidarityDescription1": "",
-      "rightsSolidarityDescription2": "",
-      "rightsSolidarityDescription3": "",
-      "rightsSolidarityDescription4": "",
-      "rightsSolidarityDescription5": "",
-      "studentWelfare": "",
-      "studentWelfareDescription1": "",
-      "studentWelfareDescription2": "",
-      "studentWelfareDescription3": "",
-      "studentWelfareDescription4": "",
-      "graduationPreparation": "",
-      "graduationPreparationDescription1": "",
-      "graduationPreparationDescription2": "",
-      "graduationPreparationDescription3": "",
-      "graduationPreparationDescription4": ""
-    },
-    "gaehwaContributors": {
-      "presidency": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "executive": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "strategicPolicy": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "culturalPlanning": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "mediaRelations": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "finance": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "rightsSolidarity": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "studentWelfare": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "graduationPreparation": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ]
+      "contributors": "Contributors Page",
+      "likelion": "Made by",
+      "toLikelion": "Likelion Hongik Univ.",
+      "gaehwa": "Council",
+      "toGaehwa": "GaeHwa",
+      "instagram": "Instagram",
+      "goFlame": "GO WOW DJ FESTIVAL >>",
+      "goDaedongje": "GO MAIN FESTIVAL >>",
+      "prev": "<< GO BACK"
     }
   },
   "stageInfoPage": {
@@ -458,5 +161,69 @@
     "day1": "9.25 (WED)",
     "day2": "9.26 (THU)",
     "day3": "9.25 (FRI)"
-  }
+  },
+  "flamePromotionPage": {
+    "title": "PROMOTION",
+    "products": {
+      "jaegermeister": "Jägermeiſter",
+      "intake": "INTAKE",
+      "goldbrewery": "GEUMGUN BREWERY",
+      "frutips": "FRUTIPS"
+    }
+  },
+  "Amenities": {
+    "Amenities": "Amenities",
+    "RestRoom": "Rest room",
+    "MedicalFacility": "Medical facility",
+    "LostAndFoundCenter": "Lost and found center",
+    "LocationOfLostAndFoundCenter": "Location of Lost and Found Center",
+    "LostAndFoundCenterLocationDescription": "The Lost and Found Center is located in the center of the playground podium.",
+    "ClickToAccessOnlineLostAndFoundCenter": "Click to access online Lost and Found center"
+  },
+
+  "LostAndFound": {
+    "KakaoBtnText": "Auth in 3 sec and report",
+    "LostAndFound": "LostAndFound",
+    "buttonDetailText": "Please keep expensive item <1>at the <2>Lost and Found Center</2></1> ",
+    "ReportLostItems": "Report lost items ✋🏻",
+    "FindLostItem": "Find lost item🧸"
+  },
+  "DropDown": {
+    "AllTime": "All Period",
+    "Day1": "Sep 25",
+    "Day2": "Sep 26",
+    "Day3": "Sep 27"
+  },
+  "LocationModal": {
+    "location1": "Lost And Found Center",
+    "location2": "",
+    "content": "The Lost and Found Center is located <2></2>in <1>the center of the playground podium.</1>"
+  },
+  "LostModal": {
+    "found": "Found ",
+    "stored": "Stored "
+  },
+  "FooterModal": {
+    "DidYouFindAnyLostItems": "Did you find any lost items?",
+    "SomeoneAnxiouslyLookingForIt": "Someone at the festival is anxiously looking for it! Please report the lost items with a warm heart before they leave university.😍",
+    "UserAuthenticationRequired": "To prevent indiscriminate use of the board, user authentication is required, and all data will be securely deleted after the festival period."
+  },
+  "AddLostAndFound": {
+    "TakeAPictureOfLostItem": "Please take a picture so that you can see the characteristics of the lost item and the surrounding place well!",
+    "LostAndFoundReport": "Lost and found report",
+    "KeepAtRiskItemsAtCenter": "Please keep items that are at risk of theft  <2>at the <3>lost and found center.</3></2>",
+    "DoNotWriteIfDifficultToMove1": "* If you can't move to the center, ",
+    "DoNotWriteIfDifficultToMove2": "Do not write.",
+    "FindingLostAndFound": "Finding the Lost and Found",
+    "FoundLocation": "Where did you find it? (15 char)",
+    "FoundPlaceHolder": "ex. in front of the student center",
+    "StoredLocation": "Where did you keep it? (15 char)",
+    "StoredPlaceHolder": "ex. As it was found / next to the booth",
+    "KeepValuablesAtCenter": "Keep important item in the lost and found center",
+    "OptionalExplanation1": "Write your explanation ! ",
+    "OptionalExplanation2": "(optional)",
+    "PlaceholderText": "ex. This is Jack's ID Card / Mac-pro was found in Building T! The cover is labeled 'Jun'.",
+    "Complete": "Complete"
+  },
+  "Close": "Close"
 }
