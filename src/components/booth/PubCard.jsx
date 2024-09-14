@@ -3,10 +3,14 @@ import styled, { css } from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import PubCarousel from '@/components/booth/PubCarousel';
 
+import { useTranslation } from 'react-i18next';
+
 export default function PubCard() {
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [selectedSubMenu, setSelectedSubMenu] = useState(null);
   const [showSubMenu, setShowSubMenu] = useState(false);
+
+  const { t, i18n } = useTranslation();
 
   const handleMenuClick = (item) => {
     setSelectedMenu(item);
@@ -27,10 +31,10 @@ export default function PubCard() {
   return (
     <ContentContainer>
       <PubCardContainer>
-        <Title>단과대학별 주점</Title>
+        <Title>{t('booth.pub.specific')}</Title>
         <MenuContainer>
           <MenuWrapper index={'1'}>
-            {['자율전공', '경영 / 경제', '미대', '건축도시'].map((item) => (
+            {['자율전공', '경영/경제', '미대', '건축도시'].map((item) => (
               <MenuItem key={item} onClick={() => handleMenuClick(item)} selected={selectedMenu === item}>
                 {item}
               </MenuItem>

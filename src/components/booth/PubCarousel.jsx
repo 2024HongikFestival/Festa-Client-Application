@@ -7,8 +7,11 @@ import arrowKeyLeft from '@/assets/webps/booth/icon/arrowKeyLeft.webp';
 import arrowKeyRight from '@/assets/webps/booth/icon/arrowKeyRight.webp';
 import CarouselItem from '@/components/booth/CarouselItem';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 export default function PubCarousel() {
+  const { t, i18n } = useTranslation();
+
   const CustomArrow = ({ className, onClick, direction }) => {
     return (
       <ArrowContainer className={className} onClick={onClick} direction={direction}>

@@ -1,3 +1,4 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import error from '@/assets/webps/booth/icon/error.webp';
 import ContentContainer from '@/components/common/ContentContainer';
@@ -11,26 +12,34 @@ import PropTypes from 'prop-types';
 import Kind122 from '@/components/booth/Kind122';
 import Kind111 from '@/components/booth/Kind111';
 import Kind113 from '@/components/booth/Kind113';
+import { useTranslation } from 'react-i18next';
 
 Ranking.propTypes = {
   kind: PropTypes.string.isRequired,
 };
 
 export default function Ranking({ kind }) {
+  const { t, i18n } = useTranslation();
   return (
     <ContentContainer>
       <RankingContainer>
         <InfoText>
-          <Span>실시간 </Span>
-          인기 주점
+          <Span>{t('booth.ranking.title1')}</Span>
+          {t('booth.ranking.title2')}
         </InfoText>
         <GuideWrapper>
           <IconWrapper>
             <Icon src={error} alt="error" />
           </IconWrapper>
           <Caption>
-            랭킹은 5분 단위로 업데이트되며, <br />
-            매일 오전 5시에 리셋됩니다
+            {t('booth.ranking.info')
+              .split('\n')
+              .map((line, idx) => (
+                <React.Fragment key={idx}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
           </Caption>
         </GuideWrapper>
         {/* 주점별 랭킹 순위 부분 */}
@@ -76,8 +85,8 @@ const IconWrapper = styled.div`
 `;
 
 const Icon = styled.img`
-  width: 1.28rem;
-  height: 1.28rem;
+  width: 1.536rem;
+  height: 1.536rem;
 `;
 
 const GuideWrapper = styled.div`
@@ -87,6 +96,6 @@ const GuideWrapper = styled.div`
 
 const Caption = styled.div`
   ${(props) => props.theme.fontStyles.basic.captionMed};
-  color: ${(props) => props.theme.colors.gray30};
+  color: ${(props) => props.theme.colors.gray40};
   text-align: center;
 `;

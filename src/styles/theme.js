@@ -85,6 +85,14 @@ const theme = {
       line-height: 1.65rem;
       letter-spacing: -0.011rem;
     `,
+      roboto: `
+      font-family: 'Roboto', sans-serif;;
+      font-size: 1.4rem;
+      font-weight: 500;
+      font-style: normal;
+      line-height: 160%;
+      letter-spacing: -0.014rem;
+  `,
     },
     flame: {
       headline1: `

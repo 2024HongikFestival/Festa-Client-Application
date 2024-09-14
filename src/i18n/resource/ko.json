@@ -2,7 +2,24 @@
   "main": {
     "sorry": "ㅈㅅ ㅋㅋ"
   },
-  "booth": {},
+  "booth": {
+    "pub": {
+      "pageTitle": "주점",
+      "mapTitle": "주점 위치",
+      "pub": "실시간 주점",
+      "location": "위치",
+      "specific": "단과대학별 주점",
+      "operating": "주점 운영 시간",
+      "day": "낮",
+      "night": "밤",
+      "operatingInfo": "부스마다 운영 시간이 다를 수 있습니다"
+    },
+    "ranking": {
+      "title1": "실시간 ",
+      "title2": "인기 주점",
+      "info": "랭킹은 1시간 단위로 정각 업데이트되며,\n매일 오전 5시에 리셋됩니다"
+    }
+  },
 
   "layouts": {
     "footer": {

@@ -1,22 +1,24 @@
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/icon/error.webp';
+import { useTranslation } from 'react-i18next';
 
 export default function PubOperatingHour() {
+  const { t, i18n } = useTranslation();
   return (
     <ContentContainer>
       <TextWrapper>
-        <Title>주점 운영 시간</Title>
+        <Title>{t('booth.pub.operating')}</Title>
         <DetailTime>
           <DayNight>
-            <Span>낮 ☀️ 12:00 - 16:00</Span>
-            <Span>밤 🌛 16:00 - 23:00</Span>
+            <Span>{t('booth.pub.day')} ☀️ 12:00 - 16:00</Span>
+            <Span>{t('booth.pub.night')} 🌛 16:00 - 23:00</Span>
           </DayNight>
           <GuideWrapper>
             <IconWrapper>
               <Icon src={error} alt="error" />
             </IconWrapper>
-            <Caption>부스마다 운영 시간이 다를 수 있습니다</Caption>
+            <Caption>{t('booth.pub.operatingInfo')}</Caption>
           </GuideWrapper>
         </DetailTime>
       </TextWrapper>
@@ -42,7 +44,7 @@ const Title = styled.div`
 `;
 
 const DetailTime = styled.div`
-  width: 20.036rem;
+  /* width: 20.036rem; */
   height: 7.2rem;
   display: flex;
   flex-direction: column;
@@ -91,6 +93,6 @@ const DayNight = styled.div`
 const Span = styled.div`
   width: 14.9rem;
   height: 2rem;
-  ${(props) => props.theme.fontStyles.basic.captionMed};
   text-align: center;
+  ${({ theme }) => theme.fontStyles.main.roboto};
 `;

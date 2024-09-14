@@ -34,57 +34,57 @@ export default function BoothPage() {
     }
   };
 
-  useEffect(() => {
-    const eventSource = new EventSource(sseUrl);
-    eventSource.onopen = function () {
-      // 연결 됐을 때
-      console.log('SSE open success!');
-    };
-    eventSource.onerror = function (error) {
-      // 에러 났을 때
-      console.log('SSE error!');
-      console.log(error);
-      eventSource.close();
-    };
-    eventSource.onmessage = function (event) {
-      // 메세지 받았을 때
+  // useEffect(() => {
+  //   const eventSource = new EventSource(sseUrl);
+  //   eventSource.onopen = function () {
+  //     // 연결 됐을 때
+  //     console.log('SSE open success!');
+  //   };
+  //   eventSource.onerror = function (error) {
+  //     // 에러 났을 때
+  //     console.log('SSE error!');
+  //     console.log(error);
+  //     eventSource.close();
+  //   };
+  //   eventSource.onmessage = function (event) {
+  //     // 메세지 받았을 때
 
-      console.log('SSE get message:', event.data);
-      const data = JSON.parse(event.data);
-      setComputerLikes(data[0].totalLike);
-      setBuisinessLikes(data[1].totalLike);
-      setMathLikes(data[2].totalLike);
-      setElectronicLikes(data[3].totalLike);
-      setIndustrialLikes(data[4].totalLike);
-      console.log(data);
-      console.log('Event received at:', new Date().toISOString());
-      // const newLikes = JSON.parse(event.data);
-      // setLikes((prevLikes) => [...prevLikes, newLikes]);
-    };
-    return () => {
-      eventSource.close();
-    };
-  }, []);
+  //     console.log('SSE get message:', event.data);
+  //     const data = JSON.parse(event.data);
+  //     setComputerLikes(data[0].totalLike);
+  //     setBuisinessLikes(data[1].totalLike);
+  //     setMathLikes(data[2].totalLike);
+  //     setElectronicLikes(data[3].totalLike);
+  //     setIndustrialLikes(data[4].totalLike);
+  //     console.log(data);
+  //     console.log('Event received at:', new Date().toISOString());
+  //     // const newLikes = JSON.parse(event.data);
+  //     // setLikes((prevLikes) => [...prevLikes, newLikes]);
+  //   };
+  //   return () => {
+  //     eventSource.close();
+  //   };
+  // }, []);
 
   const [selectedTab, setSelectedTab] = useState('pub');
   return (
     <Container>
-      <PageTitle title={'주점'}>주점</PageTitle>
+      <PageTitle title={t('booth.pub.pageTitle')}></PageTitle>
       <ForGapWrapper>
         {/* 메뉴탭 컴포넌트 */}
         <SelectionBar>
           <ActiveBackground $activeTab={selectedTab} /> {/* 슬라이딩 배경 */}
           <SelectionButton onClick={() => setSelectedTab('pub')} $isActive={selectedTab === 'pub'}>
-            주점 정보
+            {t('booth.pub.pub')}
           </SelectionButton>
           <SelectionButton onClick={() => setSelectedTab('map')} $isActive={selectedTab === 'map'}>
-            위치
+            {t('booth.pub.location')}
           </SelectionButton>
         </SelectionBar>
         {/* 주점 지도 컴포넌트 */}
         {selectedTab === 'map' && (
           <ContentContainer>
-            <MapTitle>주점 위치</MapTitle>
+            <MapTitle>{t('booth.pub.mapTitle')}</MapTitle>
             <MapImage src="src/assets/webps/booth/mapExample.webp" />
           </ContentContainer>
         )}
