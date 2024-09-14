@@ -1,6 +1,7 @@
 //vite-plugin-svgr 설치 후, vite.config.js에 적절한 설정을 해준 후 아래와 같이 사용.
 import error_kakao from '@/assets/svgs/lost/error_kakao.svg?react';
-import kakaoAuth from '@/assets/webps/lost/kakaoAuth.webp';
+import KakaoLogo from '@/assets/svgs/lost/KakaoLogo.svg?react';
+import kakaoBackGround from '@/assets/webps/lost/kakaoBackGround.webp';
 import styled, { keyframes } from 'styled-components';
 
 const slideUp = keyframes`
@@ -120,15 +121,39 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const KakaoButton = styled.button`
-  background-image: url(${kakaoAuth});
+  display: flex;
+  align-items: center;
+
+  background-image: url(${kakaoBackGround});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  //background: #FADB34;
+
+  color: ${({ theme }) => theme.colors.gray100};
+  ${({ theme }) => theme.fontStyles.basic.body1Bold};
 
   width: 32.6rem;
   height: 5.9rem;
   flex-shrink: 0;
   border-radius: 10px;
+`;
+
+export const KakaoLogoIcon = styled(KakaoLogo)`
+  width: 2.7rem;
+  height: 2.8rem;
+  flex-shrink: 0;
+
+  margin-left: 2.8rem;
+  margin-right: 1.8rem;
+`;
+
+export const KakaoBtnText = styled.span`
+  width: 20rem;
+  height: 2.4rem;
+
+  color: ${({ theme }) => theme.colors.gray100};
+  ${({ theme }) => theme.fontStyles.basic.body1Bold};
 `;
 
 export const ButtonFooterTextBox = styled.div`

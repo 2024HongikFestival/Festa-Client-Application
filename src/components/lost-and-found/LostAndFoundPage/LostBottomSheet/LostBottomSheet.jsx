@@ -53,7 +53,10 @@ const LostBottomSheet = ({ isOpen, setIsOpen }) => {
               <S.ContentNoticeText>{t('FooterModal.SomeoneAnxiouslyLookingForIt')}</S.ContentNoticeText>
             </S.ContentNoticeLayout>
             <S.ButtonWrapper>
-              <S.KakaoButton onClick={handleKakaoAuth} />
+              <S.KakaoButton onClick={handleKakaoAuth}>
+                <S.KakaoLogoIcon />
+                <S.KakaoBtnText>{t('LostAndFound.KakaoBtnText')}</S.KakaoBtnText>
+              </S.KakaoButton>
               <S.ButtonFooterTextBox>
                 <S.ErrorIcon />
                 <S.ErrorText>{t('FooterModal.UserAuthenticationRequired')}</S.ErrorText>

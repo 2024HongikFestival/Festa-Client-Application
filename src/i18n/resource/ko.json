@@ -336,6 +336,7 @@
       ]
     }
   },
+
   "Amenities": {
     "Amenities": "편의시설",
     "RestRoom": "화장실",
@@ -347,13 +348,17 @@
   },
 
   "LostAndFound": {
+    "KakaoBtnText": "3초 인증하고 제보하기",
     "LostAndFound": "분실물",
     "buttonDetailText": "전자기기, 카드, 지갑 등은 제보 후<1><2>분실물 센터</2>에 보관</1> 해 주세요.",
     "ReportLostItems": "분실물 찾아주기 ✋🏻",
     "FindLostItem": "분실물 찾아가기🧸"
   },
   "DropDown": {
-    "AllTime": "전체 기간"
+    "AllTime": "전체 기간",
+    "Day1": "9월 25일",
+    "Day2": "9월 26일",
+    "Day3": "9월 27일"
   },
   "LocationModal": {
     "location1": "분실물 센터",

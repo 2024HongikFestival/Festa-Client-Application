@@ -8,9 +8,9 @@ const DropDown = ({ setSelectedDay }) => {
 
   const dates = [
     { label: t('DropDown.AllTime'), value: '' }, //초기값
-    { label: '9월 25일', value: '2024-09-25' },
-    { label: '9월 26일', value: '2024-09-26' },
-    { label: '9월 27일', value: '2024-09-27' },
+    { label: t('DropDown.Day1'), value: '2024-09-25' },
+    { label: t('DropDown.Day2'), value: '2024-09-26' },
+    { label: t('DropDown.Day3'), value: '2024-09-27' },
     //만약 날짜 추가된다면 위의 형식대로 추가하면 됨
   ];
 
