@@ -18,7 +18,7 @@ export default function BoothPage() {
   const [industrialLikes, setIndustrialLikes] = useState(0);
   const [mathLikes, setMathLikes] = useState(0);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const sseUrl = import.meta.env.VITE_SSE_URL;
 

@@ -60,6 +60,8 @@ import hypeBoy3 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy3.webp';
 import hypeBoy4 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy4.webp';
 import hypeBoy5 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy5.webp';
 
+import { useTranslation } from 'react-i18next';
+
 export const fleamarketDetailList = {
   ccJuice: {
     name: '씨씨주스',

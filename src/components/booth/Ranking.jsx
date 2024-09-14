@@ -19,7 +19,7 @@ Ranking.propTypes = {
 };
 
 export default function Ranking({ kind }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <ContentContainer>
       <RankingContainer>

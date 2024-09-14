@@ -8,9 +8,61 @@ import arrowKeyRight from '@/assets/webps/booth/icon/arrowKeyRight.webp';
 import CarouselItem from '@/components/booth/CarouselItem';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { PubList } from '@/constants/booth/pubList';
+import { useState, useEffect, useRef } from 'react';
 
-export default function PubCarousel() {
-  const { t, i18n } = useTranslation();
+PubCarousel.propTypes = {
+  menu: PropTypes.string,
+};
+
+export default function PubCarousel({ menu }) {
+  const { t } = useTranslation();
+  const pubList = PubList(t);
+  const [currentCategory, setCurrentCategory] = useState('1');
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    const newCategory = setCategoryFunc(menu);
+    setCurrentCategory(newCategory);
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(0);
+    }
+  }, [menu]);
+
+  const setCategoryFunc = (menu) => {
+    switch (menu) {
+      case t('booth.pub.menu.1'):
+        return '1';
+      case t('booth.pub.menu.2'):
+        return '2';
+      case t('booth.pub.menu.3'):
+        return '3';
+      case t('booth.pub.menu.4'):
+        return '4';
+      case t('booth.pub.menu.5'):
+        return '5';
+      case t('booth.pub.menu.6'):
+        return '6';
+      case t('booth.pub.menu.7'):
+        return '7';
+      case t('booth.pub.menu.8'):
+        return '8';
+      case t('booth.pub.menu.9'):
+        return '9';
+      case t('booth.pub.menu.10'):
+        return '9';
+      case t('booth.pub.menu.11'):
+        return '10';
+      case t('booth.pub.menu.12'):
+        return '11';
+      case t('booth.pub.menu.13'):
+        return '12';
+      case t('booth.pub.menu.14'):
+        return '13';
+      default:
+        return '1';
+    }
+  };
 
   const CustomArrow = ({ className, onClick, direction }) => {
     return (
@@ -41,10 +93,10 @@ export default function PubCarousel() {
   return (
     <CarouselWrapper>
       <CarouselContainer>
-        <StyledSlider {...settings}>
-          <CarouselItem>안녕하세용</CarouselItem>
-          <CarouselItem>하이하이 ㅋㅋ</CarouselItem>
-          <CarouselItem>닌텐도 재밋당</CarouselItem>
+        <StyledSlider ref={sliderRef} {...settings}>
+          {pubList[currentCategory].map((item, index) => (
+            <CarouselItem key={index} content={item} />
+          ))}
         </StyledSlider>
       </CarouselContainer>
     </CarouselWrapper>
@@ -52,14 +104,14 @@ export default function PubCarousel() {
 }
 
 const CarouselWrapper = styled.div`
-  width: 24.5rem; // 22.1rem + (1.2rem * 2) for arrows
+  width: 24.5rem;
   position: relative;
   margin: 0 auto;
 `;
 
 const CarouselContainer = styled.div`
   width: 22.1rem;
-  height: 40.7rem; // 38.1rem (card) + 1.8rem (gap) + 0.8rem (dots)
+  height: 40.7rem;
   margin: 0 auto;
   position: relative;
 `;
@@ -69,7 +121,7 @@ const StyledSlider = styled(Slider)`
   border-radius: 1.2rem;
   .slick-list,
   .slick-track {
-    height: 38.1rem; // Explicitly set to card height
+    height: 38.1rem;
   }
 
   .slick-slide > div {
@@ -79,7 +131,6 @@ const StyledSlider = styled(Slider)`
   .slick-slide {
     border: solid 0.1rem ${({ theme }) => theme.colors.gray20};
     border-radius: 1.2rem !important;
-    /* box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.12) !important; */
     background-color: white !important;
   }
 
@@ -94,7 +145,7 @@ const StyledSlider = styled(Slider)`
   .slick-dots li {
     width: 0.8rem;
     height: 0.8rem;
-    margin: 0 0.4rem; // 양쪽으로 0.4rem씩 주어 버튼 간 간격을 0.8rem로 만듦
+    margin: 0 0.4rem;
     padding: 0;
   }
 
@@ -121,14 +172,6 @@ const StyledSlider = styled(Slider)`
   .slick-dots li.slick-active button:before {
     background-color: ${({ theme }) => theme.colors.hongikBlue};
   }
-`;
-
-const Card = styled.div`
-  width: 22.1rem;
-  height: 38.1rem;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
 `;
 
 const ArrowContainer = styled.div`

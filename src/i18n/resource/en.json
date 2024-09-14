@@ -8,13 +8,29 @@
     "pub": {
       "pageTitle": "Pub",
       "mapTitle": "Pub location",
-      "pub": "Pub",
+      "pub": "Pub info",
       "location": "location",
       "specific": "A college-specific pub",
       "operating": "The opening hours of a pub",
       "day": "Day",
       "night": "Night",
-      "operatingInfo": "Operating hours may vary from booth to booth"
+      "operatingInfo": "Operating hours may vary from booth to booth",
+      "menu": {
+        "1": "Free major",
+        "2": "Business/Economic",
+        "3": "Art",
+        "4": "Architecture/Urban Affairs",
+        "5": "Education",
+        "6": "Liberal Arts",
+        "7": "Engineering",
+        "8": "Convergence",
+        "9": "Club Association",
+        "10": "Scholarship",
+        "11": "Sports",
+        "12": "Performance",
+        "13": "Exhibition/Leisure",
+        "14": "Society/Union"
+      }
     },
     "ranking": {
       "title1": "A popular real-time ",

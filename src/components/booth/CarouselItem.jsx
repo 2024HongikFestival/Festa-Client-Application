@@ -7,8 +7,18 @@ import day2Night from '@/assets/webps/booth/icon/day2Night.webp';
 import favorite from '@/assets/webps/booth/icon/favorite.webp';
 import before from '@/assets/webps/booth/icon/before.webp';
 import after from '@/assets/webps/booth/icon/after.webp';
+import PropTypes from 'prop-types';
 
-export default function CarouselItem() {
+CarouselItem.propTypes = {
+  content: PropTypes.shape({
+    department: PropTypes.string,
+    intro: PropTypes.string,
+    food: PropTypes.string,
+    event: PropTypes.string,
+  }),
+};
+
+export default function CarouselItem({ content }) {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeClick = () => {
@@ -19,18 +29,20 @@ export default function CarouselItem() {
   return (
     <Container>
       <Icon src={day2Night} kind={'day2Night'} />
-      <Department>컴퓨터공학과</Department>
-      <Intro>주점임요주점</Intro>
+      <Department>{content.department}</Department>
+      <Intro>{content.intro}</Intro>
       <Wow src={wow} alt="wow" />
       <PubInfoContainer>
         <TextWrapper kind="food">
           <Title>Food</Title>
-          <Text>어쩌고 저쩌고</Text>
+          <Text>{content.food}</Text>
         </TextWrapper>
-        <TextWrapper kind="event">
-          <Title>Event</Title>
-          <Text>어쩌고 저쩌고</Text>
-        </TextWrapper>
+        {content.event && (
+          <TextWrapper kind="event">
+            <Title>Event</Title>
+            <Text>{content.event}</Text>
+          </TextWrapper>
+        )}
       </PubInfoContainer>
       <BtnContainer>
         <Confetti src={isLiked ? after : before} alt="confetti" isAnimating={isLiked} />
@@ -77,7 +89,7 @@ const Wow = styled.img`
 `;
 
 const PubInfoContainer = styled.div`
-  width: 15.6rem;
+  /* width: 15.6rem; */
   height: 4rem;
   display: flex;
   flex-direction: column;
@@ -87,7 +99,7 @@ const PubInfoContainer = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  width: 15.6rem;
+  /* width: 15.6rem; */
   height: 2rem;
   display: flex;
   gap: ${({ kind }) => (kind === 'food' ? '1.2rem' : '0.7rem')};
