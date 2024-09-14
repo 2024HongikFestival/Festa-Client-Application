@@ -1,13 +1,15 @@
 import ContentContainer from '@/components/common/ContentContainer';
 import PageTitle from '@/components/common/PageTitle';
 import { useState } from 'react';
-import * as S from './styles';
-import ToiletSection from './ToiletSection';
-import MedicalSection from './MedicalSection';
-import LostAndFoundSection from './LostAndFoundSection';
+import * as S from '@/pages/facilities/styles';
+import RestroomSection from '@/pages/facilities/RestroomSection';
+import MedicalSection from '@/pages/facilities/MedicalSection';
+import LostAndFoundSection from '@/pages/facilities/LostAndFoundSection';
+import { useTranslation } from 'react-i18next';
 
 const FacilitiesPage = () => {
-  const [selectedFacility, setSelectedFacility] = useState('toilet');
+  const [selectedFacility, setSelectedFacility] = useState('restroom');
+  const { t } = useTranslation();
 
   const handleToggleClick = (facility) => {
     setSelectedFacility(facility);
@@ -16,26 +18,26 @@ const FacilitiesPage = () => {
   return (
     <>
       <S.FacilitiesLayout>
-        <PageTitle title={'편의시설'}>편의시설</PageTitle>
+        <PageTitle title={t('facilities.amenities')} />
         <S.ToggleWrapper>
           <ContentContainer>
             <S.Toggle>
-              <S.ToggleBtn $isActive={selectedFacility === 'toilet'} onClick={() => handleToggleClick('toilet')}>
-                화장실
-              </S.ToggleBtn>
-              <S.ToggleBtn $isActive={selectedFacility === 'medical'} onClick={() => handleToggleClick('medical')}>
-                의료 시설
-              </S.ToggleBtn>
-              <S.ToggleBtn
+              <S.RestroomBtn $isActive={selectedFacility === 'restroom'} onClick={() => handleToggleClick('restroom')}>
+                {t('facilities.restroomToggle')}
+              </S.RestroomBtn>
+              <S.MedicalBtn $isActive={selectedFacility === 'medical'} onClick={() => handleToggleClick('medical')}>
+                {t('facilities.medicalFacilityToggle')}
+              </S.MedicalBtn>
+              <S.LostAndFoundBtn
                 $isActive={selectedFacility === 'lostAndFound'}
                 onClick={() => handleToggleClick('lostAndFound')}
               >
-                분실물 센터
-              </S.ToggleBtn>
+                {t('facilities.lostAndFoundCenterToggle')}
+              </S.LostAndFoundBtn>
             </S.Toggle>
           </ContentContainer>
         </S.ToggleWrapper>
-        {selectedFacility === 'toilet' && <ToiletSection />}
+        {selectedFacility === 'restroom' && <RestroomSection />}
         {selectedFacility === 'medical' && <MedicalSection />}
         {selectedFacility === 'lostAndFound' && <LostAndFoundSection />}
       </S.FacilitiesLayout>

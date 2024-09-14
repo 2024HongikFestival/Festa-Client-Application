@@ -1,24 +1,30 @@
 import ContentContainer from '@/components/common/ContentContainer';
-import * as S from './styles';
+import * as S from '@/pages/facilities/styles';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 const LostAndFoundSection = () => {
   const nav = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <>
       <ContentContainer>
         <S.Title>
-          분실물 센터 <span>위치</span>
+          {t('facilities.lostAndFound.title1')} <span>{t('facilities.lostAndFound.title2')}</span>
         </S.Title>
         <S.Map />
         <S.Description>
-          <span>대운동장 구령대 중앙</span>에
+          <span>{t('facilities.lostAndFound.description1')}</span>
+          {t('facilities.lostAndFound.description2')}
+          <span>{t('facilities.lostAndFound.description2-2')}</span>
           <br />
-          분실물 센터가 위치해 있습니다.
+          {t('facilities.lostAndFound.description3')}
         </S.Description>
       </ContentContainer>
-      <S.GoLostAndFoundBtn onClick={() => nav('/lost-and-found')}>온라인 분실물 센터 바로가기</S.GoLostAndFoundBtn>
+      <S.GoLostAndFoundBtn onClick={() => nav('/lost-and-found')}>
+        {t('facilities.lostAndFound.goLostAndFoundBtn')}
+      </S.GoLostAndFoundBtn>
       <S.MarginBottom />
     </>
   );
