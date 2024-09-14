@@ -1,8 +1,10 @@
 import { presigendAxiosInstance } from '@/api/axios';
 import { getGrapemeLength, truncateToMaxLength } from '@/utils/InputFilter';
 import { getPresignedUrl, putPresignedUrl } from '@/utils/presignedUrl';
+import { t } from 'i18next';
 import PropTypes from 'prop-types';
 import React, { useEffect, useReducer, useState } from 'react';
+import { Trans } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { LocationModal } from '../../LostAndFoundPage/LostModal/LostModal';
 import * as S from './Register.styled';
@@ -126,59 +128,59 @@ const Register = ({ imgSrc }) => {
     <>
       <S.Wrapper>
         <S.RegisterMain>
-          <S.Title>분실물 제보</S.Title>
+          <S.Title>{t('AddLostAndFound.LostAndFoundReport')}</S.Title>
 
           <S.WarningBoxAndRegisterSection>
             <S.WarningBox>
               <S.WarningMainText>
-                도난 위험이 있는 물건은
-                <br />
-                <span>
-                  <span onClick={() => setIsLocationModalOpen(true)}>분실물 센터</span>에 보관
-                </span>
-                해 주시기 바랍니다
+                <Trans
+                  i18nKey={'AddLostAndFound.KeepAtRiskItemsAtCenter'}
+                  components={{ 1: <br />, 2: <span />, 3: <span onClick={() => setIsLocationModalOpen(true)} /> }}
+                ></Trans>
               </S.WarningMainText>
               <S.WarningSubText>
-                ※ 센터로 이동이 어렵다면&nbsp; <span>글을 작성하지 말아주세요 </span>
+                {t('AddLostAndFound.DoNotWriteIfDifficultToMove1')}
+                &nbsp;<span>{t('AddLostAndFound.DoNotWriteIfDifficultToMove2')}</span>
               </S.WarningSubText>
             </S.WarningBox>
 
             <S.RegisterSection>
-              <S.SectionTitle>분실물 찾아주기 </S.SectionTitle>
+              <S.SectionTitle>{t('AddLostAndFound.FindingLostAndFound')}</S.SectionTitle>
               <S.RegisterArticle>
                 <S.InputWrapper>
-                  <S.InputText>어디서 발견하셨나요? (최대 15자)</S.InputText>
+                  <S.InputText>{t('AddLostAndFound.FoundLocation')}</S.InputText>
                   <S.Input
                     value={foundLocation}
                     onChange={handleFoundChange}
-                    placeholder={`ex. 운동장 구령대 아래 / 학생회관 앞`}
+                    placeholder={t('AddLostAndFound.FoundPlaceHolder')}
                   />
                 </S.InputWrapper>
 
                 <S.InputWrapper>
-                  <S.InputText>어디에 보관하셨나요? (최대 15자)</S.InputText>
+                  <S.InputText>{t('AddLostAndFound.StoredLocation')}</S.InputText>
                   <S.InputWithWarn>
                     <S.Input
                       value={storageLocation}
                       onChange={handleStorageChange}
-                      placeholder={`ex. 발견 위치 그대로 / 학생회관 1층 정수기 옆`}
+                      placeholder={t('AddLostAndFound.StoredPlaceHolder')}
                     />
                     <S.InputWarningTextBox>
                       <S.InputWarningIcon />
-                      전자기기, 카드, 지갑 등은 분실물 센터에 보관
+                      {t('AddLostAndFound.KeepValuablesAtCenter')}
                     </S.InputWarningTextBox>
                   </S.InputWithWarn>
                 </S.InputWrapper>
 
                 <S.InputWrapper>
                   <S.InputText>
-                    필요 시 설명도 적어주세요! <span>(선택)</span>
+                    {t('AddLostAndFound.OptionalExplanation1')}
+                    <span>{t('AddLostAndFound.OptionalExplanation2')}</span>
                   </S.InputText>
                   <S.InputWithCount>
                     <S.TextArea
                       value={content}
                       onChange={handleCotentChange}
-                      placeholder={`ex. 홍X동님 학생증 발견했습니다 / A동 앞에 산리오 키링 떨어져있어요 주인 찾아가세요~`}
+                      placeholder={t('AddLostAndFound.PlaceholderText')}
                     />
                     <S.TextLength>{`(${contentLength}/${MAX_LENGTH_TEXTAREA})`}</S.TextLength>
                   </S.InputWithCount>
@@ -191,7 +193,7 @@ const Register = ({ imgSrc }) => {
                   disabled={foundLocationLength < 1 || storageLocation < 1}
                   onClick={handleComplete}
                 >
-                  완료
+                  {t('AddLostAndFound.Complete')}
                 </S.BlueButton>
               </S.RegisterArticle>
             </S.RegisterSection>
