@@ -1,10 +1,14 @@
 // 와디페 프로모션
 // url: /flame/promotion
 
-import Footer from '@/components/layouts/Footer';
-import Header from '@/components/layouts/Header';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import productsData from '@/constants/wdfPromotion/data.json';
+
+import img1 from '@/assets/webps/wdfPromotion/예거마이스터.webp';
+import img2 from '@/assets/webps/wdfPromotion/인테이크.webp';
+import img3 from '@/assets/webps/wdfPromotion/금군양조.webp';
+import img4 from '@/assets/webps/wdfPromotion/프루팁스.webp';
 
 const PromotionContainer = styled.div`
   width: 100%;
@@ -12,33 +16,100 @@ const PromotionContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 2.4rem;
+  padding-bottom: 4.8rem;
+  gap: 4.8rem;
 `;
 const Title = styled.h2`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline3};
 `;
 const Promotion = styled.div`
-  width: 33.5rem; /* 335px -> 33.5rem */
-  height: 29.6rem; /* 수정 예정 */
-  flex-shrink: 0;
-  border: 1px solid transparent;
-  border-image: linear-gradient(to bottom, #df2121 0%, rgba(255, 255, 255, 0.25) 100%) 1;
-  /* box-shadow: 0rem 0rem 0.5rem 0rem rgba(255, 255, 255, 0.25); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.6rem;
 `;
-const ImageContainer = styled.div``;
+const Card = styled.div`
+  position: relative;
+  width: 100%;
+  height: 30.7rem;
+  border: 0.1rem solid transparent;
+  border-image: linear-gradient(to bottom, #df2121 0%, rgba(255, 255, 255, 0.25) 75%, rgba(255, 255, 255, 0) 100%) 1;
+  align-self: stretch;
+  flex-shrink: 0;
+`;
+const ImageContainer = styled.div`
+  width: 33.3rem;
+  height: 23.6rem;
+  background: linear-gradient(180deg, rgba(242, 13, 13, 0.25) 0.07%, rgba(255, 255, 255, 0.02) 112.68%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+`;
+const Image = styled.img`
+  position: absolute;
+  top: ${(props) => props.top};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+`;
+const Description = styled.div`
+  height: 8.7rem;
+  position: absolute;
+  bottom: 0;
+  left: 0.1rem;
+  right: 0.1rem;
+  background-color: ${(props) => props.theme.colors.flameSubBackgroundColor};
+  backdrop-filter: blur(0.6rem);
+  padding: 1.6rem 0;
+  padding-left: 1.6rem;
+  display: flex;
+  align-items: center;
+`;
+const Text = styled.p`
+  color: ${(props) => props.theme.colors.white};
+  ${(props) => props.theme.fontStyles.basic.subHeadBold};
+`;
 
 const FlamePromotionPage = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts(productsData.products);
+  }, []);
+
+  const imageMap = {
+    img1: img1,
+    img2: img2,
+    img3: img3,
+    img4: img4,
+  };
+
   return (
     <>
-      <Header></Header>
       <PromotionContainer>
         <Title>프로모션</Title>
         <Promotion>
-          <ImageContainer>{/* <PromotionImage /> */}</ImageContainer>
-          {/* <PromotionText>글이 추가될 수 있습니다.</PromotionText> */}
+          {products.map((product) => (
+            <Card key={product.id}>
+              <ImageContainer>
+                <Image
+                  src={imageMap[product.image]}
+                  alt={product.name}
+                  width={product.width}
+                  height={product.height}
+                  top={product.imageTop}
+                ></Image>
+              </ImageContainer>
+              <Description>
+                <Text>{product.name}</Text>
+              </Description>
+            </Card>
+          ))}
         </Promotion>
       </PromotionContainer>
-      <Footer></Footer>
     </>
   );
 };
