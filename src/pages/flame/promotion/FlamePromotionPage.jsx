@@ -1,8 +1,6 @@
-// 와디페 프로모션
-// url: /flame/promotion
-
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next'; // i18next import
 import productsData from '@/constants/wdfPromotion/data.json';
 
 import img1 from '@/assets/webps/wdfPromotion/예거마이스터.webp';
@@ -20,16 +18,19 @@ const PromotionContainer = styled.div`
   padding-bottom: 4.8rem;
   gap: 4.8rem;
 `;
+
 const Title = styled.h2`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline3};
 `;
+
 const Promotion = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3.6rem;
 `;
+
 const Card = styled.div`
   position: relative;
   width: 100%;
@@ -39,6 +40,7 @@ const Card = styled.div`
   align-self: stretch;
   flex-shrink: 0;
 `;
+
 const ImageContainer = styled.div`
   width: 33.3rem;
   height: 23.6rem;
@@ -49,12 +51,14 @@ const ImageContainer = styled.div`
   position: relative;
   overflow: hidden;
 `;
+
 const Image = styled.img`
   position: absolute;
   top: ${(props) => props.top};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;
+
 const Description = styled.div`
   height: 8.7rem;
   position: absolute;
@@ -68,6 +72,7 @@ const Description = styled.div`
   display: flex;
   align-items: center;
 `;
+
 const Text = styled.p`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
@@ -75,6 +80,7 @@ const Text = styled.p`
 
 const FlamePromotionPage = () => {
   const [products, setProducts] = useState([]);
+  const { t } = useTranslation(); // useTranslation 훅 사용
 
   useEffect(() => {
     setProducts(productsData.products);
@@ -88,29 +94,27 @@ const FlamePromotionPage = () => {
   };
 
   return (
-    <>
-      <PromotionContainer>
-        <Title>프로모션</Title>
-        <Promotion>
-          {products.map((product) => (
-            <Card key={product.id}>
-              <ImageContainer>
-                <Image
-                  src={imageMap[product.image]}
-                  alt={product.name}
-                  width={product.width}
-                  height={product.height}
-                  top={product.imageTop}
-                ></Image>
-              </ImageContainer>
-              <Description>
-                <Text>{product.name}</Text>
-              </Description>
-            </Card>
-          ))}
-        </Promotion>
-      </PromotionContainer>
-    </>
+    <PromotionContainer>
+      <Title>{t('flamePromotionPage.title')}</Title>
+      <Promotion>
+        {products.map((product) => (
+          <Card key={product.id}>
+            <ImageContainer>
+              <Image
+                src={imageMap[product.image]}
+                alt={product.name}
+                width={product.width}
+                height={product.height}
+                top={product.imageTop}
+              />
+            </ImageContainer>
+            <Description>
+              <Text>{t(`flamePromotionPage.products.${product.name}`)}</Text> {/* 번역 키로 제품 이름 사용 */}
+            </Description>
+          </Card>
+        ))}
+      </Promotion>
+    </PromotionContainer>
   );
 };
 
