@@ -1,18 +1,23 @@
 import ContentContainer from '@/components/common/ContentContainer';
-import * as S from './styles';
+import * as S from '@/pages/facilities/styles';
+import { useTranslation } from 'react-i18next';
 
 const MedicalSection = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <ContentContainer>
         <S.Title>
-          의료 시설 <span>위치</span>
+          {t('facilities.medical.title1')} <span>{t('facilities.medical.title2')}</span>
         </S.Title>
         <S.Map />
         <S.Description>
-          <span>정보통신센터(Q동) 계단 앞 건강관리센터</span>에서
+          <span>{t('facilities.medical.description1')}</span>
+          {t('facilities.medical.description2')}
+          <span>{t('facilities.medical.description2-2')}</span>
           <br />
-          비상시 응급 치료를 받으실 수 있습니다.
+          {t('facilities.medical.description3')}
         </S.Description>
       </ContentContainer>
       <S.MarginBottom />

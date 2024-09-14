@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { adminAxiosInstance } from '@/api/axios';
+import tvingImg from '@/assets/svgs/admin/tvingImg.svg';
 
 const Participants = ({ setIsDetailView, setPostId, lists }) => {
   const [allLists, setAllLists] = useState([]);
@@ -9,14 +10,6 @@ const Participants = ({ setIsDetailView, setPostId, lists }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [entriesPerpage] = useState(10);
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    getLists();
-  }, []);
-
-  useEffect(() => {
-    setDisplayedLists(allLists.slice(0, currentPage * entriesPerpage));
-  }, [allLists, currentPage]);
 
   const getLists = async () => {
     const token = localStorage.getItem('accessToken');
@@ -48,13 +41,22 @@ const Participants = ({ setIsDetailView, setPostId, lists }) => {
     setIsDetailView(true); // 상세 보기로 전환
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    getLists();
+  }, []);
+
+  useEffect(() => {
+    setDisplayedLists(allLists.slice(0, currentPage * entriesPerpage));
+  }, [allLists, currentPage]);
+
   return (
     <>
       <EntryContainer>
         {Array.isArray(displayedLists) && displayedLists.length > 0 ? (
           displayedLists.map((entry, index) => (
             <Container key={entry.id || index} onClick={() => handleClick(entry)}>
-              <Img src={entry.imageUrl} alt={entry.prizeName} />
+              <Img src={tvingImg} alt={'티빙 한달 이용권'} />
               <InfoWrapper>
                 <Wrapper>
                   <EntryName>{entry.prizeName}</EntryName>
@@ -125,7 +127,9 @@ const Container = styled.div`
 const Img = styled.img`
   width: 8rem;
   height: 8rem;
-  object-fit: cover;
+  padding: 1rem;
+  background-color: ${(props) => props.theme.colors.white};
+  object-fit: contain;
 `;
 
 const StatusBox = styled.span`

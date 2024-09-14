@@ -336,6 +336,53 @@
       ]
     }
   },
+  "facilities": {
+    "amenities": "Amenities",
+    "restroomToggle": "Restroom",
+    "medicalFacilityToggle": "Med center",
+    "lostAndFoundCenterToggle": "Lost & Found",
+    "restroom": {
+      "title1": "",
+      "title2": "Restroom",
+      "building1-1": "1st floor ",
+      "building1-2": "of Building M",
+      "floor1": "",
+      "building2-1": "1st floor ",
+      "building2-2": "of Building Z4",
+      "building2-3": "(a handicapped toilet)",
+      "floor2": "",
+      "building3-1": "2nd floor ",
+      "building3-2": "of Building Z4",
+      "floor3": ""
+    },
+    "medical": {
+      "title1": "",
+      "title2": "Medical center",
+      "description1": "",
+      "description2": "You can receive emergency treatment at the ",
+      "description2-2": "Health care Center in front of the stairs of the Information and Communication Center (Building Q).",
+      "description3": ""
+    },
+    "lostAndFound": {
+      "title1": "",
+      "title2": "Lost and Found center",
+      "description1": "",
+      "description2": "The Lost and Found Center is located in ",
+      "description2-2": "the center of the playground podium.",
+      "description3": "",
+      "goLostAndFoundBtn": "Go to Online Lost and Found center"
+    }
+  },
+  "wdfMain": {
+    "wdfName": "WOW DJ FESTIVAL",
+    "wdfDescription1": "It's time to wake up the youth that is fading away under the weight and ",
+    "wdfDescription2": "helplessness of reality and to face the most beautifully shining 'I'.",
+    "wdfDescription3": "We invite you to this unique moment",
+    "wdfDescription4": "where the fireworks of youth flame.",
+    "day1": "9.25 (WED)",
+    "day2": "9.26 (THU)",
+    "day3": "9.25 (FRI)"
+  },
   "Amenities": {
     "Amenities": "Amenities",
     "RestRoom": "Rest room",

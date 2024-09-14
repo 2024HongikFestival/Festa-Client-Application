@@ -15,29 +15,27 @@ export const ToggleWrapper = styled.div`
 
 export const Toggle = styled.div`
   display: flex;
-  padding: 0.8rem 3.2rem;
-  gap: 2.4rem;
+  padding: 0.8rem 1.5rem;
 `;
 
-export const ToggleBtn = styled.div`
-  color: ${({ $isActive, theme }) => ($isActive ? theme.colors.hongikBlue : theme.colors.gray60)};
-  ${(props) => props.theme.fontStyles.basic.body1Bold};
-  font-family: 'Pretendard', sans-serif;
-  font-size: 1.6rem;
-  font-style: normal;
-  line-height: 150%;
-  letter-spacing: -0.0016rem;
-  font-weight: ${({ $isActive }) => ($isActive ? '700' : '600')};
-  border-radius: ${({ $isActive }) => ($isActive ? '3rem' : '0')};
-  background: ${({ $isActive }) => ($isActive ? 'rgba(24, 51, 219, 0.05)' : 'transparent')};
-  padding: ${({ $isActive }) => ($isActive ? '0.6rem 2.4rem' : '0')};
-  opacity: ${({ $isActive }) => ($isActive ? '1' : '0.6')};
+const ToggleButton = styled.div`
+  width: ${({ width }) => width};
+  height: 3.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: ${({ $isActive, theme }) => ($isActive ? theme.colors.hongikBlue : theme.colors.gray60)};
+  ${({ $isActive, theme }) => ($isActive ? theme.fontStyles.basic.body1Bold : theme.fontStyles.basic.body1Semi)};
+  background: ${({ $isActive }) => ($isActive ? 'rgba(24, 51, 219, 0.05)' : 'transparent')};
+  border-radius: 3rem;
+  opacity: ${({ $isActive }) => ($isActive ? '1' : '0.6')};
   cursor: pointer;
 `;
+
+export const RestroomBtn = styled(ToggleButton).attrs({ width: '8.2rem' })``;
+export const MedicalBtn = styled(ToggleButton).attrs({ width: '11.1rem' })``;
+export const LostAndFoundBtn = styled(ToggleButton).attrs({ width: '11.2rem' })``;
 
 export const Title = styled.p`
   margin-top: 2.4rem;
@@ -58,7 +56,7 @@ export const Map = styled.div`
   border-bottom: 1px solid ${(props) => props.theme.colors.gray30};
 `;
 
-export const ToiletDetail = styled.ul`
+export const RestroomDetail = styled.ul`
   width: 100%;
   padding: 1.8rem 2.4rem 2.4rem 2.4rem;
   display: flex;
@@ -99,6 +97,11 @@ export const Building = styled.span`
   ${(props) => props.theme.fontStyles.basic.body1Med};
   color: ${(props) => props.theme.colors.gray100};
   margin-right: 0.4rem;
+
+  span {
+    ${(props) => props.theme.fontStyles.basic.body1Bold};
+    color: ${(props) => props.theme.colors.hongikBlue};
+  }
 `;
 
 export const Floor = styled.span`
