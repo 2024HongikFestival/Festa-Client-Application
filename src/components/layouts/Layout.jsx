@@ -12,7 +12,7 @@ export default function Layout() {
   const { isCamera } = useCamera();
   const location = useLocation();
 
-  const adminPaths = ['/admin', '/admin/event', '/admin/losts'];
+  const adminPaths = ['/admin', '/admin/', '/admin/event', '/admin/losts'];
   const isAdminPath = adminPaths.includes(location.pathname);
 
   const eventPaths = ['/event', '/event/enter', '/event/submit'];
@@ -50,7 +50,9 @@ const Container = styled.div`
   min-width: 375px;
   max-width: 768px;
   min-height: calc(var(--vh, 1vh) * 100);
-  margin: ${({ $showheader }) => ($showheader ? '5.6rem auto 0' : '0 auto 0')};
+  margin: 0 auto 0;
+  padding-top: ${({ $showheader }) => ($showheader ? '5.6rem' : '0')};
+  clip-path: inset(0 0 0 0);
 
   ${(props) =>
     (props.$path === '/lost-and-found' || props.$path === '/lost-and-found/') &&
@@ -72,22 +74,12 @@ const Container = styled.div`
     (props.$path === '/likelion' || props.$path === '/gaehwa') &&
     css`
       background-color: ${(props) => props.theme.colors.makersBackgroundColor};
-      background-size: cover;
-      background-position: center;
     `}
 
   ${(props) =>
     props.$path.startsWith('/flame') &&
     css`
       background-color: ${(props) => props.theme.colors.flameBackgroundColor};
-      background-size: cover;
-      background-position: center;
-    `}
-
-  ${(props) =>
-    props.$path === '/flame' &&
-    css`
-      background-color: transparent;
     `}
   
   ${(props) =>

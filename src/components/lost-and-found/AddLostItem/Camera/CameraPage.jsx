@@ -1,10 +1,12 @@
 // src/components/Camera.js
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
-import { useCamera } from '../../../../context/AuthProvider';
+import { useTranslation } from 'react-i18next';
+import { useCamera } from '../context/AuthProvider';
 import * as S from './CameraPage.styled';
 
 const CameraPage = ({ setCapturedImage }) => {
+  const { t } = useTranslation();
   const { setIsCamera } = useCamera();
   const videoRef = useRef(null);
   const [error, setError] = useState(null);
@@ -54,7 +56,7 @@ const CameraPage = ({ setCapturedImage }) => {
         <S.ErrorMessage>{error}</S.ErrorMessage>
       ) : (
         <>
-          <S.CameraNoticeText>{`분실물의 특징과 주변 장소가\n잘 보이도록 사진을 찍어주세요!`}</S.CameraNoticeText>
+          <S.CameraNoticeText>{t('AddLostAndFound.TakeAPictureOfLostItem')}</S.CameraNoticeText>
           <S.Video ref={videoRef} autoPlay playsInline />
           <S.CaptureButton onClick={capturePhoto} />
           {/*capturedImage && <Preview image={capturedImage} />*/}

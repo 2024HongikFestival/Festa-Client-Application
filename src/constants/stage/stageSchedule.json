@@ -2,43 +2,81 @@
   "Day1": [
     {
       "id": "1",
-      "stageName": "재주꾼 선발 대회",
+      "stageName": "stageSchedule.talentContest",
       "totalDuration": "17:00 - 19:30",
-      "artists": ["1팀 이름", "2팀 이름", "3팀 이름", "4팀 이름", "5팀 이름", "6팀 이름", "7팀 이름", "8팀 이름", "9팀 이름"]
+      "artists": [
+        "stageSchedule.eventDetails.talentEvents.melodyBand",
+        "stageSchedule.eventDetails.talentEvents.gr8Dance",
+        "stageSchedule.eventDetails.talentEvents.royKimSolo",
+        "stageSchedule.eventDetails.talentEvents.yuZiYeBand",
+        "stageSchedule.eventDetails.talentEvents.backToBackDance",
+        "stageSchedule.eventDetails.talentEvents.leeMinGyuSolo",
+        "stageSchedule.eventDetails.talentEvents.academicWarningBand",
+        "stageSchedule.eventDetails.talentEvents.ryukMarinSolo",
+        "stageSchedule.eventDetails.talentEvents.cheongRamBand"
+      ]
     },
     {
       "id": "2",
-      "stageName": "연예인 초청 무대",
+      "stageName": "stageSchedule.celebrityStage",
       "totalDuration": "20:00 - 22:00",
-      "artists": ["아티스트이름", "아티스트이름", "아티스트이름"]
+      "artists": [
+        "stageSchedule.artistName",
+        "stageSchedule.artistName",
+        "stageSchedule.artistName"
+      ]
     }
   ],
   "Day2": [
     {
       "id": "3",
-      "stageName": "학생 중앙 무대",
+      "stageName": "stageSchedule.studentCenterStage",
       "totalDuration": "17:00 - 19:30",
-      "artists": ["황인성 밴드", "나중에", "카이저", "이매진 밴드", "브레인스워즈", "공연예술 뮤지컬", "오현성과 토마토"]
+      "artists": [
+        "stageSchedule.eventDetails.studentCenterEventsDay1.hwangInSeongBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.afterBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.kaiserBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.imagineBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.brainsWars",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.performingArtsMusical",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.ohHyeonSongAndTomato"
+      ]
     },
     {
       "id": "4",
-      "stageName": "연예인 초청 무대",
+      "stageName": "stageSchedule.celebrityStage",
       "totalDuration": "20:00 - 22:00",
-      "artists": ["아티스트이름", "아티스트이름", "아티스트이름"]
+      "artists": [
+        "stageSchedule.artistName",
+        "stageSchedule.artistName",
+        "stageSchedule.artistName"
+      ]
     }
   ],
   "Day3": [
     {
       "id": "5",
-      "stageName": "학생 중앙 무대",
+      "stageName": "stageSchedule.studentCenterStage",
       "totalDuration": "17:00 - 19:30",
-      "artists": ["못갖춘 마디", "1박 2일", "우나밴드", "홍그루브", "공연예술 밴드", "블랙테트라", "비츠플로우"]
+      "artists": [
+        "stageSchedule.eventDetails.studentCenterEventsDay2.illEquippedWord",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.oneNightTwoDays",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.woonerBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.hongGroove",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.performingArtsBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.blackTetra",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.bitzFlow"
+      ]
     },
     {
       "id": "6",
-      "stageName": "연예인 초청 무대",
+      "stageName": "stageSchedule.celebrityStage",
       "totalDuration": "20:00 - 22:00",
-      "artists": ["아티스트이름", "아티스트이름", "아티스트이름"]
+      "artists": [
+        "stageSchedule.artistName",
+        "stageSchedule.artistName",
+        "stageSchedule.artistName"
+      ]
     }
   ]
 }

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-// JSON 파일을 import
-import scheduleData from '@/constants/stage/stageSchedule.json';
+import { useTranslation } from 'react-i18next'; // i18next import
+import scheduleData from '@/constants/stage/stageSchedule.json'; // JSON 데이터 import
 import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
 
 const StageSchedule = () => {
   const [selectedDay, setSelectedDay] = useState('Day1');
   const [data, setData] = useState(scheduleData); // JSON 데이터를 상태로 설정
+  const { t } = useTranslation(); // useTranslation hook 사용
 
   useEffect(() => {
     setSelectedDay(getSelectedDayByDate()); // 컴포넌트가 마운트될 때 함수를 호출
@@ -14,18 +15,18 @@ const StageSchedule = () => {
 
   const renderStage = () => {
     if (!data || !data[selectedDay]) {
-      return <div>Loading...</div>;
+      return <div>{t('stageSchedule.loading')}</div>;
     }
 
     return data[selectedDay].map((event) => (
       <Stage key={event.id}>
         <StageBox>
-          <StageName>{event.stageName}</StageName>
+          <StageName>{t(event.stageName)}</StageName>
           <Duration>{event.totalDuration}</Duration>
         </StageBox>
         <ArtistList>
           {event.artists.map((artist, index) => (
-            <ArtistItem key={index}>{artist}</ArtistItem>
+            <ArtistItem key={index}>{t(artist)}</ArtistItem>
           ))}
         </ArtistList>
       </Stage>
@@ -36,16 +37,16 @@ const StageSchedule = () => {
     <Container>
       <DayContainer>
         <DayButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('Day1')}>
-          <span className="day">DAY 1</span>
-          <span className="date">9.25 (수)</span>
+          <span className="day">{t('stageSchedule.day1')}</span>
+          <span className="date">{t('stageSchedule.date1')}</span>
         </DayButton>
         <DayButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('Day2')}>
-          <span className="day">DAY 2</span>
-          <span className="date">9.26 (목)</span>
+          <span className="day">{t('stageSchedule.day2')}</span>
+          <span className="date">{t('stageSchedule.date2')}</span>
         </DayButton>
         <DayButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('Day3')}>
-          <span className="day">DAY 3</span>
-          <span className="date">9.27 (금)</span>
+          <span className="day">{t('stageSchedule.day3')}</span>
+          <span className="date">{t('stageSchedule.date3')}</span>
         </DayButton>
       </DayContainer>
       <StageContainer>{renderStage()}</StageContainer>
@@ -124,4 +125,5 @@ const ArtistList = styled.ul`
 const ArtistItem = styled.li`
   color: ${(props) => props.theme.colors.gray70};
   ${(props) => props.theme.fontStyles.basic.body2Med};
+  text-align: right; /* 텍스트를 오른쪽 정렬 */
 `;

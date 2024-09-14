@@ -91,7 +91,7 @@ export const LostCenterMap = styled.div`
 `;
 
 export const LostCenterContent = styled.span`
-  width: 28.7rem;
+  width: 30rem;
   height: 4.8rem;
   margin-top: 1.8rem;
   margin-bottom: 2.8rem;
