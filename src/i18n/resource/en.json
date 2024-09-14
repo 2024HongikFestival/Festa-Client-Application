@@ -372,5 +372,79 @@
       "description3": "",
       "goLostAndFoundBtn": "Go to Online Lost and Found center"
     }
+  },
+
+  "event": {
+    "main": {
+      "notice": {
+        "title1": "Raffle of",
+        "title2": "Hongik Daedongje",
+        "description1": "One ticket is given at",
+        "description2": "10 a.m. every day",
+        "timeNotice": "The time left until the deadline",
+        "qText": "Q. What's Hongik Raffle?",
+        "aText": "A. It is an event where prizes are given through a lottery of applicants."
+      },
+      "item": {
+        "quantity": "10 winning tickets",
+        "title1": "The TVING Standard Plan will be given",
+        "title2": "a three-month pass",
+        "description1": "A three month pass"
+      },
+      "detail": {
+        "title1": "Target for application",
+        "description1": "If you are enjoying the 'In Hongik University' festival",
+        "description2": "anyone, regardless of the student's outsiders",
+        "title2": "Conditions of entry",
+        "description3": "Applicants whose current location is Hongik University",
+        "title3": "Application period",
+        "description4": "September 25th 10:00 ~ September 27th 23:59:59",
+        "description5": "One ticket is offered at 10 a.m. every day",
+        "title4": "Winner announcement",
+        "description6": "September 28 at 14:00 Daedongje Instastory"
+      },
+      "button": {
+        "share": "Share Event",
+        "available": "Apply after Kakao authentication",
+        "unavailable": "The application period is over"
+      }
+    },
+    "enter": {
+      "name1": "Please write your name",
+      "name2": "ex. Hong Gildong",
+      "phone": "Please write down your contact information",
+      "comment1": "Are you enjoying the festival?",
+      "comment2": "Please let me know how you feel!",
+      "comment3": "(optional)",
+      "submit": "Apply"
+    },
+    "result": {
+      "title": "Entrance completed!",
+      "description1": "Get a ticket tomorrow",
+      "description2": "at 10a.m.",
+      "description3": "and",
+      "description4": "try again!!",
+      "last": {
+        "description1": "The festival is over",
+        "description2": "The winner is",
+        "description3": "on September 28th at 2 p.m.",
+        "description4": "It will be presented in the story @hiufestival_official"
+      }
+    },
+    "error": {
+      "close": "Close",
+      "location": {
+        "title1": "Oh! your current location is not",
+        "title2": "Hongik University",
+        "description1": "Only applicants whose current location is Hongik University",
+        "description2": "can apply for the event"
+      },
+      "duplicate": {
+        "title1": "Already ",
+        "title2": "applied!",
+        "description1": "You can only apply once a day with a ticket",
+        "description2": "given every day during the festival"
+      }
+    }
   }
 }
