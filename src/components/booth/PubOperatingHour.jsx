@@ -94,5 +94,6 @@ const Span = styled.div`
   width: 14.9rem;
   height: 2rem;
   text-align: center;
-  ${({ theme }) => theme.fontStyles.main.roboto};
+  ${({ theme }) => theme.fontStyles.basic.roboto};
+  font-weight: 700;
 `;

@@ -5,9 +5,9 @@ import PubCarousel from '@/components/booth/PubCarousel';
 import { useTranslation } from 'react-i18next';
 
 export default function PubCard() {
-  const [selectedMenu, setSelectedMenu] = useState(null);
   const lng = localStorage.getItem('language');
   const { t } = useTranslation();
+  const [selectedMenu, setSelectedMenu] = useState(t('booth.pub.menu.1'));
 
   const menuItems = [
     t('booth.pub.menu.1'),
