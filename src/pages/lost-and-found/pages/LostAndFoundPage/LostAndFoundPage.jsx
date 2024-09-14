@@ -10,10 +10,14 @@ import DropDown from '@/components/lost-and-found/LostAndFoundPage/DropDown/Drop
 import LostBottomSheet from '@/components/lost-and-found/LostAndFoundPage/LostBottomSheet/LostBottomSheet';
 import { ItemModal, LocationModal } from '@/components/lost-and-found/LostAndFoundPage/LostModal/LostModal';
 import NewPagination from '@/components/lost-and-found/LostAndFoundPage/NewPagination/NewPagination';
+import { Trans, useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+//i18n.changeLanguage('en');
 
 // [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
 // Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
 const LostAndFoundPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   //모달 관련된 state
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
@@ -83,24 +87,25 @@ const LostAndFoundPage = () => {
     <>
       <S.Wrapper>
         <S.Main>
-          <S.Title>분실물</S.Title>
+          <S.Title>{t('LostAndFound.LostAndFound')}</S.Title>
 
           <S.ButtonWrapper>
-            <S.AddLostItemButton onClick={() => setIsBottomSheetOpen(true)}>분실물 찾아주기 ✋🏻</S.AddLostItemButton>
+            <S.AddLostItemButton onClick={() => setIsBottomSheetOpen(true)}>
+              {t('LostAndFound.ReportLostItems')}
+            </S.AddLostItemButton>
             <S.ButtonDetailWrapper>
               <S.ButtonDetailIcon />
               <S.ButtonDetailText>
-                전자기기, 카드, 지갑 등은 제보 후&nbsp;
-                <span>
-                  <span onClick={() => setIsLocationModalOpen(true)}>분실물 센터</span>에 보관
-                </span>
-                해 주세요
+                <Trans
+                  i18nKey="LostAndFound.buttonDetailText"
+                  components={{ 1: <StyleSpan />, 2: <span onClick={() => setIsLocationModalOpen(true)} /> }}
+                ></Trans>
               </S.ButtonDetailText>
             </S.ButtonDetailWrapper>
           </S.ButtonWrapper>
 
           <S.LostAndFoundSection>
-            <S.LostAndFoundSectionTitle>&nbsp;&nbsp;분실물 찾아가기🧸</S.LostAndFoundSectionTitle>
+            <S.LostAndFoundSectionTitle>&nbsp;&nbsp;{t('LostAndFound.FindLostItem')}</S.LostAndFoundSectionTitle>
             <S.LostAndFoundArticleLayout>
               <S.Gap8px>
                 <DropDown setSelectedDay={setSelectedDay} />
@@ -123,15 +128,6 @@ const LostAndFoundPage = () => {
           </S.LostAndFoundSection>
         </S.Main>
 
-        {/*
-          <S.FooterWrapper>
-            <S.FooterLayout>
-              <S.ManGaeSvg />
-              <S.FooterIntroduction></S.FooterIntroduction>
-            </S.FooterLayout>
-          </S.FooterWrapper>
-        */}
-
         <LostBottomSheet isOpen={isBottomSheetOpen} setIsOpen={setIsBottomSheetOpen} />
         <LocationModal isOpen={isLocationModalOpen} setIsOpen={setIsLocationModalOpen} />
         <ItemModal isOpen={isItemModalOpen} setIsOpen={setIsItemModalOpen} lostId={itemLostId} />
@@ -141,3 +137,15 @@ const LostAndFoundPage = () => {
 };
 
 export default LostAndFoundPage;
+
+const StyleSpan = styled.span`
+  &::after {
+    content: '';
+  }
+  &::before {
+    //공백 처리를 위한 구문
+    content: '';
+    display: inline-block;
+    width: 5px;
+  }
+`;

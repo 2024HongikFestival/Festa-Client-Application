@@ -1,6 +1,9 @@
 import axios from 'axios';
+import { t } from 'i18next';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 import * as S from './LostModal.styled';
 
 const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
@@ -13,7 +16,7 @@ const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
       <S.ModalWrapper>
         <S.ModalLayout $top={top} $gap={gap}>
           {children}
-          <S.BlueButton onClick={handleCloseModal}>닫기</S.BlueButton>
+          <S.BlueButton onClick={handleCloseModal}>{t('Close')}</S.BlueButton>
         </S.ModalLayout>
       </S.ModalWrapper>
     )
@@ -25,20 +28,21 @@ export const LocationModal = ({ isOpen, setIsOpen }) => {
     <LostModal top={'16.3rem'} gap={'0rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
       <S.LostCenterLayout>
         <S.LostCenterTitle>
-          분실물 센터&nbsp;<span>위치</span>
+          {t('LocationModal.location1')}
+          &nbsp;
+          <span>{t('LocationModal.location2')}</span>
         </S.LostCenterTitle>
         <S.LostCenterMap />
       </S.LostCenterLayout>
       <S.LostCenterContent>
-        <span>대운동장 구령대 중앙</span>에
-        <br />
-        분실물 센터가 위치해 있습니다.
+        <Trans i18nKey={'LocationModal.content'} components={{ 1: <span />, 2: <br /> }}></Trans>
       </S.LostCenterContent>
     </LostModal>
   );
 };
 
 export const ItemModal = ({ isOpen, setIsOpen, lostId }) => {
+  const { t } = useTranslation();
   const [item, setItem] = useState({});
 
   const getItemApi = async () => {
@@ -79,7 +83,7 @@ export const ItemModal = ({ isOpen, setIsOpen, lostId }) => {
             <S.LostItemMainContentLayout>
               <S.LostItemMainContentBox>
                 <S.LostItemMainContentLeft>
-                  발견 위치
+                  {t('LostModal.found')}
                   <S.BlueLine />
                 </S.LostItemMainContentLeft>
                 <S.LostItemMainContentRight>{item.foundLocation}</S.LostItemMainContentRight>
@@ -87,7 +91,7 @@ export const ItemModal = ({ isOpen, setIsOpen, lostId }) => {
 
               <S.LostItemMainContentBox>
                 <S.LostItemMainContentLeft>
-                  보관 위치
+                  {t('LostModal.stored')}
                   <S.BlueLine />
                 </S.LostItemMainContentLeft>
                 <S.LostItemMainContentRight>{item.storageLocation}</S.LostItemMainContentRight>
@@ -119,3 +123,11 @@ ItemModal.propTypes = {
   setIsOpen: PropTypes.func.isRequired,
   lostId: PropTypes.number.isRequired,
 };
+
+const SpaceSpan = styled.span`
+  &::after {
+    display: inline-block;
+    width: 5px;
+    content: ' ';
+  }
+`;

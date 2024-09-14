@@ -40,6 +40,9 @@ export const Video = styled.video`
 export const CaptureButton = styled.button`
   margin-top: 11.7rem;
   margin-bottom: 7.7rem;
+  @media (max-height: 716px) {
+    margin-top: 5.5rem;
+  }
 
   width: 7.2rem;
   height: 7.2rem;

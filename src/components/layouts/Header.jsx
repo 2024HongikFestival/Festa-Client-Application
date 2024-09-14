@@ -1,326 +1,166 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled, { css } from 'styled-components';
-import hiuLogo from '@/assets/webps/layouts/hiuLogo.webp';
-import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
-import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
-import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Popup from '@/components/admin/Popup';
-import PropTypes from 'prop-types';
+import * as S from '@/components/layouts/HeaderStyles';
+import AdminMenuBar from '@/components/layouts/AdminMenuBar';
+import CommonMenuBar from '@/components/layouts/CommonMenuBar';
+import routeConfig from '@/constants/layouts/routeConfig';
+import { useCamera } from '@/components/lost-and-found/AddLostItem/context/AuthProvider';
+import xBtnBlack from '@/assets/svgs/layouts/xBtnBlack.svg';
+import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [menuClass, setMenuClass] = useState('');
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const { isCamera } = useCamera();
   const nav = useNavigate();
   const location = useLocation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const isAdminPath =
-    location.pathname === '/admin' || location.pathname === '/admin/event' || location.pathname === '/admin/losts';
-
+  const headerRef = useRef(null);
   const adminMenuRef = useRef(null);
+  const commonMenuRef = useRef(null);
 
-  const handleMenuClick = (path) => {
-    nav(path, { state: { from: path } });
-  };
+  let currentRoute = routeConfig.default;
 
-  const useBlackImages = (path) => {
-    // 검정색 홍익로고, 검정 메뉴바 로고 들어가는 path
-    const blackImagePaths = ['/admin', '/admin/event', '/admin/losts'];
-    return blackImagePaths.includes(path);
-  };
-  const blackImages = useBlackImages(location.pathname);
+  // 경로
+  const flamePaths = [
+    '/flame',
+    '/flame/',
+    '/flame/map',
+    '/flame/timetable',
+    '/flame/reservation',
+    '/flame/lineup',
+    '/flame/md',
+    '/flame/promotion',
+  ];
+  const adminPaths = ['/admin', '/admin/', '/admin/event', '/admin/losts'];
+  const isFlamePath = flamePaths.includes(location.pathname);
+  const isAdminPath = adminPaths.includes(location.pathname);
 
+  if (isFlamePath) {
+    currentRoute = routeConfig['/flame'];
+  } else if (isAdminPath) {
+    currentRoute = routeConfig['/admin'];
+  } else if (routeConfig[location.pathname]) {
+    currentRoute = routeConfig[location.pathname];
+  }
+
+  // 대동제 페이지에서 메뉴 오픈 시 header logo, xBtn 검정으로 고정
+  if (isMenuOpen && !isFlamePath && !isAdminPath) {
+    currentRoute = {
+      ...currentRoute,
+      logo: hiuLogoBlack, // 검정 로고
+      xBtn: xBtnBlack, // 검정 xBtn
+    };
+  }
+
+  // 메뉴바 여닫기
   const toggleMenu = (event) => {
     event.stopPropagation(); // 이벤트 전파를 막아 외부 클릭과의 충돌 방지
+    setIsAnimating(true);
     setIsMenuOpen((prev) => !prev);
   };
 
-  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
-  const handleLogout = () => {
-    localStorage.removeItem('accessToken');
-    setIsLoggedIn(false);
-    nav('/admin');
+  // backBtn
+  const handleGoBack = () => {
+    if (location.pathname === '/lost-and-found/add') {
+      // /lost-and-found/add에서는 /lost-and-found로 이동
+      nav('/lost-and-found');
+    } else {
+      // 그 외: -1로 이동
+      nav(-1);
+    }
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 100);
   };
 
-  const handleConfirmLogout = () => {
-    handleLogout();
-    setIsMenuOpen(false);
-    setShowLogoutPopup(false);
-  };
-
-  const handleCancelLogout = () => {
-    setIsMenuOpen(false);
-    setShowLogoutPopup(false);
-  };
-
+  // 메뉴바 & 헤더 밖 클릭 범위 지정 & admin 로직
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (adminMenuRef.current && !adminMenuRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-        setShowLogoutPopup(false);
+      if (
+        (commonMenuRef.current && !commonMenuRef.current.contains(event.target)) ||
+        (adminMenuRef.current && !adminMenuRef.current.contains(event.target))
+      ) {
+        if (headerRef.current && !headerRef.current.contains(event.target)) {
+          setIsMenuOpen(false);
+          if (isAdminPath) {
+            setShowLogoutPopup(false);
+          }
+        }
       }
     };
 
+    // -> 범위 밖 누르면 닫기
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  }, [isAdminPath, commonMenuRef, adminMenuRef, headerRef, setIsMenuOpen, setShowLogoutPopup]);
+
+  // 메뉴바 열렸을 때 스크롤 막기
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      setMenuClass('open');
+    } else {
+      document.body.style.overflow = '';
+      setMenuClass('close');
+    }
+  }, [isMenuOpen]);
+
+  // 메뉴바 닫을 때 애니메이션
+  useEffect(() => {
+    if (menuClass === 'close' && isAnimating) {
+      const timer = setTimeout(() => {
+        setIsAnimating(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [menuClass, isAnimating]);
 
   return (
     <>
-      <HeaderLayout $path={location.pathname}>
-        <HeaderBg $path={location.pathname}>
-          <HambergerMenu onClick={toggleMenu}>
-            <img src={blackImages ? hambergerMenuBlack : hambergerMenu} alt="hambergerMenu" />
-          </HambergerMenu>
-          <HiuLogo onClick={() => nav('/')}>
-            <img src={blackImages ? hiuLogoBlack : hiuLogo} alt="hiuLogo" />
-          </HiuLogo>
+      <S.HeaderLayout ref={headerRef} $path={location.pathname}>
+        <S.HeaderBg $path={location.pathname} $isMenuOpen={isMenuOpen} $isCamera={isCamera}>
+          {currentRoute.showBackButton ? (
+            <S.HambergerMenu onClick={handleGoBack}>
+              <img src={currentRoute.menuIcon} alt="backBtn" />
+            </S.HambergerMenu>
+          ) : (
+            <S.HambergerMenu onClick={toggleMenu}>
+              <img src={isMenuOpen ? currentRoute.xBtn : currentRoute.menuIcon} alt="menuIcon" />
+            </S.HambergerMenu>
+          )}
+          <S.HiuLogo onClick={() => nav('/')}>
+            <img src={currentRoute.logo} alt="logo" />
+          </S.HiuLogo>
+          <S.Right></S.Right>
+        </S.HeaderBg>
 
-          <Right></Right>
-        </HeaderBg>
-        {isMenuOpen &&
+        {(isMenuOpen || isAnimating) &&
           (isAdminPath ? (
             <AdminMenuBar
-              adminMenuRef={adminMenuRef}
-              handleCancelLogout={handleCancelLogout}
-              handleConfirmLogout={handleConfirmLogout}
-              showLogoutPopup={showLogoutPopup}
-              setShowLogoutPopup={setShowLogoutPopup}
+              className={menuClass}
               nav={nav}
-              handleMenuClick={handleMenuClick}
               closeMenu={() => setIsMenuOpen(false)}
+              adminMenuRef={adminMenuRef}
+              setShowLogoutPopup={setShowLogoutPopup}
+              showLogoutPopup={showLogoutPopup}
             />
           ) : (
-            <CommonMenuBar closeMenu={toggleMenu} />
+            <CommonMenuBar
+              className={menuClass}
+              nav={nav}
+              closeMenu={() => setIsMenuOpen(false)}
+              flame={isFlamePath}
+              commonMenuRef={commonMenuRef}
+            />
           ))}
-      </HeaderLayout>
+      </S.HeaderLayout>
     </>
   );
 }
-
-const AdminMenuBar = ({
-  nav,
-  handleCancelLogout,
-  handleConfirmLogout,
-  showLogoutPopup,
-  setShowLogoutPopup,
-  closeMenu,
-  adminMenuRef,
-  handleMenuClick,
-}) => {
-  return (
-    <>
-      <AdminBar ref={adminMenuRef}>
-        <PageMenu>
-          <Menu
-            onClick={() => {
-              handleMenuClick('/admin/losts');
-              closeMenu();
-            }}
-          >
-            분실물 게시판 관리
-          </Menu>
-          <Menu
-            onClick={() => {
-              handleMenuClick('/admin/event');
-              closeMenu();
-            }}
-          >
-            이벤트 관리
-          </Menu>
-        </PageMenu>
-        <Logout onClick={() => setShowLogoutPopup(true)}>로그아웃</Logout>
-      </AdminBar>
-      {showLogoutPopup && (
-        <Popup
-          message="로그아웃 할까요?"
-          onConfirm={handleConfirmLogout}
-          onCancel={handleCancelLogout}
-          confirmText="로그아웃"
-          cancelText="취소"
-        />
-      )}
-    </>
-  );
-};
-
-const CommonMenuBar = ({ closeMenu }) => (
-  <MenuBar>
-    <ul>
-      <li>Common Menu 1</li>
-      <li>Common Menu 2</li>
-      <li>Common Menu 3</li>
-    </ul>
-  </MenuBar>
-);
-
-CommonMenuBar.propTypes = {
-  closeMenu: PropTypes.func.isRequired,
-};
-
-AdminMenuBar.propTypes = {
-  nav: PropTypes.func.isRequired,
-  handleCancelLogout: PropTypes.func.isRequired,
-  handleConfirmLogout: PropTypes.func.isRequired,
-  showLogoutPopup: PropTypes.bool.isRequired,
-  setShowLogoutPopup: PropTypes.func.isRequired,
-  closeMenu: PropTypes.func.isRequired,
-  handleMenuClick: PropTypes.func.isRequired,
-  adminMenuRef: PropTypes.oneOfType([
-    PropTypes.func, // ref로서의 함수 타입
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }), // ref로서의 객체 타입
-  ]).isRequired,
-};
-
-const HeaderLayout = styled.div`
-  width: 100%;
-  max-width: 768px;
-  min-width: 375px;
-  margin: 0 auto;
-  height: 5.6rem;
-  background-color: ${(props) => props.theme.colors.black};
-  position: fixed;
-  top: 0rem;
-  z-index: 100;
-
-  ${(props) =>
-    props.$path === '/admin' &&
-    css`
-      background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
-    `}
-  ${(props) =>
-    props.$path === '/admin/event' &&
-    css`
-      background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
-    `}
-
-  ${(props) =>
-    props.$path === '/admin/losts' &&
-    css`
-      background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
-    `}
-`;
-
-const HeaderBg = styled.div`
-  width: 100%;
-  max-width: 768px;
-  min-width: 375px;
-  height: 5.6rem;
-  background: rgba(22, 22, 22, 0.1);
-  box-shadow: 0rem 0rem 0.4rem 0rem rgba(255, 255, 255, 0.12) inset;
-  backdrop-filter: blur(0.2rem);
-  position: fixed;
-  top: 0rem;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  ${(props) =>
-    props.$path === '/admin' &&
-    css`
-      background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
-    `}
-  ${(props) =>
-    props.$path === '/admin/event' &&
-    css`
-      background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
-    `}
-    ${(props) =>
-    props.$path === '/admin/losts' &&
-    css`
-      background-color: ${(props) => props.theme.colors.white};
-      background-size: cover;
-      background-position: center;
-    `}
-`;
-
-const HambergerMenu = styled.div`
-  cursor: pointer;
-  margin-left: 2rem;
-  width: 2.4rem;
-  height: 2.4rem;
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
-
-const HiuLogo = styled.div`
-  cursor: pointer;
-  width: 14.7rem;
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
-
-const Right = styled.div`
-  margin-right: 2rem;
-  width: 2.4rem;
-  height: 2.4rem;
-`;
-
-const MenuBar = styled.div`
-  position: absolute;
-  top: 5.6rem;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  max-width: 19.2rem;
-  background-color: white;
-  z-index: 99;
-`;
-
-const AdminBar = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: absolute;
-  top: 5.6rem;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 5.6rem);
-  max-width: 19.2rem;
-  background-color: white;
-  z-index: 99;
-`;
-
-const PageMenu = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Menu = styled.span`
-  padding: 1.6rem;
-  text-align: left;
-  ${(props) => props.theme.fontStyles.basic.body1Med};
-  font-size: 1.6rem;
-  cursor: pointer;
-  &:hover {
-    background-color: ${(props) => props.theme.colors.gray20};
-  }
-`;
-
-const Logout = styled.span`
-  ${(props) => props.theme.fontStyles.basic.body1Bold};
-  padding: 1.6rem;
-  font-size: 1.6rem;
-  text-align: center;
-  color: ${(props) => props.theme.colors.white};
-  background-color: ${(props) => props.theme.colors.gray70};
-  cursor: pointer;
-`;
