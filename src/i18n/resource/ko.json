@@ -372,5 +372,83 @@
       "description3": "분실물 센터가 위치해 있습니다.",
       "goLostAndFoundBtn": "온라인 분실물 센터 바로가기"
     }
+  },
+  "event": {
+    "main": {
+      "notice": {
+        "year": "2024",
+        "title1": "홍익",
+        "title2": "대동제 래플",
+        "description1": "매일",
+        "description2": "오전 10시",
+        "description3": "응모권 1장 부여",
+        "timeNotice": "마감까지 남은 시간",
+        "qText": "Q. 홍익 래플이 뭐예요?",
+        "aText": "A. 응모자 추첨을 통해 경품을 지급하는 이벤트입니다."
+      },
+      "item": {
+        "quantity": "당첨 수량 10장",
+        "title1": "TVING 스탠다드 요금제",
+        "title2": "3개월 이용권",
+        "title3": "증정!",
+        "description1": "3개월 이용권"
+      },
+      "detail": {
+        "title1": "응모 대상",
+        "description1": "지금 ‘홍익대학교 내에서’ 축제를 즐기고",
+        "description2": "있다면 재학생 외부인 상관없이 누구나",
+        "title2": "응모 조건",
+        "description3": "현재 위치가 홍익대학교로 확인된 응모자",
+        "title3": "응모 기간",
+        "description4": "9월 25일 10:00 ~ 9월 27일 23:59:59",
+        "description5": "매일 오전 10시 응모권 1장 제공",
+        "title4": "당첨 발표",
+        "description6": "9월 28일 14:00 대동제 인스타 스토리"
+      },
+      "button": {
+        "share": "이벤트 공유",
+        "available": "카카오 인증 후 응모하기",
+        "unavailable": "응모 기간이 아니에요"
+      }
+    },
+    "enter": {
+      "name1": "이름을 알려주세요",
+      "name2": "ex. 홍길동",
+      "phone": "당첨 시 연락드릴 연락처를 적어주세요",
+      "comment1": "축제 재밌게 즐기고 계신가요?",
+      "comment2": "여러분들의 생생한 후기를 들려주세요!",
+      "comment3": "(선택)",
+      "submit": "응모하기"
+    },
+    "result": {
+      "title": "응모 완료!",
+      "description1": "내일",
+      "description2": "오전 10시",
+      "description3": "에 응모권 1장 받고",
+      "description4": "또 도전해보세요!",
+      "last": {
+        "description1": "축제가 끝났어요",
+        "description2": "당첨자는",
+        "description3": "9월 28일 오후 2시",
+        "description4": "스토리에 발표",
+        "description5": "됩니다"
+      }
+    },
+    "error": {
+      "close": "닫기",
+      "location": {
+        "title1": "앗! 현재 위치가",
+        "title2": "홍익대학교",
+        "title3": "가 아니에요",
+        "description1": "현재 위치가 홍익대학교로 확인된 응모자만",
+        "description2": "이벤트에 응모가 가능해요"
+      },
+      "duplicate": {
+        "title1": "이미 응모 ",
+        "title2": "완료 했어요!",
+        "description1": "축제 기간 동안 매일 주어지는 응모권으로",
+        "description2": "1일 1회만 응모 가능해요"
+      }
+    }
   }
 }
