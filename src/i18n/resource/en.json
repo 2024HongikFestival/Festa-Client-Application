@@ -39,6 +39,82 @@
       "prev": "<< GO BACK"
     }
   },
+  "stageInfoPage": {
+    "title": "Viewing Information",
+    "selectionBar": {
+      "schedule": "Main Stage",
+      "location": "Location"
+    }
+  },
+  "stageSchedule": {
+    "day1": "DAY 1",
+    "day2": "DAY 2",
+    "day3": "DAY 3",
+    "date1": "9.25(WED)",
+    "date2": "9.26(THU)",
+    "date3": "9.27(FRI)",
+    "talentContest": "Talent Contest",
+    "studentCenterStage": "Student Main Stage",
+    "celebrityStage": "Celebrities",
+    "artistName": "Artist name",
+    "loading": "Loading...",
+    "eventDetails": {
+      "time1": "17:00 ~ 19:30",
+      "time2": "20:00 ~ 22:00",
+      "talentEvents": {
+        "melodyBand": "<Melody> (Band)",
+        "gr8Dance": "<GR8> (Dance)",
+        "royKimSolo": "<Roy Kim of Business School> (Solo)",
+        "yuZiYeBand": "<Yu Zi Ye Band> (Band)",
+        "backToBackDance": "<Back to Back Homerun> (Dance)",
+        "leeMinGyuSolo": "<Lee Min Gyu> (Solo)",
+        "academicWarningBand": "<academic warning> (Band)",
+        "ryukMarinSolo": "<Ryuk Marin> (Solo)",
+        "cheongRamBand": "<Cheong Ram> (Band)"
+      },
+      "studentCenterEventsDay1": {
+        "hwangInSeongBand": "Hwang In Seong Band",
+        "afterBand": "After",
+        "kaiserBand": "Kaiser",
+        "imagineBand": "Imagine Band",
+        "brainsWars": "Brain’s wars",
+        "performingArtsMusical": "Performing arts musical",
+        "ohHyeonSongAndTomato": "Oh hyeon song and tomato"
+      },
+      "studentCenterEventsDay2": {
+        "illEquippedWord": "An ill-equipped word",
+        "oneNightTwoDays": "One night two days",
+        "woonerBand": "Wooner Band",
+        "hongGroove": "Hong groove",
+        "performingArtsBand": "A performing arts band",
+        "blackTetra": "Black Tetra",
+        "bitzFlow": "Bitz Flow"
+      }
+    }
+  },
+  "locationInfo": {
+    "mapTitle": "Stage Map",
+    "entranceInfo": "Entrance information",
+    "hongikZoneInfo": "Only Hongik University students <highlight>who made a reservation</highlight> can enter the Hongik Zone",
+    "hongikZoneButton": "Hongik Zone"
+  },
+  "hongikZonePage": {
+    "title": "Hongik Zone",
+    "whatIsHongikZone": "What is Hongik Zone?",
+    "hongikZoneDescription1": "<blackHighlight>Hongik Zone</blackHighlight> is a main stage viewing area where only <blackHighlight>students with a confirmed reservation</blackHighlight> from Hongik University can enter.",
+    "hongikZoneDescription2": "Leave of absence students, postponed graduates, and graduate students are all eligible.",
+    "prepareForEntry": "Please Prepare to enter!",
+    "entryTime": "The entry time starts at <blueHighlight>4:30 PM</blueHighlight>.",
+    "entryProcedure": "Before entering, at the entrance, confirm your advance reservation details of <blueHighlight>‘Talket’</blueHighlight> and proceed.",
+    "noTicketInfo": "From 18:30 p.m., those who do not receive Talket tickets can get additional tickets from the Talket application only for the remaining seats on the site.",
+    "locationTitle": "Hongik Zone Location",
+    "knowBeforeEntry": "Please note before entering!",
+    "safetyInstructions": [
+      "In case of large crowds, please follow the instructions of the on-site safety personnel and keep order well.",
+      "Please refrain from excessive hanging or leaning on the fence as it may cause safety problems.",
+      "If you cause problems by not complying with the safety personnel's instructions, you can be sent off."
+    ]
+  },
   "facilities": {
     "amenities": "Amenities",
     "restroomToggle": "Restroom",

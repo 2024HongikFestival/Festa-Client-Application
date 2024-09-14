@@ -49,6 +49,82 @@
     "LostAndFoundCenterLocationDescription": "대운동장 구령대 중앙에 분실물 센터가 위치해 있습니다.",
     "ClickToAccessOnlineLostAndFoundCenter": "온라인 분실물 센터 바로가기"
   },
+  "stageInfoPage": {
+    "title": "관람 정보",
+    "selectionBar": {
+      "schedule": "중앙 무대 일정",
+      "location": "위치"
+    }
+  },
+  "stageSchedule": {
+    "day1": "DAY 1",
+    "day2": "DAY 2",
+    "day3": "DAY 3",
+    "date1": "9.25(수)",
+    "date2": "9.26(목)",
+    "date3": "9.27(금)",
+    "talentContest": "재주꾼 선발 대회",
+    "studentCenterStage": "학생 중앙 무대",
+    "celebrityStage": "연예인 초청 무대",
+    "artistName": "아티스트 이름",
+    "loading": "Loading...",
+    "eventDetails": {
+      "time1": "17:00 ~ 19:30",
+      "time2": "20:00 ~ 22:00",
+      "talentEvents": {
+        "melodyBand": "<멜로디> (밴드)",
+        "gr8Dance": "<GR8> (댄스)",
+        "royKimSolo": "<경영대 로이킴> (솔로)",
+        "yuZiYeBand": "<유지예 밴드> (밴드)",
+        "backToBackDance": "<백투백홈런> (댄스)",
+        "leeMinGyuSolo": "<이민규> (솔로)",
+        "academicWarningBand": "<학사경고> (밴드)",
+        "ryukMarinSolo": "<육마린> (솔로)",
+        "cheongRamBand": "<청람> (밴드)"
+      },
+      "studentCenterEventsDay1": {
+        "hwangInSeongBand": "황인성 밴드",
+        "afterBand": "나중에",
+        "kaiserBand": "카이저",
+        "imagineBand": "이매진 밴드",
+        "brainsWars": "브레인스워즈",
+        "performingArtsMusical": "공연예술 뮤지컬",
+        "ohHyeonSongAndTomato": "오현성과 토마토"
+      },
+      "studentCenterEventsDay2": {
+        "illEquippedWord": "못갖춘 마디",
+        "oneNightTwoDays": "1박 2일",
+        "woonerBand": "우나밴드",
+        "hongGroove": "홍그루브",
+        "performingArtsBand": "공연예술 밴드",
+        "blackTetra": "블랙테트라",
+        "bitzFlow": "비츠플로우"
+      }
+    }
+  },
+  "locationInfo": {
+    "mapTitle": "무대 주변 지도",
+    "entranceInfo": "출입구 정보",
+    "hongikZoneInfo": "홍익존은 <highlight>사전예매</highlight>하신<br/> 홍익대학교 학생들만 입장 가능해요",
+    "hongikZoneButton": "홍익존"
+  },
+  "hongikZonePage": {
+    "title": "홍익존",
+    "whatIsHongikZone": "홍익존이 뭐예요?",
+    "hongikZoneDescription1": "<blackHighlight>홍익존</blackHighlight>은 <blackHighlight>사전 예매가 확인</blackHighlight>된 홍익대학교 학생만 입장 가능한 메인스테이지 관람존입니다.",
+    "hongikZoneDescription2": "휴학생, 졸업유예생, 대학원생 모두 가능합니다.",
+    "prepareForEntry": "입장하기 위해 준비해 주세요!",
+    "entryTime": "입장 시간은 <blueHighlight>16시 30분</blueHighlight>부터입니다.",
+    "entryProcedure": "입장 전 입구에서 <blueHighlight>‘톡켓’</blueHighlight>의 사전 예매 내역을 확인하고 입장합니다.",
+    "noTicketInfo": "톡켓 티켓 미소지자는 18시 30분 이후부터 현장 잔여석에 한하여 톡켓 어플에서 추가 티켓을 발급 받으실 수 있습니다.",
+    "locationTitle": "홍익존 위치",
+    "knowBeforeEntry": "입장하기 전 알아두세요!",
+    "safetyInstructions": [
+      "많은 사람이 모일 경우, 현장 안전요원의 지시에 따라 질서를 잘 지켜주시기 바랍니다.",
+      "무리하게 펜스에 매달리거나 기대는 행위는 안전상 문제가 발생할 수 있으니 삼가주시기 바랍니다.",
+      "안전요원의 지시에 불응하여 문제를 일으킬 경우 퇴장조치를 받을 수 있습니다."
+    ]
+  },
 
   "LostAndFound": {
     "KakaoBtnText": "3초 인증하고 제보하기",
