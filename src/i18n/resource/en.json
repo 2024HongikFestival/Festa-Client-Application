@@ -374,6 +374,188 @@
       "info": "Rankings will be updated on an hourly basis,\n reset daily at 5 AM"
     }
   },
+  "fleamarket": {
+    "pageTitle": "Fleamarket",
+    "location": "Fleamarket Location",
+    "list": [
+      {
+        "key": "ccJuice",
+        "name": "CC Juice",
+        "intro": "A place where you can overcome the hot weather with juice and fruit salad made of fresh fruit"
+      },
+      {
+        "key": "almak",
+        "name": "Olmak",
+        "intro": "We sell handmade jewelry and accessories made of nature-inspired ceramics and glass materials"
+      },
+      {
+        "key": "henna",
+        "name": "Henna, do it",
+        "intro": "Have you tried Henna"
+      },
+      {
+        "key": "modori",
+        "name": "Modori",
+        "intro": "A family of carpenters' cute props"
+      },
+      {
+        "key": "sajuraplz",
+        "name": "Sajurplz",
+        "intro": "The pottery I made. I baked it for you"
+      },
+      {
+        "key": "hypeBoy",
+        "name": "Hongik hype boy",
+        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike and more at a low price."
+      },
+      {
+        "key": "sangsu",
+        "name": "Sang-su guilty verdict",
+        "intro": "Sales of used LP and CD at home and abroad"
+      },
+      {
+        "key": "kawaii",
+        "name": "Something cute",
+        "intro": "It's a special handmade knitted piece that express cuteness and affection"
+      },
+      {
+        "key": "aiesec",
+        "name": "How about MZ eco-friendly practice with AIESEC?",
+        "intro": "Multi-use tumbler and hand knitted tea coaster that can be transformed into a keyring"
+      }
+    ],
+    "detail": [
+      {
+        "name": "CC Juice",
+        "intro": "A place where you can overcome the hot weather with juice and fruit salad made of fresh fruit! 🍊🍇",
+        "goods": [
+          {
+            "name": "fresh fruit punch"
+          },
+          {
+            "name": "orange juice"
+          }
+        ]
+      },
+      {
+        "name": "How about MZ eco-friendly practice with AIESEC?",
+        "intro": "Multi-use tumbler and hand knitted tea coaster that can be transformed into a keyring 🏵️🥤",
+        "goods": [
+          {
+            "name": "Tumbler"
+          },
+          {
+            "name": "hand knitted tea coaster"
+          },
+          {
+            "name": "tumbler + tea coaster set"
+          }
+        ]
+      },
+      {
+        "name": "Olmak",
+        "intro": "We sell handmade jewelry and accessories made of nature-inspired ceramics and glass materials 💍💎",
+        "goods": [
+          {
+            "name": "Tumbler"
+          },
+          {
+            "name": "hand knitted tea coaster"
+          },
+          {
+            "name": "tumbler + tea coaster set"
+          }
+        ]
+      },
+      {
+        "name": "Sang-su guilty verdict",
+        "intro": "Sales of used LP and CD at home and abroad 💿🎶"
+      },
+      {
+        "name": "Something cute ^..^",
+        "intro": "It’s a special handmade knitted piece that express cuteness and affection 🧶🍅",
+        "event1": "1. If you purchase more than 10,000 won, you will get a knitted badge!",
+        "event2": "2. Instagram event",
+        "event3": "Please leave a picture of your visit as a story! We're going to draw two of you and give you the key ring you want.",
+        "bottom": "There are also a variety of knitted pieces and pretty packages! Express your feelings to your loved ones. 💝",
+        "goods": [
+          {
+            "name": "mushroom keyring"
+          },
+          {
+            "name": "vegetable keyring set"
+          },
+          {
+            "name": "goldfish keyring"
+          },
+          {
+            "name": "white copper keyring"
+          },
+          {
+            "name": "ribbon keyring"
+          },
+          {
+            "name": "skeleton keyring"
+          },
+          {
+            "name": "tomato tea coaster"
+          },
+          {
+            "name": "grass tea coaster"
+          },
+          {
+            "name": "sea tea coaster"
+          },
+          {
+            "name": "pizza tea coaster"
+          }
+        ]
+      },
+      {
+        "name": "Henna, do it!",
+        "intro": "Have you tried Henna? 🖌️🖤",
+        "bottom": "There are about 100 more patterns to explore ☺️"
+      },
+      {
+        "name": "Hongik hype boy market",
+        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike 👕✨ and more at a low price. "
+      },
+      {
+        "name": "sajuraplz",
+        "intro": "The pottery I made. I baked it for you 🫵🍶"
+      },
+      {
+        "name": "Modori",
+        "intro": "A family of carpenters’ cute props 🌳🪓",
+        "goods": [
+          {
+            "name": "cake kering"
+          },
+          {
+            "name": "donut keyring"
+          },
+          {
+            "name": "fish keyring"
+          },
+          {
+            "name": "robot keyring"
+          },
+          {
+            "name": "fish keyring (chubby)"
+          },
+          {
+            "name": "fish keyring (thin)"
+          },
+          {
+            "name": "miscellaneous"
+          },
+          {
+            "name": "bookmark"
+          }
+        ]
+      }
+    ]
+  },
   "layouts": {
     "footer": {
       "prev": "",

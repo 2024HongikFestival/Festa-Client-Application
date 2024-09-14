@@ -6,16 +6,21 @@ import styled from 'styled-components';
 // import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import { useParams } from 'react-router-dom';
-import { fleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
+import { FleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
 import FleamarketTop from '@/components/booth/FleamarketTop';
 import FleamarketEvent from '@/components/booth/FleamarketEvent';
 import FleamarketBottom from '@/components/booth/FleamarketBottom';
 import PriceTable from '@/components/booth/PriceTable';
 import RecordList from '@/components/booth/RecordList';
+import { useTranslation } from 'react-i18next';
 
 const FleamarketDetail = () => {
+  const { t } = useTranslation();
   const { marketId } = useParams();
-  const item = fleamarketDetailList[marketId];
+  const fleamarketDetailList = FleamarketDetailList(t);
+  const item = fleamarketDetailList[`${marketId}`];
+  // const item = fleamarketDetailList.${marketId};
+  // const item = fleamarketDetailList[marketId];
   const isSpecialMarket = marketId === 'kawaii' || marketId === 'henna';
 
   return (

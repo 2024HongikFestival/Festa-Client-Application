@@ -4,26 +4,29 @@
 import PageTitle from '@/components/common/PageTitle';
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
-import { fleamarketList } from '@/constants/booth/fleamarketList';
 import FleamarketInfo from '@/components/booth/FleamarketInfo';
+import { FleamarketList } from '@/constants/booth/fleamarketList';
+import { useTranslation } from 'react-i18next';
 
 const Fleamarket = () => {
+  const { t } = useTranslation();
+  const fleamarketList = FleamarketList(t);
   return (
     <Container>
-      <PageTitle title="플리마켓" />
+      <PageTitle title={t('fleamarket.pageTitle')} />
       {/* 플리마켓 지도 컴포넌트 */}
       <ContentContainer>
-        <MapTitle>플리마켓 위치</MapTitle>
+        <MapTitle>{t('fleamarket.location')}</MapTitle>
         <MapImage src="src/assets/webps/booth/mapExample.webp" />
       </ContentContainer>
       {/* 플리마켓 리스트 컴포넌트 */}
-      <FleamarketList>
+      <FleamarketListWrapper>
         {fleamarketList.map((item, index) => (
           <ContentContainer key={item.key}>
             <FleamarketInfo index={index} item={item} />
           </ContentContainer>
         ))}
-      </FleamarketList>
+      </FleamarketListWrapper>
     </Container>
   );
 };
@@ -56,7 +59,7 @@ const MapImage = styled.img`
   border-bottom: 0.1rem solid ${(props) => props.theme.colors.gray30};
 `;
 
-const FleamarketList = styled.div`
+const FleamarketListWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;

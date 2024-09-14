@@ -372,7 +372,177 @@
       "info": "랭킹은 1시간 단위로 정각 업데이트되며,\n매일 오전 5시에 리셋됩니다"
     }
   },
-
+  "fleamarket": {
+    "pageTitle": "플리마켓",
+    "location": "플리마켓 위치",
+    "list": [
+      {
+        "key": "ccJuice",
+        "name": "씨씨주스",
+        "intro": "신선한 과일로 만든 주스와 화채로 더운\n 날씨를 이겨낼 수 있는 곳"
+      },
+      {
+        "key": "almak",
+        "name": "올막 (almak)",
+        "intro": "자연에서 영감을 받은 도자기와 유리 소재의\n 핸드메이드 주얼리와 소품을 팝니다"
+      },
+      {
+        "key": "henna",
+        "name": "헤나 해놔",
+        "intro": "마 헤나해봤나"
+      },
+      {
+        "key": "modori",
+        "name": "모도리",
+        "intro": "뚝딱뚝딱 목수들의 아기자기한 소품 가게"
+      },
+      {
+        "key": "sajuraplz",
+        "name": "sajuraplz",
+        "intro": "내가 만든 도자기 너를 위해 구웠지"
+      },
+      {
+        "key": "hypeBoy",
+        "name": "홍익 Hype Boy 마켓",
+        "intro": "슈프림, 팔라스, 스투시, 나이키 등 다양한 스트릿\n 브랜드 의류 저렴하게 가져가세요!"
+      },
+      {
+        "key": "sangsu",
+        "name": "상수좌판",
+        "intro": "국내외 각종 중고 LP와 CD 등 음반 판매"
+      },
+      {
+        "key": "kawaii",
+        "name": "겨운거 ^..^",
+        "intro": "손으로 만든 특별한 뜨개 작품으로 귀여움과\n 애정을 전합니다"
+      },
+      {
+        "key": "aiesec",
+        "name": "AIESEC과 함께 MZ한 친환경 실천 어때?",
+        "intro": "다회용 텀블러 & 키링으로 변신 가능한 손뜨개\n 티코스터"
+      }
+    ],
+    "detail": [
+      {
+        "name": "씨씨 주스",
+        "intro": "신선한 과일로 만든 주스와 화채로\n더운 날씨를 이겨낼 수 있는 곳! 🍊🍇",
+        "goods": [
+          {
+            "name": "생과일 화채"
+          },
+          {
+            "name": "오렌지 주스"
+          }
+        ]
+      },
+      {
+        "name": "AIESEC과 함께\n MZ한 친환경 실천 어때?",
+        "intro": "다회용 텀블러 & 키링으로 변신 가능한\n 손뜨개 티코스터 🏵️🥤",
+        "goods": [
+          {
+            "name": "텀블러"
+          },
+          {
+            "name": "손뜨개 티코스터"
+          },
+          {
+            "name": "텀블러+티코스터 set"
+          }
+        ]
+      },
+      {
+        "name": "올막 (almak)",
+        "intro": "자연에서 영감을 받은 도자와 유리 소재의\n핸드메이드 주얼리와 소품을 팝니다 💍💎"
+      },
+      {
+        "name": "상수좌판",
+        "intro": "Sales of used LP and CD at home and abroad 💿🎶"
+      },
+      {
+        "name": "겨운거 ^..^",
+        "intro": "손으로 만든 특별한 뜨개 작품으로\n귀여움과 애정을 전합니다 🧶🍅",
+        "event1": "1. If you purchase more than 10,000 won, you will get a knitted badge!",
+        "event2": "2. Instagram event",
+        "event3": "Please leave a picture of your visit as a story! We're going to draw two of you and give you the key ring you want.",
+        "bottom": "There are also a variety of knitted pieces and pretty packages! Express your feelings to your loved ones. 💝",
+        "goods": [
+          {
+            "name": "버섯 키링"
+          },
+          {
+            "name": "채소 키링 set"
+          },
+          {
+            "name": "금붕어 키링"
+          },
+          {
+            "name": "흰동가리 키링"
+          },
+          {
+            "name": "리본 키링"
+          },
+          {
+            "name": "해골 키링"
+          },
+          {
+            "name": "토마토 티코스터"
+          },
+          {
+            "name": "잔디 티코스터"
+          },
+          {
+            "name": "바다 티코스터"
+          },
+          {
+            "name": "피자 티코스터"
+          }
+        ]
+      },
+      {
+        "name": "헤나 해놔",
+        "intro": "마 헤나 해 봤나 🖌️🖤",
+        "bottom": "There are about 100 more patterns to explore ☺️"
+      },
+      {
+        "name": "홍익 Hype Boy 마켓",
+        "intro": "슈프림, 팔라스, 스투시, 나이키 등 👕✨\n다양한 스트릿 브랜드 의류 저렴하게 가져가세요!"
+      },
+      {
+        "name": "sajuraplz",
+        "intro": "내가 만든 도자기 너를 위해 구웠지 🫵🍶"
+      },
+      {
+        "name": "모도리",
+        "intro": "뚝딱뚝딱 목수들의\n아기자기한 소품 가게 🌳🪓",
+        "goods": [
+          {
+            "name": "케이크 키링"
+          },
+          {
+            "name": "도넛 키링"
+          },
+          {
+            "name": "물고기 키링"
+          },
+          {
+            "name": "로봇 키링"
+          },
+          {
+            "name": "물고기 키링 (통통)"
+          },
+          {
+            "name": "물고기 키링 (뺴뺴)"
+          },
+          {
+            "name": "잡동사니"
+          },
+          {
+            "name": "책갈피"
+          }
+        ]
+      }
+    ]
+  },
   "layouts": {
     "footer": {
       "prev": "이전 화면으로",
