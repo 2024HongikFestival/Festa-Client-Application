@@ -26,7 +26,7 @@ export const fleamarketList = [
   },
   {
     key: 'hypeBoy',
-    name: '홍익 Hype Boy',
+    name: '홍익 Hype Boy 마켓',
     intro: '슈프림, 팔라스, 스투시, 나이키 등 다양한 스트릿\n 브랜드 의류 저렴하게 가져가세요!',
   },
   {
