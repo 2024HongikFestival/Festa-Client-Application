@@ -38,5 +38,52 @@
       "goDaedongje": "대동제로 이동",
       "prev": "이전 화면으로"
     }
+  },
+  "facilities": {
+    "amenities": "편의시설",
+    "restroomToggle": "화장실",
+    "medicalFacilityToggle": "의료 시설",
+    "lostAndFoundCenterToggle": "분실물 센터",
+    "restroom": {
+      "title1": "화장실",
+      "title2": "위치",
+      "building1-1": "",
+      "building1-2": "M동",
+      "floor1": "1층",
+      "building2-1": "",
+      "building2-2": "Z4동",
+      "building2-3": "",
+      "floor2": "1층 (장애인 화장실)",
+      "building3-1": "",
+      "building3-2": "Z4동",
+      "floor3": "2층"
+    },
+    "medical": {
+      "title1": "의료 시설",
+      "title2": "위치",
+      "description1": "정보통신센터(Q동) 계단 앞 건강관리센터",
+      "description2": "에서",
+      "description2-2": "",
+      "description3": "비상시 응급 치료를 받으실 수 있습니다."
+    },
+    "lostAndFound": {
+      "title1": "분실물 센터",
+      "title2": "위치",
+      "description1": "대운동장 구령대 중앙",
+      "description2": "에",
+      "description2-2": "",
+      "description3": "분실물 센터가 위치해 있습니다.",
+      "goLostAndFoundBtn": "온라인 분실물 센터 바로가기"
+    }
+  },
+  "wdfMain": {
+    "wdfName": "와우 디제이 페스티벌",
+    "wdfDescription1": "현실의 무게와 무력감에 깨져가는 청춘을 깨우고",
+    "wdfDescription2": "가장 아름답게 빛나는 '나'를 마주할 시간입니다.",
+    "wdfDescription3": "청춘의 불꽃이 함께하는 그 유일무이한 순간에",
+    "wdfDescription4": "여러분을 초대합니다.",
+    "day1": "9.25 (수)",
+    "day2": "9.26 (목)",
+    "day3": " 9.27 (금)"
   }
 }

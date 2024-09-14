@@ -96,7 +96,6 @@ export const WDFIntroduction = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  width: 18.1rem;
 `;
 
 export const WDFImage = styled.img`
@@ -136,6 +135,7 @@ export const WDFDescription = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray60};
   padding-bottom: 5.4rem;
+  width: 25.9rem;
 `;
 
 export const DateSection = styled.div`
