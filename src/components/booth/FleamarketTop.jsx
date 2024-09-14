@@ -44,6 +44,7 @@ const TopWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
+  border-radius: 1.6rem;
 `;
 
 const TopImgWrapper = styled.div`
