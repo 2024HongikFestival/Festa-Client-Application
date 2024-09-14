@@ -557,335 +557,38 @@
     ]
   },
   "layouts": {
+    "header": {
+      "toRoadmap": "ROAD MAP",
+      "toStage": "PERFORMANCE",
+      "toLineUp": "LINE UP",
+      "toStageInfo": "VIEWING INFORMATION",
+      "toHongikZone": "HONGIK ZONE",
+      "toBooth": "BOOTH",
+      "toDrink": "PUB",
+      "toFleaMarket": "FLEA MARKET",
+      "toPromotion": "PROMOTION BOOTH",
+      "toMd": "MD PRODUCT",
+      "toFacilityInfo": "CONVENIENCE",
+      "toFacilities": "AMENITIES",
+      "toLostAndFound": "LOST AND FOUND",
+      "toEvent": "EVENTS",
+      "toFlameSitemap": "SITE MAP",
+      "toFlameTimeTable": "TIME TABLE",
+      "toFlameReservation": "RESERVATION",
+      "toFlameLineUp": "LINE UP",
+      "toFlameMd": "MD PRODUCT",
+      "toFlamePromotion": "PROMOTION"
+    },
     "footer": {
-      "prev": "",
-      "toLikelion": "",
-      "toGaehwa": "",
-      "toDaedongjeInsta": ""
-    }
-  },
-  "makers": {
-    "likelion": {
-      "title1": "",
-      "title2": "",
-      "whoWeAre1": "",
-      "whoWeAre2": "",
-      "whoWeAre3": "",
-      "whoWeAre4": "",
-      "whoWeAre5": "",
-      "whoWeAre6": "",
-      "whoWeAre7": "",
-      "whoWeAre8": "",
-      "whoWeAre9": "",
-      "slogan": "",
-      "pm": "",
-      "pmDescription1": "",
-      "pmDescription2": "",
-      "plan": "",
-      "planDescription1": "",
-      "planDescription2": "",
-      "design": "",
-      "designDescription1": "",
-      "designDescription2": "",
-      "fe": "",
-      "feDescription1": "",
-      "feDescription2": "",
-      "feDescription3": "",
-      "be": "",
-      "beDescription1": "",
-      "beDescription2": ""
-    },
-    "likelionContributors": {
-      "pm": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ],
-      "plan": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ],
-      "design": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ],
-      "frontend": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": "👩🏻"
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ],
-      "backend": [
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "ment": ""
-        }
-      ]
-    },
-    "gaehwa": {
-      "title1": "",
-      "title2": "",
-      "whoWeAre1": "",
-      "whoWeAre2": "",
-      "whoWeAre3": "",
-      "whoWeAre4": "",
-      "whoWeAre5": "",
-      "whoWeAre6": "",
-      "presidency": "",
-      "executive": "",
-      "executiveDescription1": "",
-      "executiveDescription2": "",
-      "executiveDescription3": "",
-      "strategicPolicy": "",
-      "strategicPolicyDescription1": "",
-      "strategicPolicyDescription2": "",
-      "strategicPolicyDescription3": "",
-      "strategicPolicyDescription4": "",
-      "culturalPlanning": "",
-      "culturalPlanningDescription1": "",
-      "culturalPlanningDescription2": "",
-      "culturalPlanningDescription3": "",
-      "culturalPlanningDescription4": "",
-      "mediaRelations": "",
-      "mediaRelationsDescription1": "",
-      "mediaRelationsDescription2": "",
-      "mediaRelationsDescription3": "",
-      "mediaRelationsDescription4": "",
-      "finance": "",
-      "financeDescription1": "",
-      "financeDescription2": "",
-      "financeDescription3": "",
-      "rightsSolidarity": "",
-      "rightsSolidarityDescription1": "",
-      "rightsSolidarityDescription2": "",
-      "rightsSolidarityDescription3": "",
-      "rightsSolidarityDescription4": "",
-      "rightsSolidarityDescription5": "",
-      "studentWelfare": "",
-      "studentWelfareDescription1": "",
-      "studentWelfareDescription2": "",
-      "studentWelfareDescription3": "",
-      "studentWelfareDescription4": "",
-      "graduationPreparation": "",
-      "graduationPreparationDescription1": "",
-      "graduationPreparationDescription2": "",
-      "graduationPreparationDescription3": "",
-      "graduationPreparationDescription4": ""
-    },
-    "gaehwaContributors": {
-      "presidency": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "executive": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "strategicPolicy": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "culturalPlanning": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "mediaRelations": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "finance": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "rightsSolidarity": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "studentWelfare": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ],
-      "graduationPreparation": [
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        },
-        {
-          "name": "",
-          "department": "",
-          "role": ""
-        }
-      ]
+      "contributors": "Contributors Page",
+      "likelion": "Made by",
+      "toLikelion": "Likelion Hongik Univ.",
+      "gaehwa": "Council",
+      "toGaehwa": "GaeHwa",
+      "instagram": "Instagram",
+      "goFlame": "GO WOW DJ FESTIVAL >>",
+      "goDaedongje": "GO MAIN FESTIVAL >>",
+      "prev": "<< GO BACK"
     }
   },
   "facilities": {

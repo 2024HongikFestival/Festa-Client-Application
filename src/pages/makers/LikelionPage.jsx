@@ -1,12 +1,10 @@
 import styled, { css } from 'styled-components';
 import likelionBgImg from '@/assets/webps/makers/likelionBgImg.webp';
 import LikelionCard from '@/components/makers/LikelionCard';
-import { useTranslation } from 'react-i18next';
 import { contributors } from '@/constants/makers/LikelionContributors';
 
 const LikelionPage = () => {
-  const { t } = useTranslation();
-  const contributorsData = contributors(t);
+  const contributorsData = contributors();
 
   const pm = contributorsData.pm;
   const plan = contributorsData.plan;
@@ -18,44 +16,43 @@ const LikelionPage = () => {
     <LikelionLayout>
       <LikelionBgImg>
         <Title>
-          {t('makers.likelion.title1')}
+          홍익대학교
           <br />
-          {t('makers.likelion.title2')}
+          멋쟁이사자처럼
         </Title>
       </LikelionBgImg>
       <BlackBar />
       <WhoWeAreBg>
         <WhoWeAre>
-          {t('makers.likelion.whoWeAre1')}
+          &apos;누구나 프로그래밍 기초 지식을 배워
           <br />
-          {t('makers.likelion.whoWeAre2')}
-          <br />
-          <br />
-          {t('makers.likelion.whoWeAre3')}
-          <br />
-          {t('makers.likelion.whoWeAre4')}
+          자신만의 웹서비스를 만들어 낼 수 있다!&apos;
           <br />
           <br />
-          {t('makers.likelion.whoWeAre5')}
+          멋쟁이사자처럼의 궁극적인 목표는
           <br />
-          {t('makers.likelion.whoWeAre6')}
-          <br />
-          {t('makers.likelion.whoWeAre7')}
-          <br />
-          {t('makers.likelion.whoWeAre8')}
+          모두에게 열린 배움의 기회입니다.
           <br />
           <br />
-          {t('makers.likelion.whoWeAre9')}
+          홍익대학교 멋쟁이사자처럼 12기 구성원들이
+          <br />
+          2024 대동제 [화양연화; 만개] 사이트의
+          <br />
+          기획, 디자인, 개발을 주도했습니다.
+          <br />
+          더 즐거운 축제가 될 수 있도록,
+          <br />
+          <br />그 찬란한 무대에 여러분을 초대합니다!
         </WhoWeAre>
-        <Slogan> {t('makers.likelion.slogan')}</Slogan>
+        <Slogan># Possibility to Reality</Slogan>
       </WhoWeAreBg>
       <Divider />
       <RoleSection>
-        <RoleName>{t('makers.likelion.pm')}</RoleName>
+        <RoleName>총괄</RoleName>
         <RoleDescription>
-          {t('makers.likelion.pmDescription1')}
+          프로젝트의 계획, 실행, 관리를 담당하며,
           <br />
-          {t('makers.likelion.pmDescription2')}
+          팀을 이끌어 목표 달성과 일정 준수를 책임집니다.
         </RoleDescription>
         <CardWrapper $cardCount={pm.length}>
           {contributorsData.pm.map((contributor, index) => (
@@ -65,11 +62,11 @@ const LikelionPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('makers.likelion.plan')}</RoleName>
+        <RoleName>기획</RoleName>
         <RoleDescription>
-          {t('makers.likelion.planDescription1')}
+          사용자 경험을 바탕으로 서비스를 기획하여
           <br />
-          {t('makers.likelion.planDescription2')}
+          사용자가 만족할 수 있는 서비스를 제공합니다.
         </RoleDescription>
         <CardWrapper $cardCount={plan.length}>
           {contributorsData.plan.map((contributor, index) => (
@@ -79,11 +76,11 @@ const LikelionPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('makers.likelion.design')}</RoleName>
+        <RoleName>디자인</RoleName>
         <RoleDescription>
-          {t('makers.likelion.designDescription1')}
+          사용자가 원하는 정보를 쉽게 얻을 수 있도록
           <br />
-          {t('makers.likelion.designDescription2')}
+          화면의 디자인을 담당합니다.
         </RoleDescription>
         <CardWrapper $cardCount={design.length}>
           {contributorsData.design.map((contributor, index) => (
@@ -93,13 +90,13 @@ const LikelionPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('makers.likelion.fe')}</RoleName>
+        <RoleName>프론트엔드</RoleName>
         <RoleDescription>
-          {t('makers.likelion.feDescription1')}
+          사용자와 가장 밀접하게 맞닿는
           <br />
-          {t('makers.likelion.feDescription2')}
+          서비스의 인터페이스를 구현하여,
           <br />
-          {t('makers.likelion.feDescription3')}
+          최적의 사용자 경험을 제공합니다.
         </RoleDescription>
         <CardWrapper $cardCount={frontend.length}>
           {contributorsData.frontend.map((contributor, index) => (
@@ -109,11 +106,11 @@ const LikelionPage = () => {
       </RoleSection>
       <Divider />
       <RoleSection>
-        <RoleName>{t('makers.likelion.be')}</RoleName>
+        <RoleName>백엔드</RoleName>
         <RoleDescription>
-          {t('makers.likelion.beDescription1')}
+          눈에 보이지 않는 비지니스 로직을 담당하며
           <br />
-          {t('makers.likelion.beDescription2')}
+          서비스가 원활히 동작할 수 있도록 뒷받침합니다.
         </RoleDescription>
         <CardWrapper $cardCount={backend.length}>
           {contributorsData.backend.map((contributor, index) => (
@@ -129,10 +126,10 @@ export default LikelionPage;
 
 const LikelionLayout = styled.div`
   width: 100%;
-  /* height: auto; */
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.makersBackgroundColor};
+  margin-bottom: 6.4rem;
 `;
 
 const LikelionBgImg = styled.div`
@@ -153,7 +150,7 @@ const BlackBar = styled.div`
   background-color: ${(props) => props.theme.colors.makersBackgroundColor};
   height: 0.4rem;
   margin-top: -0.3rem;
-  z-index: 10;
+  z-index: 0;
 `;
 
 const Title = styled.h1`
