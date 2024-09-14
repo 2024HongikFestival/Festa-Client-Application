@@ -48,7 +48,7 @@ export const DuplicationErrorBox = () => {
       </Title>
 
       <Description>
-        축제 기간동안 매일 주어지는 응모권으로
+        축제 기간 동안 매일 주어지는 응모권으로
         <br />
         1일 1회만 응모 가능해요
       </Description>
