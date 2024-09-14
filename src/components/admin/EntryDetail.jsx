@@ -5,7 +5,7 @@ import { adminAxiosInstance } from '@/api/axios';
 import deleteBtn from '@/assets/webps/admin/deleteBtn.webp';
 import Popup from './Popup';
 
-const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
+const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -16,13 +16,12 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
   const [popupType, setPopupType] = useState(null); // 팝업 타입 상태 추가
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const PAGE_SIZE = 10;
 
   const prizeMap = {
-    에어팟: 'A',
-    변신로봇: 'B',
-    단검: 'C',
+    '티빙 구독권': '티빙구독권',
   };
 
   const getPrizeParam = (prizeName) => prizeMap[prizeName] || '';
@@ -114,6 +113,11 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
       setShowCancelButton(sortedList.some((item) => item.winner));
     } catch (error) {
       console.error('Error drawing winners: ', error);
+      if (type === 'one') {
+        setErrorMessage('추첨 가능한 응모자가 없습니다');
+      } else {
+        setErrorMessage('응모자 수가 경품 수량보다 적습니다');
+      }
     }
   };
 
@@ -244,6 +248,7 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity }) => {
           cancelText={popupType === 'undo' ? '아니요' : '취소'}
         />
       )}
+      {errorMessage && <Popup message={errorMessage} onConfirm={() => setErrorMessage(null)} confirmText="확인" />}
     </ListContainer>
   );
 };
@@ -254,6 +259,7 @@ EntryDetail.propTypes = {
   titleDescription: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired, // Added prop types for quantity
   entryCount: PropTypes.number.isRequired, // Added prop types for entry count
+  onBack: PropTypes.func.isRequired,
 };
 
 export default EntryDetail;
