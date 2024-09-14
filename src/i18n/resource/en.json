@@ -382,5 +382,30 @@
     "day1": "9.25 (WED)",
     "day2": "9.26 (THU)",
     "day3": "9.25 (FRI)"
+  },
+  "flameMdPage": {
+    "title": "MD PRODUCT",
+    "locationDescription": "In front of Hongmoon Building (Building-R) & On the side of Art Design Valley",
+    "locationSubDescription": "You can purchase here!",
+    "locationAlert": "Only available for on-site purchase",
+    "limitedSale": "Limited Sale",
+    "noticeTitle": "Important Notes for On-Site Purchase",
+    "noticeList": {
+      "item1": "Only bank transfer and cash payment are available.",
+      "item2": "No refunds, exchanges, or cancellations after purchase.",
+      "item3": "For defective products, please inform on-site staff immediately after inspection."
+    },
+    "products": {
+      "md1": "WOW DJ FESTIVAL SLOGAN TOWEL",
+      "md2": "WOW DJ FESTIVAL T-SHIRT",
+      "md3": "WOW DJ FESTIVAL STRING-BAG",
+      "md4": "WOW DJ FESTIVAL STICKER PACKAGE",
+      "md5": "WOW DJ FESTIVAL RAMDOM SEAL STICKER 2EA",
+      "md6": "WOW METAL BADGE",
+      "md7": "HONGIK BASEBALL UNIFORM",
+      "md8": "HONGIK RUGBY UNIFORM",
+      "md9": "BANDANA",
+      "md10": "WOW TATTOO STICKER"
+    }
   }
 }

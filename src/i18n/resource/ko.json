@@ -382,5 +382,30 @@
     "day1": "9.25 (수)",
     "day2": "9.26 (목)",
     "day3": " 9.27 (금)"
+  },
+  "flameMdPage": {
+    "title": "MD 상품",
+    "locationDescription": "홍문관(R동) 앞 & 아트앤디자인밸리 측면에서",
+    "locationSubDescription": "구매하실 수 있습니다!",
+    "locationAlert": "현장 구매만 가능합니다",
+    "limitedSale": "한정판매",
+    "noticeTitle": "현장 구매 시 유의 사항",
+    "noticeList": {
+      "item1": "계좌 이체 및 현금 결제만 가능합니다.",
+      "item2": "구매 완료 시 환불, 교환, 취소 불가능합니다.",
+      "item3": "불량품은 현장에서 확인 후 바로 현장 관리 인원에게 말씀해 주시기 바랍니다."
+    },
+    "products": {
+      "md1": "WOW DJ FESTIVAL 슬로건 타올",
+      "md2": "WOW DJ FESTIVAL 티셔츠",
+      "md3": "WOW DJ FESTIVAL 스트링백",
+      "md4": "WOW DJ FESTIVAL 스티커 패키지",
+      "md5": "WOW DJ FESTIVAL 띠부씰 2EA (랜덤)",
+      "md6": "와우 금속 뱃지",
+      "md7": "야구 유니폼",
+      "md8": "럭비 유니폼",
+      "md9": "반다나",
+      "md10": "와우 타투 스티커"
+    }
   }
 }
