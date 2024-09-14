@@ -336,7 +336,6 @@
       ]
     }
   },
-<<<<<<< HEAD
 
   "Amenities": {
     "Amenities": "편의시설",
@@ -392,8 +391,7 @@
     "PlaceholderText": "ex. 홍X동님 학생증 발견했습니다 / A동 앞에 산리오 키링 떨어져있어요 주인 찾아가세요~",
     "Complete": "완료"
   },
-  "Close": "닫기"
-=======
+  "Close": "닫기",
   "facilities": {
     "amenities": "편의시설",
     "restroomToggle": "화장실",
@@ -441,5 +439,4 @@
     "day2": "9.26 (목)",
     "day3": " 9.27 (금)"
   }
->>>>>>> f1059e2d0f0a5d1bd83f1bda1def2df8a238ee0d
 }
