@@ -9,10 +9,12 @@ import 'slick-carousel/slick/slick-theme.css';
 import DJ from '@/assets/webps/wdfMain/DJ.webp';
 import speaker from '@/assets/webps/wdfMain/speaker.webp';
 import Insta from '@/assets/webps/wdfMain/insta.webp';
-import BgVideo from '@/assets/videos/flameMainBackGround.mp4';
+import BgVideo from '@/assets/videos/flameMainBackground.mp4';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 const FlameMainPage = () => {
+  const { t } = useTranslation();
   const [selectedDay, setSelectedDay] = useState('day1');
 
   return (
@@ -23,11 +25,13 @@ const FlameMainPage = () => {
             <source src={BgVideo} type="video/mp4" />
           </S.BackGroundVideo>
           <S.TitleContainer>
-            <S.Title>WOW DJ FESTIVAL</S.Title>
-            <S.TitleWrapper>
-              <S.SubTitle>the</S.SubTitle>
-              <S.WDFLogo src={FLAME} alt="flame" />
-            </S.TitleWrapper>
+            <S.LogoContainer>
+              <S.Title>WOW DJ FESTIVAL</S.Title>
+              <S.TitleWrapper>
+                <S.SubTitle>the</S.SubTitle>
+                <S.WDFLogo src={FLAME} alt="flame" />
+              </S.TitleWrapper>
+            </S.LogoContainer>
             <S.WDFImage src={speaker}></S.WDFImage>
           </S.TitleContainer>
           <S.WDFContainer>
@@ -37,27 +41,32 @@ const FlameMainPage = () => {
                 <S.Introduction1>AND&nbsp;</S.Introduction1>
                 <S.Introduction> ONLY</S.Introduction>
               </S.IntroWrapper>
-              <S.WDFName>와우 디제이 페스티벌</S.WDFName>
+              <S.WDFName>{t('wdfMain.wdfName')}</S.WDFName>
             </S.WDFIntroduction>
             <S.WDFDescription>
-              현실의 무게와 무력감에 깨져가는 청춘을 깨우고 <br />
-              가장 아름답게 빛나는 &apos;나&apos;를 마주할 시간입니다. <br />
-              청춘의 불꽃이 함께하는 그 유일무이한 순간에 <br />
-              여러분을 초대합니다.
+              {t('wdfMain.wdfDescription1')}
+              <br />
+              {t('wdfMain.wdfDescription2')}
+              <br />
+              {t('wdfMain.wdfDescription3')}
+              <br />
+              {t('wdfMain.wdfDescription4')}
             </S.WDFDescription>
           </S.WDFContainer>
         </S.VideoContainer>
         <S.LineUpSection>
           <S.DateSection>
-            <S.DateButton selected={selectedDay === 'day1'} onClick={() => setSelectedDay('day1')}>
-              DAY 1 <br /> 9.25 (수)
-            </S.DateButton>
-            <S.DateButton selected={selectedDay === 'day2'} onClick={() => setSelectedDay('day2')}>
-              DAY 2 <br /> 9.26 (목)
-            </S.DateButton>
-            <S.DateButton selected={selectedDay === 'day3'} onClick={() => setSelectedDay('day3')}>
-              DAY 3<br /> 9.27 (금)
-            </S.DateButton>
+            <S.BtnWrapper>
+              <S.DateButton selected={selectedDay === 'day1'} onClick={() => setSelectedDay('day1')}>
+                DAY 1 <br /> {t('wdfMain.day1')}
+              </S.DateButton>
+              <S.DateButton selected={selectedDay === 'day2'} onClick={() => setSelectedDay('day2')}>
+                DAY 2 <br /> {t('wdfMain.day2')}
+              </S.DateButton>
+              <S.DateButton selected={selectedDay === 'day3'} onClick={() => setSelectedDay('day3')}>
+                DAY 3<br /> {t('wdfMain.day3')}
+              </S.DateButton>
+            </S.BtnWrapper>
           </S.DateSection>
 
           <S.DayContent>

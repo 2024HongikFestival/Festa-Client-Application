@@ -1,11 +1,20 @@
+import AddLostItemBg from '@/assets/webps/lost/AddLostItemBg.webp';
+import LostAndFoundBg from '@/assets/webps/lost/LostAndFoundBg.webp';
+
+import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
+import Footer from '@/components/layouts/Footer';
+import Header from '@/components/layouts/Header';
 import { Outlet, useLocation } from 'react-router-dom';
-import { styled, css } from 'styled-components';
-import Footer from './Footer';
-import Header from './Header';
+import styled, { css } from 'styled-components';
+import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
 
 export default function Layout() {
+  const { isCamera } = useCamera();
   const location = useLocation();
-  const isAdminPath = location.pathname === '/admin';
+
+  const adminPaths = ['/admin', '/admin/event', '/admin/losts'];
+  const isAdminPath = adminPaths.includes(location.pathname);
+
   const isLoggedIn = () => {
     return !!localStorage.getItem('accessToken');
   };
@@ -15,7 +24,7 @@ export default function Layout() {
     <Container $path={location.pathname} $showheader={showheader}>
       {showheader && <Header />}
       <Outlet />
-      {!isAdminPath && <Footer />}
+      {!isAdminPath && !isCamera && <Footer />}
     </Container>
   );
 }
@@ -25,6 +34,22 @@ const Container = styled.div`
   max-width: 768px;
   min-height: calc(var(--vh, 1vh) * 100);
   margin: ${({ $showheader }) => ($showheader ? '5.6rem auto 0' : '0 auto 0')};
+
+  ${(props) =>
+    (props.$path === '/lost-and-found' || props.$path === '/lost-and-found/') &&
+    css`
+      background-image: url(${LostAndFoundBg});
+      background-size: cover;
+      background-position: center;
+    `}
+
+  ${(props) =>
+    props.$path === '/lost-and-found/add' &&
+    css`
+      background-image: url(${AddLostItemBg});
+      background-size: cover;
+      background-position: center;
+    `}
 
   ${(props) =>
     (props.$path === '/likelion' || props.$path === '/gaehwa') &&
@@ -42,9 +67,16 @@ const Container = styled.div`
       background-position: center;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.$path === '/flame' &&
     css`
       background-color: transparent;
+    `}
+  
+  ${(props) =>
+    props.$path === '/facilities' &&
+    css`
+      background-image: url(${facilitiesBG});
+      background-size: cover;
     `}
 `;
