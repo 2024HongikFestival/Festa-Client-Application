@@ -75,6 +75,7 @@ const Department = styled.div`
   color: ${({ theme }) => theme.colors.gray100};
   margin-top: 1.2rem;
   margin-bottom: 0.7rem;
+  text-align: center;
 `;
 
 const Intro = styled.div`

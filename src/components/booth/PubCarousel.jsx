@@ -84,7 +84,7 @@ export default function PubCarousel({ menu }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 3000,
     prevArrow: <CustomArrow direction="prev" />,
     nextArrow: <CustomArrow direction="next" />,
