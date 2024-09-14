@@ -121,7 +121,6 @@ export const RaffleWrapper = styled.div`
 `;
 
 export const RaffleImage = styled.img`
-  z-index: 10;
   width: 29rem;
   height: 15.1rem;
   flex-shrink: 0;
@@ -129,7 +128,6 @@ export const RaffleImage = styled.img`
 
 export const RaffleContainer = styled.div`
   position: absolute;
-  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: center;

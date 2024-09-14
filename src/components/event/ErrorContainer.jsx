@@ -71,6 +71,7 @@ const ErrorContainer = styled.div`
   border-radius: 1rem;
   border: 1px solid var(---on, #cdff3f);
   background: ${(props) => props.theme.colors.gray90};
+  z-index: 1000;
 `;
 
 const Title = styled.div`
