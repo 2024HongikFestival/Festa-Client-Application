@@ -71,10 +71,11 @@ export default FleamarketDetail;
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
   padding-bottom: 6.4rem;
+  min-height: 100vh;
 `;
 
 const PageTitle = styled.div`
