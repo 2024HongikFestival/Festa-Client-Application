@@ -6,12 +6,89 @@ import FLAME from '@/assets/svgs/FLAME.svg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import DJ from '@/assets/webps/wdfMain/DJ.webp';
+import DJ1 from '@/assets/webps/wdfLineup/rui.webp';
+import DJ2 from '@/assets/webps/wdfLineup/fine.webp';
+import DJ3 from '@/assets/webps/wdfLineup/rightback.webp';
+import DJ4 from '@/assets/webps/wdfLineup/chanxer.webp';
+import DJ5 from '@/assets/webps/wdfLineup/tezz.webp';
+import DJ6 from '@/assets/webps/wdfLineup/yongsul.webp';
+import DJ7 from '@/assets/webps/wdfLineup/choi_s.webp';
+import DJ8 from '@/assets/webps/wdfLineup/lozic.webp';
+import DJ9 from '@/assets/webps/wdfLineup/vandal_rock.webp';
+import DJ10 from '@/assets/webps/wdfLineup/aster_z.webp';
+import DJ11 from '@/assets/webps/wdfLineup/nap_on_cloud.webp';
+import DJ12 from '@/assets/webps/wdfLineup/sigma_z.webp';
+import DJ13 from '@/assets/webps/wdfLineup/wooxi.webp';
+import DJ14 from '@/assets/webps/wdfLineup/joody.webp';
+import DJ15 from '@/assets/webps/wdfLineup/juncoco.webp';
+
+import DJ1Logo from '@/assets/webps/wdfLineup/ruiLogo.webp';
+import DJ2Logo from '@/assets/webps/wdfLineup/fineLogo.webp';
+import DJ3Logo from '@/assets/webps/wdfLineup/rightbackLogo.webp';
+import DJ4Logo from '@/assets/webps/wdfLineup/chanxerLogo.webp';
+import DJ5Logo from '@/assets/webps/wdfLineup/tezzLogo.webp';
+import DJ6Logo from '@/assets/webps/wdfLineup/yongsulLogo.webp';
+import DJ7Logo from '@/assets/webps/wdfLineup/choiLogo.webp';
+import DJ8Logo from '@/assets/webps/wdfLineup/lozicLogo.webp';
+import DJ9Logo from '@/assets/webps/wdfLineup/vandalrockLogo.webp';
+import DJ10Logo from '@/assets/webps/wdfLineup/asterLogo.webp';
+import DJ11Logo from '@/assets/webps/wdfLineup/naponcloudLogo.webp';
+import DJ12Logo from '@/assets/webps/wdfLineup/sigmaLogo.webp';
+import DJ13Logo from '@/assets/webps/wdfLineup/wooxiLogo.webp';
+import DJ14Logo from '@/assets/webps/wdfLineup/joodyLogo.webp';
+import DJ15Logo from '@/assets/webps/wdfLineup/juncocoLogo.webp';
+
 import speaker from '@/assets/webps/wdfMain/speaker.webp';
-import Insta from '@/assets/webps/wdfMain/insta.webp';
 import BgVideo from '@/assets/videos/flameMainBackground.mp4';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+
+const djData = {
+  day1: [
+    { src: DJ1, alt: 'DJ 1', name: 'RUI' },
+    { src: DJ2, alt: 'DJ 2', name: 'FINÉ' },
+    { src: DJ3, alt: 'DJ 3', name: 'rightback' },
+    { src: DJ4, alt: 'DJ 4', name: 'CHANXER' },
+    { src: DJ5, alt: 'DJ 5', name: 'TEZZ' },
+  ],
+  day2: [
+    { src: DJ6, alt: 'DJ 6', name: 'YongSul' },
+    { src: DJ7, alt: 'DJ 7', name: 'CHOI' },
+    { src: DJ8, alt: 'DJ 8', name: 'LOZIC' },
+    { src: DJ9, alt: 'DJ 9', name: 'VANDAL ROCK' },
+    { src: DJ10, alt: 'DJ 10', name: 'ASTER' },
+  ],
+  day3: [
+    { src: DJ11, alt: 'DJ 11', name: 'NAP ON CLOUD' },
+    { src: DJ12, alt: 'DJ 12', name: 'SIGMA' },
+    { src: DJ13, alt: 'DJ 13', name: 'WOOXI' },
+    { src: DJ14, alt: 'DJ 14', name: 'JOODY' },
+    { src: DJ15, alt: 'DJ 15', name: 'JUNCOCO' },
+  ],
+};
+const djLogos = {
+  day1: [
+    { src: DJ1Logo, width: '11.9rem' },
+    { src: DJ2Logo, width: '11.5rem' },
+    { src: DJ3Logo, width: '11.5rem' },
+    { src: DJ4Logo, width: '14.7rem' },
+    { src: DJ5Logo, width: '14.6rem' },
+  ],
+  day2: [
+    { src: DJ6Logo, width: '12.5rem' },
+    { src: DJ7Logo, width: '14.4rem' },
+    { src: DJ8Logo, width: '12.3rem' },
+    { src: DJ9Logo, width: '23.9rem' },
+    { src: DJ10Logo, width: '11.5rem' },
+  ],
+  day3: [
+    { src: DJ11Logo, width: '21.8rem' },
+    { src: DJ12Logo, width: '12.8rem' },
+    { src: DJ13Logo, width: '12.8rem' },
+    { src: DJ14Logo, width: '11.2rem' },
+    { src: DJ15Logo, width: '14.3rem' },
+  ],
+};
 
 const FlameMainPage = () => {
   const { t } = useTranslation();
@@ -68,11 +145,8 @@ const FlameMainPage = () => {
               </S.DateButton>
             </S.BtnWrapper>
           </S.DateSection>
-
           <S.DayContent>
-            {selectedDay === 'day1' && <DateContent carouselItems={carouselItems} />}
-            {selectedDay === 'day2' && <DateContent carouselItems={carouselItems} />}
-            {selectedDay === 'day3' && <DateContent carouselItems={carouselItems} />}
+            <DateContent carouselItems={djData[selectedDay]} selectedDay={selectedDay} />
           </S.DayContent>
         </S.LineUpSection>
       </S.Flame>
@@ -80,51 +154,63 @@ const FlameMainPage = () => {
   );
 };
 
-const carouselItems = [
-  { src: DJ, alt: 'Image 1' },
-  { src: DJ, alt: 'Image 2' },
-  { src: DJ, alt: 'Image 3' },
-  { src: DJ, alt: 'Image 4' },
-  { src: DJ, alt: 'Image 5' },
-  { src: DJ, alt: 'Image 6' },
-];
-
-const DateContent = ({ carouselItems }) => {
+const DateContent = ({ carouselItems, selectedDay }) => {
   const sliderRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
+  React.useEffect(() => {
+    if (sliderRef.current) {
+      setIsTransitioning(true);
+      sliderRef.current.slickGoTo(0, false); // false를 사용하여 애니메이션 없이 이동
+      setCurrentSlide(0);
+      setIsTransitioning(false);
+    }
+  }, [selectedDay]);
   const goToSlide = (index) => {
     if (sliderRef.current) {
       sliderRef.current.slickGoTo(index);
-      setCurrentSlide(index);
     }
   };
 
   return (
     <S.Content>
       <S.CarouselContainer>
-        <Slider {...carouselSettings} ref={sliderRef} afterChange={(index) => setCurrentSlide(index)}>
-          {carouselItems.map((item, index) => (
-            <S.ImageContainer key={index}>
-              <S.CarouselImage src={item.src} alt={item.alt} />
-              <S.Line />
-              <S.DJContainer>
-                <S.DJWrapper>
-                  <S.DJName>디제이 이름</S.DJName>
-                  <S.DJInsta src={Insta} alt="insta" />
-                </S.DJWrapper>
-                <S.DJInfo>
-                  국내외 페스티벌 섭외 1순위. <br />
-                  아시아 시장 섭렵 <br />
-                  트랜드를 이끌며 신 한류 문화가 될 <br /> K-EDM장르의 선두 DJ
-                </S.DJInfo>
-              </S.DJContainer>
-            </S.ImageContainer>
-          ))}
+        <Slider
+          {...carouselSettings}
+          ref={sliderRef}
+          beforeChange={() => setIsTransitioning(true)} // 슬라이드 전환 시작
+          afterChange={(index) => {
+            setCurrentSlide(index);
+            setIsTransitioning(false); // 전환 종료
+          }}
+        >
+          {carouselItems.map((item, index) => {
+            const logo = djLogos[selectedDay][index];
+
+            return (
+              <S.ImageContainer key={index}>
+                <S.CarouselImage src={item.src} alt={item.alt} />
+                <S.GradientOverlay />
+                <S.LogoImage
+                  src={logo.src}
+                  alt={`${item.name} logo`}
+                  style={{ width: logo.width }} // Apply width dynamically
+                />
+                <S.Line />
+                <S.DJName>{item.name}</S.DJName>
+              </S.ImageContainer>
+            );
+          })}
         </Slider>
         <S.NavigationBar>
           {carouselItems.map((_, index) => (
-            <S.NavigationButton key={index} $active={currentSlide === index} onClick={() => goToSlide(index)} />
+            <S.NavigationButton
+              key={index}
+              $active={currentSlide === index}
+              onClick={() => goToSlide(index)}
+              disabled={isTransitioning} // Disable clicking during transition
+            />
           ))}
         </S.NavigationBar>
       </S.CarouselContainer>
@@ -141,6 +227,7 @@ DateContent.propTypes = {
       alt: PropTypes.string.isRequired,
     })
   ).isRequired,
+  selectedDay: PropTypes.string.isRequired,
 };
 
 export default FlameMainPage;
