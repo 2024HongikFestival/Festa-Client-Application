@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import globe from '@/assets/webps/layouts/globe.webp';
@@ -9,24 +9,27 @@ import RenderMenuItem from '@/components/layouts/RenderMenuItem';
 import { useUpdateBeforeHeight } from '@/components/layouts/useUpdateBeforeHeight';
 
 const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
-  const [openAccordion, setOpenAccordion] = useState(null);
-  const [isKorActive, setIsKorActive] = useState(localStorage.getItem('language') === 'ko');
   const { t, i18n } = useTranslation();
-
-  // language toggle
-  const clickHandler = (lng) => {
-    setIsKorActive(lng === 'ko');
-    localStorage.setItem('language', lng);
-    i18n.changeLanguage(lng);
-  };
-
-  const toggleLanguage = () => {
-    const newLanguage = isKorActive ? 'en' : 'ko';
-    clickHandler(newLanguage);
-  };
+  const [openAccordion, setOpenAccordion] = useState(null);
+  const [isKorActive, setIsKorActive] = useState(true); // 기본값을 KOR으로 설정
 
   // flame ::before 스크롤 시 늘어나게
   useUpdateBeforeHeight(commonMenuRef);
+
+  // language toggle
+  const toggleLanguage = () => {
+    const newLanguage = isKorActive ? 'en' : 'ko';
+    setIsKorActive(!isKorActive);
+    localStorage.setItem('language', newLanguage);
+    i18n.changeLanguage(newLanguage);
+  };
+
+  // 렌더링 초기 언어 ko로 설정
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem('language') || 'ko';
+    i18n.changeLanguage(storedLanguage);
+    setIsKorActive(storedLanguage === 'ko');
+  }, [i18n]);
 
   return (
     <S.MenuBar ref={commonMenuRef} $flame={flame} className={className}>
