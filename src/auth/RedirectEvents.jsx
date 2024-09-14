@@ -71,6 +71,21 @@ const RedirectEvents = () => {
     }
   }, [location]);
 
+  useEffect(() => {
+    if (errorStatus) {
+      // 에러가 발생했을 때 body의 스크롤 방지
+      document.body.style.overflow = 'hidden';
+    } else {
+      // 에러가 없을 때는 다시 스크롤 가능하게 설정
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      // 컴포넌트가 언마운트되면 스크롤을 다시 가능하게 함
+      document.body.style.overflow = 'auto';
+    };
+  }, [errorStatus]);
+
   return (
     <>
       <EventPage />
@@ -97,4 +112,6 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  touch-action: none;
 `;
