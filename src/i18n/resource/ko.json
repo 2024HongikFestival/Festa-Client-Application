@@ -141,5 +141,14 @@
     "day1": "9.25 (수)",
     "day2": "9.26 (목)",
     "day3": " 9.27 (금)"
+  },
+  "flamePromotionPage": {
+    "title": "프로모션",
+    "products": {
+      "jaegermeister": "예거 마이스터",
+      "intake": "인테이크",
+      "goldbrewery": "금군양조",
+      "frutips": "프루팁스"
+    }
   }
 }

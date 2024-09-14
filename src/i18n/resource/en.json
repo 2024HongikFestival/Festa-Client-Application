@@ -86,6 +86,15 @@
     "day2": "9.26 (THU)",
     "day3": "9.25 (FRI)"
   },
+  "flamePromotionPage": {
+    "title": "PROMOTION",
+    "products": {
+      "jaegermeister": "Jägermeiſter",
+      "intake": "INTAKE",
+      "goldbrewery": "GEUMGUN BREWERY",
+      "frutips": "FRUTIPS"
+    }
+  },
   "Amenities": {
     "Amenities": "Amenities",
     "RestRoom": "Rest room",
