@@ -4,7 +4,7 @@ import * as S from '@/components/layouts/HeaderStyles';
 import AdminMenuBar from '@/components/layouts/AdminMenuBar';
 import CommonMenuBar from '@/components/layouts/CommonMenuBar';
 import routeConfig from '@/constants/layouts/routeConfig';
-import { useCamera } from '@/components/lost-and-found/AddLostItem/context/AuthProvider';
+import { useCamera } from '@/context/AuthProvider';
 import xBtnBlack from '@/assets/svgs/layouts/xBtnBlack.svg';
 import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
 
