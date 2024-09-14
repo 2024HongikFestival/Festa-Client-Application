@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 const SubmitEvent = () => {
   const location = useLocation();
+
   const { date } = location.state || {}; // 전달받은 date 값
 
   const instagramUrl = 'https://www.instagram.com/hiufestival_official/';

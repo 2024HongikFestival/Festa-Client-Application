@@ -1,12 +1,13 @@
 import { useState, useEffect, Fragment } from 'react';
 import { axiosInstance } from '@/api/axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useNavigationType } from 'react-router-dom';
 import * as S from './styled';
 import form from '@/assets/webps/event/form.webp';
 import PhoneNumBox from '@/components/event/PhoneNumBox';
 
 const EnterEvent = () => {
   const navigate = useNavigate();
+  const navigationType = useNavigationType();
 
   // input & textarea 상태 관리
   const [name, setName] = useState('');
@@ -97,6 +98,13 @@ const EnterEvent = () => {
       setIsPhoneValid(true);
     }
   }, [codeArr, phone]);
+
+  // 뒤로 가기 시 event_access_token 삭제 로직 추가
+  useEffect(() => {
+    if (navigationType === 'POP') {
+      navigate('/event');
+    }
+  }, [navigationType]);
 
   return (
     <S.Wrapper>

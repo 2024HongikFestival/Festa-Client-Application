@@ -13,6 +13,7 @@ import tvingLogo from '@/assets/svgs/event/tvingLogo.svg';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
+import { useNavigationType } from 'react-router-dom';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -29,6 +30,8 @@ const EventPage = () => {
   const [currentUrl, setCurrentUrl] = useState('');
   const [isEventPeriod, setIsEventPeriod] = useState(false); // 이벤트 기간 여부
 
+  const navigationType = useNavigationType();
+
   const handleRandomState = () => {
     const array = new Uint32Array(1);
     self.crypto.getRandomValues(array);
@@ -39,6 +42,13 @@ const EventPage = () => {
     // window.location.href = EVENTS_KAKAO_AUTH_URL + `&state=${stateData}`;
     window.location.href = EVENTS_KAKAO_AUTH_URL;
   };
+
+  // 뒤로 가기 시 event_access_token 삭제 로직 추가
+  useEffect(() => {
+    if (navigationType === 'POP') {
+      localStorage.removeItem('event_access_token');
+    }
+  }, [navigationType]);
 
   useEffect(() => {
     handleRandomState();
