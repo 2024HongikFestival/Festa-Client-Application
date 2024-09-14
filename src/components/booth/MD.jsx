@@ -3,6 +3,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next'; // i18next import
 import ContentContainer from '@/components/common/ContentContainer';
 import baseballUniform from '@/assets/webps/booth/md/baseballUniform.webp';
 import bandana from '@/assets/webps/booth/md/bandana.webp';
@@ -53,6 +54,7 @@ export default function MD({ img, name, price, width, height }) {
   const formattedPrice = price.toLocaleString();
   const imageSrc = imageMap[img];
   const imageTop = imageTopMap[img];
+  const { t } = useTranslation(); // useTranslation 훅 사용
 
   useEffect(() => {
     AOS.init();
@@ -63,13 +65,13 @@ export default function MD({ img, name, price, width, height }) {
       <MdWrapper>
         <Radial>
           <Frame width={width} height={height} top={imageTop}>
-            <Img src={imageSrc} alt="mdImg" top={imageTop} width={width} height={height} />
+            <Img src={imageSrc} alt={t(`mdPage.products.${img}`)} top={imageTop} width={width} height={height} />
           </Frame>
         </Radial>
         <Desc>
           <TextContainer>
-            <Text kind={'limited'}>한정판매</Text>
-            <Text kind={'mdName'}>{name}</Text>
+            <Text kind={'limited'}>{t('mdPage.limitedSale')}</Text> {/* "한정판매" 번역 */}
+            <Text kind={'mdName'}>{t(`mdPage.products.${img}`)}</Text> {/* 제품 이름 번역 */}
             <Text kind={'price'}>₩ {formattedPrice}</Text>
           </TextContainer>
         </Desc>
@@ -144,6 +146,6 @@ const Text = styled.p`
     props.kind === 'price' &&
     css`
       ${props.theme.fontStyles.basic.body1Med}
-      color:  ${props.theme.colors.gray50}
+      color: ${props.theme.colors.gray50};
     `}
 `;

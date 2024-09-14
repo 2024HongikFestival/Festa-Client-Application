@@ -15,6 +15,11 @@ export const InfoText = styled.div`
   ${(props) => props.theme.fontStyles.basic.body1Med};
 `;
 
+export const Highlight = styled.span`
+  color: ${(props) => props.theme.colors.gray90};
+  ${(props) => props.theme.fontStyles.basic.body1Med}; /* "에서"에 적용될 스타일 */
+`;
+
 export const Span = styled.span`
   color: ${(props) => props.theme.colors.hongikBlue};
   ${(props) => props.theme.fontStyles.basic.body1Bold};
@@ -37,7 +42,7 @@ export const GuideWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 12.936rem;
+  /* width: 12.936rem; */
   height: 1.8rem;
   margin-bottom: 1.6rem;
 `;
@@ -49,7 +54,6 @@ export const Caption = styled.div`
 
 export const NoteContainer = styled.div`
   width: 28.7rem;
-  height: 13.1rem;
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
@@ -75,7 +79,7 @@ export const Hidden = styled.span`
 
 export const NoteContentWrapper = styled.div`
   width: 28.7rem;
-  height: 9.2rem;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

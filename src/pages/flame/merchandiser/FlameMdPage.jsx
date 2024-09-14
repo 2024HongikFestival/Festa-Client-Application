@@ -48,6 +48,7 @@ const FlameMdPage = () => {
               <S.LocationDescription>
                 <S.MainDescription>
                   {t('flameMdPage.locationDescription')}
+                  <S.Highlight>{t('flameMdPage.span')}</S.Highlight>
                   <br />
                   <S.Highlight>{t('flameMdPage.locationSubDescription')}</S.Highlight>
                 </S.MainDescription>
