@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+  padding-top: 5.6rem;
 `;
 
 export const Title = styled.div`

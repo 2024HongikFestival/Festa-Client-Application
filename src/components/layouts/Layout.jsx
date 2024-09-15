@@ -66,6 +66,15 @@ const Container = styled.div`
   clip-path: inset(0 0 0 0);
 
   ${(props) =>
+    (props.$path === '/event' ||
+      props.$path === '/event/' ||
+      props.$path === '/event/enter' ||
+      props.$path === '/event/submit') &&
+    css`
+      padding-top: 0;
+    `}
+
+  ${(props) =>
     (props.$path === '/lost-and-found' || props.$path === '/lost-and-found/') &&
     css`
       background-image: url(${LostAndFoundBg});
