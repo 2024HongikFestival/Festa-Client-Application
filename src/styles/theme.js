@@ -266,6 +266,13 @@ const theme = {
       line-height: 150%;
       letter-spacing: -0.0012rem;
   `,
+      eventTitle: `
+      font-family: 'M PLUS 1';
+      font-size: 3.2rem;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 150%;
+  `,
     },
   },
 };

@@ -33,7 +33,13 @@ const routeConfig = {
     menuIcon: backBtnBlack,
     showBackButton: true,
   },
-  '/event/:eventId': {
+  '/event': {
+    logo: hiuLogo,
+    menuIcon: hambergerMenu,
+    xBtn: xBtnBlack,
+    showBackButton: false,
+  },
+  '/event/': {
     logo: hiuLogo,
     menuIcon: hambergerMenu,
     xBtn: xBtnBlack,
@@ -46,6 +52,12 @@ const routeConfig = {
     showBackButton: false,
   },
   '/event/submit': {
+    logo: hiuLogo,
+    menuIcon: hambergerMenu,
+    xBtn: xBtnBlack,
+    showBackButton: false,
+  },
+  '/oauth/events': {
     logo: hiuLogo,
     menuIcon: hambergerMenu,
     xBtn: xBtnBlack,

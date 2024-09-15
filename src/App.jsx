@@ -9,9 +9,9 @@ import Fleamarket from '@/pages/booth/fleamarket/Fleamarket';
 import FleamarketDetail from '@/pages/booth/fleamarket/FleamarketDetail';
 import MdPage from '@/pages/booth/merchandiser/MdPage';
 import PromotionPage from '@/pages/booth/promotion/PromotionPage';
-import EnterEvent from '@/pages/event/EnterEvent';
-import EventPage from '@/pages/event/EventPage';
-import CompleteEvent from '@/pages/event/SubmitEvent';
+import EnterEvent from '@/pages/event/enter/EnterEvent';
+import EventPage from '@/pages/event/main/EventPage';
+import SubmitEvent from '@/pages/event/SubmitEvent';
 import FacilitiesPage from '@/pages/facilities/FacilitiesPage';
 import FlameMainPage from '@/pages/flame/FlameMainPage';
 import FlameLineupPage from '@/pages/flame/lineup/FlameLineupPage';
@@ -34,10 +34,10 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
-import { AuthProvider } from './components/lost-and-found/AddLostItem/context/AuthProvider';
-import ProtectedRoute from './components/lost-and-found/AddLostItem/outlet/ProtectedRoute';
-import AddLostItem from './pages/lost-and-found/pages/AddLostItem/AddLostItem';
-import LostAndFoundPage from './pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
+import { AuthProvider } from '@/context/AuthProvider';
+import { LostProtectedRoute, EventProtectedRoute } from '@/outlet/ProtectedRoute';
+import AddLostItem from '@/pages/lost-and-found/pages/AddLostItem/AddLostItem';
+import LostAndFoundPage from '@/pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
 
 function App() {
   useEffect(() => {
@@ -66,9 +66,11 @@ function App() {
             <Route path="/md" element={<MdPage />} />
 
             {/* 가영 라우팅 ✨ */}
-            <Route path="/event/:eventId" element={<EventPage />} />
-            <Route path="/event/enter" element={<EnterEvent />} />
-            <Route path="/event/submit" element={<CompleteEvent />} />
+            <Route path="/event" element={<EventPage />} />
+            <Route element={<EventProtectedRoute />}>
+              <Route path="/event/enter" element={<EnterEvent />} />
+              <Route path="/event/submit" element={<SubmitEvent />} />
+            </Route>
             <Route path="/oauth/events" element={<RedirectEvents />} />
 
             {/* 정인 라우팅 🍀 */}
@@ -84,7 +86,7 @@ function App() {
 
             {/* 준혁 라우팅 🐳 */}
             <Route path="/lost-and-found" element={<LostAndFoundPage />} />
-            <Route element={<ProtectedRoute />}>
+            <Route element={<LostProtectedRoute />}>
               <Route path="/lost-and-found/add" element={<AddLostItem />} />
             </Route>
 

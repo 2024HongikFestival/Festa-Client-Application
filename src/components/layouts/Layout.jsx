@@ -6,8 +6,8 @@ import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { useCamera } from '@/context/AuthProvider';
 import { adminAxiosInstance } from '@/api/axios';
-import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
 
 // import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackground.webp';
 // import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
@@ -29,9 +29,27 @@ export default function Layout() {
   const adminPaths = ['/admin', '/admin/'];
   const adminViewPaths = ['/admin/event', '/admin/losts'];
   const isAdminPath = adminPaths.includes(location.pathname);
+
+  const eventPaths = ['/event', '/event/enter', '/event/submit'];
+  const isEventPath = eventPaths.includes(location.pathname);
+
+  const [oauthPath, setOauthPath] = useState(false);
+
+  const handleOauthPath = () => {
+    const oauthRegex = /^\/oauth/;
+    if (oauthRegex.test(location.pathname)) {
+      // /oauth로 시작하는 경로에 대한 처리
+      setOauthPath(true);
+    }
+  };
+
   const isAdminViewPath = adminViewPaths.includes(location.pathname);
 
   const showheader = isLoggedIn || !isAdminPath || isAdminViewPath;
+
+  useEffect(() => {
+    handleOauthPath();
+  }, [location]);
 
   useEffect(() => {
     const checkToken = async () => {
@@ -67,7 +85,7 @@ export default function Layout() {
     <Container $path={location.pathname} $showheader={showheader}>
       {showheader && <Header />}
       <Outlet />
-      {!isAdminPath && !isAdminViewPath && !isCamera && <Footer />}
+      {!isAdminPath && !isAdminViewPath && !isCamera && !isEventPath && !oauthPath && <Footer />}
     </Container>
   );
 }
@@ -79,6 +97,16 @@ const Container = styled.div`
   margin: 0 auto 0;
   padding-top: ${({ $showheader }) => ($showheader ? '5.6rem' : '0')};
   clip-path: inset(0 0 0 0);
+
+  ${(props) =>
+    (props.$path === '/oauth/events' ||
+      props.$path === '/event' ||
+      props.$path === '/event/' ||
+      props.$path === '/event/enter' ||
+      props.$path === '/event/submit') &&
+    css`
+      background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+    `}
 
   ${(props) =>
     (props.$path === '/lost-and-found' || props.$path === '/lost-and-found/') &&
