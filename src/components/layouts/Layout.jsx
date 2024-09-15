@@ -1,11 +1,12 @@
 import AddLostItemBg from '@/assets/webps/lost/AddLostItemBg.webp';
 import LostAndFoundBg from '@/assets/webps/lost/LostAndFoundBg.webp';
-
+import { useState, useEffect } from 'react';
 import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { adminAxiosInstance } from '@/api/axios';
 import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
 
 // import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackground.webp';
@@ -23,19 +24,50 @@ export default function Layout() {
   const { isCamera } = useCamera();
   const location = useLocation();
 
-  const adminPaths = ['/admin', '/admin/', '/admin/event', '/admin/losts'];
-  const isAdminPath = adminPaths.includes(location.pathname);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => !!localStorage.getItem('accessToken'));
 
-  const isLoggedIn = () => {
-    return !!localStorage.getItem('accessToken');
-  };
-  const showheader = isLoggedIn() || !isAdminPath;
+  const adminPaths = ['/admin', '/admin/'];
+  const adminViewPaths = ['/admin/event', '/admin/losts'];
+  const isAdminPath = adminPaths.includes(location.pathname);
+  const isAdminViewPath = adminViewPaths.includes(location.pathname);
+
+  const showheader = isLoggedIn || !isAdminPath || isAdminViewPath;
+
+  useEffect(() => {
+    const checkToken = async () => {
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken) {
+        try {
+          const response = await adminAxiosInstance.get('/test/admin', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          setIsLoggedIn(response.status === 200);
+        } catch {
+          setIsLoggedIn(false);
+        }
+      } else {
+        setIsLoggedIn(false);
+      }
+    };
+    checkToken();
+    const handleStorageChange = (event) => {
+      if (event.key === 'accessToken') {
+        checkToken();
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   return (
     <Container $path={location.pathname} $showheader={showheader}>
       {showheader && <Header />}
       <Outlet />
-      {!isAdminPath && !isCamera && <Footer />}
+      {!isAdminPath && !isAdminViewPath && !isCamera && <Footer />}
     </Container>
   );
 }

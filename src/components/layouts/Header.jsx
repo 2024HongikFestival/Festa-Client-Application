@@ -36,11 +36,17 @@ export default function Header() {
   const adminPaths = ['/admin', '/admin/', '/admin/event', '/admin/losts'];
   const isFlamePath = flamePaths.includes(location.pathname);
   const isAdminPath = adminPaths.includes(location.pathname);
+  const searchParams = new URLSearchParams(location.search);
+  const isAdminEventPathDetail =
+    location.pathname === '/admin/event' && searchParams.get('view') === 'participants' && searchParams.get('detailId');
 
   if (isFlamePath) {
     currentRoute = routeConfig['/flame'];
   } else if (isAdminPath) {
-    currentRoute = routeConfig['/admin'];
+    currentRoute =
+      typeof routeConfig['/admin/event'] === 'function'
+        ? routeConfig['/admin/event'](searchParams)
+        : routeConfig['/admin/event'];
   } else if (routeConfig[location.pathname]) {
     currentRoute = routeConfig[location.pathname];
   }
@@ -66,6 +72,9 @@ export default function Header() {
     if (location.pathname === '/lost-and-found/add') {
       // /lost-and-found/add에서는 /lost-and-found로 이동
       nav('/lost-and-found');
+    } else if (isAdminEventPathDetail) {
+      nav('/admin/event');
+      nav(0);
     } else {
       // 그 외: -1로 이동
       nav(-1);
@@ -126,7 +135,7 @@ export default function Header() {
     <>
       <S.HeaderLayout ref={headerRef} $path={location.pathname}>
         <S.HeaderBg $path={location.pathname} $isMenuOpen={isMenuOpen} $isCamera={isCamera}>
-          {currentRoute.showBackButton ? (
+          {currentRoute.showBackButton || isAdminEventPathDetail ? (
             <S.HambergerMenu onClick={handleGoBack}>
               <img src={currentRoute.menuIcon} alt="backBtn" />
             </S.HambergerMenu>

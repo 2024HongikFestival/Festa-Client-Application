@@ -78,6 +78,12 @@ const AdminEvent = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (loading === false && !isLoggedIn) {
+      navigate('/admin');
+    }
+  }, [loading, isLoggedIn, navigate]);
+
   if (loading) {
     return (
       <SpinnerContainer>
@@ -85,6 +91,7 @@ const AdminEvent = () => {
       </SpinnerContainer> // 또는 로딩 스피너를 표시할 수 있습니다
     );
   }
+
   if (!isLoggedIn) {
     return <AdminLogin state={{ from: location.pathname }} />;
   }
