@@ -4,6 +4,558 @@
   "main": {
     "sorry": "Sorry, this page is under construction."
   },
+  "booth": {
+    "pub": {
+      "pageTitle": "Pub",
+      "mapTitle": "Pub location",
+      "pub": "Pub info",
+      "location": "location",
+      "specific": "A college-specific pub",
+      "operating": "The opening hours of a pub",
+      "day": "Day",
+      "night": "Night",
+      "operatingInfo": "Operating hours may vary from booth to booth",
+      "menu": {
+        "1": "Free major",
+        "2": "Business/Economic",
+        "3": "Art",
+        "4": "Architecture/Urban Affairs",
+        "5": "Education",
+        "6": "Liberal Arts",
+        "7": "Engineering",
+        "8": "Convergence",
+        "9": "Club Association",
+        "10": "Scholarship",
+        "11": "Sports",
+        "12": "Performance",
+        "13": "Exhibition/Leisure",
+        "14": "Society/Union"
+      },
+      "card": {
+        "1": [
+          {
+            "department": "Campus Autonomous Major",
+            "intro": "dancing/drinking/singing in one's sleep",
+            "event": "a receipt camera, a spinning wheel",
+            "food": "Stir-fried spicy pork, potato pancakes"
+          }
+        ],
+        "2": [
+          {
+            "department": "Business School",
+            "intro": "Street bar (Kyungpo)",
+            "food": "Fishcake Soup, Stir-fried pork belly with a thin slice"
+          },
+          {
+            "department": "Economic School",
+            "intro": "BullMarket",
+            "food": "boneless chicken feet, a chubby bone"
+          }
+        ],
+        "3": [
+          {
+            "department": "The Center of the College of Fine Arts",
+            "intro": "the Marble Bar at the University of the Arts",
+            "event": "the Marvel board game of the art school",
+            "food": "tteokbokki, fruit salad"
+          },
+          {
+            "department": "Printmaking Department",
+            "intro": "Magic Girl Concept Pub",
+            "event": "Polaroid, flea market",
+            "food": "Kimchi and pork, Fishcake Soup"
+          },
+          {
+            "department": "Oriental Painting Department",
+            "intro": "a goblin bar",
+            "food": "Sauce Flatter, fruit salad"
+          },
+          {
+            "department": "Department of Painting",
+            "intro": "Imagination Factory of the Department of Painting",
+            "event": "Mini game, flea market",
+            "food": "Popcorn, corn cheese"
+          },
+          {
+            "department": "Department of Pottery Glass",
+            "intro": "the reward of cats",
+            "event": "flea market",
+            "food": "Takoyaki, Onigiri"
+          },
+          {
+            "department": "Department of Wooden Furniture",
+            "intro": "Utopia in my school days",
+            "event": "Mini game, Mini gacha",
+            "food": "Corn cheese buldak(spicy noodle), sweet and sour chicken with rice cake"
+          },
+          {
+            "department": "The Art Department",
+            "intro": "beer science",
+            "food": "Canapes, hot dogs"
+          },
+          {
+            "department": "College of Sculpture and Art",
+            "intro": "the Western Salon of the Sculptors",
+            "event": "a game of darts",
+            "food": "Pizza and sausage"
+          },
+          {
+            "department": "Department of Metal Molding Design",
+            "intro": "Underwater Goldie Land Pub",
+            "event": "Spinning the roulette, flea market",
+            "food": "Direct fire fried rice, assorted sausage"
+          },
+          {
+            "department": "Textile Art Fashion Design Department",
+            "intro": "Y2k Hunting Bar",
+            "event": "flea market",
+            "food": "udon noodle, hotteok set"
+          },
+          {
+            "department": "Department of Industrial Design",
+            "intro": "Sandi(Industrial Design) Arcade",
+            "food": "Canape, fruit salad"
+          },
+          {
+            "department": "Department of Visual Design",
+            "intro": "Home MixD Pixel What",
+            "event": "Beads's Production Workshop",
+            "food": "Malaxianguo, Amangchu"
+          }
+        ],
+        "4": [
+          {
+            "department": "University of Architecture and Urban Affairs",
+            "intro": "HCAU'S HOUR",
+            "event": "Photo wall design and photography",
+            "food": "Grill Sausages, tomato jjamppong"
+          }
+        ],
+        "5": [
+          {
+            "department": "English Education Department",
+            "intro": "an inside-out pub",
+            "food": "Sausage and fried rice, Ramen"
+          },
+          {
+            "department": "Department of Korean Language Education",
+            "intro": "Heungbu is cheeky. My tavern",
+            "food": "Potato pancake, budae jjigae(korean soup)"
+          },
+          {
+            "department": "Mathematics Education Department",
+            "intro": "an awesomeness pub",
+            "food": "Chapagyechi, Picagoras(special menu)"
+          },
+          {
+            "department": "History Education Department",
+            "intro": "Athens Party of Dionysus",
+            "food": "Pasta, tortilla pizza"
+          },
+          {
+            "department": "The Department of Education",
+            "intro": "Gather around, the forest of education",
+            "food": "tofu Stir-fried pork, tofu beef soup"
+          }
+        ],
+        "6": [
+          {
+            "department": "The Department of German Literature",
+            "intro": "a soccer festival pub",
+            "food": "Currie Boost, Schweinhaksen"
+          },
+          {
+            "department": "Department of English Language and Literature",
+            "intro": "a chilling haunted house pub",
+            "food": "Assorted Sausage, Chicken salad"
+          },
+          {
+            "department": "French Literature and Literature Department",
+            "intro": "Paris Saint-Germain pub",
+            "food": "chop steak, rolled omelet with cheese"
+          },
+          {
+            "department": "Department of Korean Language and Literature",
+            "intro": "Beer count night",
+            "food": "korean traditional cookie icecream, Cheese and Potato Pancake"
+          }
+        ],
+        "7": [
+          {
+            "department": "The Center of the College of Engineering",
+            "intro": "2077 Project: Invincible",
+            "food": "Stir-fried spicy pork, Chapaguri"
+          },
+          {
+            "department": "Department of Construction and Environmental Engineering",
+            "intro": "Beach, I'm a civil engineering teacher",
+            "food": "Gambas, emotional taco"
+          },
+          {
+            "department": "Department of Mechanical Systems Engineering",
+            "intro": "Mario Party Mechanics",
+            "food": "Stir-fried spicy pork, Stir-fried pork belly with a thin slice"
+          },
+          {
+            "department": "Department of Industrial Data Engineering",
+            "intro": "Sandejumakgol Valley",
+            "food": "Stir-fried spicy pork, korean pancake"
+          },
+          {
+            "department": "Department of New Materials Engineering",
+            "intro": "New material y2k",
+            "food": "Stir-fried spicy pork, korean pancake"
+          },
+          {
+            "department": "Department of Electrical and Electrical Engineering",
+            "intro": "Wion Stadium",
+            "event": "Hook ball, beer pong",
+            "food": "Pork belly green onion salad, Chapagetti and egg cheese"
+          },
+          {
+            "department": "Department of Computer Science",
+            "intro": "Commercial meeting group of computer science",
+            "food": "Chives pancake, tteokbokki"
+          },
+          {
+            "department": "Department of Chemical Engineering",
+            "intro": "2024 alcohol Olympics",
+            "event": "Mini game, a prize present",
+            "food": "tofu Kimchi stir-fried pork belly, Yakisoba"
+          }
+        ],
+        "8": [
+          {
+            "department": "Department of Performing Arts",
+            "intro": "a singing bar",
+            "food": "Stir-fried spicy pork, Fishcake Soup"
+          },
+          {
+            "department": "Department of Design and Arts Management",
+            "intro": "Retro Garmac's \"Wow Shop\"",
+            "food": "Fried ham, Fishcake Soup"
+          }
+        ],
+        "9": [
+          {
+            "department": "I love you",
+            "intro": "a butler/maid pub",
+            "event": "Yoyotsuri, Omikuji",
+            "food": "Yakisoba, dango"
+          },
+          {
+            "department": "HECC",
+            "intro": "Halloween in September",
+            "event": "Quiz, tattoo stickers",
+            "food": "Macaroni, fruit salad"
+          },
+          {
+            "department": "HICC",
+            "intro": "Hi! CC",
+            "event": "a friend-matching program",
+            "food": "Fish cake soup, tofu kimchi"
+          },
+          {
+            "department": "TED",
+            "intro": "Ted and Westmura (Izakaya)",
+            "event": "Quiz, Polaroid",
+            "food": "pollack roe and potato pancake, yakisoba"
+          }
+        ],
+        "10": [
+          {
+            "department": "A basketball club",
+            "intro": "Slam Dunk",
+            "event": "Mini game",
+            "food": "Stir-fried spicy pork, fish cake soup"
+          },
+          {
+            "department": "A shooting club",
+            "intro": "Shooting PX",
+            "event": "a shooting experience",
+            "food": "PPogly, egg rice with soy sauce"
+          },
+          {
+            "department": "A swimming club",
+            "intro": "Hongik Water Bomb",
+            "event": "shooting with a water gun",
+            "food": "Cup ramen, tteokbokki"
+          },
+          {
+            "department": "A baseball club",
+            "intro": "a sports pub",
+            "event": "Restraint check, ball control check",
+            "food": "Chicken skewers, fish cake soup"
+          },
+          {
+            "department": "A badminton club(Pang Pang)",
+            "intro": "Olympic theme",
+            "event": "Tic-Tac-Toe, Dart",
+            "food": "Tofu kimchi, fish cake soup"
+          }
+        ],
+        "11": [
+          {
+            "department": "Tturami",
+            "intro": "Leturo-bar",
+            "event": "Decorating CDs, tattoo stickers",
+            "food": "Nacho Platter, Buldak Getty"
+          },
+          {
+            "department": "Magic's",
+            "intro": "Magic's Magic Store",
+            "event": "a magic performance, fortune card",
+            "food": "Grilled sausage, nachos"
+          },
+          {
+            "department": "Brains Wars",
+            "intro": "Hip Hop Lounge Bar",
+            "event": "DJing/Graphy Experience",
+            "food": "Chapagetti, dried pollack"
+          },
+          {
+            "department": "Snol",
+            "intro": "Snol night",
+            "event": "Numbering meeting, Picking a night market",
+            "food": "Tofu Kimchi, Stir-fried spicy pork"
+          }
+        ],
+        "12": [
+          {
+            "department": "Glossary Society of Literature",
+            "intro": "a lucky day",
+            "event": "Mini-game, letter-paper delivery",
+            "food": "Cold noodles, dumplings"
+          },
+          {
+            "department": "A calligraphy club(Seo woo hwae)",
+            "intro": "\"Seoshindang,\" the new school of calligraphy",
+            "event": "the making of amulets / walls",
+            "food": "Group of korean pancake, grilled rice balls"
+          },
+          {
+            "department": "A boardgame club(One-ple)",
+            "intro": "One-ple board game pub",
+            "event": "Board game competition",
+            "food": "beef jerky, fish cake skewer"
+          },
+          {
+            "department": "High-running",
+            "intro": "Run, Harning",
+            "event": "Filling Pedometer, Photo Zone",
+            "food": "Egg rolls, soft bean curd instant noodles"
+          }
+        ],
+        "13": [
+          {
+            "department": "Mang-nyang-nyang-nyang-nyang-yuri",
+            "intro": "Gather around, \"Mang-Nyang's Forest\"",
+            "event": "Flea Market, Mini Game",
+            "food": "Tofu Kimchi, green onion pancake"
+          },
+          {
+            "department": "I-sec",
+            "intro": "AIESEC AIR",
+            "event": "Mini game, An anvil doll",
+            "food": "Beef brisket soft tofu hot ramen"
+          },
+          {
+            "department": "Misarang/Volcano",
+            "intro": "Answer me, Volcano",
+            "event": "Face painting",
+            "food": "Fried vegetables sausages, chicken skewers"
+          }
+        ]
+      }
+    },
+    "ranking": {
+      "title1": "A popular real-time ",
+      "title2": "pub",
+      "info": "Rankings will be updated on an hourly basis,\n reset daily at 5 AM"
+    }
+  },
+  "fleamarket": {
+    "pageTitle": "Fleamarket",
+    "location": "Fleamarket Location",
+    "list": [
+      {
+        "key": "ccJuice",
+        "name": "CC Juice",
+        "intro": "A place where you can overcome the hot weather with juice and fruit salad made of fresh fruit"
+      },
+      {
+        "key": "almak",
+        "name": "Olmak",
+        "intro": "We sell handmade jewelry and accessories made of nature-inspired ceramics and glass materials"
+      },
+      {
+        "key": "henna",
+        "name": "Henna, do it",
+        "intro": "Have you tried Henna"
+      },
+      {
+        "key": "modori",
+        "name": "Modori",
+        "intro": "A family of carpenters' cute props"
+      },
+      {
+        "key": "sajuraplz",
+        "name": "Sajurplz",
+        "intro": "The pottery I made. I baked it for you"
+      },
+      {
+        "key": "hypeBoy",
+        "name": "Hongik hype boy",
+        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike and more at a low price."
+      },
+      {
+        "key": "sangsu",
+        "name": "Sang-su guilty verdict",
+        "intro": "Sales of used LP and CD at home and abroad"
+      },
+      {
+        "key": "kawaii",
+        "name": "Something cute",
+        "intro": "It's a special handmade knitted piece that express cuteness and affection"
+      },
+      {
+        "key": "aiesec",
+        "name": "How about MZ eco-friendly practice with AIESEC?",
+        "intro": "Multi-use tumbler and hand knitted tea coaster that can be transformed into a keyring"
+      }
+    ],
+    "detail": [
+      {
+        "name": "CC Juice",
+        "intro": "A place where you can overcome the hot weather with juice and fruit salad made of fresh fruit! 🍊🍇",
+        "goods": [
+          {
+            "name": "fresh fruit punch"
+          },
+          {
+            "name": "orange juice"
+          }
+        ]
+      },
+      {
+        "name": "How about MZ eco-friendly practice with AIESEC?",
+        "intro": "Multi-use tumbler and hand knitted tea coaster that can be transformed into a keyring 🏵️🥤",
+        "goods": [
+          {
+            "name": "Tumbler"
+          },
+          {
+            "name": "hand knitted tea coaster"
+          },
+          {
+            "name": "tumbler + tea coaster set"
+          }
+        ]
+      },
+      {
+        "name": "Olmak",
+        "intro": "We sell handmade jewelry and accessories made of nature-inspired ceramics and glass materials 💍💎",
+        "goods": [
+          {
+            "name": "Tumbler"
+          },
+          {
+            "name": "hand knitted tea coaster"
+          },
+          {
+            "name": "tumbler + tea coaster set"
+          }
+        ]
+      },
+      {
+        "name": "Sang-su guilty verdict",
+        "intro": "Sales of used LP and CD at home and abroad 💿🎶"
+      },
+      {
+        "name": "Something cute ^..^",
+        "intro": "It’s a special handmade knitted piece that express cuteness and affection 🧶🍅",
+        "event1": "1. If you purchase more than 10,000 won, you will get a knitted badge!",
+        "event2": "2. Instagram event",
+        "event3": "Please leave a picture of your visit as a story! We're going to draw two of you and give you the key ring you want.",
+        "bottom": "There are also a variety of knitted pieces and pretty packages! Express your feelings to your loved ones. 💝",
+        "goods": [
+          {
+            "name": "mushroom keyring"
+          },
+          {
+            "name": "vegetable keyring set"
+          },
+          {
+            "name": "goldfish keyring"
+          },
+          {
+            "name": "white copper keyring"
+          },
+          {
+            "name": "ribbon keyring"
+          },
+          {
+            "name": "skeleton keyring"
+          },
+          {
+            "name": "tomato tea coaster"
+          },
+          {
+            "name": "grass tea coaster"
+          },
+          {
+            "name": "sea tea coaster"
+          },
+          {
+            "name": "pizza tea coaster"
+          }
+        ]
+      },
+      {
+        "name": "Henna, do it!",
+        "intro": "Have you tried Henna? 🖌️🖤",
+        "bottom": "There are about 100 more patterns to explore ☺️"
+      },
+      {
+        "name": "Hongik hype boy market",
+        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike 👕✨ and more at a low price. "
+      },
+      {
+        "name": "sajuraplz",
+        "intro": "The pottery I made. I baked it for you 🫵🍶"
+      },
+      {
+        "name": "Modori",
+        "intro": "A family of carpenters’ cute props 🌳🪓",
+        "goods": [
+          {
+            "name": "cake kering"
+          },
+          {
+            "name": "donut keyring"
+          },
+          {
+            "name": "fish keyring"
+          },
+          {
+            "name": "robot keyring"
+          },
+          {
+            "name": "fish keyring (chubby)"
+          },
+          {
+            "name": "fish keyring (thin)"
+          },
+          {
+            "name": "miscellaneous"
+          },
+          {
+            "name": "bookmark"
+          }
+        ]
+      }
+    ]
+  },
   "layouts": {
     "header": {
       "toRoadmap": "ROAD MAP",

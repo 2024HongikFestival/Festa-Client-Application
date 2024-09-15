@@ -1,4 +1,4 @@
-export const MdList = [
+export const mdList = [
   {
     img: 'baseballUniform',
     name: 'baseballUniform', // 번역 키로 변경

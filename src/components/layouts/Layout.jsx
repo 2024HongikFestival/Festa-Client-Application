@@ -8,6 +8,17 @@ import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
 
+// import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackground.webp';
+// import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
+// import fleamarketBg3 from '@/assets/webps/booth/background/fleamarketSangsuBackground.webp';
+
+import fleamarketBg1 from '@/assets/svgs/booth/background/fleamarketMainBackground.svg';
+import fleamarketBg2 from '@/assets/svgs/booth/background/fleamarketCommonBackground.svg';
+import fleamarketBg3 from '@/assets/svgs/booth/background/fleamarketSangsuBackground.svg';
+
+import mdBg from '@/assets/svgs/booth/background/mdBackground.svg';
+import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
+
 export default function Layout() {
   const { isCamera } = useCamera();
   const location = useLocation();
@@ -70,5 +81,52 @@ const Container = styled.div`
     css`
       background-image: url(${facilitiesBG});
       background-size: cover;
+    `}
+
+    ${(props) =>
+    props.$path === '/booth' &&
+    css`
+      background-image: url(${boothBg});
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+    `}
+
+    ${(props) =>
+    props.$path === '/md' &&
+    css`
+      background-image: url(${mdBg});
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+    `}
+
+    ${(props) =>
+    props.$path === '/fleamarket' &&
+    css`
+      background-image: url(${fleamarketBg1});
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+    `}
+
+    ${(props) =>
+    props.$path.startsWith('/fleamarket/') &&
+    props.$path !== '/fleamarket/sangsu' &&
+    props.$path !== '/fleamarket' &&
+    css`
+      background-image: url(${fleamarketBg2});
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+    `}
+
+    ${(props) =>
+    props.$path === '/fleamarket/sangsu' &&
+    css`
+      background-image: url(${fleamarketBg3});
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
     `}
 `;

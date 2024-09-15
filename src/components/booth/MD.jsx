@@ -1,6 +1,3 @@
-import { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next'; // i18next import
@@ -55,10 +52,6 @@ export default function MD({ img, name, price, width, height }) {
   const imageSrc = imageMap[img];
   const imageTop = imageTopMap[img];
   const { t } = useTranslation(); // useTranslation 훅 사용
-
-  useEffect(() => {
-    AOS.init();
-  }, []);
 
   return (
     <ContentContainer>
