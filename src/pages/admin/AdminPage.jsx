@@ -72,17 +72,23 @@ const AdminPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (loading === false && !isLoggedIn) {
+      navigate('/admin');
+    }
+  }, [loading, isLoggedIn, navigate]);
+
   if (loading) {
     return (
       <SpinnerContainer>
         <div className="spinner"></div>
-      </SpinnerContainer>
-    ); // 또는 로딩 스피너를 표시할 수 있습니다
+      </SpinnerContainer> // 또는 로딩 스피너를 표시할 수 있습니다
+    );
   }
+
   if (!isLoggedIn) {
     return <AdminLogin state={{ from: location.pathname }} />;
   }
-
   const handleChangeView = (view) => {
     setActiveComponent(view);
     navigate(`?view=${view}`); // 쿼리 파라미터 업데이트
