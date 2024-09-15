@@ -605,7 +605,6 @@
     "talentContest": "재주꾼 선발 대회",
     "studentCenterStage": "학생 중앙 무대",
     "celebrityStage": "연예인 초청 무대",
-    "artistName": "아티스트 이름",
     "loading": "Loading...",
     "eventDetails": {
       "time1": "17:00 ~ 19:30",
@@ -638,6 +637,17 @@
         "performingArtsBand": "공연예술 밴드",
         "blackTetra": "블랙테트라",
         "bitzFlow": "비츠플로우"
+      },
+      "artist": {
+        "artist1": "하하 HAHA",
+        "artist2": "십센치 10CM",
+        "artist3": "지코 ZICO",
+        "artist4": "카더가든 Car, the garden",
+        "artist5": "에이핑크 Apink",
+        "artist6": "크라잉넛 CRYING NUT",
+        "artist7": "한로로 HANRORO",
+        "artist8": "청하 CHUNG HA",
+        "artist9": "로꼬 Loco"
       }
     }
   },
