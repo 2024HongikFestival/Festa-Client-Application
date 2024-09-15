@@ -43,17 +43,13 @@ export default function Layout() {
     }
   };
 
-  const isLoggedIn = () => {
-    return !!localStorage.getItem('accessToken');
-  };
-  const showheader = isLoggedIn() || !isAdminPath;
+  const isAdminViewPath = adminViewPaths.includes(location.pathname);
+
+  const showheader = isLoggedIn || !isAdminPath || isAdminViewPath;
 
   useEffect(() => {
     handleOauthPath();
   }, [location]);
-  const isAdminViewPath = adminViewPaths.includes(location.pathname);
-
-  const showheader = isLoggedIn || !isAdminPath || isAdminViewPath;
 
   useEffect(() => {
     const checkToken = async () => {
