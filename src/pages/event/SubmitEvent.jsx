@@ -78,7 +78,6 @@ export default SubmitEvent;
 
 const Wrapper = styled.div`
   display: flex;
-  padding-top: 5.6rem;
   flex-direction: column;
   align-items: center;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};

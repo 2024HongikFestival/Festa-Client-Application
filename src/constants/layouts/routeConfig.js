@@ -57,6 +57,12 @@ const routeConfig = {
     xBtn: xBtnBlack,
     showBackButton: false,
   },
+  '/oauth/events': {
+    logo: hiuLogo,
+    menuIcon: hambergerMenu,
+    xBtn: xBtnBlack,
+    showBackButton: false,
+  },
   '/admin/event': (searchParams) => {
     const view = searchParams.get('view');
     const detailId = searchParams.get('detailId');

@@ -99,12 +99,13 @@ const Container = styled.div`
   clip-path: inset(0 0 0 0);
 
   ${(props) =>
-    (props.$path === '/event' ||
+    (props.$path === '/oauth/events' ||
+      props.$path === '/event' ||
       props.$path === '/event/' ||
       props.$path === '/event/enter' ||
       props.$path === '/event/submit') &&
     css`
-      padding-top: 0;
+      background-color: ${(props) => props.theme.colors.flameBackgroundColor};
     `}
 
   ${(props) =>
