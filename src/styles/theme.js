@@ -69,6 +69,30 @@ const theme = {
       line-height: 150%;
       letter-spacing: -0.002rem;
     `,
+      department: `
+      font-family: 'Pretendard', sans-serif;;
+      font-size: 1.4rem;
+      font-weight: 800;
+      font-style: normal;
+      line-height: 2.1rem;
+      letter-spacing: -0.014rem;
+    `,
+      intro: `
+      font-family: 'Pretendard', sans-serif;;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 1.65rem;
+      letter-spacing: -0.011rem;
+    `,
+      roboto: `
+      font-family: 'Roboto', sans-serif;;
+      font-size: 1.4rem;
+      font-weight: 500;
+      font-style: normal;
+      line-height: 160%;
+      letter-spacing: -0.014rem;
+  `,
     },
     flame: {
       headline1: `
@@ -214,6 +238,14 @@ const theme = {
       font-family: 'Pretendard', sans-serif;
       font-size: 1.4rem;
       font-weight: 500;
+      font-style: normal;
+      line-height: 150%;
+      letter-spacing: -0.0014rem;
+    `,
+      body2Reg: `
+      font-family: 'Pretendard', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 400;
       font-style: normal;
       line-height: 150%;
       letter-spacing: -0.0014rem;

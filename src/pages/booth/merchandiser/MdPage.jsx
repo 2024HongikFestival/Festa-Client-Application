@@ -2,7 +2,7 @@ import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/icon/error.webp';
 import MD from '@/components/booth/MD';
-import { MdList } from '@/constants/booth/mdList';
+import { mdList } from '@/constants/booth/mdList';
 import * as S from './MdPage.styled';
 
 export default function MdPage() {
@@ -25,7 +25,7 @@ export default function MdPage() {
       </ContentContainer>
       {/* MD 컴포넌트 */}
       <S.MDContainer>
-        {MdList.map((item, index) =>
+        {mdList.map((item, index) =>
           index === 0 ? (
             <MD
               key={index}
