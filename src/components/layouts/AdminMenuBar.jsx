@@ -14,6 +14,7 @@ const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, showLogoutPopup
     localStorage.removeItem('accessToken');
     setIsLoggedIn(false);
     nav('/admin');
+    nav(0);
   };
 
   const handleConfirmLogout = () => {
