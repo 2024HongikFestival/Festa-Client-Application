@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next'; // i18next import
+import { useTranslation, Trans } from 'react-i18next'; // i18next import
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/icon/error.webp';
@@ -61,9 +61,9 @@ export default function MdPage() {
           <S.NoteContainer>
             <S.NoteTitle>{t('mdPage.noteTitle')}</S.NoteTitle>
             <S.NoteContentWrapper>
-              <S.NoteContent>&nbsp;• {t('mdPage.noteItems.item1')}</S.NoteContent>
-              <S.NoteContent>&nbsp;• {t('mdPage.noteItems.item2')}</S.NoteContent>
-              <S.NoteContent>&nbsp;• {t('mdPage.noteItems.item3')}</S.NoteContent>
+              <S.NoteContent>{t('mdPage.noteItems.item1')}</S.NoteContent>
+              <S.NoteContent>{t('mdPage.noteItems.item2')}</S.NoteContent>
+              <S.NoteContent>{t('mdPage.noteItems.item3')}</S.NoteContent>
             </S.NoteContentWrapper>
           </S.NoteContainer>
         </ContentContainer>

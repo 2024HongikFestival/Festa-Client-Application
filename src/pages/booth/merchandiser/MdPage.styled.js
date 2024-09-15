@@ -53,7 +53,7 @@ export const Caption = styled.div`
 `;
 
 export const NoteContainer = styled.div`
-  width: 28.7rem;
+  width: 30rem;
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
@@ -68,8 +68,20 @@ export const NoteTitle = styled.div`
 `;
 
 export const NoteContent = styled.p`
-  ${(props) => props.theme.fontStyles.basic.body2Med}
+  position: relative;
+  margin-left: 1.9rem;
   color: ${(props) => props.theme.colors.gray90};
+  ${(props) => props.theme.fontStyles.basic.body2Med};
+  line-height: 1.5;
+
+  &::before {
+    content: '•';
+    position: absolute;
+    left: -1.2rem;
+    top: 0; /* 점을 첫 번째 줄과 정렬합니다 */
+    font-size: 1.2rem; /* 12px -> 1.2rem */
+    color: ${(props) => props.theme.colors.gray90};
+  }
 `;
 
 export const Hidden = styled.span`
@@ -78,11 +90,12 @@ export const Hidden = styled.span`
 `;
 
 export const NoteContentWrapper = styled.div`
-  width: 28.7rem;
-  height: auto;
+  list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.4rem; /* 4px -> 0.4rem */
+  align-self: stretch;
 `;
 
 export const MDContainer = styled.div`

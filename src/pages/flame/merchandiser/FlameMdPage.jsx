@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useTranslation } from 'react-i18next'; // i18next import
+import { useTranslation, Trans } from 'react-i18next'; // i18next import
 import * as S from './styles';
 
 import md1 from '@/assets/webps/wdfMD/md1.webp';
@@ -87,7 +87,9 @@ const FlameMdPage = () => {
           <S.NoticeList>
             <S.NoticeItem>{t('flameMdPage.noticeList.item1')}</S.NoticeItem>
             <S.NoticeItem>{t('flameMdPage.noticeList.item2')}</S.NoticeItem>
-            <S.NoticeItem>{t('flameMdPage.noticeList.item3')}</S.NoticeItem>
+            <S.NoticeItem>
+              <Trans i18nKey="flameMdPage.noticeList.item3" components={{ br: <br /> }} />
+            </S.NoticeItem>
           </S.NoticeList>
         </S.NoticeContainer>
       </S.MdProductsContainer>
