@@ -36,7 +36,7 @@ export default function FleamarketInfo({ item, index }) {
 }
 
 const MarketInfoContainer = styled.div`
-  margin: 1.6rem 1.6rem 1.6rem 1.4rem;
+  margin: 1.6rem 1.4rem;
   display: flex;
   gap: 1.2rem;
 `;
