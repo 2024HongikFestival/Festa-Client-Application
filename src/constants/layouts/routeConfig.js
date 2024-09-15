@@ -57,6 +57,34 @@ const routeConfig = {
     xBtn: xBtnBlack,
     showBackButton: false,
   },
+  '/admin/event': (searchParams) => {
+    const view = searchParams.get('view');
+    const detailId = searchParams.get('detailId');
+    if (view === 'participants') {
+      if (detailId) {
+        return {
+          logo: hiuLogoBlack,
+          menuIcon: backBtnBlack,
+          showBackButton: true,
+        };
+      } else {
+        // view=participants 이지만 detailId가 없을 때
+        return {
+          logo: hiuLogoBlack,
+          menuIcon: hambergerMenuBlack,
+          xBtn: xBtnBlack,
+          showBackButton: false,
+        };
+      }
+    }
+    // view 파라미터가 없거나 다른 값일 때
+    return {
+      logo: hiuLogoBlack,
+      menuIcon: hambergerMenuBlack,
+      xBtn: xBtnBlack,
+      showBackButton: false,
+    };
+  },
   default: {
     logo: hiuLogoBlack,
     menuIcon: hambergerMenuBlack,

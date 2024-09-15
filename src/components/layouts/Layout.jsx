@@ -1,12 +1,13 @@
 import AddLostItemBg from '@/assets/webps/lost/AddLostItemBg.webp';
 import LostAndFoundBg from '@/assets/webps/lost/LostAndFoundBg.webp';
+import { useState, useEffect } from 'react';
 import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { useCamera } from '../../context/AuthProvider';
-import { useEffect, useState } from 'react';
+import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
+import { adminAxiosInstance } from '@/api/axios';
 
 // import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackground.webp';
 // import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
@@ -23,7 +24,10 @@ export default function Layout() {
   const { isCamera } = useCamera();
   const location = useLocation();
 
-  const adminPaths = ['/admin', '/admin/', '/admin/event', '/admin/losts'];
+  const [isLoggedIn, setIsLoggedIn] = useState(() => !!localStorage.getItem('accessToken'));
+
+  const adminPaths = ['/admin', '/admin/'];
+  const adminViewPaths = ['/admin/event', '/admin/losts'];
   const isAdminPath = adminPaths.includes(location.pathname);
 
   const eventPaths = ['/event', '/event/enter', '/event/submit'];
@@ -47,12 +51,45 @@ export default function Layout() {
   useEffect(() => {
     handleOauthPath();
   }, [location]);
+  const isAdminViewPath = adminViewPaths.includes(location.pathname);
+
+  const showheader = isLoggedIn || !isAdminPath || isAdminViewPath;
+
+  useEffect(() => {
+    const checkToken = async () => {
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken) {
+        try {
+          const response = await adminAxiosInstance.get('/test/admin', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          setIsLoggedIn(response.status === 200);
+        } catch {
+          setIsLoggedIn(false);
+        }
+      } else {
+        setIsLoggedIn(false);
+      }
+    };
+    checkToken();
+    const handleStorageChange = (event) => {
+      if (event.key === 'accessToken') {
+        checkToken();
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   return (
     <Container $path={location.pathname} $showheader={showheader}>
       {showheader && <Header />}
       <Outlet />
-      {!isAdminPath && !isCamera && !isEventPath && !oauthPath && <Footer />}
+      {!isAdminPath && !isAdminViewPath && !isCamera && !isEventPath && !oauthPath && <Footer />}
     </Container>
   );
 }

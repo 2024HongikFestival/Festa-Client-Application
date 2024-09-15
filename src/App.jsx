@@ -47,7 +47,6 @@ function App() {
       mirror: false,
     });
   }, []);
-
   return (
     <AuthProvider>
       <BrowserRouter>
