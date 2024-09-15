@@ -22,7 +22,7 @@ dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Seoul');
 
 // 이벤트 시작과 종료 시간
-const eventStart = dayjs.tz('2024-09-10 00:00:00', 'Asia/Seoul'); // 테스트를 위해 임시로 현재 시간으로 설정
+const eventStart = dayjs.tz('2024-09-15 22:20:00', 'Asia/Seoul'); // 테스트를 위해 임시로 현재 시간으로 설정
 const eventEnd = dayjs.tz('2024-09-27 23:59:59', 'Asia/Seoul');
 
 const EventPage = () => {

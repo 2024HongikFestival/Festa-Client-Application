@@ -7,6 +7,7 @@ const SubmitEvent = () => {
   const location = useLocation();
 
   const { date } = location.state || {}; // 전달받은 date 값
+  console.log(date);
 
   const instagramUrl = 'https://www.instagram.com/hiufestival_official/';
 
@@ -27,7 +28,15 @@ const SubmitEvent = () => {
           <span>
             9월 28일 오후 2시
             <br />
-            스토리에 발표
+            <span
+              onClick={() => {
+                window.open(instagramUrl);
+              }}
+              style={{ textDecoration: 'underline', textUnderlineOffset: '2px', cursor: 'pointer' }}
+            >
+              @hiufestival_official
+            </span>
+            &nbsp;스토리에 발표
           </span>
           됩니다
         </ContentBox2>

@@ -81,7 +81,8 @@ const EnterEvent = () => {
       localStorage.removeItem('kakao_code');
       localStorage.removeItem('event_access_token');
       // response.data.date를 state로 전달
-      navigate('/event/submit', { state: { date: response.data.date } });
+      console.log(response.data.data.date);
+      navigate('/event/submit', { state: { date: response.data.data.date } });
     } catch (error) {
       console.log(error);
     }
