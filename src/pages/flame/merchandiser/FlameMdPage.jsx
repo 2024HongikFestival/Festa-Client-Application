@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation, Trans } from 'react-i18next'; // i18next import
 import * as S from './styles';
 
 import md1 from '@/assets/webps/wdfMD/md1.webp';
@@ -18,12 +19,10 @@ import productsData from '@/constants/wdfMD/data.json';
 
 const FlameMdPage = () => {
   const [products, setProducts] = useState([]);
+  const { t } = useTranslation(); // useTranslation 훅 사용
 
   useEffect(() => {
     setProducts(productsData.products);
-    // AOS.init({
-    //   duration: 900, // 애니메이션 지속 시간 (밀리초)
-    // });
   }, []);
 
   const imageMap = {
@@ -43,18 +42,20 @@ const FlameMdPage = () => {
     <>
       <S.MdProductsContainer>
         <S.ProductsSection>
-          <S.Title>MD 상품</S.Title>
+          <S.Title>{t('flameMdPage.title')}</S.Title>
           <S.ProductList>
             <S.ProductLocation>
               <S.LocationDescription>
                 <S.MainDescription>
-                  홍문관(R동) 앞 & 아트앤디자인밸리 측면<S.Highlight>에서</S.Highlight>
+                  {t('flameMdPage.locationDescription')}
+                  <S.Highlight>{t('flameMdPage.span')}</S.Highlight>
+                  <br />
+                  <S.Highlight>{t('flameMdPage.locationSubDescription')}</S.Highlight>
                 </S.MainDescription>
-                <S.SubDescription>구매하실 수 있습니다!</S.SubDescription>
               </S.LocationDescription>
               <S.LocationAlert>
                 <S.AlertImage src={alertImage} />
-                현장 구매만 가능합니다
+                {t('flameMdPage.locationAlert')}
               </S.LocationAlert>
             </S.ProductLocation>
             <S.CardContainer>
@@ -63,7 +64,7 @@ const FlameMdPage = () => {
                   <S.ImageContainer>
                     <S.ProductImage
                       src={imageMap[product.image]}
-                      alt={product.name}
+                      alt={t(`flameMdPage.products.${product.image}`)}
                       width={product.width}
                       height={product.height}
                       top={product.imageTop}
@@ -71,8 +72,8 @@ const FlameMdPage = () => {
                   </S.ImageContainer>
                   <S.ProductInfo>
                     <S.ProductDetails>
-                      <S.ProductTag>한정판매</S.ProductTag>
-                      <S.ProductName>{product.name}</S.ProductName>
+                      <S.ProductTag>{t('flameMdPage.limitedSale')}</S.ProductTag>
+                      <S.ProductName>{t(`flameMdPage.products.${product.image}`)}</S.ProductName>
                     </S.ProductDetails>
                     <S.ProductPrice>{product.price}</S.ProductPrice>
                   </S.ProductInfo>
@@ -82,21 +83,12 @@ const FlameMdPage = () => {
           </S.ProductList>
         </S.ProductsSection>
         <S.NoticeContainer>
-          <S.NoticeTitle>현장 구매 시 유의 사항</S.NoticeTitle>
+          <S.NoticeTitle>{t('flameMdPage.noticeTitle')}</S.NoticeTitle>
           <S.NoticeList>
+            <S.NoticeItem>{t('flameMdPage.noticeList.item1')}</S.NoticeItem>
+            <S.NoticeItem>{t('flameMdPage.noticeList.item2')}</S.NoticeItem>
             <S.NoticeItem>
-              계좌 이체 <S.HighlightedText>및</S.HighlightedText> 현금 결제
-              <S.HighlightedText>만 가능합니다.</S.HighlightedText>
-            </S.NoticeItem>
-            <S.NoticeItem>
-              구매 완료 시 환불, 교환, 취소 불가능<S.HighlightedText>합니다.</S.HighlightedText>
-            </S.NoticeItem>
-            <S.NoticeItem>
-              불량품
-              <S.HighlightedText>
-                은 현장에서 확인 후 바로 현장 관리 인원에게
-                <br /> 말씀해 주시기 바랍니다.
-              </S.HighlightedText>
+              <Trans i18nKey="flameMdPage.noticeList.item3" components={{ br: <br /> }} />
             </S.NoticeItem>
           </S.NoticeList>
         </S.NoticeContainer>
