@@ -6,7 +6,7 @@ import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { useCamera } from '../lost-and-found/AddLostItem/context/AuthProvider';
+import { useCamera } from '@/context/AuthProvider';
 import { adminAxiosInstance } from '@/api/axios';
 
 // import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackground.webp';
