@@ -56,6 +56,8 @@ export const MapImgBox = styled.div`
   cursor: grab;
   overflow: hidden;
   margin: 2.4rem 0;
+  position: relative;
+  z-index: 0;
 
   .card {
     touch-action: none;
@@ -65,4 +67,12 @@ export const MapImgBox = styled.div`
     height: 44.3rem;
     background-size: cover;
   }
+`;
+
+export const MapSpan = styled.span`
+  position: absolute;
+  color: black;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
 `;

@@ -1,4 +1,13 @@
-import { MapBox, MapTitle, MapToggle, MapToggleBtn, MainMapWrapper, MapToggleBox, MapImgBox } from './styles.js';
+import {
+  MapBox,
+  MapTitle,
+  MapToggle,
+  MapToggleBtn,
+  MainMapWrapper,
+  MapToggleBox,
+  MapImgBox,
+  MapSpan,
+} from './styles.js';
 import React, { useEffect, useRef, useState } from 'react';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
 import mapImg from './map.webp';
