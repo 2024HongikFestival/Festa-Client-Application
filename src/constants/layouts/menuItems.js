@@ -71,7 +71,7 @@ export const commonMenuItems = [
   {
     flamePath: '/flame/md',
     flameLabel: 'layouts.header.toMd',
-    daedongjePath: '/event/:eventId',
+    daedongjePath: '/event',
     daedongjeLabel: 'layouts.header.toEvent',
     accordion: false,
   },
