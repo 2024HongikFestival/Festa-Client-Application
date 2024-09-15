@@ -14,7 +14,7 @@ export const PageContainer = styled.div`
   padding-bottom: 6.4rem;
 `;
 export const Title = styled.p`
-  ${(props) => props.theme.fontStyles.basic.headline2};
+  ${(props) => props.theme.fontStyles.main.headline2};
   color: ${(props) => props.theme.colors.black};
 `;
 export const DayContainer = styled.div`
@@ -26,7 +26,7 @@ export const DayContainer = styled.div`
 export const DayButton = styled.button`
   background: none;
   border: none;
-  color: ${(props) => (props.selected ? props.theme.colors.hongikBlue : props.theme.colors.gray50)};
+  color: ${(props) => (props.selected ? props.theme.colors.hongikBlue : props.theme.colors.gray60)};
   cursor: pointer;
   padding: 0;
   .day {
