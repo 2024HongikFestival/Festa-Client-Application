@@ -94,7 +94,7 @@ export const FleamarketDetailList = (t) => {
         { name: 'PP-53', price: 7000, img: henna5 },
         { name: 'PP-43', price: 7000, img: henna6 },
       ],
-      wideImgGoods: { name: '레 5-22', price: 8000, img: henna7 },
+      wideImgGoods: { name: t('fleamarket.detail.5.goods'), price: 8000, img: henna7 },
       hennaOtherImg: hennaOtherImg,
     },
     modori: {
@@ -119,9 +119,9 @@ export const FleamarketDetailList = (t) => {
         { name: 'anatomy chess object_glass', price: 20000, img: sajuraplz2 },
         { name: 'love and peace blowing cup', price: 45000, img: sajuraplz3 },
         { name: 'ceramic weaving object', price: 35000, img: sajuraplz4 },
-        { name: '오발 프레임 컵', price: 38000, img: sajuraplz5 },
-        { name: '하트 별 스티커 컵', price: 28000, img: sajuraplz6 },
-        { name: '프레임 머그소서세트', price: 48000, img: sajuraplz7 },
+        { name: t('fleamarket.detail.7.goods.0.name'), price: 38000, img: sajuraplz5 },
+        { name: t('fleamarket.detail.7.goods.1.name'), price: 28000, img: sajuraplz6 },
+        { name: t('fleamarket.detail.7.goods.2.name'), price: 48000, img: sajuraplz7 },
       ],
     },
     hypeBoy: {

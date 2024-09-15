@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import ContentContainer from '@/components/common/ContentContainer';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import React from 'react';
 
 FleamarketBottom.propTypes = {
   item: PropTypes.shape({
@@ -17,15 +19,22 @@ FleamarketBottom.propTypes = {
 };
 
 export default function FleamarketBottom({ item }) {
+  const { t } = useTranslation();
+
   const { marketId } = useParams();
   if (marketId === 'kawaii') {
     return (
       <Container $marketId={marketId}>
         <ContentContainer>
           <TextWrapper>
-            이외에도 다양한 뜨개 작품들과
-            <br /> 예쁜 패키지가 준비되어 있어요!
-            <br /> 소중한 사람에게 마음을 전달해 보세요 💝
+            {t('fleamarket.detail.4.bottom')
+              .split('\n')
+              .map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
           </TextWrapper>
         </ContentContainer>
       </Container>
@@ -42,7 +51,7 @@ export default function FleamarketBottom({ item }) {
         </ContentContainer>
         <ContentContainer>
           <HennaOtherImg src={item.hennaOtherImg} alt="henna" />
-          <Text>약 100종의 도안이 더 있으니 구경하러 오세요 ☺️</Text>
+          <Text>{t('fleamarket.detail.5.bottom')}</Text>
         </ContentContainer>
       </Container>
     );
@@ -86,6 +95,7 @@ const Text = styled.div`
   color: ${({ theme }) => theme.colors.gray80};
   margin-top: 1rem;
   margin-bottom: 2rem;
+  text-align: center;
 `;
 
 const GoodsInfo = styled.div`

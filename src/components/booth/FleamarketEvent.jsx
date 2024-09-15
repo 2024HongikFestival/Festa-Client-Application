@@ -1,10 +1,14 @@
 import styled from 'styled-components';
+import React from 'react';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/icon/error.webp';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function FleamarketEvent() {
   const { marketId } = useParams();
+  const { t } = useTranslation();
+
   if (marketId === 'kawaii') {
     return (
       <Container>
@@ -13,20 +17,20 @@ export default function FleamarketEvent() {
             <EventTitle>Event 🎁</EventTitle>
             <EventText>
               <Span>
-                1. 1만원 이상 구매 시 뜨개 뱃지 증정!
+                {t('fleamarket.detail.4.event1')}
                 <br />
-                2. Instagram 이벤트
+                {t('fleamarket.detail.4.event2')}
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;방문 인증 사진을 스토리로 남겨 주세요!
+                &nbsp;&nbsp;&nbsp;&nbsp;{t('fleamarket.detail.4.event3')}
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;두 분을 추첨해 원하시는 키링을 선물해드립니다!
+                &nbsp;&nbsp;&nbsp;&nbsp;{t('fleamarket.detail.4.event4')}
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;Instargram _ 겨운거 (@ilovegiyumppojjak)
+                &nbsp;&nbsp;&nbsp;&nbsp;{t('fleamarket.detail.4.event5')}
               </Span>
             </EventText>
             <InfoText>
               <ErrorIcon src={error} alt="error" />
-              당첨자는 10/1(화) DM을 통해 안내드립니다
+              {t('fleamarket.detail.4.event6')}
             </InfoText>
           </EventTextContainer>
         </ContentContainer>
@@ -40,27 +44,28 @@ export default function FleamarketEvent() {
             <EventTitle>Event 🎁</EventTitle>
             <EventText>
               <Span>
-                1. 서울캠퍼스 자율전공 공식 인스타그램 계정
+                {t('fleamarket.detail.5.event1')}
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;태그 후 헤나 시술 인증샷 스토리 업로드 시,
+                &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event2')}
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;1천원 할인!
+                &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event3')}
               </Span>
-              <Span>2. 헤나 2개 시술 시, 1천원 할인!</Span>
+              <Span> {t('fleamarket.detail.5.event4')}</Span>
               <Span>
-                3. 뽑기 이벤트
+                {t('fleamarket.detail.5.event5')}
                 <br />
-                &nbsp;• &nbsp;헤나 5천원 이상 시술 시, 뽑기 기회 제공! <br />
-                &nbsp;• &nbsp;서울캠퍼스 자율전공 학생은 뽑기 1번 가능
+                &nbsp;• &nbsp; {t('fleamarket.detail.5.event6')}
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;🥇 1등: 원하는 헤나 도안 무료 시술!
+                &nbsp;• &nbsp; {t('fleamarket.detail.5.event7')}
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;🥈 2등: 자율전공 주점(저녁) 방문 시 컵라면 제공
+                &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event8')}
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event9')}
               </Span>
             </EventText>
             <InfoText>
               <ErrorIcon src={error} alt="error" />
-              1번과 2번 이벤트는 중복 참여가 불가능합니다.
+              {t('fleamarket.detail.5.event10')}
             </InfoText>
           </EventTextContainer>
         </ContentContainer>
@@ -106,7 +111,7 @@ const Span = styled.div`
 `;
 
 const InfoText = styled.div`
-  width: 27.5rem;
+  /* width: 27.5rem; */
   height: 2rem;
   display: flex;
   align-items: center;

@@ -113,7 +113,7 @@ const Goods = styled.div`
   /* height: 22.5rem; */
   height: auto;
   border-radius: 1.6rem;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -142,7 +142,7 @@ const GoodsInfo = styled.div`
 `;
 
 const Name = styled.div`
-  width: 14rem;
+  /* width: 14rem; */
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   margin-bottom: 0.4rem;
 `;

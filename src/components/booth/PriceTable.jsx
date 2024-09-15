@@ -1,17 +1,20 @@
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 PriceTable.propTypes = {
   bottomImg: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])).isRequired,
 };
 
 export default function PriceTable({ bottomImg }) {
+  const { t } = useTranslation();
+
   const priceData = [
-    { icon: '👕', name: '티셔츠', price: '₩15,000 ~ ₩35,000' },
-    { icon: '🧥', name: '맨투맨/후드', price: '₩50,000 ~ ₩150,000' },
-    { icon: '🧢', name: '모자', price: '₩15,000 ~ ₩35,000' },
-    { icon: '🆕', name: '새 제품', price: '구매 가격 그대로!' },
+    { icon: '👕', name: t('fleamarket.detail.6.price.0.object'), price: '₩15,000 ~ ₩35,000' },
+    { icon: '🧥', name: t('fleamarket.detail.6.price.1.object'), price: '₩50,000 ~ ₩150,000' },
+    { icon: '🧢', name: t('fleamarket.detail.6.price.2.object'), price: '₩15,000 ~ ₩35,000' },
+    { icon: '🆕', name: t('fleamarket.detail.6.price.3.object'), price: t('fleamarket.detail.6.price.4.object') },
   ];
 
   return (
@@ -29,7 +32,7 @@ export default function PriceTable({ bottomImg }) {
               </Collection>
             ))}
           </CollectionWrapper>
-          <Caption>이외에도 더 많이 준비되어 있습니다~!</Caption>
+          <Caption>{t('fleamarket.detail.6.price.5.text')} </Caption>
         </PriceWrapper>
       </ContentContainer>
       <ContentContainer>

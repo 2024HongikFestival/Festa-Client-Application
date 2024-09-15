@@ -390,8 +390,8 @@
       },
       {
         "key": "henna",
-        "name": "Henna, do it",
-        "intro": "Have you tried Henna"
+        "name": "Henna, do it!",
+        "intro": "Have you tried Henna?"
       },
       {
         "key": "modori",
@@ -415,7 +415,7 @@
       },
       {
         "key": "kawaii",
-        "name": "Something cute",
+        "name": "Something cute ^..^",
         "intro": "It's a special handmade knitted piece that express cuteness and affection"
       },
       {
@@ -469,14 +469,17 @@
       },
       {
         "name": "Sang-su guilty verdict",
-        "intro": "Sales of used LP and CD at home and abroad 💿🎶"
+        "intro": "Sales of used LP and CD\nat home and abroad 💿🎶"
       },
       {
         "name": "Something cute ^..^",
         "intro": "It’s a special handmade knitted piece that express cuteness and affection 🧶🍅",
-        "event1": "1. If you purchase more than 10,000 won, you will get a knitted badge!",
+        "event1": "1. If you purchase more than ₩10,000, you will get a knitted badge!",
         "event2": "2. Instagram event",
-        "event3": "Please leave a picture of your visit as a story! We're going to draw two of you and give you the key ring you want.",
+        "event3": "Post a story of your visit",
+        "event4": "Win a keyring (2 winners drawn)",
+        "event5": "Instargram (@ilovegiyumppojjak)",
+        "event6": "Winners will be notified via DM on Oct 1",
         "bottom": "There are also a variety of knitted pieces and pretty packages! Express your feelings to your loved ones. 💝",
         "goods": [
           {
@@ -514,15 +517,46 @@
       {
         "name": "Henna, do it!",
         "intro": "Have you tried Henna? 🖌️🖤",
-        "bottom": "There are about 100 more patterns to explore ☺️"
+        "bottom": "There are about 100 more patterns to explore ☺️",
+        "event1": "1. Tag seoul campus' open major Instagram",
+        "event2": "Upload your henna story",
+        "event3": "Receive ₩1,000 discount!",
+        "event4": "2. ₩1,000 discount for 2 Henna procedures",
+        "event5": "3. Drawing event",
+        "event6": "Henna offers an opportunity to draw if she has a procedure of 5,000 won or more.",
+        "event7": "Students majoring in autonomous majors at Seoul Campus can choose one.",
+        "event8": "🥇 1st : Free treatment for Henna design you want!",
+        "event9": "🥈 2nd : Provide cup noodles when visiting the autonomous major pub (evening)",
+        "event10": "You can't participate in events 1 and 2",
+        "goods": "LE 5-22"
       },
       {
         "name": "Hongik hype boy market",
-        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike 👕✨ and more at a low price. "
+        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike 👕✨ and more at a low price.",
+        "price": [
+          { "object": "T-shirt" },
+          { "object": "sweatshirt" },
+          { "object": "hood" },
+          { "object": "hat" },
+          { "object": "new product" },
+          { "text": "Just like the purchase price~!" },
+          { "text": "We have more prepared~!" }
+        ]
       },
       {
         "name": "sajuraplz",
-        "intro": "The pottery I made. I baked it for you 🫵🍶"
+        "intro": "The pottery I made. I baked it for you 🫵🍶",
+        "goods": [
+          {
+            "name": "oval frame cup"
+          },
+          {
+            "name": "heart star sticker cup"
+          },
+          {
+            "name": "frame mug set"
+          }
+        ]
       },
       {
         "name": "Modori",
