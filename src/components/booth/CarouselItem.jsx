@@ -16,12 +16,14 @@ CarouselItem.propTypes = {
     food: PropTypes.string,
     event: PropTypes.string,
   }),
+  click: PropTypes.any,
 };
 
-export default function CarouselItem({ content }) {
+export default function CarouselItem({ content, click }) {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeClick = () => {
+    click();
     setIsLiked(true);
     setTimeout(() => setIsLiked(false), 1000); // Reset after 1 second
   };
@@ -143,6 +145,7 @@ const Confetti = styled.img`
 const LikeBtn = styled.button`
   width: 10.7rem;
   height: 3.4rem;
+  z-index: 100;
   border-radius: 10rem;
   background-color: #9747ff;
   margin-top: 1.8rem;

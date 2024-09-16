@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import PubCarousel from '@/components/booth/PubCarousel';
 import { useTranslation } from 'react-i18next';
+import HeartIcon from '@/components/booth/HeratIcon';
+
+import { useCallback } from 'react';
 
 export default function PubCard() {
   const lng = localStorage.getItem('language');
   const { t } = useTranslation();
   const [selectedMenu, setSelectedMenu] = useState(t('booth.pub.menu.1'));
+  const [hearts, setHearts] = useState([]);
+
+  const handleLikeBtnClick = useCallback(() => {
+    console.log('btn clicked!');
+    const newHeart = {
+      id: Date.now(),
+      left: `${Math.random() * 80 + 10}%`, // Random position between 10% and 90%
+    };
+    setHearts((prevHearts) => [...prevHearts, newHeart]);
+
+    // Remove the heart after animation completes
+    setTimeout(() => {
+      setHearts((prevHearts) => prevHearts.filter((heart) => heart.id !== newHeart.id));
+    }, 15000);
+  }, []);
 
   const menuItems = [
     t('booth.pub.menu.1'),
@@ -39,6 +57,21 @@ export default function PubCard() {
   return (
     <ContentContainer>
       <PubCardContainer>
+        <HeartContainer>
+          <FallingHeart>
+            {/* <HeartIcon /> */}
+            {/* {hearts.map((heart) => (
+              <FallingHeart key={heart.id} style={{ left: heart.left }}>
+                <HeartIcon />
+              </FallingHeart>
+            ))} */}
+            {hearts.map((heart) => (
+              <FallingHeart key={heart.id} left={heart.left}>
+                <HeartIcon />
+              </FallingHeart>
+            ))}
+          </FallingHeart>
+        </HeartContainer>
         <Title>{t('booth.pub.specific')}</Title>
         <MenuContainer>
           <MenuWrapper index={'1'}>
@@ -70,7 +103,7 @@ export default function PubCard() {
             ))}
           </SubMenuWrapper>
         </MenuContainer>
-        <PubCarousel menu={selectedMenu} />
+        <PubCarousel menu={selectedMenu} click={handleLikeBtnClick} />
       </PubCardContainer>
     </ContentContainer>
   );
@@ -78,11 +111,52 @@ export default function PubCard() {
 
 const PubCardContainer = styled.div`
   width: 33.5rem;
-  margin-bottom: 4rem;
+  padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  // gg
+  position: relative;
+`;
+
+const fallAnimation = keyframes`
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0.5;
+  }
+`;
+
+// const FallingHeart = styled.div`
+//   position: absolute;
+//   top: 0;
+//   left: 50%;
+//   width: 100%;
+//   height: 100%;
+//   animation: ${fallAnimation} 10s linear infinite;
+// `;
+
+const FallingHeart = styled.div`
+  position: absolute;
+  top: 0;
+  left: ${({ left }) => left}; // 각 하트의 위치를 개별적으로 지정
+  width: 100%;
+  height: 100%;
+  animation: ${fallAnimation} 10s linear forwards; // 애니메이션이 독립적으로 실행되도록 수정
+`;
+
+const HeartContainer = styled.div`
+  position: absolute;
+  /* background-color: red; */
+  top: 15rem;
+  /* z-index: 5; */
+  width: 100%;
+  height: 75%;
+  overflow: hidden;
 `;
 
 const Title = styled.div`

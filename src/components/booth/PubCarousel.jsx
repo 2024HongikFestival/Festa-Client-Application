@@ -13,9 +13,10 @@ import { useState, useEffect, useRef } from 'react';
 
 PubCarousel.propTypes = {
   menu: PropTypes.string,
+  click: PropTypes.any,
 };
 
-export default function PubCarousel({ menu }) {
+export default function PubCarousel({ menu, click }) {
   const { t } = useTranslation();
   const pubList = PubList(t);
   const [currentCategory, setCurrentCategory] = useState('1');
@@ -95,7 +96,7 @@ export default function PubCarousel({ menu }) {
       <CarouselContainer>
         <StyledSlider ref={sliderRef} {...settings}>
           {pubList[currentCategory].map((item, index) => (
-            <CarouselItem key={index} content={item} />
+            <CarouselItem key={index} content={item} click={click} />
           ))}
         </StyledSlider>
       </CarouselContainer>
@@ -119,6 +120,7 @@ const CarouselContainer = styled.div`
 const StyledSlider = styled(Slider)`
   box-shadow: 0 0 0.13rem 0.13rem rgba(0, 0, 0, 0.12);
   border-radius: 1.2rem;
+
   .slick-list,
   .slick-track {
     height: 38.1rem;
