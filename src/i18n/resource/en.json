@@ -405,7 +405,7 @@
       },
       {
         "key": "hypeBoy",
-        "name": "Hongik hype boy",
+        "name": "Hongik hype boy market",
         "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike and more at a low price."
       },
       {
@@ -535,11 +535,10 @@
         "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike 👕✨ and more at a low price.",
         "price": [
           { "object": "T-shirt" },
-          { "object": "sweatshirt" },
-          { "object": "hood" },
+          { "object": "sweatshirt/hood" },
           { "object": "hat" },
           { "object": "new product" },
-          { "text": "Just like the purchase price~!" },
+          { "text": "Just like the purchase price!" },
           { "text": "We have more prepared~!" }
         ]
       },
@@ -563,7 +562,7 @@
         "intro": "A family of carpenters’ cute props 🌳🪓",
         "goods": [
           {
-            "name": "cake kering"
+            "name": "cake keyring"
           },
           {
             "name": "donut keyring"

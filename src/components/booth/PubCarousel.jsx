@@ -14,9 +14,10 @@ import { useState, useEffect, useRef } from 'react';
 PubCarousel.propTypes = {
   menu: PropTypes.string,
   click: PropTypes.any,
+  likeData: PropTypes.any,
 };
 
-export default function PubCarousel({ menu, click }) {
+export default function PubCarousel({ menu, click, likeData }) {
   const { t } = useTranslation();
   const pubList = PubList(t);
   const [currentCategory, setCurrentCategory] = useState('1');
@@ -95,9 +96,22 @@ export default function PubCarousel({ menu, click }) {
     <CarouselWrapper>
       <CarouselContainer>
         <StyledSlider ref={sliderRef} {...settings}>
-          {pubList[currentCategory].map((item, index) => (
+          {/* {pubList[currentCategory].map((item, index) => (
             <CarouselItem key={index} content={item} click={click} />
-          ))}
+          ))} */}
+          {pubList[currentCategory].map((item, index) => {
+            // likeData에서 해당 index에 해당하는 데이터를 순서대로 매칭
+            const relatedLikeData = likeData?.[index];
+
+            return (
+              <CarouselItem
+                key={index}
+                content={item}
+                click={click}
+                likeData={relatedLikeData} // 순서대로 매칭된 likeData를 CarouselItem에 전달
+              />
+            );
+          })}
         </StyledSlider>
       </CarouselContainer>
     </CarouselWrapper>

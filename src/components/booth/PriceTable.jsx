@@ -14,7 +14,7 @@ export default function PriceTable({ bottomImg }) {
     { icon: '👕', name: t('fleamarket.detail.6.price.0.object'), price: '₩15,000 ~ ₩35,000' },
     { icon: '🧥', name: t('fleamarket.detail.6.price.1.object'), price: '₩50,000 ~ ₩150,000' },
     { icon: '🧢', name: t('fleamarket.detail.6.price.2.object'), price: '₩15,000 ~ ₩35,000' },
-    { icon: '🆕', name: t('fleamarket.detail.6.price.3.object'), price: t('fleamarket.detail.6.price.4.object') },
+    { icon: '🆕', name: t('fleamarket.detail.6.price.3.object'), price: t('fleamarket.detail.6.price.4.text') },
   ];
 
   return (

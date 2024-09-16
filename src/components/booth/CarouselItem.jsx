@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import day from '@/assets/webps/booth/icon/day.webp';
 import night from '@/assets/webps/booth/icon/night.webp';
@@ -8,6 +8,7 @@ import favorite from '@/assets/webps/booth/icon/favorite.webp';
 import before from '@/assets/webps/booth/icon/before.webp';
 import after from '@/assets/webps/booth/icon/after.webp';
 import PropTypes from 'prop-types';
+import { axiosInstance } from '@/api/axios';
 
 CarouselItem.propTypes = {
   content: PropTypes.shape({
@@ -17,15 +18,34 @@ CarouselItem.propTypes = {
     event: PropTypes.string,
   }),
   click: PropTypes.any,
+  likeData: PropTypes.any,
 };
 
-export default function CarouselItem({ content, click }) {
+export default function CarouselItem({ content, click, likeData }) {
+  console.log('like data: ', likeData);
   const [isLiked, setIsLiked] = useState(false);
+  const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0); // 기본값을 0으로 설정
 
-  const handleLikeClick = () => {
+  useEffect(() => {
+    if (likeData && likeData.totalLike !== undefined) {
+      setTotalLikes(likeData.totalLike); // likeData가 로드된 후에 totalLikes 업데이트
+    }
+  }, [likeData]);
+
+  const handleLikeClick = async (id) => {
     click();
     setIsLiked(true);
     setTimeout(() => setIsLiked(false), 1000); // Reset after 1 second
+
+    try {
+      console.log(id, '좋아요 +1!');
+      const response = await axiosInstance.post(`/booths/${id}/like`);
+      if (response.status === 200) {
+        console.log('좋아요수 +1 성공!');
+      }
+    } catch (e) {
+      console.log('좋아요수 반영 실패', e);
+    }
   };
 
   return (
@@ -48,9 +68,9 @@ export default function CarouselItem({ content, click }) {
       </PubInfoContainer>
       <BtnContainer>
         <Confetti src={isLiked ? after : before} alt="confetti" isAnimating={isLiked} />
-        <LikeBtn onClick={handleLikeClick}>
+        <LikeBtn onClick={() => handleLikeClick(likeData.boothId)}>
           <HeartIcon src={favorite} alt="favorite" />
-          <Count>111</Count>
+          <Count>{totalLikes}</Count>
         </LikeBtn>
       </BtnContainer>
     </Container>
@@ -64,6 +84,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* z-index: 150; */
 `;
 
 const Icon = styled.img`
@@ -145,7 +166,7 @@ const Confetti = styled.img`
 const LikeBtn = styled.button`
   width: 10.7rem;
   height: 3.4rem;
-  z-index: 100;
+  /* z-index: 15; */
   border-radius: 10rem;
   background-color: #9747ff;
   margin-top: 1.8rem;

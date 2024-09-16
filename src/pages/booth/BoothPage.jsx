@@ -20,51 +20,17 @@ export default function BoothPage() {
 
   const { t } = useTranslation();
 
-  const sseUrl = import.meta.env.VITE_SSE_URL;
-
-  const onClickLikes = async (id) => {
-    try {
-      console.log(id, '좋아요 +1!');
-      const response = await axiosInstance.post(`/booths/${id}/like`);
-      if (response.status === 200) {
-        console.log('좋아요수 +1 성공!');
-      }
-    } catch (e) {
-      console.log('좋아요수 반영 실패', e);
-    }
-  };
-
-  // useEffect(() => {
-  //   const eventSource = new EventSource(sseUrl);
-  //   eventSource.onopen = function () {
-  //     // 연결 됐을 때
-  //     console.log('SSE open success!');
-  //   };
-  //   eventSource.onerror = function (error) {
-  //     // 에러 났을 때
-  //     console.log('SSE error!');
-  //     console.log(error);
-  //     eventSource.close();
-  //   };
-  //   eventSource.onmessage = function (event) {
-  //     // 메세지 받았을 때
-
-  //     console.log('SSE get message:', event.data);
-  //     const data = JSON.parse(event.data);
-  //     setComputerLikes(data[0].totalLike);
-  //     setBuisinessLikes(data[1].totalLike);
-  //     setMathLikes(data[2].totalLike);
-  //     setElectronicLikes(data[3].totalLike);
-  //     setIndustrialLikes(data[4].totalLike);
-  //     console.log(data);
-  //     console.log('Event received at:', new Date().toISOString());
-  //     // const newLikes = JSON.parse(event.data);
-  //     // setLikes((prevLikes) => [...prevLikes, newLikes]);
-  //   };
-  //   return () => {
-  //     eventSource.close();
-  //   };
-  // }, []);
+  // const onClickLikes = async (id) => {
+  //   try {
+  //     console.log(id, '좋아요 +1!');
+  //     const response = await axiosInstance.post(`/booths/${id}/like`);
+  //     if (response.status === 200) {
+  //       console.log('좋아요수 +1 성공!');
+  //     }
+  //   } catch (e) {
+  //     console.log('좋아요수 반영 실패', e);
+  //   }
+  // };
 
   const [selectedTab, setSelectedTab] = useState('pub');
   return (

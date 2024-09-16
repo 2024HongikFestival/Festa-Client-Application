@@ -521,13 +521,12 @@
         "name": "홍익 Hype Boy 마켓",
         "intro": "슈프림, 팔라스, 스투시, 나이키 등 👕✨\n다양한 스트릿 브랜드 의류 저렴하게 가져가세요!",
         "price": [
-          { "object": "T-shirt" },
-          { "object": "sweatshirt" },
-          { "object": "hood" },
-          { "object": "hat" },
-          { "object": "new product" },
+          { "object": "티셔츠" },
+          { "object": "맨투맨/후드" },
+          { "object": "모자" },
+          { "object": "새 제품" },
           { "text": "구매 가격 그대로!" },
-          { "text": "We have more prepared~!" }
+          { "text": "이외에도 더 많이 준비되어 있습니다~!" }
         ]
       },
       {
