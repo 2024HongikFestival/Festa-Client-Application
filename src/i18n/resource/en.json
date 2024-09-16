@@ -12,6 +12,11 @@
       "toDaedongjeInsta": ""
     }
   },
+  "map": {
+    "title": "Road map",
+    "complete": "complete",
+    "detail": "detailed"
+  },
   "makers": {
     "likelion": {
       "title1": "",

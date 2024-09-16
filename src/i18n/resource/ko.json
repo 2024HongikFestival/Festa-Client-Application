@@ -12,6 +12,11 @@
       "toDaedongjeInsta": "대동제 채널 바로가기"
     }
   },
+  "map": {
+    "title": "로드맵",
+    "complete": "전체지도",
+    "detail": "상세지도"
+  },
   "makers": {
     "likelion": {
       "title1": "홍익대학교",

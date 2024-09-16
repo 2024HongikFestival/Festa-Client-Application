@@ -40,8 +40,9 @@ export const MapToggleBtn = styled.div`
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
   flex: 1;
   color: ${(props) => (props.isActive ? '#1833DB' : '#6B7276')};
-  padding: 6px 40.5px 7px 40.5px;
-
+  padding: 6px 0;
+  height: 3.6rem;
+  max-width: 14rem;
   border-radius: 30px;
   background: ${(props) => (props.isActive ? 'rgba(24, 51, 219, 0.05)' : 'white')};
 `;

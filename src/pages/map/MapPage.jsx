@@ -13,9 +13,11 @@ import ContentContainer from '@/components/common/ContentContainer.jsx';
 import mapImg from './map.webp';
 import { createUseGesture, dragAction, pinchAction } from '@use-gesture/react';
 import { useSpring, animated } from '@react-spring/web';
+import { useTranslation } from 'react-i18next';
 
 const MapPage = () => {
   const [activeView, setActiveView] = useState('all'); // 'all' or 'detail'
+  const { t } = useTranslation();
 
   const useGesture = createUseGesture([dragAction, pinchAction]);
   const ref = useRef(null);
@@ -87,7 +89,7 @@ const MapPage = () => {
 
   return (
     <MainMapWrapper>
-      <MapTitle>로드맵</MapTitle>
+      <MapTitle>{t('map.title')}</MapTitle>
       <MapBox>
         <ContentContainer>
           <MapToggle>
@@ -96,14 +98,14 @@ const MapPage = () => {
               isActive={activeView === 'all'}
               onClick={() => handleToggle('all')}
             >
-              전체지도
+              {t('map.complete')}
             </MapToggleBtn>
             <MapToggleBtn
               aria-pressed={activeView === 'detail'}
               isActive={activeView === 'detail'}
               onClick={() => handleToggle('detail')}
             >
-              상세지도
+              {t('map.detail')}
             </MapToggleBtn>
           </MapToggle>
         </ContentContainer>
