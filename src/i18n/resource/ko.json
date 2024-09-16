@@ -654,7 +654,7 @@
   "locationInfo": {
     "mapTitle": "무대 주변 지도",
     "entranceInfo": "출입구 정보",
-    "hongikZoneInfo": "홍익존은 <highlight>사전예매</highlight>하신<br/> 홍익대학교 학생들만 입장 가능해요",
+    "hongikZoneInfo": "메인 공연의 모든 좌석(스탠딩존+시팅존)은<br/><highlight>홍익존</highlight>으로, 홍대생만 입장 가능해요",
     "hongikZoneButton": "홍익존"
   },
   "hongikZonePage": {
