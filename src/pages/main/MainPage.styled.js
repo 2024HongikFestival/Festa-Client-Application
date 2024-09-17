@@ -16,15 +16,32 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
+export const LottieWrapper = styled.div`
+  position: absolute;
+  padding-top: 19.9rem;
+  width: 37.5rem;
+  height: 70.7rem;
+  z-index: 0;
+`;
+
 export const Title = styled.div`
-  ${(props) => props.theme.fontStyles.main.headline1}
+  color: ${(props) => props.theme.colors.white};
   text-align: center;
-  margin-top: 4.4rem;
+  margin-top: 9.4rem;
+  z-index: 1;
+  font-family: 'SCoreDream', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 6rem;
+  letter-spacing: -0.004rem;
+  text-align: center;
 `;
 
 export const Desc = styled.div`
-  ${(props) => props.theme.fontStyles.basic.body1Med}
+  ${(props) => props.theme.fontStyles.basic.body1Med};
+  color: ${(props) => props.theme.colors.white};
   text-align: center;
+  z-index: 1;
 `;
 
 export const Img = styled.img`

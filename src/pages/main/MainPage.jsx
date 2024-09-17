@@ -11,7 +11,9 @@ export default function MainPage() {
   return (
     <S.Container>
       <S.Wrapper>
-        <Lottie animationData={mainStart} />
+        <S.LottieWrapper>
+          <Lottie animationData={mainStart} />
+        </S.LottieWrapper>
         <S.Title>
           2024
           <br />
@@ -26,7 +28,6 @@ export default function MainPage() {
           <br />
           오랫동안 기억될 것입니다.
         </S.Desc>
-        <S.Img src={mainImg} alt="main" />
       </S.Wrapper>
       {/* 라인업 정보 컴포넌트 */}
       <S.LineupTitleWrapper>
