@@ -1,5 +1,12 @@
 export const commonMenuItems = [
   {
+    flamePath: '/flame',
+    flameLabel: 'layouts.header.toFlame',
+    daedongjePath: '/',
+    daedongjeLabel: 'layouts.header.toDaedongje',
+    accordion: false,
+  },
+  {
     flamePath: '/flame/map',
     flameLabel: 'layouts.header.toFlameSitemap',
     daedongjePath: '/map',
