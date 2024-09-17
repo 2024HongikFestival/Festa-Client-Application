@@ -4,6 +4,7 @@ import backBtn from '@/assets/webps/layouts/backBtn.webp';
 import backBtnBlack from '@/assets/webps/layouts/backBtnBlack.webp';
 import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
 import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
+import hambergerMenuWhite from '@/assets/webps/layouts/hambergerMenuWhite.webp';
 import xBtnBlack from '@/assets/svgs/layouts/xBtnBlack.svg';
 import xBtnWhite from '@/assets/svgs/layouts/xBtnWhite.svg';
 
@@ -30,6 +31,14 @@ const routeConfig = {
   // 만든이들 & 개화
   '/likelion': makersConfig,
   '/gaehwa': makersConfig,
+
+  // 대동제 메인
+  '/': {
+    logo: hiuLogo,
+    menuIcon: hambergerMenuWhite,
+    xBtn: xBtnWhite,
+    showBackButton: false,
+  },
 
   // 와디페
   '/flame': {
