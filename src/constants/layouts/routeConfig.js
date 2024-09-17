@@ -13,6 +13,12 @@ const makersConfig = {
   showBackButton: true,
 };
 
+const fleamarketConfig = {
+  logo: hiuLogoBlack,
+  menuIcon: backBtnBlack,
+  showBackButton: true,
+};
+
 const routeConfig = {
   '/likelion': makersConfig,
   '/gaehwa': makersConfig,
@@ -22,6 +28,20 @@ const routeConfig = {
     xBtn: xBtnWhite,
     showBackButton: false,
   },
+  ...[
+    '/fleamarket/ccJuice',
+    '/fleamarket/almak',
+    '/fleamarket/henna',
+    '/fleamarket/modori',
+    '/fleamarket/sajuraplz',
+    '/fleamarket/hypeBoy',
+    '/fleamarket/sangsu',
+    '/fleamarket/kawaii',
+    '/fleamarket/aiesec',
+  ].reduce((acc, path) => {
+    acc[path] = fleamarketConfig;
+    return acc;
+  }, {}),
   '/admin': {
     logo: hiuLogoBlack,
     menuIcon: hambergerMenuBlack,
