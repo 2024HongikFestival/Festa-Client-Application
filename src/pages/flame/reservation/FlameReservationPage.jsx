@@ -50,7 +50,7 @@ const PreReservationBox = () => {
         </RVPeriodBox>
         <CostBox>
           <RVPeriodTitleP>가격</RVPeriodTitleP>
-          <PriceIntroBox marginBottom>
+          <PriceIntroBox style={{ marginBottom: '0.4rem' }}>
             <div className="wholeBox">
               <span className="dot">• </span>
               <PriceIntro>홍익대학교 서울캠퍼스 재학생 및 휴학생</PriceIntro>
@@ -144,7 +144,7 @@ const FlameReservationPage = () => {
       <PreRvBox>
         <GrayTitle>사전 예매</GrayTitle>
         <GrayUnderLine></GrayUnderLine>
-        <RVPeriodBox marginBottom>
+        <RVPeriodBox style={{ marginBottom: '3.2rem' }}>
           <GrayPeriodTitle>예매 기간</GrayPeriodTitle>
           <GrayPeriod>2024.x.xx-2024.x.xx</GrayPeriod>
         </RVPeriodBox>

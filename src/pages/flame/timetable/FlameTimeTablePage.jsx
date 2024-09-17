@@ -26,11 +26,11 @@ import {
 import { useInterval } from 'react-use';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import redButtonTwo from '../../../assets/webps/wdTT/RedButton.webp';
-import redfullBtn from '../../../assets/webps/wdTT/timtablefullButtton.webp';
-import afterBtn from '../../../assets/webps/wdTT/afterBtn.webp';
-import DjImg from '../../../assets/webps/wdTT/DjImg.webp';
-import Now from '../../../assets/webps/wdTT/now.webp';
+import redButtonTwo from '/src/assets/webps/wdTT/RedButton.webp';
+import redfullBtn from '/src/assets/webps/wdTT/timtablefullButtton.webp';
+import afterBtn from '/src/assets/webps/wdTT/afterBtn.webp';
+import DjImg from '/src/assets/webps/wdTT/DjImg.webp';
+import Now from '/src/assets/webps/wdTT/now.webp';
 
 const FlameTimeTablePage = () => {
   const [selectedDate, setSelectedDate] = useState(1);

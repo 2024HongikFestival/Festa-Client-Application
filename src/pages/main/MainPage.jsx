@@ -1,58 +1,45 @@
-import styled from 'styled-components';
-import MoveToWdfBtn from '@/components/main/MoveToWdfBtn';
 import { useTranslation } from 'react-i18next';
+import mainImg from '@/assets/webps/main/mainExample.webp';
+import OperatingHours from '@/components/main/OperatingHours';
+import StageInfoContainer from '@/components/main/StageInfoContainer';
+import * as S from './MainPage.styled';
 
 export default function MainPage() {
-  const { t, i18n } = useTranslation();
+  // const { t, i18n } = useTranslation();
 
-  const clickHandler = (lng) => {
-    console.log(`conver to ${lng}`);
-    localStorage.setItem('language', lng);
-    i18n.changeLanguage(lng);
-  };
   return (
-    <>
-      <p>홍익 대동제 메인 페이지!</p>
-      <div>아이오에오</div>
-      <p>{t('hello')}</p>
-      <p>{t('goodbye')}</p>
-      <p>{t('main.sorry')}</p>
-      <button onClick={() => clickHandler('ko')}>ko</button>
-      <button onClick={() => clickHandler('en')}>en</button>
-      <MoveToWdfBtn />
-      <div>출근하기 싫어요</div>
-      <p>2024 hongik fetival</p>
-      <p>힝구힝구</p>
-      <Text>라인업</Text>
-      <Text2>와디페 타이포 적용 중</Text2>
-      <Text3>히히히히</Text3>
-      <Text4>헤헤ㅔ헤헤</Text4>
-      <Text5>개귀찮다진짜</Text5>
-      <Text6>럭키비키잔앙</Text6>
-    </>
+    <S.Container>
+      <S.Wrapper>
+        <S.Title>
+          2024
+          <br />
+          홍익대동제
+        </S.Title>
+        <S.Desc>
+          활짝 피어있는 지금
+          <br />
+          있는 그대로 만개한 청춘인 이 순간을
+          <br />
+          2024 화양연화 ; 만개로 하여금 기록되어
+          <br />
+          오랫동안 기억될 것입니다.
+        </S.Desc>
+        <S.Img src={mainImg} alt="main" />
+      </S.Wrapper>
+      {/* 라인업 정보 컴포넌트 */}
+      <S.LineupTitleWrapper>
+        <S.Date>9.25 (수)</S.Date>
+        <S.LineupTitle>오늘의 라인업</S.LineupTitle>
+      </S.LineupTitleWrapper>
+      {/* 이 부분은 아직 확정나지 않아서 크기만 잡아두었습니다. */}
+      <S.LineupInfoWrapper></S.LineupInfoWrapper>
+      <S.GoLineupPageBtn>전체 라인업 보러가기 {'>'}</S.GoLineupPageBtn>
+      <S.Hr />
+      {/* 중앙 무대 일정 컴포넌트 */}
+      <StageInfoContainer />
+      <S.Hr />
+      {/* 운영 시간 컴포넌트 */}
+      <OperatingHours />
+    </S.Container>
   );
 }
-
-const Text = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline1}
-`;
-
-const Text2 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline2}
-`;
-
-const Text3 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline3}
-`;
-
-const Text4 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline4}
-`;
-
-const Text5 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline5}
-`;
-
-const Text6 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline6}
-`;

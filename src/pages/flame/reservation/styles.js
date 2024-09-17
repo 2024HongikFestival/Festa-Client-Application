@@ -41,7 +41,6 @@ export const RedUnderLine = styled.div`
 export const RVPeriodBox = styled.div`
   display: flex;
   width: 100%;
-  margin-bottom: ${(props) => (props.marginBottom ? '3.2rem' : '0')};
 `;
 
 export const RVPeriodTitle = styled.span`
@@ -64,7 +63,6 @@ export const RVPeriodTitleP = styled.p`
 export const PriceIntroBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: ${(props) => (props.marginBottom ? '0.4rem' : '0')};
 
   .wholeBox {
     display: flex;
