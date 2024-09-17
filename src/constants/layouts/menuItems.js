@@ -42,10 +42,6 @@ export const commonMenuItems = [
         label: 'layouts.header.toFleaMarket',
       },
       {
-        path: '/promotion',
-        label: 'layouts.header.toPromotion',
-      },
-      {
         path: '/md',
         label: 'layouts.header.toMd',
       },
@@ -71,7 +67,7 @@ export const commonMenuItems = [
   {
     flamePath: '/flame/md',
     flameLabel: 'layouts.header.toMd',
-    daedongjePath: '/event/:eventId',
+    daedongjePath: '/event',
     daedongjeLabel: 'layouts.header.toEvent',
     accordion: false,
   },
