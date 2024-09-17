@@ -1,6 +1,6 @@
 import AddLostItemBg from '@/assets/webps/lost/AddLostItemBg.webp';
 import LostAndFoundBg from '@/assets/webps/lost/LostAndFoundBg.webp';
-import facilitiesBg from '@/assets/svgs/facilities/facilitiesBg.svg';
+import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
 import fleamarketBg1 from '@/assets/svgs/booth/background/fleamarketMainBackground.svg';
 import fleamarketBg2 from '@/assets/svgs/booth/background/fleamarketCommonBackground.svg';
 import fleamarketBg3 from '@/assets/svgs/booth/background/fleamarketSangsuBackground.svg';
@@ -63,7 +63,7 @@ const backgroundStyles = {
   facilities: {
     paths: ['/facilities'],
     style: css`
-      background-image: url(${facilitiesBg});
+      background-image: url(${facilitiesBG});
       ${commonBackgroundStyle}
     `,
   },
