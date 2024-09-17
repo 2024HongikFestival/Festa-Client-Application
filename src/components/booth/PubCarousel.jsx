@@ -132,7 +132,8 @@ const CarouselContainer = styled.div`
 `;
 
 const StyledSlider = styled(Slider)`
-  box-shadow: 0 0 0.13rem 0.13rem rgba(0, 0, 0, 0.12);
+  /* z-index: 111; */
+  box-shadow: 0 0 0.8rem 0rem rgba(0, 0, 0, 0.08);
   border-radius: 1.2rem;
 
   .slick-list,

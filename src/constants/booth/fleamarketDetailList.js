@@ -70,7 +70,7 @@ export const FleamarketDetailList = (t) => {
         { name: t('fleamarket.detail.0.goods.1.name'), price: 4000, img: ccJuice2 },
       ],
     },
-    almak: {
+    olmak: {
       name: t('fleamarket.detail.2.name'),
       intro: t('fleamarket.detail.2.intro'),
       goods: [

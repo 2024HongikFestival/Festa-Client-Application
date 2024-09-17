@@ -84,7 +84,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* z-index: 150; */
+  z-index: 100;
 `;
 
 const Icon = styled.img`

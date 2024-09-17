@@ -65,7 +65,7 @@ export const mdList = [
   {
     img: 'stringBag',
     name: 'stringBag', // 번역 키로 변경
-    price: 9000,
+    price: 8000,
     width: '26.3rem',
     height: '26.3rem',
   },

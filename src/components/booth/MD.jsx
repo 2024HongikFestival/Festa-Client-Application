@@ -107,11 +107,22 @@ const Img = styled.img`
 
 const Desc = styled.div`
   position: absolute;
-  width: 33.5rem;
+  width: 33.5rem; // 원래 크기로 복원
   height: 11.5rem;
   background-color: ${(props) => props.theme.colors.gray5};
   top: 22rem;
   padding: 1.6rem 2.4rem 2.4rem 1.6rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30.7rem; // 상단 선의 길이를 조절 (전체 너비의 약 85%)
+    height: 0.1rem;
+    background-color: ${({ theme }) => theme.colors.gray20};
+  }
 `;
 
 const TextContainer = styled.div`

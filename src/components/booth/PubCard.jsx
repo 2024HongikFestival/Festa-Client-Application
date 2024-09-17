@@ -14,12 +14,44 @@ export default function PubCard() {
   const [hearts, setHearts] = useState([]);
   const [likeData, setLikeData] = useState(null);
   const [selectedLikeData, setSelectedLikeData] = useState(null);
+  const [isAssociation, setIsAssociation] = useState(false);
+
+  // 총동아리연합회 메뉴인 경우 하트 생성 위치 좀더 하단으로 조정
+  // const isAssociation = [9, 10, 11, 12, 13, 14].includes(Number(selectedMenu.replace(t('booth.pub.menu.'), '')));
+
+  // useEffect(() => {
+  //   console.log('메뉴', selectedMenu);
+  //   const menuNumber = Number(selectedMenu.replace(t('booth.pub.menu.'), ''));
+  //   setIsAssociation([9, 10, 11, 12, 13, 14].includes(menuNumber));
+  // }, [selectedMenu, t]);
+
+  useEffect(() => {
+    const associationMenus = [
+      t('booth.pub.menu.9'),
+      t('booth.pub.menu.10'),
+      t('booth.pub.menu.11'),
+      t('booth.pub.menu.12'),
+      t('booth.pub.menu.13'),
+      t('booth.pub.menu.14'),
+    ];
+    const isAssoc = associationMenus.includes(selectedMenu);
+    console.log('Selected Menu:', selectedMenu);
+    console.log('Is Association:', isAssoc);
+    setIsAssociation(isAssoc);
+  }, [selectedMenu, t]);
 
   const handleLikeBtnClick = useCallback(() => {
     console.log('btn clicked!');
+    // const newHeart = {
+    //   id: Date.now(),
+    //   left: `${Math.random() * 80 + 10}%`, // Random position between 10% and 90%
+    // };
+    // setHearts((prevHearts) => [...prevHearts, newHeart]);
+    console.log('selected:', selectedMenu);
     const newHeart = {
       id: Date.now(),
       left: `${Math.random() * 80 + 10}%`, // Random position between 10% and 90%
+      color: getHeartColor(selectedMenu), // Determine the heart color based on the selected menu
     };
     setHearts((prevHearts) => [...prevHearts, newHeart]);
 
@@ -27,7 +59,42 @@ export default function PubCard() {
     setTimeout(() => {
       setHearts((prevHearts) => prevHearts.filter((heart) => heart.id !== newHeart.id));
     }, 15000);
-  }, []);
+  }, [selectedMenu]);
+
+  const getHeartColor = (menu) => {
+    switch (menu) {
+      case t('booth.pub.menu.1'):
+        return 'rgba(255, 104, 29, 1)';
+      case t('booth.pub.menu.2'):
+        return 'rgba(124, 129, 255, 1)';
+      case t('booth.pub.menu.3'):
+        return 'rgba(152, 80, 246, 1)';
+      case t('booth.pub.menu.4'):
+        return 'rgba(236, 137, 248, 1)';
+      case t('booth.pub.menu.5'):
+        return 'rgba(116, 188, 255, 1)';
+      case t('booth.pub.menu.6'):
+        return 'rgba(147, 227, 232, 1)';
+      case t('booth.pub.menu.7'):
+        return 'rgba(242, 219, 13, 1)';
+      case t('booth.pub.menu.8'):
+        return 'rgba(213, 207, 252, 1)';
+      case t('booth.pub.menu.9'):
+        return 'rgba(153, 240, 66, 1)';
+      case t('booth.pub.menu.10'):
+        return 'rgba(153, 240, 66, 1)';
+      case t('booth.pub.menu.11'):
+        return 'rgba(153, 240, 66, 1)';
+      case t('booth.pub.menu.12'):
+        return 'rgba(153, 240, 66, 1)';
+      case t('booth.pub.menu.13'):
+        return 'rgba(153, 240, 66, 1)';
+      case t('booth.pub.menu.14'):
+        return 'rgba(153, 240, 66, 1)';
+      default:
+        return 'rgba(255, 104, 29, 1)';
+    }
+  };
 
   const menuItems = [
     t('booth.pub.menu.1'),
@@ -145,14 +212,21 @@ export default function PubCard() {
   }),
     [likeData, selectedMenu];
 
+  console.log(isAssociation);
   return (
     <ContentContainer>
       <PubCardContainer>
-        <HeartContainer>
+        <HeartContainer $isAssociation={isAssociation}>
           <FallingHeart>
-            {hearts.map((heart) => (
+            {/* {hearts.map((heart) => (
               <FallingHeart key={heart.id} left={heart.left}>
                 <HeartIcon />
+              </FallingHeart>
+            ))} */}
+
+            {hearts.map((heart) => (
+              <FallingHeart key={heart.id} left={heart.left}>
+                <HeartIcon color={heart.color} />
               </FallingHeart>
             ))}
           </FallingHeart>
@@ -227,22 +301,22 @@ const fallAnimation = keyframes`
 
 const FallingHeart = styled.div`
   position: absolute;
-  top: 0;
+  top: ${({ $isAssociation }) => ($isAssociation ? '2rem' : '0rem')};
   left: ${({ left }) => left}; // 각 하트의 위치를 개별적으로 지정
   width: 100%;
   height: 100%;
   animation: ${fallAnimation} 10s linear forwards; // 애니메이션이 독립적으로 실행되도록 수정
-  z-index: 11;
+  /* z-index: 5; */
 `;
 
 const HeartContainer = styled.div`
   position: absolute;
-  top: 15rem;
+  top: ${({ $isAssociation }) => ($isAssociation ? '22rem' : '14.4rem')};
   /* z-index: 5; */
   width: 100%;
   height: 75%;
   /* overflow: hidden; */
-  z-index: 10; /* 하트를 최상위로 보이게 하기 위해 z-index를 높임 */
+  /* z-index: 10; */
   pointer-events: none; /* 클릭 이벤트를 무시하게 설정 */
 `;
 
