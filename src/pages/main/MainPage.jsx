@@ -3,13 +3,15 @@ import mainImg from '@/assets/webps/main/mainExample.webp';
 import OperatingHours from '@/components/main/OperatingHours';
 import StageInfoContainer from '@/components/main/StageInfoContainer';
 import * as S from './MainPage.styled';
-
+import Lottie from 'lottie-react';
+import mainStart from '@/assets/lotties/main/mainStart.json';
 export default function MainPage() {
   // const { t, i18n } = useTranslation();
 
   return (
     <S.Container>
       <S.Wrapper>
+        <Lottie animationData={mainStart} />
         <S.Title>
           2024
           <br />
