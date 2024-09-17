@@ -6,6 +6,7 @@ import fleamarketBg2 from '@/assets/svgs/booth/background/fleamarketCommonBackgr
 import fleamarketBg3 from '@/assets/svgs/booth/background/fleamarketSangsuBackground.svg';
 import mdBg from '@/assets/svgs/booth/background/mdBackground.svg';
 import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
+import stageBg from '@/assets/webps/stage/background.webp';
 import { css } from 'styled-components';
 
 // 공통 스타일 정의
@@ -36,6 +37,13 @@ const backgroundStyles = {
     paths: ['/likelion', '/gaehwa'],
     style: css`
       background-color: ${(props) => props.theme.colors.makersBackgroundColor};
+    `,
+  },
+  stage: {
+    paths: ['/lineup', '/stage-info', '/hongik-zone'],
+    style: css`
+      background-image: url(${stageBg});
+      ${commonBackgroundStyle}
     `,
   },
   lostAndFound: {

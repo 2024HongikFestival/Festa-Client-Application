@@ -14,7 +14,6 @@ export default function Layout() {
   const location = useLocation();
 
   // 경로
-
   const adminPaths = ['/admin', '/admin/'];
   const adminViewPaths = ['/admin/event', '/admin/losts'];
   const isAdminPath = adminPaths.includes(location.pathname);

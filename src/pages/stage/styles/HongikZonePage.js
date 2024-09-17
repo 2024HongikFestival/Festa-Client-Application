@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import backgroundImage from '@/assets/webps/stage/background.webp';
 
 export const PageContainer = styled.div`
   display: flex;
@@ -8,9 +7,6 @@ export const PageContainer = styled.div`
   gap: 2.8rem;
   padding-top: 2.4rem;
   padding-bottom: 6.4rem;
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-repeat: no-repeat;
 `;
 export const Title = styled.p`
   color: ${(props) => props.theme.colors.black};
