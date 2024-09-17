@@ -19,6 +19,7 @@ import fleamarketBg3 from '@/assets/svgs/booth/background/fleamarketSangsuBackgr
 
 import mdBg from '@/assets/svgs/booth/background/mdBackground.svg';
 import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
+import mainBg from '@/assets/svgs/main/mainBg.svg';
 
 export default function Layout() {
   const { isCamera } = useCamera();
@@ -185,6 +186,15 @@ const Container = styled.div`
     props.$path === '/fleamarket/sangsu' &&
     css`
       background-image: url(${fleamarketBg3});
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+    `}
+
+    ${(props) =>
+    props.$path === '/' &&
+    css`
+      background-image: url(${mainBg});
       background-size: cover;
       background-position: top center;
       background-repeat: no-repeat;
