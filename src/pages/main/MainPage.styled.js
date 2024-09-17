@@ -1,4 +1,4 @@
-import { styled, css } from 'styled-components';
+import { styled, css, keyframes } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -39,6 +39,8 @@ export const Title = styled.div`
   line-height: 6rem;
   letter-spacing: -0.004rem;
   text-align: center;
+  opacity: ${(props) => (props.showContent ? '1' : '0')};
+  transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 `;
 
 export const Desc = styled.div`
@@ -48,6 +50,8 @@ export const Desc = styled.div`
   color: ${(props) => props.theme.colors.white};
   text-align: center;
   z-index: 1;
+  opacity: ${(props) => (props.showContent ? '1' : '0')};
+  transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 `;
 
 export const Img = styled.img`
