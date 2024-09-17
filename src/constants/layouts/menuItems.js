@@ -1,12 +1,5 @@
 export const commonMenuItems = [
   {
-    flamePath: '/flame',
-    flameLabel: 'layouts.header.toFlame',
-    daedongjePath: '/',
-    daedongjeLabel: 'layouts.header.toDaedongje',
-    accordion: false,
-  },
-  {
     flamePath: '/flame/map',
     flameLabel: 'layouts.header.toFlameSitemap',
     daedongjePath: '/map',
@@ -78,12 +71,19 @@ export const commonMenuItems = [
     daedongjeLabel: 'layouts.header.toEvent',
     accordion: false,
   },
+  {
+    flamePath: '/flame/promotion',
+    flameLabel: 'layouts.header.toPromotion',
+    daedongjePath: '/flame',
+    daedongjeLabel: 'layouts.header.toFlame',
+    accordion: false,
+  },
 ];
 
 export const flameMenuItems = [
   {
-    flamePath: '/flame/promotion',
-    flameLabel: 'layouts.header.toPromotion',
+    flamePath: '/',
+    flameLabel: 'layouts.header.toDaedongje',
     accordion: false,
   },
 ];
