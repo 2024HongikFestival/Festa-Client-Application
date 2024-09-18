@@ -19,9 +19,10 @@ export const Title = styled.div`
 
   span {
     ${(props) => props.theme.fontStyles.basic.eventTitle}
+    display : ${(props) => (props.lang ? 'flex' : 'none')};
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: ${(props) => (props.lang ? 'column' : ' ')};
+    align-items: ${(props) => (props.lang ? 'center' : ' ')};
 
     #highlight {
       color: #ffff24;

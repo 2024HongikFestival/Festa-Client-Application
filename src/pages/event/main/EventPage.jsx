@@ -28,6 +28,7 @@ const eventEnd = dayjs.tz('2024-09-27 23:59:59', 'Asia/Seoul');
 
 const EventPage = () => {
   const { t } = useTranslation();
+  const [lang, setLang] = useState(localStorage.getItem('language') === 'ko' ? false : true);
   const [stateData, setStateData] = useState();
   const [currentUrl, setCurrentUrl] = useState('');
   const [isEventPeriod, setIsEventPeriod] = useState(false); // 이벤트 기간 여부
@@ -62,6 +63,12 @@ const EventPage = () => {
       setIsEventPeriod(true); // 이벤트 기간 중이면 true
     }
   }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem('language') === 'en') {
+      setLang(true);
+    }
+  }, [localStorage.getItem('language')]);
 
   return (
     <S.Wrapper>
