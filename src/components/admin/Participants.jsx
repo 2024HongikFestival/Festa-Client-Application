@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { adminAxiosInstance } from '@/api/axios';
-import tvingImg from '@/assets/svgs/admin/tvingImg.svg';
+import tvingImg from '@/assets/svgs/event/tvingLogo.svg';
 
 const Participants = ({ setIsDetailView, setPostId, lists }) => {
   const [allLists, setAllLists] = useState([]);
