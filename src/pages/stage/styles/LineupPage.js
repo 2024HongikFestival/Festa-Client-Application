@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import backgroundImage from '@/assets/webps/stage/background.webp';
 import mcImage from '@/assets/webps/stageLineup/mc.webp';
 
 export const PageContainer = styled.div`
@@ -8,9 +7,6 @@ export const PageContainer = styled.div`
   align-items: center;
   gap: 2.8rem;
   align-self: stretch;
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-repeat: no-repeat;
   padding-top: 2.4rem;
   padding-bottom: 6.4rem;
 `;
