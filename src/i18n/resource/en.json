@@ -649,7 +649,7 @@
   "locationInfo": {
     "mapTitle": "Stage Map",
     "entranceInfo": "Entrance information",
-    "hongikZoneInfo": "Only Hongik University students <highlight>who made a reservation</highlight> can enter the Hongik Zone",
+    "hongikZoneInfo": "All main stage seats (standing & sitting) are<br/><highlight>Hongik zone</highlight>, only for Hongdae students",
     "hongikZoneButton": "Hongik Zone"
   },
   "hongikZonePage": {
@@ -833,6 +833,17 @@
     "Complete": "Complete"
   },
   "Close": "Close",
+  "LineupPage": {
+    "title": "LINE UP",
+    "day1": "9.25(WED)",
+    "day2": "9.26(THU)",
+    "day3": " 9.27(FRI)",
+    "mc": {
+      "day1": "MC Donghyeon",
+      "day2": "MC SSup Yi",
+      "day3": "MC Chul Wow"
+    }
+  },
   "flameLineupPage": {
     "title": "LINE UP",
     "day1": "9.25(WED)",
