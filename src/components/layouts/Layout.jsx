@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import { Outlet, useLocation } from 'react-router-dom';
-import { getBackgroundStyle } from '@/constants/layouts/backgroundStyles';
+import { getBackgroundStyle } from '@/utils/layouts/backgroundStyles';
 import { useCamera } from '@/context/AuthProvider';
 import { adminAxiosInstance } from '@/api/axios';
 import styled from 'styled-components';
