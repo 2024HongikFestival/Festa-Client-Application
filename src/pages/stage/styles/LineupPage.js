@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import backgroundImage from '@/assets/webps/stage/background.webp';
+import mcImage from '@/assets/webps/stageLineup/mc.webp';
 
 export const PageContainer = styled.div`
   display: flex;
@@ -14,19 +15,19 @@ export const PageContainer = styled.div`
   padding-bottom: 6.4rem;
 `;
 export const Title = styled.p`
-  ${(props) => props.theme.fontStyles.basic.headline2};
+  ${(props) => props.theme.fontStyles.main.headline2};
   color: ${(props) => props.theme.colors.black};
 `;
 export const DayContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 3.2rem;
+  width: 28rem;
 `;
 export const DayButton = styled.button`
   background: none;
   border: none;
-  color: ${(props) => (props.selected ? props.theme.colors.hongikBlue : props.theme.colors.gray50)};
+  color: ${(props) => (props.selected ? props.theme.colors.hongikBlue : props.theme.colors.gray60)};
   cursor: pointer;
   padding: 0;
   .day {
@@ -45,26 +46,46 @@ export const CardContainer = styled.div`
   gap: 3.2rem;
 `;
 export const Card = styled.div`
+  position: relative;
   height: 28.4rem;
   background: ${(props) => props.theme.colors.white};
   border-radius: 1.6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden; /* 이미지가 카드 경계를 넘지 않도록 설정 */
 `;
-export const CardImage = styled.div`
-  height: 22rem;
+export const CardImage = styled.img`
+  width: 33.5rem;
+  height: 100%;
+  object-fit: cover;
 `;
 export const CardDescription = styled.div`
-  width: 30.7rem;
+  position: absolute;
+  bottom: 0; /* 카드 하단에 배치 */
+  width: 100%;
   height: 6.4rem;
   border-top: 1px solid ${(props) => props.theme.colors.gray20};
-  margin: 0 1.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 `;
 export const Name = styled.p`
+  ${(props) => props.theme.fontStyles.basic.headline5};
+  color: ${(props) => (props.isBlack ? props.theme.colors.gray100 : props.theme.colors.white)};
+`;
+export const MCContainer = styled.div`
+  width: 33.5rem;
+  text-align: center;
+  padding: 1.2rem;
+  background-image: url(${mcImage});
+  background-size: cover;
+  background-position: center;
+  border-radius: 1.6rem;
+`;
+export const MCName = styled.p`
   ${(props) => props.theme.fontStyles.basic.headline5};
   color: ${(props) => props.theme.colors.gray100};
 `;

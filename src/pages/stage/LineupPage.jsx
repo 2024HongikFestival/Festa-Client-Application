@@ -1,62 +1,82 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next'; // i18n 훅 사용
 import * as S from './styles/LineupPage';
 import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
 
+import img1 from '@/assets/webps/stageLineup/0925_1.webp';
+import img2 from '@/assets/webps/stageLineup/0925_2.webp';
+import img3 from '@/assets/webps/stageLineup/0925_3.webp';
+import img4 from '@/assets/webps/stageLineup/0926_1.webp';
+import img5 from '@/assets/webps/stageLineup/0926_2.webp';
+import img6 from '@/assets/webps/stageLineup/0926_3.webp';
+import img7 from '@/assets/webps/stageLineup/0927_1.webp';
+import img8 from '@/assets/webps/stageLineup/0927_2.webp';
+import img9 from '@/assets/webps/stageLineup/0927_3.webp';
+
 const LineupPage = () => {
-  const [selectedDay, setSelectedDay] = useState('Day1');
+  const [selectedDay, setSelectedDay] = useState('day1');
+  const { t } = useTranslation(); // i18n 훅으로 번역 함수 가져오기
 
   useEffect(() => {
     setSelectedDay(getSelectedDayByDate());
   }, []);
 
-  // 수정 예정
-  const dummyData = {
-    Day1: [
-      { id: 1, name: '가수 1' },
-      { id: 2, name: '가수 2' },
-      { id: 3, name: '가수 3' },
+  const Data = {
+    day1: [
+      { src: img1, alt: '하하', name: '하하 HAHA' },
+      { src: img2, alt: '10cm', name: '십센치 10CM' },
+      { src: img3, alt: '지아코', name: '지코 ZICO' },
     ],
-    Day2: [
-      { id: 4, name: '가수 6' },
-      { id: 5, name: '가수 7' },
-      { id: 6, name: '가수 8' },
+    day2: [
+      { src: img4, alt: '카더가든', name: '카더가든 Car, the garden' },
+      { src: img5, alt: '에이핑크', name: '에이핑크 Apink' },
+      { src: img6, alt: '크라잉넛', name: '크라잉넛 CRYING NUT' },
     ],
-    Day3: [
-      { id: 7, name: '가수 11' },
-      { id: 8, name: '가수 12' },
-      { id: 9, name: '가수 13' },
+    day3: [
+      { src: img7, alt: '한로로', name: '한로로 HANRORO' },
+      { src: img8, alt: '청하', name: '청하 CHUNG HA' },
+      { src: img9, alt: '로꼬', name: '로꼬 Loco' },
     ],
   };
 
   const renderCards = () => {
-    return dummyData[selectedDay].map((data) => (
-      <S.Card key={data.id}>
-        <S.CardImage></S.CardImage>
-        <S.CardDescription>
-          <S.Name>{data.name}</S.Name>
-        </S.CardDescription>
-      </S.Card>
-    ));
+    const dayData = Data[selectedDay.toLowerCase()];
+
+    return dayData.map((data, index) => {
+      const isBlack = (selectedDay === 'day3' && index === 0) || (selectedDay !== 'day3' && index === 1);
+
+      return (
+        <S.Card key={data.name}>
+          <S.CardImage src={data.src} alt={data.alt} />
+          <S.CardDescription>
+            <S.Name isBlack={isBlack}>{data.name}</S.Name>
+          </S.CardDescription>
+        </S.Card>
+      );
+    });
   };
 
   return (
     <S.PageContainer>
-      <S.Title>라인업</S.Title>
+      <S.Title>{t(`LineupPage.title`)}</S.Title>
       <S.DayContainer>
-        <S.DayButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('Day1')}>
+        <S.DayButton selected={selectedDay.toLowerCase() === 'day1'} onClick={() => setSelectedDay('day1')}>
           <span className="day">DAY 1</span>
-          <span className="date">9.25 (수)</span>
+          <span className="date">{t(`LineupPage.day1`)}</span>
         </S.DayButton>
-        <S.DayButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('Day2')}>
+        <S.DayButton selected={selectedDay.toLowerCase() === 'day2'} onClick={() => setSelectedDay('day2')}>
           <span className="day">DAY 2</span>
-          <span className="date">9.26 (목)</span>
+          <span className="date">{t(`LineupPage.day2`)}</span>
         </S.DayButton>
-        <S.DayButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('Day3')}>
+        <S.DayButton selected={selectedDay.toLowerCase() === 'day3'} onClick={() => setSelectedDay('day3')}>
           <span className="day">DAY 3</span>
-          <span className="date">9.27 (금)</span>
+          <span className="date">{t(`LineupPage.day3`)}</span>
         </S.DayButton>
       </S.DayContainer>
       <S.CardContainer>{renderCards()}</S.CardContainer>
+      <S.MCContainer>
+        <S.MCName>{t(`LineupPage.mc.${selectedDay.toLowerCase()}`)}</S.MCName>
+      </S.MCContainer>
     </S.PageContainer>
   );
 };

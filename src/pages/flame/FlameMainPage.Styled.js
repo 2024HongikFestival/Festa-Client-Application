@@ -4,6 +4,7 @@ export const Flame = styled.div`
   width: 100%;
   position: relative;
   background-color: transparent;
+  z-index: 0;
 `;
 export const VideoContainer = styled.div`
   position: relative;
@@ -95,7 +96,6 @@ export const WDFIntroduction = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  width: 18.1rem;
 `;
 
 export const WDFImage = styled.img`
@@ -135,6 +135,7 @@ export const WDFDescription = styled.span`
   ${(props) => props.theme.fontStyles.basic.body2Med};
   color: ${(props) => props.theme.colors.gray60};
   padding-bottom: 5.4rem;
+  width: 25.9rem;
 `;
 
 export const DateSection = styled.div`
@@ -173,7 +174,7 @@ export const BtnWrapper = styled.div`
 `;
 
 export const DayContent = styled.div`
-  height: 46.9rem;
+  height: 36.3rem;
   box-sizing: border-box;
 `;
 
@@ -189,11 +190,13 @@ export const CarouselContainer = styled.div`
   width: 100%;
   min-width: 37.5rem;
   max-width: 76.8rem;
-  height: 43.7rem;
+  height: 32.5rem;
 `;
 
 export const CarouselImage = styled.img`
-  width: 20.6rem;
+  width: 100%;
+  min-width: 16.1rem;
+  max-width: 24.4rem;
   height: 20.4rem;
   object-fit: contain;
   margin-top: 2.4rem;
@@ -204,7 +207,7 @@ export const ImageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 27.6rem !important;
-  height: 41.3rem;
+  height: 30.1rem;
   border: 0.1rem solid;
   border-image-source: linear-gradient(180deg, #df2121 0%, #cdb3b3 70%, #515356 100%);
   border-image-slice: 1;
@@ -244,7 +247,7 @@ export const Content = styled.div`
   width: 100%;
   min-width: 37.5rem;
   max-width: 76.8rem;
-  height: 43.7rem;
+  height: 32.5rem;
   margin-top: 2.8rem;
 `;
 
@@ -259,18 +262,10 @@ export const Line = styled.div`
 
 export const DJName = styled.span`
   ${(props) => props.theme.fontStyles.basic.headline5};
-  width: 21.2rem;
+  width: 24.4rem;
+  height: 3.2rem;
   color: ${(props) => props.theme.colors.white};
   text-align: left;
-`;
-
-export const DJInfo = styled.span`
-  ${(props) => props.theme.fontStyles.basic.body1Med};
-  color: ${(props) => props.theme.colors.gray50};
-  width: 24.4rem;
-  padding-left: 1.6rem;
-  display: flex;
-  align-items: center;
 `;
 
 export const DJWrapper = styled.div`
@@ -280,15 +275,7 @@ export const DJWrapper = styled.div`
   flex-direction: row;
   width: 27.6rem;
   height: 3.2rem;
-  padding-left: 1.6rem;
   padding-right: 0.8rem;
-`;
-
-export const DJInsta = styled.img`
-  display: flex !important;
-  justify-content: flex-end;
-  width: 3.8rem;
-  height: 3.8rem;
 `;
 
 export const BackGroundVideo = styled.video`
@@ -301,8 +288,19 @@ export const BackGroundVideo = styled.video`
   z-index: -1;
 `;
 
-export const DJContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
+export const GradientOverlay = styled.div`
+  background: linear-gradient(0deg, #010304 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 3;
+  bottom: 7.1rem;
+  width: 24.4rem;
+  height: 8.9rem;
+  position: absolute;
+`;
+
+export const LogoImage = styled.img`
+  position: absolute;
+  bottom: 8.7rem;
+  left: 1.6rem;
+  z-index: 4;
+  object-fit: contain;
 `;
