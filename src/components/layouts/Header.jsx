@@ -144,7 +144,7 @@ export default function Header() {
               <img src={isMenuOpen ? currentRoute.xBtn : currentRoute.menuIcon} alt="menuIcon" />
             </S.HambergerMenu>
           )}
-          <S.HiuLogo onClick={() => nav('/')}>
+          <S.HiuLogo onClick={() => (isFlamePath ? nav('/flame') : nav('/'))}>
             <img src={currentRoute.logo} alt="logo" />
           </S.HiuLogo>
           <S.Right></S.Right>
