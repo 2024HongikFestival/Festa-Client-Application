@@ -3,14 +3,20 @@ import graphicBg from '@/assets/webps/event/graphic.webp';
 import shareIcon from '@/assets/webps/event/shareIcon.webp';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 
 const SubmitEvent = () => {
   const { t } = useTranslation();
+  const [lang, setLang] = useState(false); // ko일 때 false
   const location = useLocation();
 
   const { date } = location.state || {}; // 전달받은 date 값
 
   const instagramUrl = 'https://www.instagram.com/hiufestival_official/';
+
+  useEffect(() => {
+    setLang(!lang);
+  }, [localStorage.getItem('i18nextLng')]);
 
   // 응모 날짜 조건에 따라 내용 변경 (state에 따라 다른 내용)
   const renderContent = () => {
@@ -75,7 +81,7 @@ const SubmitEvent = () => {
         <BackGroundImage src={graphicBg} alt="graphic" />
       </BackGroundContainer>
       <TitleBox>
-        <Title> {t(`event.result.title`)}</Title>
+        {lang ? <EngTitle> {t(`event.result.title`)}</EngTitle> : <Title> {t(`event.result.title`)}</Title>}
       </TitleBox>
       {renderContent()}
       <ShareButton>
@@ -111,17 +117,21 @@ const BackGroundImage = styled.img`
 
 const TitleBox = styled.div`
   position: absolute;
-  top: 13.9rem;
+  top: 13.4rem;
 `;
 
 const Title = styled.h1`
   font-family: 'M PLUS 1';
-  font-size: 3.4rem;
+  font-size: 3.6rem;
   font-style: normal;
   font-weight: 900;
   line-height: 150%;
   color: var(---on, #cdff3f);
   text-align: center;
+`;
+
+const EngTitle = styled(Title)`
+  font-size: 2.9rem;
 `;
 
 const ContentBox1 = styled.div`

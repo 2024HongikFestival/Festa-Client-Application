@@ -872,12 +872,12 @@
       },
       "detail": {
         "title1": "Target for application",
-        "description1": "If you are enjoying the 'in Hongik University' festival",
-        "description2": "anyone, regardless of the student's outsiders",
+        "description1": "Anyone enjoying festival 'in Hongik University'",
+        "description2": "",
         "title2": "Conditions of entry",
         "description3": "Applicants whose current location is Hongik University",
         "title3": "Application period",
-        "description4": "September 25th 10:00 ~ September 27th 23:59:59",
+        "description4": "September 25th 10:00 ~ September 27th 24:00",
         "description5": "One ticket is offered at 10 a.m. every day",
         "title4": "Winner announcement",
         "description6": "September 28 at 14:00 Daedongje Instastory"
@@ -899,8 +899,8 @@
       "submit": "Apply"
     },
     "result": {
-      "title": "Entrance completed!",
-      "description1": "Get a ticket tomorrow",
+      "title": "Submission Completed!",
+      "description1": "Get one more ticket tomorrow",
       "description2": "at 10a.m. ",
       "description3": "and",
       "description4": "try again !",
