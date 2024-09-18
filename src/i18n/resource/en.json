@@ -917,6 +917,7 @@
       "location": {
         "title1": "Oh! your current location is not",
         "title2": "Hongik University",
+        "title3": "",
         "description1": "Only applicants whose current location is Hongik University",
         "description2": "can apply for the event"
       },

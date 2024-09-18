@@ -2,33 +2,35 @@ import styled from 'styled-components';
 import highlight_long from '@/assets/svgs/event/highlight_long.svg';
 import highlight_short from '@/assets/svgs/event/highlight_short.svg';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // 홍대 내부 아닌 경우 팝업창
 export const LocationErrorBox = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
     <ErrorContainer>
       <Title>
-        앗! 현재 위치가
+        {t(`event.error.location.title1`)}
         <br />
         <HighlitedText>
           <LongHighlight src={highlight_long} alt="highlight_long" />
-          홍익대학교
+          {t(`event.error.location.title2`)}
         </HighlitedText>
-        가 아니에요
+        {t(`event.error.location.title3`)}
       </Title>
       <Description>
-        현재 위치가 홍익대학교로 확인된 응모자만
+        {t(`event.error.location.description1`)}
         <br />
-        이벤트에 응모가 가능해요
+        {t(`event.error.location.description2`)}
       </Description>
       <CloseButton
         onClick={() => {
           navigate('/event');
         }}
       >
-        <p>닫기</p>
+        <p>{t(`event.error.close`)}</p>
       </CloseButton>
     </ErrorContainer>
   );
@@ -88,11 +90,12 @@ const HighlitedText = styled.span`
 `;
 
 const LongHighlight = styled.img`
-  width: 9.3rem;
+  //width: 9.3rem;
+  width: 100%;
   height: 1.2rem;
   position: absolute;
   bottom: 0;
-  right: 0;
+  //right: 0;
   z-index: 10;
 `;
 
