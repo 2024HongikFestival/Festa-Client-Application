@@ -19,6 +19,9 @@ export const Title = styled.div`
 
   span {
     ${(props) => props.theme.fontStyles.basic.eventTitle}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     #highlight {
       color: #ffff24;

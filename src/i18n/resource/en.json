@@ -858,6 +858,7 @@
         "title2": "Hongik Daedongje",
         "description1": "One ticket is given at",
         "description2": "10 a.m. every day",
+        "description3": " ",
         "timeNotice": "The time left until the deadline",
         "qText": "Q. What's Hongik Raffle?",
         "aText": "A. It is an event where prizes are given through a lottery of applicants."
@@ -866,6 +867,7 @@
         "quantity": "10 winning tickets",
         "title1": "The TVING Standard Plan will be given",
         "title2": "a three-month pass",
+        "title3": "!",
         "description1": "A three month pass"
       },
       "detail": {
