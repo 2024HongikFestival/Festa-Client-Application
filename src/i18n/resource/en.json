@@ -895,6 +895,7 @@
       "comment1": "Are you enjoying the festival?",
       "comment2": "Please let me know how you feel!",
       "comment3": "(optional)",
+      "comment4": "The information has nothing to do with winning",
       "submit": "Apply"
     },
     "result": {
