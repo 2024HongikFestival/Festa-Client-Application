@@ -34,12 +34,12 @@ export default function MainPage() {
             <Lottie animationData={mainStart} />
           </S.LottieWrapper>
         )}
-        <S.Title showContent={showContent}>
+        <S.Title $showContent={showContent}>
           2024
           <br />
           홍익대동제
         </S.Title>
-        <S.Desc showContent={showContent}>
+        <S.Desc $showContent={showContent}>
           활짝 피어있는 지금.
           <br />
           있는 그대로 만개한
