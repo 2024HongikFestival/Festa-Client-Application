@@ -1,53 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import PubCarousel from '@/components/booth/PubCarousel';
 import { useTranslation } from 'react-i18next';
 import HeartIcon from '@/components/booth/HeratIcon';
 
-import { useCallback } from 'react';
-
 export default function PubCard() {
   const lng = localStorage.getItem('language');
   const { t } = useTranslation();
-  const [selectedMenu, setSelectedMenu] = useState(t('booth.pub.menu.1'));
+  const [selectedMenu, setSelectedMenu] = useState('autonomous');
   const [hearts, setHearts] = useState([]);
   const [likeData, setLikeData] = useState(null);
   const [selectedLikeData, setSelectedLikeData] = useState(null);
   const [isAssociation, setIsAssociation] = useState(false);
 
-  // 총동아리연합회 메뉴인 경우 하트 생성 위치 좀더 하단으로 조정
-  // const isAssociation = [9, 10, 11, 12, 13, 14].includes(Number(selectedMenu.replace(t('booth.pub.menu.'), '')));
-
-  // useEffect(() => {
-  //   console.log('메뉴', selectedMenu);
-  //   const menuNumber = Number(selectedMenu.replace(t('booth.pub.menu.'), ''));
-  //   setIsAssociation([9, 10, 11, 12, 13, 14].includes(menuNumber));
-  // }, [selectedMenu, t]);
-
   useEffect(() => {
-    const associationMenus = [
-      t('booth.pub.menu.9'),
-      t('booth.pub.menu.10'),
-      t('booth.pub.menu.11'),
-      t('booth.pub.menu.12'),
-      t('booth.pub.menu.13'),
-      t('booth.pub.menu.14'),
+    const associationKeys = [
+      'clubScholarship',
+      'clubSports',
+      'clubPerformance',
+      'clubExhibitionLeisure',
+      'clueSociety',
     ];
-    const isAssoc = associationMenus.includes(selectedMenu);
-    console.log('Selected Menu:', selectedMenu);
-    console.log('Is Association:', isAssoc);
+    const isAssoc = associationKeys.includes(selectedMenu);
     setIsAssociation(isAssoc);
-  }, [selectedMenu, t]);
+  }, [selectedMenu]);
 
   const handleLikeBtnClick = useCallback(() => {
-    console.log('btn clicked!');
-    // const newHeart = {
-    //   id: Date.now(),
-    //   left: `${Math.random() * 80 + 10}%`, // Random position between 10% and 90%
-    // };
-    // setHearts((prevHearts) => [...prevHearts, newHeart]);
-    console.log('selected:', selectedMenu);
     const newHeart = {
       id: Date.now(),
       left: `${Math.random() * 80 + 10}%`, // Random position between 10% and 90%
@@ -55,41 +34,34 @@ export default function PubCard() {
     };
     setHearts((prevHearts) => [...prevHearts, newHeart]);
 
-    // Remove the heart after animation completes
     setTimeout(() => {
       setHearts((prevHearts) => prevHearts.filter((heart) => heart.id !== newHeart.id));
     }, 15000);
   }, [selectedMenu]);
 
-  const getHeartColor = (menu) => {
-    switch (menu) {
-      case t('booth.pub.menu.1'):
+  const getHeartColor = (menuKey) => {
+    switch (menuKey) {
+      case 'autonomous':
         return 'rgba(255, 104, 29, 1)';
-      case t('booth.pub.menu.2'):
+      case 'businessEconomic':
         return 'rgba(124, 129, 255, 1)';
-      case t('booth.pub.menu.3'):
+      case 'art':
         return 'rgba(152, 80, 246, 1)';
-      case t('booth.pub.menu.4'):
+      case 'architecture':
         return 'rgba(236, 137, 248, 1)';
-      case t('booth.pub.menu.5'):
+      case 'education':
         return 'rgba(116, 188, 255, 1)';
-      case t('booth.pub.menu.6'):
+      case 'liberalArts':
         return 'rgba(147, 227, 232, 1)';
-      case t('booth.pub.menu.7'):
+      case 'engineering':
         return 'rgba(242, 219, 13, 1)';
-      case t('booth.pub.menu.8'):
+      case 'convergence':
         return 'rgba(213, 207, 252, 1)';
-      case t('booth.pub.menu.9'):
-        return 'rgba(153, 240, 66, 1)';
-      case t('booth.pub.menu.10'):
-        return 'rgba(153, 240, 66, 1)';
-      case t('booth.pub.menu.11'):
-        return 'rgba(153, 240, 66, 1)';
-      case t('booth.pub.menu.12'):
-        return 'rgba(153, 240, 66, 1)';
-      case t('booth.pub.menu.13'):
-        return 'rgba(153, 240, 66, 1)';
-      case t('booth.pub.menu.14'):
+      case 'clubScholarship':
+      case 'clubSports':
+      case 'clubPerformance':
+      case 'clubExhibitionLeisure':
+      case 'clueSociety':
         return 'rgba(153, 240, 66, 1)';
       default:
         return 'rgba(255, 104, 29, 1)';
@@ -97,146 +69,81 @@ export default function PubCard() {
   };
 
   const menuItems = [
-    t('booth.pub.menu.1'),
-    t('booth.pub.menu.2'),
-    t('booth.pub.menu.3'),
-    t('booth.pub.menu.4'),
-    t('booth.pub.menu.5'),
-    t('booth.pub.menu.6'),
-    t('booth.pub.menu.7'),
-    t('booth.pub.menu.8'),
-    t('booth.pub.menu.9'),
+    { key: 'autonomous', label: t('booth.pub.menu.1') },
+    { key: 'businessEconomic', label: t('booth.pub.menu.2') },
+    { key: 'art', label: t('booth.pub.menu.3') },
+    { key: 'architecture', label: t('booth.pub.menu.4') },
+    { key: 'education', label: t('booth.pub.menu.5') },
+    { key: 'liberalArts', label: t('booth.pub.menu.6') },
+    { key: 'engineering', label: t('booth.pub.menu.7') },
+    { key: 'convergence', label: t('booth.pub.menu.8') },
+    { key: 'clubScholarship', label: t('booth.pub.menu.9') },
   ];
 
   const subMenuItems = [
-    t('booth.pub.menu.10'),
-    t('booth.pub.menu.11'),
-    t('booth.pub.menu.12'),
-    t('booth.pub.menu.13'),
-    t('booth.pub.menu.14'),
+    { key: 'clubScholarship', label: t('booth.pub.menu.10') },
+    { key: 'clubSports', label: t('booth.pub.menu.11') },
+    { key: 'clubPerformance', label: t('booth.pub.menu.12') },
+    { key: 'clubExhibitionLeisure', label: t('booth.pub.menu.13') },
+    { key: 'clueSociety', label: t('booth.pub.menu.14') },
   ];
 
   const handleMenuClick = (item) => {
-    setSelectedMenu(item);
+    setSelectedMenu(item.key);
   };
 
-  const isSubMenu = subMenuItems.includes(selectedMenu);
-  const showSubMenu = selectedMenu === t('booth.pub.menu.9') || isSubMenu;
+  const isSubMenu = subMenuItems.some((item) => item.key === selectedMenu);
+  const showSubMenu = selectedMenu === 'clubScholarship' || isSubMenu;
 
   const sseUrl = import.meta.env.VITE_SSE_URL;
 
   useEffect(() => {
     const eventSource = new EventSource(sseUrl);
     eventSource.onopen = function () {
-      // 연결 됐을 때
       console.log('SSE open success!');
     };
     eventSource.onerror = function (error) {
-      // 에러 났을 때
       console.log('SSE error!', error);
       eventSource.close();
     };
     eventSource.onmessage = function (event) {
-      // 메세지 받았을 때
       const data = JSON.parse(event.data);
       setLikeData(data);
     };
     return () => {
       eventSource.close();
     };
-  }, []);
+  }, [sseUrl]);
 
-  // architecture 건축도시대학
-  // businessEconomic 경영/경제
-  // engineering 공과대학
-  // convergence 융합학부
-  // liberalArts 문과대학
-  // art 미술대학
-  // education 사범대학
-  // autonomous 캠퍼스자율전공
-  // 총동아리연합회
-  // clubScholarship 학술
-  // clubSports 스포츠
-  // clubPerformance 공연
-  // clubExhibitionLeisure 전시/레저
-  // clueSociety 사회/연합
-
-  const setLikeDataCategory = (menu) => {
-    switch (menu) {
-      case t('booth.pub.menu.1'):
-        return 'autonomous';
-      case t('booth.pub.menu.2'):
-        return 'businessEconomic';
-      case t('booth.pub.menu.3'):
-        return 'art';
-      case t('booth.pub.menu.4'):
-        return 'architecture';
-      case t('booth.pub.menu.5'):
-        return 'education';
-      case t('booth.pub.menu.6'):
-        return 'liberalArts';
-      case t('booth.pub.menu.7'):
-        return 'engineering';
-      case t('booth.pub.menu.8'):
-        return 'convergence';
-      case t('booth.pub.menu.9'):
-        return 'clubScholarship';
-      case t('booth.pub.menu.10'):
-        return 'clubScholarship';
-      case t('booth.pub.menu.11'):
-        return 'clubSports';
-      case t('booth.pub.menu.12'):
-        return 'clubPerformance';
-      case t('booth.pub.menu.13'):
-        return 'clubExhibitionLeisure';
-      case t('booth.pub.menu.14'):
-        return 'clueSociety';
-      default:
-        return '1';
-    }
-  };
-
-  // let category = setLikeDataCategory(selectedMenu);
-
-  // console.log(setLikeDataCategory(selectedMenu));
-  // console.log(likeData[category]);
-  // console.log(likeData.autonomous);
-
-  const category = setLikeDataCategory(selectedMenu);
+  const category = selectedMenu;
 
   useEffect(() => {
     if (likeData) {
-      console.log(likeData[category]); // category에 해당하는 데이터를 출력
       setSelectedLikeData(likeData[category]);
     }
-  }),
-    [likeData, selectedMenu];
+  }, [likeData, category]);
 
-  console.log(isAssociation);
   return (
     <ContentContainer>
       <PubCardContainer>
         <HeartContainer $isAssociation={isAssociation}>
-          <FallingHeart>
-            {/* {hearts.map((heart) => (
-              <FallingHeart key={heart.id} left={heart.left}>
-                <HeartIcon />
-              </FallingHeart>
-            ))} */}
-
-            {hearts.map((heart) => (
-              <FallingHeart key={heart.id} left={heart.left}>
-                <HeartIcon color={heart.color} />
-              </FallingHeart>
-            ))}
-          </FallingHeart>
+          {hearts.map((heart) => (
+            <FallingHeart key={heart.id} left={heart.left}>
+              <HeartIcon color={heart.color} />
+            </FallingHeart>
+          ))}
         </HeartContainer>
         <Title>{t('booth.pub.specific')}</Title>
         <MenuContainer>
           <MenuWrapper index={'1'}>
             {menuItems.slice(0, 4).map((item) => (
-              <MenuItem key={item} lng={lng} onClick={() => handleMenuClick(item)} selected={selectedMenu === item}>
-                {item}
+              <MenuItem
+                key={item.key}
+                lng={lng}
+                onClick={() => handleMenuClick(item)}
+                selected={selectedMenu === item.key}
+              >
+                {item.label}
               </MenuItem>
             ))}
           </MenuWrapper>
@@ -244,20 +151,25 @@ export default function PubCard() {
           <MenuWrapper index={'2'}>
             {menuItems.slice(4).map((item) => (
               <MenuItem
-                key={item}
+                key={item.key}
                 onClick={() => handleMenuClick(item)}
                 lng={lng}
-                selected={selectedMenu === item && !isSubMenu}
+                selected={selectedMenu === item.key && !isSubMenu}
               >
-                {item}
+                {item.label}
               </MenuItem>
             ))}
           </MenuWrapper>
 
           <SubMenuWrapper show={showSubMenu}>
             {subMenuItems.map((item) => (
-              <SubMenuItem key={item} onClick={() => handleMenuClick(item)} lng={lng} selected={selectedMenu === item}>
-                {item}
+              <SubMenuItem
+                key={item.key}
+                onClick={() => handleMenuClick(item)}
+                lng={lng}
+                selected={selectedMenu === item.key}
+              >
+                {item.label}
               </SubMenuItem>
             ))}
           </SubMenuWrapper>
@@ -275,49 +187,36 @@ const PubCardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // gg
   position: relative;
 `;
 
 const fallAnimation = keyframes`
   0% {
-    transform: translateY(-100%);
+    transform: translateY(0);  // 애니메이션 시작 위치를 컨테이너의 최상단으로 고정
     opacity: 1;
   }
   100% {
-    transform: translateY(100%);
+    transform: translateY(100%);  // 애니메이션 종료 위치를 컨테이너의 최하단으로 고정
     opacity: 0.5;
   }
 `;
 
-// const FallingHeart = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 50%;
-//   width: 100%;
-//   height: 100%;
-//   animation: ${fallAnimation} 10s linear infinite;
-// `;
-
 const FallingHeart = styled.div`
   position: absolute;
-  top: ${({ $isAssociation }) => ($isAssociation ? '2rem' : '0rem')};
+  top: 0; // HeartContainer 내에서 항상 같은 위치에서 시작되도록 설정
   left: ${({ left }) => left}; // 각 하트의 위치를 개별적으로 지정
   width: 100%;
   height: 100%;
-  animation: ${fallAnimation} 10s linear forwards; // 애니메이션이 독립적으로 실행되도록 수정
-  /* z-index: 5; */
+  animation: ${fallAnimation} 5s linear forwards; // 애니메이션이 동일한 속도로 적용되도록 설정
 `;
 
 const HeartContainer = styled.div`
   position: absolute;
   top: ${({ $isAssociation }) => ($isAssociation ? '22rem' : '14.4rem')};
-  /* z-index: 5; */
   width: 100%;
-  height: 75%;
-  /* overflow: hidden; */
-  /* z-index: 10; */
-  pointer-events: none; /* 클릭 이벤트를 무시하게 설정 */
+  height: 80%;
+  pointer-events: none;
+  overflow: hidden;
 `;
 
 const Title = styled.div`
