@@ -263,6 +263,7 @@ export const InstaContainer = styled.div`
 
 export const Instagrams = styled.div`
   display: flex;
+  align-items: flex-end;
   margin-bottom: 6.65rem;
 `;
 
@@ -289,4 +290,20 @@ export const BackgroundVideo = styled.video`
   height: 99%; // 선 생김 이슈 해결용
   object-fit: cover;
   z-index: -1;
+`;
+
+export const Policy = styled.div`
+  position: absolute;
+  right: 3.2rem;
+  color: ${(props) => props.theme.colors.gray10};
+  font-size: 1rem;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 15px */
+  letter-spacing: -0.01px;
+`;
+
+export const FlamePolicy = styled(Policy)`
+  color: ${(props) => props.theme.colors.gray70};
 `;

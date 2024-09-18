@@ -173,6 +173,7 @@ export default function Footer() {
           <a href="https://www.instagram.com/hiu_student_council/" target="_blank" rel="noopener noreferrer">
             <img src={gaehwaInsta} alt="gaehwaInsta" />
           </a>
+          {flame ? <S.FlamePolicy>개인정보처리방침</S.FlamePolicy> : <S.Policy>개인정보처리방침</S.Policy>}
         </S.Instagrams>
       </S.InstaContainer>
     </S.FooterLayout>
