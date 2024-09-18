@@ -7,11 +7,10 @@ import first from '@/assets/svgs/booth/1st.svg';
 import second from '@/assets/svgs/booth/2nd.svg';
 import third from '@/assets/svgs/booth/3rd.svg';
 import heart from '@/assets/webps/booth/icon/heartIcon.webp';
-import Kind123 from '@/components/booth/Kind123';
+import Kind123 from '@/components/booth/ranking/Kind123';
 import PropTypes from 'prop-types';
-import Kind122 from '@/components/booth/Kind122';
-import Kind111 from '@/components/booth/Kind111';
-import Kind113 from '@/components/booth/Kind113';
+import Kind122 from '@/components/booth/ranking/Kind122';
+import Kind111 from '@/components/booth/ranking/Kind111';
 import { useTranslation } from 'react-i18next';
 
 Ranking.propTypes = {

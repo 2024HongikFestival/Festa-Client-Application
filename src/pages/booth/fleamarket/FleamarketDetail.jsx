@@ -7,11 +7,11 @@ import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import { useParams } from 'react-router-dom';
 import { FleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
-import FleamarketTop from '@/components/booth/FleamarketTop';
-import FleamarketEvent from '@/components/booth/FleamarketEvent';
-import FleamarketBottom from '@/components/booth/FleamarketBottom';
-import PriceTable from '@/components/booth/PriceTable';
-import RecordList from '@/components/booth/RecordList';
+import FleamarketTop from '@/components/booth/fleamarket/FleamarketTop';
+import FleamarketEvent from '@/components/booth/fleamarket/FleamarketEvent';
+import FleamarketBottom from '@/components/booth/fleamarket/FleamarketBottom';
+import PriceTable from '@/components/booth/fleamarket/PriceTable';
+import RecordList from '@/components/booth/fleamarket/RecordList';
 import { useTranslation } from 'react-i18next';
 
 const FleamarketDetail = () => {
@@ -19,8 +19,6 @@ const FleamarketDetail = () => {
   const { marketId } = useParams();
   const fleamarketDetailList = FleamarketDetailList(t);
   const item = fleamarketDetailList[`${marketId}`];
-  // const item = fleamarketDetailList.${marketId};
-  // const item = fleamarketDetailList[marketId];
   const isSpecialMarket = marketId === 'kawaii' || marketId === 'henna';
 
   return (

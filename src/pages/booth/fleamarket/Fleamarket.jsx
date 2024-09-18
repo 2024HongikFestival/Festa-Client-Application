@@ -4,7 +4,7 @@
 import PageTitle from '@/components/common/PageTitle';
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
-import FleamarketInfo from '@/components/booth/FleamarketInfo';
+import FleamarketInfo from '@/components/booth/fleamarket/FleamarketInfo';
 import { FleamarketList } from '@/constants/booth/fleamarketList';
 import { useTranslation } from 'react-i18next';
 

@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import PageTitle from '@/components/common/PageTitle';
 import { useTranslation } from 'react-i18next';
-import Ranking from '@/components/booth/Ranking';
-import PubOperatingHour from '@/components/booth/PubOperatingHour';
-import PubCard from '@/components/booth/PubCard';
+import Ranking from '@/components/booth/ranking/Ranking';
+import PubOperatingHour from '@/components/booth/pub/PubOperatingHour';
+import PubCard from '@/components/booth/pub/PubCard';
 
 export default function BoothPage() {
   const [likes, setLikes] = useState({});

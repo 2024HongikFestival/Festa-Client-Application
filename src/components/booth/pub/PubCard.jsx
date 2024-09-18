@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
-import PubCarousel from '@/components/booth/PubCarousel';
+import PubCarousel from '@/components/booth/pub/PubCarousel';
 import { useTranslation } from 'react-i18next';
-import HeartIcon from '@/components/booth/HeratIcon';
+import HeartIcon from '@/components/booth/pub/HeratIcon';
+import { getHeartColor } from '@/utils/booth/getHeartColor';
 
 export default function PubCard() {
   const lng = localStorage.getItem('language');
@@ -38,35 +39,6 @@ export default function PubCard() {
       setHearts((prevHearts) => prevHearts.filter((heart) => heart.id !== newHeart.id));
     }, 15000);
   }, [selectedMenu]);
-
-  const getHeartColor = (menuKey) => {
-    switch (menuKey) {
-      case 'autonomous':
-        return 'rgba(255, 104, 29, 1)';
-      case 'businessEconomic':
-        return 'rgba(124, 129, 255, 1)';
-      case 'art':
-        return 'rgba(152, 80, 246, 1)';
-      case 'architecture':
-        return 'rgba(236, 137, 248, 1)';
-      case 'education':
-        return 'rgba(116, 188, 255, 1)';
-      case 'liberalArts':
-        return 'rgba(147, 227, 232, 1)';
-      case 'engineering':
-        return 'rgba(242, 219, 13, 1)';
-      case 'convergence':
-        return 'rgba(213, 207, 252, 1)';
-      case 'clubScholarship':
-      case 'clubSports':
-      case 'clubPerformance':
-      case 'clubExhibitionLeisure':
-      case 'clueSociety':
-        return 'rgba(153, 240, 66, 1)';
-      default:
-        return 'rgba(255, 104, 29, 1)';
-    }
-  };
 
   const menuItems = [
     { key: 'autonomous', label: t('booth.pub.menu.1') },
@@ -207,12 +179,12 @@ const FallingHeart = styled.div`
   left: ${({ left }) => left}; // 각 하트의 위치를 개별적으로 지정
   width: 100%;
   height: 100%;
-  animation: ${fallAnimation} 5s linear forwards; // 애니메이션이 동일한 속도로 적용되도록 설정
+  animation: ${fallAnimation} 3s linear forwards; // 애니메이션이 동일한 속도로 적용되도록 설정
 `;
 
 const HeartContainer = styled.div`
   position: absolute;
-  top: ${({ $isAssociation }) => ($isAssociation ? '22rem' : '14.4rem')};
+  top: ${({ $isAssociation }) => ($isAssociation ? '18rem' : '14.4rem')};
   width: 100%;
   height: 80%;
   pointer-events: none;
@@ -266,7 +238,7 @@ const SubMenuWrapper = styled.div`
     margin-top 0.3s ease-out;
   display: flex;
   gap: 2.4rem;
-  z-index: 120;
+  z-index: 5;
 
   ${(props) =>
     props.show &&
