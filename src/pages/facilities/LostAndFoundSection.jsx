@@ -2,6 +2,7 @@ import ContentContainer from '@/components/common/ContentContainer';
 import * as S from '@/pages/facilities/styles';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import lostAndFoundMap from '@/assets/webps/facilities/lostAndFoundMap.webp';
 
 const LostAndFoundSection = () => {
   const nav = useNavigate();
@@ -13,7 +14,9 @@ const LostAndFoundSection = () => {
         <S.Title>
           {t('facilities.lostAndFound.title1')} <span>{t('facilities.lostAndFound.title2')}</span>
         </S.Title>
-        <S.Map />
+        <S.Map>
+          <img src={lostAndFoundMap} alt="lostAndFoundMap" />
+        </S.Map>
         <S.Description>
           <span>{t('facilities.lostAndFound.description1')}</span>
           {t('facilities.lostAndFound.description2')}

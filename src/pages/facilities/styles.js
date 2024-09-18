@@ -50,10 +50,13 @@ export const Title = styled.p`
 `;
 
 export const Map = styled.div`
-  width: 100%;
+  width: 33.5rem;
   height: 25rem;
-  border-top: 1px solid ${(props) => props.theme.colors.gray30};
-  border-bottom: 1px solid ${(props) => props.theme.colors.gray30};
+
+  img {
+    height: 100%;
+    overflow: hidden;
+  }
 `;
 
 export const RestroomDetail = styled.ul`

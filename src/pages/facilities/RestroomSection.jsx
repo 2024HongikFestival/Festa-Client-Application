@@ -1,6 +1,7 @@
 import ContentContainer from '@/components/common/ContentContainer';
 import * as S from '@/pages/facilities/styles';
 import { useTranslation } from 'react-i18next';
+import restroomMap from '@/assets/webps/facilities/restroomMap.webp';
 
 const RestroomSection = () => {
   const { t } = useTranslation();
@@ -11,7 +12,9 @@ const RestroomSection = () => {
         <S.Title>
           {t('facilities.restroom.title1')} <span>{t('facilities.restroom.title2')}</span>
         </S.Title>
-        <S.Map />
+        <S.Map>
+          <img src={restroomMap} alt="restroomMap" />
+        </S.Map>
         <S.RestroomDetail>
           <S.DetailItem>
             <S.Number>1</S.Number>
