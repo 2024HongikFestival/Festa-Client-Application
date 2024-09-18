@@ -167,6 +167,7 @@ export const DetailTitle = styled.div`
 `;
 
 export const DetailDescription = styled.div`
+  text-align: left;
   color: ${(props) => props.theme.colors.gray30};
   ${(props) => props.theme.fontStyles.basic.body2Med};
 `;
