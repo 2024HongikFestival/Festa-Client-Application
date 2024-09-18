@@ -179,7 +179,7 @@ export default function Footer() {
                 window.open('https://strong-possum-38a.notion.site/cbdd0b8c079f4d1a8702c1e4001d717e?pvs=4');
               }}
             >
-              개인정보처리방침
+              {t('layouts.footer.policy')}
             </S.FlamePolicy>
           ) : (
             <S.Policy
@@ -187,7 +187,7 @@ export default function Footer() {
                 window.open('https://strong-possum-38a.notion.site/cbdd0b8c079f4d1a8702c1e4001d717e?pvs=4');
               }}
             >
-              개인정보처리방침
+              {t('layouts.footer.policy')}
             </S.Policy>
           )}
         </S.Instagrams>
