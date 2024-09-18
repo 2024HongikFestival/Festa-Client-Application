@@ -1,16 +1,15 @@
-import hiuLogo from '@/assets/webps/layouts/hiuLogo.webp';
-import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
-import backBtn from '@/assets/webps/layouts/backBtn.webp';
-import backBtnBlack from '@/assets/webps/layouts/backBtnBlack.webp';
-import hambergerMenu from '@/assets/webps/layouts/hambergerMenu.webp';
-import hambergerMenuBlack from '@/assets/webps/layouts/hambergerMenuBlack.webp';
-import hambergerMenuWhite from '@/assets/webps/layouts/hambergerMenuWhite.webp';
+import hiuLogoWhite from '@/assets/svgs/layouts/hiuLogoWhite.svg';
+import hiuLogoBlack from '@/assets/svgs/layouts/hiuLogoBlack.svg';
+import backBtnGray from '@/assets/svgs/layouts/backBtnGray.svg';
+import backBtnBlack from '@/assets/svgs/layouts/backBtnBlack.svg';
+import hambergerMenuBlack from '@/assets/svgs/layouts/hambergerMenuBlack.svg';
+import hambergerMenuWhite from '@/assets/svgs/layouts/hambergerMenuWhite.svg';
 import xBtnBlack from '@/assets/svgs/layouts/xBtnBlack.svg';
 import xBtnWhite from '@/assets/svgs/layouts/xBtnWhite.svg';
 
 const makersConfig = {
-  logo: hiuLogo,
-  menuIcon: backBtn,
+  logo: hiuLogoWhite,
+  menuIcon: backBtnGray,
   showBackButton: true,
 };
 
@@ -21,8 +20,8 @@ const fleamarketConfig = {
 };
 
 const eventConfig = {
-  logo: hiuLogo,
-  menuIcon: hambergerMenu,
+  logo: hiuLogoWhite,
+  menuIcon: hambergerMenuWhite,
   xBtn: xBtnBlack,
   showBackButton: false,
 };
@@ -34,7 +33,7 @@ const routeConfig = {
 
   // 대동제 메인
   '/': {
-    logo: hiuLogo,
+    logo: hiuLogoWhite,
     menuIcon: hambergerMenuWhite,
     xBtn: xBtnWhite,
     showBackButton: false,
@@ -42,8 +41,8 @@ const routeConfig = {
 
   // 와디페
   '/flame': {
-    logo: hiuLogo,
-    menuIcon: hambergerMenu,
+    logo: hiuLogoWhite,
+    menuIcon: hambergerMenuWhite,
     xBtn: xBtnWhite,
     showBackButton: false,
   },
