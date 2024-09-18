@@ -20,7 +20,7 @@ const commonBackgroundStyle = css`
 // 경로 props로 받아서 backgroundStyles에서 순회
 export const getBackgroundStyle = (path) => {
   for (const key in backgroundStyles) {
-    if (backgroundStyles[key].paths.some((p) => path.startsWith(p))) {
+    if (backgroundStyles[key].paths.some((p) => p === path)) {
       return backgroundStyles[key].style;
     }
   }
@@ -29,7 +29,20 @@ export const getBackgroundStyle = (path) => {
 
 const backgroundStyles = {
   flame: {
-    paths: ['/flame', '/oauth/events', '/event', '/event/', '/event/enter', '/event/submit'],
+    paths: [
+      '/flame',
+      '/flame/map',
+      '/flame/timetable',
+      '/flame/reservation',
+      '/flame/lineup',
+      '/flame/md',
+      '/flame/promotion',
+      '/oauth/events',
+      '/event',
+      '/event/',
+      '/event/enter',
+      '/event/submit',
+    ],
     style: css`
       background-color: ${(props) => props.theme.colors.flameBackgroundColor};
     `,
@@ -40,13 +53,7 @@ const backgroundStyles = {
       background-color: ${(props) => props.theme.colors.makersBackgroundColor};
     `,
   },
-  main: {
-    paths: ['/'],
-    style: css`
-      background-image: url(${mainBg});
-      ${commonBackgroundStyle}
-    `,
-  },
+
   stage: {
     paths: ['/lineup', '/stage-info', '/hongik-zone'],
     style: css`
@@ -117,6 +124,14 @@ const backgroundStyles = {
     style: css`
       background-image: url(${fleamarketBg3});
       ${commonBackgroundStyle}
+    `,
+  },
+  main: {
+    paths: ['/'],
+    style: css`
+      background-image: url(${mainBg});
+      ${commonBackgroundStyle}
+      background-position: top -4.9rem center;
     `,
   },
 };
