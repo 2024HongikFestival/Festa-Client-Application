@@ -28,10 +28,10 @@ const RedirectEvents = () => {
       const response = await axiosInstance.post('/entries/token', {
         // 현재 홍대 내부 좌표로 임의 설정
         code: localStorage.getItem('kakao_code'),
-        latitude: location.latitude,
-        longtitude: location.longitude,
-        // latitude: 37.5512242,
-        // longitude: 126.9255396,
+        //latitude: location.latitude,
+        //longtitude: location.longitude,
+        latitude: 37.5512242,
+        longitude: 126.9255396,
       });
       console.log(response.data.message);
       // 이벤트 토큰 저장
