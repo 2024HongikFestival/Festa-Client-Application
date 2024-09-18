@@ -901,14 +901,15 @@
     "result": {
       "title": "Entrance completed!",
       "description1": "Get a ticket tomorrow",
-      "description2": "at 10a.m.",
+      "description2": "at 10a.m. ",
       "description3": "and",
-      "description4": "try again!!",
+      "description4": "try again !",
       "last": {
         "description1": "The festival is over",
-        "description2": "The winner is",
+        "description2": "The winner is ",
         "description3": "on September 28th at 2 p.m.",
-        "description4": "It will be presented in the story @hiufestival_official"
+        "description4": " ",
+        "description5": "It will be presented in the story."
       }
     },
     "error": {
