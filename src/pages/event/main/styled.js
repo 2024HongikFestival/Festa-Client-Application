@@ -9,20 +9,13 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   margin-top: 2.7rem;
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.basic.eventTitle}
 
   span {
     ${(props) => props.theme.fontStyles.basic.eventTitle}
-    display : ${(props) => (props.lang ? 'flex' : 'none')};
-    display: flex;
-    flex-direction: ${(props) => (props.lang ? 'column' : ' ')};
-    align-items: ${(props) => (props.lang ? 'center' : ' ')};
 
     #highlight {
       color: #ffff24;
@@ -85,7 +78,7 @@ export const Raffle = styled.div`
 
 export const Quantity = styled.div`
   display: flex;
-  width: 13rem;
+  min-width: 13rem;
   height: 3.2rem;
   padding: 0.4rem 1.7rem;
   justify-content: center;
@@ -170,7 +163,7 @@ export const DetailTitle = styled.div`
   color: ${(props) => props.theme.colors.gray10};
   ${(props) => props.theme.fontStyles.basic.body2Bold};
   display: flex;
-  min-width: fit-content;
+  min-width: min-content;
 `;
 
 export const DetailDescription = styled.div`

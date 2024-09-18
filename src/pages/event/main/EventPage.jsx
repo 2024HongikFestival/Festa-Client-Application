@@ -64,18 +64,13 @@ const EventPage = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (localStorage.getItem('language') === 'en') {
-      setLang(true);
-    }
-  }, [localStorage.getItem('language')]);
-
   return (
     <S.Wrapper>
       <S.Title>
-        2024
+        2024 <br />
         <span>
-          {t(`event.main.notice.title1`)}&nbsp;<span id="highlight">{t(`event.main.notice.title2`)}</span>
+          {t(`event.main.notice.title1`)}&nbsp;
+          <span id="highlight">{t(`event.main.notice.title2`)}</span>
         </span>
       </S.Title>
       <S.ImageWrapper>

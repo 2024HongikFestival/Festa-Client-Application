@@ -865,14 +865,14 @@
       },
       "item": {
         "quantity": "10 winning tickets",
-        "title1": "The TVING Standard Plan will be given",
-        "title2": "a three-month pass",
-        "title3": "!",
-        "description1": "A three month pass"
+        "title1": "TVING Standard Plan will be given",
+        "title2": "a three-month pass !",
+        "title3": "",
+        "description1": "Three-month pass"
       },
       "detail": {
         "title1": "Target for application",
-        "description1": "If you are enjoying the 'In Hongik University' festival",
+        "description1": "If you are enjoying the 'in Hongik University' festival",
         "description2": "anyone, regardless of the student's outsiders",
         "title2": "Conditions of entry",
         "description3": "Applicants whose current location is Hongik University",
