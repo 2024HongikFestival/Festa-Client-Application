@@ -545,6 +545,8 @@
   },
   "layouts": {
     "header": {
+      "toDaedongje": "대동제",
+      "toFlame": "와우 디제이 페스티벌",
       "toRoadmap": "로드맵",
       "toStage": "공연",
       "toLineUp": "라인업",

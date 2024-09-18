@@ -1,14 +1,10 @@
 import styled from 'styled-components';
-import backgroundImage from '@/assets/webps/stageInfo/background.webp';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   align-self: stretch;
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-repeat: no-repeat;
   padding-top: 2.8rem;
   padding-bottom: 6.4rem;
 `;

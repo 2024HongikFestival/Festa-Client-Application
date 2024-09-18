@@ -558,6 +558,8 @@
   },
   "layouts": {
     "header": {
+      "toDaedongje": "MAIN FESTIVAL",
+      "toFlame": "WOW DJ FESTIVAL",
       "toRoadmap": "ROAD MAP",
       "toStage": "PERFORMANCE",
       "toLineUp": "LINE UP",
