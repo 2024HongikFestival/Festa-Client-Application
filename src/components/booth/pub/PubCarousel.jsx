@@ -25,12 +25,12 @@ export default function PubCarousel({ menu, click, likeData }) {
   const sliderRef = useRef(null);
 
   useEffect(() => {
-    const newCategory = setCategoryFunc(menu, t);
+    const newCategory = setCategoryFunc(menu);
     setCurrentCategory(newCategory);
     if (sliderRef.current) {
       sliderRef.current.slickGoTo(0);
     }
-  }, [menu]);
+  }, [menu, t]);
 
   const CustomArrow = ({ className, onClick, direction }) => {
     return (
@@ -54,21 +54,17 @@ export default function PubCarousel({ menu, click, likeData }) {
     slidesToScroll: 1,
     // autoplay: true,
     autoplaySpeed: 3000,
-    prevArrow: <CustomArrow direction="prev" />,
-    nextArrow: <CustomArrow direction="next" />,
+    prevArrow: likeData?.length > 1 ? <CustomArrow direction="prev" /> : null,
+    nextArrow: likeData?.length > 1 ? <CustomArrow direction="next" /> : null,
   };
 
   return (
     <CarouselWrapper>
       <CarouselContainer>
         <StyledSlider ref={sliderRef} {...settings}>
-          {/* {pubList[currentCategory].map((item, index) => (
-            <CarouselItem key={index} content={item} click={click} />
-          ))} */}
           {pubList[currentCategory].map((item, index) => {
             // likeData에서 해당 index에 해당하는 데이터를 순서대로 매칭
             const relatedLikeData = likeData?.[index];
-
             return (
               <CarouselItem
                 key={index}
@@ -88,6 +84,7 @@ const CarouselWrapper = styled.div`
   width: 24.5rem;
   position: relative;
   margin: 0 auto;
+  z-index: 10;
 `;
 
 const CarouselContainer = styled.div`

@@ -4,8 +4,13 @@ import first from '@/assets/svgs/booth/1st.svg';
 import second from '@/assets/svgs/booth/2nd.svg';
 import third from '@/assets/svgs/booth/3rd.svg';
 import heart from '@/assets/webps/booth/icon/heartIcon.webp';
+import PropTypes from 'prop-types';
 
-export default function Kind113() {
+Kind112.propTypes = {
+  rankData: PropTypes.any.isRequired,
+};
+
+export default function Kind112({ rankData }) {
   return (
     <PodiumWrapper>
       <Podium1>

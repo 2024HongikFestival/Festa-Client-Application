@@ -22,7 +22,7 @@ CarouselItem.propTypes = {
 };
 
 export default function CarouselItem({ content, click, likeData }) {
-  console.log('like data: ', likeData);
+  // console.log('like data: ', likeData);
   const [isLiked, setIsLiked] = useState(false);
   const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0); // 기본값을 0으로 설정
 
@@ -67,7 +67,7 @@ export default function CarouselItem({ content, click, likeData }) {
         )}
       </PubInfoContainer>
       <BtnContainer>
-        <Confetti src={isLiked ? after : before} alt="confetti" isAnimating={isLiked} />
+        {/* <Confetti src={isLiked ? after : before} alt="confetti" $isAnimating={isLiked} /> */}
         <LikeBtn onClick={() => handleLikeClick(likeData.boothId)}>
           <HeartIcon src={favorite} alt="favorite" />
           <Count>{totalLikes}</Count>
@@ -84,7 +84,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 100;
+  z-index: -1;
 `;
 
 const Icon = styled.img`
@@ -158,7 +158,7 @@ const Confetti = styled.img`
   width: 8.6rem;
   height: 7.2rem;
   position: absolute;
-  animation: ${({ isAnimating }) => (isAnimating ? confettiAnimation : 'none')} 0.5s ease-out;
+  animation: ${({ $isAnimating }) => ($isAnimating ? confettiAnimation : 'none')} 0.5s ease-out;
   opacity: 1;
   transition: all 0.3s ease-out;
 `;

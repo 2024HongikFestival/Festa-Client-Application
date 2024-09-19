@@ -16,6 +16,8 @@ export const getHeartColor = (menuKey) => {
       return 'rgba(242, 219, 13, 1)';
     case 'convergence':
       return 'rgba(213, 207, 252, 1)';
+    case 'clubFederation':
+      return 'rgba(153, 240, 66, 1)';
     case 'clubScholarship':
     case 'clubSports':
     case 'clubPerformance':

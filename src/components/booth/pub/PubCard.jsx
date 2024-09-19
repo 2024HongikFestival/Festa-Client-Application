@@ -5,15 +5,19 @@ import PubCarousel from '@/components/booth/pub/PubCarousel';
 import { useTranslation } from 'react-i18next';
 import HeartIcon from '@/components/booth/pub/HeratIcon';
 import { getHeartColor } from '@/utils/booth/getHeartColor';
+import { menuItems, subMenuItems } from '@/constants/booth/menuItems';
+import useLikeDataCompare from '@/hooks/useLikeDataCompare';
 
 export default function PubCard() {
   const lng = localStorage.getItem('language');
   const { t } = useTranslation();
   const [selectedMenu, setSelectedMenu] = useState('autonomous');
   const [hearts, setHearts] = useState([]);
+  const [behindHearts, setBehindHearts] = useState([]);
   const [likeData, setLikeData] = useState(null);
   const [selectedLikeData, setSelectedLikeData] = useState(null);
   const [isAssociation, setIsAssociation] = useState(false);
+  const [previousLikeData, setPreviousLikeData] = useState(null);
 
   useEffect(() => {
     const associationKeys = [
@@ -21,7 +25,7 @@ export default function PubCard() {
       'clubSports',
       'clubPerformance',
       'clubExhibitionLeisure',
-      'clueSociety',
+      'clubSociety',
     ];
     const isAssoc = associationKeys.includes(selectedMenu);
     setIsAssociation(isAssoc);
@@ -30,66 +34,110 @@ export default function PubCard() {
   const handleLikeBtnClick = useCallback(() => {
     const newHeart = {
       id: Date.now(),
-      left: `${Math.random() * 80 + 10}%`, // Random position between 10% and 90%
-      color: getHeartColor(selectedMenu), // Determine the heart color based on the selected menu
+      left: `${Math.random() * 80 + 10}%`,
+      color: getHeartColor(selectedMenu),
     };
     setHearts((prevHearts) => [...prevHearts, newHeart]);
 
+    setLikeData((prevData) => {
+      if (!prevData || !prevData[selectedMenu]) {
+        console.log('초기 데이터가 없습니다. 좋아요 기능이 작동하지 않습니다.');
+        return prevData;
+      }
+
+      const updatedData = { ...prevData };
+      updatedData[selectedMenu] = updatedData[selectedMenu].map((booth) =>
+        selectedLikeData && selectedLikeData[0] && booth.boothId === selectedLikeData[0].boothId
+          ? { ...booth, totalLike: booth.totalLike + 1 }
+          : booth
+      );
+      return updatedData;
+    });
+
     setTimeout(() => {
       setHearts((prevHearts) => prevHearts.filter((heart) => heart.id !== newHeart.id));
-    }, 15000);
-  }, [selectedMenu]);
-
-  const menuItems = [
-    { key: 'autonomous', label: t('booth.pub.menu.1') },
-    { key: 'businessEconomic', label: t('booth.pub.menu.2') },
-    { key: 'art', label: t('booth.pub.menu.3') },
-    { key: 'architecture', label: t('booth.pub.menu.4') },
-    { key: 'education', label: t('booth.pub.menu.5') },
-    { key: 'liberalArts', label: t('booth.pub.menu.6') },
-    { key: 'engineering', label: t('booth.pub.menu.7') },
-    { key: 'convergence', label: t('booth.pub.menu.8') },
-    { key: 'clubScholarship', label: t('booth.pub.menu.9') },
-  ];
-
-  const subMenuItems = [
-    { key: 'clubScholarship', label: t('booth.pub.menu.10') },
-    { key: 'clubSports', label: t('booth.pub.menu.11') },
-    { key: 'clubPerformance', label: t('booth.pub.menu.12') },
-    { key: 'clubExhibitionLeisure', label: t('booth.pub.menu.13') },
-    { key: 'clueSociety', label: t('booth.pub.menu.14') },
-  ];
+    }, 5000);
+  }, [selectedMenu, selectedLikeData]);
 
   const handleMenuClick = (item) => {
     setSelectedMenu(item.key);
   };
 
-  const isSubMenu = subMenuItems.some((item) => item.key === selectedMenu);
-  const showSubMenu = selectedMenu === 'clubScholarship' || isSubMenu;
+  const isSubMenu = subMenuItems(t).some((item) => item.key === selectedMenu);
+  const showSubMenu = selectedMenu === 'clubFederation' || isSubMenu;
 
   const sseUrl = import.meta.env.VITE_SSE_URL;
+
+  const compare = useCallback((prevData, newData) => {
+    const changes = {};
+
+    for (const category in newData) {
+      if (!prevData[category]) continue;
+
+      const prevTotalLike = prevData[category].reduce((sum, booth) => sum + booth.totalLike, 0);
+      const newTotalLike = newData[category].reduce((sum, booth) => sum + booth.totalLike, 0);
+
+      const change = newTotalLike - prevTotalLike;
+      if (change > 0) {
+        changes[category] = change;
+      }
+    }
+
+    return changes;
+  }, []);
 
   useEffect(() => {
     const eventSource = new EventSource(sseUrl);
     eventSource.onopen = function () {
       console.log('SSE open success!');
     };
+
     eventSource.onerror = function (error) {
       console.log('SSE error!', error);
       eventSource.close();
     };
+
     eventSource.onmessage = function (event) {
-      const data = JSON.parse(event.data);
-      setLikeData(data);
+      const newData = JSON.parse(event.data);
+      setLikeData((prevData) => {
+        if (prevData) {
+          const changes = compare(prevData, newData);
+          console.log('카테고리별 좋아요 변화량:', changes);
+
+          const newBehindHearts = Object.entries(changes).flatMap(([category, change]) => {
+            const heartCount = Math.min(change, 3);
+            return Array.from({ length: heartCount }, () => ({
+              id: Date.now() + Math.random(),
+              left: `${Math.random() * 80 + 10}%`,
+              color: getHeartColor(category),
+            }));
+          });
+
+          if (newBehindHearts.length > 0) {
+            setBehindHearts((prev) => {
+              const updatedHearts = [...prev, ...newBehindHearts].slice(-3);
+              setTimeout(() => {
+                setBehindHearts((hearts) => hearts.filter((heart) => !updatedHearts.includes(heart)));
+              }, 5000);
+              return updatedHearts;
+            });
+          }
+
+          setPreviousLikeData(prevData);
+        }
+        return newData;
+      });
     };
+
     return () => {
       eventSource.close();
     };
-  }, [sseUrl]);
+  }, [sseUrl, compare]);
 
-  const category = selectedMenu;
+  const category = selectedMenu === 'clubFederation' ? 'clubScholarship' : selectedMenu;
 
   useEffect(() => {
+    console.log(likeData);
     if (likeData) {
       setSelectedLikeData(likeData[category]);
     }
@@ -98,6 +146,13 @@ export default function PubCard() {
   return (
     <ContentContainer>
       <PubCardContainer>
+        <BehindHeartContainer $isAssociation={isAssociation}>
+          {behindHearts.map((heart) => (
+            <FallingHeart key={heart.id} left={heart.left}>
+              <HeartIcon color={heart.color} />
+            </FallingHeart>
+          ))}
+        </BehindHeartContainer>
         <HeartContainer $isAssociation={isAssociation}>
           {hearts.map((heart) => (
             <FallingHeart key={heart.id} left={heart.left}>
@@ -108,33 +163,37 @@ export default function PubCard() {
         <Title>{t('booth.pub.specific')}</Title>
         <MenuContainer>
           <MenuWrapper index={'1'}>
-            {menuItems.slice(0, 4).map((item) => (
-              <MenuItem
-                key={item.key}
-                lng={lng}
-                onClick={() => handleMenuClick(item)}
-                selected={selectedMenu === item.key}
-              >
-                {item.label}
-              </MenuItem>
-            ))}
+            {menuItems(t)
+              .slice(0, 4)
+              .map((item) => (
+                <MenuItem
+                  key={item.key}
+                  lng={lng}
+                  onClick={() => handleMenuClick(item)}
+                  selected={selectedMenu === item.key}
+                >
+                  {item.label}
+                </MenuItem>
+              ))}
           </MenuWrapper>
 
           <MenuWrapper index={'2'}>
-            {menuItems.slice(4).map((item) => (
-              <MenuItem
-                key={item.key}
-                onClick={() => handleMenuClick(item)}
-                lng={lng}
-                selected={selectedMenu === item.key && !isSubMenu}
-              >
-                {item.label}
-              </MenuItem>
-            ))}
+            {menuItems(t)
+              .slice(4)
+              .map((item) => (
+                <MenuItem
+                  key={item.key}
+                  onClick={() => handleMenuClick(item)}
+                  lng={lng}
+                  selected={selectedMenu === item.key && !isSubMenu}
+                >
+                  {item.label}
+                </MenuItem>
+              ))}
           </MenuWrapper>
 
           <SubMenuWrapper show={showSubMenu}>
-            {subMenuItems.map((item) => (
+            {subMenuItems(t).map((item) => (
               <SubMenuItem
                 key={item.key}
                 onClick={() => handleMenuClick(item)}
@@ -164,31 +223,42 @@ const PubCardContainer = styled.div`
 
 const fallAnimation = keyframes`
   0% {
-    transform: translateY(0);  // 애니메이션 시작 위치를 컨테이너의 최상단으로 고정
+    transform: translateY(0);
     opacity: 1;
   }
   100% {
-    transform: translateY(100%);  // 애니메이션 종료 위치를 컨테이너의 최하단으로 고정
+    transform: translateY(100%);
     opacity: 0.5;
   }
 `;
 
 const FallingHeart = styled.div`
   position: absolute;
-  top: 0; // HeartContainer 내에서 항상 같은 위치에서 시작되도록 설정
-  left: ${({ left }) => left}; // 각 하트의 위치를 개별적으로 지정
+  top: 0;
+  left: ${({ left }) => left};
   width: 100%;
   height: 100%;
-  animation: ${fallAnimation} 3s linear forwards; // 애니메이션이 동일한 속도로 적용되도록 설정
+  animation: ${fallAnimation} 3s linear forwards;
 `;
 
 const HeartContainer = styled.div`
   position: absolute;
-  top: ${({ $isAssociation }) => ($isAssociation ? '18rem' : '14.4rem')};
+  top: ${({ $isAssociation }) => ($isAssociation ? '20rem' : '14.4rem')};
   width: 100%;
   height: 80%;
   pointer-events: none;
   overflow: hidden;
+  z-index: 30;
+`;
+
+const BehindHeartContainer = styled.div`
+  position: absolute;
+  top: ${({ $isAssociation }) => ($isAssociation ? '20rem' : '14.4rem')};
+  width: 100%;
+  height: 80%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
 `;
 
 const Title = styled.div`

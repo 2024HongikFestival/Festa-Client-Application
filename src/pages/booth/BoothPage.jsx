@@ -11,26 +11,7 @@ import PubOperatingHour from '@/components/booth/pub/PubOperatingHour';
 import PubCard from '@/components/booth/pub/PubCard';
 
 export default function BoothPage() {
-  const [likes, setLikes] = useState({});
-  const [computerLikes, setComputerLikes] = useState(0);
-  const [businessLikes, setBuisinessLikes] = useState(0);
-  const [electronicLikes, setElectronicLikes] = useState(0);
-  const [industrialLikes, setIndustrialLikes] = useState(0);
-  const [mathLikes, setMathLikes] = useState(0);
-
   const { t } = useTranslation();
-
-  // const onClickLikes = async (id) => {
-  //   try {
-  //     console.log(id, '좋아요 +1!');
-  //     const response = await axiosInstance.post(`/booths/${id}/like`);
-  //     if (response.status === 200) {
-  //       console.log('좋아요수 +1 성공!');
-  //     }
-  //   } catch (e) {
-  //     console.log('좋아요수 반영 실패', e);
-  //   }
-  // };
 
   const [selectedTab, setSelectedTab] = useState('pub');
   return (
@@ -55,10 +36,10 @@ export default function BoothPage() {
           </ContentContainer>
         )}
         {selectedTab === 'pub' && <PubCard />}
-        {/* 실시간 랭킹 정보 컴포넌트 */}
-        {selectedTab === 'pub' && <Ranking kind="122" />}
         {/* 주점 운영시간 정보 컴포넌트 */}
         {selectedTab === 'pub' && <PubOperatingHour />}
+        {/* 실시간 랭킹 정보 컴포넌트 */}
+        {selectedTab === 'pub' && <Ranking kind="122" />}
       </ForGapWrapper>
     </Container>
   );

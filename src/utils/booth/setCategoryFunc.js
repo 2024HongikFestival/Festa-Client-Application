@@ -1,32 +1,32 @@
-export const setCategoryFunc = (menu, t) => {
+export const setCategoryFunc = (menu) => {
   switch (menu) {
-    case t('booth.pub.menu.1'):
+    case 'autonomous':
       return '1';
-    case t('booth.pub.menu.2'):
+    case 'businessEconomic':
       return '2';
-    case t('booth.pub.menu.3'):
+    case 'art':
       return '3';
-    case t('booth.pub.menu.4'):
+    case 'architecture':
       return '4';
-    case t('booth.pub.menu.5'):
+    case 'education':
       return '5';
-    case t('booth.pub.menu.6'):
+    case 'liberalArts':
       return '6';
-    case t('booth.pub.menu.7'):
+    case 'engineering':
       return '7';
-    case t('booth.pub.menu.8'):
+    case 'convergence':
       return '8';
-    case t('booth.pub.menu.9'):
+    case 'clubFederation':
       return '9';
-    case t('booth.pub.menu.10'):
+    case 'clubScholarship':
       return '9';
-    case t('booth.pub.menu.11'):
+    case 'clubSports':
       return '10';
-    case t('booth.pub.menu.12'):
+    case 'clubPerformance':
       return '11';
-    case t('booth.pub.menu.13'):
+    case 'clubExhibitionLeisure':
       return '12';
-    case t('booth.pub.menu.14'):
+    case 'clubSociety':
       return '13';
     default:
       return '1';
