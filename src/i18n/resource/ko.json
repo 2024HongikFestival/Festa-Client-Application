@@ -1,339 +1,889 @@
 {
-  "hello": "안녕하세요!",
-  "goodbye": "안녕히 계세요!",
   "main": {
     "sorry": "ㅈㅅ ㅋㅋ"
   },
-  "layouts": {
-    "footer": {
-      "prev": "이전 화면으로",
-      "toLikelion": "제작 멋쟁이사자처럼 >",
-      "toGaehwa": "총학생회 개화 ; 開花 >",
-      "toDaedongjeInsta": "대동제 채널 바로가기"
+  "booth": {
+    "pub": {
+      "pageTitle": "주점",
+      "mapTitle": "주점 위치",
+      "pub": "실시간 주점",
+      "location": "위치",
+      "specific": "단과대학별 주점",
+      "operating": "주점 운영 시간",
+      "day": "낮",
+      "night": "밤",
+      "operatingInfo": "부스마다 운영 시간이 다를 수 있습니다",
+      "menu": {
+        "1": "자율전공",
+        "2": "경영/경제",
+        "3": "미대",
+        "4": "건축도시",
+        "5": "사범대",
+        "6": "문과대",
+        "7": "공대",
+        "8": "융합",
+        "9": "총동아리연합회",
+        "10": "학술",
+        "11": "스포츠",
+        "12": "공연",
+        "13": "전시/레저",
+        "14": "사회/연합"
+      },
+      "card": {
+        "1": [
+          {
+            "department": "캠퍼스자율전공",
+            "intro": "자무;자전에서 음주가무",
+            "event": "영수증사진기, 돌림판",
+            "food": "제육볶음, 감자전"
+          }
+        ],
+        "2": [
+          {
+            "department": "경영학부",
+            "intro": "포장마차 주점(경포대)",
+            "food": "오뎅탕,대패삼겹숙주볶음"
+          },
+          {
+            "department": "경제학부",
+            "intro": "불장BullMarket",
+            "food": "무뼈닭발, 오돌뼈"
+          }
+        ],
+        "3": [
+          {
+            "department": "미술대학 중앙",
+            "intro": "미대의 마블 주점",
+            "event": "미대의 마블 보드 게임",
+            "food": "떡볶이, 화채"
+          },
+          {
+            "department": "판화과",
+            "intro": "마법소녀 컨셉 주점",
+            "event": "폴라로이드,플리마켓",
+            "food": "김치제육, 오뎅탕"
+          },
+          {
+            "department": "동양화과",
+            "intro": "고불린 주점",
+            "food": "소세지 플레터, 화채"
+          },
+          {
+            "department": "회화과",
+            "intro": "회화과의 상상공장",
+            "event": "미니게임, 플리마켓",
+            "food": "팝콘, 콘치즈"
+          },
+          {
+            "department": "도예유리과",
+            "intro": "고양이들의 보은",
+            "event": "플리마켓",
+            "food": "타코야끼, 오니기리"
+          },
+          {
+            "department": "목조형가구학과",
+            "intro": "학창시절 유토피아",
+            "event": "미니게임, 미니가챠",
+            "food": "콘치즈 불닭, 떡닭강정"
+          },
+          {
+            "department": "예술학과",
+            "intro": "맥주학",
+            "food": "카나페, 핫도그"
+          },
+          {
+            "department": "조소과",
+            "intro": "조각가들의 웨스턴살롱",
+            "event": "다트게임",
+            "food": "피자, 소세지"
+          },
+          {
+            "department": "금속조형디자인과",
+            "intro": "바닷속 금디랜드 주점",
+            "event": "룰렛 돌리기, 플리마켓",
+            "food": "직화볶음밥, 모듬소세지"
+          },
+          {
+            "department": "섬유미술패션디자인과",
+            "intro": "Y2k 헌팅 주점",
+            "event": "플리마켓",
+            "food": "우동, 호떡세트"
+          },
+          {
+            "department": "산업디자인과",
+            "intro": "산디 아케이드",
+            "food": "까나페, 화채"
+          },
+          {
+            "department": "시각디자인과",
+            "intro": "홈믹시디 픽셀뭘드",
+            "event": "비즈발 제작 워크샵",
+            "food": "마라샹궈, 아망추"
+          }
+        ],
+        "4": [
+          {
+            "department": "건축도시대학",
+            "intro": "HCAU'S HOUR",
+            "event": "포토월 디자인 및 촬영",
+            "food": "그릴소세지, 토마토짬뽕"
+          }
+        ],
+        "5": [
+          {
+            "department": "영어교육과",
+            "intro": "인사이드아웃 주점",
+            "food": "소시지&볶음밥, 라면"
+          },
+          {
+            "department": "국어교육과",
+            "intro": "흥부가 뺨한대 내주막",
+            "food": "감자전, 부대찌개"
+          },
+          {
+            "department": "수학교육과",
+            "intro": "어썸 주점",
+            "food": "짜파계치, 피카고라스"
+          },
+          {
+            "department": "역사교육과",
+            "intro": "디오니소스의 아테네주당",
+            "food": "파스타, 또띠아 피자"
+          },
+          {
+            "department": "교육학과",
+            "intro": "모여봐요 교육의 숲",
+            "food": "두부제육, 순두부육개장"
+          }
+        ],
+        "6": [
+          {
+            "department": "독어독문학과",
+            "intro": "축구 축제 주점",
+            "food": "커리부어스트,슈바인학센"
+          },
+          {
+            "department": "영어영문학과",
+            "intro": "오싹 귀신의 집 주점",
+            "food": "모둠소세지,치킨샐러드"
+          },
+          {
+            "department": "불어불문학과",
+            "intro": "파리 생제르맹 주점",
+            "food": "찹스테이크,치즈계란말이"
+          },
+          {
+            "department": "국어국문학과",
+            "intro": "BEER 헤는 밤",
+            "food": "약과뻥스크림,치즈감자전"
+          }
+        ],
+        "7": [
+          {
+            "department": "공과대학 중앙",
+            "intro": "2077 프로젝트:무적",
+            "food": "제육볶음, 짜파구리"
+          },
+          {
+            "department": "건설환경공학과",
+            "intro": "Beach 나는 토목",
+            "food": "감바스, 감성타코"
+          },
+          {
+            "department": "기계시스템공학과",
+            "intro": "마리오파티 메카니컬즈",
+            "food": "제육볶음, 대패숙주볶음"
+          },
+          {
+            "department": "산업데이터공학과",
+            "intro": "산데주막골",
+            "food": "제육볶음, 전"
+          },
+          {
+            "department": "신소재공학과",
+            "intro": "신소재 y2k",
+            "food": "제육볶음, 전"
+          },
+          {
+            "department": "전자전기공학부",
+            "intro": "위온스타디움",
+            "event": "후크볼, 비어퐁",
+            "food": "삼겹파채, 짜계치"
+          },
+          {
+            "department": "컴퓨터공학과",
+            "intro": "컴공반상회",
+            "food": "부추전, 떡볶이"
+          },
+          {
+            "department": "화학공학과",
+            "intro": "2024 알코올림픽",
+            "event": "미니게임, 상품증정",
+            "food": "두부김치제육, 야끼소바"
+          }
+        ],
+        "8": [
+          {
+            "department": "공연예술학부",
+            "intro": "노래하는 주점",
+            "food": "제육볶음, 어묵탕"
+          },
+          {
+            "department": "디자인예술경영학부",
+            "intro": "레트로 가맥집 와우상회",
+            "food": "햄후라이, 어묵탕"
+          }
+        ],
+        "9": [
+          {
+            "department": "아이시떼루",
+            "intro": "집사/메이드 주점",
+            "event": "요요츠리, 오미쿠지",
+            "food": "야끼소바, 당고"
+          },
+          {
+            "department": "HECC",
+            "intro": "9월의 할로윈",
+            "event": "퀴즈, 타투 스티커",
+            "food": "마카로니, 화채"
+          },
+          {
+            "department": "HICC",
+            "intro": "Hi! CC",
+            "event": "친구 매칭 프로그램",
+            "food": "어묵탕, 두부김치"
+          },
+          {
+            "department": "TED",
+            "intro": "테드와서무라(이자카야)",
+            "event": "퀴즈, 폴라로이드",
+            "food": "명란감자전, 야끼소바"
+          }
+        ],
+        "10": [
+          {
+            "department": "농구반",
+            "intro": "슬램덩크",
+            "event": "미니게임",
+            "food": "제육볶음, 오뎅탕"
+          },
+          {
+            "department": "사격반",
+            "intro": "사격 PX",
+            "event": "사격 체험",
+            "food": "뽀글이, 간장계란밥"
+          },
+          {
+            "department": "수영반",
+            "intro": "홍익 워터밤",
+            "event": "물총쏘기",
+            "food": "컵라면, 떡볶이"
+          },
+          {
+            "department": "야구반",
+            "intro": "스포츠 펍",
+            "event": "구속체크, 제구력체크",
+            "food": "닭꼬치, 어묵탕"
+          },
+          {
+            "department": "팡팡",
+            "intro": "올림픽 테마",
+            "event": "틱택토, 다트",
+            "food": "두부김치, 어묵탕"
+          }
+        ],
+        "11": [
+          {
+            "department": "뚜라미",
+            "intro": "레뚜로ㅡ바",
+            "event": "CD꾸미기, 타투스티커",
+            "food": "나쵸플래터, 불닭게티"
+          },
+          {
+            "department": "매직스",
+            "intro": "매직스 마술 상점",
+            "event": "마술공연, 포춘카드",
+            "food": "소세지구이, 나쵸"
+          },
+          {
+            "department": "브레인스워즈",
+            "intro": "힙합 라운지 바",
+            "event": "디제잉/그래피티 체험",
+            "food": "짜파게티, 먹태"
+          },
+          {
+            "department": "스놀",
+            "intro": "스놀 나이트",
+            "event": "번호팅, 야시장뽑기",
+            "food": "두부김치, 제육"
+          }
+        ],
+        "12": [
+          {
+            "department": "글샘문학회",
+            "intro": "운수 좋은 날",
+            "event": "미니게임, 편지지 전달",
+            "food": "냉면, 만두"
+          },
+          {
+            "department": "서우회",
+            "intro": "서예의 신당, 서신당",
+            "event": "부적/벼루 만들기",
+            "food": "모듬전, 구운주먹밥"
+          },
+          {
+            "department": "원플",
+            "intro": "원플 보드게임 펍",
+            "event": "보드게임 대결",
+            "food": "육포, 핫바"
+          },
+          {
+            "department": "하이러닝",
+            "intro": "달려라 하닝",
+            "event": "만보기 채우기, 포토존",
+            "food": "계란말이, 순두부라면"
+          }
+        ],
+        "13": [
+          {
+            "department": "멍냥부리",
+            "intro": "모여봐요 멍냥의 숲",
+            "event": "플리마켓, 미니게임",
+            "food": "두부김치, 파전"
+          },
+          {
+            "department": "아이섹",
+            "intro": "AIESEC AIR",
+            "event": "미니게임, 모루인형",
+            "food": "차돌순두부열라면"
+          },
+          {
+            "department": "미사랑/볼케이노",
+            "intro": "응답하라 볼케이노",
+            "event": "페이스페인팅",
+            "food": "쏘세지야채볶음, 닭꼬치"
+          }
+        ]
+      }
+    },
+    "ranking": {
+      "title1": "실시간 ",
+      "title2": "인기 주점",
+      "info": "랭킹은 1시간 단위로 정각 업데이트되며,\n매일 오전 5시에 리셋됩니다"
     }
   },
-  "makers": {
-    "likelion": {
-      "title1": "홍익대학교",
-      "title2": "멋쟁이 사자처럼",
-      "whoWeAre1": "'누구나 프로그래밍 기초 지식을 배워",
-      "whoWeAre2": "자신만의 웹서비스를 만들어 낼 수 있다!'",
-      "whoWeAre3": "멋쟁이사자처럼의 궁극적인 목표는",
-      "whoWeAre4": "모두에게 열린 배움의 기회입니다.",
-      "whoWeAre5": "홍익대학교 멋쟁이사자처럼 12기 구성원들이",
-      "whoWeAre6": "2024 대동제 [화양연화; 만개] 사이트의",
-      "whoWeAre7": "기획, 디자인, 개발을 주도했습니다.",
-      "whoWeAre8": "더 즐거운 축제가 될 수 있도록,",
-      "whoWeAre9": "그 찬란한 무대에 여러분을 초대합니다!",
-      "slogan": "# Possibility to Reality",
-      "pm": "총괄",
-      "pmDescription1": "프로젝트의 계획, 실행, 관리를 담당하며,",
-      "pmDescription2": "팀을 이끌어 목표 달성과 일정 준수를 책임집니다.",
-      "plan": "기획",
-      "planDescription1": "사용자 경험을 바탕으로 서비스를 기획하여",
-      "planDescription2": "사용자가 만족할 수 있는 서비스를 제공합니다.",
-      "design": "디자인",
-      "designDescription1": "사용자가 원하는 정보를 쉽게 얻을 수 있도록",
-      "designDescription2": "화면의 디자인을 담당합니다.",
-      "fe": "프론트엔드",
-      "feDescription1": "사용자와 가장 밀접하게 맞닿는",
-      "feDescription2": "서비스의 인터페이스를 구현하여,",
-      "feDescription3": "최적의 사용자 경험을 제공합니다.",
-      "be": "백엔드",
-      "beDescription1": "눈에 보이지 않는 비지니스 로직을 담당하며",
-      "beDescription2": "서비스가 원활히 동작할 수 있도록 뒷받침합니다."
+  "timetable": {
+    "title": "타임테이블",
+    "WED": "수",
+    "THU": "목",
+    "FRI": "금",
+    "notice": "관람 시 유의사항",
+    "detail1": {
+      "under1": "음식물(식수 제외) 반입은 금지",
+      "text1": "와우 디제이 페스티벌 내 ",
+      "text2": "됩니다.",
+      "under2": ""
     },
-    "likelionContributors": {
-      "pm": [
-        {
-          "name": "장윤영",
-          "department": "컴퓨터공학과 21",
-          "ment": "🎁 링@크 열고 행운받기 ↓"
-        }
-      ],
-      "plan": [
-        {
-          "name": "김소영",
-          "department": "경영학과 23",
-          "ment": "🦆 멋사 업고 튀어"
-        },
-        {
-          "name": "진예원",
-          "department": "경영학과 21",
-          "ment": "🐥 챗지피티 기획해줘~"
-        }
-      ],
-      "design": [
-        {
-          "name": "박소은",
-          "department": "산업디자인학과 19",
-          "ment": "🦄 디자인팀짱!"
-        },
-        {
-          "name": "박하경",
-          "department": "시각디자인학과 23",
-          "ment": "🌱 짱머싯는 디쟌팀의 막내"
-        },
-        {
-          "name": "이나윤",
-          "department": "산업디자인학과 19",
-          "ment": "😼 홍익대학교 파이팅~!"
-        }
-      ],
-      "frontend": [
-        {
-          "name": "서가영",
-          "department": "컴퓨터공학과 21",
-          "ment": "👽 축제는 다가와 아오에"
-        },
-        {
-          "name": "공준혁",
-          "department": "컴퓨터공학과 19",
-          "ment": "✨ 졸려요 !"
-        },
-        {
-          "name": "김동욱",
-          "department": "컴퓨터공학과 22",
-          "ment": "🎸 잔나비 보고싶어요"
-        },
-        {
-          "name": "심수연",
-          "department": "컴퓨터공학과 20",
-          "ment": "💦 와디페 재밌겠다 ㅋㅋ"
-        },
-        {
-          "name": "원윤서",
-          "department": "컴퓨터공학과 21",
-          "ment": "👩🏻‍💻🔥"
-        },
-        {
-          "name": "원채영",
-          "department": "캠퍼스자율전공 22",
-          "ment": "🫧 무아지경으로 즐겨보아요~"
-        },
-        {
-          "name": "최정인",
-          "department": "컴퓨터공학과 22",
-          "ment": "🍀 와 축제다!"
-        }
-      ],
-      "backend": [
-        {
-          "name": "손지석",
-          "department": "컴퓨터공학과 20",
-          "ment": "🛜 튼튼한 서버, 즐거운 축제."
-        },
-        {
-          "name": "김민우",
-          "department": "컴퓨터공학과 19",
-          "ment": "🫡 축제 재밌게 즐겨봅시다~!"
-        },
-        {
-          "name": "김혁진",
-          "department": "컴퓨터공학과 17",
-          "ment": "🍀 대동제 개발자 럭키비키"
-        },
-        {
-          "name": "박소연",
-          "department": "컴퓨터공학과 23",
-          "ment": "🌰 멋쟁이 개발자를 꿈꿉니다"
-        },
-        {
-          "name": "이다인",
-          "department": "컴퓨터공학과 21",
-          "ment": "🐮 음메 어흥 🦁"
-        }
-      ]
+    "detail2": {
+      "text1": "와우 디제이 페스티벌은 주류가 제공되는 행사로 ",
+      "text2": "됩니다.",
+      "under": "미성년자 출입이 금지"
     },
-    "gaehwa": {
-      "title1": "홍익대학교",
-      "title2": "개화 ; 開花",
-      "whoWeAre1": "홍익대학교 총학생회 '개화 | 開花' 는",
-      "whoWeAre2": "민주적이고 자주적인 학생 자치 활동을 통해",
-      "whoWeAre3": "안으로는 홍익인들의 이해와 요구를 실현하며,",
-      "whoWeAre4": "나아가 대학의 건학정신인 홍익인간의 이념을",
-      "whoWeAre5": "바탕으로 사회 발전에 능동적으로 기여함을",
-      "whoWeAre6": "그 목적으로 합니다.",
-      "presidency": "회장단",
-      "executive": "집행위원회",
-      "executiveDescription1": "총학생회의 전반적인 업무 보조 등의 역할을 합니다.",
-      "executiveDescription2": "교내 다양한 협의체 활동에서 나온",
-      "executiveDescription3": "기록물들을 관리하고 게시합니다.",
-      "strategicPolicy": "전략정책국",
-      "strategicPolicyDescription1": "교내 교육환경과 학생사회 등의 문제점을 파악하여",
-      "strategicPolicyDescription2": "학우들에게 필요한 정책 및 개선안을 마련합니다.",
-      "strategicPolicyDescription3": "더 나은 홍익대학교를 이루어내기 위해",
-      "strategicPolicyDescription4": "학교본부와 지속적으로 논의합니다.",
-      "culturalPlanning": "문화기획국",
-      "culturalPlanningDescription1": "홍익대학교 학우들을 위한",
-      "culturalPlanningDescription2": "문화 콘텐츠 기획 및 진행을 담당합니다.",
-      "culturalPlanningDescription3": "홍익대학교만의 차별화된 새로운 대학 문화를",
-      "culturalPlanningDescription4": "창조하고 진행합니다.",
-      "mediaRelations": "미디어홍보국",
-      "mediaRelationsDescription1": "총학생회의 정보들을 신속하게 전달하기 위한",
-      "mediaRelationsDescription2": "홍보물을 제작합니다.",
-      "mediaRelationsDescription3": "총학생회에서 진행하는 행사 및 사업의",
-      "mediaRelationsDescription4": "시각 매체 제작을 총괄합니다.",
-      "finance": "재정사무국",
-      "financeDescription1": "총학생회의 전반적인 회계와 사무 업무를 담당합니다.",
-      "financeDescription2": "학생회칙 및 세칙을 포함하여",
-      "financeDescription3": "총학생회 운영의 기반이 되는 자료를 관리합니다.",
-      "rightsSolidarity": "권리연대국",
-      "rightsSolidarityDescription1": "홍익대학교 내 학우들의 권리를 위한",
-      "rightsSolidarityDescription2": "연대 활동을 진행합니다.",
-      "rightsSolidarityDescription3": "학우들의 편리한 학교 생활을 위하여",
-      "rightsSolidarityDescription4": "교내 시설 및 프로그램 소개를 진행하고",
-      "rightsSolidarityDescription5": "권리 증진을 위한 행사를 기획합니다.",
-      "studentWelfare": "학생복지위원회",
-      "studentWelfareDescription1": "홍익대학교 학우들의 편의를 위해",
-      "studentWelfareDescription2": "대외 업체들과 제휴를 맺고,",
-      "studentWelfareDescription3": "편리를 위해 상시 복지 사업 및 다양한 사업을 진행하여",
-      "studentWelfareDescription4": "학우들의 복지문제를 해결합니다.",
-      "graduationPreparation": "총졸업준비위원회",
-      "graduationPreparationDescription1": "홍익대학교 졸업 예정자들을 위한 업무를 총괄하며,",
-      "graduationPreparationDescription2": "졸업 관련 제반 업무를 진행합니다.",
-      "graduationPreparationDescription3": "졸업준비운영위원회, 졸업준비위원총회 등",
-      "graduationPreparationDescription4": "의결기구를 운영하여 졸업 관련 논의를 진행합니다."
+    "detail3": {
+      "text1": "",
+      "text2": "할 수 있습니다.",
+      "under": "입장 도장 확인 불가 시 재입장이 불가"
     },
-    "gaehwaContributors": {
-      "presidency": [
-        {
-          "name": "곽도현",
-          "department": "법학부 21",
-          "role": "학생회장"
-        },
-        {
-          "name": "양현서",
-          "department": "경제학과 19",
-          "role": "부학생회장"
-        }
-      ],
-      "executive": [
-        {
-          "name": "김영웅",
-          "department": "캠퍼스자율전공 21",
-          "role": "위원장"
-        },
-        {
-          "name": "구서연",
-          "department": "교육학과 22",
-          "role": "국원"
-        },
-        {
-          "name": "맹지수",
-          "department": "디자인예술경영학부 24",
-          "role": "국원"
-        },
-        {
-          "name": "임혜영",
-          "department": "캠퍼스자율전공 24",
-          "role": "국원"
-        }
-      ],
-      "strategicPolicy": [
-        {
-          "name": "권오혁",
-          "department": "화학공학전공 19",
-          "role": "국장"
-        },
-        {
-          "name": "강륜아",
-          "department": "화학공학전공 22",
-          "role": "국원"
-        },
-        {
-          "name": "윤예영",
-          "department": "캠퍼스자율전공 23",
-          "role": "국원"
-        }
-      ],
-      "culturalPlanning": [
-        {
-          "name": "박지윤",
-          "department": "불어불문학과 22",
-          "role": "국장"
-        },
-        {
-          "name": "김범수",
-          "department": "컴퓨터공학과 21",
-          "role": "국원"
-        },
-        {
-          "name": "김하은",
-          "department": "국어교육학과 23",
-          "role": "국원"
-        },
-        {
-          "name": "박건",
-          "department": "법학과 23",
-          "role": "국원"
-        }
-      ],
-      "mediaRelations": [
-        {
-          "name": "김민성",
-          "department": "시각디자인과 19",
-          "role": "국장"
-        },
-        {
-          "name": "유효선",
-          "department": "시각디자인과 19",
-          "role": "국원"
-        },
-        {
-          "name": "최승민",
-          "department": "캠퍼스자율전공 23",
-          "role": "국원"
-        }
-      ],
-      "finance": [
-        {
-          "name": "문희빈",
-          "department": "캠퍼스자율전공 24",
-          "role": "국원"
-        }
-      ],
-      "rightsSolidarity": [
-        {
-          "name": "김희은",
-          "department": "디자인예술경영학부 22",
-          "role": "국장"
-        },
-        {
-          "name": "고형석",
-          "department": "전자전기공학부 19",
-          "role": "국원"
-        },
-        {
-          "name": "유혜원",
-          "department": "경영학과 23",
-          "role": "국원"
-        }
-      ],
-      "studentWelfare": [
-        {
-          "name": "김수연",
-          "department": "교육학과 22",
-          "role": "위원장"
-        },
-        {
-          "name": "김현성",
-          "department": "전자전기공학부 24",
-          "role": "위원"
-        }
-      ],
-      "graduationPreparation": [
-        {
-          "name": "조준혁",
-          "department": "전자전기공학부 19",
-          "role": "위원장"
-        },
-        {
-          "name": "김선정",
-          "department": "역사교육과 23",
-          "role": "사무장"
-        }
-      ]
+    "detail4": {
+      "text1": "와우 디제이 페스티벌은",
+      "under": "금연 구역",
+      "text2": "으로 전자 담배를 포함한 모든 흡연 행위는 불가합니다."
+    },
+    "detail5": {
+      "under1": "과도한 음주 상태",
+      "under2": "입장 제한 또는 퇴장",
+      "text1": "일 경우 스태프의 판단 하에 ",
+      "text2": "될 수 있습니다."
+    },
+    "detail6": "와우 디제이 페스티벌 내 경사로에서 뛰는 행위는 자제 부탁드립니다.",
+    "detail7": "원활한 행사 진행을 위하여 현장 스태프의 지시 및 안내에 따라 주시기 바랍니다.",
+    "detail8": "현장 스태프의 지시에 반할 경우 퇴장 조치될 수 있습니다.",
+    "detail9": "출입 제한 구역 접근 및 출입 시 퇴장 조치될 수 있습니다."
+  },
+
+  "fleamarket": {
+    "pageTitle": "플리마켓",
+    "location": "플리마켓 위치",
+    "list": [
+      {
+        "key": "ccJuice",
+        "name": "씨씨주스",
+        "intro": "신선한 과일로 만든 주스와 화채로 더운\n 날씨를 이겨낼 수 있는 곳"
+      },
+      {
+        "key": "almak",
+        "name": "올막 (almak)",
+        "intro": "자연에서 영감을 받은 도자와 유리 소재의\n 핸드메이드 주얼리와 소품을 팝니다"
+      },
+      {
+        "key": "henna",
+        "name": "헤나 해놔",
+        "intro": "마 헤나해봤나"
+      },
+      {
+        "key": "modori",
+        "name": "모도리",
+        "intro": "뚝딱뚝딱 목수들의 아기자기한 소품 가게"
+      },
+      {
+        "key": "sajuraplz",
+        "name": "sajuraplz",
+        "intro": "내가 만든 도자기 너를 위해 구웠지"
+      },
+      {
+        "key": "hypeBoy",
+        "name": "홍익 Hype Boy 마켓",
+        "intro": "슈프림, 팔라스, 스투시, 나이키 등 다양한 스트릿\n 브랜드 의류 저렴하게 가져가세요!"
+      },
+      {
+        "key": "sangsu",
+        "name": "상수좌판",
+        "intro": "국내외 각종 중고 LP와 CD 등 음반 판매"
+      },
+      {
+        "key": "kawaii",
+        "name": "겨운거 ^..^",
+        "intro": "손으로 만든 특별한 뜨개 작품으로 귀여움과\n 애정을 전합니다"
+      },
+      {
+        "key": "aiesec",
+        "name": "AIESEC과 함께 MZ한 친환경 실천 어때?",
+        "intro": "다회용 텀블러 & 키링으로 변신 가능한 손뜨개\n 티코스터"
+      }
+    ],
+    "detail": [
+      {
+        "name": "씨씨 주스",
+        "intro": "신선한 과일로 만든 주스와 화채로\n더운 날씨를 이겨낼 수 있는 곳! 🍊🍇",
+        "goods": [
+          {
+            "name": "생과일 화채"
+          },
+          {
+            "name": "오렌지 주스"
+          }
+        ]
+      },
+      {
+        "name": "AIESEC과 함께\n MZ한 친환경 실천 어때?",
+        "intro": "다회용 텀블러 & 키링으로 변신 가능한\n 손뜨개 티코스터 🏵️🥤",
+        "goods": [
+          {
+            "name": "텀블러"
+          },
+          {
+            "name": "손뜨개 티코스터"
+          },
+          {
+            "name": "텀블러+티코스터 set"
+          }
+        ]
+      },
+      {
+        "name": "올막 (almak)",
+        "intro": "자연에서 영감을 받은 도자와 유리 소재의\n핸드메이드 주얼리와 소품을 팝니다 💍💎"
+      },
+      {
+        "name": "상수좌판",
+        "intro": "국내외 각종 중고 LP와 CD 등\n음반 판매 💿🎶"
+      },
+      {
+        "name": "겨운거 ^..^",
+        "intro": "손으로 만든 특별한 뜨개 작품으로\n귀여움과 애정을 전합니다 🧶🍅",
+        "event1": "1. If you purchase more than 10,000 won, you will get a knitted badge!",
+        "event2": "2. Instagram event",
+        "event3": "Please leave a picture of your visit as a story! We're going to draw two of you and give you the key ring you want.",
+        "bottom": "There are also a variety of knitted pieces and pretty packages! Express your feelings to your loved ones. 💝",
+        "goods": [
+          {
+            "name": "버섯 키링"
+          },
+          {
+            "name": "채소 키링 set"
+          },
+          {
+            "name": "금붕어 키링"
+          },
+          {
+            "name": "흰동가리 키링"
+          },
+          {
+            "name": "리본 키링"
+          },
+          {
+            "name": "해골 키링"
+          },
+          {
+            "name": "토마토 티코스터"
+          },
+          {
+            "name": "잔디 티코스터"
+          },
+          {
+            "name": "바다 티코스터"
+          },
+          {
+            "name": "피자 티코스터"
+          }
+        ]
+      },
+      {
+        "name": "헤나 해놔",
+        "intro": "마 헤나 해 봤나 🖌️🖤",
+        "bottom": "There are about 100 more patterns to explore ☺️"
+      },
+      {
+        "name": "홍익 Hype Boy 마켓",
+        "intro": "슈프림, 팔라스, 스투시, 나이키 등 👕✨\n다양한 스트릿 브랜드 의류 저렴하게 가져가세요!"
+      },
+      {
+        "name": "sajuraplz",
+        "intro": "내가 만든 도자기 너를 위해 구웠지 🫵🍶"
+      },
+      {
+        "name": "모도리",
+        "intro": "뚝딱뚝딱 목수들의\n아기자기한 소품 가게 🌳🪓",
+        "goods": [
+          {
+            "name": "케이크 키링"
+          },
+          {
+            "name": "도넛 키링"
+          },
+          {
+            "name": "물고기 키링"
+          },
+          {
+            "name": "로봇 키링"
+          },
+          {
+            "name": "물고기 키링 (통통)"
+          },
+          {
+            "name": "물고기 키링 (뺴뺴)"
+          },
+          {
+            "name": "잡동사니"
+          },
+          {
+            "name": "책갈피"
+          }
+        ]
+      }
+    ]
+  },
+  "layouts": {
+    "header": {
+      "toDaedongje": "대동제",
+      "toFlame": "와우 디제이 페스티벌",
+      "toRoadmap": "로드맵",
+      "toStage": "공연",
+      "toLineUp": "라인업",
+      "toStageInfo": "관람 정보",
+      "toHongikZone": "홍익존",
+      "toBooth": "부스",
+      "toDrink": "주점",
+      "toFleaMarket": "플리마켓",
+      "toPromotion": "프로모션 부스",
+      "toMd": "MD 상품",
+      "toFacilityInfo": "편의 정보",
+      "toFacilities": "편의시설",
+      "toLostAndFound": "분실물",
+      "toEvent": "이벤트",
+      "toFlameSitemap": "사이트맵",
+      "toFlameTimeTable": "타임테이블",
+      "toFlameReservation": "예매",
+      "toFlameLineUp": "라인업",
+      "toFlameMd": "MD 상품",
+      "toFlamePromotion": "프로모션"
+    },
+    "footer": {
+      "contributors": "Contributors Page",
+      "likelion": "제작",
+      "toLikelion": "멋쟁이사자처럼 홍익대학교",
+      "gaehwa": "총학생회",
+      "toGaehwa": "개화 ; 開花",
+      "instagram": "Instagram",
+      "goFlame": "와디페로 이동",
+      "goDaedongje": "대동제로 이동",
+      "prev": "이전 화면으로"
     }
+  },
+
+  "Amenities": {
+    "Amenities": "편의시설",
+    "RestRoom": "화장실",
+    "MedicalFacility": "의료 시설",
+    "LostAndFoundCenter": "분실물 센터",
+    "LocationOfLostAndFoundCenter": "분실물 센터 위치",
+    "LostAndFoundCenterLocationDescription": "대운동장 구령대 중앙에 분실물 센터가 위치해 있습니다.",
+    "ClickToAccessOnlineLostAndFoundCenter": "온라인 분실물 센터 바로가기"
+  },
+  "stageInfoPage": {
+    "title": "관람 정보",
+    "selectionBar": {
+      "schedule": "중앙 무대 일정",
+      "location": "위치"
+    }
+  },
+  "stageSchedule": {
+    "day1": "DAY 1",
+    "day2": "DAY 2",
+    "day3": "DAY 3",
+    "date1": "9.25(수)",
+    "date2": "9.26(목)",
+    "date3": "9.27(금)",
+    "talentContest": "재주꾼 선발 대회",
+    "studentCenterStage": "학생 중앙 무대",
+    "celebrityStage": "연예인 초청 무대",
+    "loading": "Loading...",
+    "eventDetails": {
+      "time1": "17:00 ~ 19:30",
+      "time2": "20:00 ~ 22:00",
+      "talentEvents": {
+        "melodyBand": "<멜로디> (밴드)",
+        "gr8Dance": "<GR8> (댄스)",
+        "royKimSolo": "<경영대 로이킴> (솔로)",
+        "yuZiYeBand": "<유지예 밴드> (밴드)",
+        "backToBackDance": "<백투백홈런> (댄스)",
+        "leeMinGyuSolo": "<이민규> (솔로)",
+        "academicWarningBand": "<학사경고> (밴드)",
+        "ryukMarinSolo": "<육마린> (솔로)",
+        "cheongRamBand": "<청람> (밴드)"
+      },
+      "studentCenterEventsDay1": {
+        "hwangInSeongBand": "황인성 밴드",
+        "afterBand": "나중에",
+        "kaiserBand": "카이저",
+        "imagineBand": "이매진 밴드",
+        "brainsWars": "브레인스워즈",
+        "performingArtsMusical": "공연예술 뮤지컬",
+        "ohHyeonSongAndTomato": "오현성과 토마토"
+      },
+      "studentCenterEventsDay2": {
+        "illEquippedWord": "못갖춘 마디",
+        "oneNightTwoDays": "1박 2일",
+        "woonerBand": "우나밴드",
+        "hongGroove": "홍그루브",
+        "performingArtsBand": "공연예술 밴드",
+        "blackTetra": "블랙테트라",
+        "bitzFlow": "비츠플로우"
+      },
+      "artist": {
+        "artist1": "하하 HAHA",
+        "artist2": "십센치 10CM",
+        "artist3": "지코 ZICO",
+        "artist4": "카더가든 Car, the garden",
+        "artist5": "에이핑크 Apink",
+        "artist6": "크라잉넛 CRYING NUT",
+        "artist7": "한로로 HANRORO",
+        "artist8": "청하 CHUNG HA",
+        "artist9": "로꼬 Loco"
+      }
+    }
+  },
+  "locationInfo": {
+    "mapTitle": "무대 주변 지도",
+    "entranceInfo": "출입구 정보",
+    "hongikZoneInfo": "메인 공연의 모든 좌석(스탠딩존+시팅존)은<br/><highlight>홍익존</highlight>으로, 홍대생만 입장 가능해요",
+    "hongikZoneButton": "홍익존"
+  },
+  "hongikZonePage": {
+    "title": "홍익존",
+    "whatIsHongikZone": "홍익존이 뭐예요?",
+    "hongikZoneDescription1": "<blackHighlight>홍익존</blackHighlight>은 <blackHighlight>사전 예매가 확인</blackHighlight>된 홍익대학교 학생만 입장 가능한 메인스테이지 관람존입니다.",
+    "hongikZoneDescription2": "휴학생, 졸업유예생, 대학원생 모두 가능합니다.",
+    "prepareForEntry": "입장하기 위해 준비해 주세요!",
+    "entryTime": "입장 시간은 <blueHighlight>16시 30분</blueHighlight>부터입니다.",
+    "entryProcedure": "입장 전 입구에서 <blueHighlight>‘톡켓’</blueHighlight>의 사전 예매 내역을 확인하고 입장합니다.",
+    "noTicketInfo": "톡켓 티켓 미소지자는 18시 30분 이후부터 현장 잔여석에 한하여 톡켓 어플에서 추가 티켓을 발급 받으실 수 있습니다.",
+    "locationTitle": "홍익존 위치",
+    "knowBeforeEntry": "입장하기 전 알아두세요!",
+    "safetyInstructions": [
+      "많은 사람이 모일 경우, 현장 안전요원의 지시에 따라 질서를 잘 지켜주시기 바랍니다.",
+      "무리하게 펜스에 매달리거나 기대는 행위는 안전상 문제가 발생할 수 있으니 삼가주시기 바랍니다.",
+      "안전요원의 지시에 불응하여 문제를 일으킬 경우 퇴장조치를 받을 수 있습니다."
+    ]
+  },
+
+  "LostAndFound": {
+    "KakaoBtnText": "3초 인증하고 제보하기",
+    "LostAndFound": "분실물",
+    "buttonDetailText": "전자기기, 카드, 지갑 등은 제보 후<1><2>분실물 센터</2>에 보관</1> 해 주세요.",
+    "ReportLostItems": "분실물 찾아주기 ✋🏻",
+    "FindLostItem": "분실물 찾아가기🧸"
+  },
+  "DropDown": {
+    "AllTime": "전체 기간",
+    "Day1": "9월 25일",
+    "Day2": "9월 26일",
+    "Day3": "9월 27일"
+  },
+  "LocationModal": {
+    "location1": "분실물 센터",
+    "location2": "위치",
+    "content": "<1>대운동장 구령대 중앙에</1> <2/>분실물 센터가 위치해있습니다."
+  },
+  "LostModal": {
+    "found": "발견 위치",
+    "stored": "보관 위치"
+  },
+  "FooterModal": {
+    "DidYouFindAnyLostItems": "분실물을 발견하셨나요?",
+    "SomeoneAnxiouslyLookingForIt": "대동제를 함께한 누군가가 애타게 찾고 있어요! 학교를 벗어나기 전 소중한 물건 되찾을 수 있도록 따뜻한 마음으로 분실물을 제보해주세요 😍",
+    "UserAuthenticationRequired": "무분별한 게시판 이용 방지를 위해 사용자 인증을 받고 있으며, \n 모든 데이터는 축제 기간 후 안전하게 삭제됩니다."
+  },
+  "AddLostAndFound": {
+    "TakeAPictureOfLostItem": "분실물의 특징과 주변 장소가\n잘 보이도록 사진을 찍어주세요!",
+    "LostAndFoundReport": "분실물 제보",
+    "KeepAtRiskItemsAtCenter": "도난 위험이 있는 물건은 <1/> <2><3>분실물 센터</3>에 보관</2>해 주시기 바랍니다",
+    "DoNotWriteIfDifficultToMove1": "※ 센터로 이동이 어렵다면 ",
+    "DoNotWriteIfDifficultToMove2": "글을 작성하지 말아주세요",
+    "FindingLostAndFound": "분실물 찾아주기",
+    "FoundLocation": "어디서 발견하셨나요? (최대 15자)",
+    "FoundPlaceHolder": "ex. 운동장 구령대 아래 / 학생회관 앞",
+    "StoredLocation": "어디에 보관하셨나요? (최대 15자)",
+    "StoredPlaceHolder": "ex. 발견 위치 그대로 / 학생회관 1층 정수기 옆",
+    "KeepValuablesAtCenter": "전자기기, 카드, 지갑 등은 분실물 센터에 보관해 주세요",
+    "OptionalExplanation1": "필요 시 설명도 적어주세요! ",
+    "OptionalExplanation2": "(선택)",
+    "PlaceholderText": "ex. 홍X동님 학생증 발견했습니다 / A동 앞에 산리오 키링 떨어져있어요 주인 찾아가세요~",
+    "Complete": "완료"
+  },
+  "Close": "닫기",
+  "facilities": {
+    "amenities": "편의시설",
+    "restroomToggle": "화장실",
+    "medicalFacilityToggle": "의료 시설",
+    "lostAndFoundCenterToggle": "분실물 센터",
+    "restroom": {
+      "title1": "화장실",
+      "title2": "위치",
+      "building1-1": "",
+      "building1-2": "M동",
+      "floor1": "1층",
+      "building2-1": "",
+      "building2-2": "Z4동",
+      "building2-3": "",
+      "floor2": "1층 (장애인 화장실)",
+      "building3-1": "",
+      "building3-2": "Z4동",
+      "floor3": "2층"
+    },
+    "medical": {
+      "title1": "의료 시설",
+      "title2": "위치",
+      "description1": "정보통신센터(Q동) 계단 앞 건강관리센터",
+      "description2": "에서",
+      "description2-2": "",
+      "description3": "비상시 응급 치료를 받으실 수 있습니다."
+    },
+    "lostAndFound": {
+      "title1": "분실물 센터",
+      "title2": "위치",
+      "description1": "대운동장 구령대 중앙",
+      "description2": "에",
+      "description2-2": "",
+      "description3": "분실물 센터가 위치해 있습니다.",
+      "goLostAndFoundBtn": "온라인 분실물 센터 바로가기"
+    }
+  },
+  "wdfMain": {
+    "wdfName": "와우 디제이 페스티벌",
+    "wdfDescription1": "현실의 무게와 무력감에 깨져가는 청춘을 깨우고",
+    "wdfDescription2": "가장 아름답게 빛나는 '나'를 마주할 시간입니다.",
+    "wdfDescription3": "청춘의 불꽃이 함께하는 그 유일무이한 순간에",
+    "wdfDescription4": "여러분을 초대합니다.",
+    "day1": "9.25 (수)",
+    "day2": "9.26 (목)",
+    "day3": " 9.27 (금)"
+  },
+  "flameMdPage": {
+    "title": "MD 상품",
+    "locationDescription": "홍문관(R동) 앞 & 아트앤디자인밸리 측면",
+    "span": "에서",
+    "locationSubDescription": "구매하실 수 있습니다!",
+    "locationAlert": "현장 구매만 가능합니다",
+    "limitedSale": "한정판매",
+    "noticeTitle": "현장 구매 시 유의 사항",
+    "noticeList": {
+      "item1": "계좌 이체 및 현금 결제만 가능합니다.",
+      "item2": "구매 완료 시 환불, 교환, 취소 불가능합니다.",
+      "item3": "불량품은 현장에서 확인 후 바로 현장 관리 인원에게<br />말씀해 주시기 바랍니다."
+    },
+    "products": {
+      "md1": "WOW DJ FESTIVAL 슬로건 타올",
+      "md2": "WOW DJ FESTIVAL 티셔츠",
+      "md3": "WOW DJ FESTIVAL 스트링백",
+      "md4": "WOW DJ FESTIVAL 스티커 패키지",
+      "md5": "WOW DJ FESTIVAL 띠부씰 2EA (랜덤)",
+      "md6": "와우 금속 뱃지",
+      "md7": "야구 유니폼",
+      "md8": "럭비 유니폼",
+      "md9": "반다나",
+      "md10": "와우 타투 스티커"
+    }
+  },
+  "mdPage": {
+    "title": "MD 상품",
+    "locationInfo": "홍문관(R동) 앞 & 아트앤디자인밸리 측면",
+    "span": "에서",
+    "purchaseInfo": "구매하실 수 있습니다!",
+    "purchaseAlert": "현장 구매만 가능합니다.",
+    "noteTitle": "현장 구매시 확인해 주세요!",
+    "limitedSale": "한정판매",
+    "noteItems": {
+      "item1": "계좌 이체 및 현금 결제만 가능합니다",
+      "item2": "구매 완료 시 환불, 교환, 취소 불가능합니다",
+      "item3": "불량품은 현장에서 확인 후 바로 현장 관리 인원에게 말씀해 주시기 바랍니다"
+    },
+    "products": {
+      "baseballUniform": "야구 유니폼",
+      "rugbyUniform": "럭비 유니폼",
+      "wowBadge": "와우 금속 뱃지",
+      "bandana": "반다나",
+      "wowTatto": "와우 타투 스티커",
+      "wowWdfSeal": "WOW DJ FESTIVAL 띠부씰 2EA (랜덤)",
+      "wowWdfStickerPack": "WOW DJ FESTIVAL 스티커 패키지",
+      "wdfSlogan": "WOW DJ FESTIVAL 슬로건 타올",
+      "wowWdfTshirt": "WOW DJ FESTIVAL 티셔츠",
+      "stringBag": "WOW DJ FESTIVAL 스트링백"
+    }
+  },
+  "flamePromotionPage": {
+    "title": "프로모션",
+    "products": {
+      "jaegermeister": "예거 마이스터",
+      "intake": "인테이크",
+      "goldbrewery": "금군양조",
+      "frutips": "프루팁스"
+    }
+  },
+  "LineupPage": {
+    "title": "라인업",
+    "day1": "9.25(수)",
+    "day2": "9.26(목)",
+    "day3": " 9.27(금)",
+    "mc": {
+      "day1": "MC 동현",
+      "day2": "MC 섭이",
+      "day3": "MC 철와우"
+    }
+  },
+  "flameLineupPage": {
+    "title": "라인업",
+    "day1": "9.25(수)",
+    "day2": "9.26(목)",
+    "day3": " 9.27(금)"
   }
 }

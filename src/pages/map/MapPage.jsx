@@ -42,6 +42,7 @@ const MapPage = () => {
         const clampedX = Math.min(Math.max(x, -maxX), 0);
         const clampedY = Math.min(Math.max(y, -maxY), 0);
 
+        // 수정
         api.start({ clampedX, y });
       },
 

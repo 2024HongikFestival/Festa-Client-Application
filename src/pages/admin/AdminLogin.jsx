@@ -1,39 +1,16 @@
-import styled from 'styled-components';
-import React, { useState, useEffect } from 'react';
 import { adminAxiosInstance } from '@/api/axios';
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import * as jwt_decode from 'jwt-decode';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 
-const AdminLogin = ({ onLoginSuccess }) => {
+const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const location = useLocation();
   const navigate = useNavigate();
-  const [resetKey, setResetKey] = useState(0);
-
-  const checkTokenValidity = () => {
-    const token = localStorage.getItem('accessToken');
-    if (!token) return false;
-
-    try {
-      const decoded = jwt_decode(token);
-      const currentTime = Date.now() / 1000; // 현재 시간 (초 단위)
-      if (decoded.exp < currentTime) {
-        localStorage.removeItem('accessToken'); // 만료된 토큰 삭제
-        return false;
-      }
-      return true;
-    } catch (error) {
-      return false;
-    }
-  };
-
-  useEffect(() => {
-    if (!checkTokenValidity()) {
-      setResetKey((prevKey) => prevKey + 1); // 키 값을 변경하여 컴포넌트를 리렌더링
-    }
-  }, []);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   const adminAccess = async (username, password) => {
     try {
@@ -41,8 +18,9 @@ const AdminLogin = ({ onLoginSuccess }) => {
       if (response.status === 200) {
         const { accessToken } = response.data.data;
         localStorage.setItem('accessToken', accessToken);
-        onLoginSuccess();
-        navigate('/admin');
+        setIsLoggedIn(true);
+        navigate('/admin/losts');
+        window.location.reload();
       }
     } catch (err) {
       if (err.response) {
@@ -59,8 +37,35 @@ const AdminLogin = ({ onLoginSuccess }) => {
     }
   };
 
+  useEffect(() => {
+    const checkToken = async () => {
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken) {
+        try {
+          const response = await adminAxiosInstance.get('/test/admin', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          if (response.status === 200) {
+            if (location.pathname === '/admin/event') {
+              navigate(location.state?.from || location.pathname);
+            } else if (location.pathname === '/admin/' || location.pathname === '/admin') {
+              navigate(location.state?.from || '/admin/losts');
+            } else {
+              navigate(location.state?.from);
+            }
+          }
+        } catch (err) {
+          // 토큰이 유효하지 않으면 로그인 페이지에 머무름
+        }
+      }
+    };
+
+    checkToken();
+  }, [navigate]);
   return (
-    <LoginContainer key={resetKey}>
+    <LoginContainer>
       <Title>화양연화 관리자페이지</Title>
       <Form>
         <LoginInput
@@ -81,10 +86,6 @@ const AdminLogin = ({ onLoginSuccess }) => {
       <LoginButton onClick={() => adminAccess(username, password)}>Login</LoginButton>
     </LoginContainer>
   );
-};
-
-AdminLogin.propTypes = {
-  onLoginSuccess: PropTypes.func.isRequired,
 };
 
 export default AdminLogin;
