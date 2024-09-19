@@ -44,47 +44,47 @@ const FlameMapPage = () => {
       <BoothBox>
         <BoothOne>
           <BoothIntro>
-            <p className="al">A.</p>
             <BoothNameAndIntro>
+              <p className="al">A.</p>
               <p className="name">{t('map.booth1')}</p>
-              <p className="intro">{t('map.product1')}</p>
             </BoothNameAndIntro>
+            <p className="intro">{t('map.product1')}</p>
           </BoothIntro>
         </BoothOne>
         <BoothOne>
           <BoothIntro>
-            <p className="al">B.</p>
             <BoothNameAndIntro>
+              <p className="al">B.</p>
               <p className="name">{t('map.booth2')}</p>
-              <p className="intro">-</p>
             </BoothNameAndIntro>
+            <p className="intro">-</p>
           </BoothIntro>
         </BoothOne>
         <BoothOne>
           <BoothIntro>
-            <p className="al">C.</p>
             <BoothNameAndIntro>
+              <p className="al">C.</p>
               <p className="name">{t('map.booth3')}</p>
-              <p className="intro">-</p>
             </BoothNameAndIntro>
+            <p className="intro">-</p>
           </BoothIntro>
         </BoothOne>
         <BoothOne>
           <BoothIntro>
-            <p className="al">D.</p>
             <BoothNameAndIntro>
+              <p className="al">D.</p>
               <p className="name">{t('map.booth4')}</p>
-              <p className="intro">-</p>
             </BoothNameAndIntro>
+            <p className="intro">-</p>
           </BoothIntro>
         </BoothOne>
         <BoothOne>
           <BoothIntro>
-            <p className="al">E.</p>
             <BoothNameAndIntro>
+              <p className="al">E.</p>
               <p className="name">{t('map.booth5')}</p>
-              <p className="intro">{t('map.product5')}</p>
             </BoothNameAndIntro>
+            <p className="intro">{t('map.product5')}</p>
           </BoothIntro>
         </BoothOne>
       </BoothBox>

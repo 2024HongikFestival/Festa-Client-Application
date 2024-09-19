@@ -75,9 +75,9 @@ export const LottieBox = styled.div`
 export const BoothIntro = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   text-align: left;
-  /* flex-direction: column; */
-  /* justify-content: space-between; */
+  justify-content: space-between;
 
   gap: 0.3rem;
 
@@ -85,6 +85,11 @@ export const BoothIntro = styled.div`
     /* margin-right: 0.15rem; */
     ${(props) => props.theme.fontStyles.basic.subHeadBold}
     color: ${(props) => props.theme.colors.white};
+  }
+
+  .intro {
+    ${(props) => props.theme.fontStyles.basic.body2Med};
+    color: ${(props) => props.theme.colors.gray60};
   }
 `;
 
@@ -96,12 +101,4 @@ export const BoothNameAndIntro = styled.div`
     ${(props) => props.theme.fontStyles.basic.subHeadBold};
     color: ${(props) => props.theme.colors.white};
   }
-
-  .intro {
-    ${(props) => props.theme.fontStyles.basic.body2Med};
-    color: ${(props) => props.theme.colors.gray60};
-  }
-
-  flex-direction: column;
-  /* justify-content: space-between; */
 `;
