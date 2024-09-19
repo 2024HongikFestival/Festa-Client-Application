@@ -95,27 +95,35 @@ const MapPage = () => {
           <MapToggle>
             <MapToggleBtn
               aria-pressed={activeView === 'all'}
-              isActive={activeView === 'all'}
+              whatview={activeView === 'all' ? 'true' : 'false'} // 문자열로 변환
               onClick={() => handleToggle('all')}
             >
               {t('map.complete')}
             </MapToggleBtn>
             <MapToggleBtn
               aria-pressed={activeView === 'detail'}
-              isActive={activeView === 'detail'}
+              whatview={activeView === 'detail' ? 'true' : 'false'} // 문자열로 변환
               onClick={() => handleToggle('detail')}
             >
               {t('map.detail')}
             </MapToggleBtn>
           </MapToggle>
         </ContentContainer>
-
-        <ContentContainer>
-          <MapImgBox>
-            {' '}
-            <animated.img className="card" src={mapImg} ref={ref} style={style} />
-          </MapImgBox>
-        </ContentContainer>
+        {activeView === 'all' && (
+          <ContentContainer>
+            <MapImgBox>
+              <img src={mapImg} className="allMap" />
+            </MapImgBox>
+          </ContentContainer>
+        )}
+        {activeView === 'detail' && (
+          <ContentContainer>
+            <MapImgBox>
+              {' '}
+              <animated.img className="card" src={mapImg} ref={ref} style={style} />
+            </MapImgBox>
+          </ContentContainer>
+        )}
       </MapBox>
     </MainMapWrapper>
   );

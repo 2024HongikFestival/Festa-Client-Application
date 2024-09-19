@@ -25,7 +25,7 @@ export const MapBox = styled.div`
 `;
 
 export const MapToggle = styled.div`
-  width: 100%;
+  width: 33.5rem;
   display: flex;
   padding: 8px 13.5px;
   justify-content: space-between;
@@ -39,12 +39,12 @@ export const MapToggleBtn = styled.div`
   cursor: pointer;
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
   flex: 1;
-  color: ${(props) => (props.isActive ? '#0276FE' : '#6B7276')};
+  color: ${(props) => (props.whatview === 'true' ? '#0276FE' : '#6B7276')};
   padding: 6px 0;
   height: 3.6rem;
   max-width: 14rem;
   border-radius: 30px;
-  background: ${(props) => (props.isActive ? 'rgba(24, 51, 219, 0.05)' : 'white')};
+  background: ${(props) => (props.whatview === 'true' ? 'rgba(24, 51, 219, 0.05)' : 'white')};
 `;
 
 export const MapToggleBox = styled.div`
@@ -59,6 +59,11 @@ export const MapImgBox = styled.div`
   margin: 2.4rem 0;
   position: relative;
   z-index: 0;
+
+  .allMap {
+    width: 100%;
+    height: 25rem;
+  }
 
   .card {
     touch-action: none;
