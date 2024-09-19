@@ -8,6 +8,7 @@ import mdBg from '@/assets/svgs/booth/background/mdBackground.svg';
 import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
 import stageBg from '@/assets/webps/stage/background.webp';
 import mainBg from '@/assets/svgs/main/mainBg.svg';
+import mapBg from '@/assets/svgs/map/mapBg.svg';
 import { css } from 'styled-components';
 
 // 공통 스타일 정의
@@ -53,7 +54,13 @@ const backgroundStyles = {
       background-color: ${(props) => props.theme.colors.makersBackgroundColor};
     `,
   },
-
+  map: {
+    paths: ['/map'],
+    style: css`
+      background-image: url(${mapBg});
+      ${commonBackgroundStyle}
+    `,
+  },
   stage: {
     paths: ['/lineup', '/stage-info', '/hongik-zone'],
     style: css`
