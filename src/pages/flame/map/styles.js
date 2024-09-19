@@ -31,17 +31,11 @@ export const MapBox = styled.div`
 
   .arrow {
   }
-
-  /* border-image: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 20%, rgba(223, 33, 33, 0.8) 100%) 1;
-  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25); */
-  /* 와디페 line shadow */
-  /* box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25); */
-  // background: linear-gradient(0deg, red, blue);
 `;
 
 export const BoothBox = styled.div`
   width: calc(100% - 4rem);
-  margin: 0 2rem 0;
+  margin: 0 2rem 0 3.6rem;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
