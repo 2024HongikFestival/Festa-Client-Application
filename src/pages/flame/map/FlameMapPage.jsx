@@ -14,7 +14,7 @@ import {
 import React from 'react';
 import mapImg from '/src/assets/webps/map/sitemap.webp';
 import Lottie from 'react-lottie';
-import arrowAnimation from './siteMap.json';
+import arrowAnimation from '/src/assets/lotties/siteMap.json';
 import { useTranslation } from 'react-i18next';
 
 import AOS from 'aos';
