@@ -48,7 +48,7 @@
     "husky": "^9.1.4",
     "lint-staged": "^15.2.9",
     "prettier": "3.3.2",
-    "vite": "^5.4.1",
+    "vite": "^5.4.6",
     "vite-plugin-svgr": "^4.2.0"
   },
   "packageManager": "yarn@4.3.1"
