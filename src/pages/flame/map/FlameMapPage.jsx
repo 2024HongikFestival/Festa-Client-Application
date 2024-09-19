@@ -34,7 +34,7 @@ const FlameMapPage = () => {
   };
   return (
     <MapWrapper>
-      <MapTitle>{t('flame.map.title')}</MapTitle>
+      <MapTitle>{t('map.title')}</MapTitle>
       <MapBox>
         <MapImgBox src={mapImg} />
         <LottieBox>
@@ -46,8 +46,8 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">A.</p>
             <BoothNameAndIntro>
-              <p className="name">{t('flame.map.booth1')}</p>
-              <p className="intro">{t('flame.map.product1')}</p>
+              <p className="name">{t('map.booth1')}</p>
+              <p className="intro">{t('map.product1')}</p>
             </BoothNameAndIntro>
           </BoothIntro>
         </BoothOne>
@@ -55,7 +55,7 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">B.</p>
             <BoothNameAndIntro>
-              <p className="name">{t('flame.map.booth2')}</p>
+              <p className="name">{t('map.booth2')}</p>
               <p className="intro">-</p>
             </BoothNameAndIntro>
           </BoothIntro>
@@ -64,7 +64,7 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">C.</p>
             <BoothNameAndIntro>
-              <p className="name">{t('flame.map.booth3')}</p>
+              <p className="name">{t('map.booth3')}</p>
               <p className="intro">-</p>
             </BoothNameAndIntro>
           </BoothIntro>
@@ -73,7 +73,7 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">D.</p>
             <BoothNameAndIntro>
-              <p className="name">{t('flame.map.booth4')}</p>
+              <p className="name">{t('map.booth4')}</p>
               <p className="intro">-</p>
             </BoothNameAndIntro>
           </BoothIntro>
@@ -82,8 +82,8 @@ const FlameMapPage = () => {
           <BoothIntro>
             <p className="al">E.</p>
             <BoothNameAndIntro>
-              <p className="name">{t('flame.map.booth5')}</p>
-              <p className="intro">{t('flame.map.product5')}</p>
+              <p className="name">{t('map.booth5')}</p>
+              <p className="intro">{t('map.product5')}</p>
             </BoothNameAndIntro>
           </BoothIntro>
         </BoothOne>

@@ -12,7 +12,6 @@
       "toDaedongjeInsta": ""
     }
   },
-  "flame": {
     "map": {
       "title": "Site Map",
       "booth1": "Entrance",
@@ -22,8 +21,7 @@
       "booth5": "SNoL",
       "product1": "offering of FRUTIPS products",
       "product5": "offering of SUGARLOLO products"
-    }
-  },
+    },
   "makers": {
     "likelion": {
       "title1": "",
