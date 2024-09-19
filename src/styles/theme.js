@@ -18,6 +18,7 @@ const theme = {
     flameSubBackgroundColor: 'rgba(24, 24, 24, 0.60)',
     flameMainColor: '#F20D0D',
     hongikBlue: '#0276FE',
+    hongikNavy: '#020079',
   },
   fontStyles: {
     main: {

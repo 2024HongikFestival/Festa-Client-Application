@@ -10,7 +10,7 @@ import {
 } from './styles.js';
 import React, { useEffect, useRef, useState } from 'react';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
-import mapImg from './map.webp';
+import mapImg from '/src/assets/webps/map/completemap.webp';
 import { createUseGesture, dragAction, pinchAction } from '@use-gesture/react';
 import { useSpring, animated } from '@react-spring/web';
 import { useTranslation } from 'react-i18next';

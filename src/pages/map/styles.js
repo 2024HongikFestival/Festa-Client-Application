@@ -39,7 +39,7 @@ export const MapToggleBtn = styled.div`
   cursor: pointer;
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
   flex: 1;
-  color: ${(props) => (props.isActive ? '#1833DB' : '#6B7276')};
+  color: ${(props) => (props.isActive ? '#0276FE' : '#6B7276')};
   padding: 6px 0;
   height: 3.6rem;
   max-width: 14rem;
@@ -65,7 +65,7 @@ export const MapImgBox = styled.div`
     user-select: none;
     will-change: transform;
     width: 33.5rem;
-    height: 44.3rem;
+    height: 25rem;
     background-size: cover;
   }
 `;
