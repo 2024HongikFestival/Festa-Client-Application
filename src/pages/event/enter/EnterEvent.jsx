@@ -147,6 +147,7 @@ const EnterEvent = () => {
                 type="text"
                 maxLength="100"
                 placeholder={t(`event.enter.comment4`)}
+                outline="none"
                 onChange={handleComment}
                 value={comment}
               />
