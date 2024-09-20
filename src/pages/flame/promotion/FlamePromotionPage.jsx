@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next'; // i18next import
+import { useTranslation } from 'react-i18next';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import productsData from '@/constants/wdfPromotion/data.json';
 
 import img1 from '@/assets/webps/wdfPromotion/예거마이스터.webp';
@@ -80,10 +82,11 @@ const Text = styled.p`
 
 const FlamePromotionPage = () => {
   const [products, setProducts] = useState([]);
-  const { t } = useTranslation(); // useTranslation 훅 사용
+  const { t } = useTranslation();
 
   useEffect(() => {
     setProducts(productsData.products);
+    AOS.init({ duration: 1000 });
   }, []);
 
   const imageMap = {
@@ -97,22 +100,33 @@ const FlamePromotionPage = () => {
     <PromotionContainer>
       <Title>{t('flamePromotionPage.title')}</Title>
       <Promotion>
-        {products.map((product) => (
-          <Card key={product.id}>
-            <ImageContainer>
-              <Image
-                src={imageMap[product.image]}
-                alt={product.name}
-                width={product.width}
-                height={product.height}
-                top={product.imageTop}
-              />
-            </ImageContainer>
-            <Description>
-              <Text>{t(`flamePromotionPage.products.${product.name}`)}</Text> {/* 번역 키로 제품 이름 사용 */}
-            </Description>
-          </Card>
-        ))}
+        {products.map((product, index) => {
+          let animationType = '';
+
+          // 첫 번째 요소는 애니메이션 없음
+          if (index === 0) {
+            animationType = '';
+          } else {
+            animationType = 'zoom-in-up';
+          }
+
+          return (
+            <Card key={product.id} data-aos={animationType}>
+              <ImageContainer>
+                <Image
+                  src={imageMap[product.image]}
+                  alt={product.name}
+                  width={product.width}
+                  height={product.height}
+                  top={product.imageTop}
+                />
+              </ImageContainer>
+              <Description>
+                <Text>{t(`flamePromotionPage.products.${product.name}`)}</Text>
+              </Description>
+            </Card>
+          );
+        })}
       </Promotion>
     </PromotionContainer>
   );

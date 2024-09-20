@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useTranslation, Trans } from 'react-i18next'; // i18next import
+import { useTranslation, Trans } from 'react-i18next';
 import * as S from './styles';
 
 import md1 from '@/assets/webps/wdfMD/md1.webp';
@@ -19,7 +19,7 @@ import productsData from '@/constants/wdfMD/data.json';
 
 const FlameMdPage = () => {
   const [products, setProducts] = useState([]);
-  const { t } = useTranslation(); // useTranslation 훅 사용
+  const { t } = useTranslation();
 
   useEffect(() => {
     setProducts(productsData.products);
@@ -59,30 +59,40 @@ const FlameMdPage = () => {
               </S.LocationAlert>
             </S.ProductLocation>
             <S.CardContainer>
-              {products.map((product) => (
-                <S.ProductCard key={product.id} data-aos="fade-up">
-                  <S.ImageContainer>
-                    <S.ProductImage
-                      src={imageMap[product.image]}
-                      alt={t(`flameMdPage.products.${product.image}`)}
-                      width={product.width}
-                      height={product.height}
-                      top={product.imageTop}
-                    />
-                  </S.ImageContainer>
-                  <S.ProductInfo>
-                    <S.ProductDetails>
-                      <S.ProductTag>{t('flameMdPage.limitedSale')}</S.ProductTag>
-                      <S.ProductName>{t(`flameMdPage.products.${product.image}`)}</S.ProductName>
-                    </S.ProductDetails>
-                    <S.ProductPrice>{product.price}</S.ProductPrice>
-                  </S.ProductInfo>
-                </S.ProductCard>
-              ))}
+              {products.map((product, index) => {
+                let animationType = '';
+
+                if (index === 0) {
+                  animationType = ''; // 첫 번째 상품 요소에는 애니메이션 없음
+                } else {
+                  animationType = 'zoom-in-up'; // 마지막 상품 요소에는 fade-up 애니메이션
+                }
+
+                return (
+                  <S.ProductCard key={product.id} data-aos={animationType}>
+                    <S.ImageContainer>
+                      <S.ProductImage
+                        src={imageMap[product.image]}
+                        alt={t(`flameMdPage.products.${product.image}`)}
+                        width={product.width}
+                        height={product.height}
+                        top={product.imageTop}
+                      />
+                    </S.ImageContainer>
+                    <S.ProductInfo>
+                      <S.ProductDetails>
+                        <S.ProductTag>{t('flameMdPage.limitedSale')}</S.ProductTag>
+                        <S.ProductName>{t(`flameMdPage.products.${product.image}`)}</S.ProductName>
+                      </S.ProductDetails>
+                      <S.ProductPrice>{product.price}</S.ProductPrice>
+                    </S.ProductInfo>
+                  </S.ProductCard>
+                );
+              })}
             </S.CardContainer>
           </S.ProductList>
         </S.ProductsSection>
-        <S.NoticeContainer>
+        <S.NoticeContainer data-aos="fade-up">
           <S.NoticeTitle>{t('flameMdPage.noticeTitle')}</S.NoticeTitle>
           <S.NoticeList>
             <S.NoticeItem>{t('flameMdPage.noticeList.item1')}</S.NoticeItem>

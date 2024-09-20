@@ -43,10 +43,19 @@ const LineupPage = () => {
     const dayData = Data[selectedDay.toLowerCase()];
 
     return dayData.map((data, index) => {
+      let animationType = '';
+
+      // 첫 번째 카드는 애니메이션 없음
+      if (index === 0) {
+        animationType = '';
+      } else {
+        animationType = 'fade-up';
+      }
+
       const isBlack = (selectedDay === 'day3' && index === 0) || (selectedDay !== 'day3' && index === 1);
 
       return (
-        <S.Card key={data.name}>
+        <S.Card key={data.name} data-aos={animationType}>
           <S.CardImage src={data.src} alt={data.alt} />
           <S.CardDescription>
             <S.Name isBlack={isBlack}>{data.name}</S.Name>
@@ -74,7 +83,7 @@ const LineupPage = () => {
         </S.DayButton>
       </S.DayContainer>
       <S.CardContainer>{renderCards()}</S.CardContainer>
-      <S.MCContainer>
+      <S.MCContainer data-aos="fade-up">
         <S.MCName>{t(`LineupPage.mc.${selectedDay.toLowerCase()}`)}</S.MCName>
       </S.MCContainer>
     </S.PageContainer>
