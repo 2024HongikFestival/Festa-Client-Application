@@ -742,8 +742,8 @@
     "hongikZoneDescription2": "휴학생, 졸업유예생, 대학원생 모두 가능합니다.",
     "prepareForEntry": "입장하기 위해 준비해 주세요!",
     "entryTime": "입장 시간은 <blueHighlight>16시 30분</blueHighlight>부터입니다.",
-    "entryProcedure": "입장 전 입구에서 <blueHighlight>‘톡켓’</blueHighlight>의 사전 예매 내역을 확인하고 입장합니다.",
-    "noTicketInfo": "톡켓 티켓 미소지자는 18시 30분 이후부터 현장 잔여석에 한하여 톡켓 어플에서 추가 티켓을 발급 받으실 수 있습니다.",
+    "entryProcedure": "입구에서 <blueHighlight>‘학생증(실물/모바일)과 메인 무대 티켓(톡켓)’</blueHighlight>확인 후 입장합니다. 미리 준비해주세요!",
+    "noTicketInfo": "18시 50분부터 노쇼 인원 추산이 시작되니,<br></br> 티켓 미소지자는 19시부터 톡켓 어플을 통해<br></br>잔여석 추가예매를 준비해주세요!",
     "locationTitle": "홍익존 위치",
     "knowBeforeEntry": "입장하기 전 알아두세요!",
     "safetyInstructions": [
