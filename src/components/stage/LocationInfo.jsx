@@ -29,7 +29,7 @@ const LocationInfo = () => {
             initialPositionX={-100}
             initialPositionY={-240}
             minScale={1}
-            maxScale={4}
+            maxScale={6}
           >
             {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
               <MapWrapper>
