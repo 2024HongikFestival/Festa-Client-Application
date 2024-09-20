@@ -93,10 +93,6 @@ const FlameLineupPage = () => {
 
   useEffect(() => {
     setSelectedDay(getSelectedDayByDate());
-
-    AOS.init({
-      duration: 1000, // 애니메이션 지속 시간 (밀리초)
-    });
   }, []);
 
   useEffect(() => {
@@ -108,27 +104,38 @@ const FlameLineupPage = () => {
     const dayDjData = djData[dayKey];
     const dayDjLogos = djLogos[dayKey];
 
-    return dayDjData.map((event, index) => (
-      <S.Card key={event.name} data-aos="fade-up">
-        <S.CardImageContainer>
-          <S.DjImage src={event.src} alt={event.alt} style={{ width: dayDjData[index].width }} />
-          <S.GradientOverlay />
-          <S.LogoImage
-            src={dayDjLogos[index].src}
-            alt={`${event.name} logo`}
-            style={{
-              width: dayDjLogos[index].width,
-              height: dayDjLogos[index].height,
-            }}
-          />
-        </S.CardImageContainer>
-        <S.CardDescriptionContainer>
-          <S.DjProfile>
-            <S.Name>{event.name}</S.Name>
-          </S.DjProfile>
-        </S.CardDescriptionContainer>
-      </S.Card>
-    ));
+    return dayDjData.map((event, index) => {
+      let animationType = '';
+
+      // 첫 번째 카드는 애니메이션 없음
+      if (index === 0) {
+        animationType = '';
+      } else {
+        animationType = 'fade-up';
+      }
+
+      return (
+        <S.Card key={event.name} data-aos={animationType}>
+          <S.CardImageContainer>
+            <S.DjImage src={event.src} alt={event.alt} style={{ width: dayDjData[index].width }} />
+            <S.GradientOverlay />
+            <S.LogoImage
+              src={dayDjLogos[index].src}
+              alt={`${event.name} logo`}
+              style={{
+                width: dayDjLogos[index].width,
+                height: dayDjLogos[index].height,
+              }}
+            />
+          </S.CardImageContainer>
+          <S.CardDescriptionContainer>
+            <S.DjProfile>
+              <S.Name>{event.name}</S.Name>
+            </S.DjProfile>
+          </S.CardDescriptionContainer>
+        </S.Card>
+      );
+    });
   };
 
   return (
