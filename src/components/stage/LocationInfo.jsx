@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import styled from 'styled-components';
 import map from '@/assets/webps/stageInfo/map.webp';
+import map_2 from '@/assets/webps/stageInfo/map_2.webp';
+import button from '@/assets/webps/stageInfo/button_scale.webp';
 import Lottie from 'react-lottie';
 import arrowAnimation from '@/assets/lotties/stageInfo/arrowAnimation.json';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 const LocationInfo = () => {
   const navigate = useNavigate();
@@ -19,13 +22,25 @@ const LocationInfo = () => {
   return (
     <Container>
       <MapContainer>
-        {/* 첫 번째 지도 - 이미지만 표시 */}
         <MapBox>
           <MapTitle>{t('locationInfo.mapTitle')}</MapTitle>
-          <Map src={map} alt="Stage Info Map" />
+          <TransformWrapper
+            initialScale={2.5}
+            initialPositionX={-100}
+            initialPositionY={-240}
+            minScale={1}
+            maxScale={4}
+          >
+            {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+              <MapWrapper>
+                <TransformComponent>
+                  <Map src={map_2} alt="Stage Info Map" />
+                </TransformComponent>
+                <FloatingButton src={button} alt="button" />
+              </MapWrapper>
+            )}
+          </TransformWrapper>
         </MapBox>
-
-        {/* 두 번째 지도 - 이미지와 Lottie 애니메이션 */}
         <MapBox>
           <MapTitle>{t('locationInfo.entranceInfo')}</MapTitle>
           <MapWrapper>
@@ -147,4 +162,11 @@ const Button = styled.button`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   cursor: pointer;
+`;
+const FloatingButton = styled.img`
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  right: 1.5rem;
+  bottom: 4.5rem;
 `;
