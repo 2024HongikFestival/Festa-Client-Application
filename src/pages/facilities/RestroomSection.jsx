@@ -16,19 +16,19 @@ const RestroomSection = () => {
 
   // 드래그 시작 핸들러
   const handleDragStart = (x, y) => {
-    setIsDragging(true);
-    setStartX(x);
+    setIsDragging(true); // 드래그 상태 true -> 드래그 시작
+    setStartX(x); // 드래그 시작된 위치
     setStartY(y);
-    setScrollLeft(mapRef.current.offsetLeft);
+    setScrollLeft(mapRef.current.offsetLeft); // 드래그 중 맵의 현재 위치 계산
     setScrollTop(mapRef.current.offsetTop);
     mapRef.current.classList.add('dragging');
   };
 
   // 드래그 중 핸들러
   const handleDragging = (x, y) => {
-    if (!isDragging) return;
+    if (!isDragging) return; // 드래그 시작 X -> 함수 종료됨. 드래그 중이어야 함
 
-    const deltaX = x - startX;
+    const deltaX = x - startX; // 드래그 시작 위치와 현재 위치 차이 계산
     const deltaY = y - startY;
 
     const containerWidth = containerRef.current.offsetWidth;
@@ -36,9 +36,11 @@ const RestroomSection = () => {
     const mapWidth = mapRef.current.offsetWidth;
     const mapHeight = mapRef.current.offsetHeight;
 
+    // 맵이 이동할 새 좌표 계산
     let newLeft = scrollLeft + deltaX;
     let newTop = scrollTop + deltaY;
 
+    // 맵이 컨테이너 밖으로 못 나가게 제한
     const minLeft = containerWidth - mapWidth;
     const minTop = containerHeight - mapHeight;
     const maxLeft = 0;
@@ -55,51 +57,54 @@ const RestroomSection = () => {
 
   // 드래그 종료 핸들러
   const handleDragEnd = () => {
-    setIsDragging(false);
+    setIsDragging(false); // 드래그 상태 false -> 드래그 끝남
     mapRef.current.classList.remove('dragging');
   };
 
-  // 마우스 이벤트 핸들러
+  // 마우스 이벤트 핸들러 (desktop)
   const handleMouseDown = (e) => {
     e.preventDefault();
-    handleDragStart(e.clientX, e.clientY);
+    handleDragStart(e.clientX, e.clientY); // 드래그 시작 함수 호출
   };
 
   const handleMouseMove = (e) => {
     if (isDragging) {
-      handleDragging(e.clientX, e.clientY);
+      handleDragging(e.clientX, e.clientY); // 드래그 중 함수 호출
     }
   };
 
   const handleMouseUp = () => {
-    handleDragEnd();
+    handleDragEnd(); // 드래그 종료 함수 호출
   };
 
-  // 터치 이벤트 핸들러
+  // 터치 이벤트 핸들러 (mobile)
   const handleTouchStart = (e) => {
     const touch = e.touches[0];
-    handleDragStart(touch.clientX, touch.clientY);
+    handleDragStart(touch.clientX, touch.clientY); // 드래그 시작 함수 호출
   };
 
   const handleTouchMove = (e) => {
     if (isDragging) {
       e.preventDefault(); // 드래그 중일 때 스크롤 막기
       const touch = e.touches[0];
-      handleDragging(touch.clientX, touch.clientY);
+      handleDragging(touch.clientX, touch.clientY); // 드래그 중 함수 호출
     }
   };
 
   const handleTouchEnd = () => {
-    handleDragEnd();
+    handleDragEnd(); // 드래그 종료 함수 호출
   };
 
-  // 모바일에서 `touchmove` 이벤트의 `passive` 설정을 false로 변경
+  // 모바일에서 `touchmove` 이벤트의 기본 동작(스크롤) 방지 위해 `passive` 설정을 false로 변경
   useEffect(() => {
     const container = containerRef.current;
 
+    // touchmove 이벤트 리스너를 추가
     container.addEventListener('touchmove', handleTouchMove, { passive: false });
 
+    // 클린업 함수: 컴포넌트가 언마운트될 때 실행됨
     return () => {
+      // touchmove 이벤트 리스너를 제거
       container.removeEventListener('touchmove', handleTouchMove);
     };
   }, [isDragging]);
