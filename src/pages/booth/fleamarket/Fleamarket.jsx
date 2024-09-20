@@ -1,6 +1,3 @@
-// 대동제 플리마켓
-// url: /fleamarket
-
 import PageTitle from '@/components/common/PageTitle';
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
@@ -21,10 +18,17 @@ const Fleamarket = () => {
       </ContentContainer>
       {/* 플리마켓 리스트 컴포넌트 */}
       <FleamarketListWrapper>
-        {fleamarketList.map((item, index) => (
+        {/* {fleamarketList.map((item, index) => (
           <ContentContainer key={item.key}>
             <FleamarketInfo index={index} item={item} />
           </ContentContainer>
+        ))} */}
+        {fleamarketList.map((item, index) => (
+          <div key={item.key} data-aos="fade-down" data-aos-delay={index * 100}>
+            <ContentContainer>
+              <FleamarketInfo index={index} item={item} />
+            </ContentContainer>
+          </div>
         ))}
       </FleamarketListWrapper>
     </Container>

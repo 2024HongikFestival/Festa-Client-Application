@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import ContentContainer from '@/components/common/ContentContainer';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 FleamarketBottom.propTypes = {
   item: PropTypes.shape({
@@ -21,38 +23,52 @@ FleamarketBottom.propTypes = {
 export default function FleamarketBottom({ item }) {
   const { t } = useTranslation();
 
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      easing: 'ease-out-back',
+    });
+  }, []);
+
   const { marketId } = useParams();
   if (marketId === 'kawaii') {
     return (
       <Container $marketId={marketId}>
-        <ContentContainer>
-          <TextWrapper>
-            {t('fleamarket.detail.4.bottom')
-              .split('\n')
-              .map((line, index) => (
-                <React.Fragment key={index}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-          </TextWrapper>
-        </ContentContainer>
+        <div data-aos="fade-right" data-aos-delay={'500'}>
+          <ContentContainer>
+            <TextWrapper>
+              {t('fleamarket.detail.4.bottom')
+                .split('\n')
+                .map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+            </TextWrapper>
+          </ContentContainer>
+        </div>
       </Container>
     );
   } else if (marketId === 'henna') {
     return (
       <Container $marketId={marketId}>
-        <ContentContainer>
-          <Henna7Img src={item.wideImgGoods.img} alt="henna" />
-          <GoodsInfo>
-            <Name>{item.wideImgGoods.name}</Name>
-            <Price>₩{item.wideImgGoods.price.toLocaleString()}</Price>
-          </GoodsInfo>
-        </ContentContainer>
-        <ContentContainer>
-          <HennaOtherImg src={item.hennaOtherImg} alt="henna" />
-          <Text>{t('fleamarket.detail.5.bottom')}</Text>
-        </ContentContainer>
+        <div data-aos="fade-right" data-aos-delay={'400'}>
+          <ContentContainer>
+            <Henna7Img src={item.wideImgGoods.img} alt="henna" />
+            <GoodsInfo>
+              <Name>{item.wideImgGoods.name}</Name>
+              <Price>₩{item.wideImgGoods.price.toLocaleString()}</Price>
+            </GoodsInfo>
+          </ContentContainer>
+        </div>
+        <div data-aos="fade-right" data-aos-delay={'500'}>
+          <ContentContainer>
+            <HennaOtherImg src={item.hennaOtherImg} alt="henna" />
+            <Text>{t('fleamarket.detail.5.bottom')}</Text>
+          </ContentContainer>
+        </div>
       </Container>
     );
   } else {

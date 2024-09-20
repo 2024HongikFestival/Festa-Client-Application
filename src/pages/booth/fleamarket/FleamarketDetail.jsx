@@ -1,7 +1,4 @@
-// 대동제 플리마켓 상세 페이지
-// url: /fleamarket/{market-id}
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 // import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
@@ -13,6 +10,8 @@ import FleamarketBottom from '@/components/booth/fleamarket/FleamarketBottom';
 import PriceTable from '@/components/booth/fleamarket/PriceTable';
 import RecordList from '@/components/booth/fleamarket/RecordList';
 import { useTranslation } from 'react-i18next';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const FleamarketDetail = () => {
   const { t } = useTranslation();
@@ -20,6 +19,14 @@ const FleamarketDetail = () => {
   const fleamarketDetailList = FleamarketDetailList(t);
   const item = fleamarketDetailList[`${marketId}`];
   const isSpecialMarket = marketId === 'kawaii' || marketId === 'henna';
+
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      easing: 'ease-out-back',
+    });
+  }, []);
 
   return (
     <Container>
@@ -54,7 +61,7 @@ const FleamarketDetail = () => {
       {item.goods && item.goods.length > 0 && (
         <GoodsWrapper $isSpecialMarket={isSpecialMarket}>
           {item.goods.map((good, index) => (
-            <Goods key={index}>
+            <Goods key={index} data-aos="fade-right" data-aos-delay={index * 100}>
               <ExampleImg src={good.img} alt={good.name} />
               <GoodsInfo>
                 <Name>{good.name}</Name>

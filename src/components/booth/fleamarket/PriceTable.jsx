@@ -19,29 +19,33 @@ export default function PriceTable({ bottomImg }) {
 
   return (
     <PriceTableContainer>
-      <ContentContainer>
-        <PriceWrapper>
-          <Title>PRICE</Title>
-          <CollectionWrapper>
-            {priceData.map((item, index) => (
-              <Collection key={index}>
-                <ItemName>
-                  {item.icon} {item.name}
-                </ItemName>
-                <Price>{item.price}</Price>
-              </Collection>
+      <div data-aos="fade-down">
+        <ContentContainer>
+          <PriceWrapper>
+            <Title>PRICE</Title>
+            <CollectionWrapper>
+              {priceData.map((item, index) => (
+                <Collection key={index}>
+                  <ItemName>
+                    {item.icon} {item.name}
+                  </ItemName>
+                  <Price>{item.price}</Price>
+                </Collection>
+              ))}
+            </CollectionWrapper>
+            <Caption>{t('fleamarket.detail.6.price.5.text')} </Caption>
+          </PriceWrapper>
+        </ContentContainer>
+      </div>
+      <div data-aos="fade-down" data-aos-delay="200">
+        <ContentContainer>
+          <ImgWrapper>
+            {bottomImg.map((img, index) => (
+              <Img key={index} src={img} alt="example" />
             ))}
-          </CollectionWrapper>
-          <Caption>{t('fleamarket.detail.6.price.5.text')} </Caption>
-        </PriceWrapper>
-      </ContentContainer>
-      <ContentContainer>
-        <ImgWrapper>
-          {bottomImg.map((img, index) => (
-            <Img key={index} src={img} alt="example" />
-          ))}
-        </ImgWrapper>
-      </ContentContainer>
+          </ImgWrapper>
+        </ContentContainer>
+      </div>
     </PriceTableContainer>
   );
 }

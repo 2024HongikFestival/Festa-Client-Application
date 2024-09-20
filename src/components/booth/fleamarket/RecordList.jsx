@@ -15,16 +15,18 @@ export default function RecordList({ record }) {
   return (
     <RecordContainer>
       {record.map((recordItem, index) => (
-        <ContentContainer key={index}>
-          <RecordWrapper>
-            <HeadTitle>{recordItem.headTitle}</HeadTitle>
-            <RecordListWrapper>
-              {recordItem.recordList.map((item, index) => (
-                <Record key={index}>{item}</Record>
-              ))}
-            </RecordListWrapper>
-          </RecordWrapper>
-        </ContentContainer>
+        <div key={index} data-aos="fade-down" data-aos-delay={index * 100}>
+          <ContentContainer>
+            <RecordWrapper>
+              <HeadTitle>{recordItem.headTitle}</HeadTitle>
+              <RecordListWrapper>
+                {recordItem.recordList.map((item, index) => (
+                  <Record key={index}>{item}</Record>
+                ))}
+              </RecordListWrapper>
+            </RecordWrapper>
+          </ContentContainer>
+        </div>
       ))}
     </RecordContainer>
   );
