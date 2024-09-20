@@ -11,6 +11,7 @@ const SubmitEvent = () => {
   const location = useLocation();
 
   const { date } = location.state || {}; // 전달받은 date 값
+  console.log(date);
 
   const instagramUrl = 'https://www.instagram.com/hiufestival_official/';
 

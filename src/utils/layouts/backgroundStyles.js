@@ -7,6 +7,8 @@ import fleamarketBg3 from '@/assets/svgs/booth/background/fleamarketSangsuBackgr
 import mdBg from '@/assets/svgs/booth/background/mdBackground.svg';
 import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
 import stageBg from '@/assets/webps/stage/background.webp';
+import mainBg from '@/assets/svgs/main/mainBg.svg';
+import mapBg from '@/assets/svgs/map/mapBg.svg';
 import { css } from 'styled-components';
 
 // 공통 스타일 정의
@@ -19,7 +21,7 @@ const commonBackgroundStyle = css`
 // 경로 props로 받아서 backgroundStyles에서 순회
 export const getBackgroundStyle = (path) => {
   for (const key in backgroundStyles) {
-    if (backgroundStyles[key].paths.some((p) => path.startsWith(p))) {
+    if (backgroundStyles[key].paths.some((p) => p === path)) {
       return backgroundStyles[key].style;
     }
   }
@@ -28,7 +30,20 @@ export const getBackgroundStyle = (path) => {
 
 const backgroundStyles = {
   flame: {
-    paths: ['/flame', '/oauth/events', '/event', '/event/', '/event/enter', '/event/submit'],
+    paths: [
+      '/flame',
+      '/flame/map',
+      '/flame/timetable',
+      '/flame/reservation',
+      '/flame/lineup',
+      '/flame/md',
+      '/flame/promotion',
+      '/oauth/events',
+      '/event',
+      '/event/',
+      '/event/enter',
+      '/event/submit',
+    ],
     style: css`
       background-color: ${(props) => props.theme.colors.flameBackgroundColor};
     `,
@@ -37,6 +52,13 @@ const backgroundStyles = {
     paths: ['/likelion', '/gaehwa'],
     style: css`
       background-color: ${(props) => props.theme.colors.makersBackgroundColor};
+    `,
+  },
+  map: {
+    paths: ['/map'],
+    style: css`
+      background-image: url(${mapBg});
+      ${commonBackgroundStyle}
     `,
   },
   stage: {
@@ -109,6 +131,14 @@ const backgroundStyles = {
     style: css`
       background-image: url(${fleamarketBg3});
       ${commonBackgroundStyle}
+    `,
+  },
+  main: {
+    paths: ['/'],
+    style: css`
+      background-image: url(${mainBg});
+      ${commonBackgroundStyle}
+      background-position: top -4.9rem center;
     `,
   },
 };

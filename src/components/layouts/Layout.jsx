@@ -23,9 +23,9 @@ export default function Layout() {
   const showheader = isLoggedIn || !isAdminPath || isAdminViewPath;
 
   const handleOauthPath = () => {
-    const oauthRegex = /^\/oauth/;
-    if (oauthRegex.test(location.pathname)) {
-      // /oauth로 시작하는 경로에 대한 처리
+    const oauthEventRegex = /^\/oauth\/event/;
+    if (oauthEventRegex.test(location.pathname)) {
+      // /oauth/event로 시작하는 경로에 대한 처리
       setOauthPath(true);
     }
   };

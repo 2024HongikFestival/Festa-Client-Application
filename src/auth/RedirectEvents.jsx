@@ -89,6 +89,7 @@ const RedirectEvents = () => {
   return (
     <>
       <EventPage />
+
       {errorStatus && (
         <Wrapper>
           {errorStatus === 403 && <LocationErrorBox />} {/* 403 에러 시 LocationErrorBox 표시 */}
