@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next'; // i18n 훅 사용
+import { useTranslation } from 'react-i18next';
 import * as S from './styles/LineupPage';
 import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
 
@@ -15,7 +15,7 @@ import img9 from '@/assets/webps/stageLineup/0927_3.webp';
 
 const LineupPage = () => {
   const [selectedDay, setSelectedDay] = useState('day1');
-  const { t } = useTranslation(); // i18n 훅으로 번역 함수 가져오기
+  const { t } = useTranslation();
 
   useEffect(() => {
     setSelectedDay(getSelectedDayByDate());
@@ -58,7 +58,8 @@ const LineupPage = () => {
         <S.Card key={data.name} data-aos={animationType}>
           <S.CardImage src={data.src} alt={data.alt} />
           <S.CardDescription>
-            <S.Name isBlack={isBlack}>{data.name}</S.Name>
+            {/* $isBlack으로 수정 */}
+            <S.Name $isBlack={isBlack}>{data.name}</S.Name>
           </S.CardDescription>
         </S.Card>
       );
