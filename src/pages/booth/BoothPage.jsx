@@ -37,9 +37,17 @@ export default function BoothPage() {
         )}
         {selectedTab === 'pub' && <PubCard />}
         {/* 주점 운영시간 정보 컴포넌트 */}
-        {selectedTab === 'pub' && <PubOperatingHour />}
+        {selectedTab === 'pub' && (
+          <div data-aos="fade-up">
+            <PubOperatingHour />
+          </div>
+        )}
         {/* 실시간 랭킹 정보 컴포넌트 */}
-        {selectedTab === 'pub' && <Ranking kind="122" />}
+        {selectedTab === 'pub' && (
+          <div data-aos="fade-up">
+            <Ranking kind="122" />
+          </div>
+        )}
       </ForGapWrapper>
     </Container>
   );

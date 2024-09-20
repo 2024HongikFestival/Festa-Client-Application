@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import error from '@/assets/webps/booth/icon/error.webp';
 import ContentContainer from '@/components/common/ContentContainer';
 
-import PropTypes from 'prop-types';
 import Kind123 from '@/components/booth/ranking/Kind123';
 import Kind122 from '@/components/booth/ranking/Kind122';
 import Kind111 from '@/components/booth/ranking/Kind111';
@@ -12,11 +11,7 @@ import Kind113 from '@/components/booth/ranking/Kind113';
 import { useTranslation } from 'react-i18next';
 import { axiosInstance } from '@/api/axios';
 
-Ranking.propTypes = {
-  kind: PropTypes.string.isRequired,
-};
-
-export default function Ranking({ kind }) {
+export default function Ranking() {
   const [rankData, setRankData] = useState([]);
   const { t } = useTranslation();
 
@@ -26,19 +21,19 @@ export default function Ranking({ kind }) {
     data: {
       data: [
         {
-          boothId: 5,
+          boothId: 24,
           boothName: '자무;자전에서 음주가무',
           totalLike: 599,
         },
         {
-          boothId: 8,
+          boothId: 26,
           boothName: '슬램덩크',
-          totalLike: 599,
+          totalLike: 59,
         },
         {
-          boothId: 45,
+          boothId: 29,
           boothName: '운수 좋은 날',
-          totalLike: 599,
+          totalLike: 59,
         },
       ],
     },
@@ -70,7 +65,7 @@ export default function Ranking({ kind }) {
       const response = await axiosInstance.get(`/booths/ranking`);
       if (response.status === 200) {
         console.log('랭킹 정보', response.data);
-        const sortedData = dummyResponse.data.data.sort((a, b) => b.totalLike - a.totalLike);
+        const sortedData = response.data.data.sort((a, b) => b.totalLike - a.totalLike);
         console.log('정렬', sortedData);
 
         const rankedData = sortedData.map((item, index, array) => {

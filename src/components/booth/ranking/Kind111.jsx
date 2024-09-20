@@ -6,6 +6,7 @@ import heart from '@/assets/webps/booth/icon/heartIcon.webp';
 import { useTranslation } from 'react-i18next';
 import { DepartmentList } from '@/constants/booth/departmentList';
 import PropTypes from 'prop-types';
+import { WowList } from '@/constants/booth/wowList';
 
 Kind111.propTypes = {
   data: PropTypes.any,
@@ -21,7 +22,7 @@ export default function Kind111({ data }) {
     <PodiumWrapper>
       <Podium1>
         <WowImgWrapper rank="1st" r>
-          <Wow src={wow} alt="wow" />
+          <Wow src={WowList[data[0].boothId]} alt="wow" />
         </WowImgWrapper>
         <Box width="1st" direction="left">
           <Badge src={first} alt="1st" rank="1st" direction="left" />
@@ -42,7 +43,7 @@ export default function Kind111({ data }) {
       </Podium1>
       <Podium2>
         <WowImgWrapper rank="1st">
-          <Wow src={wow} alt="wow" />
+          <Wow src={WowList[data[1].boothId]} alt="wow" />
         </WowImgWrapper>
         <Box width="1st" direction="mid">
           <Badge src={first} alt="1st" rank="1st" direction="mid" />
@@ -62,7 +63,7 @@ export default function Kind111({ data }) {
       </Podium2>
       <Podium3>
         <WowImgWrapper rank="1st">
-          <Wow src={wow} alt="wow" />
+          <Wow src={WowList[data[2].boothId]} alt="wow" />
         </WowImgWrapper>
         <Box width="1st" direction="right">
           <Badge src={first} alt="1st" rank="1st" direction="right" />
@@ -137,8 +138,9 @@ const WowImgWrapper = styled.div`
 `;
 
 const Wow = styled.img`
-  width: 6.3rem;
+  /* width: 6.3rem; */
   height: 7.036rem;
+  object-fit: contain;
 `;
 
 const Box = styled.div`

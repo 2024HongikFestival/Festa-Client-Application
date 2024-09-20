@@ -52,6 +52,7 @@ import img53 from '@/assets/webps/booth/wow/53.webp';
 import img54 from '@/assets/webps/booth/wow/54.webp';
 import img55 from '@/assets/webps/booth/wow/55.webp';
 import img56 from '@/assets/webps/booth/wow/56.webp';
+import img57 from '@/assets/webps/booth/wow/57.webp';
 
 export const PubList = (t) => {
   return {
@@ -496,6 +497,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.13.2.event'),
         food: t('booth.pub.card.13.2.food'),
         time: 'all',
+        wow: img57,
       },
     ],
   };
