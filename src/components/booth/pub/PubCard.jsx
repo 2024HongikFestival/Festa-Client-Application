@@ -161,7 +161,7 @@ export default function PubCard() {
           ))}
         </HeartContainer>
         <Title>{t('booth.pub.specific')}</Title>
-        <MenuContainer>
+        <MenuContainer show={isSubMenu}>
           <MenuWrapper index={'1'}>
             {menuItems(t)
               .slice(0, 4)
@@ -192,7 +192,7 @@ export default function PubCard() {
               ))}
           </MenuWrapper>
 
-          <SubMenuWrapper show={showSubMenu}>
+          <SubMenuWrapper $show={showSubMenu}>
             {subMenuItems(t).map((item) => (
               <SubMenuItem
                 key={item.key}
@@ -269,13 +269,17 @@ const Title = styled.div`
 
 const MenuContainer = styled.div`
   width: 28.1rem;
+  /* height: 5.4rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 2.4rem;
-  gap: 1.2rem;
   margin-bottom: 3.5rem;
+
+  & > *:first-child + * {
+    margin-top: 1.2rem;
+  }
 `;
 
 const MenuWrapper = styled.div`
@@ -311,11 +315,11 @@ const SubMenuWrapper = styled.div`
   z-index: 5;
 
   ${(props) =>
-    props.show &&
+    props.$show &&
     css`
       max-height: 5rem;
       opacity: 1;
-      margin-top: 0.8rem;
+      margin-top: 1.2rem;
     `}
 `;
 

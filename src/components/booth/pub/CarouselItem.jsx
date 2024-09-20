@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import day from '@/assets/webps/booth/icon/day.webp';
 import night from '@/assets/webps/booth/icon/night.webp';
 import wow from '@/assets/webps/booth/wow/departmentWow.webp';
 import day2Night from '@/assets/webps/booth/icon/day2Night.webp';
 import favorite from '@/assets/webps/booth/icon/favorite.webp';
-import before from '@/assets/webps/booth/icon/before.webp';
-import after from '@/assets/webps/booth/icon/after.webp';
 import PropTypes from 'prop-types';
 import { axiosInstance } from '@/api/axios';
 
@@ -16,6 +13,8 @@ CarouselItem.propTypes = {
     intro: PropTypes.string,
     food: PropTypes.string,
     event: PropTypes.string,
+    wow: PropTypes.any,
+    time: PropTypes.string,
   }),
   click: PropTypes.any,
   likeData: PropTypes.any,
@@ -25,6 +24,7 @@ export default function CarouselItem({ content, click, likeData }) {
   // console.log('like data: ', likeData);
   const [isLiked, setIsLiked] = useState(false);
   const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0); // 기본값을 0으로 설정
+  const lng = localStorage.getItem('language');
 
   useEffect(() => {
     if (likeData && likeData.totalLike !== undefined) {
@@ -50,11 +50,25 @@ export default function CarouselItem({ content, click, likeData }) {
 
   return (
     <Container>
-      <Icon src={day2Night} kind={'day2Night'} />
-      <Department>{content.department}</Department>
-      <Intro>{content.intro}</Intro>
-      <Wow src={wow} alt="wow" />
-      <PubInfoContainer>
+      {content.time === 'all' ? <Icon lng={lng} src={day2Night} kind={'day2Night'} /> : <Icon lng={lng} src={night} />}
+      <Department>
+        {content.department.split('\n').map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            <br />
+          </React.Fragment>
+        ))}
+      </Department>
+      <Intro>
+        {content.intro.split('\n').map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            <br />
+          </React.Fragment>
+        ))}
+      </Intro>
+      {content.wow ? <Wow src={content.wow} alt="wow" /> : <Wow src={wow} alt="wow" />}
+      <PubInfoContainer lng={lng}>
         <TextWrapper kind="food">
           <Title>Food</Title>
           <Text>{content.food}</Text>
@@ -68,7 +82,7 @@ export default function CarouselItem({ content, click, likeData }) {
       </PubInfoContainer>
       <BtnContainer>
         {/* <Confetti src={isLiked ? after : before} alt="confetti" $isAnimating={isLiked} /> */}
-        <LikeBtn onClick={() => handleLikeClick(likeData.boothId)}>
+        <LikeBtn onClick={() => handleLikeClick(likeData.boothId)} lng={lng}>
           <HeartIcon src={favorite} alt="favorite" />
           <Count>{totalLikes}</Count>
         </LikeBtn>
@@ -79,7 +93,9 @@ export default function CarouselItem({ content, click, likeData }) {
 
 const Container = styled.div`
   width: 22.1rem;
-  height: 38.1rem;
+  /* height: 38.1rem; */
+  height: ${({ lng }) => (lng === 'en' ? '41rem' : '38.1rem')};
+  /* height: 42rem; */
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -90,7 +106,8 @@ const Container = styled.div`
 const Icon = styled.img`
   width: ${({ kind }) => (kind === 'day2Night' ? '4.4rem' : '2.2rem')};
   height: 2.2rem;
-  margin-top: 1.8rem;
+  /* margin-top: 1.8rem; */
+  margin-top: ${({ lng }) => (lng === 'en' ? '3rem' : '1.8rem')};
 `;
 
 const Department = styled.div`
@@ -105,11 +122,13 @@ const Intro = styled.div`
   ${({ theme }) => theme.fontStyles.main.intro};
   color: ${({ theme }) => theme.colors.gray50};
   margin-bottom: 1.4rem;
+  text-align: center;
 `;
 
 const Wow = styled.img`
   width: 11.7rem;
   height: 13.1rem;
+  object-fit: contain;
 `;
 
 const PubInfoContainer = styled.div`
@@ -119,24 +138,39 @@ const PubInfoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1.8rem;
+  margin-top: ${({ lng }) => (lng === 'en' ? '2.8rem' : '1.8rem')};
+  /* margin-top: 3rem; */
 `;
 
 const TextWrapper = styled.div`
   /* width: 15.6rem; */
-  height: 2rem;
+  /* height: 2rem; */
+  width: 100%;
   display: flex;
-  gap: ${({ kind }) => (kind === 'food' ? '1.2rem' : '0.7rem')};
+  /* gap: ${({ kind }) => (kind === 'food' ? '1.2rem' : '0.7rem')}; */
+  gap: 0.7rem;
   justify-content: flex-start;
 `;
 
 const Title = styled.div`
   ${({ theme }) => theme.fontStyles.basic.captionBold};
+  width: 3rem; // Food와 Event 텍스트를 포함할 수 있는 충분한 너비
+  flex-shrink: 0;
 `;
 
 const Text = styled.div`
   ${({ theme }) => theme.fontStyles.basic.captionMed};
   color: ${({ theme }) => theme.colors.gray40};
+  flex: 1;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  // 영어인 경우 고려
+  max-width: 11.6rem;
+  text-align: start;
 `;
 
 const BtnContainer = styled.div`
@@ -166,11 +200,11 @@ const Confetti = styled.img`
 const LikeBtn = styled.button`
   width: 10.7rem;
   height: 3.4rem;
-  /* z-index: 15; */
   border-radius: 10rem;
   background-color: #9747ff;
-  margin-top: 1.8rem;
-  margin-bottom: 2.9rem;
+  margin-top: ${({ lng }) => (lng === 'en' ? '6rem' : '1.8rem')};
+  margin-bottom: ${({ lng }) => (lng === 'en' ? '5rem' : '2.9rem')};
+  /* margin-bottom: 2.9rem; */
   display: flex;
   gap: 0.4rem;
   justify-content: center;
@@ -199,3 +233,14 @@ const Count = styled.div`
   ${({ theme }) => theme.fontStyles.basic.captionBold};
   color: white;
 `;
+
+// const Title = styled.div`
+//   ${({ theme }) => theme.fontStyles.basic.captionBold};
+//   width: 2.8rem;
+// `;
+
+// const Text = styled.div`
+//   ${({ theme }) => theme.fontStyles.basic.captionMed};
+//   color: ${({ theme }) => theme.colors.gray40};
+//   max-width: 11.6rem;
+// `;

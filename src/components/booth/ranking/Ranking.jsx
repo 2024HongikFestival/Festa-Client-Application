@@ -26,17 +26,17 @@ export default function Ranking({ kind }) {
     data: {
       data: [
         {
-          boothId: 37,
+          boothId: 51,
           boothName: '자무;자전에서 음주가무',
           totalLike: 599,
         },
         {
-          boothId: 42,
+          boothId: 43,
           boothName: '슬램덩크',
           totalLike: 59,
         },
         {
-          boothId: 51,
+          boothId: 22,
           boothName: '운수 좋은 날',
           totalLike: 57,
         },
@@ -70,7 +70,7 @@ export default function Ranking({ kind }) {
       const response = await axiosInstance.get(`/booths/ranking`);
       if (response.status === 200) {
         console.log('랭킹 정보', response.data);
-        const sortedData = response.data.data.sort((a, b) => b.totalLike - a.totalLike);
+        const sortedData = dummyResponse.data.data.sort((a, b) => b.totalLike - a.totalLike);
         console.log('정렬', sortedData);
 
         const rankedData = sortedData.map((item, index, array) => {

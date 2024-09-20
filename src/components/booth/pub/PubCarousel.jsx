@@ -23,6 +23,7 @@ export default function PubCarousel({ menu, click, likeData }) {
   const pubList = PubList(t);
   const [currentCategory, setCurrentCategory] = useState('1');
   const sliderRef = useRef(null);
+  const lng = localStorage.getItem('language');
 
   useEffect(() => {
     const newCategory = setCategoryFunc(menu);
@@ -53,7 +54,7 @@ export default function PubCarousel({ menu, click, likeData }) {
     slidesToShow: 1,
     slidesToScroll: 1,
     // autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 4000,
     prevArrow: likeData?.length > 1 ? <CustomArrow direction="prev" /> : null,
     nextArrow: likeData?.length > 1 ? <CustomArrow direction="next" /> : null,
   };
@@ -61,7 +62,7 @@ export default function PubCarousel({ menu, click, likeData }) {
   return (
     <CarouselWrapper>
       <CarouselContainer>
-        <StyledSlider ref={sliderRef} {...settings}>
+        <StyledSlider ref={sliderRef} {...settings} lng={lng}>
           {pubList[currentCategory].map((item, index) => {
             // likeData에서 해당 index에 해당하는 데이터를 순서대로 매칭
             const relatedLikeData = likeData?.[index];
@@ -101,7 +102,8 @@ const StyledSlider = styled(Slider)`
 
   .slick-list,
   .slick-track {
-    height: 38.1rem;
+    /* height: 38.1rem; */
+    height: ${({ lng }) => (lng === 'en' ? '41rem' : '38.1rem')};
   }
 
   .slick-slide > div {

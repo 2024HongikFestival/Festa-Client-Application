@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation, Trans } from 'react-i18next'; // i18next import
+import { useTranslation } from 'react-i18next'; // i18next import
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/icon/error.webp';

@@ -16,7 +16,7 @@
       "night": "Night",
       "operatingInfo": "Operating hours may vary from booth to booth",
       "menu": {
-        "1": "Free major",
+        "1": "Autonomous major",
         "2": "Business/Economic",
         "3": "Art",
         "4": "Architecture/Urban Affairs",
@@ -44,7 +44,7 @@
           {
             "department": "Business School",
             "intro": "Street bar (Kyungpo)",
-            "food": "Fishcake Soup, Stir-fried pork belly with a thin slice"
+            "food": "Fishcake Soup, Stir-fried pork belly"
           },
           {
             "department": "Economic School",
@@ -54,7 +54,7 @@
         ],
         "3": [
           {
-            "department": "The Center of the College of Fine Arts",
+            "department": "The Center of\nthe College of Fine Arts",
             "intro": "the Marble Bar at the University of the Arts",
             "event": "the Marvel board game of the art school",
             "food": "tteokbokki, fruit salad"
@@ -72,7 +72,7 @@
           },
           {
             "department": "Department of Painting",
-            "intro": "Imagination Factory of the Department of Painting",
+            "intro": "Imagination Factory of\nthe Department of Painting",
             "event": "Mini game, flea market",
             "food": "Popcorn, corn cheese"
           },
@@ -83,7 +83,7 @@
             "food": "Takoyaki, Onigiri"
           },
           {
-            "department": "Department of Wooden Furniture",
+            "department": "Department of\nWooden Furniture",
             "intro": "Utopia in my school days",
             "event": "Mini game, Mini gacha",
             "food": "Corn cheese buldak(spicy noodle), sweet and sour chicken with rice cake"
@@ -100,7 +100,7 @@
             "food": "Pizza and sausage"
           },
           {
-            "department": "Department of Metal Molding Design",
+            "department": "Department of\nMetal Molding Design",
             "intro": "Underwater Goldie Land Pub",
             "event": "Spinning the roulette, flea market",
             "food": "Direct fire fried rice, assorted sausage"
@@ -138,7 +138,7 @@
             "food": "Sausage and fried rice, Ramen"
           },
           {
-            "department": "Department of Korean Language Education",
+            "department": "Department of\nKorean Language Education",
             "intro": "Heungbu is cheeky. My tavern",
             "food": "Potato pancake, budae jjigae(korean soup)"
           },
@@ -160,22 +160,22 @@
         ],
         "6": [
           {
-            "department": "The Department of German Literature",
+            "department": "The Department\nof German Literature",
             "intro": "a soccer festival pub",
             "food": "Currie Boost, Schweinhaksen"
           },
           {
-            "department": "Department of English Language and Literature",
+            "department": "Department of\nEnglish Language and Literature",
             "intro": "a chilling haunted house pub",
             "food": "Assorted Sausage, Chicken salad"
           },
           {
-            "department": "French Literature and Literature Department",
+            "department": "French Literature\nand Literature Department",
             "intro": "Paris Saint-Germain pub",
             "food": "chop steak, rolled omelet with cheese"
           },
           {
-            "department": "Department of Korean Language and Literature",
+            "department": "Department of\nKorean Language and Literature",
             "intro": "Beer count night",
             "food": "korean traditional cookie icecream, Cheese and Potato Pancake"
           }
@@ -328,7 +328,7 @@
             "food": "Cold noodles, dumplings"
           },
           {
-            "department": "A calligraphy club(Seo woo hwae)",
+            "department": "A calligraphy club\n(Seo woo hwae)",
             "intro": "\"Seoshindang,\" the new school of calligraphy",
             "event": "the making of amulets / walls",
             "food": "Group of korean pancake, grilled rice balls"
@@ -348,7 +348,7 @@
         ],
         "13": [
           {
-            "department": "Mang-nyang-nyang-nyang-nyang-yuri",
+            "department": "Meong Nyang Boori",
             "intro": "Gather around, \"Mang-Nyang's Forest\"",
             "event": "Flea Market, Mini Game",
             "food": "Tofu Kimchi, green onion pancake"
@@ -376,21 +376,21 @@
         "3": "Arch. & \nUrban Affairs",
         "4": "Business School",
         "5": "Economics School",
-        "6": "Engineering College\nCenter",
-        "7": "Construction & Env.\nEngineering",
-        "8": "Mechanical Systems\nEngineering",
-        "9": "Industrial Data\nEngineering",
-        "10": "New Materials\nEngineering",
-        "11": "Electrical\nEngineering",
+        "6": "Engineering Center",
+        "7": "Construction & Env. Eng.",
+        "8": "Mech. Systems Eng.",
+        "9": "Industrial Data Eng.",
+        "10": "Materials Eng.",
+        "11": "Electrical\nEng.",
         "12": "Computer\nScience",
-        "13": "Chemical\nEngineering",
+        "13": "Chemical\nEng.",
         "14": "Performing Arts",
         "15": "Design & Arts\nManagement",
         "16": "German Literature",
         "17": "English Literature",
         "18": "French Literature",
         "19": "Korean Literature",
-        "20": "Fine Arts College\nCenter",
+        "20": "Fine Arts\nCenter",
         "21": "Printmaking",
         "22": "Oriental Painting",
         "23": "Painting",
@@ -412,7 +412,7 @@
         "39": "HECC",
         "40": "HICC",
         "41": "TED",
-        "42": "Basketball Club",
+        "42": "Basketbal\nClub",
         "43": "Shooting Club",
         "44": "Swimming Club",
         "45": "Baseball Club",
@@ -421,13 +421,13 @@
         "48": "Magic's",
         "49": "Brains Wars",
         "50": "Snol",
-        "51": "Literature Society",
+        "51": "Literature\nSociety",
         "52": "Seo woo hwae",
         "53": "One-ple",
-        "54": "High-running",
-        "55": "Meow Woof Club",
+        "54": "High-\nrunning",
+        "55": "Meow Woof\nClub",
         "56": "AIESEC",
-        "57": "Misarang/Volcano"
+        "57": "Misarang/\nVolcano"
       }
     }
   },
