@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import styled from 'styled-components';
@@ -18,6 +18,12 @@ const lottieOptions = {
 const LocationInfo = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: arrowAnimation,
+  };
 
   return (
     <Container>
