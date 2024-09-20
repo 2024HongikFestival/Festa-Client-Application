@@ -11,16 +11,18 @@ const RestroomSection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [startY, setStartY] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [scrollTop, setScrollTop] = useState(0);
+  const scrollLeftRef = useRef(0); // useRef로 저장하여 리렌더링 없이 값만 저장
+  const scrollTopRef = useRef(0);
+  const animationFrameRef = useRef(null); // `requestAnimationFrame`을 위한 ref
 
   // 드래그 시작 핸들러
   const handleDragStart = (x, y) => {
     setIsDragging(true); // 드래그 상태 true -> 드래그 시작
     setStartX(x); // 드래그 시작된 위치
     setStartY(y);
-    setScrollLeft(mapRef.current.offsetLeft); // 드래그 중 맵의 현재 위치 계산
-    setScrollTop(mapRef.current.offsetTop);
+    // setScrollLeft(mapRef.current.offsetLeft); // 드래그 중 맵의 현재 위치 계산
+    scrollLeftRef.current = mapRef.current.offsetLeft; // 드래그 중 맵의 현재 위치 계산
+    scrollTopRef.current = mapRef.current.offsetTop;
     mapRef.current.classList.add('dragging');
   };
 
@@ -37,8 +39,8 @@ const RestroomSection = () => {
     const mapHeight = mapRef.current.offsetHeight;
 
     // 맵이 이동할 새 좌표 계산
-    let newLeft = scrollLeft + deltaX;
-    let newTop = scrollTop + deltaY;
+    let newLeft = scrollLeftRef.current + deltaX;
+    let newTop = scrollTopRef.current + deltaY;
 
     // 맵이 컨테이너 밖으로 못 나가게 제한
     const minLeft = containerWidth - mapWidth;
@@ -46,13 +48,19 @@ const RestroomSection = () => {
     const maxLeft = 0;
     const maxTop = 0;
 
-    if (newLeft < minLeft) newLeft = minLeft;
-    if (newLeft > maxLeft) newLeft = maxLeft;
-    if (newTop < minTop) newTop = minTop;
-    if (newTop > maxTop) newTop = maxTop;
+    newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
+    newTop = Math.max(minTop, Math.min(newTop, maxTop));
 
     mapRef.current.style.left = `${newLeft}px`;
     mapRef.current.style.top = `${newTop}px`;
+  };
+
+  // 드래그 중 최적화 핸들러, requestAnimationFrame: 애니메이션 효율적으로 처리해주는 함수
+  const optimizedHandleDragging = (x, y) => {
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+    animationFrameRef.current = requestAnimationFrame(() => handleDragging(x, y));
   };
 
   // 드래그 종료 핸들러
@@ -69,7 +77,8 @@ const RestroomSection = () => {
 
   const handleMouseMove = (e) => {
     if (isDragging) {
-      handleDragging(e.clientX, e.clientY); // 드래그 중 함수 호출
+      // handleDragging(e.clientX, e.clientY); // 드래그 중 함수 호출
+      optimizedHandleDragging(e.clientX, e.clientY);
     }
   };
 
@@ -87,7 +96,8 @@ const RestroomSection = () => {
     if (isDragging) {
       e.preventDefault(); // 드래그 중일 때 스크롤 막기
       const touch = e.touches[0];
-      handleDragging(touch.clientX, touch.clientY); // 드래그 중 함수 호출
+      // handleDragging(touch.clientX, touch.clientY); // 드래그 중 함수 호출
+      optimizedHandleDragging(touch.clientX, touch.clientY);
     }
   };
 
