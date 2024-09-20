@@ -22,6 +22,7 @@ const LocationInfo = () => {
   return (
     <Container>
       <MapContainer>
+        {/* 첫 번째 지도 - 이미지만 표시 */}
         <MapBox>
           <MapTitle>{t('locationInfo.mapTitle')}</MapTitle>
           <TransformWrapper
