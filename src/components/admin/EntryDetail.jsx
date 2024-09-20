@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { adminAxiosInstance } from '@/api/axios';
@@ -17,6 +17,7 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const endOfListRef = useRef(null);
 
   const PAGE_SIZE = 10;
 
@@ -70,6 +71,8 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
   const handleLoadMore = () => {
     if (!loading && hasMore) {
       setPage((prevPage) => prevPage + 1);
+      // Scroll to the bottom of the list after loading more items
+      endOfListRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
   };
 
@@ -136,16 +139,18 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
         item.entryId === selectedEntry.entryId ? { ...item, winner: false } : item
       );
 
-      const winners = updatedList.filter((item) => item.winner);
-      const nonWinners = updatedList.filter((item) => !item.winner);
-      const sortedList = [...winners, ...nonWinners];
+      const sortedList = updatedList.sort((a, b) => {
+        if (a.winner && !b.winner) return -1;
+        if (!a.winner && b.winner) return 1;
+        return 0;
+      });
 
       setList(sortedList);
       setPage(1);
       setDisplayedList(sortedList.slice(0, PAGE_SIZE));
-      setDrawnCount(winners.length);
-      setShowCancelButton(winners.length > 0);
-      setShowPopup(false);
+      setHasMore(sortedList.length > PAGE_SIZE);
+      setDrawnCount(sortedList.filter((item) => item.winner).length);
+      setShowCancelButton(sortedList.some((item) => item.winner));
     } catch (error) {
       console.error('Error canceling winner: ', error);
     }
@@ -185,7 +190,7 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
   }
 
   return (
-    <ListContainer>
+    <ListContainer ref={endOfListRef}>
       <TitleContainer>
         <Title>{`[${title}] 응모 목록`}</Title>
         <TitleDescription>{titleDescription}</TitleDescription>
@@ -281,12 +286,14 @@ const ListContainer = styled.div`
   align-items: center;
   background-color: ${(props) => props.theme.colors.gray10};
   min-height: 100vh;
+  overflow-y: auto;
 `;
 
 const Container = styled.div`
   width: 32rem;
   display: flex;
   flex-direction: column;
+  padding-bottom: 7.5rem;
 `;
 
 const SubTitle = styled.span`

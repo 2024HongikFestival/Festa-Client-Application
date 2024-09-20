@@ -88,7 +88,6 @@ const Map = styled.div`
 
 const Info = styled.div`
   display: flex;
-  width: 19.2rem;
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;

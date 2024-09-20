@@ -19,10 +19,9 @@ export const Title = styled.h2`
 
 export const DayContainer = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 4.8rem;
+  justify-content: space-between;
   align-items: center;
-  align-self: stretch;
+  width: 31.5rem;
 `;
 
 export const DayButton = styled.button`
@@ -55,12 +54,10 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   width: 33.5rem;
-  height: 37.4rem;
   flex-shrink: 0;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
   border: 0.1rem solid transparent;
   border-image: linear-gradient(to bottom, #df2121 0%, rgba(255, 255, 255, 0.25) 75%, rgba(255, 255, 255, 0) 100%) 1;
-  gap: 1.6rem;
 `;
 
 export const CardImageContainer = styled.div`
@@ -92,9 +89,9 @@ export const GradientOverlay = styled.div`
 export const CardDescriptionContainer = styled.div`
   display: flex;
   width: 29.7rem;
+  height: 7rem;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.4rem;
+  justify-content: center;
 `;
 
 export const DjProfile = styled.div`
@@ -119,4 +116,12 @@ export const Description = styled.div`
   align-self: stretch;
   color: ${(props) => props.theme.colors.gray50};
   ${(props) => props.theme.fontStyles.basic.body1Med};
+`;
+
+export const LogoImage = styled.img`
+  position: absolute;
+  bottom: 1.4rem;
+  left: 0;
+  z-index: 4;
+  object-fit: contain;
 `;

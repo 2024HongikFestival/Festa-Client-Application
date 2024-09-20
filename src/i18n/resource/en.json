@@ -648,6 +648,8 @@
   },
   "layouts": {
     "header": {
+      "toDaedongje": "MAIN FESTIVAL",
+      "toFlame": "WOW DJ FESTIVAL",
       "toRoadmap": "ROAD MAP",
       "toStage": "PERFORMANCE",
       "toLineUp": "LINE UP",
@@ -737,7 +739,7 @@
   "locationInfo": {
     "mapTitle": "Stage Map",
     "entranceInfo": "Entrance information",
-    "hongikZoneInfo": "Only Hongik University students <highlight>who made a reservation</highlight> can enter the Hongik Zone",
+    "hongikZoneInfo": "All main stage seats (standing & sitting) are<br/><highlight>Hongik zone</highlight>, only for Hongdae students",
     "hongikZoneButton": "Hongik Zone"
   },
   "hongikZonePage": {
@@ -878,7 +880,7 @@
 
   "LostAndFound": {
     "KakaoBtnText": "Auth in 3 sec and report",
-    "LostAndFound": "LostAndFound",
+    "LostAndFound": "Lost And Found",
     "buttonDetailText": "Please keep expensive item <1>at the <2>Lost and Found Center</2></1> ",
     "ReportLostItems": "Report lost items ✋🏻",
     "FindLostItem": "Find lost item🧸"
@@ -920,5 +922,22 @@
     "PlaceholderText": "ex. This is Jack's ID Card / Mac-pro was found in Building T! The cover is labeled 'Jun'.",
     "Complete": "Complete"
   },
-  "Close": "Close"
+  "Close": "Close",
+  "LineupPage": {
+    "title": "LINE UP",
+    "day1": "9.25(WED)",
+    "day2": "9.26(THU)",
+    "day3": " 9.27(FRI)",
+    "mc": {
+      "day1": "MC Donghyeon",
+      "day2": "MC SSup Yi",
+      "day3": "MC Chul Wow"
+    }
+  },
+  "flameLineupPage": {
+    "title": "LINE UP",
+    "day1": "9.25(WED)",
+    "day2": "9.26(THU)",
+    "day3": " 9.27(FRI)"
+  }
 }
