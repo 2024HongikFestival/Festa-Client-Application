@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import styled from 'styled-components';
-import stageInfoMap_2 from '@/assets/webps/stageInfo/stageInfoMap_2.webp';
-import Lottie from 'lottie-react';
+import map from '@/assets/webps/stageInfo/map.webp';
+import Lottie from 'react-lottie';
 import arrowAnimation from '@/assets/lotties/stageInfo/arrowAnimation.json';
 
 const LocationInfo = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: arrowAnimation,
+  };
 
   return (
     <Container>
@@ -16,16 +22,16 @@ const LocationInfo = () => {
         {/* 첫 번째 지도 - 이미지만 표시 */}
         <MapBox>
           <MapTitle>{t('locationInfo.mapTitle')}</MapTitle>
-          <Map src={stageInfoMap_2} alt="Stage Info Map" />
+          <Map src={map} alt="Stage Info Map" />
         </MapBox>
 
         {/* 두 번째 지도 - 이미지와 Lottie 애니메이션 */}
         <MapBox>
           <MapTitle>{t('locationInfo.entranceInfo')}</MapTitle>
           <MapWrapper>
-            <Map src={stageInfoMap_2} alt="Entrance Info Map" />
+            <Map src={map} alt="Entrance Info Map" />
             <LottieWrapper>
-              <Lottie animationData={arrowAnimation} loop autoplay />
+              <Lottie options={defaultOptions} />
             </LottieWrapper>
           </MapWrapper>
         </MapBox>
@@ -106,11 +112,10 @@ const Map = styled.img`
 
 const LottieWrapper = styled.div`
   position: absolute;
-  top: -0.9rem;
+  top: -0.2rem;
   left: 1rem;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Lottie 애니메이션이 클릭을 방해하지 않도록 */
 `;
 
 const Info = styled.div`
