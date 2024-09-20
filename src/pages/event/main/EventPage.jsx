@@ -139,7 +139,7 @@ const EventPage = () => {
         }}
       >
         <S.ShareIcon src={shareIcon} alt="shareIcon" />
-        <p>{t(`event.main.button.share`)}</p>
+        <S.ShareText>{t(`event.main.button.share`)}</S.ShareText>
       </S.ShareButton>
       {isEventPeriod ? (
         <S.KakaoAuthButton onClick={handleKakaoAuth}>

@@ -173,11 +173,10 @@ export const DetailDescription = styled.div`
 `;
 
 export const ShareButton = styled.button`
-  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 1.1rem;
+  padding: 0 10.3rem 0 9.3rem;
+  gap: 0.8rem;
   width: 33.5rem;
   height: 5.2rem;
   flex-shrink: 0;
@@ -185,23 +184,21 @@ export const ShareButton = styled.button`
   border: 0.1rem solid #ffff24;
   background: ${(props) => props.theme.colors.gray100};
   margin-bottom: 4.4rem;
+`;
 
-  p {
-    color: #ffff24;
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
+export const ShareText = styled.p`
+  color: #ffff24;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
 export const ShareIcon = styled.img`
   width: 3.9rem;
   height: 3.9rem;
-  position: absolute;
-  left: 8.3rem;
 `;
 
 export const KakaoAuthButton = styled.button`
