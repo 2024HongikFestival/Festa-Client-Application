@@ -163,8 +163,8 @@ export const TimeTableName = styled.span`
   color: ${(props) => props.theme.colors.gray70};
   max-width: 15rem;
   display: inline;
-  @media (min-width: 37.5rem) {
-    max-width: 8.75rem;
+  @media (min-width: 37.5rem) and (max-width: 60rem) {
+    max-width: 20rem;
   }
 `;
 
