@@ -1,11 +1,23 @@
+import React from 'react';
 import { styled, css } from 'styled-components';
 import wow from '@/assets/webps/booth/ranking/wow.webp';
 import first from '@/assets/svgs/booth/1st.svg';
 import second from '@/assets/svgs/booth/2nd.svg';
 import third from '@/assets/svgs/booth/3rd.svg';
 import heart from '@/assets/webps/booth/icon/heartIcon.webp';
+import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import { DepartmentList } from '@/constants/booth/departmentList';
 
-export default function Kind123() {
+Kind123.propTypes = {
+  data: PropTypes.any.isRequired,
+};
+
+export default function Kind123({ data }) {
+  const { t } = useTranslation();
+  console.log('rank', data);
+  const departments = DepartmentList(t);
+
   return (
     <PodiumWrapper>
       <Podium1>
@@ -15,13 +27,16 @@ export default function Kind123() {
         <Box width="2nd">
           <Badge src={second} alt="2nd" rank="2nd" />
           <Department rank="2nd">
-            기계 시스템
-            <br />
-            디자인공학과
+            {departments[data[1].boothId].split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>+9999</Count>
+            <Count>+{data[1].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium1>
@@ -32,13 +47,16 @@ export default function Kind123() {
         <Box width="1st">
           <Badge src={first} alt="1st" rank="1st" />
           <Department rank="1st">
-            기계 시스템
-            <br />
-            디자인공학과
+            {departments[data[0].boothId].split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>+9999</Count>
+            <Count>+{data[0].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium2>
@@ -49,13 +67,16 @@ export default function Kind123() {
         <Box width="3rd">
           <Badge src={third} alt="3rd" rank="3rd" />
           <Department rank="3rd">
-            기계 시스템
-            <br />
-            디자인공학과
+            {departments[data[2].boothId].split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>+9999</Count>
+            <Count>+{data[2].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium3>
@@ -226,7 +247,7 @@ const HeartIcon = styled.img`
 `;
 
 const Count = styled.div`
-  width: 3.9rem;
+  /* width: 3.9rem; */
   height: 1.8rem;
   margin-left: 0.4rem;
   display: flex;

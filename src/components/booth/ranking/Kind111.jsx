@@ -1,9 +1,22 @@
+import React from 'react';
 import { styled, css } from 'styled-components';
 import wow from '@/assets/webps/booth/ranking/wow.webp';
 import first from '@/assets/svgs/booth/1st.svg';
 import heart from '@/assets/webps/booth/icon/heartIcon.webp';
+import { useTranslation } from 'react-i18next';
+import { DepartmentList } from '@/constants/booth/departmentList';
+import PropTypes from 'prop-types';
 
-export default function Kind111() {
+Kind111.propTypes = {
+  data: PropTypes.any,
+};
+
+export default function Kind111({ data }) {
+  const { t } = useTranslation();
+  console.log('rank', data);
+  const departments = DepartmentList(t);
+  console.log('booth', data[0].boothId);
+
   return (
     <PodiumWrapper>
       <Podium1>
@@ -13,13 +26,17 @@ export default function Kind111() {
         <Box width="1st" direction="left">
           <Badge src={first} alt="1st" rank="1st" direction="left" />
           <Department rank="1st">
-            기계 시스템
-            <br />
-            디자인공학과
+            {departments[data[0].boothId].split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </Department>
+
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>+9999</Count>
+            <Count>+{data[0].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium1>
@@ -30,13 +47,16 @@ export default function Kind111() {
         <Box width="1st" direction="mid">
           <Badge src={first} alt="1st" rank="1st" direction="mid" />
           <Department rank="1st">
-            기계 시스템
-            <br />
-            디자인공학과
+            {departments[data[1].boothId].split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>+9999</Count>
+            <Count>+{data[1].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium2>
@@ -47,13 +67,16 @@ export default function Kind111() {
         <Box width="1st" direction="right">
           <Badge src={first} alt="1st" rank="1st" direction="right" />
           <Department rank="1st">
-            기계 시스템
-            <br />
-            디자인공학과
+            {departments[data[2].boothId].split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>+9999</Count>
+            <Count>+{data[2].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium3>
@@ -202,7 +225,7 @@ const HeartIcon = styled.img`
 `;
 
 const Count = styled.div`
-  width: 3.9rem;
+  /* width: 3.9rem; */
   height: 1.8rem;
   margin-left: 0.4rem;
   display: flex;

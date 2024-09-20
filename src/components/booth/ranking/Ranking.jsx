@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import error from '@/assets/webps/booth/icon/error.webp';
 import ContentContainer from '@/components/common/ContentContainer';
-import wow from '@/assets/webps/booth/ranking/wow.webp';
-import first from '@/assets/svgs/booth/1st.svg';
-import second from '@/assets/svgs/booth/2nd.svg';
-import third from '@/assets/svgs/booth/3rd.svg';
-import heart from '@/assets/webps/booth/icon/heartIcon.webp';
-import Kind123 from '@/components/booth/ranking/Kind123';
+
 import PropTypes from 'prop-types';
+import Kind123 from '@/components/booth/ranking/Kind123';
 import Kind122 from '@/components/booth/ranking/Kind122';
 import Kind111 from '@/components/booth/ranking/Kind111';
-import Kind113 from '@/components/booth/ranking/Kind112';
-import Kind112 from '@/components/booth/ranking/Kind122';
+import Kind113 from '@/components/booth/ranking/Kind113';
 import { useTranslation } from 'react-i18next';
 import { axiosInstance } from '@/api/axios';
 
@@ -25,6 +20,30 @@ export default function Ranking({ kind }) {
   const [rankData, setRankData] = useState([]);
   const { t } = useTranslation();
 
+  const dummyResponse = {
+    status: 200,
+    message: '주점 랭킹 조회 성공',
+    data: {
+      data: [
+        {
+          boothId: 37,
+          boothName: '자무;자전에서 음주가무',
+          totalLike: 599,
+        },
+        {
+          boothId: 42,
+          boothName: '슬램덩크',
+          totalLike: 59,
+        },
+        {
+          boothId: 51,
+          boothName: '운수 좋은 날',
+          totalLike: 57,
+        },
+      ],
+    },
+  };
+
   const renderRankingComponent = () => {
     if (rankData.length === 0) return null;
 
@@ -33,43 +52,17 @@ export default function Ranking({ kind }) {
     const thirdPlaceCount = rankData.filter((item) => item.rank === 3).length;
 
     if (firstPlaceCount === 1 && secondPlaceCount === 1 && thirdPlaceCount === 1) {
-      // 1등 1명, 2등 1명, 3등 1명
-
-      return <Kind111 data={rankData} />;
-    } else if (firstPlaceCount === 1 && secondPlaceCount === 2) {
-      // 1등 1명, 2등 2명
-      return <Kind122 data={rankData} />;
-    } else if (firstPlaceCount === 1 && secondPlaceCount === 1 && thirdPlaceCount === 2) {
-      // 1등 1명, 2등 1명, 3등 2명
-      return <Kind112 data={rankData} />;
-    } else if (firstPlaceCount === 1 && secondPlaceCount === 3) {
-      // 1등 1명, 2등 3명
       return <Kind123 data={rankData} />;
+    } else if (firstPlaceCount === 1 && secondPlaceCount === 2 && thirdPlaceCount === 0) {
+      return <Kind122 data={rankData} />;
+    } else if (firstPlaceCount === 2 && thirdPlaceCount === 1) {
+      return <Kind113 data={rankData} />;
+    } else if (firstPlaceCount === 3) {
+      return <Kind111 data={rankData} />;
     } else {
+      console.log('Unhandled ranking case:', { firstPlaceCount, secondPlaceCount, thirdPlaceCount });
       return null; // 처리되지 않은 케이스
     }
-  };
-
-  const response2 = {
-    status: 200,
-    message: '주점 랭킹 조회 성공',
-    data: [
-      {
-        boothId: 37,
-        boothName: '자무;자전에서 음주가무',
-        totalLike: 765,
-      },
-      {
-        boothId: 42,
-        boothName: '슬램덩크',
-        totalLike: 765,
-      },
-      {
-        boothId: 51,
-        boothName: '운수 좋은 날',
-        totalLike: 59,
-      },
-    ],
   };
 
   const getRankingInfo = async () => {
@@ -104,6 +97,7 @@ export default function Ranking({ kind }) {
   useEffect(() => {
     getRankingInfo();
   }, []);
+
   return (
     <ContentContainer>
       <RankingContainer>
@@ -128,10 +122,6 @@ export default function Ranking({ kind }) {
         </GuideWrapper>
         {/* 주점별 랭킹 순위 부분 */}
         {renderRankingComponent()}
-        {/* <Kind123 /> */}
-        {/* <Kind122 /> */}
-        {/* <Kind111 /> */}
-        {/* <Kind113 /> */}
       </RankingContainer>
     </ContentContainer>
   );
