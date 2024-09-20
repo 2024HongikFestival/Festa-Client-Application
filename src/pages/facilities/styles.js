@@ -16,6 +16,19 @@ export const ToggleWrapper = styled.div`
 export const Toggle = styled.div`
   display: flex;
   padding: 0.8rem 1.5rem;
+  position: relative; /* 배경 애니메이션을 위한 상대 위치 */
+`;
+
+export const AnimatedBackground = styled.div`
+  position: absolute;
+  height: 3.6rem;
+  background: rgba(24, 51, 219, 0.05);
+  border-radius: 3rem;
+  transition:
+    transform 0.25s ease,
+    width 0.25s ease; /* 애니메이션 효과 */
+  z-index: 0; /* 버튼 아래에 배치 */
+  will-change: transform, width; /* 애니메이션 성능 향상 */
 `;
 
 const ToggleButton = styled.div`
@@ -27,10 +40,11 @@ const ToggleButton = styled.div`
   text-align: center;
   color: ${({ $isActive, theme }) => ($isActive ? theme.colors.hongikBlue : theme.colors.gray60)};
   ${({ $isActive, theme }) => ($isActive ? theme.fontStyles.basic.body1Bold : theme.fontStyles.basic.body1Semi)};
-  background: ${({ $isActive }) => ($isActive ? 'rgba(24, 51, 219, 0.05)' : 'transparent')};
+  background: transparent; /* 배경은 애니메이션이 담당 */
   border-radius: 3rem;
   opacity: ${({ $isActive }) => ($isActive ? '1' : '0.6')};
   cursor: pointer;
+  z-index: 1; /* 버튼을 배경 위에 위치 */
 `;
 
 export const RestroomBtn = styled(ToggleButton).attrs({ width: '8.2rem' })``;
