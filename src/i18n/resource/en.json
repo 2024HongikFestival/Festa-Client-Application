@@ -374,6 +374,44 @@
       "info": "Rankings will be updated on an hourly basis,\n reset daily at 5 AM"
     }
   },
+  "timetable": {
+    "title": "Timetable",
+    "WED": "WED",
+    "THU": "THU",
+    "FRI": "FRI",
+    "notice": "Precautions for viewing",
+    "detail1": {
+      "under1": "Bringing food (excluding drinking water)",
+      "text1": "",
+      "text2": " into the WOW DJ festival ",
+      "under2": "is prohibited"
+    },
+    "detail2": {
+      "text1": "The WOW DJ Festival is a liquor-provided event and ",
+      "text2": "",
+      "under": "minors are prohibited."
+    },
+    "detail3": {
+      "text1": "You may ",
+      "under": "not be able to re-enter if you cannot check your entry stamp",
+      "text2": ""
+    },
+    "detail4": {
+      "text1": "WOW DJ Festival is a ",
+      "under": "non-smoking area,",
+      "text2": " and all smoking activities, including e-cigarettes, are prohibited"
+    },
+    "detail5": {
+      "under1": "If you are drunk too much,",
+      "under2": "restricted or sent off",
+      "text1": " you may be ",
+      "text2": " at the discretion of the staff"
+    },
+    "detail6": "Please refrain from running on the ramp within the WOW DJ Festival",
+    "detail7": "Please follow the instructions and guidance of the on-site staff for smooth event progress",
+    "detail8": "You may be sent off if you violate the on-site staff's instructions",
+    "detail9": "Access to restricted areas and exit may be imposed upon entry"
+  },
   "fleamarket": {
     "pageTitle": "Fleamarket",
     "location": "Fleamarket Location",
@@ -590,7 +628,8 @@
       "instagram": "Instagram",
       "goFlame": "GO WOW DJ FESTIVAL >>",
       "goDaedongje": "GO MAIN FESTIVAL >>",
-      "prev": "<< GO BACK"
+      "prev": "<< GO BACK",
+      "policy": "Privacy Policy"
     }
   },
   "stageInfoPage": {
@@ -850,42 +889,83 @@
     "day2": "9.26(THU)",
     "day3": " 9.27(FRI)"
   },
-  "timetable": {
-    "title": "Timetable",
-    "WED": "WED",
-    "THU": "THU",
-    "FRI": "FRI",
-    "notice": "Precautions for viewing",
-    "detail1": {
-      "under1": "Bringing food (excluding drinking water)",
-      "text1": "",
-      "text2": " into the WOW DJ festival ",
-      "under2": "is prohibited"
+
+  "event": {
+    "main": {
+      "notice": {
+        "title1": "Raffle of",
+        "title2": "Hongik Daedongje",
+        "description1": "One ticket is given at",
+        "description2": "10 a.m. every day",
+        "description3": " ",
+        "timeNotice": "The time left until the deadline",
+        "qText": "Q. What's Hongik Raffle?",
+        "aText": "A. It is an event where prizes are given through a lottery of applicants."
+      },
+      "item": {
+        "quantity": "10 winning tickets",
+        "title1": "TVING Standard Plan will be given",
+        "title2": "a three-month pass !",
+        "title3": "",
+        "description1": "Three-month pass"
+      },
+      "detail": {
+        "title1": "Target for application",
+        "description1": "Anyone enjoying festival 'in Hongik University'",
+        "description2": "",
+        "title2": "Conditions of entry",
+        "description3": "Applicants whose current location is Hongik University",
+        "title3": "Application period",
+        "description4": "September 25th 10:00 ~ September 27th 24:00",
+        "description5": "One ticket is offered at 10 a.m. every day",
+        "title4": "Winner announcement",
+        "description6": "September 28 at 14:00 Daedongje Instastory"
+      },
+      "button": {
+        "share": "Share Event",
+        "available": "Apply after Kakao authentication",
+        "unavailable": "The application period is over"
+      }
     },
-    "detail2": {
-      "text1": "The WOW DJ Festival is a liquor-provided event and ",
-      "text2": "",
-      "under": "minors are prohibited."
+    "enter": {
+      "name1": "Please write your name",
+      "name2": "ex. Hong Gildong",
+      "phone": "Please write down your contact information",
+      "comment1": "Are you enjoying the festival?",
+      "comment2": "Please let me know how you feel!",
+      "comment3": "(optional)",
+      "comment4": "The information has nothing to do with winning",
+      "submit": "Apply"
     },
-    "detail3": {
-      "text1": "You may ",
-      "under": "not be able to re-enter if you cannot check your entry stamp",
-      "text2": ""
+    "result": {
+      "title": "Submission Completed!",
+      "description1": "Get one more ticket tomorrow",
+      "description2": "at 10a.m. ",
+      "description3": "and",
+      "description4": "try again !",
+      "last": {
+        "description1": "The festival is over",
+        "description2": "The winner is ",
+        "description3": "on September 28th at 2 p.m.",
+        "description4": " ",
+        "description5": "It will be presented in the story."
+      }
     },
-    "detail4": {
-      "text1": "WOW DJ Festival is a ",
-      "under": "non-smoking area,",
-      "text2": " and all smoking activities, including e-cigarettes, are prohibited"
-    },
-    "detail5": {
-      "under1": "If you are drunk too much,",
-      "under2": "restricted or sent off",
-      "text1": " you may be ",
-      "text2": " at the discretion of the staff"
-    },
-    "detail6": "Please refrain from running on the ramp within the WOW DJ Festival",
-    "detail7": "Please follow the instructions and guidance of the on-site staff for smooth event progress",
-    "detail8": "You may be sent off if you violate the on-site staff's instructions",
-    "detail9": "Access to restricted areas and exit may be imposed upon entry"
+    "error": {
+      "close": "Close",
+      "location": {
+        "title1": "Oh! your current location is not",
+        "title2": "Hongik University",
+        "title3": "",
+        "description1": "Only applicants whose current location is Hongik University",
+        "description2": "can apply for the event"
+      },
+      "duplicate": {
+        "title1": "Already ",
+        "title2": "applied!",
+        "description1": "You can only apply once a day with a ticket",
+        "description2": "given every day during the festival"
+      }
+    }
   }
 }

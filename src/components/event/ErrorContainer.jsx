@@ -1,34 +1,47 @@
 import styled from 'styled-components';
 import highlight_long from '@/assets/svgs/event/highlight_long.svg';
 import highlight_short from '@/assets/svgs/event/highlight_short.svg';
+import highlight_en from '@/assets/svgs/event/highlight_en.svg';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
 // 홍대 내부 아닌 경우 팝업창
 export const LocationErrorBox = () => {
+  const { t } = useTranslation();
+  const [lang, setLang] = useState(false); // ko일 때 false
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setLang(!lang);
+  }, [localStorage.getItem('i18nextLng')]);
 
   return (
     <ErrorContainer>
       <Title>
-        앗! 현재 위치가
+        {t(`event.error.location.title1`)}
         <br />
         <HighlitedText>
-          <LongHighlight src={highlight_long} alt="highlight_long" />
-          홍익대학교
+          {!lang ? (
+            <LongHighlight src={highlight_long} alt="highlight_long" />
+          ) : (
+            <EnHighlight src={highlight_en} alt="highlight_en" />
+          )}
+          {t(`event.error.location.title2`)}
         </HighlitedText>
-        가 아니에요
+        {t(`event.error.location.title3`)}
       </Title>
       <Description>
-        현재 위치가 홍익대학교로 확인된 응모자만
+        {t(`event.error.location.description1`)}
         <br />
-        이벤트에 응모가 가능해요
+        {t(`event.error.location.description2`)}
       </Description>
       <CloseButton
         onClick={() => {
           navigate('/event');
         }}
       >
-        <p>닫기</p>
+        <p>{t(`event.error.close`)}</p>
       </CloseButton>
     </ErrorContainer>
   );
@@ -36,28 +49,35 @@ export const LocationErrorBox = () => {
 
 // 중복 응모 시 팝업창
 export const DuplicationErrorBox = () => {
+  const { t } = useTranslation();
+  const [lang, setLang] = useState(false); // ko일 때 false
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setLang(!lang);
+  }, [localStorage.getItem('i18nextLng')]);
 
   return (
     <ErrorContainer>
       <Title>
         <HighlitedText>
-          이미 응모 <ShortHighlight src={highlight_short} alt="highlight_short" />
+          {t(`event.error.duplicate.title1`)}
+          <ShortHighlight src={highlight_short} alt="highlight_short" />
         </HighlitedText>
-        완료 했어요!
+        {t(`event.error.duplicate.title2`)}
       </Title>
 
       <Description>
-        축제 기간 동안 매일 주어지는 응모권으로
+        {t(`event.error.duplicate.description1`)}
         <br />
-        1일 1회만 응모 가능해요
+        {t(`event.error.duplicate.description2`)}
       </Description>
       <CloseButton
         onClick={() => {
           navigate('/event');
         }}
       >
-        <p>닫기</p>
+        <p>{t(`event.error.close`)}</p>
       </CloseButton>
     </ErrorContainer>
   );
@@ -88,7 +108,8 @@ const HighlitedText = styled.span`
 `;
 
 const LongHighlight = styled.img`
-  width: 9.3rem;
+  //width: 9.3rem;
+  width: 100%;
   height: 1.2rem;
   position: absolute;
   bottom: 0;
@@ -102,6 +123,15 @@ const ShortHighlight = styled.img`
   position: absolute;
   bottom: 0;
   right: 0.2rem;
+  z-index: 10;
+`;
+
+const EnHighlight = styled.img`
+  width: 17rem;
+  height: 1.2;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   z-index: 10;
 `;
 

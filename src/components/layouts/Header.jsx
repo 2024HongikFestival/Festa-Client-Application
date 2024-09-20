@@ -6,7 +6,7 @@ import CommonMenuBar from '@/components/layouts/CommonMenuBar';
 import routeConfig from '@/constants/layouts/routeConfig';
 import { useCamera } from '@/context/AuthProvider';
 import xBtnBlack from '@/assets/svgs/layouts/xBtnBlack.svg';
-import hiuLogoBlack from '@/assets/webps/layouts/hiuLogoBlack.webp';
+import hiuLogoBlack from '@/assets/svgs/layouts/hiuLogoBlack.svg';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

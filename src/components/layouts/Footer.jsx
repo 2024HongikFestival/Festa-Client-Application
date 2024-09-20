@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import mangaeLogo from '@/assets/webps/layouts/mangae.webp';
 import { useTranslation } from 'react-i18next';
 import rightArrow from '@/assets/svgs/makers/rightArrow.svg';
@@ -164,15 +164,32 @@ export default function Footer() {
       <S.InstaContainer $path={location.pathname}>
         <span>{t('layouts.footer.instagram')}</span>
         <S.Instagrams>
-          <a href="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
+          <Link to="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
             <img src={mangaeInsta} alt="mangaeInsta" />
-          </a>
-          <a href="https://www.instagram.com/hiu_wodf_official/" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link to="https://www.instagram.com/hiu_wodf_official/" target="_blank" rel="noopener noreferrer">
             <img src={wdfInsta} alt="wdfInsta" />
-          </a>
-          <a href="https://www.instagram.com/hiu_student_council/" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link to="https://www.instagram.com/hiu_student_council/" target="_blank" rel="noopener noreferrer">
             <img src={gaehwaInsta} alt="gaehwaInsta" />
-          </a>
+          </Link>
+          {flame ? (
+            <S.FlamePolicy
+              onClick={() => {
+                window.open('https://strong-possum-38a.notion.site/cbdd0b8c079f4d1a8702c1e4001d717e?pvs=4');
+              }}
+            >
+              {t('layouts.footer.policy')}
+            </S.FlamePolicy>
+          ) : (
+            <S.Policy
+              onClick={() => {
+                window.open('https://strong-possum-38a.notion.site/cbdd0b8c079f4d1a8702c1e4001d717e?pvs=4');
+              }}
+            >
+              {t('layouts.footer.policy')}
+            </S.Policy>
+          )}
         </S.Instagrams>
       </S.InstaContainer>
     </S.FooterLayout>

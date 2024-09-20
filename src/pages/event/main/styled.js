@@ -9,10 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   margin-top: 2.7rem;
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.basic.eventTitle}
@@ -81,7 +78,7 @@ export const Raffle = styled.div`
 
 export const Quantity = styled.div`
   display: flex;
-  width: 13rem;
+  min-width: 13rem;
   height: 3.2rem;
   padding: 0.4rem 1.7rem;
   justify-content: center;
@@ -166,20 +163,20 @@ export const DetailTitle = styled.div`
   color: ${(props) => props.theme.colors.gray10};
   ${(props) => props.theme.fontStyles.basic.body2Bold};
   display: flex;
-  min-width: fit-content;
+  min-width: min-content;
 `;
 
 export const DetailDescription = styled.div`
+  text-align: left;
   color: ${(props) => props.theme.colors.gray30};
   ${(props) => props.theme.fontStyles.basic.body2Med};
 `;
 
 export const ShareButton = styled.button`
-  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 1.1rem;
+  padding: 0 10.3rem 0 9.3rem;
+  gap: 0.8rem;
   width: 33.5rem;
   height: 5.2rem;
   flex-shrink: 0;
@@ -187,23 +184,21 @@ export const ShareButton = styled.button`
   border: 0.1rem solid #ffff24;
   background: ${(props) => props.theme.colors.gray100};
   margin-bottom: 4.4rem;
+`;
 
-  p {
-    color: #ffff24;
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
+export const ShareText = styled.p`
+  color: #ffff24;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
 export const ShareIcon = styled.img`
   width: 3.9rem;
   height: 3.9rem;
-  position: absolute;
-  left: 8.3rem;
 `;
 
 export const KakaoAuthButton = styled.button`
