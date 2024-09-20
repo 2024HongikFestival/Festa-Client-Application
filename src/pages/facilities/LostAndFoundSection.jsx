@@ -3,6 +3,7 @@ import * as S from '@/pages/facilities/styles';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import lostAndFoundMap from '@/assets/webps/facilities/lostAndFoundMap.webp';
+import DraggableMap from '@/components/facilities/DraggableMap';
 
 const LostAndFoundSection = () => {
   const nav = useNavigate();
@@ -14,9 +15,16 @@ const LostAndFoundSection = () => {
         <S.Title>
           {t('facilities.lostAndFound.title1')} <span>{t('facilities.lostAndFound.title2')}</span>
         </S.Title>
-        <S.Map>
-          <img src={lostAndFoundMap} alt="lostAndFoundMap" />
-        </S.Map>
+
+        <DraggableMap
+          src={lostAndFoundMap}
+          alt="lost and found map"
+          $bottom="-12.5rem"
+          $left="-20.3rem"
+          $width="96.39rem"
+          $height="62.46rem"
+        />
+
         <S.Description>
           <span>{t('facilities.lostAndFound.description1')}</span>
           {t('facilities.lostAndFound.description2')}

@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const DraggableMap = ({ src, alt, $left, $bottom }) => {
+const DraggableMap = ({ src, alt, $left, $bottom, $width, $height }) => {
   const mapRef = useRef(null);
   const containerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -123,7 +123,7 @@ const DraggableMap = ({ src, alt, $left, $bottom }) => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <Map ref={mapRef} src={src} alt={alt} $left={$left} $bottom={$bottom} />
+      <Map ref={mapRef} src={src} alt={alt} $left={$left} $bottom={$bottom} $width={$width} $height={$height} />
     </MapContainer>
   );
 };
@@ -135,6 +135,8 @@ DraggableMap.propTypes = {
   alt: PropTypes.string.isRequired,
   $left: PropTypes.string,
   $bottom: PropTypes.string,
+  $width: PropTypes.string,
+  $height: PropTypes.string,
 };
 
 export const MapContainer = styled.div`
@@ -149,8 +151,8 @@ export const Map = styled.img`
   position: absolute;
   bottom: ${({ $bottom }) => $bottom || '-1rem'}; /* props로 받은 값 사용, 기본값 -1rem */
   left: ${({ $left }) => $left || '-15.8rem'}; /* props로 받은 값 사용, 기본값 -15.8rem */
-  width: 80.325rem; /* 큰 지도의 전체 너비 */
-  height: 52.05rem; /* 큰 지도의 전체 높이 */
+  width: ${({ $width }) => $width || '80.325rem'}; /* 큰 지도의 전체 너비 */
+  height: ${({ $height }) => $height || '52.05rem'}; /* 큰 지도의 전체 높이 */
   cursor: grab;
 
   &.dragging {
