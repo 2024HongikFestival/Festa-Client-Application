@@ -1,6 +1,6 @@
-import { axiosInstance } from '@/api/axios';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { axiosInstance } from '@/api/axios';
 
 const RedirectLosts = () => {
   const code = new URL(window.location.href).searchParams.get('code');
