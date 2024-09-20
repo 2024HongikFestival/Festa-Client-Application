@@ -1,33 +1,44 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation, Trans } from 'react-i18next'; // Trans 컴포넌트도 추가
+import { useTranslation, Trans } from 'react-i18next';
 import styled from 'styled-components';
+import stageInfoMap_2 from '@/assets/webps/stageInfo/stageInfoMap_2.webp';
+import Lottie from 'lottie-react';
+import arrowAnimation from '@/assets/lotties/stageInfo/arrowAnimation.json';
 
 const LocationInfo = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation(); // useTranslation hook 사용
+  const { t } = useTranslation();
 
   return (
     <Container>
       <MapContainer>
+        {/* 첫 번째 지도 - 이미지만 표시 */}
         <MapBox>
           <MapTitle>{t('locationInfo.mapTitle')}</MapTitle>
-          <Map></Map>
+          <Map src={stageInfoMap_2} alt="Stage Info Map" />
         </MapBox>
+
+        {/* 두 번째 지도 - 이미지와 Lottie 애니메이션 */}
         <MapBox>
           <MapTitle>{t('locationInfo.entranceInfo')}</MapTitle>
-          <Map></Map>
+          <MapWrapper>
+            <Map src={stageInfoMap_2} alt="Entrance Info Map" />
+            <LottieWrapper>
+              <Lottie animationData={arrowAnimation} loop autoplay />
+            </LottieWrapper>
+          </MapWrapper>
         </MapBox>
       </MapContainer>
+
       <InfoContainer>
         <Info>
-          {/* Trans 컴포넌트를 사용해 특정 부분에 태그를 넣음 */}
           <InfoText>
             <Trans
               i18nKey="locationInfo.hongikZoneInfo"
               components={{
-                highlight: <Highlight />, // 사전예매 부분에 적용할 태그 설정
-                br: <br />, // 줄바꿈 태그도 적용 가능
+                highlight: <Highlight />,
+                br: <br />,
               }}
             />
           </InfoText>
@@ -81,9 +92,25 @@ const MapTitle = styled.p`
   ${(props) => props.theme.fontStyles.main.headline6};
 `;
 
-const Map = styled.div`
+const MapWrapper = styled.div`
+  position: relative;
   width: 33.5rem;
   height: 25rem;
+`;
+
+const Map = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const LottieWrapper = styled.div`
+  position: absolute;
+  top: -0.9rem;
+  left: 1rem;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Lottie 애니메이션이 클릭을 방해하지 않도록 */
 `;
 
 const Info = styled.div`
