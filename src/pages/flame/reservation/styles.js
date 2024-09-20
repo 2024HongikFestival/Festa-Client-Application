@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export const RVWrapper = styled.div`
-  padding: 2.5rem 0 5.6rem;
   width: 100%;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 94.9rem;
+  margin: 2.5rem 0 5.6rem;
 `;
 
 export const RWTitle = styled.div`
