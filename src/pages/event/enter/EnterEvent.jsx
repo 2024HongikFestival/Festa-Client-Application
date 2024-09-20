@@ -4,8 +4,10 @@ import { useNavigate, useNavigationType } from 'react-router-dom';
 import * as S from './styled';
 import form from '@/assets/webps/event/form.webp';
 import PhoneNumBox from '@/components/event/PhoneNumBox';
+import { useTranslation } from 'react-i18next';
 
 const EnterEvent = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const navigationType = useNavigationType();
 
@@ -81,7 +83,8 @@ const EnterEvent = () => {
       localStorage.removeItem('kakao_code');
       localStorage.removeItem('event_access_token');
       // response.data.date를 state로 전달
-      navigate('/event/submit', { state: { date: response.data.date } });
+      console.log(response.data.data.date);
+      navigate('/event/submit', { state: { date: response.data.data.date } });
     } catch (error) {
       console.log(error);
     }
@@ -112,11 +115,11 @@ const EnterEvent = () => {
       <S.FormContainer>
         <form>
           <S.Section>
-            <S.SectionText>이름을 알려주세요</S.SectionText>
-            <S.Input type="text" placeholder="ex. 홍길동" onChange={handleName} value={name} />
+            <S.SectionText>{t(`event.enter.name1`)}</S.SectionText>
+            <S.Input type="text" placeholder={t(`event.enter.name2`)} onChange={handleName} value={name} />
           </S.Section>
           <S.Section>
-            <S.SectionText>당첨 시 연락드릴 연락처를 적어주세요</S.SectionText>
+            <S.SectionText>{t(`event.enter.phone`)}</S.SectionText>
             <S.PhoneContainer>
               {codeArr.map((item, index) => (
                 <Fragment key={index}>
@@ -135,15 +138,16 @@ const EnterEvent = () => {
 
           <S.Section className="last">
             <S.SectionText>
-              축제 재밌게 즐기고 계신가요?
+              {t(`event.enter.comment1`)}
               <br />
-              여러분들의 생생한 후기를 들려주세요! <span>(선택)</span>
+              {t(`event.enter.comment2`)} <span>{t(`event.enter.comment3`)}</span>
             </S.SectionText>
             <S.TextAreaWrapper>
               <S.TextArea
                 type="text"
                 maxLength="100"
-                placeholder="해당 내용은 당첨과는 무관해요"
+                placeholder={t(`event.enter.comment4`)}
+                outline="none"
                 onChange={handleComment}
                 value={comment}
               />
@@ -152,11 +156,11 @@ const EnterEvent = () => {
           </S.Section>
           {isAvailable ? (
             <S.EnterButton onClick={handleEventEntry}>
-              <p>응모하기</p>
+              <p>{t(`event.enter.submit`)}</p>
             </S.EnterButton>
           ) : (
             <S.DisableButton disabled>
-              <p>응모하기</p>
+              <p>{t(`event.enter.submit`)}</p>
             </S.DisableButton>
           )}
         </form>

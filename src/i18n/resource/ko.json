@@ -372,6 +372,55 @@
       "info": "랭킹은 1시간 단위로 정각 업데이트되며,\n매일 오전 5시에 리셋됩니다"
     }
   },
+  "map": {
+    "title": "사이트맵",
+    "booth1": "입장부스",
+    "booth2": "레드불",
+    "booth3": "예거 마이스터",
+    "booth4": "금군양조",
+    "booth5": "스놀",
+    "product1": "프루팁스 상품 제공",
+    "product5": "슈가로로 상품 제공"
+  },
+
+  "timetable": {
+    "title": "타임테이블",
+    "WED": "수",
+    "THU": "목",
+    "FRI": "금",
+    "notice": "관람 시 유의사항",
+    "detail1": {
+      "under1": "음식물(식수 제외) 반입은 금지",
+      "text1": "와우 디제이 페스티벌 내 ",
+      "text2": "됩니다.",
+      "under2": ""
+    },
+    "detail2": {
+      "text1": "와우 디제이 페스티벌은 주류가 제공되는 행사로 ",
+      "text2": "됩니다.",
+      "under": "미성년자 출입이 금지"
+    },
+    "detail3": {
+      "text1": "",
+      "text2": "할 수 있습니다.",
+      "under": "입장 도장 확인 불가 시 재입장이 불가"
+    },
+    "detail4": {
+      "text1": "와우 디제이 페스티벌은",
+      "under": "금연 구역",
+      "text2": "으로 전자 담배를 포함한 모든 흡연 행위는 불가합니다."
+    },
+    "detail5": {
+      "under1": "과도한 음주 상태",
+      "under2": "입장 제한 또는 퇴장",
+      "text1": "일 경우 스태프의 판단 하에 ",
+      "text2": "될 수 있습니다."
+    },
+    "detail6": "와우 디제이 페스티벌 내 경사로에서 뛰는 행위는 자제 부탁드립니다.",
+    "detail7": "원활한 행사 진행을 위하여 현장 스태프의 지시 및 안내에 따라 주시기 바랍니다.",
+    "detail8": "현장 스태프의 지시에 반할 경우 퇴장 조치될 수 있습니다.",
+    "detail9": "출입 제한 구역 접근 및 출입 시 퇴장 조치될 수 있습니다."
+  },
   "fleamarket": {
     "pageTitle": "플리마켓",
     "location": "플리마켓 위치",
@@ -577,7 +626,8 @@
       "instagram": "Instagram",
       "goFlame": "와디페로 이동",
       "goDaedongje": "대동제로 이동",
-      "prev": "이전 화면으로"
+      "prev": "이전 화면으로",
+      "policy": "개인정보처리방침"
     }
   },
 
@@ -846,5 +896,83 @@
     "day1": "9.25(수)",
     "day2": "9.26(목)",
     "day3": " 9.27(금)"
+  },
+  "event": {
+    "main": {
+      "notice": {
+        "title1": "홍익",
+        "title2": "대동제 래플",
+        "description1": "매일",
+        "description2": "오전 10시",
+        "description3": "응모권 1장 부여",
+        "timeNotice": "마감까지 남은 시간",
+        "qText": "Q. 홍익 래플이 뭐예요?",
+        "aText": "A. 응모자 추첨을 통해 경품을 지급하는 이벤트입니다."
+      },
+      "item": {
+        "quantity": "당첨 수량 10장",
+        "title1": "TVING 스탠다드 요금제",
+        "title2": "3개월 이용권",
+        "title3": "증정!",
+        "description1": "3개월 이용권"
+      },
+      "detail": {
+        "title1": "응모 대상",
+        "description1": "지금 ‘홍익대학교 내에서’ 축제를 즐기고",
+        "description2": "있다면 재학생 외부인 상관없이 누구나",
+        "title2": "응모 조건",
+        "description3": "현재 위치가 홍익대학교로 확인된 응모자",
+        "title3": "응모 기간",
+        "description4": "9월 25일 10:00 ~ 9월 27일 24:00",
+        "description5": "매일 오전 10시 응모권 1장 제공",
+        "title4": "당첨 발표",
+        "description6": "9월 28일 14:00 대동제 인스타 스토리"
+      },
+      "button": {
+        "share": "이벤트 공유",
+        "available": "카카오 인증 후 응모하기",
+        "unavailable": "응모 기간이 아니에요"
+      }
+    },
+    "enter": {
+      "name1": "이름을 알려주세요",
+      "name2": "ex. 홍길동",
+      "phone": "당첨 시 연락드릴 연락처를 적어주세요",
+      "comment1": "축제 재밌게 즐기고 계신가요?",
+      "comment2": "여러분들의 생생한 후기를 들려주세요!",
+      "comment3": "(선택)",
+      "comment4": "해당 내용은 당첨과는 무관해요",
+      "submit": "응모하기"
+    },
+    "result": {
+      "title": "응모 완료!",
+      "description1": "내일",
+      "description2": "오전 10시",
+      "description3": "에 응모권 1장 받고",
+      "description4": "또 도전해보세요!",
+      "last": {
+        "description1": "축제가 끝났어요",
+        "description2": "당첨자는 ",
+        "description3": "9월 28일 오후 2시",
+        "description4": "스토리에 발표",
+        "description5": "됩니다"
+      }
+    },
+    "error": {
+      "close": "닫기",
+      "location": {
+        "title1": "앗! 현재 위치가",
+        "title2": "홍익대학교",
+        "title3": "가 아니에요",
+        "description1": "현재 위치가 홍익대학교로 확인된 응모자만",
+        "description2": "이벤트에 응모가 가능해요"
+      },
+      "duplicate": {
+        "title1": "이미 응모 ",
+        "title2": "완료 했어요!",
+        "description1": "축제 기간 동안 매일 주어지는 응모권으로",
+        "description2": "1일 1회만 응모 가능해요"
+      }
+    }
   }
 }
