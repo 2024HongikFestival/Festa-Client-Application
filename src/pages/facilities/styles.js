@@ -49,27 +49,6 @@ export const Title = styled.p`
   }
 `;
 
-export const MapContainer = styled.div`
-  width: 33.5rem; /* 작은 창의 너비 */
-  height: 25rem; /* 작은 창의 높이 */
-  overflow: hidden; /* 넘치는 부분 숨기기 */
-  position: relative;
-  cursor: grab; /* 손 모양 커서 */
-`;
-
-export const Map = styled.img`
-  position: absolute;
-  bottom: -1rem; /* 지도에서 처음 보여줄 영역의 상단 */
-  left: -15.8rem; /* 지도에서 처음 보여줄 영역의 왼쪽 */
-  width: 80.325rem; /* 큰 지도의 전체 너비 */
-  height: 52.05rem; /* 큰 지도의 전체 높이 */
-  cursor: grab;
-
-  &.dragging {
-    cursor: grabbing;
-  }
-`;
-
 export const RestroomDetail = styled.ul`
   width: 100%;
   padding: 1.8rem 2.4rem 2.4rem 2.4rem;
