@@ -374,6 +374,54 @@
       "info": "Rankings will be updated on an hourly basis,\n reset daily at 5 AM"
     }
   },
+  "map": {
+    "title": "Site Map",
+    "booth1": "Entrance",
+    "booth2": "Red Bull",
+    "booth3": "Jägermeiſter",
+    "booth4": "GEUMGUN BREWERY",
+    "booth5": "SNoL",
+    "product1": "offering of FRUTIPS products",
+    "product5": "offering of SUGARLOLO products"
+  },
+  "timetable": {
+    "title": "Timetable",
+    "WED": "WED",
+    "THU": "THU",
+    "FRI": "FRI",
+    "notice": "Precautions for viewing",
+    "detail1": {
+      "under1": "Bringing food (excluding drinking water)",
+      "text1": "",
+      "text2": " into the WOW DJ festival ",
+      "under2": "is prohibited"
+    },
+    "detail2": {
+      "text1": "The WOW DJ Festival is a liquor-provided event and ",
+      "text2": "",
+      "under": "minors are prohibited."
+    },
+    "detail3": {
+      "text1": "You may ",
+      "under": "not be able to re-enter if you cannot check your entry stamp",
+      "text2": ""
+    },
+    "detail4": {
+      "text1": "WOW DJ Festival is a ",
+      "under": "non-smoking area,",
+      "text2": " and all smoking activities, including e-cigarettes, are prohibited"
+    },
+    "detail5": {
+      "under1": "If you are drunk too much,",
+      "under2": "restricted or sent off",
+      "text1": " you may be ",
+      "text2": " at the discretion of the staff"
+    },
+    "detail6": "Please refrain from running on the ramp within the WOW DJ Festival",
+    "detail7": "Please follow the instructions and guidance of the on-site staff for smooth event progress",
+    "detail8": "You may be sent off if you violate the on-site staff's instructions",
+    "detail9": "Access to restricted areas and exit may be imposed upon entry"
+  },
   "fleamarket": {
     "pageTitle": "Fleamarket",
     "location": "Fleamarket Location",

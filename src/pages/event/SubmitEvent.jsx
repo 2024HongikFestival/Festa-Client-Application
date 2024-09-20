@@ -4,6 +4,7 @@ import shareIcon from '@/assets/webps/event/shareIcon.webp';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { handleShare } from '@/utils/event/handleShare';
 
 const SubmitEvent = () => {
   const { t } = useTranslation();
@@ -85,7 +86,11 @@ const SubmitEvent = () => {
         {lang ? <EngTitle> {t(`event.result.title`)}</EngTitle> : <Title> {t(`event.result.title`)}</Title>}
       </TitleBox>
       {renderContent()}
-      <ShareButton>
+      <ShareButton
+        onClick={() => {
+          handleShare('https://www.2024hongikfestival.com/event');
+        }}
+      >
         <ShareIcon src={shareIcon} alt="shareIcon" />
         <p> {t(`event.main.button.share`)}</p>
       </ShareButton>

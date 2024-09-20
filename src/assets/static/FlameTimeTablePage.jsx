@@ -63,42 +63,43 @@ import joody from '/src/assets/webps/wdTT/joody.webp';
 import joodyLogo from '/src/assets/webps/wdTT/joodyLogo.webp';
 import coco from '/src/assets/webps/wdTT/juncoco.webp';
 import cocoLogo from '/src/assets/webps/wdTT/juncocoLogo.webp';
-import nohot from '/src/assets/webps/wdTT/nohotBtn.webp';
 import { useTranslation } from 'react-i18next';
 
 const FlameTimeTablePage = () => {
   const [selectedDate, setSelectedDate] = useState(1);
+  const [clickDate, setClickDate] = useState(1);
+  const [isPassed, setIsPassed] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const { t } = useTranslation();
 
   const dates = [
-    { day: 1, date: `9.25 (${t('timetable.WED')})` },
-    { day: 2, date: `9.26 (${t('timetable.THU')})` },
-    { day: 3, date: `9.27 (${t('timetable.FRI')})` },
+    { day: 1, date: `9.16 (${t('flame.timetable.WED')})` },
+    { day: 2, date: `9.16 (${t('flame.timetable.THU')})` },
+    { day: 3, date: `9.16 (${t('flame.timetable.FRI')})` },
   ];
 
   const dayOneTime = [
-    { dj: 'RUI', time: '7:00 PM', isHot: false, djimg: ruiImg, djlogo: ruiLogo },
+    { dj: 'RUI', time: '8:00 PM', isHot: false, djimg: ruiImg, djlogo: ruiLogo },
     { dj: 'FINE', time: '8:00 PM', isHot: false, djimg: fineImg, djlogo: fineLogo },
-    { dj: 'RIGHTBACK', time: '9:00 PM', isHot: false, djimg: rbImg, djlogo: rbLogo },
-    { dj: 'CHANXER', time: '10:00 PM', isHot: true, djimg: cximg, djlogo: cxLogo },
-    { dj: 'TEZZ', time: '11:00 PM', isHot: true, djimg: tezz, djlogo: tezzLogo },
+    { dj: 'RIGHTBACK', time: '8:00 PM', isHot: false, djimg: rbImg, djlogo: rbLogo },
+    { dj: 'CHANXER', time: '8:00 PM', isHot: true, djimg: cximg, djlogo: cxLogo },
+    { dj: 'TEZZ', time: '8:00 PM', isHot: true, djimg: tezz, djlogo: tezzLogo },
   ];
 
   const dayTwoTime = [
-    { dj: 'YongSul', time: '7:00 PM', isHot: false, djimg: yongsul, djlogo: yongsulLogo },
+    { dj: 'YongSul', time: '8:00 PM', isHot: false, djimg: yongsul, djlogo: yongsulLogo },
     { dj: 'CHOI', time: '8:00 PM', isHot: false, djimg: choi, djlogo: choiLogo },
-    { dj: 'LOZIC', time: '9:00 PM', isHot: false, djimg: lozic, djlogo: lozicLogo },
-    { dj: 'VANDAL ROCK', time: '10:00 PM', isHot: true, djimg: vdImg, djlogo: vdLogo },
-    { dj: 'ASTER', time: '11:00 PM', isHot: true, djimg: aster, djlogo: asterLogo },
+    { dj: 'LOZIC', time: '8:00 PM', isHot: false, djimg: lozic, djlogo: lozicLogo },
+    { dj: 'VANDAL ROCK', time: '8:00 PM', isHot: true, djimg: vdImg, djlogo: vdLogo },
+    { dj: 'ASTER', time: '8:00 PM', isHot: true, djimg: aster, djlogo: asterLogo },
   ];
 
   const dayThreeTime = [
-    { dj: 'NAP ON CLOUD', time: '7:00 PM', isHot: false, djimg: nap, djlogo: napLogo },
+    { dj: 'NAP ON CLOUD', time: '8:00 PM', isHot: false, djimg: nap, djlogo: napLogo },
     { dj: 'SIGMA', time: '8:00 PM', isHot: false, djimg: sigma, djlogo: sigmaLogo },
-    { dj: 'WOOXI', time: '9:00 PM', isHot: true, djimg: wooxi, djlogo: wooxiLogo },
-    { dj: 'JOODY', time: '10:00 PM', isHot: true, djimg: joody, djlogo: joodyLogo },
-    { dj: 'JUNCOCO', time: '11:00 PM', isHot: true, djimg: coco, djlogo: cocoLogo },
+    { dj: 'WOOXI', time: '8:00 PM', isHot: true, djimg: wooxi, djlogo: wooxiLogo },
+    { dj: 'JOODY', time: '8:00 PM', isHot: true, djimg: joody, djlogo: joodyLogo },
+    { dj: 'JUNCOCO', time: '8:00 PM', isHot: true, djimg: coco, djlogo: cocoLogo },
   ];
 
   const handleClick = (day) => {
@@ -108,20 +109,6 @@ const FlameTimeTablePage = () => {
   useInterval(() => {
     setCurrentTime(new Date());
   }, 1000);
-
-  useEffect(() => {
-    const today = new Date();
-    const currentMonth = today.getMonth() + 1;
-    const currentDate = today.getDate();
-
-    if (currentMonth === 9 && currentDate === 26) {
-      setSelectedDate(2);
-    } else if (currentMonth === 9 && currentDate === 27) {
-      setSelectedDate(3);
-    } else {
-      setSelectedDate(1);
-    }
-  }, []);
 
   useEffect(() => {
     AOS.init({});
@@ -137,12 +124,15 @@ const FlameTimeTablePage = () => {
   const isTimeActive = (time, date) => {
     const { hour, isPM } = formatTime(time);
 
+    // 현재 시간 정보
     const currentHour = currentTime.getHours();
     const currentDate = `${currentTime.getMonth() + 1}.${currentTime.getDate()}`;
 
-    const timeDate = date.split(' ')[0];
+    // 날짜 비교
+    const timeDate = date.split(' ')[0]; // '9.25' 형태로 추출
     const isDateMatching = currentDate === timeDate;
 
+    // 시간 비교
     const isTimeMatching = hour === currentHour % 12 && isPM === currentHour >= 12;
     return isDateMatching && isTimeMatching;
   };
@@ -150,10 +140,12 @@ const FlameTimeTablePage = () => {
   const isTimePassed = (time, date) => {
     const { hour, minute, isPM } = formatTime(time);
 
+    // 현재 시간 정보
     const currentHour = currentTime.getHours();
     const currentDate = `${currentTime.getMonth() + 1}.${currentTime.getDate()}`;
 
-    const timeDate = date.split(' ')[0];
+    // 날짜 비교
+    const timeDate = date.split(' ')[0]; // '9.25' 형태로 추출
     const isDateMatching = currentDate >= timeDate;
 
     if (currentDate === timeDate) {
@@ -161,6 +153,7 @@ const FlameTimeTablePage = () => {
       return isTimePassing;
     }
 
+    // 시간 비교
     return isDateMatching;
   };
 
@@ -182,15 +175,10 @@ const FlameTimeTablePage = () => {
   return (
     <TTWrapper>
       <TTBox>
-        <TTTitle> {t('timetable.title')}</TTTitle>
+        <TTTitle> {t('flame.timetable.title')}</TTTitle>
         <DaysBox>
           {dates.map(({ day, date }) => (
-            <DayBox
-              key={day}
-              day={day}
-              className={selectedDate === day ? 'active' : ''}
-              onClick={() => handleClick(day)}
-            >
+            <DayBox key={day} className={selectedDate === day ? 'active' : ''} onClick={() => handleClick(day)}>
               <p>{`DAY ${day}`}</p>
               <p>{date}</p>
             </DayBox>
@@ -205,7 +193,7 @@ const FlameTimeTablePage = () => {
             >
               <RedLine>
                 {isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) ? (
-                  <img src={item.isHot ? redfullBtn : nohot} className="fullBtn" alt="redButton" />
+                  <img src={redfullBtn} className="fullBtn" alt="redButton" />
                 ) : (
                   <img
                     src={
@@ -250,65 +238,65 @@ const FlameTimeTablePage = () => {
         </TimeTableBox>
 
         <NoticeBox>
-          <NoticeTitle>{t('timetable.notice')}</NoticeTitle>
+          <NoticeTitle>{t('flame.timetable.notice')}</NoticeTitle>
           <NoticeText>
             <NoticeTextContent>
               <NumberBox>1.</NumberBox>
               <p>
-                {t('timetable.detail1.text1')}
-                <UnderlinedText>{t('timetable.detail1.under1')}</UnderlinedText>
-                {t('timetable.detail1.text2')}
-                <UnderlinedText> {t('timetable.detail1.under2')}</UnderlinedText>
+                {t('flame.timetable.detail1.text1')}
+                <UnderlinedText>{t('flame.timetable.detail1.under1')}</UnderlinedText>
+                {t('flame.timetable.detail1.text2')}
+                <UnderlinedText> {t('flame.timetable.detail1.under2')}</UnderlinedText>
               </p>
             </NoticeTextContent>
             <NoticeTextContent>
               <NumberBox>2.</NumberBox>
               <p>
-                {t('timetable.detail2.text1')}
-                <UnderlinedText>{t('timetable.detail2.under')}</UnderlinedText>
-                {t('timetable.detail2.text2')}
+                {t('flame.timetable.detail2.text1')}
+                <UnderlinedText>{t('flame.timetable.detail2.under')}</UnderlinedText>
+                {t('flame.timetable.detail2.text2')}
               </p>
             </NoticeTextContent>
             <NoticeTextContent>
               <NumberBox>3.</NumberBox>
               <p>
-                {t('timetable.detail3.text1')}
-                <UnderlinedText> {t('timetable.detail3.under')}</UnderlinedText>
-                {t('timetable.detail3.text2')}
+                {t('flame.timetable.detail3.text1')}
+                <UnderlinedText> {t('flame.timetable.detail3.under')}</UnderlinedText>
+                {t('flame.timetable.detail3.text2')}
               </p>
             </NoticeTextContent>
             <NoticeTextContent>
               <NumberBox>4.</NumberBox>
               <p>
-                {t('timetable.detail4.text1')}
-                <UnderlinedText> {t('timetable.detail4.under')}</UnderlinedText>
-                {t('timetable.detail4.text2')}
+                {t('flame.timetable.detail4.text1')}
+                <UnderlinedText> {t('flame.timetable.detail4.under')}</UnderlinedText>
+                {t('flame.timetable.detail4.text2')}
               </p>
             </NoticeTextContent>
             <NoticeTextContent>
               <NumberBox>5.</NumberBox>
               <p>
-                <UnderlinedText>{t('timetable.detail5.under1')}</UnderlinedText>
-                {t('timetable.detail5.text1')}
-                <UnderlinedText> {t('timetable.detail5.under2')}</UnderlinedText>
-                {t('timetable.detail5.text2')}
+                <UnderlinedText>{t('flame.timetable.detail5.under1')}</UnderlinedText>
+                {t('flame.timetable.detail5.text1')}
+                <UnderlinedText> {t('flame.timetable.detail5.under2')}</UnderlinedText>
+                {t('flame.timetable.detail5.text2')}
               </p>
             </NoticeTextContent>
             <NoticeTextContent>
               <NumberBox>6.</NumberBox>
-              <p> {t('timetable.detail6')}</p>
+              <p> {t('flame.timetable.detail6')}</p>
             </NoticeTextContent>
             <NoticeTextContent>
               <NumberBox>7.</NumberBox>
-              <p> {t('timetable.detail7')}</p>
+              <p> {t('flame.timetable.detail7')}</p>
             </NoticeTextContent>
             <NoticeTextContent>
               <NumberBox>8.</NumberBox>
-              {t('timetable.detail8')}
+              {t('flame.timetable.detail8')}
             </NoticeTextContent>
             <NoticeTextContent>
               <NumberBox>9.</NumberBox>
-              {t('timetable.detail9')}
+              {t('flame.timetable.detail9')}
             </NoticeTextContent>
           </NoticeText>
         </NoticeBox>

@@ -26,7 +26,6 @@ export const MapBox = styled.div`
 
 export const MapToggle = styled.div`
   width: 100%;
-  height: 5.6rem;
   display: flex;
   padding: 8px 13.5px;
   justify-content: space-between;
@@ -48,5 +47,22 @@ export const MapToggleBtn = styled.div`
 `;
 
 export const MapToggleBox = styled.div`
-  height: 49.2rem;
+  cursor: grab;
+  overflow: hidden;
+`;
+
+export const MapImgBox = styled.div`
+  width: 33.5rem;
+  cursor: grab;
+  overflow: hidden;
+  margin: 2.4rem 0;
+
+  .card {
+    touch-action: none;
+    user-select: none;
+    will-change: transform;
+    width: 33.5rem;
+    height: 44.3rem;
+    background-size: cover;
+  }
 `;
