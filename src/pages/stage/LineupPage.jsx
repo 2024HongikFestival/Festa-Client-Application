@@ -43,6 +43,15 @@ const LineupPage = () => {
     const dayData = Data[selectedDay.toLowerCase()];
 
     return dayData.map((data, index) => {
+      let animationType = '';
+
+      // 첫 번째 카드는 애니메이션 없음
+      if (index === 0) {
+        animationType = '';
+      } else {
+        animationType = 'fade-up';
+      }
+
       const isBlack = (selectedDay === 'day3' && index === 0) || (selectedDay !== 'day3' && index === 1);
 
       return (
