@@ -22,7 +22,7 @@ export const getHeartColor = (menuKey) => {
     case 'clubSports':
     case 'clubPerformance':
     case 'clubExhibitionLeisure':
-    case 'clueSociety':
+    case 'clubSociety':
       return 'rgba(153, 240, 66, 1)';
     default:
       return 'rgba(255, 104, 29, 1)';

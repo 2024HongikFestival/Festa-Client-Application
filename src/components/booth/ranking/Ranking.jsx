@@ -26,19 +26,19 @@ export default function Ranking({ kind }) {
     data: {
       data: [
         {
-          boothId: 51,
+          boothId: 5,
           boothName: '자무;자전에서 음주가무',
           totalLike: 599,
         },
         {
-          boothId: 43,
+          boothId: 8,
           boothName: '슬램덩크',
-          totalLike: 59,
+          totalLike: 599,
         },
         {
-          boothId: 22,
+          boothId: 45,
           boothName: '운수 좋은 날',
-          totalLike: 57,
+          totalLike: 599,
         },
       ],
     },

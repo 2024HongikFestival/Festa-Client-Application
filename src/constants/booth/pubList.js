@@ -33,6 +33,25 @@ import img34 from '@/assets/webps/booth/wow/34.webp';
 import img35 from '@/assets/webps/booth/wow/35.webp';
 import img36 from '@/assets/webps/booth/wow/36.webp';
 import img37 from '@/assets/webps/booth/wow/37.webp';
+import img38 from '@/assets/webps/booth/wow/38.webp';
+import img39 from '@/assets/webps/booth/wow/39.webp';
+import img40 from '@/assets/webps/booth/wow/40.webp';
+import img41 from '@/assets/webps/booth/wow/41.webp';
+import img42 from '@/assets/webps/booth/wow/42.webp';
+import img43 from '@/assets/webps/booth/wow/43.webp';
+import img44 from '@/assets/webps/booth/wow/44.webp';
+import img45 from '@/assets/webps/booth/wow/45.webp';
+import img46 from '@/assets/webps/booth/wow/46.webp';
+import img47 from '@/assets/webps/booth/wow/47.webp';
+import img48 from '@/assets/webps/booth/wow/48.webp';
+import img49 from '@/assets/webps/booth/wow/49.webp';
+import img50 from '@/assets/webps/booth/wow/50.webp';
+import img51 from '@/assets/webps/booth/wow/51.webp';
+import img52 from '@/assets/webps/booth/wow/52.webp';
+import img53 from '@/assets/webps/booth/wow/53.webp';
+import img54 from '@/assets/webps/booth/wow/54.webp';
+import img55 from '@/assets/webps/booth/wow/55.webp';
+import img56 from '@/assets/webps/booth/wow/56.webp';
 
 export const PubList = (t) => {
   return {
@@ -317,6 +336,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.9.0.event'),
         food: t('booth.pub.card.9.0.food'),
         time: 'all',
+        wow: img38,
       },
       {
         department: t('booth.pub.card.9.1.department'),
@@ -324,6 +344,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.9.1.event'),
         food: t('booth.pub.card.9.1.food'),
         time: 'all',
+        wow: img39,
       },
       {
         department: t('booth.pub.card.9.2.department'),
@@ -331,6 +352,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.9.2.event'),
         food: t('booth.pub.card.9.2.food'),
         time: 'all',
+        wow: img40,
       },
       {
         department: t('booth.pub.card.9.3.department'),
@@ -338,6 +360,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.9.3.event'),
         food: t('booth.pub.card.9.3.food'),
         time: 'all',
+        wow: img41,
       },
     ],
     10: [
@@ -347,6 +370,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.10.0.event'),
         food: t('booth.pub.card.10.0.food'),
         time: 'all',
+        wow: img42,
       },
       {
         department: t('booth.pub.card.10.1.department'),
@@ -354,6 +378,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.10.1.event'),
         food: t('booth.pub.card.10.1.food'),
         time: 'all',
+        wow: img43,
       },
       {
         department: t('booth.pub.card.10.2.department'),
@@ -361,6 +386,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.10.2.event'),
         food: t('booth.pub.card.10.2.food'),
         time: 'all',
+        wow: img44,
       },
       {
         department: t('booth.pub.card.10.3.department'),
@@ -368,6 +394,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.10.3.event'),
         food: t('booth.pub.card.10.3.food'),
         time: 'all',
+        wow: img45,
       },
       {
         department: t('booth.pub.card.10.4.department'),
@@ -375,6 +402,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.10.4.event'),
         food: t('booth.pub.card.10.4.food'),
         time: 'all',
+        wow: img46,
       },
     ],
     11: [
@@ -384,6 +412,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.11.0.event'),
         food: t('booth.pub.card.11.0.food'),
         time: 'all',
+        wow: img47,
       },
       {
         department: t('booth.pub.card.11.1.department'),
@@ -391,6 +420,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.11.1.event'),
         food: t('booth.pub.card.11.1.food'),
         time: 'all',
+        wow: img48,
       },
       {
         department: t('booth.pub.card.11.2.department'),
@@ -398,6 +428,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.11.2.event'),
         food: t('booth.pub.card.11.2.food'),
         time: 'all',
+        wow: img49,
       },
       {
         department: t('booth.pub.card.11.3.department'),
@@ -405,6 +436,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.11.3.event'),
         food: t('booth.pub.card.11.3.food'),
         time: 'all',
+        wow: img50,
       },
     ],
     12: [
@@ -414,6 +446,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.12.0.event'),
         food: t('booth.pub.card.12.0.food'),
         time: 'all',
+        wow: img51,
       },
       {
         department: t('booth.pub.card.12.1.department'),
@@ -421,6 +454,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.12.1.event'),
         food: t('booth.pub.card.12.1.food'),
         time: 'all',
+        wow: img52,
       },
       {
         department: t('booth.pub.card.12.2.department'),
@@ -428,6 +462,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.12.2.event'),
         food: t('booth.pub.card.12.2.food'),
         time: 'all',
+        wow: img53,
       },
       {
         department: t('booth.pub.card.12.3.department'),
@@ -435,6 +470,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.12.3.event'),
         food: t('booth.pub.card.12.3.food'),
         time: 'all',
+        wow: img54,
       },
     ],
     13: [
@@ -444,6 +480,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.13.0.event'),
         food: t('booth.pub.card.13.0.food'),
         time: 'all',
+        wow: img55,
       },
       {
         department: t('booth.pub.card.13.1.department'),
@@ -451,6 +488,7 @@ export const PubList = (t) => {
         event: t('booth.pub.card.13.1.event'),
         food: t('booth.pub.card.13.1.food'),
         time: 'all',
+        wow: img56,
       },
       {
         department: t('booth.pub.card.13.2.department'),
