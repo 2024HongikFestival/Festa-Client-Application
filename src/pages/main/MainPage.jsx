@@ -10,6 +10,9 @@ export default function MainPage() {
   // const { t, i18n } = useTranslation();
   const [showLottie, setShowLottie] = useState(true); // Lottie 애니메이션
   const [showContent, setShowContent] = useState(false); // Title과 Desc
+  const today = new Date();
+  const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
+  const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][today.getDay()]; // 요일 계산
 
   useEffect(() => {
     const lottieTimer = setTimeout(() => {
@@ -53,16 +56,18 @@ export default function MainPage() {
       </S.Wrapper>
       {/* 라인업 정보 컴포넌트 */}
       <S.LineupTitleWrapper>
-        <S.Date>9.25 (수)</S.Date>
+        <S.Date>
+          {formattedToday} ({dayOfWeek})
+        </S.Date>
         <S.LineupTitle>오늘의 라인업</S.LineupTitle>
       </S.LineupTitleWrapper>
-      {/* 이 부분은 아직 확정나지 않아서 크기만 잡아두었습니다. */}
       <S.LineupInfoWrapper></S.LineupInfoWrapper>
-      <S.GoLineupPageBtn>전체 라인업 보러가기 {'>'}</S.GoLineupPageBtn>
-      <S.Hr />
+      <S.GoLineupPageBtn>
+        <S.BtnText>전체 라인업 보러가기 </S.BtnText>
+        <S.Arrow />
+      </S.GoLineupPageBtn>
       {/* 중앙 무대 일정 컴포넌트 */}
       <StageInfoContainer />
-      <S.Hr />
       {/* 운영 시간 컴포넌트 */}
       <OperatingHours />
     </S.Container>

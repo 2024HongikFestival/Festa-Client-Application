@@ -4,15 +4,15 @@ import { styled, css } from 'styled-components';
 const aboutOperatingHours = [
   {
     title: '플리마켓',
-    time: '18시 ~ 마켓별 상이',
+    time: '11시 ~ 17시',
   },
   {
     title: '주점',
-    time: '10시 ~ 18시',
+    time: '12시 ~ 23시',
   },
   {
     title: '와디페',
-    time: '10시 ~ 18시',
+    time: '19시 ~ 24시',
   },
 ];
 
@@ -37,8 +37,8 @@ export default function OperatingHours() {
 const Container = styled.div`
   width: 33.5rem;
   height: 19.2rem;
-  margin-top: 6.4rem;
-  margin-bottom: 14rem;
+  margin-top: 9.6rem;
+  margin-bottom: 6.4rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -47,9 +47,14 @@ const Container = styled.div`
 `;
 
 const HoursTitle = styled.div`
-  ${({ theme }) => theme.fontStyles.main.headline3};
-
-  /* color: white; 현재 배경화면 적용되지 않아 일단 주석처리 하였습니다. */
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 4.2rem;
+  letter-spacing: -0.001rem;
+  text-align: center;
+  font-family: 'SCoreDream', sans-serif;
+  color: ${(props) => props.theme.colors.white};
+  text-shadow: 0px 0px 20px ${(props) => props.theme.colors.hongikSkyBlue};
 `;
 
 const InfoWrapper = styled.div`
@@ -64,6 +69,7 @@ const InfoComp = styled.div`
   height: 13.4rem;
   box-shadow: 0 0 0.8rem 0 rgba(0, 0, 0, 0.12);
   border-radius: 1.8rem;
+  background-color: ${(props) => props.theme.colors.white};
 `;
 
 const Title = styled.div`

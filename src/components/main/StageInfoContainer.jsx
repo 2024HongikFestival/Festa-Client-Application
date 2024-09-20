@@ -7,9 +7,6 @@ export default function StageInfoContainer() {
   return (
     <StageContainer>
       <StageTitle>중앙 무대 일정</StageTitle>
-      {/* 무대 일정에 따라 컴포넌트 변화 있을 수 있어 임시 하드코딩 */}
-      <StageInfo />
-      <StageInfo />
       <StageInfo />
       {/* 실시간 방송 보러가기 버튼 컴포넌트 */}
       <GoHibsBtn>
@@ -36,11 +33,18 @@ const StageContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 6.4rem;
-  margin-bottom: 6.4rem;
+  margin-bottom: 3.2rem;
 `;
 
 const StageTitle = styled.div`
-  ${(props) => props.theme.fontStyles.main.headline3}
+  font-family: 'SCoreDream', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 4.2rem;
+  letter-spacing: -0.028rem;
+  text-align: center;
+  color: ${(props) => props.theme.colors.white};
+  text-shadow: 0px 0px 20px ${(props) => props.theme.colors.hongikSkyBlue};
   margin-bottom: 2.8rem;
 `;
 
