@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import dayjs from 'dayjs';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 const TimeCard = ({ time }) => {
   TimeCard.propTypes = {
@@ -16,6 +17,7 @@ const TimeCard = ({ time }) => {
 };
 
 const NoticeTimeBox = () => {
+  const { t } = useTranslation();
   const [days, setDays] = useState('00');
   const [hours, setHours] = useState('00');
   const [minutes, setMinutes] = useState('00');
@@ -46,7 +48,7 @@ const NoticeTimeBox = () => {
 
   return (
     <Wrapper>
-      <NoticeTime>마감까지 남은 시간</NoticeTime>
+      <NoticeTime>{t(`event.main.notice.timeNotice`)}</NoticeTime>
       <CardBox>
         <Box>
           <Text>DAYS</Text>
