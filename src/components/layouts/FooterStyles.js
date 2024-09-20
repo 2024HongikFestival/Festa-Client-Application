@@ -301,7 +301,7 @@ export const Policy = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 15px */
-  letter-spacing: -0.01px;
+  letter-spacing: -0.001rem;
 `;
 
 export const FlamePolicy = styled(Policy)`
