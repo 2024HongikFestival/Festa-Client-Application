@@ -2,7 +2,33 @@
   "hello": "Hello!",
   "goodbye": "Good Bye!",
   "main": {
-    "sorry": "Sorry, this page is under construction."
+    "sorry": "Sorry, this page is under construction.",
+    "title": "Hongik University Festival",
+    "desc1": "This moment,",
+    "desc2": "which is the youth in full bloom",
+    "desc3": "as it is now, will be recorded ",
+    "desc4": "and remembered for a long time ",
+    "desc5": "by “2024 Hwa Yang Yeon Hwa; Blossom”",
+    "todayLineup": "Today’s Lineup",
+    "clicktoLineup": "Click to view Full line up",
+    "centralStage": "Central Stage Schedule",
+    "performance1": "Talent Contest",
+    "performance2": "Celebrities",
+    "performance3": "Student Main Stage",
+    "operatingHours": "Operating Hours",
+    "operating1": "Flea Market",
+    "operating2": "Hongik Pub",
+    "operating3": "Wow DJ Festival",
+    "operatinghours1": "11 to 17 ",
+    "operatinghours2": "12 to 23",
+    "operatinghours3": "19 to 24",
+    "HIBS": "HIBS (Hongik Broadcasting Station)",
+    "gotoBtn": "Going to Live concert !",
+    "days": {
+      "wed": "WED",
+      "thu": "THU",
+      "fri": "FRI"
+    }
   },
   "booth": {
     "pub": {
