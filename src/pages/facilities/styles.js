@@ -16,7 +16,7 @@ export const ToggleWrapper = styled.div`
 export const Toggle = styled.div`
   display: flex;
   padding: 0.8rem 1.5rem;
-  position: relative; /* 배경 애니메이션을 위한 상대 위치 */
+  position: relative;
 `;
 
 export const AnimatedBackground = styled.div`
@@ -26,9 +26,9 @@ export const AnimatedBackground = styled.div`
   border-radius: 3rem;
   transition:
     transform 0.25s ease,
-    width 0.25s ease; /* 애니메이션 효과 */
-  z-index: 0; /* 버튼 아래에 배치 */
-  will-change: transform, width; /* 애니메이션 성능 향상 */
+    width 0.25s ease;
+  z-index: 0;
+  will-change: transform, width;
 `;
 
 const ToggleButton = styled.div`
@@ -40,11 +40,11 @@ const ToggleButton = styled.div`
   text-align: center;
   color: ${({ $isActive, theme }) => ($isActive ? theme.colors.hongikBlue : theme.colors.gray60)};
   ${({ $isActive, theme }) => ($isActive ? theme.fontStyles.basic.body1Bold : theme.fontStyles.basic.body1Semi)};
-  background: transparent; /* 배경은 애니메이션이 담당 */
+  background: transparent;
   border-radius: 3rem;
   opacity: ${({ $isActive }) => ($isActive ? '1' : '0.6')};
   cursor: pointer;
-  z-index: 1; /* 버튼을 배경 위에 위치 */
+  z-index: 1;
 `;
 
 export const RestroomBtn = styled(ToggleButton).attrs({ width: '8.2rem' })``;
@@ -85,11 +85,11 @@ export const DetailItem = styled.li`
   text-align: left;
 
   &:nth-child(1) ${Number} {
-    margin-right: 0.9rem; /* 1의 Number와 GrayBar 간 간격 0.9rem */
+    margin-right: 0.9rem;
   }
 
   &:nth-child(n + 2) ${Number} {
-    margin-right: 0.8rem; /* 2 이후 항목의 Number와 GrayBar 간 간격 0.8rem */
+    margin-right: 0.8rem;
   }
 `;
 
