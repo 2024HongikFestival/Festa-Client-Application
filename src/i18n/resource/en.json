@@ -448,6 +448,68 @@
     "detail8": "You may be sent off if you violate the on-site staff's instructions",
     "detail9": "Access to restricted areas and exit may be imposed upon entry"
   },
+
+  "reservation": {
+    "title": "Reservation",
+    "subtitle": "on-site reservation",
+    "period": "Reservation period",
+    "twodays": "",
+    "placetitle": "Reservation place",
+    "placewhere1": "WOW DJ FESTIVAL",
+    "placewhere2": "ENTRANCE BOOTH",
+    "price": "Price",
+    "student": "Students & students on leave of absence from Hongik University Seoul Campus",
+    "notstudent": "outside visitor",
+    "notstudentwho": "(including graduate students and graduates from Hongik University's Seoul Campus)",
+    "noticetitle": "Precautions",
+    "notice1": {
+      "detail1": "Minors cannot book the Wow DJ Festival,",
+      "detail2": "and ID verification will be carried out",
+      "detail3": " when purchasing on-site.",
+      "detail4": "(Adult authentication is not allowed, admission is restricted.)",
+      "detail5": ""
+    },
+    "notice2": {
+      "detail1": "Refund is not possible",
+      "detail2": "after payment is completed.",
+      "detail3": ""
+    },
+    "notice3": {
+      "detail1": "Admission tickets will be stamped",
+      "detail2": " and you can receive them after",
+      "detail3": " presenting the Tokkat reservation completion page at the entrance booth on the day",
+      "detail4": "of the Wow DJ Festival.",
+      "detail5": " ",
+      "detail6": " ",
+      "detail7": " "
+    },
+    "notice4": {
+      "detail1": "Re-entry is possible by confirming the admission stamp",
+      "detail2": " and re-entry may be restricted under the judgment of the staff if the admission stamp is damaged and cannot be confirmed."
+    },
+    "notice5": {
+      "detail1": " Wow DJ Festival reservations are made by date and can",
+      "detail2": " only be entered on the day of purchase.",
+      "detail3": ""
+    },
+    "notice6": {
+      "detail1": "On-site purchases can only be made in",
+      "detail2": "cash",
+      "detail3": " or",
+      "detail4": "account",
+      "detail5": "transfer payments."
+    },
+    "notice7": "On-site purchases are only available for admission tickets on the day of purchase.",
+    "notice8": {
+      "detail1": "On-site purchases",
+      "detail2": "close at 23:30",
+      "detail3": " each day."
+    },
+    "advancetitle": "advance reservation",
+    "advanceperiod": "Reservation period",
+    "closeadvance": "The advance reservation is closed"
+  },
+
   "fleamarket": {
     "pageTitle": "Fleamarket",
     "location": "Fleamarket Location",
