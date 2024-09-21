@@ -73,6 +73,7 @@ export const MapImgBox = styled.div`
   position: relative;
   z-index: 0;
   height: 22rem;
+  background: #b1daff;
 
   .complete {
     width: 100%;
