@@ -8,6 +8,7 @@ import {
   BtnImg,
   DetailMap,
   BuildingLabel,
+  ActiveBackground,
 } from './styles.js';
 import React, { useState, useEffect } from 'react';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
@@ -56,6 +57,7 @@ const MapPage = () => {
       <MapBox>
         <ContentContainer>
           <MapToggle>
+            <ActiveBackground whatview={activeView} />
             <MapToggleBtn
               aria-pressed={activeView === 'all'}
               whatview={activeView === 'all' ? 'true' : 'false'}
@@ -84,8 +86,8 @@ const MapPage = () => {
               <TransformWrapper
                 initialScale={1}
                 minScale={1}
-                maxScale={4.8}
-                wheel={{ step: 0.5 }}
+                maxScale={4}
+                wheel={{ step: 0.1 }}
                 pinch={{ step: 0.1 }}
                 onTransformed={handleTransform}
               >

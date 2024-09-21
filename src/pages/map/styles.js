@@ -30,10 +30,11 @@ export const MapToggle = styled.div`
   width: 33.5rem;
   display: flex;
   padding: 8px 13.5px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 1.2rem;
   border-radius: 12px;
+  background-color: ${(props) => props.theme.colors.white};
 `;
 
 export const MapToggleBtn = styled.div`
@@ -41,11 +42,13 @@ export const MapToggleBtn = styled.div`
   cursor: pointer;
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
   flex: 1;
-  color: ${({ whatview, theme }) => (whatview === 'true' ? `${theme.colors.hongikBlue}` : '#6B7276')};
+  color: ${({ whatview, theme }) => (whatview === 'true' ? `${theme.colors.hongikBlue}` : `${theme.colors.gray60}`)};
   padding: 6px 0;
   height: 3.6rem;
-  max-width: 14rem;
-  border-radius: 30px;
+  max-width: 14.9rem;
+  border-radius: 3rem;
+  background-color: transparent; /* 버튼 자체는 투명하게 유지 */
+
   /* background: ${(props) => (props.whatview === 'true' ? 'rgba(24, 51, 219, 0.05)' : 'white')}; */
 `;
 
@@ -107,9 +110,9 @@ export const DetailMap = styled.img`
 
 export const ActiveBackground = styled.div`
   position: absolute;
-  top: 0.6rem;
-  left: 1.5rem;
-  width: 1.9rem;
+  top: 1rem;
+  left: 1.3rem;
+  width: 14.9rem;
   height: 3.6rem;
   background-color: rgba(24, 51, 219, 0.05);
   border-radius: 3rem;
@@ -117,4 +120,8 @@ export const ActiveBackground = styled.div`
 
   /* 탭에 따라 슬라이딩 배경의 위치를 설정 */
   transform: ${({ whatview }) => (whatview === 'all' ? 'translateX(0)' : 'translateX(15.8rem)')};
+
+  @media (min-width: 600px) {
+    top: 0.4rem;
+  }
 `;
