@@ -1,9 +1,7 @@
 import React from 'react';
 import { styled, css } from 'styled-components';
-import wow from '@/assets/webps/booth/ranking/wow.webp';
-import first from '@/assets/svgs/booth/1st.svg';
-import second from '@/assets/svgs/booth/2nd.svg';
-import third from '@/assets/svgs/booth/3rd.svg';
+import first from '@/assets/svgs/booth/icon/1st.svg';
+import third from '@/assets/svgs/booth/icon/3rd.svg';
 import heart from '@/assets/webps/booth/icon/heartIcon.webp';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';

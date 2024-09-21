@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled, css } from 'styled-components';
-import wow from '@/assets/webps/booth/ranking/wow.webp';
-import first from '@/assets/svgs/booth/1st.svg';
+import first from '@/assets/svgs/booth/icon/1st.svg';
 import heart from '@/assets/webps/booth/icon/heartIcon.webp';
 import { useTranslation } from 'react-i18next';
 import { DepartmentList } from '@/constants/booth/departmentList';

@@ -53,6 +53,7 @@ import img54 from '@/assets/webps/booth/wow/54.webp';
 import img55 from '@/assets/webps/booth/wow/55.webp';
 import img56 from '@/assets/webps/booth/wow/56.webp';
 import img57 from '@/assets/webps/booth/wow/57.webp';
+import ex from '@/assets/webps/booth/wow/departmentWow.webp';
 
 export const WowList = {
   3: img3,
@@ -68,9 +69,9 @@ export const WowList = {
   13: img13,
   14: img14,
   15: img15,
-  16: img16,
-  17: img17,
-  18: img18,
+  16: ex,
+  17: ex,
+  18: ex,
   19: img19,
   20: img20,
   21: img21,

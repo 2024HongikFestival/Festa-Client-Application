@@ -11,8 +11,8 @@ import boothMapImg from '@/assets/webps/booth/map/boothMapImg.webp';
 
 export default function BoothPage() {
   const { t } = useTranslation();
-
   const [selectedTab, setSelectedTab] = useState('pub');
+
   return (
     <S.Container>
       <PageTitle title={t('booth.pub.pageTitle')}></PageTitle>

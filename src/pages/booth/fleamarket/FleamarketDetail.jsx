@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-// import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import { useParams } from 'react-router-dom';
 import { FleamarketDetailList } from '@/constants/booth/fleamarketDetailList';

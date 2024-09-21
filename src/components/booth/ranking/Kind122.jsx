@@ -1,8 +1,7 @@
 import React from 'react';
 import { styled, css } from 'styled-components';
-import wow from '@/assets/webps/booth/ranking/wow.webp';
-import first from '@/assets/svgs/booth/1st.svg';
-import second from '@/assets/svgs/booth/2nd.svg';
+import first from '@/assets/svgs/booth/icon/1st.svg';
+import second from '@/assets/svgs/booth/icon/2nd.svg';
 import heart from '@/assets/webps/booth/icon/heartIcon.webp';
 import PropTypes from 'prop-types';
 import { DepartmentList } from '@/constants/booth/departmentList';

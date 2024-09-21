@@ -18,11 +18,6 @@ const Fleamarket = () => {
       </ContentContainer>
       {/* 플리마켓 리스트 컴포넌트 */}
       <FleamarketListWrapper>
-        {/* {fleamarketList.map((item, index) => (
-          <ContentContainer key={item.key}>
-            <FleamarketInfo index={index} item={item} />
-          </ContentContainer>
-        ))} */}
         {fleamarketList.map((item, index) => (
           <div key={item.key} data-aos="fade-down" data-aos-delay={index * 100}>
             <ContentContainer>

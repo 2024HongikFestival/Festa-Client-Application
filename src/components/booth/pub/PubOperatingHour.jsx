@@ -4,7 +4,7 @@ import error from '@/assets/webps/booth/icon/error.webp';
 import { useTranslation } from 'react-i18next';
 
 export default function PubOperatingHour() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <ContentContainer>
       <TextWrapper>

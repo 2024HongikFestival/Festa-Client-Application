@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import HeartIcon from '@/components/booth/pub/HeratIcon';
 import { getHeartColor } from '@/utils/booth/getHeartColor';
 import { menuItems, subMenuItems } from '@/constants/booth/menuItems';
-import useLikeDataCompare from '@/hooks/useLikeDataCompare';
 
 export default function PubCard() {
   const lng = localStorage.getItem('language');
