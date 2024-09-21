@@ -17,6 +17,7 @@ export default function MainPage() {
   const [isEnglish, setIsEnglish] = useState(i18n.language === 'en');
   const [showLottie, setShowLottie] = useState(!isEnglish);
   const [showContent, setShowContent] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const today = useMemo(() => new Date(), []);
   const formattedToday = useMemo(() => `${today.getMonth() + 1}.${today.getDate()}`, [today]);
 
@@ -41,6 +42,8 @@ export default function MainPage() {
   const isLineupDate = useMemo(() => ['9.25', '9.26', '9.27'].includes(formattedToday), [formattedToday]);
 
   useEffect(() => {
+    setIsMounted(true); // 컴포넌트가 마운트되었음을 표시
+
     const lottieTimer = setTimeout(() => {
       if (!isEnglish) {
         setShowLottie(false);
@@ -65,6 +68,10 @@ export default function MainPage() {
   useEffect(() => {
     setIsEnglish(i18n.language === 'en');
   }, [i18n.language]);
+
+  if (!isMounted) {
+    return null; // 마운트되지 않았을 때는 아무것도 렌더링하지 않음
+  }
 
   return (
     <S.Container>
@@ -97,7 +104,7 @@ export default function MainPage() {
               {formattedToday} ({t(`main.days.${dayOfWeek}`)})
             </S.Date>
             <S.LineupTitle data-aos="fade-up">{t('main.todayLineup')}</S.LineupTitle>
-          </S.LineupTitleWrapper>{' '}
+          </S.LineupTitleWrapper>
           <Suspense fallback={null}>
             <S.LineupInfoWrapper data-aos="fade-up">
               {lineupImage && <S.LineupImg data-aos="fade-up" src={lineupImage} alt="오늘의 라인업" loading="lazy" />}
@@ -111,10 +118,12 @@ export default function MainPage() {
           <S.Arrow $isEnglish={isEnglish} />
         </Link>
       </S.GoLineupPageBtn>
-      {/* 중앙 무대 일정 컴포넌트 */}
-      <StageInfoContainer />
-      {/* 운영 시간 컴포넌트 */}
-      <OperatingHours />
+      <Suspense fallback={null}>
+        {/* 중앙 무대 일정 컴포넌트 */}
+        <StageInfoContainer />
+        {/* 운영 시간 컴포넌트 */}
+        <OperatingHours />
+      </Suspense>
     </S.Container>
   );
 }
