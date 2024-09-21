@@ -37,11 +37,11 @@ export const MapToggle = styled.div`
   position: relative;
   width: 33.5rem;
   display: flex;
-  padding: 8px 13.5px;
+  padding: 0.8rem 1.35rem;
   justify-content: center;
   align-items: center;
   gap: 1.2rem;
-  border-radius: 12px;
+  border-radius: 1.2rem;
   background-color: ${(props) => props.theme.colors.white};
 `;
 
@@ -51,7 +51,7 @@ export const MapToggleBtn = styled.div`
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
   flex: 1;
   color: ${({ whatview, theme }) => (whatview === 'true' ? `${theme.colors.hongikBlue}` : `${theme.colors.gray60}`)};
-  padding: 6px 0;
+  padding: 0.6rem 0;
   height: 3.6rem;
   max-width: 14.9rem;
   border-radius: 3rem;
@@ -84,25 +84,19 @@ export const MapImgBox = styled.div`
 export const MapSpan = styled.span`
   position: absolute;
   color: black;
-  top: 20px;
-  left: 20px;
+  top: 2rem;
+  left: 2rem;
   z-index: 100;
 `;
 
 export const BtnImg = styled.img`
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 1rem;
+  right: 1rem;
   width: 2.5rem;
   z-index: 0;
 
   animation: ${fadeInUp} 0.5s ease-out;
-`;
-
-export const BuildingLabel = styled.div`
-  color: ${(props) => props.theme.colors.hongikNavy};
-  ${(props) => props.theme.fontStyles.basic.eventTitle};
-  font-weight: 1000;
 `;
 
 export const DetailMap = styled.img`
