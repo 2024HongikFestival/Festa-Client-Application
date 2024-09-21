@@ -21,9 +21,9 @@
       "stageName": "stageSchedule.celebrityStage",
       "totalDuration": "20:00 - 22:00",
       "artists": [
-        "stageSchedule.artistName",
-        "stageSchedule.artistName",
-        "stageSchedule.artistName"
+        "stageSchedule.eventDetails.artist.artist1",
+        "stageSchedule.eventDetails.artist.artist2",
+        "stageSchedule.eventDetails.artist.artist3"
       ]
     }
   ],
@@ -47,9 +47,9 @@
       "stageName": "stageSchedule.celebrityStage",
       "totalDuration": "20:00 - 22:00",
       "artists": [
-        "stageSchedule.artistName",
-        "stageSchedule.artistName",
-        "stageSchedule.artistName"
+        "stageSchedule.eventDetails.artist.artist4",
+        "stageSchedule.eventDetails.artist.artist5",
+        "stageSchedule.eventDetails.artist.artist6"
       ]
     }
   ],
@@ -73,9 +73,9 @@
       "stageName": "stageSchedule.celebrityStage",
       "totalDuration": "20:00 - 22:00",
       "artists": [
-        "stageSchedule.artistName",
-        "stageSchedule.artistName",
-        "stageSchedule.artistName"
+        "stageSchedule.eventDetails.artist.artist7",
+        "stageSchedule.eventDetails.artist.artist8",
+        "stageSchedule.eventDetails.artist.artist9"
       ]
     }
   ]

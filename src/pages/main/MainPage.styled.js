@@ -1,4 +1,4 @@
-import { styled, css } from 'styled-components';
+import { styled, css, keyframes } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -9,22 +9,49 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 70.7rem;
+`;
+
+export const LottieWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  display: flex;
+  width: 37.5rem;
+  height: 70.7rem;
+  z-index: 0;
 `;
 
 export const Title = styled.div`
-  ${(props) => props.theme.fontStyles.main.headline1}
+  position: absolute;
+  top: 9.4rem;
+  z-index: 1;
+  display: flex;
+  color: ${(props) => props.theme.colors.white};
+  font-family: 'SCoreDream', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 6rem;
+  letter-spacing: -0.004rem;
   text-align: center;
-  margin-top: 4.4rem;
+  opacity: ${(props) => (props.$showContent ? '1' : '0')};
+  transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 `;
 
 export const Desc = styled.div`
-  ${(props) => props.theme.fontStyles.basic.body1Med}
+  position: absolute;
+  top: 27rem;
+  ${(props) => props.theme.fontStyles.basic.subHeadMed};
+  color: ${(props) => props.theme.colors.white};
   text-align: center;
+  z-index: 1;
+  opacity: ${(props) => (props.$showContent ? '1' : '0')};
+  transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 `;
 
 export const Img = styled.img`

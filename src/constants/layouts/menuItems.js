@@ -42,10 +42,6 @@ export const commonMenuItems = [
         label: 'layouts.header.toFleaMarket',
       },
       {
-        path: '/promotion',
-        label: 'layouts.header.toPromotion',
-      },
-      {
         path: '/md',
         label: 'layouts.header.toMd',
       },
@@ -71,16 +67,23 @@ export const commonMenuItems = [
   {
     flamePath: '/flame/md',
     flameLabel: 'layouts.header.toMd',
-    daedongjePath: '/event/:eventId',
+    daedongjePath: '/event',
     daedongjeLabel: 'layouts.header.toEvent',
+    accordion: false,
+  },
+  {
+    flamePath: '/flame/promotion',
+    flameLabel: 'layouts.header.toPromotion',
+    daedongjePath: '/flame',
+    daedongjeLabel: 'layouts.header.toFlame',
     accordion: false,
   },
 ];
 
 export const flameMenuItems = [
   {
-    flamePath: '/flame/promotion',
-    flameLabel: 'layouts.header.toPromotion',
+    flamePath: '/',
+    flameLabel: 'layouts.header.toDaedongje',
     accordion: false,
   },
 ];

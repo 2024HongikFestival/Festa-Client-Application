@@ -14,6 +14,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import { useNavigationType } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -22,10 +23,12 @@ dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Seoul');
 
 // 이벤트 시작과 종료 시간
-const eventStart = dayjs.tz('2024-09-10 00:00:00', 'Asia/Seoul'); // 테스트를 위해 임시로 현재 시간으로 설정
+const eventStart = dayjs.tz('2024-09-25 10:00:00', 'Asia/Seoul'); // 테스트를 위해 임시로 현재 시간으로 설정
 const eventEnd = dayjs.tz('2024-09-27 23:59:59', 'Asia/Seoul');
 
 const EventPage = () => {
+  const { t } = useTranslation();
+  const [lang, setLang] = useState(localStorage.getItem('language') === 'ko' ? false : true);
   const [stateData, setStateData] = useState();
   const [currentUrl, setCurrentUrl] = useState('');
   const [isEventPeriod, setIsEventPeriod] = useState(false); // 이벤트 기간 여부
@@ -64,68 +67,70 @@ const EventPage = () => {
   return (
     <S.Wrapper>
       <S.Title>
-        2024{' '}
+        2024 <br />
         <span>
-          홍익&nbsp;<span id="highlight">대동제 래플</span>
+          {t(`event.main.notice.title1`)}&nbsp;
+          <span id="highlight">{t(`event.main.notice.title2`)}</span>
         </span>
       </S.Title>
       <S.ImageWrapper>
         <S.Image src={raffle} alt="raffle" />
       </S.ImageWrapper>
       <S.NoticeText>
-        매일 <span>오전 10시</span> 응모권 1장 부여
+        {t(`event.main.notice.description1`)} <span>{t(`event.main.notice.description2`)}</span>{' '}
+        {t(`event.main.notice.description3`)}
       </S.NoticeText>
 
       <NoticeTimeBox />
 
       <S.QNABox>
-        <S.QText>Q. 홍익 래플이 뭐예요?</S.QText>
-        <S.AText>A. 응모자 추첨을 통해 경품을 지급하는 이벤트입니다.</S.AText>
+        <S.QText>{t(`event.main.notice.qText`)}</S.QText>
+        <S.AText>{t(`event.main.notice.aText`)}</S.AText>
       </S.QNABox>
 
       <S.Raffle>
         <S.Quantity>
-          <p>당첨 수량 10장</p>
+          <p>{t(`event.main.item.quantity`)}</p>
         </S.Quantity>
         <S.RaffleTitle>
-          TVING 스탠다드 요금제
+          {t(`event.main.item.title1`)}
           <br />
-          <span>3개월 이용권</span> 증정!
+          <span>{t(`event.main.item.title2`)}</span> {t(`event.main.item.title3`)}
         </S.RaffleTitle>
         <S.RaffleWrapper>
           <S.RaffleImage src={frame} alt="frame" />
           <S.RaffleContainer>
             <p id="top">Standard</p>
             <S.Logo src={tvingLogo} alt="tving" />
-            <p id="description">3개월 이용권</p>
+            <p id="description">{t(`event.main.item.description1`)}</p>
           </S.RaffleContainer>
         </S.RaffleWrapper>
       </S.Raffle>
 
       <S.NoticeDetail>
         <S.DetailSection>
-          <S.DetailTitle>응모 대상</S.DetailTitle>
+          <S.DetailTitle>{t(`event.main.detail.title1`)}</S.DetailTitle>
           <S.DetailDescription>
-            지금 ‘홍익대학교 내에서’ 축제를 즐기고
+            {t(`event.main.detail.description1`)}
             <br />
-            있다면 재학생 외부인 상관없이 누구나
+            {t(`event.main.detail.description2`)}
           </S.DetailDescription>
         </S.DetailSection>
         <S.DetailSection>
-          <S.DetailTitle>응모 조건</S.DetailTitle>
-          <S.DetailDescription>현재 위치가 홍익대학교로 확인된 응모자</S.DetailDescription>
+          <S.DetailTitle>{t(`event.main.detail.title2`)}</S.DetailTitle>
+          <S.DetailDescription>{t(`event.main.detail.description3`)}</S.DetailDescription>
         </S.DetailSection>
         <S.DetailSection>
-          <S.DetailTitle>응모 기간</S.DetailTitle>
+          <S.DetailTitle>{t(`event.main.detail.title3`)}</S.DetailTitle>
           <S.DetailDescription>
-            9월 25일 10:00 ~ 9월 27일 23:59:59
+            {t(`event.main.detail.description4`)}
             <br />
-            매일 오전 10시 응모권 1장 제공
+            {t(`event.main.detail.description5`)}
           </S.DetailDescription>
         </S.DetailSection>
         <S.DetailSection>
-          <S.DetailTitle>당첨 발표</S.DetailTitle>
-          <S.DetailDescription>9월 28일 14:00 대동제 인스타 스토리</S.DetailDescription>
+          <S.DetailTitle>{t(`event.main.detail.title4`)}</S.DetailTitle>
+          <S.DetailDescription>{t(`event.main.detail.description6`)}</S.DetailDescription>
         </S.DetailSection>
       </S.NoticeDetail>
       <S.ShareButton
@@ -134,16 +139,16 @@ const EventPage = () => {
         }}
       >
         <S.ShareIcon src={shareIcon} alt="shareIcon" />
-        <p>이벤트 공유</p>
+        <S.ShareText>{t(`event.main.button.share`)}</S.ShareText>
       </S.ShareButton>
       {isEventPeriod ? (
         <S.KakaoAuthButton onClick={handleKakaoAuth}>
           <img src={kakaoLogo} alt="kakaoLogo" />
-          <p>카카오 인증 후 응모하기</p>
+          <p>{t(`event.main.button.available`)}</p>
         </S.KakaoAuthButton>
       ) : (
         <S.DisabledEnterButton>
-          <p>응모 기간이 아니에요</p>
+          <p>{t(`event.main.button.unavailable`)}</p>
         </S.DisabledEnterButton>
       )}
     </S.Wrapper>

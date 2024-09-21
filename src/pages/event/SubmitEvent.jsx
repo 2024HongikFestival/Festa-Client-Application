@@ -2,44 +2,42 @@ import styled from 'styled-components';
 import graphicBg from '@/assets/webps/event/graphic.webp';
 import shareIcon from '@/assets/webps/event/shareIcon.webp';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
+import { handleShare } from '@/utils/event/handleShare';
 
 const SubmitEvent = () => {
+  const { t } = useTranslation();
+  const [lang, setLang] = useState(false); // ko일 때 false
   const location = useLocation();
 
   const { date } = location.state || {}; // 전달받은 date 값
+  console.log(date);
 
   const instagramUrl = 'https://www.instagram.com/hiufestival_official/';
+
+  useEffect(() => {
+    setLang(!lang);
+  }, [localStorage.getItem('i18nextLng')]);
 
   // 응모 날짜 조건에 따라 내용 변경 (state에 따라 다른 내용)
   const renderContent = () => {
     if (date === 1 || date === 2) {
       return (
         <ContentBox1>
-          내일&nbsp;<span>오전 10시</span>에 응모권 1장 받고
-          <br />또 도전해보세요!
+          {t(`event.result.description1`)}&nbsp;<span>{t(`event.result.description2`)}</span>
+          {t(`event.result.description3`)}
+          <br />
+          {t(`event.result.description4`)}
         </ContentBox1>
       );
     } else if (date === 3) {
       return (
         <ContentBox2>
-          <p>축제가 끝났어요</p>
-          당첨자는{' '}
+          <p>{t(`event.result.last.description1`)}</p>
+          {t(`event.result.last.description2`)}
           <span>
-            9월 28일 오후 2시
-            <br />
-            스토리에 발표
-          </span>
-          됩니다
-        </ContentBox2>
-      );
-    } else {
-      // 축제 기간이 아닌 경우 (지금 date === 0) 임의로 3일차와 동일하게 설정
-      return (
-        <ContentBox2>
-          <p>축제가 끝났어요</p>
-          당첨자는{' '}
-          <span>
-            9월 28일 오후 2시
+            {t(`event.result.last.description3`)}
             <br />
             <span
               onClick={() => {
@@ -49,9 +47,31 @@ const SubmitEvent = () => {
             >
               @hiufestival_official
             </span>
-            &nbsp;스토리에 발표
+            &nbsp;{t(`event.result.last.description4`)}
           </span>
-          됩니다
+          {t(`event.result.last.description5`)}
+        </ContentBox2>
+      );
+    } else {
+      // 축제 기간이 아닌 경우 (지금 date === 0) 임의로 3일차와 동일하게 설정
+      return (
+        <ContentBox2>
+          <p>{t(`event.result.last.description1`)}</p>
+          {t(`event.result.last.description2`)}
+          <span>
+            {t(`event.result.last.description3`)}
+            <br />
+            <span
+              onClick={() => {
+                window.open(instagramUrl);
+              }}
+              style={{ textDecoration: 'underline', textUnderlineOffset: '2px', cursor: 'pointer' }}
+            >
+              @hiufestival_official
+            </span>
+            &nbsp;{t(`event.result.last.description4`)}
+          </span>
+          {t(`event.result.last.description5`)}
         </ContentBox2>
       );
     }
@@ -63,12 +83,16 @@ const SubmitEvent = () => {
         <BackGroundImage src={graphicBg} alt="graphic" />
       </BackGroundContainer>
       <TitleBox>
-        <Title>응모 완료!</Title>
+        {lang ? <EngTitle> {t(`event.result.title`)}</EngTitle> : <Title> {t(`event.result.title`)}</Title>}
       </TitleBox>
       {renderContent()}
-      <ShareButton>
+      <ShareButton
+        onClick={() => {
+          handleShare('https://www.2024hongikfestival.com/event');
+        }}
+      >
         <ShareIcon src={shareIcon} alt="shareIcon" />
-        <p>이벤트 공유</p>
+        <p> {t(`event.main.button.share`)}</p>
       </ShareButton>
     </Wrapper>
   );
@@ -99,7 +123,7 @@ const BackGroundImage = styled.img`
 
 const TitleBox = styled.div`
   position: absolute;
-  top: 13.9rem;
+  top: 13.4rem;
 `;
 
 const Title = styled.h1`
@@ -110,6 +134,10 @@ const Title = styled.h1`
   line-height: 150%;
   color: var(---on, #cdff3f);
   text-align: center;
+`;
+
+const EngTitle = styled(Title)`
+  font-size: 2.9rem;
 `;
 
 const ContentBox1 = styled.div`
