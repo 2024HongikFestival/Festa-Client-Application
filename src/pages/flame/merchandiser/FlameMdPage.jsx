@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import AOS from 'aos';
+import React from 'react';
 import 'aos/dist/aos.css';
 import { useTranslation, Trans } from 'react-i18next';
 import * as S from './styles';
@@ -18,12 +17,7 @@ import alertImage from '@/assets/webps/wdfMD/error.webp';
 import productsData from '@/constants/wdfMD/data.json';
 
 const FlameMdPage = () => {
-  const [products, setProducts] = useState([]);
   const { t } = useTranslation();
-
-  useEffect(() => {
-    setProducts(productsData.products);
-  }, []);
 
   const imageMap = {
     md1: md1,
@@ -59,21 +53,13 @@ const FlameMdPage = () => {
               </S.LocationAlert>
             </S.ProductLocation>
             <S.CardContainer>
-              {products.map((product, index) => {
-                let animationType = '';
-
-                if (index === 0) {
-                  animationType = ''; // 첫 번째 상품 요소에는 애니메이션 없음
-                } else {
-                  animationType = 'zoom-in-up'; // 마지막 상품 요소에는 fade-up 애니메이션
-                }
-
+              {productsData.products.map((product, index) => {
                 return (
-                  <S.ProductCard key={product.id} data-aos={animationType}>
+                  <S.ProductCard key={product.id} data-aos={index === 0 ? '' : 'zoom-in-up'}>
                     <S.ImageContainer>
                       <S.ProductImage
                         src={imageMap[product.image]}
-                        alt={t(`flameMdPage.products.${product.image}`)}
+                        alt={t(`flameMdPage.products.${product.name}`)}
                         width={product.width}
                         height={product.height}
                         top={product.imageTop}
@@ -82,7 +68,7 @@ const FlameMdPage = () => {
                     <S.ProductInfo>
                       <S.ProductDetails>
                         <S.ProductTag>{t('flameMdPage.limitedSale')}</S.ProductTag>
-                        <S.ProductName>{t(`flameMdPage.products.${product.image}`)}</S.ProductName>
+                        <S.ProductName>{t(`flameMdPage.products.${product.name}`)}</S.ProductName>
                       </S.ProductDetails>
                       <S.ProductPrice>{product.price}</S.ProductPrice>
                     </S.ProductInfo>

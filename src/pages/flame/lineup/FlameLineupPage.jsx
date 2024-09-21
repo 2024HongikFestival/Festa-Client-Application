@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import InstalogoImage from '@/assets/webps/wdfLineup/instagramLogo.webp';
-import testImage from '@/assets/webps/wdfLineup/test.webp';
 import * as S from './styles'; // 스타일 파일에서 스타일 컴포넌트를 가져옴
 import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
 
@@ -99,44 +97,34 @@ const FlameLineupPage = () => {
     AOS.refresh();
   }, [selectedDay]);
 
-  const renderCards = () => {
-    const dayKey = selectedDay.toLowerCase();
-    const dayDjData = djData[dayKey];
-    const dayDjLogos = djLogos[dayKey];
+  const dayKey = selectedDay.toLowerCase();
 
-    return dayDjData.map((event, index) => {
-      let animationType = '';
+  // selectedDay에 따른 데이터를 memoization으로 최적화
+  const dayDjData = useMemo(() => djData[dayKey], [dayKey]);
+  const dayDjLogos = useMemo(() => djLogos[dayKey], [dayKey]);
 
-      // 첫 번째 카드는 애니메이션 없음
-      if (index === 0) {
-        animationType = '';
-      } else {
-        animationType = 'fade-up';
-      }
-
-      return (
-        <S.Card key={event.name} data-aos={animationType}>
-          <S.CardImageContainer>
-            <S.DjImage src={event.src} alt={event.alt} style={{ width: dayDjData[index].width }} />
-            <S.GradientOverlay />
-            <S.LogoImage
-              src={dayDjLogos[index].src}
-              alt={`${event.name} logo`}
-              style={{
-                width: dayDjLogos[index].width,
-                height: dayDjLogos[index].height,
-              }}
-            />
-          </S.CardImageContainer>
-          <S.CardDescriptionContainer>
-            <S.DjProfile>
-              <S.Name>{event.name}</S.Name>
-            </S.DjProfile>
-          </S.CardDescriptionContainer>
-        </S.Card>
-      );
-    });
-  };
+  const renderCards = () =>
+    dayDjData.map((event, index) => (
+      <S.Card key={event.name} data-aos={index === 0 ? '' : 'fade-up'}>
+        <S.CardImageContainer>
+          <S.DjImage src={event.src} alt={event.alt} style={{ width: dayDjData[index].width }} />
+          <S.GradientOverlay />
+          <S.LogoImage
+            src={dayDjLogos[index].src}
+            alt={`${event.name} logo`}
+            style={{
+              width: dayDjLogos[index].width,
+              height: dayDjLogos[index].height,
+            }}
+          />
+        </S.CardImageContainer>
+        <S.CardDescriptionContainer>
+          <S.DjProfile>
+            <S.Name>{event.name}</S.Name>
+          </S.DjProfile>
+        </S.CardDescriptionContainer>
+      </S.Card>
+    ));
 
   return (
     <>
