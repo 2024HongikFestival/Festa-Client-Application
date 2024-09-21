@@ -40,7 +40,7 @@ const MapPage = () => {
 
   return (
     <MainMapWrapper>
-      <MapTitle>로드맵</MapTitle>
+      <MapTitle> {t('map.title')}</MapTitle>
       <MapBox>
         <ContentContainer>
           <MapToggle>
