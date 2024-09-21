@@ -40,7 +40,6 @@ export default function PubCard() {
 
     setLikeData((prevData) => {
       if (!prevData || !prevData[selectedMenu]) {
-        console.log('초기 데이터가 없습니다. 좋아요 기능이 작동하지 않습니다.');
         return prevData;
       }
 
@@ -101,7 +100,6 @@ export default function PubCard() {
       setLikeData((prevData) => {
         if (prevData) {
           const changes = compare(prevData, newData);
-          console.log('카테고리별 좋아요 변화량:', changes);
 
           const newBehindHearts = Object.entries(changes).flatMap(([category, change]) => {
             const heartCount = Math.min(change, 3);
@@ -136,7 +134,6 @@ export default function PubCard() {
   const category = selectedMenu === 'clubFederation' ? 'clubScholarship' : selectedMenu;
 
   useEffect(() => {
-    console.log(likeData);
     if (likeData) {
       setSelectedLikeData(likeData[category]);
     }
@@ -160,7 +157,7 @@ export default function PubCard() {
           ))}
         </HeartContainer>
         <Title>{t('booth.pub.specific')}</Title>
-        <MenuContainer show={isSubMenu}>
+        <MenuContainer $show={isSubMenu}>
           <MenuWrapper index={'1'}>
             {menuItems(t)
               .slice(0, 4)

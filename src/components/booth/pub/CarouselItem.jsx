@@ -21,7 +21,6 @@ CarouselItem.propTypes = {
 };
 
 export default function CarouselItem({ content, click, likeData }) {
-  // console.log('like data: ', likeData);
   const [isLiked, setIsLiked] = useState(false);
   const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0); // 기본값을 0으로 설정
   const lng = localStorage.getItem('language');
@@ -38,7 +37,6 @@ export default function CarouselItem({ content, click, likeData }) {
     setTimeout(() => setIsLiked(false), 1000); // Reset after 1 second
 
     try {
-      console.log(id, '좋아요 +1!');
       const response = await axiosInstance.post(`/booths/${id}/like`);
       if (response.status === 200) {
         console.log('좋아요수 +1 성공!');

@@ -1,14 +1,12 @@
-import { useState } from 'react';
-import ContentContainer from '@/components/common/ContentContainer';
+import React, { Suspense, useState } from 'react';
 import PageTitle from '@/components/common/PageTitle';
 import { useTranslation } from 'react-i18next';
-import Ranking from '@/components/booth/ranking/Ranking';
-import PubOperatingHour from '@/components/booth/pub/PubOperatingHour';
-import PubCard from '@/components/booth/pub/PubCard';
 import * as S from './BoothPage.styled';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
-import boothMapImg from '@/assets/webps/booth/map/boothMapImg.webp';
-import PubMap from '@/components/booth/pub/PubMap';
+
+const PubMap = React.lazy(() => import('@/components/booth/pub/PubMap'));
+const PubCard = React.lazy(() => import('@/components/booth/pub/PubCard'));
+const PubOperatingHour = React.lazy(() => import('@/components/booth/pub/PubOperatingHour'));
+const Ranking = React.lazy(() => import('@/components/booth/ranking/Ranking'));
 
 export default function BoothPage() {
   const { t } = useTranslation();
@@ -29,19 +27,21 @@ export default function BoothPage() {
           </S.SelectionButton>
         </S.SelectionBar>
         {/* 주점 지도 컴포넌트 */}
-        {selectedTab === 'map' && <PubMap />}
-        {selectedTab === 'pub' && <PubCard />}
-        {/* 주점 운영시간 정보 컴포넌트 */}
-        {selectedTab === 'pub' && (
-          <div data-aos="fade-up">
-            <PubOperatingHour />
-          </div>
+        {selectedTab === 'map' && (
+          <Suspense fallback={null}>
+            <PubMap />
+          </Suspense>
         )}
-        {/* 실시간 랭킹 정보 컴포넌트 */}
         {selectedTab === 'pub' && (
-          <div data-aos="fade-up" data-aos-delay={'200'}>
-            <Ranking kind="122" />
-          </div>
+          <Suspense fallback={null}>
+            <PubCard />
+            <div data-aos="fade-up">
+              <PubOperatingHour />
+            </div>
+            <div data-aos="fade-up" data-aos-delay={'200'}>
+              <Ranking />
+            </div>
+          </Suspense>
         )}
       </S.ForGapWrapper>
     </S.Container>

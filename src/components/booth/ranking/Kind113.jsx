@@ -14,7 +14,6 @@ Kind113.propTypes = {
 
 export default function Kind113({ data }) {
   const { t } = useTranslation();
-  console.log('rank', data);
   const departments = DepartmentList(t);
 
   return (

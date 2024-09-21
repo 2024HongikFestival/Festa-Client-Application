@@ -13,9 +13,7 @@ Kind111.propTypes = {
 
 export default function Kind111({ data }) {
   const { t } = useTranslation();
-  console.log('rank', data);
   const departments = DepartmentList(t);
-  console.log('booth', data[0].boothId);
 
   return (
     <PodiumWrapper>

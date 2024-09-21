@@ -55,7 +55,6 @@ export default function Ranking() {
     } else if (firstPlaceCount === 3) {
       return <Kind111 data={rankData} />;
     } else {
-      console.log('Unhandled ranking case:', { firstPlaceCount, secondPlaceCount, thirdPlaceCount });
       return null; // 처리되지 않은 케이스
     }
   };
@@ -64,9 +63,7 @@ export default function Ranking() {
     try {
       const response = await axiosInstance.get(`/booths/ranking`);
       if (response.status === 200) {
-        console.log('랭킹 정보', response.data);
-        const sortedData = dummyResponse.data.data.sort((a, b) => b.totalLike - a.totalLike);
-        console.log('정렬', sortedData);
+        const sortedData = response.data.data.sort((a, b) => b.totalLike - a.totalLike);
 
         const rankedData = sortedData.map((item, index, array) => {
           if (index === 0) {
@@ -82,7 +79,6 @@ export default function Ranking() {
           return item;
         });
         setRankData(rankedData);
-        console.log(rankedData);
       }
     } catch (e) {
       console.log(e);
