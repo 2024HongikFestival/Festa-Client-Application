@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-bottom: 6.4rem;
 `;
 
 export const ForGapWrapper = styled.div`

@@ -4,6 +4,7 @@ import ContentContainer from '@/components/common/ContentContainer';
 import FleamarketInfo from '@/components/booth/fleamarket/FleamarketInfo';
 import { FleamarketList } from '@/constants/booth/fleamarketList';
 import { useTranslation } from 'react-i18next';
+import FleamarketMap from '@/components/booth/fleamarket/FleamarketMap';
 
 const Fleamarket = () => {
   const { t } = useTranslation();
@@ -12,10 +13,11 @@ const Fleamarket = () => {
     <Container>
       <PageTitle title={t('fleamarket.pageTitle')} />
       {/* 플리마켓 지도 컴포넌트 */}
-      <ContentContainer>
+      {/* <ContentContainer>
         <MapTitle>{t('fleamarket.location')}</MapTitle>
         <MapImage src="src/assets/webps/booth/mapExample.webp" />
-      </ContentContainer>
+      </ContentContainer> */}
+      <FleamarketMap />
       {/* 플리마켓 리스트 컴포넌트 */}
       <FleamarketListWrapper>
         {fleamarketList.map((item, index) => (

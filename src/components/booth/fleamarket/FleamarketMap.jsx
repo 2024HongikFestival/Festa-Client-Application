@@ -3,11 +3,11 @@ import ContentContainer from '@/components/common/ContentContainer';
 import styled from 'styled-components';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { useTranslation } from 'react-i18next';
-import pubMapDefault from '@/assets/webps/booth/map/pubMapDefault.webp';
-import pubMapZoom from '@/assets/webps/booth/map/pubMapZoom.webp';
+import fleamarketMapDefault from '@/assets/webps/booth/map/fleamarketMapDefault.webp';
+import fleamarketMapZoom from '@/assets/webps/booth/map/fleamarketMapZoom.webp';
 import scaleBtn from '@/assets/webps/booth/icon/scaleBtn.webp';
 
-export default function PubMap() {
+export default function FleamarketMap() {
   const { t } = useTranslation();
   const [isZoomed, setIsZoomed] = useState(false);
 
@@ -21,20 +21,20 @@ export default function PubMap() {
 
   return (
     <ContentContainer>
-      <MapTitle>{t('booth.pub.mapTitle')}</MapTitle>
+      <MapTitle>{t('fleamarket.location')}</MapTitle>
       <MapContainer>
         <TransformWrapper
-          initialScale={1.2}
+          initialScale={3}
           minScale={1}
-          maxScale={5}
+          maxScale={10}
           limitToBounds={false}
           centerContent={true}
           onTransformed={handleStateChange}
-          initialPositionX={-150}
-          initialPositionY={-15}
+          initialPositionX={0}
+          initialPositionY={-390}
         >
           <TransformComponent>
-            <MapImg src={isZoomed ? pubMapZoom : pubMapDefault} alt="Map" $isZoomed={isZoomed} />
+            <MapImg src={isZoomed ? fleamarketMapZoom : fleamarketMapDefault} alt="Map" $isZoomed={isZoomed} />
           </TransformComponent>
         </TransformWrapper>
         <ScaleButton src={scaleBtn} alt="Scale" />
