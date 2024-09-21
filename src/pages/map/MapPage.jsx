@@ -11,8 +11,6 @@ import {
   ActiveBackground,
 } from './styles.js';
 import React, { useState, useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
 import mapImg from '/src/assets/webps/map/completemap.webp';
 import btnImg from '/src/assets/webps/map/buttonscale.webp';
