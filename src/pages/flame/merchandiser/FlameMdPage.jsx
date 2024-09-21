@@ -2,35 +2,11 @@ import React from 'react';
 import 'aos/dist/aos.css';
 import { useTranslation, Trans } from 'react-i18next';
 import * as S from './styles';
-
-import md1 from '@/assets/webps/wdfMD/md1.webp';
-import md2 from '@/assets/webps/wdfMD/md2.webp';
-import md3 from '@/assets/webps/wdfMD/md3.webp';
-import md4 from '@/assets/webps/wdfMD/md4.webp';
-import md5 from '@/assets/webps/wdfMD/md5.webp';
-import md6 from '@/assets/webps/wdfMD/md6.webp';
-import md7 from '@/assets/webps/wdfMD/md7.webp';
-import md8 from '@/assets/webps/wdfMD/md8.webp';
-import md9 from '@/assets/webps/wdfMD/md9.webp';
-import md10 from '@/assets/webps/wdfMD/md10.webp';
+import { productsData } from '@/constants/wdfMD/data'; // js 파일에서 데이터 import
 import alertImage from '@/assets/webps/wdfMD/error.webp';
-import productsData from '@/constants/wdfMD/data.json';
 
 const FlameMdPage = () => {
   const { t } = useTranslation();
-
-  const imageMap = {
-    md1: md1,
-    md2: md2,
-    md3: md3,
-    md4: md4,
-    md5: md5,
-    md6: md6,
-    md7: md7,
-    md8: md8,
-    md9: md9,
-    md10: md10,
-  };
 
   return (
     <>
@@ -58,7 +34,7 @@ const FlameMdPage = () => {
                   <S.ProductCard key={product.id} data-aos={index === 0 ? '' : 'zoom-in-up'}>
                     <S.ImageContainer>
                       <S.ProductImage
-                        src={imageMap[product.image]}
+                        src={product.image}
                         alt={t(`flameMdPage.products.${product.name}`)}
                         width={product.width}
                         height={product.height}
