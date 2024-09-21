@@ -63,6 +63,19 @@ export const Title = styled.p`
   }
 `;
 
+export const MapWrapper = styled.div`
+  position: relative;
+  width: 33.5rem;
+  height: 25rem;
+  background-color: #b1daff;
+`;
+
+export const Map = styled.img`
+  width: 33.5rem;
+  height: 25rem;
+  object-fit: cover;
+`;
+
 export const RestroomDetail = styled.ul`
   width: 100%;
   padding: 1.8rem 2.4rem 2.4rem 2.4rem;
