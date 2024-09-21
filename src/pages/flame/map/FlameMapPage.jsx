@@ -34,7 +34,7 @@ const FlameMapPage = () => {
   };
   return (
     <MapWrapper>
-      <MapTitle>{t('map.title')}</MapTitle>
+      <MapTitle>{t('sitemap.title')}</MapTitle>
       <MapBox>
         <MapImgBox src={mapImg} />
         <LottieBox>
@@ -46,16 +46,16 @@ const FlameMapPage = () => {
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">A.</p>
-              <p className="name">{t('map.booth1')}</p>
+              <p className="name">{t('sitemap.booth1')}</p>
             </BoothNameAndIntro>
-            <p className="intro">{t('map.product1')}</p>
+            <p className="intro">{t('sitemap.product1')}</p>
           </BoothIntro>
         </BoothOne>
         <BoothOne>
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">B.</p>
-              <p className="name">{t('map.booth2')}</p>
+              <p className="name">{t('sitemap.booth2')}</p>
             </BoothNameAndIntro>
             <p className="intro">-</p>
           </BoothIntro>
@@ -64,7 +64,7 @@ const FlameMapPage = () => {
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">C.</p>
-              <p className="name">{t('map.booth3')}</p>
+              <p className="name">{t('sitemap.booth3')}</p>
             </BoothNameAndIntro>
             <p className="intro">-</p>
           </BoothIntro>
@@ -73,7 +73,7 @@ const FlameMapPage = () => {
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">D.</p>
-              <p className="name">{t('map.booth4')}</p>
+              <p className="name">{t('sitemap.booth4')}</p>
             </BoothNameAndIntro>
             <p className="intro">-</p>
           </BoothIntro>
@@ -82,9 +82,9 @@ const FlameMapPage = () => {
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">E.</p>
-              <p className="name">{t('map.booth5')}</p>
+              <p className="name">{t('sitemap.booth5')}</p>
             </BoothNameAndIntro>
-            <p className="intro">{t('map.product5')}</p>
+            <p className="intro">{t('sitemap.product5')}</p>
           </BoothIntro>
         </BoothOne>
       </BoothBox>

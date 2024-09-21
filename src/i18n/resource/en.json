@@ -374,7 +374,7 @@
       "info": "Rankings will be updated on an hourly basis,\n reset daily at 5 AM"
     }
   },
-  "map": {
+  "sitemap": {
     "title": "Site Map",
     "booth1": "Entrance",
     "booth2": "Red Bull",
