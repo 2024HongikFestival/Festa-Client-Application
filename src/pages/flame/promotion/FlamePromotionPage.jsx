@@ -2,22 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import 'aos/dist/aos.css';
-import productsData from '@/constants/wdfPromotion/data.json';
-
-import img1 from '@/assets/webps/wdfPromotion/예거마이스터.webp';
-import img2 from '@/assets/webps/wdfPromotion/인테이크.webp';
-import img3 from '@/assets/webps/wdfPromotion/금군양조.webp';
-import img4 from '@/assets/webps/wdfPromotion/프루팁스.webp';
+import { productsData } from '@/constants/wdfPromotion/data'; // js 파일에서 데이터 import
 
 const FlamePromotionPage = () => {
   const { t } = useTranslation();
-
-  const imageMap = {
-    img1: img1,
-    img2: img2,
-    img3: img3,
-    img4: img4,
-  };
 
   return (
     <PromotionContainer>
@@ -28,7 +16,7 @@ const FlamePromotionPage = () => {
             <Card key={product.id} data-aos={index === 0 ? '' : 'zoom-in-up'}>
               <ImageContainer>
                 <Image
-                  src={imageMap[product.image]}
+                  src={product.image} // 이미지 바로 사용
                   alt={product.name}
                   width={product.width}
                   height={product.height}
