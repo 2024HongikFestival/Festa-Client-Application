@@ -7,7 +7,6 @@ import {
   MapImgBox,
   BtnImg,
   DetailMap,
-  BuildingLabel,
   ActiveBackground,
 } from './styles.js';
 import React, { useState, useEffect } from 'react';
@@ -38,18 +37,6 @@ const MapPage = () => {
   useEffect(() => {
     document.body.style.overflow = isBigVisible ? 'hidden' : 'auto';
   }, [isBigVisible]);
-
-  // 부스의 글자와 위치를 배열로 정의
-  const booths = [
-    { label: '경영', top: '63%', left: '36%' },
-    { label: '경제', top: '40%', left: '50%' },
-    { label: '예술학과', top: '50%', left: '70%' },
-    { label: '법학과', top: '30%', left: '80%' },
-    { label: '컴퓨터공학과', top: '60%', left: '20%' },
-    { label: '자율전공', top: '60.6%', left: '36.5%' },
-    { label: '건축', top: '63.1%', left: '38.92434%' },
-    { label: '수교과', top: '63.6%', left: '32.6%' },
-  ];
 
   return (
     <MainMapWrapper>
@@ -125,7 +112,6 @@ const MapPage = () => {
                           }}
                         />
                       </TransformComponent>
-
                       <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" />
                     </div>
                   );
