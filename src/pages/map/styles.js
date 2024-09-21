@@ -1,3 +1,4 @@
+import { animated } from '@react-spring/web';
 import styled from 'styled-components';
 
 export const MainMapWrapper = styled.div`
@@ -25,6 +26,7 @@ export const MapBox = styled.div`
 `;
 
 export const MapToggle = styled.div`
+  position: relative;
   width: 33.5rem;
   display: flex;
   padding: 8px 13.5px;
@@ -39,12 +41,12 @@ export const MapToggleBtn = styled.div`
   cursor: pointer;
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
   flex: 1;
-  color: ${(props) => (props.whatview === 'true' ? '#0276FE' : '#6B7276')};
+  color: ${({ whatview, theme }) => (whatview === 'true' ? `${theme.colors.hongikBlue}` : '#6B7276')};
   padding: 6px 0;
   height: 3.6rem;
   max-width: 14rem;
   border-radius: 30px;
-  background: ${(props) => (props.whatview === 'true' ? 'rgba(24, 51, 219, 0.05)' : 'white')};
+  /* background: ${(props) => (props.whatview === 'true' ? 'rgba(24, 51, 219, 0.05)' : 'white')}; */
 `;
 
 export const MapToggleBox = styled.div`
@@ -60,19 +62,19 @@ export const MapImgBox = styled.div`
   position: relative;
   z-index: 0;
 
-  .allMap {
+  .complete {
     width: 100%;
-    height: 25rem;
+    height: auto;
   }
 
-  .card {
+  /* .card {
     touch-action: none;
     user-select: none;
     will-change: transform;
     width: 33.5rem;
     height: 25rem;
     background-size: cover;
-  }
+  } */
 `;
 
 export const MapSpan = styled.span`
@@ -81,4 +83,38 @@ export const MapSpan = styled.span`
   top: 20px;
   left: 20px;
   z-index: 100;
+`;
+
+export const BtnImg = styled.img`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 2.5rem;
+  z-index: 0;
+`;
+
+export const BuildingLabel = styled.div`
+  color: ${(props) => props.theme.colors.hongikNavy};
+  ${(props) => props.theme.fontStyles.basic.eventTitle};
+  font-weight: 1000;
+`;
+
+export const DetailMap = styled.img`
+  width: 33.5rem;
+  height: auto;
+  transition: opacity 0.5s ease;
+`;
+
+export const ActiveBackground = styled.div`
+  position: absolute;
+  top: 0.6rem;
+  left: 1.5rem;
+  width: 1.9rem;
+  height: 3.6rem;
+  background-color: rgba(24, 51, 219, 0.05);
+  border-radius: 3rem;
+  transition: transform 0.25s ease;
+
+  /* 탭에 따라 슬라이딩 배경의 위치를 설정 */
+  transform: ${({ whatview }) => (whatview === 'all' ? 'translateX(0)' : 'translateX(15.8rem)')};
 `;

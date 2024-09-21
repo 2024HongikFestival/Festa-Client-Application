@@ -4,123 +4,131 @@ import {
   MapToggle,
   MapToggleBtn,
   MainMapWrapper,
-  MapToggleBox,
   MapImgBox,
-  MapSpan,
+  BtnImg,
+  DetailMap,
+  BuildingLabel,
 } from './styles.js';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
 import mapImg from '/src/assets/webps/map/completemap.webp';
-import { createUseGesture, dragAction, pinchAction } from '@use-gesture/react';
-import { useSpring, animated } from '@react-spring/web';
+import btnImg from '/src/assets/webps/map/buttonscale.webp';
+import small from '/src/assets/webps/map/detailMap2.webp';
+import big from '/src/assets/webps/map/zoomMap2.webp';
 import { useTranslation } from 'react-i18next';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 const MapPage = () => {
-  const [activeView, setActiveView] = useState('all'); // 'all' or 'detail'
+  const [activeView, setActiveView] = useState('detail');
   const { t } = useTranslation();
-
-  const useGesture = createUseGesture([dragAction, pinchAction]);
-  const ref = useRef(null);
-  const [style, api] = useSpring(() => ({
-    x: 0,
-    y: 0,
-    scale: 1,
-  }));
-
-  useEffect(() => {
-    const handler = (e) => e.preventDefault();
-    document.addEventListener('gesturestart', handler);
-    document.addEventListener('gesturechange', handler);
-    document.addEventListener('gestureend', handler);
-    return () => {
-      document.removeEventListener('gesturestart', handler);
-      document.removeEventListener('gesturechange', handler);
-      document.removeEventListener('gestureend', handler);
-    };
-  }, []);
-
-  useGesture(
-    {
-      onDrag: ({ pinching, cancel, offset: [x, y], memo, ...rest }) => {
-        // 요소의 현재 스케일에 따라 드래그 범위를 조정
-        const scale = style.scale.get();
-        console.log(scale);
-        const { width, height } = ref.current.getBoundingClientRect();
-        const maxX = Math.max(0, width - width * scale);
-        const maxY = Math.max(0, height - height * scale);
-
-        // 요소가 박스 범위를 벗어나지 않도록 조정
-        const clampedX = Math.min(Math.max(x, -maxX), 0);
-        const clampedY = Math.min(Math.max(y, -maxY), 0);
-
-        api.start({ clampedX, y });
-      },
-
-      onPinch: ({ origin: [ox, oy], first, movement: [ms], offset: [s, a], memo }) => {
-        if (first) {
-          if (ref.current) {
-            const { width, height, x, y } = ref.current.getBoundingClientRect();
-            const tx = ox - (x + width / 2);
-            const ty = oy - (y + height / 2);
-            memo = [style.x.get(), style.y.get(), tx, ty];
-            console.log(memo);
-          } else {
-            console.warn('ref.current is null or undefined');
-            memo = memo || [0, 0, 0, 0];
-          }
-        }
-
-        const x = memo[0] - (ms - 1) * memo[2];
-        const y = memo[1] - (ms - 1) * memo[3];
-        api.start({ scale: s, rotateZ: a, x, y });
-        return memo;
-      },
-    },
-    {
-      target: ref,
-      drag: { from: () => [style.x.get(), style.y.get()] },
-      pinch: { scaleBounds: { min: 1, max: 2 }, rubberband: true },
-    }
-  );
+  const [isBigVisible, setIsBigVisible] = useState(false);
+  const [scale, setScale] = useState(1);
 
   const handleToggle = (view) => {
     setActiveView(view);
   };
 
+  const handleTransform = (e) => {
+    const currentScale = e.instance.transformState.scale;
+    setScale(currentScale);
+    setIsBigVisible(currentScale > 1.5);
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = isBigVisible ? 'hidden' : 'auto';
+  }, [isBigVisible]);
+
+  // 부스의 글자와 위치를 배열로 정의
+  const booths = [
+    { label: '경영', top: '63%', left: '36%' },
+    { label: '경제', top: '40%', left: '50%' },
+    { label: '예술학과', top: '50%', left: '70%' },
+    { label: '법학과', top: '30%', left: '80%' },
+    { label: '컴퓨터공학과', top: '60%', left: '20%' },
+    { label: '자율전공', top: '60.6%', left: '36.5%' },
+    { label: '건축', top: '63.1%', left: '38.92434%' },
+    { label: '수교과', top: '63.6%', left: '32.6%' },
+  ];
+
   return (
     <MainMapWrapper>
-      <MapTitle>{t('map.title')}</MapTitle>
+      <MapTitle>로드맵</MapTitle>
       <MapBox>
         <ContentContainer>
           <MapToggle>
             <MapToggleBtn
               aria-pressed={activeView === 'all'}
-              whatview={activeView === 'all' ? 'true' : 'false'} // 문자열로 변환
+              whatview={activeView === 'all' ? 'true' : 'false'}
               onClick={() => handleToggle('all')}
             >
               {t('map.complete')}
             </MapToggleBtn>
             <MapToggleBtn
               aria-pressed={activeView === 'detail'}
-              whatview={activeView === 'detail' ? 'true' : 'false'} // 문자열로 변환
+              whatview={activeView === 'detail' ? 'true' : 'false'}
               onClick={() => handleToggle('detail')}
             >
               {t('map.detail')}
             </MapToggleBtn>
           </MapToggle>
         </ContentContainer>
-        {activeView === 'all' && (
+        {activeView === 'all' ? (
           <ContentContainer>
             <MapImgBox>
-              <img src={mapImg} className="allMap" />
+              <img src={mapImg} className="complete" alt="Complete Map" />
             </MapImgBox>
           </ContentContainer>
-        )}
-        {activeView === 'detail' && (
+        ) : (
           <ContentContainer>
-            <MapImgBox>
-              {' '}
-              <animated.img className="card" src={mapImg} ref={ref} style={style} />
+            <MapImgBox style={{ position: 'relative' }}>
+              <TransformWrapper
+                initialScale={1}
+                minScale={1}
+                maxScale={4.8}
+                wheel={{ step: 0.5 }}
+                pinch={{ step: 0.1 }}
+                onTransformed={handleTransform}
+              >
+                {({ resetTransform }) => {
+                  const handleReset = () => {
+                    resetTransform();
+                    setIsBigVisible(false);
+                    setScale(1);
+                  };
+
+                  return (
+                    <div style={{ position: 'relative' }}>
+                      <TransformComponent>
+                        <DetailMap
+                          className="detail"
+                          src={small}
+                          alt="Map"
+                          style={{
+                            opacity: isBigVisible ? 0.8 : 1,
+                            transition: 'opacity 0.5s ease',
+                          }}
+                        />
+                        <DetailMap
+                          className="detail"
+                          src={big}
+                          alt="Map"
+                          style={{
+                            opacity: isBigVisible ? 1 : 0,
+                            transition: 'opacity 0.5s ease',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                          }}
+                        />
+                      </TransformComponent>
+
+                      <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" />
+                    </div>
+                  );
+                }}
+              </TransformWrapper>
             </MapImgBox>
           </ContentContainer>
         )}
