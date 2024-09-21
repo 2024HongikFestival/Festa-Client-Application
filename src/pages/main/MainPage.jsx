@@ -48,7 +48,7 @@ export default function MainPage() {
       if (!isEnglish) {
         setShowLottie(false);
       }
-    }, 3000);
+    }, 1450);
     const timeoutDuration = i18n.language === 'en' ? 600 : 860;
 
     const contentTimer = setTimeout(() => {

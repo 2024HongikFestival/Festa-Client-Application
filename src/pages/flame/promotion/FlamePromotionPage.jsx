@@ -95,6 +95,7 @@ const Description = styled.div`
   right: 0.1rem;
   background-color: ${(props) => props.theme.colors.flameSubBackgroundColor};
   backdrop-filter: blur(0.6rem);
+  -webkit-backdrop-filter: blur(0.6rem);
   padding: 1.6rem 0;
   padding-left: 1.6rem;
   display: flex;
