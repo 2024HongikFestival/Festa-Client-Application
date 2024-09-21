@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import PieceImg from '@/assets/svgs/main/piece.svg';
+import AOS from 'aos';
+import { useEffect } from 'react';
 
 const stageData = {
   9.25: {
@@ -30,10 +32,14 @@ export default function StageInfo() {
   const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
   // const formattedToday = '9.25'; // 글자색 변화 확인용
 
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS
+  }, []);
+
   return (
     <>
-      {Object.entries(stageData).map(([date, stage]) => (
-        <Container key={date}>
+      {Object.entries(stageData).map(([date, stage], index) => (
+        <Container key={date} data-aos="fade-up" data-aos-delay={index * 220}>
           <DateWrapper $isToday={date === formattedToday}>
             <Day>{stage.day}</Day>
             <MonthAndDay>{date}</MonthAndDay>

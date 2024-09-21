@@ -96,7 +96,6 @@ export const LineupInfoWrapper = styled.div`
   height: 43.6rem;
   display: flex;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 1);
   border-radius: 1.2rem;
 `;
 export const GoLineupPageBtn = styled.button`

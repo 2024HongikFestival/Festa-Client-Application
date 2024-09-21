@@ -1,4 +1,6 @@
 import { styled, css } from 'styled-components';
+import AOS from 'aos';
+import { useEffect } from 'react';
 
 // 내용이 적어서 따로 constants로 뺴지 않았습니다.
 const aboutOperatingHours = [
@@ -17,8 +19,12 @@ const aboutOperatingHours = [
 ];
 
 export default function OperatingHours() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS
+  }, []);
+
   return (
-    <Container>
+    <Container data-aos="fade-up" data-aos-delay="400">
       <HoursTitle>운영 시간</HoursTitle>
       <InfoWrapper>
         {aboutOperatingHours.map((item, index) => (

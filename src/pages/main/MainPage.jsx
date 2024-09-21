@@ -9,14 +9,15 @@ import * as S from './MainPage.styled';
 import Lottie from 'lottie-react';
 import mainStart from '@/assets/lotties/main/mainStart.json';
 import { useEffect, useState } from 'react';
+import AOS from 'aos';
 
 export default function MainPage() {
   const { t } = useTranslation();
   const [showLottie, setShowLottie] = useState(true); // Lottie 애니메이션
   const [showContent, setShowContent] = useState(false); // Title과 Desc
   const today = new Date();
-  const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
-  // const formattedToday = '9.27'; //확인용 날짜
+  // const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
+  const formattedToday = '9.27'; //확인용 날짜
   const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][today.getDay()]; // 요일 계산
 
   let lineupImage;
@@ -39,6 +40,8 @@ export default function MainPage() {
     const contentTimer = setTimeout(() => {
       setShowContent(true); // 0.86초 후 Title과 Desc가 나타남
     }, 860);
+
+    AOS.init({ duration: 1000 }); // Initialize AOS
 
     return () => {
       clearTimeout(lottieTimer);
@@ -74,23 +77,23 @@ export default function MainPage() {
       {/* 라인업 정보 컴포넌트 */}
       {isLineupDate && (
         <>
-          <S.LineupTitleWrapper>
-            <S.Date>
+          <S.LineupTitleWrapper data-aos="fade-up">
+            <S.Date data-aos="fade-up">
               {formattedToday} ({dayOfWeek})
             </S.Date>
-            <S.LineupTitle>오늘의 라인업</S.LineupTitle>
+            <S.LineupTitle data-aos="fade-up">오늘의 라인업</S.LineupTitle>
           </S.LineupTitleWrapper>
-          <S.LineupInfoWrapper>
-            {lineupImage && <S.LineupImg src={lineupImage} alt="오늘의 라인업" />}
+          <S.LineupInfoWrapper data-aos="fade-up">
+            {lineupImage && <S.LineupImg data-aos="fade-up" src={lineupImage} alt="오늘의 라인업" />}
           </S.LineupInfoWrapper>
         </>
       )}
-      <Link to="/lineup">
-        <S.GoLineupPageBtn>
+      <S.GoLineupPageBtn data-aos="fade-up">
+        <Link to="/lineup">
           <S.BtnText>전체 라인업 보러가기</S.BtnText>
           <S.Arrow />
-        </S.GoLineupPageBtn>
-      </Link>
+        </Link>
+      </S.GoLineupPageBtn>
       {/* 중앙 무대 일정 컴포넌트 */}
       <StageInfoContainer />
       {/* 운영 시간 컴포넌트 */}

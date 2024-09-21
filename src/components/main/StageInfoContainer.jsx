@@ -2,14 +2,22 @@ import styled from 'styled-components';
 import StageInfo from '@/components/main/StageInfo';
 import HibsLogo from '@/assets/webps/main/hibs.webp';
 import youtubeIcon from '@/assets/webps/main/youtubeIcon.webp';
+import AOS from 'aos';
+import { useEffect } from 'react';
 
 export default function StageInfoContainer() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS
+  }, []);
+
   return (
     <StageContainer>
-      <StageTitle>중앙 무대 일정</StageTitle>
+      <StageTitle data-aos="fade-up" data-aos-delay="220">
+        중앙 무대 일정
+      </StageTitle>
       <StageInfo />
       {/* 실시간 방송 보러가기 버튼 컴포넌트 */}
-      <GoHibsBtn>
+      <GoHibsBtn data-aos="fade-up" data-aos-delay="200">
         <BtnWrapper>
           <BtnText>
             <LogoContainer>
@@ -60,6 +68,7 @@ const GoHibsBtn = styled.div`
   display: flex;
   padding-top: 0.8rem;
   justify-content: center;
+  cursor: pointer;
 
   &::before {
     content: '';
