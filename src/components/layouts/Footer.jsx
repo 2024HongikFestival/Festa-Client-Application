@@ -122,7 +122,7 @@ export default function Footer() {
       )}
       {flameMain && (
         <S.VideoContainer>
-          <S.BackgroundVideo autoPlay loop muted>
+          <S.BackgroundVideo autoPlay loop muted playsInline>
             <source src={flameVideo} type="video/mp4" />
           </S.BackgroundVideo>
         </S.VideoContainer>
