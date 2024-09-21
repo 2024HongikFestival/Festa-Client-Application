@@ -117,6 +117,7 @@ const MapWrapper = styled.div`
   position: relative;
   width: 33.5rem;
   height: 25rem;
+  background-color: #b1daff;
 `;
 
 const Map = styled.img`
