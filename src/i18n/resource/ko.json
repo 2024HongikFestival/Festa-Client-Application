@@ -510,8 +510,8 @@
   },
   "map": {
     "title": "로드맵",
-    "complete": "전체지도",
-    "detail": "상세지도"
+    "complete": "전체 지도",
+    "detail": "상세 지도"
   },
   "fleamarket": {
     "pageTitle": "플리마켓",

@@ -449,8 +449,8 @@
   },
   "map": {
     "title": "Road map",
-    "complete": "complete",
-    "detail": "detailed"
+    "complete": "Complete",
+    "detail": "Detailed"
   },
 
   "reservation": {

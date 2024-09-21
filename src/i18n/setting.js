@@ -18,7 +18,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem('') || 'ko',
+    lng: localStorage.getItem('language') || 'ko',
     fallbackLng: 'ko',
     interpolation: {
       escapeValue: false,
