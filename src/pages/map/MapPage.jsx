@@ -85,14 +85,14 @@ const MapPage = () => {
           <MapToggle>
             <MapToggleBtn
               aria-pressed={activeView === 'all'}
-              isActive={activeView === 'all'}
+              $isActive={activeView === 'all'}
               onClick={() => handleToggle('all')}
             >
               전체지도
             </MapToggleBtn>
             <MapToggleBtn
               aria-pressed={activeView === 'detail'}
-              isActive={activeView === 'detail'}
+              $isActive={activeView === 'detail'}
               onClick={() => handleToggle('detail')}
             >
               상세지도
