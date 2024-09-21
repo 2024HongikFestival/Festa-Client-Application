@@ -1,12 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next'; // i18next import
-import productsData from '@/constants/wdfPromotion/data.json';
+import { useTranslation } from 'react-i18next';
+import 'aos/dist/aos.css';
+import { productsData } from '@/constants/wdfPromotion/data'; // js 파일에서 데이터 import
 
-import img1 from '@/assets/webps/wdfPromotion/예거마이스터.webp';
-import img2 from '@/assets/webps/wdfPromotion/인테이크.webp';
-import img3 from '@/assets/webps/wdfPromotion/금군양조.webp';
-import img4 from '@/assets/webps/wdfPromotion/프루팁스.webp';
+const FlamePromotionPage = () => {
+  const { t } = useTranslation();
+
+  return (
+    <PromotionContainer>
+      <Title>{t('flamePromotionPage.title')}</Title>
+      <Promotion>
+        {productsData.products.map((product, index) => {
+          return (
+            <Card key={product.id} data-aos={index === 0 ? '' : 'zoom-in-up'}>
+              <ImageContainer>
+                <Image
+                  src={product.image} // 이미지 바로 사용
+                  alt={product.name}
+                  width={product.width}
+                  height={product.height}
+                  top={product.imageTop}
+                />
+              </ImageContainer>
+              <Description>
+                <Text>{t(`flamePromotionPage.products.${product.name}`)}</Text>
+              </Description>
+            </Card>
+          );
+        })}
+      </Promotion>
+    </PromotionContainer>
+  );
+};
+
+export default FlamePromotionPage;
 
 const PromotionContainer = styled.div`
   width: 100%;
@@ -77,45 +105,3 @@ const Text = styled.p`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.basic.subHeadBold};
 `;
-
-const FlamePromotionPage = () => {
-  const [products, setProducts] = useState([]);
-  const { t } = useTranslation(); // useTranslation 훅 사용
-
-  useEffect(() => {
-    setProducts(productsData.products);
-  }, []);
-
-  const imageMap = {
-    img1: img1,
-    img2: img2,
-    img3: img3,
-    img4: img4,
-  };
-
-  return (
-    <PromotionContainer>
-      <Title>{t('flamePromotionPage.title')}</Title>
-      <Promotion>
-        {products.map((product) => (
-          <Card key={product.id}>
-            <ImageContainer>
-              <Image
-                src={imageMap[product.image]}
-                alt={product.name}
-                width={product.width}
-                height={product.height}
-                top={product.imageTop}
-              />
-            </ImageContainer>
-            <Description>
-              <Text>{t(`flamePromotionPage.products.${product.name}`)}</Text> {/* 번역 키로 제품 이름 사용 */}
-            </Description>
-          </Card>
-        ))}
-      </Promotion>
-    </PromotionContainer>
-  );
-};
-
-export default FlamePromotionPage;
