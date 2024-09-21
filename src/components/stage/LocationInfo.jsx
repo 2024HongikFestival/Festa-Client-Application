@@ -121,8 +121,8 @@ const MapWrapper = styled.div`
 `;
 
 const Map = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 33.5rem;
+  height: 25rem;
   object-fit: cover;
 `;
 
@@ -130,8 +130,8 @@ const LottieWrapper = styled.div`
   position: absolute;
   top: -0.2rem;
   left: 1rem;
-  width: 100%;
-  height: 100%;
+  width: 33.5rem;
+  height: 25rem;
 `;
 
 const Info = styled.div`
