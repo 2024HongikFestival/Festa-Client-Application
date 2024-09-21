@@ -1,6 +1,6 @@
+import styled from 'styled-components';
 import warningIcon from '@/assets/svgs/lost/error.svg';
 import Mangae from '@/assets/svgs/lost/Mangae.svg?react';
-import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,11 +13,9 @@ export const Wrapper = styled.div`
 
 export const Main = styled.main`
   width: 37.5rem;
-  min-height: 49.7rem; //852 - 55
-  //margin-top: 5.6rem;
+  min-height: 49.7rem;
   display: flex;
   flex-direction: column;
-  //justify-content: center;
   align-items: center;
 `;
 
@@ -52,13 +50,11 @@ export const AddLostItemButton = styled.button`
   align-self: stretch;
 
   border-radius: 16px;
-  background: ${({ theme }) => theme.colors.hongikBlue}; //아직 theme에 없어서 하드 코딩 hongikBlue
+  background: ${({ theme }) => theme.colors.hongikBlue};
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
-
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fontStyles.basic.subHeadBold};
   text-align: center;
-
   margin-bottom: 0.8rem;
 
   @keyframes shadowBlink {
@@ -72,7 +68,6 @@ export const AddLostItemButton = styled.button`
       box-shadow: 0 0 2rem 1.5rem rgba(255, 255, 255, 0.8);
     }
   }
-
   animation: shadowBlink 1.5s infinite;
 `;
 
@@ -82,6 +77,7 @@ export const ButtonDetailWrapper = styled.div`
   justify-content: center;
   gap: 4px;
 `;
+
 export const ButtonDetailIcon = styled.div`
   min-width: 1.5rem;
   min-height: 1.5rem;
@@ -96,7 +92,6 @@ export const ButtonDetailText = styled.span`
   align-items: center;
   min-width: 29.2rem;
   white-space: nowrap;
-
   color: ${({ theme }) => theme.colors.gray70};
   ${({ theme }) => theme.fontStyles.basic.captionMed};
 
@@ -112,9 +107,6 @@ export const ButtonDetailText = styled.span`
   }
 `;
 
-//나중에 컴포넌트화 할 예정
-export const FilterWrapper = styled.div``;
-
 export const LostAndFoundSection = styled.section`
   display: flex;
   width: 33.5rem;
@@ -125,8 +117,6 @@ export const LostAndFoundSection = styled.section`
 
   border-radius: 16px;
   background: ${({ theme }) => theme.colors.white};
-
-  /* 대동제 요소 그림자 */
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12);
 `;
 
@@ -199,7 +189,7 @@ export const FooterLayout = styled.div`
 export const ManGaeSvg = styled(Mangae)`
   width: 10.1rem;
   height: 4.06rem;
-  background-color: black; //임시
+  background-color: black;
 `;
 
 export const FooterIntroduction = styled.div`

@@ -1,10 +1,10 @@
 import { useState, useEffect, Fragment } from 'react';
-import { axiosInstance } from '@/api/axios';
 import { useNavigate, useNavigationType } from 'react-router-dom';
-import * as S from './styled';
-import form from '@/assets/webps/event/form.webp';
-import PhoneNumBox from '@/components/event/PhoneNumBox';
+import { axiosInstance } from '@/api/axios';
 import { useTranslation } from 'react-i18next';
+import PhoneNumBox from '@/components/event/PhoneNumBox';
+import form from '@/assets/webps/event/form.webp';
+import * as S from './styled';
 
 const EnterEvent = () => {
   const { t } = useTranslation();
@@ -20,21 +20,17 @@ const EnterEvent = () => {
 
   // 전화번호 관련 상태
   const [isPhoneValid, setIsPhoneValid] = useState(false);
-  const [codeArr, setCodeArr] = useState(Array(11).fill('')); // 11자리로 초기화
+  const [codeArr, setCodeArr] = useState(Array(11).fill(''));
   const _onChangeCode = (code) => {
-    // setCodeArr값은 codeArr.length로 잘라줌
     setCodeArr(code.slice(0, codeArr.length));
   };
 
-  // 이름 입력 관리
   const handleName = (e) => {
     setName(e.target.value);
   };
 
-  // 후기 입력 관리
   const handleComment = (e) => {
     e.preventDefault();
-    // 글자수 (100자) 제한
     if (e.target.value.length > 100) {
       e.target.value = e.target.value.slice(0, 100);
     }
@@ -42,9 +38,7 @@ const EnterEvent = () => {
     setComment(e.target.value);
   };
 
-  // 응모 가능 여부 관리
   const isEntryAvailable = () => {
-    // 전화번호 유효성 검사
     const isPhoneValid = codeArr.every((element) => element !== '');
 
     if (isPhoneValid) {
@@ -79,10 +73,8 @@ const EnterEvent = () => {
         }
       );
       console.log(response.data.message);
-      // 응모 완료 시 응모 관련 localStorage 초기화 후 응모 완료 페이지로 이동
       localStorage.removeItem('kakao_code');
       localStorage.removeItem('event_access_token');
-      // response.data.date를 state로 전달
       console.log(response.data.data.date);
       navigate('/event/submit', { state: { date: response.data.data.date } });
     } catch (error) {
@@ -102,7 +94,6 @@ const EnterEvent = () => {
     }
   }, [codeArr, phone]);
 
-  // 뒤로 가기 시 event_access_token 삭제 로직 추가
   useEffect(() => {
     if (navigationType === 'POP') {
       navigate('/event');

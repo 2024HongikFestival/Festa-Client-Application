@@ -1,21 +1,14 @@
-// 대동제 분실물 (메인)
-// url: /lost-and-found
-
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import * as S from './LostAndFoundPage.styled';
-
+import { Trans, useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 import DropDown from '@/components/lost-and-found/LostAndFoundPage/DropDown/DropDown';
 import LostBottomSheet from '@/components/lost-and-found/LostAndFoundPage/LostBottomSheet/LostBottomSheet';
 import { ItemModal, LocationModal } from '@/components/lost-and-found/LostAndFoundPage/LostModal/LostModal';
 import NewPagination from '@/components/lost-and-found/LostAndFoundPage/NewPagination/NewPagination';
-import { Trans, useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-//i18n.changeLanguage('en');
+import { axiosInstance } from '@/api/axios';
+import * as S from './LostAndFoundPage.styled';
 
-// [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
-// Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
 const LostAndFoundPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -42,7 +35,7 @@ const LostAndFoundPage = () => {
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
-  const page = parseInt(query.get('page')) || 1; //  string -> int 로 변환
+  const page = parseInt(query.get('page')) || 1;
 
   const handlePage = (pageNumber) => {
     navigate(`?page=${pageNumber}`);
@@ -51,8 +44,8 @@ const LostAndFoundPage = () => {
 
   const getItemsApi = async () => {
     try {
-      const response = await axios.get('https://api.2024hongikfestival.com/losts', {
-        params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
+      const response = await axiosInstance.get('/losts', {
+        params: { page: page, date: selectedDay },
       });
       setItems(response.data.data.losts);
       setTotalItems(response.data.data.losts.length);
@@ -72,13 +65,11 @@ const LostAndFoundPage = () => {
     getItemsApi();
   }, [currentPage]);
 
-  //드롭다운(필터링) 바뀌면 기본적으로 1페이지부터
   useEffect(() => {
     currentPage === 1 ? getItemsApi() : handlePage(1);
   }, [selectedDay]);
 
   const handleClickItem = (lostId) => () => {
-    //navigate(`${lostId}`);
     setIsItemModalOpen(true);
     setItemLostId(lostId);
   };
@@ -143,7 +134,6 @@ const StyleSpan = styled.span`
     content: '';
   }
   &::before {
-    //공백 처리를 위한 구문
     content: '';
     display: inline-block;
     width: 5px;
