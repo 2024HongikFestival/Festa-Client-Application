@@ -20,7 +20,6 @@ export default function MainPage() {
   const today = useMemo(() => new Date(), []);
   const formattedToday = useMemo(() => `${today.getMonth() + 1}.${today.getDate()}`, [today]);
 
-  // const formattedToday = '9.25'; // 라인업 카드 및 애니메이션 확인용 날짜
   const dayOfWeek = useMemo(() => {
     return formattedToday === '9.25'
       ? 'wed'
@@ -39,23 +38,20 @@ export default function MainPage() {
     }[formattedToday];
   }, [formattedToday]);
 
-  // 9.25, 9.26, 9.27에만 표시하기 위한 조건
   const isLineupDate = useMemo(() => ['9.25', '9.26', '9.27'].includes(formattedToday), [formattedToday]);
 
   useEffect(() => {
     const lottieTimer = setTimeout(() => {
       if (!isEnglish) {
         setShowLottie(false);
-      } // 영어가 아닐 때만 Lottie 숨김
+      }
     }, 3000);
-    const timeoutDuration = i18n.language === 'en' ? 600 : 860; // Faster for English
+    const timeoutDuration = i18n.language === 'en' ? 600 : 860;
 
     const contentTimer = setTimeout(() => {
       setShowContent(true);
-      // Title and Desc appear after the specified time
     }, timeoutDuration);
 
-    // isLineupDate 조건에 맞춰 AOS 초기화
     if (isLineupDate) {
       AOS.init({ duration: 1000 });
     }
@@ -64,10 +60,9 @@ export default function MainPage() {
       clearTimeout(lottieTimer);
       clearTimeout(contentTimer);
     };
-  }, [isEnglish, i18n.language, isLineupDate]); // add dependencies
+  }, [isEnglish, i18n.language, isLineupDate]);
 
   useEffect(() => {
-    // update isEnglish
     setIsEnglish(i18n.language === 'en');
   }, [i18n.language]);
 
@@ -75,7 +70,7 @@ export default function MainPage() {
     <S.Container>
       <S.Wrapper>
         {showLottie && (
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={null}>
             <S.LottieWrapper>
               <Lottie animationData={mainStart} />
             </S.LottieWrapper>
@@ -103,7 +98,7 @@ export default function MainPage() {
             </S.Date>
             <S.LineupTitle data-aos="fade-up">{t('main.todayLineup')}</S.LineupTitle>
           </S.LineupTitleWrapper>{' '}
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={null}>
             <S.LineupInfoWrapper data-aos="fade-up">
               {lineupImage && <S.LineupImg data-aos="fade-up" src={lineupImage} alt="오늘의 라인업" loading="lazy" />}
             </S.LineupInfoWrapper>
