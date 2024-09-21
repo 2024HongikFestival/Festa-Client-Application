@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { adminAxiosInstance } from '@/api/axios';
+import Post from './Post';
 import arrowDown from '@/assets/webps/admin/arrow_drop_down.webp';
 import arrowUp from '@/assets/webps/admin/arrow_drop_up.webp';
-import Post from './Post';
-import PropTypes from 'prop-types';
 
 const PAGE_SIZE = 12;
 
