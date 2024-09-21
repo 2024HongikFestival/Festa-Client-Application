@@ -12,12 +12,13 @@ import { useEffect, useState } from 'react';
 import AOS from 'aos';
 
 export default function MainPage() {
-  const { t } = useTranslation();
-  const [showLottie, setShowLottie] = useState(true); // Lottie 애니메이션
+  const { t, i18n } = useTranslation();
+  const [isEnglish, setIsEnglish] = useState(localStorage.getItem('language') === 'en');
+  const [showLottie, setShowLottie] = useState(!isEnglish);
   const [showContent, setShowContent] = useState(false); // Title과 Desc
   const today = new Date();
   // const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
-  const formattedToday = '9.27'; //확인용 날짜
+  const formattedToday = '9.27'; // 라인업 카드 및 애니메이션 확인용 날짜
   const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][today.getDay()]; // 요일 계산
 
   let lineupImage;
@@ -34,18 +35,35 @@ export default function MainPage() {
 
   useEffect(() => {
     const lottieTimer = setTimeout(() => {
-      setShowLottie(false); // Lottie 애니메이션은 3초 후에 숨기기
+      if (!isEnglish) {
+        setShowLottie(false);
+      } // 영어가 아닐 때만 Lottie 숨김
     }, 3000);
+    const timeoutDuration = i18n.language === 'en' ? 600 : 860; // Faster for English
 
     const contentTimer = setTimeout(() => {
-      setShowContent(true); // 0.86초 후 Title과 Desc가 나타남
-    }, 860);
+      setShowContent(true);
+      // Title and Desc appear after the specified time
+    }, timeoutDuration);
 
     AOS.init({ duration: 1000 }); // Initialize AOS
 
     return () => {
       clearTimeout(lottieTimer);
       clearTimeout(contentTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const language = i18n.language === 'en';
+      setIsEnglish(language === 'en');
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
     };
   }, []);
 
@@ -60,18 +78,14 @@ export default function MainPage() {
         <S.Title $showContent={showContent}>
           2024
           <br />
-          홍익대동제
+          {t('main.title')}
         </S.Title>
         <S.Desc $showContent={showContent}>
-          활짝 피어있는 지금.
-          <br />
-          있는 그대로 만개한
-          <br />
-          청춘의 이 순간을
-          <br />
-          2024 화양연화 ; 만개로
-          <br />
-          오랫동안 기억될 것입니다.
+          {t('main.desc1')}
+          <br /> {t('main.desc2')}
+          <br /> {t('main.desc3')}
+          <br /> {t('main.desc4')}
+          <br /> {t('main.desc5')}
         </S.Desc>
       </S.Wrapper>
       {/* 라인업 정보 컴포넌트 */}
@@ -81,7 +95,7 @@ export default function MainPage() {
             <S.Date data-aos="fade-up">
               {formattedToday} ({dayOfWeek})
             </S.Date>
-            <S.LineupTitle data-aos="fade-up">오늘의 라인업</S.LineupTitle>
+            <S.LineupTitle data-aos="fade-up">{t('main.todayLineup')}</S.LineupTitle>
           </S.LineupTitleWrapper>
           <S.LineupInfoWrapper data-aos="fade-up">
             {lineupImage && <S.LineupImg data-aos="fade-up" src={lineupImage} alt="오늘의 라인업" />}
@@ -90,8 +104,8 @@ export default function MainPage() {
       )}
       <S.GoLineupPageBtn data-aos="fade-up">
         <Link to="/lineup">
-          <S.BtnText>전체 라인업 보러가기</S.BtnText>
-          <S.Arrow />
+          <S.BtnText> {t('main.clicktoLineup')}</S.BtnText>
+          <S.Arrow $isEnglish={isEnglish} />
         </Link>
       </S.GoLineupPageBtn>
       {/* 중앙 무대 일정 컴포넌트 */}

@@ -1,37 +1,43 @@
 import { styled, css } from 'styled-components';
 import AOS from 'aos';
+import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 
 // 내용이 적어서 따로 constants로 뺴지 않았습니다.
 const aboutOperatingHours = [
   {
-    title: '플리마켓',
-    time: '11시 ~ 17시',
+    title: 'main.operating1',
+    time: 'main.operatinghours1',
+    kind: '플리마켓',
   },
   {
-    title: '주점',
-    time: '12시 ~ 23시',
+    title: 'main.operating2',
+    time: 'main.operatinghours2',
+    kind: '주점',
   },
   {
-    title: '와디페',
-    time: '19시 ~ 24시',
+    title: 'main.operating3',
+    time: 'main.operatinghours3',
+    kind: '와디페',
   },
 ];
 
 export default function OperatingHours() {
+  const { t } = useTranslation();
+
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Initialize AOS
   }, []);
 
   return (
     <Container data-aos="fade-up" data-aos-delay="400">
-      <HoursTitle>운영 시간</HoursTitle>
+      <HoursTitle>{t('main.operatingHours')}</HoursTitle>
       <InfoWrapper>
         {aboutOperatingHours.map((item, index) => (
           <InfoComp key={index}>
-            <Title kind={item.title}>{item.title}</Title>
-            <InfoTextContainer kind={item.title}>
-              <Text>{item.time}</Text>
+            <Title kind={item.kind}>{t(item.title)}</Title>
+            <InfoTextContainer kind={item.kind}>
+              <Text>{t(item.time)}</Text>
             </InfoTextContainer>
           </InfoComp>
         ))}

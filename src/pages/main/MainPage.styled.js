@@ -13,7 +13,6 @@ export const Wrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
   height: 70.7rem;
@@ -29,8 +28,8 @@ export const LottieWrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  position: absolute;
-  top: 9.4rem;
+  width: 19.2rem;
+  margin-top: 9.4rem;
   z-index: 1;
   display: flex;
   color: ${(props) => props.theme.colors.white};
@@ -45,8 +44,7 @@ export const Title = styled.div`
 `;
 
 export const Desc = styled.div`
-  position: absolute;
-  top: 27rem;
+  margin-top: 5.6rem;
   ${(props) => props.theme.fontStyles.basic.subHeadMed};
   color: ${(props) => props.theme.colors.white};
   text-align: center;
@@ -140,7 +138,7 @@ export const Arrow = styled.div`
   width: 2.4rem;
   height: 2.4rem;
   right: 0;
-  margin-right: 5.7rem;
+  margin-right: ${(props) => (props.$isEnglish ? '2.8rem' : '5.7rem')};
 `;
 
 export const BtnText = styled.p`

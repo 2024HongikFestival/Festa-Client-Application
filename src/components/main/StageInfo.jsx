@@ -1,34 +1,37 @@
 import styled from 'styled-components';
 import PieceImg from '@/assets/svgs/main/piece.svg';
 import AOS from 'aos';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const stageData = {
   9.25: {
     day: 'DAY 1',
     performances: [
-      { title: '재주꾼 선발 대회', time: '17:00 - 19:30' },
-      { title: '연예인 초청 무대', time: '20:00 - 22:00' },
+      { title: 'main.performance1', time: '17:00 - 19:30' },
+      { title: 'main.performance2', time: '20:00 - 22:00' },
     ],
   },
   9.26: {
     day: 'DAY 2',
     performances: [
-      { title: '학생 중앙 무대', time: '17:00 - 19:30' },
-      { title: '연예인 초청 무대', time: '20:00 - 22:00' },
+      { title: 'main.performance3', time: '17:00 - 19:30' },
+      { title: 'main.performance2', time: '20:00 - 22:00' },
     ],
   },
   9.27: {
     day: 'DAY 3',
     performances: [
-      { title: '학생 중앙 무대', time: '17:00 - 19:30' },
-      { title: '연예인 초청 무대', time: '20:00 - 22:00' },
+      { title: 'main.performance3', time: '17:00 - 19:30' },
+      { title: 'main.performance2', time: '20:00 - 22:00' },
     ],
   },
 };
 
 export default function StageInfo() {
   const today = new Date();
+  const { t } = useTranslation();
+  const [isEnglish, setIsEnglish] = useState(localStorage.getItem('language') === 'en');
   const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
   // const formattedToday = '9.25'; // 글자색 변화 확인용
 
@@ -36,22 +39,37 @@ export default function StageInfo() {
     AOS.init({ duration: 1000 }); // Initialize AOS
   }, []);
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const language = localStorage.getItem('language');
+      setIsEnglish(language === 'en');
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
   return (
     <>
       {Object.entries(stageData).map(([date, stage], index) => (
-        <Container key={date} data-aos="fade-up" data-aos-delay={index * 220}>
+        <Container key={date} data-aos="fade-up" data-aos-delay={index * 220} $isEnglish={isEnglish}>
           <DateWrapper $isToday={date === formattedToday}>
             <Day>{stage.day}</Day>
             <MonthAndDay>{date}</MonthAndDay>
           </DateWrapper>
-          <BubbleWrapper>
+          <BubbleWrapper $isEnglish={isEnglish}>
             <Piece src={PieceImg} alt="" />
-            <Bubble>
+            <Bubble $isEnglish={isEnglish}>
               <TextContainer>
                 {stage.performances.map((performance, idx) => (
                   <TextWrapper key={idx}>
-                    <Text>{performance.title}</Text>
-                    <Text time="true">{performance.time}</Text>
+                    <Text $isEnglish={isEnglish}>{t(performance.title)}</Text>
+                    <Text time="true" $isEnglish={isEnglish}>
+                      {performance.time}
+                    </Text>
                   </TextWrapper>
                 ))}
               </TextContainer>
@@ -123,13 +141,11 @@ const TextContainer = styled.div`
 
 const TextWrapper = styled.div`
   width: 21.9rem;
-  height: 2.1rem;
   display: flex;
   justify-content: space-between;
 `;
 
 const Text = styled.p`
-  ${(props) => props.theme.fontStyles.basic.body2Bold};
-  color: ${(props) => (props.time ? props.theme.fontStyles.basic.body2Med : props.theme.fontStyles.basic.body2Bold)};
+  ${(props) => (props.time ? props.theme.fontStyles.basic.body2Med : props.theme.fontStyles.basic.body2Bold)};
   color: ${(props) => (props.time ? props.theme.colors.gray60 : props.theme.colors.gray70)};
 `;

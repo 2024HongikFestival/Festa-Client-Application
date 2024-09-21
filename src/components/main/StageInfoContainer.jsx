@@ -4,8 +4,11 @@ import HibsLogo from '@/assets/webps/main/hibs.webp';
 import youtubeIcon from '@/assets/webps/main/youtubeIcon.webp';
 import AOS from 'aos';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function StageInfoContainer() {
+  const { t } = useTranslation();
+
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Initialize AOS
   }, []);
@@ -13,7 +16,7 @@ export default function StageInfoContainer() {
   return (
     <StageContainer>
       <StageTitle data-aos="fade-up" data-aos-delay="220">
-        중앙 무대 일정
+        {t('main.centralStage')}
       </StageTitle>
       <StageInfo />
       {/* 실시간 방송 보러가기 버튼 컴포넌트 */}
@@ -22,9 +25,9 @@ export default function StageInfoContainer() {
           <BtnText>
             <LogoContainer>
               <Logo src={HibsLogo} alt="hibsLogo" />
-              <TopText>HIBS 홍대방송국</TopText>
+              <TopText>{t('main.HIBS')}</TopText>
             </LogoContainer>
-            <BottomText>실시간 공연 보러가기 !</BottomText>
+            <BottomText>{t('main.gotoBtn')}</BottomText>
           </BtnText>
           <YoutubeIconWrapper>
             <YoutubeIcon src={youtubeIcon} alt="youtube" />

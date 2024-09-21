@@ -1,6 +1,27 @@
 {
   "main": {
-    "sorry": "ㅈㅅ ㅋㅋ"
+    "sorry": "ㅈㅅ ㅋㅋ",
+    "title": "홍익대동제",
+    "desc1": "활짝 피어있는 지금.",
+    "desc2": "있는 그대로 만개한",
+    "desc3": "청춘의 이 순간을",
+    "desc4": "2024 화양연화 ; 만개로",
+    "desc5": " 오랫동안 기억될 것입니다.",
+    "todayLineup": "오늘의 라인업",
+    "clicktoLineup": "전체 라인업 보러가기",
+    "centralStage": "중앙 무대 일정",
+    "performance1": "재주꾼 선발 대회",
+    "performance2": "연예인 초청 무대",
+    "performance3": "학생 중앙 무대",
+    "operatingHours": "운영 시간",
+    "operating1": "플리마켓",
+    "operating2": "주점",
+    "operating3": "와디페",
+    "operatinghours1": "11시 ~ 17시 ",
+    "operatinghours2": "12시 ~ 23시",
+    "operatinghours3": "19시 ~ 24시",
+    "HIBS": "HIBS 홍대방송국",
+    "gotoBtn": "실시간 공연 보러가기 !"
   },
   "booth": {
     "pub": {
