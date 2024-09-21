@@ -13,22 +13,20 @@ import AOS from 'aos';
 
 export default function MainPage() {
   const { t, i18n } = useTranslation();
-  const [isEnglish, setIsEnglish] = useState(localStorage.getItem('language') === 'en');
+  const [isEnglish, setIsEnglish] = useState(i18n.language === 'en');
   const [showLottie, setShowLottie] = useState(!isEnglish);
   const [showContent, setShowContent] = useState(false); // Title과 Desc
   const today = new Date();
-  // const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
-  const formattedToday = '9.27'; // 라인업 카드 및 애니메이션 확인용 날짜
-  const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][today.getDay()]; // 요일 계산
+  const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
+  // const formattedToday = '9.25'; // 라인업 카드 및 애니메이션 확인용 날짜
+  const dayOfWeek =
+    formattedToday === '9.25' ? 'wed' : formattedToday === '9.26' ? 'thu' : formattedToday === '9.27' ? 'fri' : '';
 
-  let lineupImage;
-  if (formattedToday === '9.25') {
-    lineupImage = mainLineup1;
-  } else if (formattedToday === '9.26') {
-    lineupImage = mainLineup2;
-  } else if (formattedToday === '9.27') {
-    lineupImage = mainLineup3;
-  }
+  const lineupImage = {
+    9.25: mainLineup1,
+    9.26: mainLineup2,
+    9.27: mainLineup3,
+  }[formattedToday];
 
   // 9.25, 9.26, 9.27에만 표시하기 위한 조건
   const isLineupDate = ['9.25', '9.26', '9.27'].includes(formattedToday);
@@ -55,17 +53,9 @@ export default function MainPage() {
   }, []);
 
   useEffect(() => {
-    const handleStorageChange = () => {
-      const language = i18n.language === 'en';
-      setIsEnglish(language === 'en');
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
+    // update isEnglish
+    setIsEnglish(i18n.language === 'en');
+  }, [i18n.language]);
 
   return (
     <S.Container>
@@ -93,7 +83,7 @@ export default function MainPage() {
         <>
           <S.LineupTitleWrapper data-aos="fade-up">
             <S.Date data-aos="fade-up">
-              {formattedToday} ({dayOfWeek})
+              {formattedToday} ({t(`main.days.${dayOfWeek}`)})
             </S.Date>
             <S.LineupTitle data-aos="fade-up">{t('main.todayLineup')}</S.LineupTitle>
           </S.LineupTitleWrapper>

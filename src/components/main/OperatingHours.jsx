@@ -85,8 +85,13 @@ const InfoComp = styled.div`
 `;
 
 const Title = styled.div`
-  margin-top: 3.6rem;
+  height: 6.5rem;
+  margin-bottom: 1.9rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   ${({ theme }) => theme.fontStyles.main.headline6}
+  line-height: 120%;
   text-align: center;
   ${(props) =>
     props.kind === '플리마켓' &&
@@ -108,7 +113,6 @@ const Title = styled.div`
 `;
 
 const InfoTextContainer = styled.div`
-  margin-top: 1.8rem;
   height: 4.8rem;
   display: flex;
   justify-content: center;

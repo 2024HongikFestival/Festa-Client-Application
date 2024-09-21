@@ -31,7 +31,6 @@ const stageData = {
 export default function StageInfo() {
   const today = new Date();
   const { t } = useTranslation();
-  const [isEnglish, setIsEnglish] = useState(localStorage.getItem('language') === 'en');
   const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
   // const formattedToday = '9.25'; // 글자색 변화 확인용
 
@@ -39,37 +38,22 @@ export default function StageInfo() {
     AOS.init({ duration: 1000 }); // Initialize AOS
   }, []);
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const language = localStorage.getItem('language');
-      setIsEnglish(language === 'en');
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
-
   return (
     <>
       {Object.entries(stageData).map(([date, stage], index) => (
-        <Container key={date} data-aos="fade-up" data-aos-delay={index * 220} $isEnglish={isEnglish}>
+        <Container key={date} data-aos="fade-up" data-aos-delay={index * 220}>
           <DateWrapper $isToday={date === formattedToday}>
             <Day>{stage.day}</Day>
             <MonthAndDay>{date}</MonthAndDay>
           </DateWrapper>
-          <BubbleWrapper $isEnglish={isEnglish}>
+          <BubbleWrapper>
             <Piece src={PieceImg} alt="" />
-            <Bubble $isEnglish={isEnglish}>
+            <Bubble>
               <TextContainer>
                 {stage.performances.map((performance, idx) => (
                   <TextWrapper key={idx}>
-                    <Text $isEnglish={isEnglish}>{t(performance.title)}</Text>
-                    <Text time="true" $isEnglish={isEnglish}>
-                      {performance.time}
-                    </Text>
+                    <Text>{t(performance.title)}</Text>
+                    <Text time="true">{performance.time}</Text>
                   </TextWrapper>
                 ))}
               </TextContainer>

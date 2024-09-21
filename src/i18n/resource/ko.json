@@ -21,7 +21,12 @@
     "operatinghours2": "12시 ~ 23시",
     "operatinghours3": "19시 ~ 24시",
     "HIBS": "HIBS 홍대방송국",
-    "gotoBtn": "실시간 공연 보러가기 !"
+    "gotoBtn": "실시간 공연 보러가기 !",
+    "days": {
+      "wed": "수",
+      "thu": "목",
+      "fri": "금"
+    }
   },
   "booth": {
     "pub": {
