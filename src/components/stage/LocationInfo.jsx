@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import styled from 'styled-components';
@@ -9,15 +9,15 @@ import Lottie from 'react-lottie';
 import arrowAnimation from '@/assets/lotties/stageInfo/arrowAnimation.json';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
+const lottieOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: arrowAnimation,
+};
+
 const LocationInfo = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: arrowAnimation,
-  };
 
   return (
     <Container>
@@ -31,22 +31,21 @@ const LocationInfo = () => {
             minScale={1}
             maxScale={6}
           >
-            {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-              <MapWrapper>
-                <TransformComponent>
-                  <Map src={map_2} alt="Stage Info Map" />
-                </TransformComponent>
-                <FloatingButton src={button} alt="button" />
-              </MapWrapper>
-            )}
+            <MapWrapper>
+              <TransformComponent>
+                <Map src={map_2} alt="Stage Info Map" />
+              </TransformComponent>
+              <FloatingButton src={button} alt="button" />
+            </MapWrapper>
           </TransformWrapper>
         </MapBox>
+
         <MapBox>
           <MapTitle>{t('locationInfo.entranceInfo')}</MapTitle>
           <MapWrapper>
             <Map src={map} alt="Entrance Info Map" />
             <LottieWrapper>
-              <Lottie options={defaultOptions} />
+              <Lottie options={lottieOptions} />
             </LottieWrapper>
           </MapWrapper>
         </MapBox>
@@ -169,5 +168,5 @@ const FloatingButton = styled.img`
   height: 2.5rem;
   position: absolute;
   right: 1.5rem;
-  bottom: 4.5rem;
+  bottom: 1.5rem;
 `;
