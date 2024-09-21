@@ -30,7 +30,7 @@ export const MapBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.6rem;
+  gap: 2rem;
 `;
 
 export const MapToggle = styled.div`

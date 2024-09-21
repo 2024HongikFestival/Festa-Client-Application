@@ -11,10 +11,10 @@ import {
 } from './styles.js';
 import React, { useState, useEffect } from 'react';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
-import mapImg from '/src/assets/webps/map/completemap.webp';
-import btnImg from '/src/assets/webps/map/buttonscale.webp';
-import small from '/src/assets/webps/map/detailMap2.webp';
-import big from '/src/assets/webps/map/zoomMap2.webp';
+import mapImg from '@/assets/webps/map/completemap.webp';
+import btnImg from '@/assets/webps/map/buttonscale.webp';
+import small from '@/assets/webps/map/detailMap2.webp';
+import big from '@/assets/webps/map/zoomMap2.webp';
 import { useTranslation } from 'react-i18next';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
