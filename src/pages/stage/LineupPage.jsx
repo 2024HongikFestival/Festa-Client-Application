@@ -13,6 +13,24 @@ import img7 from '@/assets/webps/stageLineup/0927_1.webp';
 import img8 from '@/assets/webps/stageLineup/0927_2.webp';
 import img9 from '@/assets/webps/stageLineup/0927_3.webp';
 
+const Data = {
+  day1: [
+    { src: img1, alt: '하하', name: '하하 HAHA' },
+    { src: img2, alt: '10cm', name: '십센치 10CM' },
+    { src: img3, alt: '지아코', name: '지코 ZICO' },
+  ],
+  day2: [
+    { src: img4, alt: '카더가든', name: '카더가든 Car, the garden' },
+    { src: img5, alt: '에이핑크', name: '에이핑크 Apink' },
+    { src: img6, alt: '크라잉넛', name: '크라잉넛 CRYING NUT' },
+  ],
+  day3: [
+    { src: img7, alt: '한로로', name: '한로로 HANRORO' },
+    { src: img8, alt: '청하', name: '청하 CHUNG HA' },
+    { src: img9, alt: '로꼬', name: '로꼬 Loco' },
+  ],
+};
+
 const LineupPage = () => {
   const [selectedDay, setSelectedDay] = useState('day1');
   const { t } = useTranslation();
@@ -21,41 +39,14 @@ const LineupPage = () => {
     setSelectedDay(getSelectedDayByDate());
   }, []);
 
-  const Data = {
-    day1: [
-      { src: img1, alt: '하하', name: '하하 HAHA' },
-      { src: img2, alt: '10cm', name: '십센치 10CM' },
-      { src: img3, alt: '지아코', name: '지코 ZICO' },
-    ],
-    day2: [
-      { src: img4, alt: '카더가든', name: '카더가든 Car, the garden' },
-      { src: img5, alt: '에이핑크', name: '에이핑크 Apink' },
-      { src: img6, alt: '크라잉넛', name: '크라잉넛 CRYING NUT' },
-    ],
-    day3: [
-      { src: img7, alt: '한로로', name: '한로로 HANRORO' },
-      { src: img8, alt: '청하', name: '청하 CHUNG HA' },
-      { src: img9, alt: '로꼬', name: '로꼬 Loco' },
-    ],
-  };
-
   const renderCards = () => {
     const dayData = Data[selectedDay.toLowerCase()];
 
     return dayData.map((data, index) => {
-      let animationType = '';
-
-      // 첫 번째 카드는 애니메이션 없음
-      if (index === 0) {
-        animationType = '';
-      } else {
-        animationType = 'fade-up';
-      }
-
       const isBlack = (selectedDay === 'day3' && index === 0) || (selectedDay !== 'day3' && index === 1);
 
       return (
-        <S.Card key={data.name} data-aos={animationType}>
+        <S.Card key={data.name} data-aos={index === 0 ? '' : 'fade-up'}>
           <S.CardImage src={data.src} alt={data.alt} />
           <S.CardDescription>
             {/* $isBlack으로 수정 */}
