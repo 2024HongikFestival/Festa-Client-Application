@@ -1,11 +1,10 @@
 import { css } from 'styled-components';
 
-//import mdBg from '@/assets/svgs/booth/background/mdBackground.svg';
+// 주점 배경 변경 필요
 import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
-import stageBg from '@/assets/webps/stage/background.webp';
-import mapBg from '@/assets/svgs/map/mapBg.svg';
 
-// 새 배경
+// 확정 배경 이미지
+import stageBg from '@/assets/webps/stage/background.webp';
 import mainBackground from '@/assets/webps/main/mainBackground.webp';
 import LostAndFoundBackgound from '@/assets/webps/lost/LostAndFoundBackgound.webp';
 import AddLostBackground from '@/assets/webps/lost/AddLostBackground.webp';
@@ -14,6 +13,7 @@ import mdBackground from '@/assets/webps/booth/background/mdBackground.webp';
 import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackground.webp';
 import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
 import fleamarketBg3 from '@/assets/webps/booth/background/fleamarketSangsuBackground.webp';
+import roadmapBackground from '@/assets/webps/map/background/roadmapBackground.webp';
 
 // 공통 스타일 정의
 const commonBackgroundStyle = css`
@@ -61,7 +61,7 @@ const backgroundStyles = {
   map: {
     paths: ['/map'],
     style: css`
-      background-image: url(${mapBg});
+      background-image: url(${roadmapBackground});
       ${commonBackgroundStyle}
     `,
   },
