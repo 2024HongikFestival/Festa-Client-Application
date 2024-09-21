@@ -48,7 +48,7 @@ export const MapToggle = styled.div`
 export const MapToggleBtn = styled.div`
   text-align: center;
   cursor: pointer;
-  ${(props) => props.theme.fontStyles.basic.subHeadBold};
+  ${(props) => props.theme.fontStyles.basic.body1Semi};
   flex: 1;
   color: ${({ whatview, theme }) => (whatview === 'true' ? `${theme.colors.hongikBlue}` : `${theme.colors.gray60}`)};
   padding: 0.6rem 0;
