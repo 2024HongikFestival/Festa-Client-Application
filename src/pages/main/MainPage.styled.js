@@ -88,6 +88,7 @@ export const LineupTitle = styled.p`
   font-family: 'SCoreDream', sans-serif;
   color: ${(props) => props.theme.colors.white};
   text-shadow: 0px 0px 20px ${(props) => props.theme.colors.hongikSkyBlue};
+  padding: 0;
 `;
 
 export const LineupInfoWrapper = styled.div`
@@ -98,38 +99,57 @@ export const LineupInfoWrapper = styled.div`
   background-color: rgba(255, 255, 255, 1);
   border-radius: 1.2rem;
 `;
-
 export const GoLineupPageBtn = styled.button`
   margin-top: 3.2rem;
   width: 33.5rem;
   height: 5.4rem;
   position: relative;
-  box-shadow: 0px 0px 0.8rem 0 rgba(0, 0, 0, 0.12);
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.main.headline6};
-  margin-bottom: 6.4rem;
+  margin-bottom: 4rem;
   border-radius: 1.2rem;
-  border-radius: 12px;
-  border: 2px solid #aed3ff; /* 테두리 색상 */
-  background: transparent; /* 배경을 투명으로 설정 */
-  background-image: linear-gradient(92deg, rgba(3, 124, 158, 0.32) 5.37%, rgba(22, 170, 234, 0.32) 97.97%);
-  box-shadow: 0px 2px 8px 0px rgba(66, 255, 187, 0.04);
-  backdrop-filter: blur(12px);
+  background: linear-gradient(92deg, rgba(3, 124, 158, 0.32) 5.37%, rgba(22, 170, 234, 0.32) 97.97%);
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(66, 255, 187, 0.04);
+  backdrop-filter: blur(1.2rem);
   display: flex;
   align-items: center;
-  padding: 0;
+  justify-content: center;
   box-sizing: border-box;
+  border: none; /* 기본 테두리 제거 */
+
+  /* Gradient Border */
+  background: linear-gradient(90deg, #aed3ff 0%, #39c3ef 100%);
+  padding: 0.2rem; /* 내부 간격 설정 (테두리처럼 보이게) */
+  background-clip: padding-box, border-box; /* 내부와 테두리 분리 */
+  background-origin: border-box; /* 그라디언트가 테두리에만 적용 */
+
+  & > * {
+    background: linear-gradient(92deg, rgba(3, 124, 158, 0.32) 5.37%, rgba(22, 170, 234, 0.32) 97.97%);
+    border-radius: 1.2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Arrow = styled.div`
   background: url(${arrow});
   background-size: contain;
+  position: absolute;
   width: 2.4rem;
   height: 2.4rem;
-  padding-left: 0.4rem;
+  right: 0;
+  margin-right: 5.7rem;
 `;
 
 export const BtnText = styled.p`
   ${(props) => props.theme.fontStyles.main.headline6};
-  padding-left: 8.7rem;
+  left: 50%;
+`;
+
+export const LineupImg = styled.img`
+  width: 33.5rem;
+  height: 43.6rem;
 `;

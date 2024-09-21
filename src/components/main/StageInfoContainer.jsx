@@ -32,7 +32,7 @@ const StageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 6.4rem;
+  margin-top: 9.6rem;
   margin-bottom: 3.2rem;
 `;
 
@@ -91,6 +91,7 @@ const BtnWrapper = styled.div`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  height: 11.4rem;
 `;
 
 const Logo = styled.img`

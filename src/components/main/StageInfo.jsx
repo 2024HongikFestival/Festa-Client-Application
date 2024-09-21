@@ -28,6 +28,7 @@ const stageData = {
 export default function StageInfo() {
   const today = new Date();
   const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
+  // const formattedToday = '9.25'; // 글자색 변화 확인용
 
   return (
     <>

@@ -38,7 +38,7 @@ const Container = styled.div`
   width: 33.5rem;
   height: 19.2rem;
   margin-top: 9.6rem;
-  margin-bottom: 6.4rem;
+  margin-bottom: 9.6rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
