@@ -1,5 +1,5 @@
-import dropDownV from '@/assets/svgs/lost/dropDownV.svg?react';
 import styled from 'styled-components';
+import dropDownV from '@/assets/svgs/lost/dropDownV.svg?react';
 
 export const DropDownContainer = styled.div`
   position: relative;
@@ -29,7 +29,7 @@ export const DropDownToggle = styled.button`
 
 export const DropDownMenu = styled.div`
   position: absolute;
-  top: 1.6rem; //3.2 - 1.6
+  top: 1.6rem;
   z-index: 0;
 
   left: 0;
@@ -49,7 +49,7 @@ export const DropDownMenu = styled.div`
 
 export const DropDownItem = styled.div`
   &:first-child {
-    height: 4.5rem; //2.9 + 1.6
+    height: 4.5rem;
     padding-top: 2.2rem;
   }
 
@@ -70,7 +70,7 @@ export const DropDownItem = styled.div`
 
   &:last-child {
     border-radius: 0px 0px 12px 12px;
-    height: 3.3rem; //2.9 + 0.4
+    height: 3.3rem;
     padding-bottom: 0.4rem;
   }
 `;

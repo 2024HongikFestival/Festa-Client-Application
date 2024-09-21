@@ -38,7 +38,7 @@ const Participants = ({ setIsDetailView, setPostId, lists }) => {
       quantity: entry.quantity,
       entryCount: entry.entryCount,
     });
-    setIsDetailView(true); // 상세 보기로 전환
+    setIsDetailView(true);
   };
 
   useEffect(() => {

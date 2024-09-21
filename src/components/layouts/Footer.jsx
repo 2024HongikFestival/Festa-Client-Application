@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import mangaeLogo from '@/assets/webps/layouts/mangae.webp';
 import { useTranslation } from 'react-i18next';
+import * as S from '@/components/layouts/FooterStyles';
+import mangaeLogo from '@/assets/webps/layouts/mangae.webp';
 import rightArrow from '@/assets/svgs/makers/rightArrow.svg';
 import rightArrowGray from '@/assets/svgs/makers/rightArrowGray.svg';
 import flameLogo from '@/assets/svgs/makers/flame.svg';
@@ -9,8 +11,6 @@ import wdfInsta from '@/assets/svgs/makers/wdfInsta.svg';
 import gaehwaInsta from '@/assets/svgs/makers/gaehwaInsta.svg';
 import up from '@/assets/svgs/layouts/up.svg';
 import flameVideo from '@/assets/videos/flameMainFooter.mp4';
-import * as S from '@/components/layouts/FooterStyles';
-import { useEffect, useState } from 'react';
 
 export default function Footer() {
   const [isAtFooter, setIsAtFooter] = useState(false);

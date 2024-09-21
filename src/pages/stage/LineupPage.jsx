@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import * as S from './styles/LineupPage';
 import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
-
 import img1 from '@/assets/webps/stageLineup/0925_1.webp';
 import img2 from '@/assets/webps/stageLineup/0925_2.webp';
 import img3 from '@/assets/webps/stageLineup/0925_3.webp';
@@ -12,6 +10,7 @@ import img6 from '@/assets/webps/stageLineup/0926_3.webp';
 import img7 from '@/assets/webps/stageLineup/0927_1.webp';
 import img8 from '@/assets/webps/stageLineup/0927_2.webp';
 import img9 from '@/assets/webps/stageLineup/0927_3.webp';
+import * as S from './styles/LineupPage';
 
 const Data = {
   day1: [
@@ -49,7 +48,6 @@ const LineupPage = () => {
         <S.Card key={data.name} data-aos={index === 0 ? '' : 'fade-up'}>
           <S.CardImage src={data.src} alt={data.alt} />
           <S.CardDescription>
-            {/* $isBlack으로 수정 */}
             <S.Name $isBlack={isBlack}>{data.name}</S.Name>
           </S.CardDescription>
         </S.Card>

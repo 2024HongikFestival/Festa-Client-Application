@@ -28,8 +28,6 @@ const RedirectEvents = () => {
         code: localStorage.getItem('kakao_code'),
         latitude: location.latitude,
         longtitude: location.longitude,
-        // latitude: 37.5512242,
-        // longitude: 126.9255396,
       });
       console.log(response.data.message);
       localStorage.setItem('event_access_token', response.data.data.accessToken);

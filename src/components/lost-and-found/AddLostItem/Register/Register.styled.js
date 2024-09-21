@@ -12,24 +12,20 @@ export const Wrapper = styled.div`
 
 export const RegisterMain = styled.main`
   width: 37.5rem;
-  min-height: 49.7rem; //852 - 55
-
+  min-height: 49.7rem;
   padding-top: 2.8rem;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-
   gap: 2.8rem;
 `;
 
 export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.black};
-  ${({ theme }) => theme.fontStyles.main.headline2}; //SCORE 어쩌구로 바뀜
+  ${({ theme }) => theme.fontStyles.main.headline2};
 `;
 
-//경고 박스
 export const WarningBox = styled.div`
   width: 33.5rem;
   padding: 1.6rem 2.6rem;
@@ -77,7 +73,6 @@ export const WarningBoxAndRegisterSection = styled.div`
   gap: 2.4rem;
 `;
 
-// 분실물 찾아주기 섹션
 export const RegisterSection = styled.section`
   display: flex;
   width: 33.5rem;
@@ -117,7 +112,6 @@ export const InputWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
-  //align-0self: stretch;
 `;
 
 export const InputText = styled.h5`
@@ -125,7 +119,6 @@ export const InputText = styled.h5`
   color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fontStyles.basic.body1Bold};
 
-  //span은 inherit 하지 않는 이상 내부 css로 덮어씌워짐
   span {
     color: ${({ theme }) => theme.colors.gray50};
     ${({ theme }) => theme.fontStyles.basic.body1Bold};
@@ -146,7 +139,7 @@ export const Input = styled.input`
 
   color: ${({ theme }) => theme.colors.gray100};
   ${({ theme }) => theme.fontStyles.basic.body2Med};
-  font-weight: 400; //body2reg
+  font-weight: 400;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray30};
@@ -175,7 +168,7 @@ export const TextArea = styled.textarea`
 
   color: ${({ theme }) => theme.colors.gray100};
   ${({ theme }) => theme.fontStyles.basic.body2Med};
-  font-weight: 400; //body2reg
+  font-weight: 400;
 
   resize: none;
   &::placeholder {
@@ -215,7 +208,6 @@ export const InputWarningTextBox = styled.div`
 export const InputWarningIcon = styled(warningIcon)`
   width: 1.4rem;
   height: 1.4rem;
-  //fill: #ff004c;
 `;
 
 export const Picture = styled.img`

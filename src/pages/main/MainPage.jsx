@@ -16,7 +16,7 @@ export default function MainPage() {
   const { t, i18n } = useTranslation();
   const [isEnglish, setIsEnglish] = useState(i18n.language === 'en');
   const [showLottie, setShowLottie] = useState(!isEnglish);
-  const [showContent, setShowContent] = useState(false); // Title과 Desc
+  const [showContent, setShowContent] = useState(false);
   const today = useMemo(() => new Date(), []);
   const formattedToday = useMemo(() => `${today.getMonth() + 1}.${today.getDate()}`, [today]);
 

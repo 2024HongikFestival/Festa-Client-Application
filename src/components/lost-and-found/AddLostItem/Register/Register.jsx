@@ -1,12 +1,12 @@
-import { presigendAxiosInstance } from '@/api/axios';
-import { getGrapemeLength, truncateToMaxLength } from '@/utils/InputFilter';
-import { getPresignedUrl, putPresignedUrl } from '@/utils/presignedUrl';
+import React, { useEffect, useReducer, useState } from 'react';
 import { t } from 'i18next';
 import PropTypes from 'prop-types';
-import React, { useEffect, useReducer, useState } from 'react';
 import { Trans } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { LocationModal } from '../../LostAndFoundPage/LostModal/LostModal';
+import { presigendAxiosInstance } from '@/api/axios';
+import { getGrapemeLength, truncateToMaxLength } from '@/utils/InputFilter';
+import { getPresignedUrl, putPresignedUrl } from '@/utils/presignedUrl';
 import * as S from './Register.styled';
 
 const MAX_LENGTH_INPUT = 15;
@@ -64,10 +64,8 @@ const reducer = (state, action) => {
 const Register = ({ imgSrc }) => {
   const navigate = useNavigate();
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
-  //해당 url은 미리 이미지를 등록한 뒤 해당 url을 서버에 api 요청을 보내는데 사용됨.
   const [url, setUrl] = useState('');
 
-  //input(3가지) 상태 관리 중앙화
   const [inputState, dispatch] = useReducer(reducer, initialState);
   const { foundLocation, storageLocation, content, foundLocationLength, storageLocationLength, contentLength } =
     inputState;

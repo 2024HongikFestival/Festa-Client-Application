@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { t } from 'i18next';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import * as S from './LostModal.styled';
 

@@ -6,7 +6,6 @@ import { contributors } from '@/constants/makers/GaehwaContributors';
 
 const GaehwaPage = () => {
   const contributorsData = contributors();
-
   const executiveCommittee = contributorsData.executiveCommittee;
   const operation = contributorsData.operation;
   const executive = contributorsData.executive;

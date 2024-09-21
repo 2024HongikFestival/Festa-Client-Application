@@ -1,6 +1,4 @@
-// src/components/Preview.js
 import PropTypes from 'prop-types';
-import React from 'react';
 import styled from 'styled-components';
 
 const PreviewContainer = styled.div`

@@ -49,7 +49,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden; /* 이미지가 카드 경계를 넘지 않도록 설정 */
+  overflow: hidden;
 `;
 export const CardImage = styled.img`
   width: 33.5rem;
@@ -58,7 +58,7 @@ export const CardImage = styled.img`
 `;
 export const CardDescription = styled.div`
   position: absolute;
-  bottom: 0; /* 카드 하단에 배치 */
+  bottom: 0;
   width: 100%;
   height: 6.4rem;
   border-top: 1px solid ${(props) => props.theme.colors.gray20};

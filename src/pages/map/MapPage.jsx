@@ -1,12 +1,12 @@
-import { MapBox, MapTitle, MapToggle, MapToggleBtn, MainMapWrapper, MapToggleBox, MapImgBox } from './styles.js';
 import React, { useEffect, useRef, useState } from 'react';
-import ContentContainer from '@/components/common/ContentContainer.jsx';
-import mapImg from './map.webp';
 import { createUseGesture, dragAction, pinchAction } from '@use-gesture/react';
 import { useSpring, animated } from '@react-spring/web';
+import ContentContainer from '@/components/common/ContentContainer.jsx';
+import mapImg from './map.webp';
+import { MapBox, MapTitle, MapToggle, MapToggleBtn, MainMapWrapper, MapToggleBox, MapImgBox } from './styles.js';
 
 const MapPage = () => {
-  const [activeView, setActiveView] = useState('all'); // 'all' or 'detail'
+  const [activeView, setActiveView] = useState('all');
 
   const useGesture = createUseGesture([dragAction, pinchAction]);
   const ref = useRef(null);

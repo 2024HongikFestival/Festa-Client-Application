@@ -1,9 +1,6 @@
-import lostCenterLocation from '@/assets/webps/lost/lostCenterLocation.webp';
 import styled from 'styled-components';
+import lostCenterLocation from '@/assets/webps/lost/lostCenterLocation.webp';
 
-/*
-  공통 컴포넌트 작성
-*/
 export const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -30,8 +27,6 @@ export const ModalLayout = styled.div`
 
   border-radius: 16px;
   background: ${({ theme }) => theme.colors.white};
-
-  /* 대동제 요소 그림자 */
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12);
 `;
 
@@ -52,10 +47,6 @@ export const BlueButton = styled.button`
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fontStyles.basic.subHeadBold};
 `;
-
-/*
-  개별 컴포넌트 작성
-*/
 
 //Location Modal
 export const LostCenterLayout = styled.div`
@@ -106,7 +97,7 @@ export const LostCenterContent = styled.span`
   }
 `;
 
-//ItemModal
+// ItemModal
 export const LostItemWrapper = styled.div`
   display: flex;
   width: 28.7rem;
@@ -146,7 +137,6 @@ export const LostItemLayout = styled.div`
 export const LostItemImg = styled.img`
   width: 28.7rem;
   height: 28.7rem;
-  //src: url(${({ $src }) => $src});
 
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.gray30};
@@ -200,7 +190,7 @@ export const LostItemMainContentRight = styled.span`
 `;
 
 export const ThreeLineTextContent = styled.span`
-  height: 7.2rem; //한 줄에 대략 2.4rem * 3
+  height: 7.2rem;
   align-self: stretch;
   overflow-y: scroll;
 

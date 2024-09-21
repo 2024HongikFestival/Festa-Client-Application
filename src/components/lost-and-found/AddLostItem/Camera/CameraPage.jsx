@@ -1,6 +1,5 @@
-// src/components/Camera.js
-import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useCamera } from '@/context/AuthProvider';
 import * as S from './CameraPage.styled';
@@ -24,7 +23,6 @@ const CameraPage = ({ setCapturedImage }) => {
         console.error('Error accessing camera: ', err);
       }
     };
-
     startCamera();
 
     return () => {
@@ -38,7 +36,6 @@ const CameraPage = ({ setCapturedImage }) => {
   const capturePhoto = () => {
     if (!videoRef.current) return;
 
-    //videoRef.current.videoWidth, videoRef.current.videoHeight 는 해상도
     const canvas = document.createElement('canvas');
     canvas.width = videoRef.current.videoWidth;
     canvas.height = videoRef.current.videoHeight;
@@ -59,7 +56,6 @@ const CameraPage = ({ setCapturedImage }) => {
           <S.CameraNoticeText>{t('AddLostAndFound.TakeAPictureOfLostItem')}</S.CameraNoticeText>
           <S.Video ref={videoRef} autoPlay playsInline />
           <S.CaptureButton onClick={capturePhoto} />
-          {/*capturedImage && <Preview image={capturedImage} />*/}
         </>
       )}
     </S.CameraPageWrapper>

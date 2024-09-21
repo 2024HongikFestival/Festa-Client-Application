@@ -1,3 +1,4 @@
+import { css } from 'styled-components';
 import AddLostItemBg from '@/assets/webps/lost/AddLostItemBg.webp';
 import LostAndFoundBg from '@/assets/webps/lost/LostAndFoundBg.webp';
 import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
@@ -9,7 +10,6 @@ import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
 import stageBg from '@/assets/webps/stage/background.webp';
 import mainBg from '@/assets/svgs/main/mainBg.svg';
 import mapBg from '@/assets/svgs/map/mapBg.svg';
-import { css } from 'styled-components';
 
 // 공통 스타일 정의
 const commonBackgroundStyle = css`

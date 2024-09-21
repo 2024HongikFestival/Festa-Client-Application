@@ -1,16 +1,16 @@
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import AOS from 'aos';
 import StageInfo from '@/components/main/StageInfo';
 import HibsLogo from '@/assets/webps/main/hibs.webp';
 import youtubeIcon from '@/assets/webps/main/youtubeIcon.webp';
-import AOS from 'aos';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
 export default function StageInfoContainer() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (
