@@ -113,7 +113,6 @@ export const DetailMap = styled.img`
 
 export const ActiveBackground = styled.div`
   position: absolute;
-  top: 1rem;
   left: 1.3rem;
   width: 14.9rem;
   height: 3.6rem;
@@ -123,8 +122,4 @@ export const ActiveBackground = styled.div`
 
   /* 탭에 따라 슬라이딩 배경의 위치를 설정 */
   transform: ${({ whatview }) => (whatview === 'all' ? 'translateX(0)' : 'translateX(15.8rem)')};
-
-  @media (min-width: 600px) {
-    top: 0.4rem;
-  }
 `;
