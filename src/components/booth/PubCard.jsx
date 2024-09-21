@@ -62,7 +62,7 @@ export default function PubCard() {
             ))}
           </MenuWrapper>
 
-          <SubMenuWrapper show={showSubMenu}>
+          <SubMenuWrapper $show={showSubMenu}>
             {subMenuItems.map((item) => (
               <SubMenuItem key={item} onClick={() => handleMenuClick(item)} lng={lng} selected={selectedMenu === item}>
                 {item}
