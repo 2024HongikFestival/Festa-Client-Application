@@ -72,11 +72,11 @@ export const MapImgBox = styled.div`
   margin: 2.4rem 0;
   position: relative;
   z-index: 0;
-  height: 26.7rem;
+  height: 22rem;
 
   .complete {
     width: 100%;
-    height: auto;
+    height: 22rem;
   }
 `;
 
@@ -106,7 +106,7 @@ export const BuildingLabel = styled.div`
 
 export const DetailMap = styled.img`
   width: 33.5rem;
-  height: auto;
+  height: 22rem;
   transition: opacity 0.5s ease;
 `;
 
