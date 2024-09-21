@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import InstalogoImage from '@/assets/webps/wdfLineup/instagramLogo.webp';
-import testImage from '@/assets/webps/wdfLineup/test.webp';
 import * as S from './styles'; // 스타일 파일에서 스타일 컴포넌트를 가져옴
 import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
 
@@ -93,23 +91,21 @@ const FlameLineupPage = () => {
 
   useEffect(() => {
     setSelectedDay(getSelectedDayByDate());
-
-    AOS.init({
-      duration: 1000, // 애니메이션 지속 시간 (밀리초)
-    });
   }, []);
 
   useEffect(() => {
     AOS.refresh();
   }, [selectedDay]);
 
-  const renderCards = () => {
-    const dayKey = selectedDay.toLowerCase();
-    const dayDjData = djData[dayKey];
-    const dayDjLogos = djLogos[dayKey];
+  const dayKey = selectedDay.toLowerCase();
 
-    return dayDjData.map((event, index) => (
-      <S.Card key={event.name} data-aos="fade-up">
+  // selectedDay에 따른 데이터를 memoization으로 최적화
+  const dayDjData = useMemo(() => djData[dayKey], [dayKey]);
+  const dayDjLogos = useMemo(() => djLogos[dayKey], [dayKey]);
+
+  const renderCards = () =>
+    dayDjData.map((event, index) => (
+      <S.Card key={event.name} data-aos={index === 0 ? '' : 'fade-up'}>
         <S.CardImageContainer>
           <S.DjImage src={event.src} alt={event.alt} style={{ width: dayDjData[index].width }} />
           <S.GradientOverlay />
@@ -129,7 +125,6 @@ const FlameLineupPage = () => {
         </S.CardDescriptionContainer>
       </S.Card>
     ));
-  };
 
   return (
     <>

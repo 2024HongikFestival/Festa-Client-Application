@@ -2,7 +2,33 @@
   "hello": "Hello!",
   "goodbye": "Good Bye!",
   "main": {
-    "sorry": "Sorry, this page is under construction."
+    "sorry": "Sorry, this page is under construction.",
+    "title": "Hongik University Festival",
+    "desc1": "This moment,",
+    "desc2": "which is the youth in full bloom",
+    "desc3": "as it is now, will be recorded ",
+    "desc4": "and remembered for a long time ",
+    "desc5": "by “2024 Hwa Yang Yeon Hwa; Blossom”",
+    "todayLineup": "Today’s Lineup",
+    "clicktoLineup": "Click to view Full line up",
+    "centralStage": "Central Stage Schedule",
+    "performance1": "Talent Contest",
+    "performance2": "Celebrities",
+    "performance3": "Student Main Stage",
+    "operatingHours": "Operating Hours",
+    "operating1": "Flea Market",
+    "operating2": "Hongik Pub",
+    "operating3": "Wow DJ Festival",
+    "operatinghours1": "11 to 17 ",
+    "operatinghours2": "12 to 23",
+    "operatinghours3": "19 to 24",
+    "HIBS": "HIBS (Hongik Broadcasting Station)",
+    "gotoBtn": "Going to Live concert !",
+    "days": {
+      "wed": "WED",
+      "thu": "THU",
+      "fri": "FRI"
+    }
   },
   "booth": {
     "pub": {
@@ -708,8 +734,8 @@
     "hongikZoneDescription2": "Leave of absence students, postponed graduates, and graduate students are all eligible.",
     "prepareForEntry": "Please Prepare to enter!",
     "entryTime": "The entry time starts at <blueHighlight>4:30 PM</blueHighlight>.",
-    "entryProcedure": "Before entering, at the entrance, confirm your advance reservation details of <blueHighlight>‘Talket’</blueHighlight> and proceed.",
-    "noTicketInfo": "From 18:30 p.m., those who do not receive Talket tickets can get additional tickets from the Talket application only for the remaining seats on the site.",
+    "entryProcedure": "We will check your <blueHighlight>'student card and main stage ticket (Talket)'</blueHighlight> at the entrance. Please prepare it in advance!",
+    "noTicketInfo": "At 18:50 we will estimate the number of no-show people, and you can make an additional reservation for the remaining seats through the Talket app from 19:00!",
     "locationTitle": "Hongik Zone Location",
     "knowBeforeEntry": "Please note before entering!",
     "safetyInstructions": [

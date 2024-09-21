@@ -1,6 +1,32 @@
 {
   "main": {
-    "sorry": "ㅈㅅ ㅋㅋ"
+    "sorry": "ㅈㅅ ㅋㅋ",
+    "title": "홍익대동제",
+    "desc1": "활짝 피어있는 지금.",
+    "desc2": "있는 그대로 만개한",
+    "desc3": "청춘의 이 순간을",
+    "desc4": "2024 화양연화 ; 만개로",
+    "desc5": " 오랫동안 기억될 것입니다.",
+    "todayLineup": "오늘의 라인업",
+    "clicktoLineup": "전체 라인업 보러가기",
+    "centralStage": "중앙 무대 일정",
+    "performance1": "재주꾼 선발 대회",
+    "performance2": "연예인 초청 무대",
+    "performance3": "학생 중앙 무대",
+    "operatingHours": "운영 시간",
+    "operating1": "플리마켓",
+    "operating2": "주점",
+    "operating3": "와디페",
+    "operatinghours1": "11시 ~ 17시 ",
+    "operatinghours2": "12시 ~ 23시",
+    "operatinghours3": "19시 ~ 24시",
+    "HIBS": "HIBS 홍대방송국",
+    "gotoBtn": "실시간 공연 보러가기 !",
+    "days": {
+      "wed": "수",
+      "thu": "목",
+      "fri": "금"
+    }
   },
   "booth": {
     "pub": {
@@ -716,8 +742,8 @@
     "hongikZoneDescription2": "휴학생, 졸업유예생, 대학원생 모두 가능합니다.",
     "prepareForEntry": "입장하기 위해 준비해 주세요!",
     "entryTime": "입장 시간은 <blueHighlight>16시 30분</blueHighlight>부터입니다.",
-    "entryProcedure": "입장 전 입구에서 <blueHighlight>‘톡켓’</blueHighlight>의 사전 예매 내역을 확인하고 입장합니다.",
-    "noTicketInfo": "톡켓 티켓 미소지자는 18시 30분 이후부터 현장 잔여석에 한하여 톡켓 어플에서 추가 티켓을 발급 받으실 수 있습니다.",
+    "entryProcedure": "입구에서 <blueHighlight>‘학생증(실물/모바일)과 메인 무대 티켓(톡켓)’</blueHighlight>확인 후 입장합니다. 미리 준비해 주세요!",
+    "noTicketInfo": "18시 50분부터 노쇼 인원 추산이 시작되니,<br></br> 티켓 미소지자는 19시부터 톡켓 어플을 통해<br></br>잔여석 추가예매를 준비해 주세요!",
     "locationTitle": "홍익존 위치",
     "knowBeforeEntry": "입장하기 전 알아두세요!",
     "safetyInstructions": [
