@@ -36,7 +36,9 @@ const HongikZonePage = () => {
                   components={{ blueHighlight: <S.BlueHighlight />, br: <br /> }}
                 />
               </li>
-              <li>{t('hongikZonePage.noTicketInfo')}</li>
+              <li>
+                <Trans i18nKey="hongikZonePage.noTicketInfo" components={{ br: <br /> }} />
+              </li>
             </S.List>
           </S.TextBox>
         </S.Info>

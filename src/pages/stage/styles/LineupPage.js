@@ -70,7 +70,7 @@ export const CardDescription = styled.div`
 `;
 export const Name = styled.p`
   ${(props) => props.theme.fontStyles.basic.headline5};
-  color: ${(props) => (props.isBlack ? props.theme.colors.gray100 : props.theme.colors.white)};
+  color: ${(props) => (props.$isBlack ? props.theme.colors.gray100 : props.theme.colors.white)};
 `;
 export const MCContainer = styled.div`
   width: 33.5rem;
