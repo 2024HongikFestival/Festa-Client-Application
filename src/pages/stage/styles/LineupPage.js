@@ -66,7 +66,8 @@ export const CardDescription = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
 `;
 export const Name = styled.p`
   ${(props) => props.theme.fontStyles.basic.headline5};
