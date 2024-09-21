@@ -36,45 +36,6 @@ const FlamePromotionPage = () => {
 
 export default FlamePromotionPage;
 
-const FlamePromotionPage = () => {
-  const { t } = useTranslation();
-
-  const imageMap = {
-    img1: img1,
-    img2: img2,
-    img3: img3,
-    img4: img4,
-  };
-
-  return (
-    <PromotionContainer>
-      <Title>{t('flamePromotionPage.title')}</Title>
-      <Promotion>
-        {productsData.products.map((product, index) => {
-          return (
-            <Card key={product.id} data-aos={index === 0 ? '' : 'zoom-in-up'}>
-              <ImageContainer>
-                <Image
-                  src={imageMap[product.image]}
-                  alt={product.name}
-                  width={product.width}
-                  height={product.height}
-                  top={product.imageTop}
-                />
-              </ImageContainer>
-              <Description>
-                <Text>{t(`flamePromotionPage.products.${product.name}`)}</Text>
-              </Description>
-            </Card>
-          );
-        })}
-      </Promotion>
-    </PromotionContainer>
-  );
-};
-
-export default FlamePromotionPage;
-
 const PromotionContainer = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.colors.flameBackgroundColor};
