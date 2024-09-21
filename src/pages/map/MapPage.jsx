@@ -11,6 +11,8 @@ import {
   ActiveBackground,
 } from './styles.js';
 import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
 import mapImg from '/src/assets/webps/map/completemap.webp';
 import btnImg from '/src/assets/webps/map/buttonscale.webp';
@@ -20,7 +22,7 @@ import { useTranslation } from 'react-i18next';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 const MapPage = () => {
-  const [activeView, setActiveView] = useState('detail');
+  const [activeView, setActiveView] = useState('all');
   const { t } = useTranslation();
   const [isBigVisible, setIsBigVisible] = useState(false);
   const [scale, setScale] = useState(1);

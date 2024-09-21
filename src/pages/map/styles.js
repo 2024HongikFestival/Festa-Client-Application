@@ -1,5 +1,13 @@
-import { animated } from '@react-spring/web';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+}
+  to {
+    opacity: 1;
+  }
+`;
 
 export const MainMapWrapper = styled.div`
   padding: 2.4rem 0 6.4rem;
@@ -64,6 +72,7 @@ export const MapImgBox = styled.div`
   margin: 2.4rem 0;
   position: relative;
   z-index: 0;
+  height: 26.7rem;
 
   .complete {
     width: 100%;
@@ -94,6 +103,8 @@ export const BtnImg = styled.img`
   right: 10px;
   width: 2.5rem;
   z-index: 0;
+
+  animation: ${fadeInUp} 0.5s ease-out;
 `;
 
 export const BuildingLabel = styled.div`
