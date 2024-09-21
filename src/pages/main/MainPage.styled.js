@@ -112,13 +112,12 @@ export const GoLineupPageBtn = styled.button`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  border: none; /* 기본 테두리 제거 */
+  border: none;
 
-  /* Gradient Border */
   background: linear-gradient(90deg, #aed3ff 0%, #39c3ef 100%);
-  padding: 0.2rem; /* 내부 간격 설정 (테두리처럼 보이게) */
-  background-clip: padding-box, border-box; /* 내부와 테두리 분리 */
-  background-origin: border-box; /* 그라디언트가 테두리에만 적용 */
+  padding: 0.2rem;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
 
   & > * {
     background: linear-gradient(92deg, rgba(3, 124, 158, 0.32) 5.37%, rgba(22, 170, 234, 0.32) 97.97%);
