@@ -8,6 +8,7 @@ import PubCard from '@/components/booth/pub/PubCard';
 import * as S from './BoothPage.styled';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import boothMapImg from '@/assets/webps/booth/map/boothMapImg.webp';
+import PubMap from '@/components/booth/pub/PubMap';
 
 export default function BoothPage() {
   const { t } = useTranslation();
@@ -28,47 +29,7 @@ export default function BoothPage() {
           </S.SelectionButton>
         </S.SelectionBar>
         {/* 주점 지도 컴포넌트 */}
-        {selectedTab === 'map' && (
-          <ContentContainer>
-            <S.MapTitle>{t('booth.pub.mapTitle')}</S.MapTitle>
-            {/* <S.MapImage src="src/assets/webps/booth/mapExample.webp" /> */}
-            <TransformWrapper
-              options={{
-                limitToBounds: true, // 이미지를 컨테이너 경계 안에 제한
-                minScale: 1, // 최소 축소 비율 (1: 원본 크기)
-                maxScale: 5, // 최대 확대 비율 (4배)
-                centerContent: true, // 콘텐츠를 중앙에 배치
-              }}
-              pan={{
-                velocity: 0.8, // 드래그 시 이동 속도
-                lockAxisX: false, // X축 드래그 제한 여부 (false로 설정해 제한하지 않음)
-                lockAxisY: false, // Y축 드래그 제한 여부 (false로 설정해 제한하지 않음)
-              }}
-              pinch={{
-                step: 15, // 핀치 제스처의 감도 (숫자가 클수록 더 빨리 확대/축소)
-                disabled: false, // 핀치 확대/축소 활성화 여부
-              }}
-              wheel={{
-                wheelEnabled: true, // 휠 확대/축소 활성화
-                step: 0.1, // 휠 단계 조정 (0.1로 세밀하게 조정)
-              }}
-              zoomIn={{
-                step: 10, // 확대 속도 증가
-              }}
-              zoomOut={{
-                step: 10, // 축소 속도 증가
-              }}
-            >
-              <TransformComponent>
-                <img
-                  src={boothMapImg} // 지도 이미지 URL
-                  alt="Map"
-                  style={{ width: '100%', height: '100%' }}
-                />
-              </TransformComponent>
-            </TransformWrapper>
-          </ContentContainer>
-        )}
+        {selectedTab === 'map' && <PubMap />}
         {selectedTab === 'pub' && <PubCard />}
         {/* 주점 운영시간 정보 컴포넌트 */}
         {selectedTab === 'pub' && (

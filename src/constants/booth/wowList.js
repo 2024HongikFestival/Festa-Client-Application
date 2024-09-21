@@ -11,9 +11,9 @@ import img12 from '@/assets/webps/booth/wow/12.webp';
 import img13 from '@/assets/webps/booth/wow/13.webp';
 import img14 from '@/assets/webps/booth/wow/14.webp';
 import img15 from '@/assets/webps/booth/wow/15.webp';
-import img16 from '@/assets/webps/booth/wow/departmentWow.webp';
-import img17 from '@/assets/webps/booth/wow/departmentWow.webp';
-import img18 from '@/assets/webps/booth/wow/departmentWow.webp';
+import img16 from '@/assets/webps/booth/wow/16.webp';
+import img17 from '@/assets/webps/booth/wow/17.webp';
+import img18 from '@/assets/webps/booth/wow/18.webp';
 import img19 from '@/assets/webps/booth/wow/19.webp';
 import img20 from '@/assets/webps/booth/wow/20.webp';
 import img21 from '@/assets/webps/booth/wow/21.webp';
@@ -69,9 +69,9 @@ export const WowList = {
   13: img13,
   14: img14,
   15: img15,
-  16: ex,
-  17: ex,
-  18: ex,
+  16: img16,
+  17: img17,
+  18: img18,
   19: img19,
   20: img20,
   21: img21,

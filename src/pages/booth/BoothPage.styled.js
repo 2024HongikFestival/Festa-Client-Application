@@ -27,18 +27,6 @@ export const MapImage = styled.img`
   border-bottom: 0.1rem solid #bfc2c8;
 `;
 
-export const MapTitle = styled.div`
-  width: 33.5rem;
-  height: 3.2rem;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
-  margin-top: 2.4rem;
-  margin-bottom: 1.6rem;
-  ${(props) => props.theme.fontStyles.main.headline6};
-`;
-
 export const Btn = styled.div`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   width: 25rem;
