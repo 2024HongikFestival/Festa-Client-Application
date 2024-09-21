@@ -18,12 +18,11 @@ const RedirectLosts = () => {
       navigate('/lost-and-found/add');
     } catch (error) {
       if (error.response.status === 400) {
-        console.log('요청 양식 불량 및 차단된 사용자');
         alert('⚠️ 부적절한 게시판 활용으로 인해 게시판 이용이 제한되었습니다');
       } else if (error.response.status === 401) {
-        console.log('일반 사용자 인증 실패');
+        //console.log('일반 사용자 인증 실패');
       } else {
-        console.log('알 수 없는 오류');
+        console.log(error);
       }
       navigate('/lost-and-found');
     }

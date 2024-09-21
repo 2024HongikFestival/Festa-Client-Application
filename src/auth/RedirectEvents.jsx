@@ -36,19 +36,15 @@ const RedirectEvents = () => {
       localStorage.removeItem('kakao_code');
 
       if (error.response.status === 400) {
-        console.log('요청 양식 불량');
         window.location.href = '/event';
       } else if (error.response.status === 401) {
-        console.log('일반 사용자 인증 실패');
         window.location.href = '/event';
       } else if (error.response.status === 403) {
-        console.log('위치 확인 실패');
         setErrorStatus(403);
       } else if (error.response.status === 409) {
-        console.log('중복 응모');
         setErrorStatus(409);
       } else {
-        console.log('알 수 없는 오류');
+        console.log(error);
       }
     }
   };
