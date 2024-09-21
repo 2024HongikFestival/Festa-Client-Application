@@ -73,18 +73,23 @@ export const DayBox = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
   p {
     ${(props) => props.theme.fontStyles.basic.subHeadBold};
     color: ${(props) => props.theme.colors.gray80};
     background: none;
+  }
 
-    ${(props) =>
-      props.isActive &&
-      `
-    background: linear-gradient(104deg, #DF2020 35.72%, #FFB800 88.25%);
+  &.active p {
+    background: ${({ day }) => {
+      if (day === 2) {
+        return 'radial-gradient(50% 50% at 50% 50%, #F0F423 0%, #DF2020 100%)';
+      } else {
+        return 'linear-gradient(104deg, #df2020 35.72%, #ffb800 88.25%)';
+      }
+    }};
     -webkit-background-clip: text;
     color: transparent;
-  `}
   }
 `;
 
@@ -98,25 +103,26 @@ export const TimeTableBox = styled.div`
 
 export const TimeTableOneBox = styled.div`
   display: flex;
-  min-height: ${(props) => (props.isActive ? '14rem' : '7.2rem')};
+  min-height: 7.2rem;
+  .active {
+    min-height: 14rem;
+  }
 `;
 
 export const RedLine = styled.div`
   position: relative;
-  width: 2.2rem;
-  max-width: 2.5rem;
-  min-width: 2.672rem;
+  width: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 0;
 
   .fullBtn {
-    max-width: 22px;
+    max-width: 2.2rem;
   }
 
   .emptyBtn {
-    max-width: 14px;
+    max-width: 1.4rem;
   }
 
   img {
@@ -140,11 +146,42 @@ export const TimeTableText = styled.div`
   padding: 2rem 1rem 2rem 1.6rem;
   display: flex;
   justify-content: space-between;
+
+  .hot {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .hotBox {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const TimeTableName = styled.span`
   ${(props) => props.theme.fontStyles.basic.headline5};
   color: ${(props) => props.theme.colors.gray70};
+  max-width: 15rem;
+  display: inline;
+  @media (min-width: 37.5rem) and (max-width: 60rem) {
+    max-width: 20rem;
+  }
+`;
+
+export const TimeTableHot = styled.div`
+  display: flex;
+  width: 3.4rem;
+  height: 2.5rem;
+  padding: 0.4rem 0.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  border-radius: 1.55rem;
+  background: linear-gradient(90deg, #4d0330 0%, #300304 100%);
+  color: #f53d3d;
+  ${(props) => props.theme.fontStyles.basic.headline5}
+  font-size: 1rem;
 `;
 
 export const TimeTableTime = styled.span`
@@ -190,9 +227,13 @@ export const NoticeTextContent = styled.span`
 export const LiveConcert = styled.div`
   width: calc(100% - 2.4rem);
   margin-left: 2.4rem;
-  background: linear-gradient(282deg, #fcf661 1.09%, #ff0e2b 38.8%, #df2020 62.66%, #300c07 96.55%);
+  background: ${(props) =>
+    props.isHot
+      ? 'linear-gradient(282deg, #f00 1.09%, #ef1049 19.7%, #df2093 38.8%, #d020df 62.66%, #300720 96.55%)'
+      : 'linear-gradient(282deg, #FCF661 1.09%, #FF0E2B 38.8%, #DF2020 55.66%, #300C07 94.55%)'};
   position: relative;
   z-index: 0;
+  overflow: hidden;
 
   animation: ${fadeInUp} 0.8s ease-out;
 
@@ -203,38 +244,60 @@ export const LiveConcert = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(185deg, rgba(223, 32, 32, 0) 21.86%, #df2020 112.6%);
+    background: ${(props) =>
+      props.isHot
+        ? 'linear-gradient(185deg, rgba(239, 16, 73, 0) 21.86%, #ef1049 112.6%)'
+        : 'linear-gradient(185deg, rgba(223, 32, 32, 0.00) 21.86%, #DF2020 112.6%);'};
     z-index: 2;
-  }
-
-  img {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: left;
-    /* animation: ${backgroundPulse} 4s infinite; */
   }
 `;
 
-export const LiveDj = styled.span`
+export const LiveDigImg = styled.img`
+  object-fit: contain;
+
+  /* width: rem; */
+  /* min-width: 19rem; */
+  height: 16.3rem;
   position: absolute;
+  top: 1rem;
+  left: 4rem;
+`;
+
+export const LiveDj = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
   z-index: 5;
+  left: 0rem;
+  top: 0;
+  bottom: 0;
+`;
+
+export const DjLogo = styled.img`
+  position: absolute;
+  z-index: 1;
+  min-width: 8rem;
+  max-width: 9rem;
+  min-height: 1.2rem;
+  max-height: 6rem;
   left: 2rem;
-  bottom: 1.2rem;
-  ${(props) => props.theme.fontStyles.flame.headline5};
-  text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.25);
+  bottom: 1.8rem;
 `;
 
 export const LiveNowBox = styled.div`
   position: absolute;
   width: 6.8rem;
   height: 3.2rem;
-  top: 1.2rem;
+  top: 2rem;
   right: 1.25rem;
+
   z-index: 5;
   animation: ${backgroundPulse} 1.3s infinite;
+
+  img {
+    position: absolute;
+    width: 100%;
+  }
 `;
 
 export const LiveTime = styled.span`

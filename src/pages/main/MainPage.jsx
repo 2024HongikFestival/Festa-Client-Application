@@ -1,58 +1,129 @@
-import styled from 'styled-components';
-import MoveToWdfBtn from '@/components/main/MoveToWdfBtn';
+import React, { useState, useEffect, Suspense, lazy, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import * as S from './MainPage.styled';
+import mainStart from '@/assets/lotties/main/mainStart.json';
+import AOS from 'aos';
+
+const Lottie = React.lazy(() => import('lottie-react'));
+const mainLineup1 = lazy(() => import('@/assets/webps/main/mainLineup1.webp'));
+const mainLineup2 = lazy(() => import('@/assets/webps/main/mainLineup2.webp'));
+const mainLineup3 = lazy(() => import('@/assets/webps/main/mainLineup3.webp'));
+const OperatingHours = lazy(() => import('@/components/main/OperatingHours'));
+const StageInfoContainer = lazy(() => import('@/components/main/StageInfoContainer'));
 
 export default function MainPage() {
   const { t, i18n } = useTranslation();
+  const [isEnglish, setIsEnglish] = useState(i18n.language === 'en');
+  const [showLottie, setShowLottie] = useState(!isEnglish);
+  const [showContent, setShowContent] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const today = useMemo(() => new Date(), []);
+  const formattedToday = useMemo(() => `${today.getMonth() + 1}.${today.getDate()}`, [today]);
 
-  const clickHandler = (lng) => {
-    console.log(`conver to ${lng}`);
-    localStorage.setItem('language', lng);
-    i18n.changeLanguage(lng);
-  };
+  const dayOfWeek = useMemo(() => {
+    return formattedToday === '9.25'
+      ? 'wed'
+      : formattedToday === '9.26'
+        ? 'thu'
+        : formattedToday === '9.27'
+          ? 'fri'
+          : '';
+  }, [formattedToday]);
+
+  const lineupImage = useMemo(() => {
+    return {
+      9.25: mainLineup1,
+      9.26: mainLineup2,
+      9.27: mainLineup3,
+    }[formattedToday];
+  }, [formattedToday]);
+
+  const isLineupDate = useMemo(() => ['9.25', '9.26', '9.27'].includes(formattedToday), [formattedToday]);
+
+  useEffect(() => {
+    setIsMounted(true); // 컴포넌트가 마운트되었음을 표시
+
+    const lottieTimer = setTimeout(() => {
+      if (!isEnglish) {
+        setShowLottie(false);
+      }
+    }, 3000);
+    const timeoutDuration = i18n.language === 'en' ? 600 : 860;
+
+    const contentTimer = setTimeout(() => {
+      setShowContent(true);
+    }, timeoutDuration);
+
+    if (isLineupDate) {
+      AOS.init({ duration: 1000 });
+    }
+
+    return () => {
+      clearTimeout(lottieTimer);
+      clearTimeout(contentTimer);
+    };
+  }, [isEnglish, i18n.language, isLineupDate]);
+
+  useEffect(() => {
+    setIsEnglish(i18n.language === 'en');
+  }, [i18n.language]);
+
+  if (!isMounted) {
+    return null; // 마운트되지 않았을 때는 아무것도 렌더링하지 않음
+  }
+
   return (
-    <>
-      <p>홍익 대동제 메인 페이지!</p>
-      <div>아이오에오</div>
-      <p>{t('hello')}</p>
-      <p>{t('goodbye')}</p>
-      <p>{t('main.sorry')}</p>
-      <button onClick={() => clickHandler('ko')}>ko</button>
-      <button onClick={() => clickHandler('en')}>en</button>
-      <MoveToWdfBtn />
-      <div>출근하기 싫어요</div>
-      <p>2024 hongik fetival</p>
-      <p>힝구힝구</p>
-      <Text>라인업</Text>
-      <Text2>와디페 타이포 적용 중</Text2>
-      <Text3>히히히히</Text3>
-      <Text4>헤헤ㅔ헤헤</Text4>
-      <Text5>개귀찮다진짜</Text5>
-      <Text6>럭키비키잔앙</Text6>
-    </>
+    <S.Container>
+      <S.Wrapper>
+        {showLottie && (
+          <Suspense fallback={null}>
+            <S.LottieWrapper>
+              <Lottie animationData={mainStart} />
+            </S.LottieWrapper>
+          </Suspense>
+        )}
+        <S.Title $showContent={showContent}>
+          2024
+          <br />
+          {t('main.title')}
+        </S.Title>
+        <S.Desc $showContent={showContent}>
+          {t('main.desc1')}
+          <br /> {t('main.desc2')}
+          <br /> {t('main.desc3')}
+          <br /> {t('main.desc4')}
+          <br /> {t('main.desc5')}
+        </S.Desc>
+      </S.Wrapper>
+      {/* 라인업 정보 컴포넌트 */}
+      {isLineupDate && (
+        <>
+          <S.LineupTitleWrapper data-aos="fade-up">
+            <S.Date data-aos="fade-up">
+              {formattedToday} ({t(`main.days.${dayOfWeek}`)})
+            </S.Date>
+            <S.LineupTitle data-aos="fade-up">{t('main.todayLineup')}</S.LineupTitle>
+          </S.LineupTitleWrapper>
+          <Suspense fallback={null}>
+            <S.LineupInfoWrapper data-aos="fade-up">
+              {lineupImage && <S.LineupImg data-aos="fade-up" src={lineupImage} alt="오늘의 라인업" loading="lazy" />}
+            </S.LineupInfoWrapper>
+          </Suspense>
+        </>
+      )}
+      <S.GoLineupPageBtn data-aos="fade-up">
+        <Link to="/lineup">
+          <S.BtnText> {t('main.clicktoLineup')}</S.BtnText>
+          <S.Arrow $isEnglish={isEnglish} />
+        </Link>
+      </S.GoLineupPageBtn>
+      <Suspense fallback={null}>
+        {/* 중앙 무대 일정 컴포넌트 */}
+        <StageInfoContainer />
+        {/* 운영 시간 컴포넌트 */}
+        <OperatingHours />
+      </Suspense>
+    </S.Container>
   );
 }
-
-const Text = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline1}
-`;
-
-const Text2 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline2}
-`;
-
-const Text3 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline3}
-`;
-
-const Text4 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline4}
-`;
-
-const Text5 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline5}
-`;
-
-const Text6 = styled.p`
-  ${(props) => props.theme.fontStyles.main.headline6}
-`;

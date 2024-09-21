@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 import { adminAxiosInstance } from '@/api/axios';
 import Header from '@/components/layouts/Header';
 import styled from 'styled-components';
+import Popup from './Popup';
 
 const PostDetail = ({ postId, onBack }) => {
   const [lostDetails, setLostDetails] = useState(null);
 
+  const [showOptions, setShowOptions] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupType, setPopupType] = useState(null);
   const getAdminToken = () => localStorage.getItem('accessToken');
 
   useEffect(() => {
@@ -50,6 +54,8 @@ const PostDetail = ({ postId, onBack }) => {
         },
       });
       setLostDetails((prev) => ({ ...prev, lostStatus: 'DELETED' }));
+      setShowOptions(null);
+      setShowPopup(false);
     } catch (error) {
       console.error('Error deleting post: ', error);
     }
@@ -68,6 +74,8 @@ const PostDetail = ({ postId, onBack }) => {
         }
       );
       setLostDetails((prev) => ({ ...prev, lostStatus: 'PUBLISHED' }));
+      setShowOptions(null);
+      setShowPopup(false);
     } catch (error) {
       console.error('Error undoing delete: ', error);
     }
@@ -86,6 +94,8 @@ const PostDetail = ({ postId, onBack }) => {
         }
       );
       setLostDetails((prev) => ({ ...prev, isUserBlocked: true }));
+      setShowOptions(null);
+      setShowPopup(false);
     } catch (error) {
       console.error('Error blocking user: ', error);
     }
@@ -100,9 +110,16 @@ const PostDetail = ({ postId, onBack }) => {
         },
       });
       setLostDetails((prev) => ({ ...prev, isUserBlocked: false }));
+      setShowOptions(null);
+      setShowPopup(false);
     } catch (error) {
       console.error('Error unblocking user: ', error);
     }
+  };
+
+  const openPopup = (type) => {
+    setPopupType(type);
+    setShowPopup(true);
   };
 
   if (!lostDetails) return <p>Loading...</p>;
@@ -124,9 +141,9 @@ const PostDetail = ({ postId, onBack }) => {
             >
               {lostDetails.lostStatus === 'PUBLISHED' ? '게시중' : '삭제됨'}
               {lostDetails.lostStatus === 'PUBLISHED' ? (
-                <ActionButton onClick={handleDelete}>게시글 삭제</ActionButton>
+                <ActionButton onClick={() => openPopup('delete')}>게시글 삭제</ActionButton>
               ) : (
-                <ActionButton onClick={handleUndoDelete}>삭제 취소</ActionButton>
+                <ActionButton onClick={() => openPopup('deleteUndo')}>삭제 취소</ActionButton>
               )}
             </Value>
           </InfoRow>
@@ -144,9 +161,9 @@ const PostDetail = ({ postId, onBack }) => {
             >
               <UserId $isblocked={lostDetails.isUserBlocked}>{lostDetails.userId}</UserId>
               {lostDetails.isUserBlocked ? (
-                <ActionButton onClick={handleUnblockUser}>차단 해제</ActionButton>
+                <ActionButton onClick={() => openPopup('blockUndo')}>차단 해제</ActionButton>
               ) : (
-                <ActionButton onClick={handleBlockUser}>사용자 차단</ActionButton>
+                <ActionButton onClick={() => openPopup('block')}>사용자 차단</ActionButton>
               )}
             </Value>
           </InfoRow>
@@ -165,6 +182,39 @@ const PostDetail = ({ postId, onBack }) => {
           <BackButton onClick={onBack}>목록 보기</BackButton>
         </InfoSection>
       </DetailContainer>
+      {showPopup && (
+        <Popup
+          message={
+            popupType === 'delete'
+              ? '글을 삭제할까요?'
+              : popupType === 'block'
+                ? '사용자를 차단할까요?'
+                : popupType === 'blockUndo'
+                  ? '사용자 차단을 해제할까요?'
+                  : '삭제된 게시물을 복구할까요?'
+          }
+          onConfirm={
+            popupType === 'delete'
+              ? handleDelete
+              : popupType === 'block'
+                ? handleBlockUser
+                : popupType === 'blockUndo'
+                  ? handleUnblockUser
+                  : handleUndoDelete
+          }
+          onCancel={() => setShowPopup(false)}
+          confirmText={
+            popupType === 'delete'
+              ? '삭제'
+              : popupType === 'block'
+                ? '차단'
+                : popupType === 'blockUndo'
+                  ? '해제'
+                  : '복구'
+          }
+          cancelText="취소"
+        />
+      )}
     </FullPageContainer>
   );
 };
@@ -229,7 +279,6 @@ const Value = styled.span`
   display: flex;
   align-items: center;
   width: 20rem;
-  height: 3.2rem;
   text-align: left;
   color: ${(props) => props.theme.colors.gray80};
   font-size: 1.4rem;
