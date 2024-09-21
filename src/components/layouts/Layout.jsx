@@ -52,7 +52,12 @@ export default function Layout() {
         setIsLoggedIn(false);
       }
     };
-    checkToken();
+
+    // 어드민 경로에서만 토큰 체크를 실행
+    if (isAdminPath || isAdminViewPath) {
+      checkToken();
+    }
+
     const handleStorageChange = (event) => {
       if (event.key === 'accessToken') {
         checkToken();
@@ -62,7 +67,7 @@ export default function Layout() {
     return () => {
       window.removeEventListener('storage', handleStorageChange);
     };
-  }, []);
+  }, [isAdminPath, isAdminViewPath]); // 어드민 경로가 변경될 때만 실행
 
   return (
     <Container $path={location.pathname} $showheader={showheader}>

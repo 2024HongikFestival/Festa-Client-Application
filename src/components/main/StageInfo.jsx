@@ -53,7 +53,7 @@ export default function StageInfo() {
                 {stage.performances.map((performance, idx) => (
                   <TextWrapper key={idx}>
                     <Text>{t(performance.title)}</Text>
-                    <Text time="true">{performance.time}</Text>
+                    <Text $time="true">{performance.time}</Text>
                   </TextWrapper>
                 ))}
               </TextContainer>
@@ -130,6 +130,6 @@ const TextWrapper = styled.div`
 `;
 
 const Text = styled.p`
-  ${(props) => (props.time ? props.theme.fontStyles.basic.body2Med : props.theme.fontStyles.basic.body2Bold)};
-  color: ${(props) => (props.time ? props.theme.colors.gray60 : props.theme.colors.gray70)};
+  ${(props) => (props.$time ? props.theme.fontStyles.basic.body2Med : props.theme.fontStyles.basic.body2Bold)};
+  color: ${(props) => (props.$time ? props.theme.colors.gray60 : props.theme.colors.gray70)};
 `;
