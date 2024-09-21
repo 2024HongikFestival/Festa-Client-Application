@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import backgroundImage from '@/assets/webps/stage/background.webp';
 
 export const PageContainer = styled.div`
   display: flex;
@@ -8,9 +7,6 @@ export const PageContainer = styled.div`
   gap: 2.8rem;
   padding-top: 2.4rem;
   padding-bottom: 6.4rem;
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-repeat: no-repeat;
 `;
 export const Title = styled.p`
   color: ${(props) => props.theme.colors.black};
@@ -86,9 +82,8 @@ export const LocationTitle = styled.p`
   ${(props) => props.theme.fontStyles.main.headline6};
   color: ${(props) => props.theme.colors.gray100};
 `;
-export const Map = styled.div`
-  width: 33.5rem;
-  height: 25rem;
-  border-top: 1px solid ${(props) => props.theme.colors.gray30};
-  border-bottom: 1px solid ${(props) => props.theme.colors.gray30};
+export const Map = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;

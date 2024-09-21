@@ -78,15 +78,6 @@ export const MapImgBox = styled.div`
     width: 100%;
     height: auto;
   }
-
-  /* .card {
-    touch-action: none;
-    user-select: none;
-    will-change: transform;
-    width: 33.5rem;
-    height: 25rem;
-    background-size: cover;
-  } */
 `;
 
 export const MapSpan = styled.span`
