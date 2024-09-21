@@ -1569,6 +1569,7 @@ __metadata:
     react-router-dom: "npm:^6.25.1"
     react-slick: "npm:^0.30.2"
     react-use: "npm:^17.5.1"
+    react-zoom-pan-pinch: "npm:^3.6.1"
     recoil: "npm:^0.7.7"
     slick-carousel: "npm:^1.8.1"
     styled-components: "npm:^6.1.11"
@@ -4382,6 +4383,16 @@ __metadata:
     react: "*"
     react-dom: "*"
   checksum: 10c0/3d6a8f46539b32698d31600239e72b5c23376a5343d0d687c6520e14532ed7f5c72c9b99d222be4eeacb0401ce3ae763d5648d0476440c8b4a6afbd56dc98bfa
+  languageName: node
+  linkType: hard
+
+"react-zoom-pan-pinch@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "react-zoom-pan-pinch@npm:3.6.1"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  checksum: 10c0/ec32df7ba9c1b8113fa87e5759c6b697f0f985df1be31b26720c3fdff67dc7f31ac13eabad201d7d5a12f2a4bed637bf7090e8a04f0237618bc751cf37c784d9
   languageName: node
   linkType: hard
 
