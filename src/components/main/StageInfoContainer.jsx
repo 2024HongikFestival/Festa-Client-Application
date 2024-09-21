@@ -20,20 +20,22 @@ export default function StageInfoContainer() {
       </StageTitle>
       <StageInfo />
       {/* 실시간 방송 보러가기 버튼 컴포넌트 */}
-      <GoHibsBtn data-aos="fade-up" data-aos-delay="200">
-        <BtnWrapper>
-          <BtnText>
-            <LogoContainer>
-              <Logo src={HibsLogo} alt="hibsLogo" />
-              <TopText>{t('main.HIBS')}</TopText>
-            </LogoContainer>
-            <BottomText>{t('main.gotoBtn')}</BottomText>
-          </BtnText>
-          <YoutubeIconWrapper>
-            <YoutubeIcon src={youtubeIcon} alt="youtube" />
-          </YoutubeIconWrapper>
-        </BtnWrapper>
-      </GoHibsBtn>
+      <a href="https://youtube.com/@hibs1148?si=nFOcPV4tIDOpvsuJ" target="_blank" rel="noopener noreferrer">
+        <GoHibsBtn data-aos="fade-up" data-aos-delay="200">
+          <BtnWrapper>
+            <BtnText>
+              <LogoContainer>
+                <Logo src={HibsLogo} alt="hibsLogo" />
+                <TopText>{t('main.HIBS')}</TopText>
+              </LogoContainer>
+              <BottomText>{t('main.gotoBtn')}</BottomText>
+            </BtnText>
+            <YoutubeIconWrapper>
+              <YoutubeIcon src={youtubeIcon} alt="youtube" />
+            </YoutubeIconWrapper>
+          </BtnWrapper>
+        </GoHibsBtn>
+      </a>
     </StageContainer>
   );
 }
