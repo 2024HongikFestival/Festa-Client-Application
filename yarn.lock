@@ -718,7 +718,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-spring/web@npm:~9.7.4":
+"@react-spring/web@npm:^9.7.4, @react-spring/web@npm:~9.7.4":
   version: 9.7.4
   resolution: "@react-spring/web@npm:9.7.4"
   dependencies:
@@ -1619,6 +1619,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "client@workspace:."
   dependencies:
+    "@panzoom/panzoom": "npm:^4.5.1"
+    "@react-spring/web": "npm:^9.7.4"
     "@types/jwt-decode": "npm:^3.1.0"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"

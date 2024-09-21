@@ -17,9 +17,9 @@
     ]
   },
   "dependencies": {
-    "@types/jwt-decode": "^3.1.0",
     "@panzoom/panzoom": "^4.5.1",
     "@react-spring/web": "^9.7.4",
+    "@types/jwt-decode": "^3.1.0",
     "@use-gesture/react": "^10.3.1",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.7.2",
