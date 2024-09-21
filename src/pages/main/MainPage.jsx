@@ -1,35 +1,46 @@
+import React, { useState, useEffect, Suspense, lazy, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import mainLineup1 from '@/assets/webps/main/mainLineup1.webp';
-import mainLineup2 from '@/assets/webps/main/mainLineup2.webp';
-import mainLineup3 from '@/assets/webps/main/mainLineup3.webp';
-import OperatingHours from '@/components/main/OperatingHours';
-import StageInfoContainer from '@/components/main/StageInfoContainer';
 import * as S from './MainPage.styled';
-import Lottie from 'lottie-react';
 import mainStart from '@/assets/lotties/main/mainStart.json';
-import { useEffect, useState } from 'react';
 import AOS from 'aos';
+
+const Lottie = React.lazy(() => import('lottie-react'));
+const mainLineup1 = lazy(() => import('@/assets/webps/main/mainLineup1.webp'));
+const mainLineup2 = lazy(() => import('@/assets/webps/main/mainLineup2.webp'));
+const mainLineup3 = lazy(() => import('@/assets/webps/main/mainLineup3.webp'));
+const OperatingHours = lazy(() => import('@/components/main/OperatingHours'));
+const StageInfoContainer = lazy(() => import('@/components/main/StageInfoContainer'));
 
 export default function MainPage() {
   const { t, i18n } = useTranslation();
   const [isEnglish, setIsEnglish] = useState(i18n.language === 'en');
   const [showLottie, setShowLottie] = useState(!isEnglish);
   const [showContent, setShowContent] = useState(false); // Title과 Desc
-  const today = new Date();
-  const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
-  // const formattedToday = '9.25'; // 라인업 카드 및 애니메이션 확인용 날짜
-  const dayOfWeek =
-    formattedToday === '9.25' ? 'wed' : formattedToday === '9.26' ? 'thu' : formattedToday === '9.27' ? 'fri' : '';
+  const today = useMemo(() => new Date(), []);
+  const formattedToday = useMemo(() => `${today.getMonth() + 1}.${today.getDate()}`, [today]);
 
-  const lineupImage = {
-    9.25: mainLineup1,
-    9.26: mainLineup2,
-    9.27: mainLineup3,
-  }[formattedToday];
+  // const formattedToday = '9.25'; // 라인업 카드 및 애니메이션 확인용 날짜
+  const dayOfWeek = useMemo(() => {
+    return formattedToday === '9.25'
+      ? 'wed'
+      : formattedToday === '9.26'
+        ? 'thu'
+        : formattedToday === '9.27'
+          ? 'fri'
+          : '';
+  }, [formattedToday]);
+
+  const lineupImage = useMemo(() => {
+    return {
+      9.25: mainLineup1,
+      9.26: mainLineup2,
+      9.27: mainLineup3,
+    }[formattedToday];
+  }, [formattedToday]);
 
   // 9.25, 9.26, 9.27에만 표시하기 위한 조건
-  const isLineupDate = ['9.25', '9.26', '9.27'].includes(formattedToday);
+  const isLineupDate = useMemo(() => ['9.25', '9.26', '9.27'].includes(formattedToday), [formattedToday]);
 
   useEffect(() => {
     const lottieTimer = setTimeout(() => {
@@ -44,13 +55,16 @@ export default function MainPage() {
       // Title and Desc appear after the specified time
     }, timeoutDuration);
 
-    AOS.init({ duration: 1000 }); // Initialize AOS
+    // isLineupDate 조건에 맞춰 AOS 초기화
+    if (isLineupDate) {
+      AOS.init({ duration: 1000 });
+    }
 
     return () => {
       clearTimeout(lottieTimer);
       clearTimeout(contentTimer);
     };
-  }, []);
+  }, [isEnglish, i18n.language, isLineupDate]); // add dependencies
 
   useEffect(() => {
     // update isEnglish
@@ -61,9 +75,11 @@ export default function MainPage() {
     <S.Container>
       <S.Wrapper>
         {showLottie && (
-          <S.LottieWrapper>
-            <Lottie animationData={mainStart} />
-          </S.LottieWrapper>
+          <Suspense fallback={<div>loading...</div>}>
+            <S.LottieWrapper>
+              <Lottie animationData={mainStart} />
+            </S.LottieWrapper>
+          </Suspense>
         )}
         <S.Title $showContent={showContent}>
           2024
@@ -86,10 +102,12 @@ export default function MainPage() {
               {formattedToday} ({t(`main.days.${dayOfWeek}`)})
             </S.Date>
             <S.LineupTitle data-aos="fade-up">{t('main.todayLineup')}</S.LineupTitle>
-          </S.LineupTitleWrapper>
-          <S.LineupInfoWrapper data-aos="fade-up">
-            {lineupImage && <S.LineupImg data-aos="fade-up" src={lineupImage} alt="오늘의 라인업" />}
-          </S.LineupInfoWrapper>
+          </S.LineupTitleWrapper>{' '}
+          <Suspense fallback={<div>loading...</div>}>
+            <S.LineupInfoWrapper data-aos="fade-up">
+              {lineupImage && <S.LineupImg data-aos="fade-up" src={lineupImage} alt="오늘의 라인업" loading="lazy" />}
+            </S.LineupInfoWrapper>
+          </Suspense>
         </>
       )}
       <S.GoLineupPageBtn data-aos="fade-up">
