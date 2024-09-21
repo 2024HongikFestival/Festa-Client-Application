@@ -2,7 +2,7 @@ import ContentContainer from '@/components/common/ContentContainer';
 import * as S from '@/pages/facilities/styles';
 import { useTranslation } from 'react-i18next';
 import restroomMap from '@/assets/webps/facilities/restroomMap.webp';
-import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
+import DraggableMap from '@/components/facilities/DraggableMap';
 
 const RestroomSection = () => {
   const { t } = useTranslation();
@@ -14,25 +14,13 @@ const RestroomSection = () => {
           {t('facilities.restroom.title1')} <span>{t('facilities.restroom.title2')}</span>
         </S.Title>
 
-        <TransformWrapper
+        <DraggableMap
+          src={restroomMap}
+          alt="Restroom Map"
           initialScale={2.1}
           initialPositionX={-108}
           initialPositionY={-260}
-          minScale={1}
-          maxScale={1}
-          wheel={{ disabled: true }} // 스크롤 줌 X
-          pinch={{ disabled: true }} // 핀치 줌 X
-          pan={{ disabled: false }} // 팬 기능 O
-          zoomIn={{ disabled: true }} // 줌 인 X
-          zoomOut={{ disabled: true }} // 줌 아웃 X
-          doubleClick={{ disabled: true }}
-        >
-          <S.MapWrapper>
-            <TransformComponent>
-              <S.Map src={restroomMap} alt="Restroom Map" />
-            </TransformComponent>
-          </S.MapWrapper>
-        </TransformWrapper>
+        />
 
         <S.RestroomDetail>
           <S.DetailItem>
