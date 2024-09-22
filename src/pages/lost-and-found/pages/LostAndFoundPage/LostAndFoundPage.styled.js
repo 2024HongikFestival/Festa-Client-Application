@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import warningIcon from '@/assets/svgs/lost/error.svg?react';
 import Mangae from '@/assets/svgs/lost/Mangae.svg?react';
 
