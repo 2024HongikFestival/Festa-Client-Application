@@ -1,9 +1,9 @@
 import React from 'react';
-import { useTranslation, Trans } from 'react-i18next'; // i18next import
+import { useTranslation } from 'react-i18next'; // i18next import
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/icon/error.webp';
-import MD from '@/components/booth/MD';
+import MD from '@/components/booth/md/MD';
 import { mdList } from '@/constants/booth/mdList';
 import * as S from './MdPage.styled';
 
