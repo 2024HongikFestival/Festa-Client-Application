@@ -36,9 +36,9 @@ const FlameMdPage = () => {
                       <S.ProductImage
                         src={product.image}
                         alt={t(`flameMdPage.products.${product.name}`)}
-                        width={product.width}
-                        height={product.height}
-                        top={product.imageTop}
+                        $width={product.width}
+                        $height={product.height}
+                        $top={product.imageTop}
                       />
                     </S.ImageContainer>
                     <S.ProductInfo>

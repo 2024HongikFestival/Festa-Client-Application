@@ -18,9 +18,9 @@ const FlamePromotionPage = () => {
                 <Image
                   src={product.image} // 이미지 바로 사용
                   alt={product.name}
-                  width={product.width}
-                  height={product.height}
-                  top={product.imageTop}
+                  $width={product.width}
+                  $height={product.height}
+                  $top={product.imageTop}
                 />
               </ImageContainer>
               <Description>
@@ -82,9 +82,9 @@ const ImageContainer = styled.div`
 
 const Image = styled.img`
   position: absolute;
-  top: ${(props) => props.top};
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  top: ${(props) => props.$top};
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
 `;
 
 const Description = styled.div`
