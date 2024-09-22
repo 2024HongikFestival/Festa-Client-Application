@@ -508,6 +508,11 @@
     "advanceperiod": "예매 기간",
     "closeadvance": "사전 예매가 마감되었습니다."
   },
+  "map": {
+    "title": "로드맵",
+    "complete": "전체 지도",
+    "detail": "상세 지도"
+  },
   "fleamarket": {
     "pageTitle": "플리마켓",
     "location": "플리마켓 위치",
