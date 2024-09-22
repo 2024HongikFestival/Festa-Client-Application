@@ -5,7 +5,6 @@ import { contributors } from '@/constants/makers/LikelionContributors';
 
 const LikelionPage = () => {
   const contributorsData = contributors();
-
   const pm = contributorsData.pm;
   const plan = contributorsData.plan;
   const design = contributorsData.design;

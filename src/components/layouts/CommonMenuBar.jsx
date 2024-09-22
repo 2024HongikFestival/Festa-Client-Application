@@ -1,22 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import globe from '@/assets/webps/layouts/globe.webp';
-import globeGray from '@/assets/webps/layouts/globeGray.webp';
-import * as S from '@/components/layouts/HeaderStyles';
-import { commonMenuItems, flameMenuItems } from '@/constants/layouts/menuItems';
 import RenderMenuItem from '@/components/layouts/RenderMenuItem';
 import { useUpdateBeforeHeight } from '@/components/layouts/useUpdateBeforeHeight';
+import * as S from '@/components/layouts/HeaderStyles';
+import { commonMenuItems, flameMenuItems } from '@/constants/layouts/menuItems';
+import globe from '@/assets/webps/layouts/globe.webp';
+import globeGray from '@/assets/webps/layouts/globeGray.webp';
 
 const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
   const { t, i18n } = useTranslation();
   const [openAccordion, setOpenAccordion] = useState(null);
-  const [isKorActive, setIsKorActive] = useState(true); // 기본값을 KOR으로 설정
+  const [isKorActive, setIsKorActive] = useState(true);
 
   // flame ::before 스크롤 시 늘어나게
   useUpdateBeforeHeight(commonMenuRef);
 
-  // language toggle
   const toggleLanguage = () => {
     const newLanguage = isKorActive ? 'en' : 'ko';
     setIsKorActive(!isKorActive);

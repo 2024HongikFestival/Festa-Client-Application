@@ -16,6 +16,19 @@ export const ToggleWrapper = styled.div`
 export const Toggle = styled.div`
   display: flex;
   padding: 0.8rem 1.5rem;
+  position: relative;
+`;
+
+export const AnimatedBackground = styled.div`
+  position: absolute;
+  height: 3.6rem;
+  background: rgba(24, 51, 219, 0.05);
+  border-radius: 3rem;
+  transition:
+    transform 0.25s ease,
+    width 0.25s ease;
+  z-index: 0;
+  will-change: transform, width;
 `;
 
 const ToggleButton = styled.div`
@@ -27,10 +40,11 @@ const ToggleButton = styled.div`
   text-align: center;
   color: ${({ $isActive, theme }) => ($isActive ? theme.colors.hongikBlue : theme.colors.gray60)};
   ${({ $isActive, theme }) => ($isActive ? theme.fontStyles.basic.body1Bold : theme.fontStyles.basic.body1Semi)};
-  background: ${({ $isActive }) => ($isActive ? 'rgba(24, 51, 219, 0.05)' : 'transparent')};
+  background: transparent;
   border-radius: 3rem;
   opacity: ${({ $isActive }) => ($isActive ? '1' : '0.6')};
   cursor: pointer;
+  z-index: 1;
 `;
 
 export const RestroomBtn = styled(ToggleButton).attrs({ width: '8.2rem' })``;
@@ -47,13 +61,6 @@ export const Title = styled.p`
     ${(props) => props.theme.fontStyles.main.headline6};
     color: ${(props) => props.theme.colors.gray100};
   }
-`;
-
-export const Map = styled.div`
-  width: 100%;
-  height: 25rem;
-  border-top: 1px solid ${(props) => props.theme.colors.gray30};
-  border-bottom: 1px solid ${(props) => props.theme.colors.gray30};
 `;
 
 export const RestroomDetail = styled.ul`
@@ -78,11 +85,11 @@ export const DetailItem = styled.li`
   text-align: left;
 
   &:nth-child(1) ${Number} {
-    margin-right: 0.9rem; /* 1의 Number와 GrayBar 간 간격 0.9rem */
+    margin-right: 0.9rem;
   }
 
   &:nth-child(n + 2) ${Number} {
-    margin-right: 0.8rem; /* 2 이후 항목의 Number와 GrayBar 간 간격 0.8rem */
+    margin-right: 0.8rem;
   }
 `;
 

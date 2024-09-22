@@ -1,8 +1,7 @@
-import { adminAxiosInstance } from '@/api/axios';
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { adminAxiosInstance } from '@/api/axios';
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');

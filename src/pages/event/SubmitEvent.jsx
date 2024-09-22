@@ -1,16 +1,17 @@
-import styled from 'styled-components';
-import graphicBg from '@/assets/webps/event/graphic.webp';
-import shareIcon from '@/assets/webps/event/shareIcon.webp';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { handleShare } from '@/utils/event/handleShare';
+import graphicBg from '@/assets/webps/event/graphic.webp';
+import shareIcon from '@/assets/webps/event/shareIcon.webp';
 
 const SubmitEvent = () => {
   const { t } = useTranslation();
-  const [lang, setLang] = useState(false); // ko일 때 false
+  const [lang, setLang] = useState(false);
   const location = useLocation();
 
-  const { date } = location.state || {}; // 전달받은 date 값
+  const { date } = location.state || {};
   console.log(date);
 
   const instagramUrl = 'https://www.instagram.com/hiufestival_official/';
@@ -19,7 +20,6 @@ const SubmitEvent = () => {
     setLang(!lang);
   }, [localStorage.getItem('i18nextLng')]);
 
-  // 응모 날짜 조건에 따라 내용 변경 (state에 따라 다른 내용)
   const renderContent = () => {
     if (date === 1 || date === 2) {
       return (
@@ -85,7 +85,11 @@ const SubmitEvent = () => {
         {lang ? <EngTitle> {t(`event.result.title`)}</EngTitle> : <Title> {t(`event.result.title`)}</Title>}
       </TitleBox>
       {renderContent()}
-      <ShareButton>
+      <ShareButton
+        onClick={() => {
+          handleShare('https://www.2024hongikfestival.com/event');
+        }}
+      >
         <ShareIcon src={shareIcon} alt="shareIcon" />
         <p> {t(`event.main.button.share`)}</p>
       </ShareButton>

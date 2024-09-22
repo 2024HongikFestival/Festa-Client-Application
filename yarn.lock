@@ -599,6 +599,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@panzoom/panzoom@npm:^4.5.1":
+  version: 4.5.1
+  resolution: "@panzoom/panzoom@npm:4.5.1"
+  checksum: 10c0/4d6fc1226ccf83f71d005030f1c4f6f5cacb751798579d1e76f92e0a0caf694b3d361c2b0f26a4e407b5f8f84a9b728f3b3e9449cab5ddc4a55cf6a98b1df697
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -711,7 +718,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-spring/web@npm:~9.7.4":
+"@react-spring/web@npm:^9.7.4, @react-spring/web@npm:~9.7.4":
   version: 9.7.4
   resolution: "@react-spring/web@npm:9.7.4"
   dependencies:
@@ -1403,6 +1410,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-runtime@npm:^6.26.0":
+  version: 6.26.0
+  resolution: "babel-runtime@npm:6.26.0"
+  dependencies:
+    core-js: "npm:^2.4.0"
+    regenerator-runtime: "npm:^0.11.0"
+  checksum: 10c0/caa752004936b1463765ed3199c52f6a55d0613b9bed108743d6f13ca532b821d4ea9decc4be1b583193164462b1e3e7eefdfa36b15c72e7daac58dd72c1772f
+  languageName: node
+  linkType: hard
+
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
@@ -1602,6 +1619,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "client@workspace:."
   dependencies:
+    "@panzoom/panzoom": "npm:^4.5.1"
+    "@react-spring/web": "npm:^9.7.4"
     "@types/jwt-decode": "npm:^3.1.0"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
@@ -1628,13 +1647,16 @@ __metadata:
     react: "npm:^18.3.1"
     react-camera-pro: "npm:^1.4.0"
     react-dom: "npm:^18.3.1"
+    react-easy-panzoom: "npm:^0.4.4"
     react-i18next: "npm:^15.0.0"
     react-icons: "npm:^5.2.1"
+    react-lottie: "npm:^1.2.4"
     react-moment: "npm:^1.1.3"
     react-router-dom: "npm:^6.25.1"
     react-slick: "npm:^0.30.2"
     react-spring: "npm:^9.7.4"
     react-use: "npm:^17.5.1"
+    react-zoom-pan-pinch: "npm:^3.6.1"
     recoil: "npm:^0.7.7"
     slick-carousel: "npm:^1.8.1"
     styled-components: "npm:^6.1.11"
@@ -1727,6 +1749,13 @@ __metadata:
   dependencies:
     toggle-selection: "npm:^1.0.6"
   checksum: 10c0/3ebf5e8ee00601f8c440b83ec08d838e8eabb068c1fae94a9cda6b42f288f7e1b552f3463635f419af44bf7675afc8d0390d30876cf5c2d5d35f86d9c56a3e5f
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^2.4.0":
+  version: 2.6.12
+  resolution: "core-js@npm:2.6.12"
+  checksum: 10c0/00128efe427789120a06b819adc94cc72b96955acb331cb71d09287baf9bd37bebd191d91f1ee4939c893a050307ead4faea08876f09115112612b6a05684b63
   languageName: node
   linkType: hard
 
@@ -3596,7 +3625,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -3619,7 +3648,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.10.2":
+"lottie-web@npm:^5.1.3, lottie-web@npm:^5.10.2":
   version: 5.12.2
   resolution: "lottie-web@npm:5.12.2"
   checksum: 10c0/0aeaf631b10a76afd025df70c2a1486543530708e07a316946c08e55891dac483ffbaf2bf3648ae0b9c54c733118a0a086fd150aa76f7848606214c67ad72c30
@@ -4339,6 +4368,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-easy-panzoom@npm:^0.4.4":
+  version: 0.4.4
+  resolution: "react-easy-panzoom@npm:0.4.4"
+  dependencies:
+    warning: "npm:4.0.3"
+  peerDependencies:
+    react: ">=16.0.0"
+  checksum: 10c0/0aec23cbc1133ea3c38b80172e54c9e7576dab68f3b76766e9b59236c544336efe4c13fe0edaaf65d5cfbc1634b0fc97054c112aa0261aef1d3ce77249209654
+  languageName: node
+  linkType: hard
+
 "react-i18next@npm:^15.0.0":
   version: 15.0.1
   resolution: "react-i18next@npm:15.0.1"
@@ -4370,6 +4410,18 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 10c0/33977da7a5f1a287936a0c85639fec6ca74f4f15ef1e59a6bc20338fc73dc69555381e211f7a3529b8150a1f71e4225525b41b60b52965bda53ce7d47377ada1
+  languageName: node
+  linkType: hard
+
+"react-lottie@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "react-lottie@npm:1.2.4"
+  dependencies:
+    babel-runtime: "npm:^6.26.0"
+    lottie-web: "npm:^5.1.3"
+  peerDependencies:
+    react: ">=15.0.0"
+  checksum: 10c0/1a97c11a50a5ef7ca067b55ead45aa69817b4122f277744f98cb9b617a9dea5030b4fcbf0c59240909c3b685b025d538b6f558d54a76ebbd4beafdd0cc03c9d6
   languageName: node
   linkType: hard
 
@@ -4483,6 +4535,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-zoom-pan-pinch@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "react-zoom-pan-pinch@npm:3.6.1"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  checksum: 10c0/ec32df7ba9c1b8113fa87e5759c6b697f0f985df1be31b26720c3fdff67dc7f31ac13eabad201d7d5a12f2a4bed637bf7090e8a04f0237618bc751cf37c784d9
+  languageName: node
+  linkType: hard
+
 "react@npm:^18.3.1":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
@@ -4520,6 +4582,13 @@ __metadata:
     globalthis: "npm:^1.0.3"
     which-builtin-type: "npm:^1.1.3"
   checksum: 10c0/baf4ef8ee6ff341600f4720b251cf5a6cb552d6a6ab0fdc036988c451bf16f920e5feb0d46bd4f530a5cce568f1f7aca2d77447ca798920749cfc52783c39b55
+  languageName: node
+  linkType: hard
+
+"regenerator-runtime@npm:^0.11.0":
+  version: 0.11.1
+  resolution: "regenerator-runtime@npm:0.11.1"
+  checksum: 10c0/69cfa839efcf2d627fe358bf302ab8b24e5f182cb69f13e66f0612d3640d7838aad1e55662135e3ef2c1cc4322315b757626094fab13a48f9a64ab4bdeb8795b
   languageName: node
   linkType: hard
 
@@ -5468,6 +5537,15 @@ __metadata:
   version: 3.1.0
   resolution: "void-elements@npm:3.1.0"
   checksum: 10c0/0b8686f9f9aa44012e9bd5eabf287ae0cde409b9a2854c5a2335cb83920c957668ac5876e3f0d158dd424744ac411a7270e64128556b451ed3bec875ef18534d
+  languageName: node
+  linkType: hard
+
+"warning@npm:4.0.3":
+  version: 4.0.3
+  resolution: "warning@npm:4.0.3"
+  dependencies:
+    loose-envify: "npm:^1.0.0"
+  checksum: 10c0/aebab445129f3e104c271f1637fa38e55eb25f968593e3825bd2f7a12bd58dc3738bb70dc8ec85826621d80b4acfed5a29ebc9da17397c6125864d72301b937e
   languageName: node
   linkType: hard
 

@@ -1,15 +1,15 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import highlight_long from '@/assets/svgs/event/highlight_long.svg';
 import highlight_short from '@/assets/svgs/event/highlight_short.svg';
 import highlight_en from '@/assets/svgs/event/highlight_en.svg';
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
 
 // 홍대 내부 아닌 경우 팝업창
 export const LocationErrorBox = () => {
   const { t } = useTranslation();
-  const [lang, setLang] = useState(false); // ko일 때 false
+  const [lang, setLang] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,9 +23,9 @@ export const LocationErrorBox = () => {
         <br />
         <HighlitedText>
           {!lang ? (
-            <LongHighlight src={highlight_long} alt="highlight_long" />
+            <LongHighlight src={highlight_long} alt="highlight_long" loading="lazy" />
           ) : (
-            <EnHighlight src={highlight_en} alt="highlight_en" />
+            <EnHighlight src={highlight_en} alt="highlight_en" loading="lazy" />
           )}
           {t(`event.error.location.title2`)}
         </HighlitedText>
@@ -50,7 +50,7 @@ export const LocationErrorBox = () => {
 // 중복 응모 시 팝업창
 export const DuplicationErrorBox = () => {
   const { t } = useTranslation();
-  const [lang, setLang] = useState(false); // ko일 때 false
+  const [lang, setLang] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const DuplicationErrorBox = () => {
       <Title>
         <HighlitedText>
           {t(`event.error.duplicate.title1`)}
-          <ShortHighlight src={highlight_short} alt="highlight_short" />
+          <ShortHighlight src={highlight_short} alt="highlight_short" loading="lazy" />
         </HighlitedText>
         {t(`event.error.duplicate.title2`)}
       </Title>
@@ -108,7 +108,6 @@ const HighlitedText = styled.span`
 `;
 
 const LongHighlight = styled.img`
-  //width: 9.3rem;
   width: 100%;
   height: 1.2rem;
   position: absolute;

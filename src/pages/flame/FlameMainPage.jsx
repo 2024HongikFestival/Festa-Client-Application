@@ -1,5 +1,3 @@
-// 와디페 메인 페이지
-// url: /flame
 import React, { useState, useRef } from 'react';
 import * as S from './FlameMainPage.Styled';
 import FLAME from '@/assets/svgs/FLAME.svg';
@@ -98,7 +96,7 @@ const FlameMainPage = () => {
     <>
       <S.Flame>
         <S.VideoContainer>
-          <S.BackGroundVideo autoPlay loop muted>
+          <S.BackGroundVideo autoPlay loop muted playsInline>
             <source src={BgVideo} type="video/mp4" />
           </S.BackGroundVideo>
           <S.TitleContainer>
@@ -192,11 +190,7 @@ const DateContent = ({ carouselItems, selectedDay }) => {
               <S.ImageContainer key={index}>
                 <S.CarouselImage src={item.src} alt={item.alt} />
                 <S.GradientOverlay />
-                <S.LogoImage
-                  src={logo.src}
-                  alt={`${item.name} logo`}
-                  style={{ width: logo.width }} // Apply width dynamically
-                />
+                <S.LogoImage src={logo.src} alt={`${item.name} logo`} style={{ width: logo.width }} loading="lazy" />
                 <S.Line />
                 <S.DJName>{item.name}</S.DJName>
               </S.ImageContainer>

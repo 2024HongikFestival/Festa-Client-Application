@@ -30,6 +30,7 @@ export const HeaderBg = styled.header`
   background: ${({ $isMenuOpen, $flame }) => ($isMenuOpen && !$flame ? '#F1FBFD' : 'rgba(255, 255, 255, 0.05)')};
   box-shadow: 0 0 0.4rem 0 rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(0.2rem);
+  -webkit-backdrop-filter: blur(0.2rem);
   transition: background 0.3s ease;
 
   ${(props) =>
@@ -39,6 +40,7 @@ export const HeaderBg = styled.header`
       background-color: ${(props) => props.theme.colors.black};
       box-shadow: 0rem 0rem 0.4rem 0rem rgba(255, 255, 255, 0.12) inset;
       backdrop-filter: blur(0.2rem);
+      -webkit-backdrop-filter: blur(0.2rem);
     `}
 
   ${(props) =>
@@ -48,6 +50,7 @@ export const HeaderBg = styled.header`
       background-color: ${(props) => props.theme.colors.flameBackgroundColor};
       box-shadow: 0 0 0.4rem 0 rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(0.2rem);
+      -webkit-backdrop-filter: blur(0.2rem);
     `}
 
   ${(props) =>

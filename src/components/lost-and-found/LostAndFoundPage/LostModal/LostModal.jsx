@@ -1,9 +1,10 @@
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { t } from 'i18next';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import CustomMap from './CutomMap';
+import { axiosInstance } from '@/api/axios';
 import * as S from './LostModal.styled';
 
 const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
@@ -24,6 +25,8 @@ const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
 };
 
 export const LocationModal = ({ isOpen, setIsOpen }) => {
+  const panZoomRef = React.useRef(null);
+
   return (
     <LostModal top={'16.3rem'} gap={'0rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
       <S.LostCenterLayout>
@@ -32,7 +35,7 @@ export const LocationModal = ({ isOpen, setIsOpen }) => {
           &nbsp;
           <span>{t('LocationModal.location2')}</span>
         </S.LostCenterTitle>
-        <S.LostCenterMap />
+        <CustomMap />
       </S.LostCenterLayout>
       <S.LostCenterContent>
         <Trans i18nKey={'LocationModal.content'} components={{ 1: <span />, 2: <br /> }}></Trans>
@@ -47,7 +50,7 @@ export const ItemModal = ({ isOpen, setIsOpen, lostId }) => {
 
   const getItemApi = async () => {
     try {
-      const response = await axios.get(`https://api.2024hongikfestival.com/losts/${lostId}`);
+      const response = await axiosInstance.get(`/losts/${lostId}`);
       setItem(response.data.data);
     } catch (error) {
       console.error(error);
