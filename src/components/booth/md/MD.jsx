@@ -48,6 +48,7 @@ const imageTopMap = {
 };
 
 export default function MD({ img, name, price, width, height }) {
+  console.log(img);
   const formattedPrice = price.toLocaleString();
   const imageSrc = imageMap[img];
   const imageTop = imageTopMap[img];
@@ -93,7 +94,7 @@ const Frame = styled.div`
   position: absolute;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  top: ${(props) => props.top};
+  top: ${(props) => props.$top};
   display: flex;
   justify-content: center;
   align-items: center;

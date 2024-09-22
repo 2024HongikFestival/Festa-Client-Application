@@ -43,6 +43,7 @@ export default function BoothPage() {
             </div>
           </Suspense>
         )}
+        {/* <Lottie animationData={animationData} loop={true} autoplay={true} /> */}
       </S.ForGapWrapper>
     </S.Container>
   );

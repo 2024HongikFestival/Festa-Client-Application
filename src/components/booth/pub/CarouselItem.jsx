@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { useLottie } from 'lottie-react';
+import Lottie from 'lottie-react';
 import night from '@/assets/webps/booth/icon/night.webp';
 import wow from '@/assets/webps/booth/wow/departmentWow.webp';
 import day2Night from '@/assets/webps/booth/icon/day2Night.webp';
 import favorite from '@/assets/webps/booth/icon/favorite.webp';
-import animationData from '@/assets/lotties/booth/likeBtnMotion.json';
+import animationData from '@/assets/lotties/booth/like.json';
 import PropTypes from 'prop-types';
 import { axiosInstance } from '@/api/axios';
 
@@ -23,29 +23,20 @@ CarouselItem.propTypes = {
 };
 
 export default function CarouselItem({ content, click, likeData }) {
-  const [isLiked, setIsLiked] = useState(false);
-  const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0); // 기본값을 0으로 설정
+  const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0);
+  const [animationKey, setAnimationKey] = useState(0);
   const lng = localStorage.getItem('language');
-
-  const lottieOptions = {
-    animationData: animationData,
-    loop: false,
-    autoplay: false,
-  };
-
-  const { View: LottieView, play: playLottie } = useLottie(lottieOptions);
+  const lottieRef = useRef(null);
 
   useEffect(() => {
     if (likeData && likeData.totalLike !== undefined) {
-      setTotalLikes(likeData.totalLike); // likeData가 로드된 후에 totalLikes 업데이트
+      setTotalLikes(likeData.totalLike);
     }
   }, [likeData]);
 
   const handleLikeClick = async (id) => {
     click();
-    playLottie(); // Lottie 애니메이션 재생
-    setIsLiked(true);
-    setTimeout(() => setIsLiked(false), 1000); // Reset after 1 second
+    setAnimationKey((prev) => prev + 1);
 
     try {
       const response = await axiosInstance.post(`/booths/${id}/like`);
@@ -58,7 +49,7 @@ export default function CarouselItem({ content, click, likeData }) {
   };
 
   return (
-    <Container>
+    <Container $lng={lng}>
       {content.time === 'all' ? (
         <Icon $lng={lng} src={day2Night} kind={'day2Night'} />
       ) : (
@@ -81,6 +72,7 @@ export default function CarouselItem({ content, click, likeData }) {
         ))}
       </Intro>
       {content.wow ? <Wow src={content.wow} alt="wow" /> : <Wow src={wow} alt="wow" />}
+      {/* 로드된 이미지 */}
       <PubInfoContainer $lng={lng}>
         <TextWrapper kind="food">
           <Title>Food</Title>
@@ -112,22 +104,13 @@ export default function CarouselItem({ content, click, likeData }) {
           <HeartIcon src={favorite} alt="favorite" />
           <Count>{totalLikes}</Count>
         </LikeBtn>
-        <LottieContainer>{LottieView}</LottieContainer>
       </BtnContainer>
+      <LottieContainer>
+        <Lottie key={animationKey} lottieRef={lottieRef} animationData={animationData} loop={false} autoplay={false} />
+      </LottieContainer>
     </Container>
   );
 }
-
-const LottieContainer = styled.div`
-  position: absolute;
-  background-color: black;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-`;
 
 const Container = styled.div`
   width: 22.1rem;
@@ -136,7 +119,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: -1;
+  position: relative;
+  z-index: 1;
 `;
 
 const Icon = styled.img`
@@ -198,7 +182,6 @@ const Text = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  // 영어인 경우 고려
   max-width: 11.6rem;
   text-align: start;
 `;
@@ -209,7 +192,6 @@ const BtnContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 8.1rem;
-  position: relative;
 `;
 
 const LikeBtn = styled.button`
@@ -246,4 +228,15 @@ const HeartIcon = styled.img`
 const Count = styled.div`
   ${({ theme }) => theme.fontStyles.basic.captionBold};
   color: white;
+`;
+
+const LottieContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 60;
 `;
