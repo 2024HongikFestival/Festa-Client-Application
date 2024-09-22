@@ -20,7 +20,7 @@ export default function FleamarketTop({ item }) {
           <ContentContainer>
             <TopImgWrapper $marketId={marketId}>
               {item.map((img, index) => (
-                <TopImg key={index} src={img} alt="sangsu" idx={index} />
+                <TopImg key={index} src={img} alt="sangsu" idx={index} loading="lazy" />
               ))}
             </TopImgWrapper>
           </ContentContainer>
@@ -31,7 +31,7 @@ export default function FleamarketTop({ item }) {
     return (
       <TopWrapper>
         <TopImgWrapper $marketId={marketId}>
-          <TopImg2 src={item[0]} alt="hypeBoy" />
+          <TopImg2 src={item[0]} alt="hypeBoy" loading="lazy" />
         </TopImgWrapper>
       </TopWrapper>
     );
