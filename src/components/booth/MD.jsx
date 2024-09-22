@@ -51,20 +51,20 @@ export default function MD({ img, name, price, width, height }) {
   const formattedPrice = price.toLocaleString();
   const imageSrc = imageMap[img];
   const imageTop = imageTopMap[img];
-  const { t } = useTranslation(); // useTranslation 훅 사용
+  const { t } = useTranslation();
 
   return (
     <ContentContainer>
       <MdWrapper>
         <Radial>
-          <Frame width={width} height={height} top={imageTop}>
-            <Img src={imageSrc} alt={t(`mdPage.products.${img}`)} top={imageTop} width={width} height={height} />
+          <Frame width={width} height={height} $top={imageTop}>
+            <Img src={imageSrc} alt={t(`mdPage.products.${img}`)} $top={imageTop} width={width} height={height} />
           </Frame>
         </Radial>
         <Desc>
           <TextContainer>
-            <Text kind={'limited'}>{t('mdPage.limitedSale')}</Text> {/* "한정판매" 번역 */}
-            <Text kind={'mdName'}>{t(`mdPage.products.${img}`)}</Text> {/* 제품 이름 번역 */}
+            <Text kind={'limited'}>{t('mdPage.limitedSale')}</Text>
+            <Text kind={'mdName'}>{t(`mdPage.products.${img}`)}</Text>
             <Text kind={'price'}>₩ {formattedPrice}</Text>
           </TextContainer>
         </Desc>

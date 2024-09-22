@@ -1,6 +1,6 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
@@ -39,7 +39,6 @@ const NoticeTimeBox = () => {
   };
 
   useEffect(() => {
-    // 1초마다 시간 갱신
     const id = setInterval(() => {
       handleDate();
     }, 1000);

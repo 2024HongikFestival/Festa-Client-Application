@@ -13,7 +13,7 @@ const AdminEvent = () => {
   const [isDetailView, setIsDetailView] = useState(false);
   const [selectedList, setSelectedList] = useState(null);
   const [lists, setLists] = useState([]);
-  const [loading, setLoading] = useState(true); // 로딩 상태
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -88,7 +88,7 @@ const AdminEvent = () => {
     return (
       <SpinnerContainer>
         <div className="spinner"></div>
-      </SpinnerContainer> // 또는 로딩 스피너를 표시할 수 있습니다
+      </SpinnerContainer>
     );
   }
 
@@ -97,8 +97,8 @@ const AdminEvent = () => {
   }
   const handleChangeView = (view) => {
     setActiveComponent(view);
-    setIsDetailView(false); // 디테일 모드 종료
-    navigate(`?view=${view}`); // URL 쿼리 업데이트
+    setIsDetailView(false);
+    navigate(`?view=${view}`);
   };
 
   const handleOpenDetailView = (entry) => {
@@ -178,8 +178,8 @@ const SpinnerContainer = styled.div`
   background-color: ${(props) => props.theme.colors.gray10};
 
   .spinner {
-    border: 5px solid ${(props) => props.theme.colors.gray20}; /* Light gray */
-    border-top: 5px solid ${(props) => props.theme.colors.gray80}; /* Dark gray */
+    border: 5px solid ${(props) => props.theme.colors.gray20};
+    border-top: 5px solid ${(props) => props.theme.colors.gray80};
     border-radius: 50%;
     width: 50px;
     height: 50px;

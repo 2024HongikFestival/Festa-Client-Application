@@ -1,6 +1,6 @@
+import styled from 'styled-components';
 import arrow_back from '@/assets/svgs/lost/arrow_back.svg?react';
 import arrow_front from '@/assets/svgs/lost/arrow_front.svg?react';
-import styled from 'styled-components';
 
 export const PaginationWrapper = styled.div`
   display: flex;

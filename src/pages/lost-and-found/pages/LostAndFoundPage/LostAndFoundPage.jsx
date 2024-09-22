@@ -1,23 +1,14 @@
-// 대동제 분실물 (메인)
-// url: /lost-and-found
-
-import axios from 'axios';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import * as S from './LostAndFoundPage.styled';
-
+import { Trans, useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 import DropDown from '@/components/lost-and-found/LostAndFoundPage/DropDown/DropDown';
 import LostBottomSheet from '@/components/lost-and-found/LostAndFoundPage/LostBottomSheet/LostBottomSheet';
 import { ItemModal, LocationModal } from '@/components/lost-and-found/LostAndFoundPage/LostModal/LostModal';
 import NewPagination from '@/components/lost-and-found/LostAndFoundPage/NewPagination/NewPagination';
-import { Trans, useTranslation } from 'react-i18next';
-import styled from 'styled-components';
 import { axiosInstance } from '@/api/axios';
-// import i18n from '@/i18n/setting';
-// i18n.changeLanguage('en');
+import * as S from './LostAndFoundPage.styled';
 
-// [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
-// Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
 const LostAndFoundPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -73,13 +64,11 @@ const LostAndFoundPage = () => {
     getItemsApi();
   }, [currentPage]);
 
-  //드롭다운(필터링) 바뀌면 기본적으로 1페이지부터
   useEffect(() => {
     currentPage === 1 ? getItemsApi() : handlePage(1);
   }, [selectedDay]);
 
   const handleClickItem = (lostId) => () => {
-    //navigate(`${lostId}`);
     setIsItemModalOpen(true);
     setItemLostId(lostId);
   };
@@ -144,7 +133,6 @@ const StyleSpan = styled.span`
     content: '';
   }
   &::before {
-    //공백 처리를 위한 구문
     content: '';
     display: inline-block;
     width: 5px;

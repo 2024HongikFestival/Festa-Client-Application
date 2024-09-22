@@ -1,52 +1,48 @@
 import { useEffect, useState } from 'react';
+import { useNavigationType } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import NoticeTimeBox from '@/components/event/NoticeTimeBox';
+import raffle from '@/assets/webps/event/raffle.webp';
+import shareIcon from '@/assets/webps/event/shareIcon.webp';
+import kakaoLogo from '@/assets/svgs/event/kakaoLogo.svg';
+import { handleShare } from '@/utils/event/handleShare';
+import frame from '@/assets/svgs/event/frame.svg';
+import tvingLogo from '@/assets/svgs/event/tvingLogo.svg';
 import { EVENTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
 import * as S from './styled';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import raffle from '@/assets/webps/event/raffle.webp';
-import shareIcon from '@/assets/webps/event/shareIcon.webp';
-import kakaoLogo from '@/assets/svgs/event/kakaoLogo.svg';
-import NoticeTimeBox from '@/components/event/NoticeTimeBox';
-import { handleShare } from '@/utils/event/handleShare';
-import frame from '@/assets/svgs/event/frame.svg';
-import tvingLogo from '@/assets/svgs/event/tvingLogo.svg';
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
-import { useNavigationType } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-// 시간대를 한국 표준시로 설정
 dayjs.tz.setDefault('Asia/Seoul');
 
-// 이벤트 시작과 종료 시간
-const eventStart = dayjs.tz('2024-09-25 10:00:00', 'Asia/Seoul'); // 테스트를 위해 임시로 현재 시간으로 설정
+const eventStart = dayjs.tz('2024-09-25 10:00:00', 'Asia/Seoul');
 const eventEnd = dayjs.tz('2024-09-27 23:59:59', 'Asia/Seoul');
 
 const EventPage = () => {
   const { t } = useTranslation();
-  const [lang, setLang] = useState(localStorage.getItem('language') === 'ko' ? false : true);
-  const [stateData, setStateData] = useState();
+  //const [stateData, setStateData] = useState();
   const [currentUrl, setCurrentUrl] = useState('');
-  const [isEventPeriod, setIsEventPeriod] = useState(false); // 이벤트 기간 여부
+  const [isEventPeriod, setIsEventPeriod] = useState(false);
 
   const navigationType = useNavigationType();
 
-  const handleRandomState = () => {
-    const array = new Uint32Array(1);
-    self.crypto.getRandomValues(array);
-    setStateData(array[0]);
-  };
+  // const handleRandomState = () => {
+  //   const array = new Uint32Array(1);
+  //   self.crypto.getRandomValues(array);
+  //   setStateData(array[0]);
+  // };
 
   const handleKakaoAuth = () => {
     // window.location.href = EVENTS_KAKAO_AUTH_URL + `&state=${stateData}`;
     window.location.href = EVENTS_KAKAO_AUTH_URL;
   };
 
-  // 뒤로 가기 시 event_access_token 삭제 로직 추가
   useEffect(() => {
     if (navigationType === 'POP') {
       localStorage.removeItem('event_access_token');
@@ -54,13 +50,13 @@ const EventPage = () => {
   }, [navigationType]);
 
   useEffect(() => {
-    handleRandomState();
+    //handleRandomState();
     setCurrentUrl(window.location.href);
 
     // 현재 시간이 이벤트 기간 내에 있는지 확인
     const now = dayjs();
     if (now.isAfter(eventStart) && now.isBefore(eventEnd)) {
-      setIsEventPeriod(true); // 이벤트 기간 중이면 true
+      setIsEventPeriod(true);
     }
   }, []);
 

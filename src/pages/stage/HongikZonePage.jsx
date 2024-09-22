@@ -1,11 +1,10 @@
 import React from 'react';
-import { useTranslation, Trans } from 'react-i18next'; // i18next import
+import { useTranslation, Trans } from 'react-i18next';
+import map from '@/assets/webps/hongikZone/hongikZoneMap.webp';
 import * as S from './styles/HongikZonePage';
 
-import map from '@/assets/webps/hongikZone/hongikZoneMap.webp';
-
 const HongikZonePage = () => {
-  const { t } = useTranslation(); // useTranslation hook 사용
+  const { t } = useTranslation();
 
   return (
     <S.PageContainer>

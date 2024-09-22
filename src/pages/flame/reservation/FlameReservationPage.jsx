@@ -1,6 +1,3 @@
-// 와디페 예매
-// url: /flame/reservation
-
 import React from 'react';
 import {
   CostBox,

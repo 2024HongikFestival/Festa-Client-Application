@@ -21,7 +21,6 @@ PageTitle.propTypes = {
 
 const Title = styled.div`
   width: 33.5rem;
-  /* height: 4.8rem; */
   height: auto;
   margin-top: 2.4rem;
   margin-bottom: 2.8rem;

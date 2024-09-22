@@ -1,12 +1,10 @@
-import styled from 'styled-components';
 import { useRef } from 'react';
 import { PropTypes } from 'prop-types';
+import styled from 'styled-components';
 
-// 전화번호 입력 박스
 const PhoneNumBox = ({ className, index, codeArr, onChange }) => {
   const inputRef = useRef(null);
   const value = codeArr[index];
-
   const setValue = (value, position = 0) => {
     const nextCodeArr = [...codeArr];
     nextCodeArr[index + position] = value;
@@ -40,7 +38,6 @@ const PhoneNumBox = ({ className, index, codeArr, onChange }) => {
   };
 
   const _onKeyDown = (e) => {
-    // 오른쪽 화살표 처리
     if ((e.key === 'ArrowRight' || e.key === 'arrowRight') && nextInput) {
       if (inputRef.current?.selectionStart === 0 && value !== '') {
         inputRef.current?.setSelectionRange(1, 1);
@@ -48,7 +45,6 @@ const PhoneNumBox = ({ className, index, codeArr, onChange }) => {
         nextInput.focus();
       }
     }
-    // 왼쪽 화살표 처리
     if ((e.key === 'ArrowLeft' || e.key === 'arrowLeft') && previousInput) {
       if (inputRef.current?.selectionStart === 1) {
         inputRef.current?.setSelectionRange(0, 0);
@@ -56,15 +52,12 @@ const PhoneNumBox = ({ className, index, codeArr, onChange }) => {
         previousInput.focus();
       }
     }
-    // 백스페이스 처리
     if (e.key === 'Backspace') {
       if (inputRef.current?.selectionStart === 1) {
-        // 현재 값을 지움
         const nextCodeArr = [...codeArr];
         nextCodeArr[index] = '';
         onChange(nextCodeArr);
       } else if (previousInput) {
-        // 이전 입력란으로 이동
         setValue('', -1);
         previousInput.focus();
       }

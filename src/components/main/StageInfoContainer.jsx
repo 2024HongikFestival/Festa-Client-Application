@@ -1,16 +1,17 @@
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import AOS from 'aos';
 import StageInfo from '@/components/main/StageInfo';
 import HibsLogo from '@/assets/webps/main/hibs.webp';
 import youtubeIcon from '@/assets/webps/main/youtubeIcon.webp';
-import AOS from 'aos';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export default function StageInfoContainer() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (
@@ -20,22 +21,22 @@ export default function StageInfoContainer() {
       </StageTitle>
       <StageInfo />
       {/* 실시간 방송 보러가기 버튼 컴포넌트 */}
-      <a href="https://youtube.com/@hibs1148?si=nFOcPV4tIDOpvsuJ" target="_blank" rel="noopener noreferrer">
+      <Link to="https://youtube.com/@hibs1148?si=nFOcPV4tIDOpvsuJ" target="_blank" rel="noopener noreferrer">
         <GoHibsBtn data-aos="fade-up" data-aos-delay="200">
           <BtnWrapper>
             <BtnText>
               <LogoContainer>
-                <Logo src={HibsLogo} alt="hibsLogo" />
+                <Logo src={HibsLogo} alt="hibsLogo" loading="lazy" />
                 <TopText>{t('main.HIBS')}</TopText>
               </LogoContainer>
               <BottomText>{t('main.gotoBtn')}</BottomText>
             </BtnText>
             <YoutubeIconWrapper>
-              <YoutubeIcon src={youtubeIcon} alt="youtube" />
+              <YoutubeIcon src={youtubeIcon} alt="youtube" loading="lazy" />
             </YoutubeIconWrapper>
           </BtnWrapper>
         </GoHibsBtn>
-      </a>
+      </Link>
     </StageContainer>
   );
 }

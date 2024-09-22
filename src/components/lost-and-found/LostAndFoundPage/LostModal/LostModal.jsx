@@ -1,13 +1,11 @@
-import axios from 'axios';
-import { t } from 'i18next';
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { t } from 'i18next';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import * as S from './LostModal.styled';
-import PanZoom from 'react-easy-panzoom';
 import CustomMap from './CutomMap';
 import { axiosInstance } from '@/api/axios';
+import * as S from './LostModal.styled';
 
 const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
   const handleCloseModal = () => {

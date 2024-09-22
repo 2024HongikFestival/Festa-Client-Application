@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-// height는 자식 요소가 결정합니다.
-
 ContentContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };

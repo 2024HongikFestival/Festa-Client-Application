@@ -1,14 +1,12 @@
-import CameraButtonSvg from '@/assets/svgs/lost/CameraButtonSvg.svg';
 import styled from 'styled-components';
+import CameraButtonSvg from '@/assets/svgs/lost/CameraButtonSvg.svg';
 
 export const CameraPageWrapper = styled.div`
   width: 100%;
   max-width: 76.8rem;
   min-width: 37.5rem;
   min-height: calc(var(--vh, 1vh) * 100);
-
   position: fixed;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -34,7 +32,6 @@ export const Video = styled.video`
   border: 4px solid ${({ theme }) => theme.colors.gray30};
   background-color: ${({ theme }) => theme.colors.gray5};
   object-fit: cover;
-  //align-self: stretch;
 `;
 
 export const CaptureButton = styled.button`
@@ -52,14 +49,12 @@ export const CaptureButton = styled.button`
   background-repeat: no-repeat;
   background-position: center;
 
-  //활성화 된 순간(눌렀을 때) 효과
   &:active {
     width: 7rem;
     height: 7rem;
   }
 `;
 
-//에러 메세지 따로 추가해둠
 export const ErrorMesssage = styled.p`
   color: red;
   ${({ theme }) => theme.fontStyles.basic.captionBold};
