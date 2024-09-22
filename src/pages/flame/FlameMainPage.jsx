@@ -1,9 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import * as S from './FlameMainPage.Styled';
+import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
 import FLAME from '@/assets/svgs/FLAME.svg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
 import DJ1 from '@/assets/webps/wdfLineup/rui.webp';
 import DJ2 from '@/assets/webps/wdfLineup/fine.webp';
 import DJ3 from '@/assets/webps/wdfLineup/rightback.webp';
@@ -42,21 +44,21 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 const djData = {
-  day1: [
+  Day1: [
     { src: DJ1, alt: 'DJ 1', name: 'RUI' },
     { src: DJ2, alt: 'DJ 2', name: 'FINÈ' },
     { src: DJ3, alt: 'DJ 3', name: 'rightback' },
     { src: DJ4, alt: 'DJ 4', name: 'CHANXER' },
     { src: DJ5, alt: 'DJ 5', name: 'TEZZ' },
   ],
-  day2: [
+  Day2: [
     { src: DJ6, alt: 'DJ 6', name: 'YongSul' },
     { src: DJ7, alt: 'DJ 7', name: 'CHOI' },
     { src: DJ8, alt: 'DJ 8', name: 'LOZIC' },
     { src: DJ9, alt: 'DJ 9', name: 'VANDAL ROCK' },
     { src: DJ10, alt: 'DJ 10', name: 'ASTER' },
   ],
-  day3: [
+  Day3: [
     { src: DJ11, alt: 'DJ 11', name: 'NAP ON CLOUD' },
     { src: DJ12, alt: 'DJ 12', name: 'SIGMA' },
     { src: DJ13, alt: 'DJ 13', name: 'WOOXI' },
@@ -65,21 +67,21 @@ const djData = {
   ],
 };
 const djLogos = {
-  day1: [
+  Day1: [
     { src: DJ1Logo, width: '11.9rem', height: '4.9rem' },
     { src: DJ2Logo, width: '11.5rem', height: '5.3rem' },
     { src: DJ3Logo, width: '11.5rem', height: '9.8rem' },
     { src: DJ4Logo, width: '14.7rem', height: '3.2rem' },
     { src: DJ5Logo, width: '14.6rem', height: '5.4rem' },
   ],
-  day2: [
+  Day2: [
     { src: DJ6Logo, width: '12.5rem', height: '3.5rem' },
     { src: DJ7Logo, width: '14.4rem', height: '4.7rem' },
     { src: DJ8Logo, width: '12.3rem', height: '2.3rem' },
     { src: DJ9Logo, width: '23.9rem', height: '1.9rem' },
     { src: DJ10Logo, width: '11.5rem', height: '4.1rem' },
   ],
-  day3: [
+  Day3: [
     { src: DJ11Logo, width: '21.8rem', height: '2rem' },
     { src: DJ12Logo, width: '12.8rem', height: '2.5rem' },
     { src: DJ13Logo, width: '12.8rem', height: '3.7rem' },
@@ -90,20 +92,11 @@ const djLogos = {
 
 const FlameMainPage = () => {
   const { t } = useTranslation();
-  const today = new Date();
-  const currentMonth = today.getMonth() + 1;
-  const currentDate = today.getDate();
+  const [selectedDay, setSelectedDay] = useState('Day1');
 
-  let initialDay = 'day1';
-  if (currentMonth === 9) {
-    if (currentDate === 26) {
-      initialDay = 'day2';
-    } else if (currentDate === 27) {
-      initialDay = 'day3';
-    }
-  }
-
-  const [selectedDay, setSelectedDay] = useState(initialDay);
+  useEffect(() => {
+    setSelectedDay(getSelectedDayByDate());
+  }, []);
 
   return (
     <>
@@ -145,13 +138,13 @@ const FlameMainPage = () => {
         <S.LineUpSection>
           <S.DateSection>
             <S.BtnWrapper>
-              <S.DateButton selected={selectedDay === 'day1'} onClick={() => setSelectedDay('day1')}>
+              <S.DateButton selected={selectedDay === 'Day1'} onClick={() => setSelectedDay('day1')}>
                 DAY 1 <br /> {t('wdfMain.day1')}
               </S.DateButton>
-              <S.DateButton selected={selectedDay === 'day2'} onClick={() => setSelectedDay('day2')}>
+              <S.DateButton selected={selectedDay === 'Day2'} onClick={() => setSelectedDay('day2')}>
                 DAY 2 <br /> {t('wdfMain.day2')}
               </S.DateButton>
-              <S.DateButton selected={selectedDay === 'day3'} onClick={() => setSelectedDay('day3')}>
+              <S.DateButton selected={selectedDay === 'Day3'} onClick={() => setSelectedDay('day3')}>
                 DAY 3<br /> {t('wdfMain.day3')}
               </S.DateButton>
             </S.BtnWrapper>
