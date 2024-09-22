@@ -116,6 +116,7 @@ const FlameLineupPage = () => {
               width: dayDjLogos[index].width,
               height: dayDjLogos[index].height,
             }}
+            loading="lazy"
           />
         </S.CardImageContainer>
         <S.CardDescriptionContainer>

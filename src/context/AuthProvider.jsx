@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types';
 import { createContext, useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const AuthContext = createContext(null);
 
-// CameraProvider, AuthProvider, EventProvider 관련 내용을 모두 AuthProvider에서 관리
 export const AuthProvider = ({ children }) => {
   //CameraProvider 관련 내용
   const [isCamera, setIsCamera] = useState(false);
@@ -12,11 +11,9 @@ export const AuthProvider = ({ children }) => {
   const setLostAccessToken = (token) => {
     localStorage.setItem('lost_access_token', token);
   };
-
   const getLostAccessToken = () => {
     return localStorage.getItem('lost_access_token');
   };
-
   const removeLostAccessToken = () => {
     localStorage.removeItem('lost_access_token');
   };
@@ -25,11 +22,9 @@ export const AuthProvider = ({ children }) => {
   const setEventAccessToken = (token) => {
     localStorage.setItem('event_access_token', token);
   };
-
   const getEventAccessToken = () => {
     return localStorage.getItem('event_access_token');
   };
-
   const removeEventAccessToken = () => {
     localStorage.removeItem('event_access_token');
   };
@@ -53,7 +48,6 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-// lost_access_token 관련 값을 가져오는 커스텀 훅
 export const useAuth = () => {
   const { setLostAccessToken, getLostAccessToken, removeLostAccessToken } = useContext(AuthContext);
 
@@ -64,14 +58,12 @@ export const useAuth = () => {
   };
 };
 
-// Camera 관련 값을 가져오는 커스텀 훅
 export const useCamera = () => {
   const { isCamera, setIsCamera } = useContext(AuthContext);
 
   return { isCamera, setIsCamera };
 };
 
-// event_access_token 관련 값을 가져오는 커스텀 훅
 export const useEvent = () => {
   const { setEventAccessToken, getEventAccessToken, removeEventAccessToken } = useContext(AuthContext);
 

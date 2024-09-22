@@ -20,7 +20,8 @@ const FlamePromotionPage = () => {
                   alt={product.name}
                   width={product.width}
                   height={product.height}
-                  top={product.imageTop}
+                  $top={product.imageTop}
+                  loading="lazy"
                 />
               </ImageContainer>
               <Description>

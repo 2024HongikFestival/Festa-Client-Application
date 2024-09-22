@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import * as S from './DropDown.styled';
 
@@ -7,11 +7,10 @@ const DropDown = ({ setSelectedDay }) => {
   const { t } = useTranslation();
 
   const dates = [
-    { label: t('DropDown.AllTime'), value: '' }, //초기값
+    { label: t('DropDown.AllTime'), value: '' },
     { label: t('DropDown.Day1'), value: '2024-09-25' },
     { label: t('DropDown.Day2'), value: '2024-09-26' },
     { label: t('DropDown.Day3'), value: '2024-09-27' },
-    //만약 날짜 추가된다면 위의 형식대로 추가하면 됨
   ];
 
   const [isOpen, setIsOpen] = useState(false);

@@ -1,9 +1,8 @@
+import { useEffect } from 'react';
 import { styled, css } from 'styled-components';
 import AOS from 'aos';
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
 
-// 내용이 적어서 따로 constants로 뺴지 않았습니다.
 const aboutOperatingHours = [
   {
     title: 'main.operating1',
@@ -26,7 +25,7 @@ export default function OperatingHours() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (

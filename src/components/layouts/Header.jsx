@@ -51,18 +51,17 @@ export default function Header() {
     currentRoute = routeConfig[location.pathname];
   }
 
-  // 대동제 페이지에서 메뉴 오픈 시 header logo, xBtn 검정으로 고정
   if (isMenuOpen && !isFlamePath && !isAdminPath) {
     currentRoute = {
       ...currentRoute,
-      logo: hiuLogoBlack, // 검정 로고
-      xBtn: xBtnBlack, // 검정 xBtn
+      logo: hiuLogoBlack,
+      xBtn: xBtnBlack,
     };
   }
 
   // 메뉴바 여닫기
   const toggleMenu = (event) => {
-    event.stopPropagation(); // 이벤트 전파를 막아 외부 클릭과의 충돌 방지
+    event.stopPropagation();
     setIsAnimating(true);
     setIsMenuOpen((prev) => !prev);
   };
@@ -70,13 +69,11 @@ export default function Header() {
   // backBtn
   const handleGoBack = () => {
     if (location.pathname === '/lost-and-found/add') {
-      // /lost-and-found/add에서는 /lost-and-found로 이동
       nav('/lost-and-found');
     } else if (isAdminEventPathDetail) {
       nav('/admin/event');
       nav(0);
     } else {
-      // 그 외: -1로 이동
       nav(-1);
     }
     setTimeout(() => {
@@ -102,8 +99,6 @@ export default function Header() {
         }
       }
     };
-
-    // -> 범위 밖 누르면 닫기
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);

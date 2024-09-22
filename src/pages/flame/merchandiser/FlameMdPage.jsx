@@ -2,7 +2,7 @@ import React from 'react';
 import 'aos/dist/aos.css';
 import { useTranslation, Trans } from 'react-i18next';
 import * as S from './styles';
-import { productsData } from '@/constants/wdfMD/data'; // js 파일에서 데이터 import
+import { productsData } from '@/constants/wdfMD/data';
 import alertImage from '@/assets/webps/wdfMD/error.webp';
 
 const FlameMdPage = () => {
@@ -38,7 +38,8 @@ const FlameMdPage = () => {
                         alt={t(`flameMdPage.products.${product.name}`)}
                         width={product.width}
                         height={product.height}
-                        top={product.imageTop}
+                        $top={product.imageTop}
+                        loading="lazy"
                       />
                     </S.ImageContainer>
                     <S.ProductInfo>

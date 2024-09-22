@@ -1,6 +1,3 @@
-// 대동제 플리마켓
-// url: /fleamarket
-
 import PageTitle from '@/components/common/PageTitle';
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';

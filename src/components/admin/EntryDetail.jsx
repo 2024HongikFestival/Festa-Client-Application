@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Popup from './Popup';
 import { adminAxiosInstance } from '@/api/axios';
 import deleteBtn from '@/assets/webps/admin/deleteBtn.webp';
-import Popup from './Popup';
 
 const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) => {
   const [list, setList] = useState([]);
@@ -13,7 +13,7 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
   const [hasMore, setHasMore] = useState(true);
   const [drawnCount, setDrawnCount] = useState(0);
   const [showCancelButton, setShowCancelButton] = useState(false);
-  const [popupType, setPopupType] = useState(null); // 팝업 타입 상태 추가
+  const [popupType, setPopupType] = useState(null);
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -71,7 +71,6 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
   const handleLoadMore = () => {
     if (!loading && hasMore) {
       setPage((prevPage) => prevPage + 1);
-      // Scroll to the bottom of the list after loading more items
       endOfListRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
   };
@@ -93,7 +92,7 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
         }
       );
 
-      console.log('Response Data:', response.data); // 응답 데이터 확인
+      console.log('Response Data:', response.data);
 
       const data = response.data.data;
       const result = Array.isArray(data) ? data : [data];
@@ -144,7 +143,6 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
         if (!a.winner && b.winner) return 1;
         return 0;
       });
-
       setList(sortedList);
       setPage(1);
       setDisplayedList(sortedList.slice(0, PAGE_SIZE));
@@ -262,8 +260,8 @@ EntryDetail.propTypes = {
   prizeName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   titleDescription: PropTypes.string.isRequired,
-  quantity: PropTypes.number.isRequired, // Added prop types for quantity
-  entryCount: PropTypes.number.isRequired, // Added prop types for entry count
+  quantity: PropTypes.number.isRequired,
+  entryCount: PropTypes.number.isRequired,
   onBack: PropTypes.func.isRequired,
 };
 
@@ -395,14 +393,10 @@ const ActionButton = styled.button`
   height: 6.4rem;
   background-color: ${(props) => {
     if (props.$buttonType === 'singleDraw') {
-      return props.$isEnabled
-        ? '#89B2DB' // 활성화된 상태의 색상
-        : props.theme.colors.gray50; // 비활성화된 상태의 색상
+      return props.$isEnabled ? '#89B2DB' : props.theme.colors.gray50;
     }
     if (props.$buttonType === 'fullDraw') {
-      return props.$isEnabled
-        ? '#3586D7' // 활성화된 상태의 색상
-        : props.theme.colors.gray60; // 비활성화된 상태의 색상
+      return props.$isEnabled ? '#3586D7' : props.theme.colors.gray60;
     }
     return props.theme.colors.gray60; // 기본 색상
   }};

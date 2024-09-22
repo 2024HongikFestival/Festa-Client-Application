@@ -43,7 +43,7 @@ export default function PubCard() {
         <MenuContainer>
           <MenuWrapper index={'1'}>
             {menuItems.slice(0, 4).map((item) => (
-              <MenuItem key={item} lng={lng} onClick={() => handleMenuClick(item)} selected={selectedMenu === item}>
+              <MenuItem key={item} $lng={lng} onClick={() => handleMenuClick(item)} selected={selectedMenu === item}>
                 {item}
               </MenuItem>
             ))}
@@ -54,7 +54,7 @@ export default function PubCard() {
               <MenuItem
                 key={item}
                 onClick={() => handleMenuClick(item)}
-                lng={lng}
+                $lng={lng}
                 selected={selectedMenu === item && !isSubMenu}
               >
                 {item}
@@ -62,9 +62,9 @@ export default function PubCard() {
             ))}
           </MenuWrapper>
 
-          <SubMenuWrapper show={showSubMenu}>
+          <SubMenuWrapper $show={showSubMenu}>
             {subMenuItems.map((item) => (
-              <SubMenuItem key={item} onClick={() => handleMenuClick(item)} lng={lng} selected={selectedMenu === item}>
+              <SubMenuItem key={item} onClick={() => handleMenuClick(item)} $lng={lng} selected={selectedMenu === item}>
                 {item}
               </SubMenuItem>
             ))}

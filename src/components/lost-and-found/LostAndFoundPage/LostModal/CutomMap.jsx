@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { createUseGesture, dragAction, pinchAction, useDrag } from '@use-gesture/react';
-import { useSpring, animated } from '@react-spring/web';
+import React, { useRef } from 'react';
+import { animated } from '@react-spring/web';
 import styled from 'styled-components';
 import LostAndFoundLocation from '@/assets/webps/lost/LostAndFoundLocation.webp';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';

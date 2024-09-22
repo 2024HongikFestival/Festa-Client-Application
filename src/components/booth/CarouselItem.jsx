@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import day from '@/assets/webps/booth/icon/day.webp';
-import night from '@/assets/webps/booth/icon/night.webp';
 import wow from '@/assets/webps/booth/wow/departmentWow.webp';
 import day2Night from '@/assets/webps/booth/icon/day2Night.webp';
 import favorite from '@/assets/webps/booth/icon/favorite.webp';
@@ -23,7 +21,7 @@ export default function CarouselItem({ content }) {
 
   const handleLikeClick = () => {
     setIsLiked(true);
-    setTimeout(() => setIsLiked(false), 1000); // Reset after 1 second
+    setTimeout(() => setIsLiked(false), 1000);
   };
 
   return (
@@ -45,7 +43,7 @@ export default function CarouselItem({ content }) {
         )}
       </PubInfoContainer>
       <BtnContainer>
-        <Confetti src={isLiked ? after : before} alt="confetti" isAnimating={isLiked} />
+        <Confetti src={isLiked ? after : before} alt="confetti" $isAnimating={isLiked} />
         <LikeBtn onClick={handleLikeClick}>
           <HeartIcon src={favorite} alt="favorite" />
           <Count>111</Count>
@@ -90,7 +88,6 @@ const Wow = styled.img`
 `;
 
 const PubInfoContainer = styled.div`
-  /* width: 15.6rem; */
   height: 4rem;
   display: flex;
   flex-direction: column;
@@ -100,7 +97,6 @@ const PubInfoContainer = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  /* width: 15.6rem; */
   height: 2rem;
   display: flex;
   gap: ${({ kind }) => (kind === 'food' ? '1.2rem' : '0.7rem')};
