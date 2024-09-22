@@ -19,43 +19,42 @@ const LostAndFoundPage = () => {
   const [itemLostId, setItemLostId] = useState(-1);
 
   useEffect(() => {
-    if (isBottomSheetOpen || isLocationModalOpen || isItemModalOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'auto';
+    document.body.style.overflow = isBottomSheetOpen || isLocationModalOpen || isItemModalOpen ? 'hidden' : 'auto';
   }, [isBottomSheetOpen, isLocationModalOpen, isItemModalOpen]);
 
   //드롭다운 관련된 state
   const [selectedDay, setSelectedDay] = useState('');
 
   //게시글 관련 state
-  const [totalItems, setTotalItems] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemCountPerPage = 10;
 
   const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  const page = parseInt(query.get('page')) || 1;
+  const query = useMemo(() => new URLSearchParams(location.search), [location]);
+  const page = useMemo(() => parseInt(query.get('page')) || 1, [query]);
 
-  const handlePage = (pageNumber) => {
-    navigate(`?page=${pageNumber}`);
-    setCurrentPage(pageNumber);
-  };
+  const handlePage = useCallback(
+    (pageNumber) => {
+      navigate(`?page=${pageNumber}`);
+      setCurrentPage(pageNumber);
+    },
+    [navigate]
+  );
 
-  const getItemsApi = async () => {
+  const getItemsApi = useCallback(async () => {
     try {
       const response = await axiosInstance.get('/losts', {
-        params: { page: page, date: selectedDay },
+        params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
       });
       setItems(response.data.data.losts);
-      setTotalItems(response.data.data.losts.length);
       setTotalPages(response.data.data.totalPage);
     } catch (error) {
       console.error(error);
-      alert('해당 필터링에 해당되는 게시글이 존재하지 않습니다.');
+      alert(t('LostAndFound.FilterError'));
       window.location.reload();
     }
-  };
+  }, [page, selectedDay, t]);
 
   useEffect(() => {
     setCurrentPage(page);

@@ -21,7 +21,8 @@ export const UpBtn = styled.div`
     css`
       background: rgba(255, 255, 255, 0.1);
     `}
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(0.8rem);
+  -webkit-backdrop-filter: blur(0.8rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +74,8 @@ export const FloatingBtn = styled.div`
   border-radius: 50px;
   background: ${({ className }) =>
     className === 'floatingDaedongje' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(0.8rem);
+  -webkit-backdrop-filter: blur(0.8rem);
   display: flex;
   justify-content: center;
   align-items: center;

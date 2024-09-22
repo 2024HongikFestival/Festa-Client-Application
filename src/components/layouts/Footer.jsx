@@ -5,10 +5,10 @@ import * as S from '@/components/layouts/FooterStyles';
 import mangaeLogo from '@/assets/webps/layouts/mangae.webp';
 import rightArrow from '@/assets/svgs/makers/rightArrow.svg';
 import rightArrowGray from '@/assets/svgs/makers/rightArrowGray.svg';
-import flameLogo from '@/assets/svgs/makers/flame.svg';
-import mangaeInsta from '@/assets/svgs/makers/mangaeInsta.svg';
-import wdfInsta from '@/assets/svgs/makers/wdfInsta.svg';
-import gaehwaInsta from '@/assets/svgs/makers/gaehwaInsta.svg';
+import flameLogo from '@/assets/svgs/layouts/flame.svg';
+import mangaeInsta from '@/assets/svgs/layouts/mangaeInsta.svg';
+import wdfInsta from '@/assets/svgs/layouts/wdfInsta.svg';
+import gaehwaInsta from '@/assets/svgs/layouts/gaehwaInsta.svg';
 import up from '@/assets/svgs/layouts/up.svg';
 import flameVideo from '@/assets/videos/flameMainFooter.mp4';
 
@@ -122,7 +122,7 @@ export default function Footer() {
       )}
       {flameMain && (
         <S.VideoContainer>
-          <S.BackgroundVideo autoPlay loop muted>
+          <S.BackgroundVideo autoPlay loop muted playsInline>
             <source src={flameVideo} type="video/mp4" />
           </S.BackgroundVideo>
         </S.VideoContainer>

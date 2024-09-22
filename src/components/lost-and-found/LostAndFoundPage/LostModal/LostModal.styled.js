@@ -4,17 +4,17 @@ import lostCenterLocation from '@/assets/webps/lost/lostCenterLocation.webp';
 export const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.4);
   z-index: 10;
-
   display: flex;
   justify-content: center;
+  overflow-y: auto;
 `;
 
 export const ModalLayout = styled.div`
-  position: fixed;
+  position: absolute;
   top: ${({ $top }) => $top};
 
   display: flex;

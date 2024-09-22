@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import warningIcon from '@/assets/svgs/lost/error.svg';
+import warningIcon from '@/assets/svgs/lost/error.svg?react';
 import Mangae from '@/assets/svgs/lost/Mangae.svg?react';
 
 export const Wrapper = styled.div`
@@ -77,13 +76,9 @@ export const ButtonDetailWrapper = styled.div`
   justify-content: center;
   gap: 4px;
 `;
-
-export const ButtonDetailIcon = styled.div`
+export const ButtonDetailIcon = styled(warningIcon)`
   min-width: 1.5rem;
   min-height: 1.5rem;
-  background-image: url(${warningIcon});
-  background-repeat: no-repeat;
-  background-position: center;
 `;
 
 export const ButtonDetailText = styled.span`
