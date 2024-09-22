@@ -187,7 +187,7 @@ const FlameTimeTablePage = () => {
           {dates.map(({ day, date }) => (
             <DayBox
               key={day}
-              day={day}
+              $day={day}
               className={selectedDate === day ? 'active' : ''}
               onClick={() => handleClick(day)}
             >
