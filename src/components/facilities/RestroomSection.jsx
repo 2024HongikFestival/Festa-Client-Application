@@ -1,8 +1,8 @@
-import ContentContainer from '@/components/common/ContentContainer';
-import * as S from '@/pages/facilities/styles';
 import { useTranslation } from 'react-i18next';
-import restroomMap from '@/assets/webps/facilities/restroomMap.webp';
+import ContentContainer from '@/components/common/ContentContainer';
 import DraggableMap from '@/components/facilities/DraggableMap';
+import * as S from '@/pages/facilities/styles';
+import restroomMap from '@/assets/webps/facilities/restroomMap.webp';
 
 const RestroomSection = () => {
   const { t } = useTranslation();
