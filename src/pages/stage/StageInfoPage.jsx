@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import StageSchedule from '@/components/stage/StageSchedule';
-import LocationInfo from '@/components/stage/LocationInfo';
+const StageSchedule = lazy(() => import('@/components/stage/StageSchedule'));
+const LocationInfo = lazy(() => import('@/components/stage/LocationInfo'));
 import * as S from './styles/StageInfoPage';
 
 const StageInfoPage = () => {
@@ -20,8 +20,10 @@ const StageInfoPage = () => {
           {t('stageInfoPage.selectionBar.location')}
         </S.SelectionButton>
       </S.SelectionBar>
-      {selectedTab === 'schedule' && <StageSchedule />}
-      {selectedTab === 'location' && <LocationInfo />}
+      <Suspense fallback={<></>}>
+        {selectedTab === 'schedule' && <StageSchedule />}
+        {selectedTab === 'location' && <LocationInfo />}
+      </Suspense>
     </S.Container>
   );
 };

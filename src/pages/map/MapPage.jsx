@@ -14,7 +14,7 @@ import ContentContainer from '@/components/common/ContentContainer.jsx';
 import mapImg from '@/assets/webps/map/completemap.webp';
 import btnImg from '@/assets/webps/map/buttonscale.webp';
 import small from '@/assets/webps/map/detailMap2.webp';
-import medium from '@/assets/webps/map/2step.webp'; // medium 이미지 경로
+import medium from '@/assets/webps/map/2step.webp';
 import big from '@/assets/webps/map/bigmap.webp';
 import { useTranslation } from 'react-i18next';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
@@ -24,7 +24,6 @@ const MapPage = () => {
   const { t } = useTranslation();
   const [isBigVisible, setIsBigVisible] = useState(false);
   const [scale, setScale] = useState(1);
-  const [isDetail, setIsDetail] = useState(false);
 
   const handleToggle = (view) => {
     setActiveView(view);
@@ -33,7 +32,7 @@ const MapPage = () => {
   const handleTransform = (e) => {
     const currentScale = e.instance.transformState.scale;
     setScale(currentScale);
-    setIsBigVisible(currentScale > 1.3); // scale 값 1.3으로 변경
+    setIsBigVisible(currentScale > 1.3);
   };
 
   useEffect(() => {

@@ -1,5 +1,3 @@
-// 와디페 메인 페이지
-// url: /flame
 import React, { useState, useRef } from 'react';
 import * as S from './FlameMainPage.Styled';
 import FLAME from '@/assets/svgs/FLAME.svg';
