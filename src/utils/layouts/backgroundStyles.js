@@ -1,8 +1,5 @@
 import { css } from 'styled-components';
 
-// 주점 배경 변경 필요
-import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
-
 // 확정 배경 이미지
 import stageBg from '@/assets/webps/stage/background.webp';
 import mainBackground from '@/assets/webps/main/mainBackground.webp';
@@ -14,6 +11,7 @@ import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackgro
 import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
 import fleamarketBg3 from '@/assets/webps/booth/background/fleamarketSangsuBackground.webp';
 import roadmapBackground from '@/assets/webps/map/background/roadmapBackground.webp';
+import boothBackground from '@/assets/webps/booth/background/boothBackground.webp';
 
 // 공통 스타일 정의
 const commonBackgroundStyle = css`
@@ -96,7 +94,7 @@ const backgroundStyles = {
   booth: {
     paths: ['/booth'],
     style: css`
-      background-image: url(${boothBg});
+      background-image: url(${boothBackground});
       ${commonBackgroundStyle}
     `,
   },
