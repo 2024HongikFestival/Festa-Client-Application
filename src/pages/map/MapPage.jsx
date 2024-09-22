@@ -14,7 +14,8 @@ import ContentContainer from '@/components/common/ContentContainer.jsx';
 import mapImg from '@/assets/webps/map/completemap.webp';
 import btnImg from '@/assets/webps/map/buttonscale.webp';
 import small from '@/assets/webps/map/detailMap2.webp';
-import big from '@/assets/webps/map/zoomMap2.webp';
+import big from '@/assets/webps/map/bigmap.webp';
+
 import { useTranslation } from 'react-i18next';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
@@ -73,7 +74,7 @@ const MapPage = () => {
               <TransformWrapper
                 initialScale={1}
                 minScale={1}
-                maxScale={4}
+                maxScale={10}
                 wheel={{ step: 0.1 }}
                 pinch={{ step: 0.1 }}
                 onTransformed={handleTransform}
