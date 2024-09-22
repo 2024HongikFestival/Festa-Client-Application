@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { useLottie } from 'lottie-react';
 import night from '@/assets/webps/booth/icon/night.webp';
 import wow from '@/assets/webps/booth/wow/departmentWow.webp';
 import day2Night from '@/assets/webps/booth/icon/day2Night.webp';
 import favorite from '@/assets/webps/booth/icon/favorite.webp';
+import animationData from '@/assets/lotties/booth/likeBtnMotion.json';
 import PropTypes from 'prop-types';
 import { axiosInstance } from '@/api/axios';
 
@@ -25,6 +27,14 @@ export default function CarouselItem({ content, click, likeData }) {
   const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0); // 기본값을 0으로 설정
   const lng = localStorage.getItem('language');
 
+  const lottieOptions = {
+    animationData: animationData,
+    loop: false,
+    autoplay: false,
+  };
+
+  const { View: LottieView, play: playLottie } = useLottie(lottieOptions);
+
   useEffect(() => {
     if (likeData && likeData.totalLike !== undefined) {
       setTotalLikes(likeData.totalLike); // likeData가 로드된 후에 totalLikes 업데이트
@@ -33,6 +43,7 @@ export default function CarouselItem({ content, click, likeData }) {
 
   const handleLikeClick = async (id) => {
     click();
+    playLottie(); // Lottie 애니메이션 재생
     setIsLiked(true);
     setTimeout(() => setIsLiked(false), 1000); // Reset after 1 second
 
@@ -101,10 +112,22 @@ export default function CarouselItem({ content, click, likeData }) {
           <HeartIcon src={favorite} alt="favorite" />
           <Count>{totalLikes}</Count>
         </LikeBtn>
+        <LottieContainer>{LottieView}</LottieContainer>
       </BtnContainer>
     </Container>
   );
 }
+
+const LottieContainer = styled.div`
+  position: absolute;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+`;
 
 const Container = styled.div`
   width: 22.1rem;

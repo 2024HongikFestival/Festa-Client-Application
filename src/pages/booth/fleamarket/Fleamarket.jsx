@@ -19,7 +19,7 @@ const Fleamarket = () => {
         {fleamarketList.map((item, index) => (
           <div key={item.key} data-aos="fade-down" data-aos-delay={index * 100}>
             <ContentContainer>
-              <FleamarketInfo item={item} />
+              <FleamarketInfo index={index} item={item} />
             </ContentContainer>
           </div>
         ))}
