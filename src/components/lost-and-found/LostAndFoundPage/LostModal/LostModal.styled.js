@@ -14,6 +14,7 @@ export const ModalWrapper = styled.div`
 
   display: flex;
   justify-content: center;
+  //overflow-y: auto; /* Enable scrolling in the modal wrapper */
 `;
 
 export const ModalLayout = styled.div`
