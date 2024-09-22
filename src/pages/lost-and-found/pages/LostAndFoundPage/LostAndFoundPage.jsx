@@ -27,8 +27,7 @@ const LostAndFoundPage = () => {
   const [itemLostId, setItemLostId] = useState(-1);
 
   useEffect(() => {
-    if (isBottomSheetOpen || isLocationModalOpen || isItemModalOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'auto';
+    document.body.style.overflow = isBottomSheetOpen || isLocationModalOpen || isItemModalOpen ? 'hidden' : 'auto';
   }, [isBottomSheetOpen, isLocationModalOpen, isItemModalOpen]);
 
   //드롭다운 관련된 state
