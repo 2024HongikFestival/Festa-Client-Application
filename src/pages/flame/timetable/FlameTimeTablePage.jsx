@@ -78,7 +78,7 @@ const FlameTimeTablePage = () => {
 
   const dayOneTime = [
     { dj: 'RUI', time: '7:00 PM', isHot: false, djimg: ruiImg, djlogo: ruiLogo },
-    { dj: 'FINE', time: '8:00 PM', isHot: false, djimg: fineImg, djlogo: fineLogo },
+    { dj: 'FINÈ', time: '8:00 PM', isHot: false, djimg: fineImg, djlogo: fineLogo },
     { dj: 'RIGHTBACK', time: '9:00 PM', isHot: false, djimg: rbImg, djlogo: rbLogo },
     { dj: 'CHANXER', time: '10:00 PM', isHot: true, djimg: cximg, djlogo: cxLogo },
     { dj: 'TEZZ', time: '11:00 PM', isHot: true, djimg: tezz, djlogo: tezzLogo },

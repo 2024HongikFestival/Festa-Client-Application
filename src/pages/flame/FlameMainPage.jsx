@@ -44,7 +44,7 @@ import { useTranslation } from 'react-i18next';
 const djData = {
   day1: [
     { src: DJ1, alt: 'DJ 1', name: 'RUI' },
-    { src: DJ2, alt: 'DJ 2', name: 'FINÉ' },
+    { src: DJ2, alt: 'DJ 2', name: 'FINÈ' },
     { src: DJ3, alt: 'DJ 3', name: 'rightback' },
     { src: DJ4, alt: 'DJ 4', name: 'CHANXER' },
     { src: DJ5, alt: 'DJ 5', name: 'TEZZ' },
