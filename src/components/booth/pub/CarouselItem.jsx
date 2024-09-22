@@ -69,7 +69,15 @@ export default function CarouselItem({ content, click, likeData }) {
       <PubInfoContainer lng={lng}>
         <TextWrapper kind="food">
           <Title>Food</Title>
-          <Text>{content.food}</Text>
+          <Text>
+            {/* {content.food} */}
+            {content.food.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </Text>
         </TextWrapper>
         {content.event && (
           <TextWrapper kind="event">
@@ -152,7 +160,7 @@ const TextWrapper = styled.div`
 
 const Title = styled.div`
   ${({ theme }) => theme.fontStyles.basic.captionBold};
-  width: 3rem; // Food와 Event 텍스트를 포함할 수 있는 충분한 너비
+  width: 3.3rem; // Food와 Event 텍스트를 포함할 수 있는 충분한 너비
   flex-shrink: 0;
 `;
 

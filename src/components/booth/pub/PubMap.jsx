@@ -65,6 +65,7 @@ const MapContainer = styled.div`
 `;
 
 const MapImg = styled.img`
+  max-width: 66rem;
   width: auto;
   height: 25rem;
   max-width: none;

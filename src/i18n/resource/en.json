@@ -36,20 +36,20 @@
           {
             "department": "Campus Autonomous Major",
             "intro": "dancing/drinking/singing in one's sleep",
-            "event": "a receipt camera, a spinning wheel",
-            "food": "Stir-fried spicy pork, potato pancakes"
+            "event": "a receipt camera,\na spinning wheel",
+            "food": "Stir-fried spicy pork,\npotato pancakes"
           }
         ],
         "2": [
           {
             "department": "Business School",
             "intro": "Street bar (Kyungpo)",
-            "food": "Fishcake Soup, Stir-fried pork belly"
+            "food": "Fishcake Soup,\nStir-fried pork belly"
           },
           {
             "department": "Economic School",
             "intro": "BullMarket",
-            "food": "boneless chicken feet, a chubby bone"
+            "food": "boneless chicken feet,\na chubby bone"
           }
         ],
         "3": [
