@@ -129,11 +129,11 @@ export default function Footer() {
       )}
       {flame ? (
         <S.Flame>
-          <img src={flameLogo} alt="flame" loading="lazy" />
+          <object data={flameLogo} alt="flame" loading="lazy" />
         </S.Flame>
       ) : (
         <S.Mangae>
-          <img src={mangaeLogo} alt="mangae" loading="lazy" />
+          <object data={mangaeLogo} alt="mangae" loading="lazy" />
         </S.Mangae>
       )}
       <S.Contributor $path={location.pathname}>
@@ -165,14 +165,21 @@ export default function Footer() {
         <span>{t('layouts.footer.instagram')}</span>
         <S.Instagrams>
           <Link to="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
-            <img src={mangaeInsta} alt="mangaeInsta" loading="lazy" />
+            <S.InstaIcon>
+              <object data={mangaeInsta} alt="mangaeInsta" loading="lazy" />
+            </S.InstaIcon>
           </Link>
           <Link to="https://www.instagram.com/hiu_wodf_official/" target="_blank" rel="noopener noreferrer">
-            <img src={wdfInsta} alt="wdfInsta" loading="lazy" />
+            <S.InstaIcon>
+              <object data={wdfInsta} alt="wdfInsta" loading="lazy" />
+            </S.InstaIcon>
           </Link>
           <Link to="https://www.instagram.com/hiu_student_council/" target="_blank" rel="noopener noreferrer">
-            <img src={gaehwaInsta} alt="gaehwaInsta" loading="lazy" />
+            <S.InstaIcon>
+              <object data={gaehwaInsta} alt="gaehwaInsta" loading="lazy" />
+            </S.InstaIcon>
           </Link>
+
           {flame ? (
             <S.FlamePolicy
               onClick={() => {

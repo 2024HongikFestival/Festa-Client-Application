@@ -248,14 +248,18 @@ export const InstaContainer = styled.div`
         color: ${(props) => props.theme.colors.gray10};
       `};
   }
+`;
 
-  a {
-    width: 3.2rem;
-    height: 3.2rem;
-    margin-right: 1.1rem;
-  }
+export const InstaIcon = styled.div`
+  cursor: pointer;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.1rem;
 
-  img {
+  object {
     width: 100%;
     height: 100%;
   }
