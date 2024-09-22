@@ -1,6 +1,6 @@
+import { useTranslation } from 'react-i18next';
 import ContentContainer from '@/components/common/ContentContainer';
 import * as S from '@/pages/facilities/styles';
-import { useTranslation } from 'react-i18next';
 import medMap from '@/assets/webps/facilities/medMap.webp';
 import DraggableMap from '@/components/facilities/DraggableMap';
 

@@ -43,14 +43,24 @@ const LineupPage = () => {
 
     return dayData.map((data, index) => {
       const isBlack = (selectedDay === 'day3' && index === 0) || (selectedDay !== 'day3' && index === 1);
+      const isLastCard = index === dayData.length - 1; // 마지막 카드인지 확인
 
       return (
-        <S.Card key={data.name} data-aos={index === 0 ? '' : 'fade-up'}>
-          <S.CardImage src={data.src} alt={data.alt} />
-          <S.CardDescription>
-            <S.Name $isBlack={isBlack}>{data.name}</S.Name>
-          </S.CardDescription>
-        </S.Card>
+        <React.Fragment key={data.name}>
+          <S.Card data-aos={index === 0 ? '' : 'fade-up'}>
+            <S.CardImage src={data.src} alt={data.alt} />
+            <S.CardDescription>
+              <S.Name $isBlack={isBlack}>{data.name}</S.Name>
+            </S.CardDescription>
+          </S.Card>
+
+          {/* 마지막 카드 아래에만 MCContainer 추가 */}
+          {isLastCard && (
+            <S.MCContainer data-aos="fade-up">
+              <S.MCName>{t(`LineupPage.mc.${selectedDay.toLowerCase()}`)}</S.MCName>
+            </S.MCContainer>
+          )}
+        </React.Fragment>
       );
     });
   };
@@ -73,9 +83,6 @@ const LineupPage = () => {
         </S.DayButton>
       </S.DayContainer>
       <S.CardContainer>{renderCards()}</S.CardContainer>
-      <S.MCContainer data-aos="fade-up">
-        <S.MCName>{t(`LineupPage.mc.${selectedDay.toLowerCase()}`)}</S.MCName>
-      </S.MCContainer>
     </S.PageContainer>
   );
 };
