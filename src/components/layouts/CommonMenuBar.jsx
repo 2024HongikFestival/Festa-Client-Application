@@ -23,7 +23,6 @@ const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
     i18n.changeLanguage(newLanguage);
   };
 
-  // 렌더링 초기 언어 ko로 설정
   useEffect(() => {
     const storedLanguage = localStorage.getItem('language') || 'ko';
     i18n.changeLanguage(storedLanguage);
