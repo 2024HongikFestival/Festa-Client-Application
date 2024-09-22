@@ -90,7 +90,20 @@ const djLogos = {
 
 const FlameMainPage = () => {
   const { t } = useTranslation();
-  const [selectedDay, setSelectedDay] = useState('day1');
+  const today = new Date();
+  const currentMonth = today.getMonth() + 1;
+  const currentDate = today.getDate();
+
+  let initialDay = 'day1';
+  if (currentMonth === 9) {
+    if (currentDate === 26) {
+      initialDay = 'day2';
+    } else if (currentDate === 27) {
+      initialDay = 'day3';
+    }
+  }
+
+  const [selectedDay, setSelectedDay] = useState(initialDay);
 
   return (
     <>
