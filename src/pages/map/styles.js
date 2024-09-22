@@ -49,10 +49,10 @@ export const MapToggleBtn = styled.div`
   text-align: center;
   cursor: pointer;
   ${(props) => props.theme.fontStyles.basic.body1Semi};
-  ${({ whatview, theme }) =>
-    whatview === 'true' ? `${theme.fontStyles.basic.body1Bold}` : `${theme.fontStyles.basic.body1Semi}`};
+  ${({ $whatview, theme }) =>
+    $whatview === 'true' ? `${theme.fontStyles.basic.body1Bold}` : `${theme.fontStyles.basic.body1Semi}`};
   flex: 1;
-  color: ${({ whatview, theme }) => (whatview === 'true' ? `${theme.colors.hongikBlue}` : `${theme.colors.gray60}`)};
+  color: ${({ $whatview, theme }) => ($whatview === 'true' ? `${theme.colors.hongikBlue}` : `${theme.colors.gray60}`)};
   padding: 0.6rem 0;
   height: 3.6rem;
   max-width: 14.9rem;
@@ -123,5 +123,5 @@ export const ActiveBackground = styled.div`
   transition: transform 0.25s ease;
 
   /* 탭에 따라 슬라이딩 배경의 위치를 설정 */
-  transform: ${({ whatview }) => (whatview === 'all' ? 'translateX(0)' : 'translateX(15.8rem)')};
+  transform: ${({ $whatview }) => ($whatview === 'all' ? 'translateX(0)' : 'translateX(15.8rem)')};
 `;
