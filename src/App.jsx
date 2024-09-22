@@ -14,7 +14,6 @@ const BoothPage = lazy(() => import('@/pages/booth/BoothPage'));
 const Fleamarket = lazy(() => import('@/pages/booth/fleamarket/Fleamarket'));
 const FleamarketDetail = lazy(() => import('@/pages/booth/fleamarket/FleamarketDetail'));
 const MdPage = lazy(() => import('@/pages/booth/merchandiser/MdPage'));
-const PromotionPage = lazy(() => import('@/pages/booth/promotion/PromotionPage'));
 const EnterEvent = lazy(() => import('@/pages/event/enter/EnterEvent'));
 const EventPage = lazy(() => import('@/pages/event/main/EventPage'));
 const SubmitEvent = lazy(() => import('@/pages/event/SubmitEvent'));
@@ -50,7 +49,7 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <Suspense fallback={null}>
+        <Suspense fallback={<></>}>
           <Routes>
             {/* 404 */}
             <Route path="*" element={<NotFoundPage />} />
@@ -62,7 +61,6 @@ function App() {
               <Route path="/booth" element={<BoothPage />} />
               <Route path="/fleamarket" element={<Fleamarket />} />
               <Route path="/fleamarket/:marketId" element={<FleamarketDetail />} />
-              <Route path="/promotion" element={<PromotionPage />} />
               <Route path="/md" element={<MdPage />} />
 
               {/* 가영 라우팅 ✨ */}
