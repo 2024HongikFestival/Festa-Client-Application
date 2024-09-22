@@ -11,10 +11,9 @@ export const ModalWrapper = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
   z-index: 10;
-
   display: flex;
   justify-content: center;
-  overflow-y: auto; /* Enable scrolling in the modal wrapper */
+  overflow-y: auto;
 `;
 
 export const ModalLayout = styled.div`
@@ -31,8 +30,6 @@ export const ModalLayout = styled.div`
 
   border-radius: 16px;
   background: ${({ theme }) => theme.colors.white};
-
-  /* 대동제 요소 그림자 */
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12);
 `;
 

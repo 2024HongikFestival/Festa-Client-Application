@@ -8,6 +8,7 @@ import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 const MapWrapper = styled.div`
   width: 33.5rem;
   height: 22.5rem;
+  overflow: hidden;
   position: relative;
   border: 1px solid #ddd;
   background-color: #b1daff;
