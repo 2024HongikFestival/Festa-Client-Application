@@ -1,16 +1,14 @@
-import React, { useState, lazy, Suspense } from 'react';
-const Register = lazy(() => import('@/components/lost-and-found/AddLostItem/Register/Register'));
-const CameraPage = lazy(() => import('@/components/lost-and-found/AddLostItem/Camera/CameraPage'));
+import React, { useState } from 'react';
+import CameraPage from '@/components/lost-and-found/AddLostItem/Camera/CameraPage';
+import Register from '@/components/lost-and-found/AddLostItem/Register/Register';
 
 const AddLostItem = () => {
   const [capturedImage, setCapturedImage] = useState(null);
 
   return (
-    <Suspense fallback={<></>}>
-      <div>
-        {capturedImage ? <Register imgSrc={capturedImage} /> : <CameraPage setCapturedImage={setCapturedImage} />}
-      </div>
-    </Suspense>
+    <div>
+      {capturedImage ? <Register imgSrc={capturedImage} /> : <CameraPage setCapturedImage={setCapturedImage} />}
+    </div>
   );
 };
 

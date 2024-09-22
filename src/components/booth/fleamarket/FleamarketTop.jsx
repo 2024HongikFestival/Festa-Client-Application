@@ -1,7 +1,8 @@
-import styled from 'styled-components';
-import ContentContainer from '@/components/common/ContentContainer';
+import { lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
 
 FleamarketTop.propTypes = {
   item: PropTypes.oneOfType([
@@ -15,20 +16,22 @@ export default function FleamarketTop({ item }) {
   if (marketId === 'sangsu') {
     return (
       <TopWrapper>
-        <ContentContainer>
-          <TopImgWrapper $marketId={marketId}>
-            {item.map((img, index) => (
-              <TopImg key={index} src={img} alt="sangsu" idx={index} />
-            ))}
-          </TopImgWrapper>
-        </ContentContainer>
+        <Suspense fallback={<></>}>
+          <ContentContainer>
+            <TopImgWrapper $marketId={marketId}>
+              {item.map((img, index) => (
+                <TopImg key={index} src={img} alt="sangsu" idx={index} loading="lazy" />
+              ))}
+            </TopImgWrapper>
+          </ContentContainer>
+        </Suspense>
       </TopWrapper>
     );
   } else if (marketId === 'hypeBoy') {
     return (
       <TopWrapper>
         <TopImgWrapper $marketId={marketId}>
-          <TopImg2 src={item[0]} alt="hypeBoy" />
+          <TopImg2 src={item[0]} alt="hypeBoy" loading="lazy" />
         </TopImgWrapper>
       </TopWrapper>
     );

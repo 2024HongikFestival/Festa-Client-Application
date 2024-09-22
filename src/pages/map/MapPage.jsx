@@ -1,3 +1,13 @@
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import ContentContainer from '@/components/common/ContentContainer.jsx';
+import mapImg from '@/assets/webps/map/completemap.webp';
+import btnImg from '@/assets/webps/map/buttonscale.webp';
+import small from '@/assets/webps/map/detailMap2.webp';
+import medium from '@/assets/webps/map/2step.webp';
+import big from '@/assets/webps/map/bigmap.webp';
+
 import {
   MapBox,
   MapTitle,
@@ -9,15 +19,6 @@ import {
   DetailMap,
   ActiveBackground,
 } from './styles.js';
-import React, { useState, useEffect } from 'react';
-import ContentContainer from '@/components/common/ContentContainer.jsx';
-import mapImg from '@/assets/webps/map/completemap.webp';
-import btnImg from '@/assets/webps/map/buttonscale.webp';
-import small from '@/assets/webps/map/detailMap2.webp';
-import medium from '@/assets/webps/map/2step.webp';
-import big from '@/assets/webps/map/bigmap.webp';
-import { useTranslation } from 'react-i18next';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 const MapPage = () => {
   const [activeView, setActiveView] = useState('all');
@@ -128,7 +129,7 @@ const MapPage = () => {
                           }}
                         />
                       </TransformComponent>
-                      <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" />
+                      <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" loading="lazy" />
                     </div>
                   );
                 }}

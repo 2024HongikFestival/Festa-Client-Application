@@ -1,12 +1,12 @@
-import React, { Suspense, useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import PageTitle from '@/components/common/PageTitle';
 import { useTranslation } from 'react-i18next';
 import * as S from './BoothPage.styled';
 
-const PubMap = React.lazy(() => import('@/components/booth/pub/PubMap'));
-const PubCard = React.lazy(() => import('@/components/booth/pub/PubCard'));
-const PubOperatingHour = React.lazy(() => import('@/components/booth/pub/PubOperatingHour'));
-const Ranking = React.lazy(() => import('@/components/booth/ranking/Ranking'));
+const PubMap = lazy(() => import('@/components/booth/pub/PubMap'));
+const PubCard = lazy(() => import('@/components/booth/pub/PubCard'));
+const PubOperatingHour = lazy(() => import('@/components/booth/pub/PubOperatingHour'));
+const Ranking = lazy(() => import('@/components/booth/ranking/Ranking'));
 
 export default function BoothPage() {
   const { t } = useTranslation();

@@ -24,7 +24,7 @@ const FlameMdPage = () => {
                 </S.MainDescription>
               </S.LocationDescription>
               <S.LocationAlert>
-                <S.AlertImage src={alertImage} />
+                <S.AlertImage src={alertImage} loading="lazy" />
                 {t('flameMdPage.locationAlert')}
               </S.LocationAlert>
             </S.ProductLocation>

@@ -41,7 +41,7 @@ import { useTranslation } from 'react-i18next';
 const djData = {
   day1: [
     { src: DJ1, alt: 'DJ 1', name: 'RUI', width: '16rem' },
-    { src: DJ2, alt: 'DJ 2', name: 'FINÉ', width: '16rem' },
+    { src: DJ2, alt: 'DJ 2', name: 'FINÈ', width: '16rem' },
     { src: DJ3, alt: 'DJ 3', name: 'rightback', width: '18.6rem' },
     { src: DJ4, alt: 'DJ 4', name: 'CHANXER', width: '22rem' },
     { src: DJ5, alt: 'DJ 5', name: 'TEZZ', width: '23rem' },
@@ -107,7 +107,7 @@ const FlameLineupPage = () => {
     dayDjData.map((event, index) => (
       <S.Card key={event.name} data-aos={index === 0 ? '' : 'fade-up'}>
         <S.CardImageContainer>
-          <S.DjImage src={event.src} alt={event.alt} style={{ width: dayDjData[index].width }} />
+          <S.DjImage src={event.src} alt={event.alt} style={{ width: dayDjData[index].width }} loading="lazy" />
           <S.GradientOverlay />
           <S.LogoImage
             src={dayDjLogos[index].src}

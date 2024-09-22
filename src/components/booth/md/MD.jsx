@@ -58,7 +58,14 @@ export default function MD({ img, name, price, width, height }) {
       <MdWrapper>
         <Radial>
           <Frame width={width} height={height} $top={imageTop}>
-            <Img src={imageSrc} alt={t(`mdPage.products.${img}`)} $top={imageTop} width={width} height={height} />
+            <Img
+              src={imageSrc}
+              alt={t(`mdPage.products.${img}`)}
+              $top={imageTop}
+              width={width}
+              height={height}
+              loading="lazy"
+            />
           </Frame>
         </Radial>
         <Desc>
