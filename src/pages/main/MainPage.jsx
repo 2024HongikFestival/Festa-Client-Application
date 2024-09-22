@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import * as S from './MainPage.styled';
 import mainStart from '@/assets/lotties/main/mainStart.json';
 import AOS from 'aos';
+import mainLineup1 from '@/assets/webps/main/mainLineup1.webp';
+import mainLineup2 from '@/assets/webps/main/mainLineup2.webp';
+import mainLineup3 from '@/assets/webps/main/mainLineup3.webp';
 
 const Lottie = React.lazy(() => import('lottie-react'));
-const mainLineup1 = lazy(() => import('@/assets/webps/main/mainLineup1.webp'));
-const mainLineup2 = lazy(() => import('@/assets/webps/main/mainLineup2.webp'));
-const mainLineup3 = lazy(() => import('@/assets/webps/main/mainLineup3.webp'));
 const OperatingHours = lazy(() => import('@/components/main/OperatingHours'));
 const StageInfoContainer = lazy(() => import('@/components/main/StageInfoContainer'));
 
