@@ -14,14 +14,14 @@ const fadeInUp = keyframes`
 export const MapWrapper = styled.div`
   padding: 2.4rem 0 6.4rem;
   display: grid;
-  width: 100%;
+  /* width: 100%; */
 `;
 
 export const MapTitle = styled.div`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline3};
   text-align: center;
-  width: 100%;
+  /* width: 100%; */
 `;
 
 export const MapBox = styled.div`
@@ -31,7 +31,8 @@ export const MapBox = styled.div`
   display: flex;
   justify-content: center;
 
-  .arrow {
+  @media (min-width: 45rem) and (max-width: 48.5rem) {
+    /* width: 33.5rem; */
   }
 `;
 
@@ -50,11 +51,10 @@ export const BoothOne = styled.div`
   color: ${(props) => props.theme.colors.white};
   display: flex;
   justify-content: space-between;
-  /* animation: ${fadeInUp} 0.8s ease-out; */
 
   gap: 4.4rem;
   img {
-    width: 77px;
+    width: 7.7rem;
   }
 
   .snol {
@@ -63,8 +63,10 @@ export const BoothOne = styled.div`
 `;
 
 export const MapImgBox = styled.img`
-  width: 33.5rem;
+  display: inline-block;
+  /* /* width: 33.5rem; */
   max-width: 33.5rem;
+  width: 100%;
   height: 26.3rem;
 `;
 
@@ -84,7 +86,6 @@ export const BoothIntro = styled.div`
   gap: 0.3rem;
 
   .al {
-    /* margin-right: 0.15rem; */
     ${(props) => props.theme.fontStyles.basic.subHeadBold}
     color: ${(props) => props.theme.colors.white};
   }
