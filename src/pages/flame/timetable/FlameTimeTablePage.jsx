@@ -1,30 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  DayBox,
-  DaysBox,
-  DjLogo,
-  LiveConcert,
-  LiveDigImg,
-  LiveDj,
-  LiveNowBox,
-  LiveTime,
-  NoticeBox,
-  NoticeText,
-  NoticeTextContent,
-  NoticeTitle,
-  NumberBox,
-  RedLine,
-  TimeTableBox,
-  TimeTableHot,
-  TimeTableName,
-  TimeTableOneBox,
-  TimeTableText,
-  TimeTableTime,
-  TTBox,
-  TTTitle,
-  TTWrapper,
-  UnderlinedText,
-} from './styles';
+import { useTranslation } from 'react-i18next';
 import { useInterval } from 'react-use';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -63,7 +38,32 @@ import joodyLogo from '@/assets/webps/wdTT/joodyLogo.webp';
 import coco from '@/assets/webps/wdTT/juncoco.webp';
 import cocoLogo from '@/assets/webps/wdTT/juncocoLogo.webp';
 import nohot from '@/assets/webps/wdTT/nohotBtn.webp';
-import { useTranslation } from 'react-i18next';
+import {
+  DayBox,
+  DaysBox,
+  DjLogo,
+  LiveConcert,
+  LiveDigImg,
+  LiveDj,
+  LiveNowBox,
+  LiveTime,
+  NoticeBox,
+  NoticeText,
+  NoticeTextContent,
+  NoticeTitle,
+  NumberBox,
+  RedLine,
+  TimeTableBox,
+  TimeTableHot,
+  TimeTableName,
+  TimeTableOneBox,
+  TimeTableText,
+  TimeTableTime,
+  TTBox,
+  TTTitle,
+  TTWrapper,
+  UnderlinedText,
+} from './styles';
 
 const FlameTimeTablePage = () => {
   const [selectedDate, setSelectedDate] = useState(1);
@@ -223,9 +223,9 @@ const FlameTimeTablePage = () => {
                   <LiveNowBox>
                     <img src={Now} />
                   </LiveNowBox>
-                  <LiveDigImg src={item.djimg} />
+                  <LiveDigImg src={item.djimg} loading="lazy" />
                   <LiveDj>
-                    <DjLogo src={item.djlogo} />
+                    <DjLogo src={item.djlogo} loading="lazy" />
                   </LiveDj>
                   <LiveTime>{item.time}</LiveTime>
                 </LiveConcert>
