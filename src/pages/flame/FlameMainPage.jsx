@@ -86,7 +86,7 @@ const FlameMainPage = () => {
               <S.Title>WOW DJ FESTIVAL</S.Title>
               <S.TitleWrapper>
                 <S.SubTitle>the</S.SubTitle>
-                <S.WDFLogo src={FLAME} alt="flame" />
+                <S.WDFLogo data={FLAME} alt="flame" />
               </S.TitleWrapper>
             </S.LogoContainer>
             <S.WDFImage src={speaker}></S.WDFImage>
