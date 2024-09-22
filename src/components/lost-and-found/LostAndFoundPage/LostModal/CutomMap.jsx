@@ -11,6 +11,7 @@ const MapWrapper = styled.div`
   //overflow: hidden; // 컨테이너 밖으로 넘치지 않도록 설정
   position: relative; // 자식 요소들에 대한 위치 기준
   border: 1px solid #ddd; // 시각적인 구분을 위해 추가
+  background-color: #b1daff;
 `;
 
 const LostAndFoundMap = styled(animated.img)`
