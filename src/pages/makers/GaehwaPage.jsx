@@ -1,8 +1,8 @@
+import styled, { css } from 'styled-components';
 import GaehwaCard from '@/components/makers/GaehwaCard';
 import { contributors } from '@/constants/makers/GaehwaContributors';
 import gaehwaBgImg from '@/assets/webps/makers/gaehwaBgImg.webp';
 import gaehwaLogo from '@/assets/webps/makers/gaehwaLogo.webp';
-import styled, { css } from 'styled-components';
 
 const GaehwaPage = () => {
   const contributorsData = contributors();

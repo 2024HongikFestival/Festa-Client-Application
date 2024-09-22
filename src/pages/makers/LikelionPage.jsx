@@ -1,7 +1,7 @@
+import styled, { css } from 'styled-components';
 import LikelionCard from '@/components/makers/LikelionCard';
 import { contributors } from '@/constants/makers/LikelionContributors';
 import likelionBgImg from '@/assets/webps/makers/likelionBgImg.webp';
-import styled, { css } from 'styled-components';
 
 const LikelionPage = () => {
   const contributorsData = contributors();
