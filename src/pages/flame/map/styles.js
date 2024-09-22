@@ -1,16 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
 export const MapWrapper = styled.div`
   padding: 2.4rem 0 6.4rem;
   display: grid;
