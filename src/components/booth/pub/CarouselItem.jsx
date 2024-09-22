@@ -82,7 +82,7 @@ export default function CarouselItem({ content, click, likeData }) {
         ))}
       </Intro>
       {/* {content.wow ? <Wow src={content.wow} alt="wow" /> : <Wow src={wow} alt="wow" />} */}
-      {wowImage && <Wow src={wowImage} alt="wow" />}
+      {wowImage && <Wow src={wowImage} alt="wow" width={'11.7rem'} height={'13.1rem'} />}
       {/* 로드된 이미지 */}
       <PubInfoContainer $lng={lng}>
         <TextWrapper kind="food">
