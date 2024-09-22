@@ -13,7 +13,7 @@ import {
 } from './styles.js';
 import React from 'react';
 import mapImg from '/src/assets/webps/map/sitemap.webp';
-import Lottie from 'react-lottie';
+import Lottie from 'lottie-react';
 import arrowAnimation from '/src/assets/lotties/siteMap.json';
 import { useTranslation } from 'react-i18next';
 
@@ -38,7 +38,7 @@ const FlameMapPage = () => {
       <MapBox>
         <MapImgBox src={mapImg} />
         <LottieBox>
-          <Lottie className="arrow" options={arrowMotion} margin={0} />
+          <Lottie animationData={arrowAnimation} loop={true} autoplay={true} />
         </LottieBox>
       </MapBox>
       <BoothBox>
