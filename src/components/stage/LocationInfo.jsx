@@ -1,33 +1,68 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation, Trans } from 'react-i18next'; // Trans 컴포넌트도 추가
+import { useTranslation, Trans } from 'react-i18next';
 import styled from 'styled-components';
+import map from '@/assets/webps/stageInfo/map.webp';
+import map_2 from '@/assets/webps/stageInfo/map_2.webp';
+import button from '@/assets/webps/stageInfo/button_scale.webp';
+import Lottie from 'lottie-react';
+import arrowAnimation from '@/assets/lotties/stageInfo/arrowAnimation.json';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+
+const lottieOptions = {
+  animationData: arrowAnimation,
+  loop: true,
+  autoplay: true,
+};
 
 const LocationInfo = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation(); // useTranslation hook 사용
+  const { t } = useTranslation();
 
   return (
     <Container>
       <MapContainer>
         <MapBox>
           <MapTitle>{t('locationInfo.mapTitle')}</MapTitle>
-          <Map></Map>
+          <TransformWrapper
+            initialScale={2.5}
+            initialPositionX={-100}
+            initialPositionY={-240}
+            minScale={1}
+            maxScale={6}
+          >
+            <MapWrapper>
+              <TransformComponent>
+                <Map src={map_2} alt="Stage Info Map" />
+              </TransformComponent>
+              <FloatingButton src={button} alt="button" />
+            </MapWrapper>
+          </TransformWrapper>
         </MapBox>
+
         <MapBox>
           <MapTitle>{t('locationInfo.entranceInfo')}</MapTitle>
-          <Map></Map>
+          <MapWrapper>
+            <Map src={map} alt="Entrance Info Map" />
+            <LottieWrapper>
+              <Lottie
+                animationData={lottieOptions.animationData}
+                loop={lottieOptions.loop}
+                autoplay={lottieOptions.autoplay}
+              />
+            </LottieWrapper>
+          </MapWrapper>
         </MapBox>
       </MapContainer>
+
       <InfoContainer>
         <Info>
-          {/* Trans 컴포넌트를 사용해 특정 부분에 태그를 넣음 */}
           <InfoText>
             <Trans
               i18nKey="locationInfo.hongikZoneInfo"
               components={{
-                highlight: <Highlight />, // 사전예매 부분에 적용할 태그 설정
-                br: <br />, // 줄바꿈 태그도 적용 가능
+                highlight: <Highlight />,
+                br: <br />,
               }}
             />
           </InfoText>
@@ -81,7 +116,23 @@ const MapTitle = styled.p`
   ${(props) => props.theme.fontStyles.main.headline6};
 `;
 
-const Map = styled.div`
+const MapWrapper = styled.div`
+  position: relative;
+  width: 33.5rem;
+  height: 25rem;
+  background-color: #b1daff;
+`;
+
+const Map = styled.img`
+  width: 33.5rem;
+  height: 25rem;
+  object-fit: cover;
+`;
+
+const LottieWrapper = styled.div`
+  position: absolute;
+  top: -0.2rem;
+  left: 1rem;
   width: 33.5rem;
   height: 25rem;
 `;
@@ -115,4 +166,11 @@ const Button = styled.button`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   cursor: pointer;
+`;
+const FloatingButton = styled.img`
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
 `;

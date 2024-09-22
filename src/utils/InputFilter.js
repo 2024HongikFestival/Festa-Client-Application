@@ -9,7 +9,7 @@ export const splitGraphemes = (str) => {
 export const truncateToMaxLength = (str, maxLength) => {
   const graphemes = splitGraphemes(str);
   const truncateGraphemes = graphemes.slice(0, maxLength);
-  return truncateGraphemes.join(''); //자른 결과를 다닥 다닥 붙여서 리턴
+  return truncateGraphemes.join('');
 };
 
 // 글자수를 판단하는 함수(세는 함수)

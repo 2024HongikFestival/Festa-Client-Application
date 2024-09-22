@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next'; // i18next import
-import scheduleData from '@/constants/stage/stageSchedule.json'; // JSON 데이터 import
 import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
+import scheduleData from '@/constants/stage/stageSchedule.json';
 
 const StageSchedule = () => {
   const [selectedDay, setSelectedDay] = useState('Day1');
-  const [data, setData] = useState(scheduleData); // JSON 데이터를 상태로 설정
-  const { t } = useTranslation(); // useTranslation hook 사용
+  const [data, setData] = useState(scheduleData);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    setSelectedDay(getSelectedDayByDate()); // 컴포넌트가 마운트될 때 함수를 호출
+    setSelectedDay(getSelectedDayByDate());
   }, []);
 
   const renderStage = () => {
@@ -125,5 +125,5 @@ const ArtistList = styled.ul`
 const ArtistItem = styled.li`
   color: ${(props) => props.theme.colors.gray70};
   ${(props) => props.theme.fontStyles.basic.body2Med};
-  text-align: right; /* 텍스트를 오른쪽 정렬 */
+  text-align: right;
 `;

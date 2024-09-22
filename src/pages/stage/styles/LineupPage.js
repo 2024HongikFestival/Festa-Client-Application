@@ -49,7 +49,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden; /* 이미지가 카드 경계를 넘지 않도록 설정 */
+  overflow: hidden;
 `;
 export const CardImage = styled.img`
   width: 33.5rem;
@@ -58,7 +58,7 @@ export const CardImage = styled.img`
 `;
 export const CardDescription = styled.div`
   position: absolute;
-  bottom: 0; /* 카드 하단에 배치 */
+  bottom: 0;
   width: 100%;
   height: 6.4rem;
   border-top: 1px solid ${(props) => props.theme.colors.gray20};
@@ -66,11 +66,12 @@ export const CardDescription = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
 `;
 export const Name = styled.p`
   ${(props) => props.theme.fontStyles.basic.headline5};
-  color: ${(props) => (props.isBlack ? props.theme.colors.gray100 : props.theme.colors.white)};
+  color: ${(props) => (props.$isBlack ? props.theme.colors.gray100 : props.theme.colors.white)};
 `;
 export const MCContainer = styled.div`
   width: 33.5rem;

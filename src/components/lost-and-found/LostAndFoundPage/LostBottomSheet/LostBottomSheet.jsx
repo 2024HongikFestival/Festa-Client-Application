@@ -1,7 +1,7 @@
-import { LOSTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
-import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import { LOSTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
 import * as S from './LostBottomSheet.styled';
 
 const LostBottomSheet = ({ isOpen, setIsOpen }) => {
@@ -18,7 +18,7 @@ const LostBottomSheet = ({ isOpen, setIsOpen }) => {
     setTimeout(() => {
       setIsClosing(false);
       setIsOpen(false);
-    }, 300); // 애니메이션 시간과 맞춰줌 (0.3s)
+    }, 300);
   };
 
   const useOutsideClick = (ref, onClickOutside) => {

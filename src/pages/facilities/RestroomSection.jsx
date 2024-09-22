@@ -1,6 +1,8 @@
 import ContentContainer from '@/components/common/ContentContainer';
 import * as S from '@/pages/facilities/styles';
 import { useTranslation } from 'react-i18next';
+import restroomMap from '@/assets/webps/facilities/restroomMap.webp';
+import DraggableMap from '@/components/facilities/DraggableMap';
 
 const RestroomSection = () => {
   const { t } = useTranslation();
@@ -11,7 +13,15 @@ const RestroomSection = () => {
         <S.Title>
           {t('facilities.restroom.title1')} <span>{t('facilities.restroom.title2')}</span>
         </S.Title>
-        <S.Map />
+
+        <DraggableMap
+          src={restroomMap}
+          alt="Restroom Map"
+          initialScale={2.1}
+          initialPositionX={-108}
+          initialPositionY={-260}
+        />
+
         <S.RestroomDetail>
           <S.DetailItem>
             <S.Number>1</S.Number>

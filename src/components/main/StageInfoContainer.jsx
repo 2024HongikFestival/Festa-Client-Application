@@ -1,31 +1,42 @@
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import AOS from 'aos';
 import StageInfo from '@/components/main/StageInfo';
 import HibsLogo from '@/assets/webps/main/hibs.webp';
 import youtubeIcon from '@/assets/webps/main/youtubeIcon.webp';
+import { Link } from 'react-router-dom';
 
 export default function StageInfoContainer() {
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <StageContainer>
-      <StageTitle>중앙 무대 일정</StageTitle>
-      {/* 무대 일정에 따라 컴포넌트 변화 있을 수 있어 임시 하드코딩 */}
-      <StageInfo />
-      <StageInfo />
+      <StageTitle data-aos="fade-up" data-aos-delay="220">
+        {t('main.centralStage')}
+      </StageTitle>
       <StageInfo />
       {/* 실시간 방송 보러가기 버튼 컴포넌트 */}
-      <GoHibsBtn>
-        <BtnWrapper>
-          <BtnText>
-            <LogoContainer>
-              <Logo src={HibsLogo} alt="hibsLogo" />
-              <TopText>HIBS 홍대방송국</TopText>
-            </LogoContainer>
-            <BottomText>실시간 공연 보러가기 !</BottomText>
-          </BtnText>
-          <YoutubeIconWrapper>
-            <YoutubeIcon src={youtubeIcon} alt="youtube" />
-          </YoutubeIconWrapper>
-        </BtnWrapper>
-      </GoHibsBtn>
+      <Link to="https://youtube.com/@hibs1148?si=nFOcPV4tIDOpvsuJ" target="_blank" rel="noopener noreferrer">
+        <GoHibsBtn data-aos="fade-up" data-aos-delay="200">
+          <BtnWrapper>
+            <BtnText>
+              <LogoContainer>
+                <Logo src={HibsLogo} alt="hibsLogo" loading="lazy" />
+                <TopText>{t('main.HIBS')}</TopText>
+              </LogoContainer>
+              <BottomText>{t('main.gotoBtn')}</BottomText>
+            </BtnText>
+            <YoutubeIconWrapper>
+              <YoutubeIcon src={youtubeIcon} alt="youtube" loading="lazy" />
+            </YoutubeIconWrapper>
+          </BtnWrapper>
+        </GoHibsBtn>
+      </Link>
     </StageContainer>
   );
 }
@@ -35,12 +46,19 @@ const StageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 6.4rem;
-  margin-bottom: 6.4rem;
+  margin-top: 9.6rem;
+  margin-bottom: 3.2rem;
 `;
 
 const StageTitle = styled.div`
-  ${(props) => props.theme.fontStyles.main.headline3}
+  font-family: 'SCoreDream', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 4.2rem;
+  letter-spacing: -0.028rem;
+  text-align: center;
+  color: ${(props) => props.theme.colors.white};
+  text-shadow: 0px 0px 20px ${(props) => props.theme.colors.hongikSkyBlue};
   margin-bottom: 2.8rem;
 `;
 
@@ -56,6 +74,7 @@ const GoHibsBtn = styled.div`
   display: flex;
   padding-top: 0.8rem;
   justify-content: center;
+  cursor: pointer;
 
   &::before {
     content: '';
@@ -87,6 +106,7 @@ const BtnWrapper = styled.div`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  height: 11.4rem;
 `;
 
 const Logo = styled.img`

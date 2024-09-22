@@ -1,9 +1,10 @@
 import React from 'react';
-import { useTranslation, Trans } from 'react-i18next'; // i18next import
+import { useTranslation, Trans } from 'react-i18next';
+import map from '@/assets/webps/hongikZone/hongikZoneMap.webp';
 import * as S from './styles/HongikZonePage';
 
 const HongikZonePage = () => {
-  const { t } = useTranslation(); // useTranslation hook 사용
+  const { t } = useTranslation();
 
   return (
     <S.PageContainer>
@@ -34,13 +35,15 @@ const HongikZonePage = () => {
                   components={{ blueHighlight: <S.BlueHighlight />, br: <br /> }}
                 />
               </li>
-              <li>{t('hongikZonePage.noTicketInfo')}</li>
+              <li>
+                <Trans i18nKey="hongikZonePage.noTicketInfo" components={{ br: <br /> }} />
+              </li>
             </S.List>
           </S.TextBox>
         </S.Info>
         <S.LocationBox>
           <S.LocationTitle>{t('hongikZonePage.locationTitle')}</S.LocationTitle>
-          <S.Map>지도</S.Map>
+          <S.Map src={map} alt="Map" />
         </S.LocationBox>
         <S.Info>
           <S.TextBox>

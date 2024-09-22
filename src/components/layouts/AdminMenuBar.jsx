@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Popup from '@/components/admin/Popup';
 import PropTypes from 'prop-types';
+import Popup from '@/components/admin/Popup';
 import * as S from '@/components/layouts/HeaderStyles';
 
 const AdminMenuBar = ({ className, nav, closeMenu, adminMenuRef, showLogoutPopup, setShowLogoutPopup }) => {
@@ -75,10 +75,8 @@ AdminMenuBar.propTypes = {
   className: PropTypes.string.isRequired,
   nav: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,
-  adminMenuRef: PropTypes.oneOfType([
-    PropTypes.func, // ref로서의 함수 타입
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }), // ref로서의 객체 타입
-  ]).isRequired,
+  adminMenuRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ current: PropTypes.instanceOf(Element) })])
+    .isRequired,
   showLogoutPopup: PropTypes.bool.isRequired,
   setShowLogoutPopup: PropTypes.func.isRequired,
 };

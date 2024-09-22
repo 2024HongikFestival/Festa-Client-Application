@@ -2,7 +2,33 @@
   "hello": "Hello!",
   "goodbye": "Good Bye!",
   "main": {
-    "sorry": "Sorry, this page is under construction."
+    "sorry": "Sorry, this page is under construction.",
+    "title": "Hongik University Festival",
+    "desc1": "This moment,",
+    "desc2": "which is the youth in full bloom",
+    "desc3": "as it is now, will be recorded ",
+    "desc4": "and remembered for a long time ",
+    "desc5": "by “2024 Hwa Yang Yeon Hwa; Blossom”",
+    "todayLineup": "Today’s Lineup",
+    "clicktoLineup": "Click to view Full line up",
+    "centralStage": "Central Stage Schedule",
+    "performance1": "Talent Contest",
+    "performance2": "Celebrities",
+    "performance3": "Student Main Stage",
+    "operatingHours": "Operating Hours",
+    "operating1": "Flea Market",
+    "operating2": "Hongik Pub",
+    "operating3": "Wow DJ Festival",
+    "operatinghours1": "11 to 17 ",
+    "operatinghours2": "12 to 23",
+    "operatinghours3": "19 to 24",
+    "HIBS": "HIBS (Hongik Broadcasting Station)",
+    "gotoBtn": "Going to Live concert !",
+    "days": {
+      "wed": "WED",
+      "thu": "THU",
+      "fri": "FRI"
+    }
   },
   "booth": {
     "pub": {
@@ -49,15 +75,15 @@
           {
             "department": "Economic School",
             "intro": "BullMarket",
-            "food": "boneless chicken feet,\na chubby bone"
+            "food": "boneless chicken feet, a chubby bone"
           }
         ],
         "3": [
           {
             "department": "The Center of\nthe College of Fine Arts",
             "intro": "the Marble Bar at the University of the Arts",
-            "event": "the Marvel board game of the art school",
-            "food": "tteokbokki, fruit salad"
+            "event": "the Marvel board game of the art",
+            "food": "tteokbokki,\nfruit salad"
           },
           {
             "department": "Printmaking Department",
@@ -68,13 +94,13 @@
           {
             "department": "Oriental Painting Department",
             "intro": "a goblin bar",
-            "food": "Sauce Flatter, fruit salad"
+            "food": "Sauce Flatter,\nfruit salad"
           },
           {
             "department": "Department of Painting",
             "intro": "Imagination Factory of\nthe Department of Painting",
-            "event": "Mini game, flea market",
-            "food": "Popcorn, corn cheese"
+            "event": "Mini game,\nflea market",
+            "food": "Popcorn,\ncorn cheese"
           },
           {
             "department": "Department of Pottery Glass",
@@ -86,7 +112,7 @@
             "department": "Department of\nWooden Furniture",
             "intro": "Utopia in my school days",
             "event": "Mini game, Mini gacha",
-            "food": "Corn cheese buldak(spicy noodle), sweet and sour chicken with rice cake"
+            "food": "Corn cheese buldak, chicken"
           },
           {
             "department": "The Art Department",
@@ -109,7 +135,7 @@
             "department": "Textile Art Fashion Design Department",
             "intro": "Y2k Hunting Bar",
             "event": "flea market",
-            "food": "udon noodle, hotteok set"
+            "food": "udon noodle,\nhotteok set"
           },
           {
             "department": "Department of Industrial Design",
@@ -140,12 +166,12 @@
           {
             "department": "Department of\nKorean Language Education",
             "intro": "Heungbu is cheeky. My tavern",
-            "food": "Potato pancake, budae jjigae(korean soup)"
+            "food": "Potato pancake, budae jjigae"
           },
           {
             "department": "Mathematics Education Department",
             "intro": "an awesomeness pub",
-            "food": "Chapagyechi, Picagoras(special menu)"
+            "food": "Chapagyechi, Picagoras"
           },
           {
             "department": "History Education Department",
@@ -177,7 +203,7 @@
           {
             "department": "Department of\nKorean Language and Literature",
             "intro": "Beer count night",
-            "food": "korean traditional cookie icecream, Cheese and Potato Pancake"
+            "food": "korean cookie ice-cream, Pancake"
           }
         ],
         "7": [
@@ -189,7 +215,7 @@
           {
             "department": "Department of Construction and Environmental Engineering",
             "intro": "Beach, I'm a civil engineering teacher",
-            "food": "Gambas, emotional taco"
+            "food": "Gambas,\nemotional taco"
           },
           {
             "department": "Department of Mechanical Systems Engineering",
@@ -210,7 +236,7 @@
             "department": "Department of Electrical and Electrical Engineering",
             "intro": "Wion Stadium",
             "event": "Hook ball, beer pong",
-            "food": "Pork belly green onion salad, Chapagetti and egg cheese"
+            "food": "Pork belly, Chapagetti"
           },
           {
             "department": "Department of Computer Science",
@@ -233,7 +259,7 @@
           {
             "department": "Department of Design and Arts Management",
             "intro": "Retro Garmac's \"Wow Shop\"",
-            "food": "Fried ham, Fishcake Soup"
+            "food": "Fried ham,\nFishcake Soup"
           }
         ],
         "9": [
@@ -253,13 +279,13 @@
             "department": "HICC",
             "intro": "Hi! CC",
             "event": "a friend-matching program",
-            "food": "Fish cake soup, tofu kimchi"
+            "food": "Fish cake soup,\n tofu kimchi"
           },
           {
             "department": "TED",
             "intro": "Ted and Westmura (Izakaya)",
             "event": "Quiz, Polaroid",
-            "food": "pollack roe and potato pancake, yakisoba"
+            "food": "pollack roe&potato pancake, yakisoba"
           }
         ],
         "10": [
@@ -284,14 +310,14 @@
           {
             "department": "A baseball club",
             "intro": "a sports pub",
-            "event": "Restraint check, ball control check",
-            "food": "Chicken skewers, fish cake soup"
+            "event": "Restraint check,\nball control check",
+            "food": "Chicken skewers,\nfish cake soup"
           },
           {
             "department": "A badminton club(Pang Pang)",
             "intro": "Olympic theme",
             "event": "Tic-Tac-Toe, Dart",
-            "food": "Tofu kimchi, fish cake soup"
+            "food": "Tofu kimchi,\nfish cake soup"
           }
         ],
         "11": [
@@ -304,19 +330,19 @@
           {
             "department": "Magic's",
             "intro": "Magic's Magic Store",
-            "event": "a magic performance, fortune card",
+            "event": "magic performance, fortune card",
             "food": "Grilled sausage, nachos"
           },
           {
             "department": "Brains Wars",
             "intro": "Hip Hop Lounge Bar",
             "event": "DJing/Graphy Experience",
-            "food": "Chapagetti, dried pollack"
+            "food": "Chapagetti,\ndried pollack"
           },
           {
             "department": "Snol",
             "intro": "Snol night",
-            "event": "Numbering meeting, Picking a night market",
+            "event": "Number meeting & Picking night market",
             "food": "Tofu Kimchi, Stir-fried spicy pork"
           }
         ],
@@ -337,7 +363,7 @@
             "department": "A boardgame club(One-ple)",
             "intro": "One-ple board game pub",
             "event": "Board game competition",
-            "food": "beef jerky, fish cake skewer"
+            "food": "beef jerky,\nfish cake skewer"
           },
           {
             "department": "High-running",
@@ -350,7 +376,7 @@
           {
             "department": "Meong Nyang Boori",
             "intro": "Gather around, \"Mang-Nyang's Forest\"",
-            "event": "Flea Market, Mini Game",
+            "event": "Flea Market,\nMini Game",
             "food": "Tofu Kimchi, green onion pancake"
           },
           {
@@ -363,7 +389,7 @@
             "department": "Misarang/Volcano",
             "intro": "Answer me, Volcano",
             "event": "Face painting",
-            "food": "Fried vegetables sausages, chicken skewers"
+            "food": "Fried sausages, chicken skewers"
           }
         ]
       }
@@ -431,7 +457,7 @@
       }
     }
   },
-  "map": {
+  "sitemap": {
     "title": "Site Map",
     "booth1": "Entrance",
     "booth2": "Red Bull",
@@ -478,6 +504,72 @@
     "detail7": "Please follow the instructions and guidance of the on-site staff for smooth event progress",
     "detail8": "You may be sent off if you violate the on-site staff's instructions",
     "detail9": "Access to restricted areas and exit may be imposed upon entry"
+  },
+
+  "reservation": {
+    "title": "Reservation",
+    "subtitle": "on-site reservation",
+    "period": "Reservation period",
+    "twodays": "",
+    "placetitle": "Reservation place",
+    "placewhere1": "WOW DJ FESTIVAL",
+    "placewhere2": "ENTRANCE BOOTH",
+    "price": "Price",
+    "student": "Students & students on leave of absence from Hongik University Seoul Campus",
+    "notstudent": "outside visitor",
+    "notstudentwho": "(including graduate students and graduates from Hongik University's Seoul Campus)",
+    "noticetitle": "Precautions",
+    "notice1": {
+      "detail1": "Minors cannot book the Wow DJ Festival,",
+      "detail2": "and ID verification will be carried out",
+      "detail3": " when purchasing on-site.",
+      "detail4": "(Adult authentication is not allowed, admission is restricted.)",
+      "detail5": ""
+    },
+    "notice2": {
+      "detail1": "Refund is not possible",
+      "detail2": "after payment is completed.",
+      "detail3": ""
+    },
+    "notice3": {
+      "detail1": "Admission tickets will be stamped",
+      "detail2": " and you can receive them after",
+      "detail3": " presenting the Tokkat reservation completion page at the entrance booth on the day",
+      "detail4": "of the Wow DJ Festival.",
+      "detail5": " ",
+      "detail6": " ",
+      "detail7": " "
+    },
+    "notice4": {
+      "detail1": "Re-entry is possible by confirming the admission stamp",
+      "detail2": " and re-entry may be restricted under the judgment of the staff if the admission stamp is damaged and cannot be confirmed."
+    },
+    "notice5": {
+      "detail1": " Wow DJ Festival reservations are made by date and can",
+      "detail2": " only be entered on the day of purchase.",
+      "detail3": ""
+    },
+    "notice6": {
+      "detail1": "On-site purchases can only be made in",
+      "detail2": "cash",
+      "detail3": " or",
+      "detail4": "account",
+      "detail5": "transfer payments."
+    },
+    "notice7": "On-site purchases are only available for admission tickets on the day of purchase.",
+    "notice8": {
+      "detail1": "On-site purchases",
+      "detail2": "close at 23:30",
+      "detail3": " each day."
+    },
+    "advancetitle": "advance reservation",
+    "advanceperiod": "Reservation period",
+    "closeadvance": "The advance reservation is closed"
+  },
+  "map": {
+    "title": "Road Map",
+    "complete": "Complete",
+    "detail": "Detailed"
   },
   "fleamarket": {
     "pageTitle": "Flea market",
@@ -798,8 +890,8 @@
     "hongikZoneDescription2": "Leave of absence students, postponed graduates, and graduate students are all eligible.",
     "prepareForEntry": "Please Prepare to enter!",
     "entryTime": "The entry time starts at <blueHighlight>4:30 PM</blueHighlight>.",
-    "entryProcedure": "Before entering, at the entrance, confirm your advance reservation details of <blueHighlight>‘Talket’</blueHighlight> and proceed.",
-    "noTicketInfo": "From 18:30 p.m., those who do not receive Talket tickets can get additional tickets from the Talket application only for the remaining seats on the site.",
+    "entryProcedure": "We will check your <blueHighlight>'student card and main stage ticket (Talket)'</blueHighlight> at the entrance. Please prepare it in advance!",
+    "noTicketInfo": "At 18:50 we will estimate the number of no-show people, and you can make an additional reservation for the remaining seats through the Talket app from 19:00!",
     "locationTitle": "Hongik Zone Location",
     "knowBeforeEntry": "Please note before entering!",
     "safetyInstructions": [
@@ -932,7 +1024,8 @@
     "LostAndFound": "Lost And Found",
     "buttonDetailText": "Please keep expensive item <1>at the <2>Lost and Found Center</2></1> ",
     "ReportLostItems": "Report lost items ✋🏻",
-    "FindLostItem": "Find lost item🧸"
+    "FindLostItem": "Find lost item 🧸",
+    "FilterError": "There are no posts matching this filtering."
   },
   "DropDown": {
     "AllTime": "All Period",

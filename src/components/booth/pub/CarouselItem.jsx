@@ -70,7 +70,6 @@ export default function CarouselItem({ content, click, likeData }) {
         <TextWrapper kind="food">
           <Title>Food</Title>
           <Text>
-            {/* {content.food} */}
             {content.food.split('\n').map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -82,7 +81,14 @@ export default function CarouselItem({ content, click, likeData }) {
         {content.event && (
           <TextWrapper kind="event">
             <Title>Event</Title>
-            <Text>{content.event}</Text>
+            <Text>
+              {content.event.split('\n').map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </Text>
           </TextWrapper>
         )}
       </PubInfoContainer>
@@ -138,7 +144,6 @@ const Wow = styled.img`
 `;
 
 const PubInfoContainer = styled.div`
-  /* width: 15.6rem; */
   height: 4rem;
   display: flex;
   flex-direction: column;

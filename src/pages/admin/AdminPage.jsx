@@ -13,7 +13,7 @@ const AdminPage = () => {
   const [isDetailView, setIsDetailView] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true); // 로딩 상태
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const AdminPage = () => {
   useEffect(() => {
     setActiveComponent(view);
     if (detailId && !isNaN(Number(detailId))) {
-      setSelectedPostId(Number(detailId)); // Ensure it's a number
+      setSelectedPostId(Number(detailId));
       setIsDetailView(true);
     } else {
       setIsDetailView(false);
@@ -82,7 +82,7 @@ const AdminPage = () => {
     return (
       <SpinnerContainer>
         <div className="spinner"></div>
-      </SpinnerContainer> // 또는 로딩 스피너를 표시할 수 있습니다
+      </SpinnerContainer>
     );
   }
 
@@ -91,13 +91,13 @@ const AdminPage = () => {
   }
   const handleChangeView = (view) => {
     setActiveComponent(view);
-    navigate(`?view=${view}`); // 쿼리 파라미터 업데이트
+    navigate(`?view=${view}`);
   };
 
   const handleOpenDetailView = (id) => {
     setSelectedPostId(id);
     setIsDetailView(true);
-    navigate(`?view=${activeComponent}&detailId=${id}`); // Include postId in query parameter
+    navigate(`?view=${activeComponent}&detailId=${id}`);
   };
 
   return (
@@ -120,7 +120,7 @@ const AdminPage = () => {
               onBack={() => {
                 setIsDetailView(false);
                 setSelectedPostId(null);
-                navigate('?view=posts'); // 디테일 모드 종료 후 기본 페이지로 이동
+                navigate('?view=posts');
               }}
             />
           ) : (
@@ -133,7 +133,7 @@ const AdminPage = () => {
               onBack={() => {
                 setIsDetailView(false);
                 setSelectedPostId(null);
-                navigate('?view=blockList'); // 디테일 모드 종료 후 기본 페이지로 이동
+                navigate('?view=blockList');
               }}
             />
           ) : (
@@ -176,8 +176,8 @@ const SpinnerContainer = styled.div`
   background-color: ${(props) => props.theme.colors.gray10};
 
   .spinner {
-    border: 5px solid ${(props) => props.theme.colors.gray20}; /* Light gray */
-    border-top: 5px solid ${(props) => props.theme.colors.gray80}; /* Dark gray */
+    border: 5px solid ${(props) => props.theme.colors.gray20};
+    border-top: 5px solid ${(props) => props.theme.colors.gray80};
     border-radius: 50%;
     width: 50px;
     height: 50px;
