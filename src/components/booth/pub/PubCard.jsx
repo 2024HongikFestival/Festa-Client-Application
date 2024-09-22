@@ -158,13 +158,13 @@ export default function PubCard() {
         </HeartContainer>
         <Title>{t('booth.pub.specific')}</Title>
         <MenuContainer $show={isSubMenu}>
-          <MenuWrapper index={'1'}>
+          <MenuWrapper $index={'1'}>
             {menuItems(t)
               .slice(0, 4)
               .map((item) => (
                 <MenuItem
                   key={item.key}
-                  lng={lng}
+                  $lng={lng}
                   onClick={() => handleMenuClick(item)}
                   selected={selectedMenu === item.key}
                 >
@@ -173,15 +173,17 @@ export default function PubCard() {
               ))}
           </MenuWrapper>
 
-          <MenuWrapper index={'2'}>
+          <MenuWrapper $index={'2'}>
             {menuItems(t)
               .slice(4)
               .map((item) => (
                 <MenuItem
                   key={item.key}
                   onClick={() => handleMenuClick(item)}
-                  lng={lng}
+                  $lng={lng}
                   selected={selectedMenu === item.key && !isSubMenu}
+                  $selectedMenu={selectedMenu}
+                  $itemKey={item.key}
                 >
                   {item.label}
                 </MenuItem>
@@ -193,8 +195,10 @@ export default function PubCard() {
               <SubMenuItem
                 key={item.key}
                 onClick={() => handleMenuClick(item)}
-                lng={lng}
+                $lng={lng}
                 selected={selectedMenu === item.key}
+                $selectedMenu={selectedMenu}
+                $itemKey={item.key}
               >
                 {item.label}
               </SubMenuItem>
@@ -265,7 +269,6 @@ const Title = styled.div`
 
 const MenuContainer = styled.div`
   width: 28.1rem;
-  /* height: 5.4rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -282,16 +285,19 @@ const MenuWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: ${({ index }) => (index === '1' ? '1.6rem' : '1.8rem')};
+  gap: ${({ $index }) => ($index === '1' ? '1.6rem' : '1.8rem')};
 `;
 
 const MenuItem = styled.div`
   ${({ theme }) => theme.fontStyles.basic.body2Bold};
-  color: ${({ theme, selected }) => (selected ? theme.colors.hongikBlue : theme.colors.gray40)};
+  color: ${({ theme, selected, $itemKey, $selectedMenu }) =>
+    selected || ($itemKey === 'clubScholarship' && $selectedMenu === 'clubFederation')
+      ? theme.colors.hongikBlue
+      : theme.colors.gray40};
   cursor: pointer;
 
-  ${({ lng }) =>
-    lng === 'en' &&
+  ${({ $lng }) =>
+    $lng === 'en' &&
     css`
       font-size: 0.9rem;
       text-align: center;
@@ -321,11 +327,14 @@ const SubMenuWrapper = styled.div`
 
 const SubMenuItem = styled.div`
   ${({ theme }) => theme.fontStyles.basic.captionBold};
-  color: ${({ theme, selected }) => (selected ? '#7997F2' : theme.colors.gray30)};
+  color: ${({ theme, selected, $itemKey, $selectedMenu }) =>
+    selected || ($itemKey === 'clubScholarship' && $selectedMenu === 'clubFederation')
+      ? '#7997F2'
+      : theme.colors.gray30};
   cursor: pointer;
 
-  ${({ lng }) =>
-    lng === 'en' &&
+  ${({ $lng }) =>
+    $lng === 'en' &&
     css`
       font-size: 0.75rem;
       text-align: center;

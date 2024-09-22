@@ -62,7 +62,7 @@ export default function PubCarousel({ menu, click, likeData }) {
   return (
     <CarouselWrapper>
       <CarouselContainer>
-        <StyledSlider ref={sliderRef} {...settings} lng={lng}>
+        <StyledSlider ref={sliderRef} {...settings} $lng={lng}>
           {pubList[currentCategory].map((item, index) => {
             // likeData에서 해당 index에 해당하는 데이터를 순서대로 매칭
             const relatedLikeData = likeData?.[index];
@@ -101,7 +101,7 @@ const StyledSlider = styled(Slider)`
 
   .slick-list,
   .slick-track {
-    height: ${({ lng }) => (lng === 'en' ? '41rem' : '38.1rem')};
+    height: ${({ $lng }) => ($lng === 'en' ? '41rem' : '38.1rem')};
   }
 
   .slick-slide > div {

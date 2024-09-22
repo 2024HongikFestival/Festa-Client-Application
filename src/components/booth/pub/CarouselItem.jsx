@@ -48,7 +48,11 @@ export default function CarouselItem({ content, click, likeData }) {
 
   return (
     <Container>
-      {content.time === 'all' ? <Icon lng={lng} src={day2Night} kind={'day2Night'} /> : <Icon lng={lng} src={night} />}
+      {content.time === 'all' ? (
+        <Icon $lng={lng} src={day2Night} kind={'day2Night'} />
+      ) : (
+        <Icon $lng={lng} src={night} />
+      )}
       <Department>
         {content.department.split('\n').map((line, index) => (
           <React.Fragment key={index}>
@@ -66,7 +70,7 @@ export default function CarouselItem({ content, click, likeData }) {
         ))}
       </Intro>
       {content.wow ? <Wow src={content.wow} alt="wow" /> : <Wow src={wow} alt="wow" />}
-      <PubInfoContainer lng={lng}>
+      <PubInfoContainer $lng={lng}>
         <TextWrapper kind="food">
           <Title>Food</Title>
           <Text>
@@ -93,7 +97,7 @@ export default function CarouselItem({ content, click, likeData }) {
         )}
       </PubInfoContainer>
       <BtnContainer>
-        <LikeBtn onClick={() => handleLikeClick(likeData.boothId)} lng={lng}>
+        <LikeBtn onClick={() => handleLikeClick(likeData.boothId)} $lng={lng}>
           <HeartIcon src={favorite} alt="favorite" />
           <Count>{totalLikes}</Count>
         </LikeBtn>
@@ -104,7 +108,7 @@ export default function CarouselItem({ content, click, likeData }) {
 
 const Container = styled.div`
   width: 22.1rem;
-  height: ${({ lng }) => (lng === 'en' ? '41rem' : '38.1rem')};
+  height: ${({ $lng }) => ($lng === 'en' ? '41rem' : '38.1rem')};
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -115,7 +119,7 @@ const Container = styled.div`
 const Icon = styled.img`
   width: ${({ kind }) => (kind === 'day2Night' ? '4.4rem' : '2.2rem')};
   height: 2.2rem;
-  margin-top: ${({ lng }) => (lng === 'en' ? '3rem' : '1.8rem')};
+  margin-top: ${({ $lng }) => ($lng === 'en' ? '3rem' : '1.8rem')};
 `;
 
 const Department = styled.div`
@@ -145,7 +149,7 @@ const PubInfoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: ${({ lng }) => (lng === 'en' ? '2.8rem' : '1.8rem')};
+  margin-top: ${({ $lng }) => ($lng === 'en' ? '2.8rem' : '1.8rem')};
 `;
 
 const TextWrapper = styled.div`
@@ -185,19 +189,13 @@ const BtnContainer = styled.div`
   position: relative;
 `;
 
-const confettiAnimation = keyframes`
-  0% { transform: scale(0.5); opacity: 0; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
-`;
-
 const LikeBtn = styled.button`
   width: 10.7rem;
   height: 3.4rem;
   border-radius: 10rem;
   background-color: #9747ff;
-  margin-top: ${({ lng }) => (lng === 'en' ? '6rem' : '1.8rem')};
-  margin-bottom: ${({ lng }) => (lng === 'en' ? '5rem' : '2.9rem')};
+  margin-top: ${({ $lng }) => ($lng === 'en' ? '6rem' : '1.8rem')};
+  margin-bottom: ${({ $lng }) => ($lng === 'en' ? '5rem' : '2.9rem')};
   display: flex;
   gap: 0.4rem;
   justify-content: center;
