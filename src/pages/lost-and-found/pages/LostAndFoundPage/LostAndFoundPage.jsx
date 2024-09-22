@@ -35,11 +35,9 @@ const LostAndFoundPage = () => {
   const [selectedDay, setSelectedDay] = useState('');
 
   //게시글 관련 state
-  const [totalItems, setTotalItems] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemCountPerPage = 10;
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -56,7 +54,6 @@ const LostAndFoundPage = () => {
         params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
       });
       setItems(response.data.data.losts);
-      setTotalItems(response.data.data.losts.length);
       setTotalPages(response.data.data.totalPage);
     } catch (error) {
       console.error(error);
