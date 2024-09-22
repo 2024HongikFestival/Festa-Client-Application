@@ -2,7 +2,7 @@
 // url: /lost-and-found
 
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as S from './LostAndFoundPage.styled';
 
@@ -39,15 +39,18 @@ const LostAndFoundPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  const page = parseInt(query.get('page')) || 1; //  string -> int 로 변환
+  const query = useMemo(() => new URLSearchParams(location.search), [location]);
+  const page = useMemo(() => parseInt(query.get('page')) || 1, [query]);
 
-  const handlePage = (pageNumber) => {
-    navigate(`?page=${pageNumber}`);
-    setCurrentPage(pageNumber);
-  };
+  const handlePage = useCallback(
+    (pageNumber) => {
+      navigate(`?page=${pageNumber}`);
+      setCurrentPage(pageNumber);
+    },
+    [navigate]
+  );
 
-  const getItemsApi = async () => {
+  const getItemsApi = useCallback(async () => {
     try {
       const response = await axios.get('https://api.2024hongikfestival.com/losts', {
         params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
@@ -56,10 +59,10 @@ const LostAndFoundPage = () => {
       setTotalPages(response.data.data.totalPage);
     } catch (error) {
       console.error(error);
-      alert('해당 필터링에 해당되는 게시글이 존재하지 않습니다.');
+      alert(t('LostAndFound.FilterError'));
       window.location.reload();
     }
-  };
+  }, [page, selectedDay, t]);
 
   useEffect(() => {
     setCurrentPage(page);

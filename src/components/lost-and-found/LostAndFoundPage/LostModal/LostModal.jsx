@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import * as S from './LostModal.styled';
 import PanZoom from 'react-easy-panzoom';
 import CustomMap from './CutomMap';
+import { axiosInstance } from '@/api/axios';
 
 const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
   const handleCloseModal = () => {
