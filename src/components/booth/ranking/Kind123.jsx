@@ -20,12 +20,12 @@ export default function Kind123({ data }) {
   return (
     <PodiumWrapper>
       <Podium1>
-        <WowImgWrapper rank="2nd">
+        <WowImgWrapper $rank="2nd">
           <Wow src={WowList[data[1].boothId]} alt="wow" />
         </WowImgWrapper>
         <Box width="2nd">
-          <Badge src={second} alt="2nd" rank="2nd" />
-          <Department rank="2nd">
+          <Badge src={second} alt="2nd" $rank="2nd" />
+          <Department $rank="2nd">
             {departments[data[1].boothId].split('\n').map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -40,12 +40,12 @@ export default function Kind123({ data }) {
         </Box>
       </Podium1>
       <Podium2>
-        <WowImgWrapper rank="1st">
+        <WowImgWrapper $rank="1st">
           <Wow src={WowList[data[0].boothId]} alt="wow" />
         </WowImgWrapper>
         <Box width="1st">
-          <Badge src={first} alt="1st" rank="1st" />
-          <Department rank="1st">
+          <Badge src={first} alt="1st" $rank="1st" />
+          <Department $rank="1st">
             {departments[data[0].boothId].split('\n').map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -60,12 +60,12 @@ export default function Kind123({ data }) {
         </Box>
       </Podium2>
       <Podium3>
-        <WowImgWrapper rank="3rd">
+        <WowImgWrapper $rank="3rd">
           <Wow src={WowList[data[2].boothId]} alt="wow" />
         </WowImgWrapper>
         <Box width="3rd">
-          <Badge src={third} alt="3rd" rank="3rd" />
-          <Department rank="3rd">
+          <Badge src={third} alt="3rd" $rank="3rd" />
+          <Department $rank="3rd">
             {departments[data[2].boothId].split('\n').map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -117,32 +117,30 @@ const WowImgWrapper = styled.div`
   align-items: center;
 
   ${(props) =>
-    props.rank === '1st' &&
+    props.$rank === '1st' &&
     css`
       margin-bottom: 1.564rem;
     `}
 
   ${(props) =>
-    props.rank === '2nd' &&
+    props.$rank === '2nd' &&
     css`
       margin-bottom: 2.454rem;
     `}
 
     ${(props) =>
-    props.rank === '3rd' &&
+    props.$rank === '3rd' &&
     css`
       margin-bottom: 2.734rem;
     `}
 `;
 
 const Wow = styled.img`
-  /* width: 6.3rem; */
   height: 7.036rem;
   object-fit: contain;
 `;
 
 const Box = styled.div`
-  /* background: linear-gradient(180deg, #d7dcff 0%, #f1f3ff 50.04%, #fbfcff 100.08%); */
   background: linear-gradient(to bottom, #d4edff 0%, #eaf6ff 50%, #fbfcff 100%);
   display: flex;
   flex-direction: column;
@@ -176,21 +174,21 @@ const Box = styled.div`
 
 const Badge = styled.img`
   ${(props) =>
-    props.rank === '1st' &&
+    props.$rank === '1st' &&
     css`
       width: 2.907rem;
       height: 4.5rem;
     `}
 
   ${(props) =>
-    props.rank === '2nd' &&
+    props.$rank === '2nd' &&
     css`
       width: 2.16rem;
       height: 3.343rem;
     `}
 
     ${(props) =>
-    props.rank === '3rd' &&
+    props.$rank === '3rd' &&
     css`
       width: 1.44rem;
       height: 2.229rem;
@@ -203,7 +201,7 @@ const Department = styled.div`
   text-align: center;
 
   ${(props) =>
-    props.rank === '1st' &&
+    props.$rank === '1st' &&
     css`
       margin-top: 1.6rem;
       margin-bottom: 4.8rem;
@@ -213,7 +211,7 @@ const Department = styled.div`
     `}
 
   ${(props) =>
-    props.rank === '2nd' &&
+    props.$rank === '2nd' &&
     css`
       margin-top: 0.8rem;
       margin-bottom: 1.6rem;
@@ -223,7 +221,7 @@ const Department = styled.div`
     `}
 
     ${(props) =>
-    props.rank === '3rd' &&
+    props.$rank === '3rd' &&
     css`
       margin-top: 0.4rem;
       margin-bottom: 0.3rem;
@@ -247,7 +245,6 @@ const HeartIcon = styled.img`
 `;
 
 const Count = styled.div`
-  /* width: 3.9rem; */
   height: 1.8rem;
   margin-left: 0.4rem;
   display: flex;

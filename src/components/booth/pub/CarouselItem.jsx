@@ -93,7 +93,6 @@ export default function CarouselItem({ content, click, likeData }) {
         )}
       </PubInfoContainer>
       <BtnContainer>
-        {/* <Confetti src={isLiked ? after : before} alt="confetti" $isAnimating={isLiked} /> */}
         <LikeBtn onClick={() => handleLikeClick(likeData.boothId)} lng={lng}>
           <HeartIcon src={favorite} alt="favorite" />
           <Count>{totalLikes}</Count>
@@ -105,9 +104,7 @@ export default function CarouselItem({ content, click, likeData }) {
 
 const Container = styled.div`
   width: 22.1rem;
-  /* height: 38.1rem; */
   height: ${({ lng }) => (lng === 'en' ? '41rem' : '38.1rem')};
-  /* height: 42rem; */
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -118,7 +115,6 @@ const Container = styled.div`
 const Icon = styled.img`
   width: ${({ kind }) => (kind === 'day2Night' ? '4.4rem' : '2.2rem')};
   height: 2.2rem;
-  /* margin-top: 1.8rem; */
   margin-top: ${({ lng }) => (lng === 'en' ? '3rem' : '1.8rem')};
 `;
 
@@ -150,22 +146,18 @@ const PubInfoContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: ${({ lng }) => (lng === 'en' ? '2.8rem' : '1.8rem')};
-  /* margin-top: 3rem; */
 `;
 
 const TextWrapper = styled.div`
-  /* width: 15.6rem; */
-  /* height: 2rem; */
   width: 100%;
   display: flex;
-  /* gap: ${({ kind }) => (kind === 'food' ? '1.2rem' : '0.7rem')}; */
   gap: 0.7rem;
   justify-content: flex-start;
 `;
 
 const Title = styled.div`
   ${({ theme }) => theme.fontStyles.basic.captionBold};
-  width: 3.3rem; // Food와 Event 텍스트를 포함할 수 있는 충분한 너비
+  width: 3.3rem;
   flex-shrink: 0;
 `;
 
@@ -199,15 +191,6 @@ const confettiAnimation = keyframes`
   100% { transform: scale(1); opacity: 1; }
 `;
 
-const Confetti = styled.img`
-  width: 8.6rem;
-  height: 7.2rem;
-  position: absolute;
-  animation: ${({ $isAnimating }) => ($isAnimating ? confettiAnimation : 'none')} 0.5s ease-out;
-  opacity: 1;
-  transition: all 0.3s ease-out;
-`;
-
 const LikeBtn = styled.button`
   width: 10.7rem;
   height: 3.4rem;
@@ -215,7 +198,6 @@ const LikeBtn = styled.button`
   background-color: #9747ff;
   margin-top: ${({ lng }) => (lng === 'en' ? '6rem' : '1.8rem')};
   margin-bottom: ${({ lng }) => (lng === 'en' ? '5rem' : '2.9rem')};
-  /* margin-bottom: 2.9rem; */
   display: flex;
   gap: 0.4rem;
   justify-content: center;
@@ -244,14 +226,3 @@ const Count = styled.div`
   ${({ theme }) => theme.fontStyles.basic.captionBold};
   color: white;
 `;
-
-// const Title = styled.div`
-//   ${({ theme }) => theme.fontStyles.basic.captionBold};
-//   width: 2.8rem;
-// `;
-
-// const Text = styled.div`
-//   ${({ theme }) => theme.fontStyles.basic.captionMed};
-//   color: ${({ theme }) => theme.colors.gray40};
-//   max-width: 11.6rem;
-// `;

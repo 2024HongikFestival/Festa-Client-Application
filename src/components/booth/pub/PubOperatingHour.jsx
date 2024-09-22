@@ -44,7 +44,6 @@ const Title = styled.div`
 `;
 
 const DetailTime = styled.div`
-  /* width: 20.036rem; */
   height: 7.2rem;
   display: flex;
   flex-direction: column;

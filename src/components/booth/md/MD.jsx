@@ -107,7 +107,7 @@ const Img = styled.img`
 
 const Desc = styled.div`
   position: absolute;
-  width: 33.5rem; // 원래 크기로 복원
+  width: 33.5rem;
   height: 11.5rem;
   background-color: ${(props) => props.theme.colors.gray5};
   top: 22rem;
@@ -119,7 +119,7 @@ const Desc = styled.div`
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 30.7rem; // 상단 선의 길이를 조절 (전체 너비의 약 85%)
+    width: 30.7rem;
     height: 0.1rem;
     background-color: ${({ theme }) => theme.colors.gray20};
   }

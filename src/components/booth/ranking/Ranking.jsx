@@ -15,30 +15,6 @@ export default function Ranking() {
   const [rankData, setRankData] = useState([]);
   const { t } = useTranslation();
 
-  const dummyResponse = {
-    status: 200,
-    message: '주점 랭킹 조회 성공',
-    data: {
-      data: [
-        {
-          boothId: 16,
-          boothName: '자무;자전에서 음주가무',
-          totalLike: 599,
-        },
-        {
-          boothId: 17,
-          boothName: '슬램덩크',
-          totalLike: 59,
-        },
-        {
-          boothId: 18,
-          boothName: '운수 좋은 날',
-          totalLike: 59,
-        },
-      ],
-    },
-  };
-
   const renderRankingComponent = () => {
     if (rankData.length === 0) return null;
 

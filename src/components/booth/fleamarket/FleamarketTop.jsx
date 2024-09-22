@@ -56,7 +56,6 @@ const TopImgWrapper = styled.div`
 
 const TopImg = styled.img`
   width: 30.9rem;
-  /* height: 10.9rem; */
   height: ${({ idx }) => (idx === 1 ? '12.7rem' : '10.9rem')};
 `;
 

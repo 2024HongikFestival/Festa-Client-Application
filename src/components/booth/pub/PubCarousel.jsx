@@ -53,7 +53,7 @@ export default function PubCarousel({ menu, click, likeData }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 4000,
     prevArrow: likeData?.length > 1 ? <CustomArrow direction="prev" /> : null,
     nextArrow: likeData?.length > 1 ? <CustomArrow direction="next" /> : null,
@@ -96,13 +96,11 @@ const CarouselContainer = styled.div`
 `;
 
 const StyledSlider = styled(Slider)`
-  /* z-index: 111; */
   box-shadow: 0 0 0.8rem 0rem rgba(0, 0, 0, 0.08);
   border-radius: 1.2rem;
 
   .slick-list,
   .slick-track {
-    /* height: 38.1rem; */
     height: ${({ lng }) => (lng === 'en' ? '41rem' : '38.1rem')};
   }
 

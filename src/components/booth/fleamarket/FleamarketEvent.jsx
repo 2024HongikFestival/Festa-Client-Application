@@ -111,7 +111,6 @@ const Span = styled.div`
 `;
 
 const InfoText = styled.div`
-  /* width: 27.5rem; */
   height: 2rem;
   display: flex;
   align-items: center;

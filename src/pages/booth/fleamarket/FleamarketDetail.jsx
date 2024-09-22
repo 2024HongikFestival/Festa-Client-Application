@@ -80,7 +80,6 @@ export default FleamarketDetail;
 
 const Container = styled.div`
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
   padding-bottom: 6.4rem;
@@ -108,13 +107,12 @@ const GoodsWrapper = styled.div`
   width: 33.5rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.6rem 1.2rem; // 세로 간격 1.6rem, 가로 간격 1.2rem
-  justify-content: space-between; // 아이템들을 양쪽 끝으로 정렬
+  gap: 1.6rem 1.2rem;
+  justify-content: space-between;
 `;
 
 const Goods = styled.div`
   width: 16rem;
-  /* height: 22.5rem; */
   height: auto;
   border-radius: 1.6rem;
   justify-content: start;
@@ -140,13 +138,11 @@ const ExampleImg = styled.img`
 
 const GoodsInfo = styled.div`
   width: 13.6rem;
-  /* height: 4.9rem; */
   height: auto;
   gap: 0.4rem;
 `;
 
 const Name = styled.div`
-  /* width: 14rem; */
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   margin-bottom: 0.4rem;
 `;
