@@ -5,14 +5,14 @@ import styled from 'styled-components';
 import map from '@/assets/webps/stageInfo/map.webp';
 import map_2 from '@/assets/webps/stageInfo/map_2.webp';
 import button from '@/assets/webps/stageInfo/button_scale.webp';
-import Lottie from 'react-lottie';
+import Lottie from 'lottie-react';
 import arrowAnimation from '@/assets/lotties/stageInfo/arrowAnimation.json';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 const lottieOptions = {
+  animationData: arrowAnimation,
   loop: true,
   autoplay: true,
-  animationData: arrowAnimation,
 };
 
 const LocationInfo = () => {
@@ -45,7 +45,11 @@ const LocationInfo = () => {
           <MapWrapper>
             <Map src={map} alt="Entrance Info Map" />
             <LottieWrapper>
-              <Lottie options={lottieOptions} />
+              <Lottie
+                animationData={lottieOptions.animationData}
+                loop={lottieOptions.loop}
+                autoplay={lottieOptions.autoplay}
+              />
             </LottieWrapper>
           </MapWrapper>
         </MapBox>
