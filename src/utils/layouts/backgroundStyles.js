@@ -115,7 +115,7 @@ const backgroundStyles = {
   fleamarketCommon: {
     paths: [
       '/fleamarket/ccJuice',
-      '/fleamarket/almak',
+      '/fleamarket/olmak',
       '/fleamarket/henna',
       '/fleamarket/modori',
       '/fleamarket/sajuraplz',
