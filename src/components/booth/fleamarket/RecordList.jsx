@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import ContentContainer from '@/components/common/ContentContainer';
 import PropTypes from 'prop-types';
+import ContentContainer from '@/components/common/ContentContainer';
 
 RecordList.propTypes = {
   record: PropTypes.arrayOf(

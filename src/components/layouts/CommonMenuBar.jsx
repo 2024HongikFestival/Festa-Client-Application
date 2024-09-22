@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import RenderMenuItem from '@/components/layouts/RenderMenuItem';
 import { useUpdateBeforeHeight } from '@/components/layouts/useUpdateBeforeHeight';
-import * as S from '@/components/layouts/HeaderStyles';
 import { commonMenuItems, flameMenuItems } from '@/constants/layouts/menuItems';
 import globe from '@/assets/webps/layouts/globe.webp';
 import globeGray from '@/assets/webps/layouts/globeGray.webp';
+import * as S from '@/components/layouts/HeaderStyles';
 
 const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
   const { t, i18n } = useTranslation();
@@ -23,7 +23,6 @@ const CommonMenuBar = ({ className, nav, closeMenu, flame, commonMenuRef }) => {
     i18n.changeLanguage(newLanguage);
   };
 
-  // 렌더링 초기 언어 ko로 설정
   useEffect(() => {
     const storedLanguage = localStorage.getItem('language') || 'ko';
     i18n.changeLanguage(storedLanguage);

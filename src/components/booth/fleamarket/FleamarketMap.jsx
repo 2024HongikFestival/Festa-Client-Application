@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from 'react';
-import ContentContainer from '@/components/common/ContentContainer';
-import styled from 'styled-components';
+import React, { useState, useCallback, lazy, Suspense } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
 import fleamarketMapDefault from '@/assets/webps/booth/map/fleamarketMapDefault.webp';
 import fleamarketMapZoom from '@/assets/webps/booth/map/fleamarketMapZoom.webp';
 import scaleBtn from '@/assets/webps/booth/icon/scaleBtn.webp';
@@ -20,26 +20,28 @@ export default function FleamarketMap() {
   }, []);
 
   return (
-    <ContentContainer>
-      <MapTitle>{t('fleamarket.location')}</MapTitle>
-      <MapContainer>
-        <TransformWrapper
-          initialScale={3}
-          minScale={1}
-          maxScale={10}
-          limitToBounds={false}
-          centerContent={true}
-          onTransformed={handleStateChange}
-          initialPositionX={0}
-          initialPositionY={-390}
-        >
-          <TransformComponent>
-            <MapImg src={isZoomed ? fleamarketMapZoom : fleamarketMapDefault} alt="Map" $isZoomed={isZoomed} />
-          </TransformComponent>
-        </TransformWrapper>
-        <ScaleButton src={scaleBtn} alt="Scale" />
-      </MapContainer>
-    </ContentContainer>
+    <Suspense fallback={<></>}>
+      <ContentContainer>
+        <MapTitle>{t('fleamarket.location')}</MapTitle>
+        <MapContainer>
+          <TransformWrapper
+            initialScale={3}
+            minScale={1}
+            maxScale={10}
+            limitToBounds={false}
+            centerContent={true}
+            onTransformed={handleStateChange}
+            initialPositionX={0}
+            initialPositionY={-390}
+          >
+            <TransformComponent>
+              <MapImg src={isZoomed ? fleamarketMapZoom : fleamarketMapDefault} alt="Map" $isZoomed={isZoomed} />
+            </TransformComponent>
+          </TransformWrapper>
+          <ScaleButton src={scaleBtn} alt="Scale" />
+        </MapContainer>
+      </ContentContainer>
+    </Suspense>
   );
 }
 

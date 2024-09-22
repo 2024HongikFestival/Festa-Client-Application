@@ -28,6 +28,16 @@ export default function CarouselItem({ content, click, likeData }) {
   const lng = localStorage.getItem('language');
   const lottieRef = useRef(null);
 
+  const [wowImage, setWowImage] = useState(null);
+
+  useEffect(() => {
+    if (content.wow) {
+      content.wow().then((module) => {
+        setWowImage(module.default); // 동적으로 로드된 이미지 설정
+      });
+    }
+  }, [content.wow]);
+
   useEffect(() => {
     if (likeData && likeData.totalLike !== undefined) {
       setTotalLikes(likeData.totalLike);
@@ -71,7 +81,8 @@ export default function CarouselItem({ content, click, likeData }) {
           </React.Fragment>
         ))}
       </Intro>
-      {content.wow ? <Wow src={content.wow} alt="wow" /> : <Wow src={wow} alt="wow" />}
+      {/* {content.wow ? <Wow src={content.wow} alt="wow" /> : <Wow src={wow} alt="wow" />} */}
+      {wowImage && <Wow src={wowImage} alt="wow" />}
       {/* 로드된 이미지 */}
       <PubInfoContainer $lng={lng}>
         <TextWrapper kind="food">
@@ -105,9 +116,9 @@ export default function CarouselItem({ content, click, likeData }) {
           <Count>{totalLikes}</Count>
         </LikeBtn>
       </BtnContainer>
-      <LottieContainer>
+      {/* <LottieContainer>
         <Lottie key={animationKey} lottieRef={lottieRef} animationData={animationData} loop={false} autoplay={false} />
-      </LottieContainer>
+      </LottieContainer> */}
     </Container>
   );
 }
@@ -126,7 +137,7 @@ const Container = styled.div`
 const Icon = styled.img`
   width: ${({ kind }) => (kind === 'day2Night' ? '4.4rem' : '2.2rem')};
   height: 2.2rem;
-  margin-top: ${({ $lng }) => ($lng === 'en' ? '3rem' : '1.8rem')};
+  margin-top: ${({ $lng }) => ($lng === 'en' ? '1.8rem' : '1.8rem')};
 `;
 
 const Department = styled.div`

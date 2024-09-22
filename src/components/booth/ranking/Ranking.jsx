@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useState, lazy, Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import error from '@/assets/webps/booth/icon/error.webp';
 import ContentContainer from '@/components/common/ContentContainer';
@@ -10,7 +10,6 @@ const Kind122 = React.lazy(() => import('@/components/booth/ranking/Kind122'));
 const Kind111 = React.lazy(() => import('@/components/booth/ranking/Kind111'));
 const Kind113 = React.lazy(() => import('@/components/booth/ranking/Kind113'));
 
-import { useTranslation } from 'react-i18next';
 import { axiosInstance } from '@/api/axios';
 
 export default function Ranking() {
@@ -114,7 +113,7 @@ export default function Ranking() {
           </Caption>
         </GuideWrapper>
         {/* 주점별 랭킹 순위 부분 */}
-        {renderRankingComponent()}
+        <Suspense fallback={<></>}>{renderRankingComponent()}</Suspense>
       </RankingContainer>
     </ContentContainer>
   );
