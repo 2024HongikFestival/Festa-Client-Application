@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import React from 'react';
-import ContentContainer from '@/components/common/ContentContainer';
-import error from '@/assets/webps/booth/icon/error.webp';
+import React, { lazy, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
+import error from '@/assets/webps/booth/icon/error.webp';
 
 export default function FleamarketEvent() {
   const { marketId } = useParams();
@@ -11,65 +11,69 @@ export default function FleamarketEvent() {
 
   if (marketId === 'kawaii') {
     return (
-      <Container>
-        <ContentContainer>
-          <EventTextContainer>
-            <EventTitle>Event 🎁</EventTitle>
-            <EventText>
-              <Span>
-                {t('fleamarket.detail.4.event1')}
-                <br />
-                {t('fleamarket.detail.4.event2')}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;{t('fleamarket.detail.4.event3')}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;{t('fleamarket.detail.4.event4')}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;{t('fleamarket.detail.4.event5')}
-              </Span>
-            </EventText>
-            <InfoText>
-              <ErrorIcon src={error} alt="error" />
-              {t('fleamarket.detail.4.event6')}
-            </InfoText>
-          </EventTextContainer>
-        </ContentContainer>
-      </Container>
+      <Suspense fallback={<></>}>
+        <Container>
+          <ContentContainer>
+            <EventTextContainer>
+              <EventTitle>Event 🎁</EventTitle>
+              <EventText>
+                <Span>
+                  {t('fleamarket.detail.4.event1')}
+                  <br />
+                  {t('fleamarket.detail.4.event2')}
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;{t('fleamarket.detail.4.event3')}
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;{t('fleamarket.detail.4.event4')}
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;{t('fleamarket.detail.4.event5')}
+                </Span>
+              </EventText>
+              <InfoText>
+                <ErrorIcon src={error} alt="error" />
+                {t('fleamarket.detail.4.event6')}
+              </InfoText>
+            </EventTextContainer>
+          </ContentContainer>
+        </Container>
+      </Suspense>
     );
   } else if (marketId === 'henna') {
     return (
-      <Container>
-        <ContentContainer>
-          <EventTextContainer>
-            <EventTitle>Event 🎁</EventTitle>
-            <EventText>
-              <Span>
-                {t('fleamarket.detail.5.event1')}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event2')}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event3')}
-              </Span>
-              <Span> {t('fleamarket.detail.5.event4')}</Span>
-              <Span>
-                {t('fleamarket.detail.5.event5')}
-                <br />
-                &nbsp;• &nbsp; {t('fleamarket.detail.5.event6')}
-                <br />
-                &nbsp;• &nbsp; {t('fleamarket.detail.5.event7')}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event8')}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event9')}
-              </Span>
-            </EventText>
-            <InfoText>
-              <ErrorIcon src={error} alt="error" />
-              {t('fleamarket.detail.5.event10')}
-            </InfoText>
-          </EventTextContainer>
-        </ContentContainer>
-      </Container>
+      <Suspense fallback={<></>}>
+        <Container>
+          <ContentContainer>
+            <EventTextContainer>
+              <EventTitle>Event 🎁</EventTitle>
+              <EventText>
+                <Span>
+                  {t('fleamarket.detail.5.event1')}
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event2')}
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event3')}
+                </Span>
+                <Span> {t('fleamarket.detail.5.event4')}</Span>
+                <Span>
+                  {t('fleamarket.detail.5.event5')}
+                  <br />
+                  &nbsp;• &nbsp; {t('fleamarket.detail.5.event6')}
+                  <br />
+                  &nbsp;• &nbsp; {t('fleamarket.detail.5.event7')}
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event8')}
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp; {t('fleamarket.detail.5.event9')}
+                </Span>
+              </EventText>
+              <InfoText>
+                <ErrorIcon src={error} alt="error" />
+                {t('fleamarket.detail.5.event10')}
+              </InfoText>
+            </EventTextContainer>
+          </ContentContainer>
+        </Container>
+      </Suspense>
     );
   } else {
     return null;

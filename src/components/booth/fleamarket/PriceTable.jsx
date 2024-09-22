@@ -1,7 +1,8 @@
-import styled from 'styled-components';
-import ContentContainer from '@/components/common/ContentContainer';
-import PropTypes from 'prop-types';
+import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
 
 PriceTable.propTypes = {
   bottomImg: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])).isRequired,
@@ -19,33 +20,37 @@ export default function PriceTable({ bottomImg }) {
 
   return (
     <PriceTableContainer>
-      <div data-aos="fade-down">
-        <ContentContainer>
-          <PriceWrapper>
-            <Title>PRICE</Title>
-            <CollectionWrapper>
-              {priceData.map((item, index) => (
-                <Collection key={index}>
-                  <ItemName>
-                    {item.icon} {item.name}
-                  </ItemName>
-                  <Price>{item.price}</Price>
-                </Collection>
+      <Suspense fallback={<></>}>
+        <div data-aos="fade-down">
+          <ContentContainer>
+            <PriceWrapper>
+              <Title>PRICE</Title>
+              <CollectionWrapper>
+                {priceData.map((item, index) => (
+                  <Collection key={index}>
+                    <ItemName>
+                      {item.icon} {item.name}
+                    </ItemName>
+                    <Price>{item.price}</Price>
+                  </Collection>
+                ))}
+              </CollectionWrapper>
+              <Caption>{t('fleamarket.detail.6.price.5.text')} </Caption>
+            </PriceWrapper>
+          </ContentContainer>
+        </div>
+      </Suspense>
+      <Suspense fallback={<></>}>
+        <div data-aos="fade-down" data-aos-delay="200">
+          <ContentContainer>
+            <ImgWrapper>
+              {bottomImg.map((img, index) => (
+                <Img key={index} src={img} alt="example" />
               ))}
-            </CollectionWrapper>
-            <Caption>{t('fleamarket.detail.6.price.5.text')} </Caption>
-          </PriceWrapper>
-        </ContentContainer>
-      </div>
-      <div data-aos="fade-down" data-aos-delay="200">
-        <ContentContainer>
-          <ImgWrapper>
-            {bottomImg.map((img, index) => (
-              <Img key={index} src={img} alt="example" />
-            ))}
-          </ImgWrapper>
-        </ContentContainer>
-      </div>
+            </ImgWrapper>
+          </ContentContainer>
+        </div>
+      </Suspense>
     </PriceTableContainer>
   );
 }

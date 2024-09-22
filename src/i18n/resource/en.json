@@ -11,7 +11,7 @@
     "desc5": "by “2024 Hwa Yang Yeon Hwa; Blossom”",
     "todayLineup": "Today’s Lineup",
     "clicktoLineup": "Click to view Full line up",
-    "centralStage": "Central Stage Schedule",
+    "centralStage": "Main Stage Schedule",
     "performance1": "Talent Contest",
     "performance2": "Celebrities",
     "performance3": "Student Main Stage",
@@ -458,7 +458,7 @@
     }
   },
   "sitemap": {
-    "title": "Site Map",
+    "title": "SITE MAP",
     "booth1": "Entrance",
     "booth2": "Red Bull",
     "booth3": "Jägermeiſter",
@@ -515,14 +515,15 @@
     "placewhere1": "WOW DJ FESTIVAL",
     "placewhere2": "ENTRANCE BOOTH",
     "price": "Price",
-    "student": "Students & students on leave of absence from Hongik University Seoul Campus",
+    "student": "Hongik university students",
+    "studentwho": "(Student ID will be checked at the entrance)",
     "notstudent": "outside visitor",
-    "notstudentwho": "(including graduate students and graduates from Hongik University's Seoul Campus)",
+    "notstudentwho": "(included Hongik university graduates)",
     "noticetitle": "Precautions",
     "notice1": {
       "detail1": "Minors cannot book the Wow DJ Festival,",
-      "detail2": "and ID verification will be carried out",
-      "detail3": " when purchasing on-site.",
+      "detail2": "so you need to provide ID cards when",
+      "detail3": " making on-site reservations.",
       "detail4": "(Adult authentication is not allowed, admission is restricted.)",
       "detail5": ""
     },
