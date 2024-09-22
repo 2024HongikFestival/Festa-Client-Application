@@ -56,6 +56,6 @@ const FloatingButton = styled.img`
   width: 2.5rem;
   height: 2.5rem;
   position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
+  right: 1.3rem;
+  bottom: 1.2rem;
 `;
