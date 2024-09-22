@@ -123,7 +123,7 @@ export const Mangae = styled.div`
   height: 4rem;
   overflow: hidden;
   z-index: 1;
-  img {
+  object {
     width: 100%;
     height: 100%;
   }
@@ -137,7 +137,7 @@ export const Flame = styled.div`
   height: 3.3rem;
   overflow: hidden;
   z-index: 1;
-  img {
+  object {
     width: 100%;
     height: 100%;
   }
@@ -251,7 +251,6 @@ export const InstaContainer = styled.div`
 `;
 
 export const InstaIcon = styled.div`
-  cursor: pointer;
   width: 3.2rem;
   height: 3.2rem;
   display: flex;
