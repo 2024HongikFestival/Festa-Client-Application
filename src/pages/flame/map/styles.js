@@ -14,12 +14,14 @@ const fadeInUp = keyframes`
 export const MapWrapper = styled.div`
   padding: 2.4rem 0 6.4rem;
   display: grid;
+  width: 100%;
 `;
 
 export const MapTitle = styled.div`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline3};
   text-align: center;
+  width: 100%;
 `;
 
 export const MapBox = styled.div`
@@ -34,7 +36,7 @@ export const MapBox = styled.div`
 `;
 
 export const BoothBox = styled.div`
-  width: calc(100% - 4rem);
+  width: calc(100% - 5.6rem);
   margin: 0 2rem 0 3.6rem;
   display: flex;
   justify-content: space-between;
