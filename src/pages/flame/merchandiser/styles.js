@@ -113,9 +113,9 @@ export const ImageContainer = styled.div`
 
 export const ProductImage = styled.img`
   position: absolute;
-  top: ${(props) => props.$top};
-  width: ${(props) => props.$width};
-  height: ${(props) => props.$height};
+  top: ${(props) => props.top};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
 `;
 
 export const ProductInfo = styled.div`
