@@ -188,7 +188,7 @@ const DateContent = ({ carouselItems, selectedDay }) => {
 
             return (
               <S.ImageContainer key={index}>
-                <S.CarouselImage src={item.src} alt={item.alt} />
+                <S.CarouselImage src={item.src} alt={item.alt} loading="lazy" />
                 <S.GradientOverlay />
                 <S.LogoImage src={logo.src} alt={`${item.name} logo`} style={{ width: logo.width }} loading="lazy" />
                 <S.Line />

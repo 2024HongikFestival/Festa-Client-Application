@@ -107,7 +107,7 @@ const FlameLineupPage = () => {
     dayDjData.map((event, index) => (
       <S.Card key={event.name} data-aos={index === 0 ? '' : 'fade-up'}>
         <S.CardImageContainer>
-          <S.DjImage src={event.src} alt={event.alt} style={{ width: dayDjData[index].width }} />
+          <S.DjImage src={event.src} alt={event.alt} style={{ width: dayDjData[index].width }} loading="lazy" />
           <S.GradientOverlay />
           <S.LogoImage
             src={dayDjLogos[index].src}
