@@ -46,17 +46,17 @@ const MapPage = () => {
       <MapBox>
         <ContentContainer>
           <MapToggle>
-            <ActiveBackground whatview={activeView} />
+            <ActiveBackground $whatview={activeView} />
             <MapToggleBtn
               aria-pressed={activeView === 'all'}
-              whatview={activeView === 'all' ? 'true' : 'false'}
+              $whatview={activeView === 'all' ? 'true' : 'false'}
               onClick={() => handleToggle('all')}
             >
               {t('map.complete')}
             </MapToggleBtn>
             <MapToggleBtn
               aria-pressed={activeView === 'detail'}
-              whatview={activeView === 'detail' ? 'true' : 'false'}
+              $whatview={activeView === 'detail' ? 'true' : 'false'}
               onClick={() => handleToggle('detail')}
             >
               {t('map.detail')}
