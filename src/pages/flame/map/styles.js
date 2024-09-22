@@ -14,14 +14,14 @@ const fadeInUp = keyframes`
 export const MapWrapper = styled.div`
   padding: 2.4rem 0 6.4rem;
   display: grid;
-  /* width: 100%; */
+  width: 100%;
 `;
 
 export const MapTitle = styled.div`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline3};
   text-align: center;
-  /* width: 100%; */
+  width: 100%;
 `;
 
 export const MapBox = styled.div`
@@ -30,10 +30,6 @@ export const MapBox = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-
-  @media (min-width: 45rem) and (max-width: 48.5rem) {
-    /* width: 33.5rem; */
-  }
 `;
 
 export const BoothBox = styled.div`
@@ -64,7 +60,6 @@ export const BoothOne = styled.div`
 
 export const MapImgBox = styled.img`
   display: inline-block;
-  /* /* width: 33.5rem; */
   max-width: 33.5rem;
   width: 100%;
   height: 26.3rem;

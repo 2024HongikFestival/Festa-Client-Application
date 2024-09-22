@@ -1,5 +1,3 @@
-// 와디페 사이트맵
-// url: /flame/map
 import {
   BoothBox,
   BoothIntro,
