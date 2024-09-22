@@ -78,6 +78,12 @@ export const MapImgBox = styled.div`
   .complete {
     width: 100%;
     height: 22rem;
+    animation: ${fadeInUp} 1s ease-out;
+  }
+
+  .detail {
+    position: 'relative';
+    animation: ${fadeInUp} 1s ease-out;
   }
 `;
 

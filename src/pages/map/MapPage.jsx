@@ -14,8 +14,8 @@ import ContentContainer from '@/components/common/ContentContainer.jsx';
 import mapImg from '@/assets/webps/map/completemap.webp';
 import btnImg from '@/assets/webps/map/buttonscale.webp';
 import small from '@/assets/webps/map/detailMap2.webp';
+import medium from '@/assets/webps/map/2step.webp'; // medium 이미지 경로
 import big from '@/assets/webps/map/bigmap.webp';
-
 import { useTranslation } from 'react-i18next';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
@@ -24,6 +24,7 @@ const MapPage = () => {
   const { t } = useTranslation();
   const [isBigVisible, setIsBigVisible] = useState(false);
   const [scale, setScale] = useState(1);
+  const [isDetail, setIsDetail] = useState(false);
 
   const handleToggle = (view) => {
     setActiveView(view);
@@ -32,7 +33,7 @@ const MapPage = () => {
   const handleTransform = (e) => {
     const currentScale = e.instance.transformState.scale;
     setScale(currentScale);
-    setIsBigVisible(currentScale > 1.5);
+    setIsBigVisible(currentScale > 1.3); // scale 값 1.3으로 변경
   };
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const MapPage = () => {
 
   return (
     <MainMapWrapper>
-      <MapTitle> {t('map.title')}</MapTitle>
+      <MapTitle>{t('map.title')}</MapTitle>
       <MapBox>
         <ContentContainer>
           <MapToggle>
@@ -70,7 +71,7 @@ const MapPage = () => {
           </ContentContainer>
         ) : (
           <ContentContainer>
-            <MapImgBox style={{ position: 'relative' }}>
+            <MapImgBox className="detail">
               <TransformWrapper
                 initialScale={1}
                 minScale={1}
@@ -90,21 +91,36 @@ const MapPage = () => {
                     <div style={{ position: 'relative' }}>
                       <TransformComponent>
                         <DetailMap
-                          className="detail"
+                          className="one"
                           src={small}
-                          alt="Map"
+                          alt="Small Map"
+                          scale={scale}
                           style={{
-                            opacity: isBigVisible ? 0.8 : 1,
-                            transition: 'opacity 0.5s ease',
+                            opacity: scale < 1.3 ? 1 : 0,
+                            transition: 'opacity 0.3s ease',
                           }}
                         />
                         <DetailMap
-                          className="detail"
-                          src={big}
-                          alt="Map"
+                          className="two"
+                          src={medium}
+                          alt="Medium Map"
                           style={{
-                            opacity: isBigVisible ? 1 : 0,
-                            transition: 'opacity 0.5s ease',
+                            opacity: scale >= 1.3 && scale < 3.5 ? 1 : 0,
+                            transition: 'opacity 0.3s ease',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                          }}
+                        />
+                        <DetailMap
+                          className="three"
+                          src={big}
+                          alt="Big Map"
+                          style={{
+                            opacity: scale >= 3.5 ? 1 : 0, // 큰 지도
+                            transition: 'opacity 0.3s ease',
                             position: 'absolute',
                             top: 0,
                             left: 0,
