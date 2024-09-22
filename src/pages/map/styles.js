@@ -15,6 +15,8 @@ export const MainMapWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  touch-action: pan-x pan-y;
 `;
 
 export const MapTitle = styled.div`
@@ -57,9 +59,7 @@ export const MapToggleBtn = styled.div`
   height: 3.6rem;
   max-width: 14.9rem;
   border-radius: 3rem;
-  background-color: transparent; /* 버튼 자체는 투명하게 유지 */
-
-  /* background: ${(props) => (props.whatview === 'true' ? 'rgba(24, 51, 219, 0.05)' : 'white')}; */
+  background-color: transparent;
 `;
 
 export const MapToggleBox = styled.div`
@@ -121,7 +121,5 @@ export const ActiveBackground = styled.div`
   background-color: rgba(24, 51, 219, 0.05);
   border-radius: 3rem;
   transition: transform 0.25s ease;
-
-  /* 탭에 따라 슬라이딩 배경의 위치를 설정 */
   transform: ${({ $whatview }) => ($whatview === 'all' ? 'translateX(0)' : 'translateX(15.8rem)')};
 `;
