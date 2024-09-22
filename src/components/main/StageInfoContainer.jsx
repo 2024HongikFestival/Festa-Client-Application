@@ -5,6 +5,7 @@ import AOS from 'aos';
 import StageInfo from '@/components/main/StageInfo';
 import HibsLogo from '@/assets/webps/main/hibs.webp';
 import youtubeIcon from '@/assets/webps/main/youtubeIcon.webp';
+import { Link } from 'react-router-dom';
 
 export default function StageInfoContainer() {
   const { t } = useTranslation();
@@ -20,7 +21,7 @@ export default function StageInfoContainer() {
       </StageTitle>
       <StageInfo />
       {/* 실시간 방송 보러가기 버튼 컴포넌트 */}
-      <a href="https://youtube.com/@hibs1148?si=nFOcPV4tIDOpvsuJ" target="_blank" rel="noopener noreferrer">
+      <Link to="https://youtube.com/@hibs1148?si=nFOcPV4tIDOpvsuJ" target="_blank" rel="noopener noreferrer">
         <GoHibsBtn data-aos="fade-up" data-aos-delay="200">
           <BtnWrapper>
             <BtnText>
@@ -35,7 +36,7 @@ export default function StageInfoContainer() {
             </YoutubeIconWrapper>
           </BtnWrapper>
         </GoHibsBtn>
-      </a>
+      </Link>
     </StageContainer>
   );
 }
