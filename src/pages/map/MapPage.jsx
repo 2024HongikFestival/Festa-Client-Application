@@ -81,13 +81,18 @@ const MapPage = () => {
           <ContentContainer>
             <TransformWrapper
               initialScale={1}
+              sensitivity={5}
+              pinchSensitivity={4}
               minScale={1}
+              panAnimationSpeed={2}
+              pinchAnimationSpeed={2}
+              enableZoomThrottling={true}
               maxScale={10}
               wheel={{ step: 0.1 }}
               pinch={{ step: 0.1 }}
               onTransformed={handleTransform}
               onPinchStart={handlePinchStart}
-              onPinch={handlePinch}
+              onPanningStart={handlePinch}
               style={{ width: '100%', height: '100%', touchAction: 'none' }}
             >
               {({ resetTransform }) => {
@@ -101,7 +106,10 @@ const MapPage = () => {
                   <div style={{ position: 'relative', width: '100%', height: '100%', margin: ' 0 10rem' }}>
                     <MapImgBox className="detail">
                       <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                        <TransformComponent>
+                        <TransformComponent
+                          pinchSensitivity={6}
+                          style={{ position: 'relative', width: '150%', height: '100%' }}
+                        >
                           <DetailMap
                             className="one"
                             src={small}
