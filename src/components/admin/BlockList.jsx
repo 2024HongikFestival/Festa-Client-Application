@@ -183,6 +183,7 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
                   src={expandedItem === item.userId ? arrowUp : arrowDown}
                   alt="Toggle Arrow"
                   onClick={() => toggleExpand(item.userId)}
+                  loading="lazy"
                 />
               </List>
               {expandedItem === item.userId && (

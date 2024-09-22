@@ -253,7 +253,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
             onClick={() => handleClick(lost.lostId)}
             $hasborder={posts === userPosts}
           >
-            <Img src={lost.imageUrl} alt={lost.content} />
+            <Img src={lost.imageUrl} alt={lost.content} loading="lazy" />
             <PostInfo>
               <Status $loststatus={lost.lostStatus}>
                 &middot; {lost.lostStatus === 'PUBLISHED' ? '게시중' : '삭제됨'}

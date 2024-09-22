@@ -21,6 +21,7 @@ const FlamePromotionPage = () => {
                   width={product.width}
                   height={product.height}
                   $top={product.imageTop}
+                  loading="lazy"
                 />
               </ImageContainer>
               <Description>

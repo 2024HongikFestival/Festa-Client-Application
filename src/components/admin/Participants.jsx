@@ -56,7 +56,7 @@ const Participants = ({ setIsDetailView, setPostId, lists }) => {
         {Array.isArray(displayedLists) && displayedLists.length > 0 ? (
           displayedLists.map((entry, index) => (
             <Container key={entry.id || index} onClick={() => handleClick(entry)}>
-              <Img src={tvingImg} alt={'티빙 한달 이용권'} />
+              <Img src={tvingImg} alt={'티빙 한달 이용권'} loading="lazy" />
               <InfoWrapper>
                 <Wrapper>
                   <EntryName>{entry.prizeName}</EntryName>

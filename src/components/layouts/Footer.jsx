@@ -129,11 +129,11 @@ export default function Footer() {
       )}
       {flame ? (
         <S.Flame>
-          <img src={flameLogo} alt="flame" />
+          <img src={flameLogo} alt="flame" loading="lazy" />
         </S.Flame>
       ) : (
         <S.Mangae>
-          <img src={mangaeLogo} alt="mangae" />
+          <img src={mangaeLogo} alt="mangae" loading="lazy" />
         </S.Mangae>
       )}
       <S.Contributor $path={location.pathname}>
@@ -165,13 +165,13 @@ export default function Footer() {
         <span>{t('layouts.footer.instagram')}</span>
         <S.Instagrams>
           <Link to="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
-            <img src={mangaeInsta} alt="mangaeInsta" />
+            <img src={mangaeInsta} alt="mangaeInsta" loading="lazy" />
           </Link>
           <Link to="https://www.instagram.com/hiu_wodf_official/" target="_blank" rel="noopener noreferrer">
-            <img src={wdfInsta} alt="wdfInsta" />
+            <img src={wdfInsta} alt="wdfInsta" loading="lazy" />
           </Link>
           <Link to="https://www.instagram.com/hiu_student_council/" target="_blank" rel="noopener noreferrer">
-            <img src={gaehwaInsta} alt="gaehwaInsta" />
+            <img src={gaehwaInsta} alt="gaehwaInsta" loading="lazy" />
           </Link>
           {flame ? (
             <S.FlamePolicy

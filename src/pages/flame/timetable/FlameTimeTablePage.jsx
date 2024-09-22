@@ -21,7 +21,6 @@ import {
   TimeTableText,
   TimeTableTime,
   TTBox,
-  TTFooter,
   TTTitle,
   TTWrapper,
   UnderlinedText,
@@ -29,41 +28,41 @@ import {
 import { useInterval } from 'react-use';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import redButtonTwo from '/src/assets/webps/wdTT/RedButton.webp';
-import redfullBtn from '/src/assets/webps/wdTT/NewPinkBtn.webp';
-import afterBtn from '/src/assets/webps/wdTT/afterBtn.webp';
-import Now from '/src/assets/webps/wdTT/now.webp';
-import ruiImg from '/src/assets/webps/wdTT/rui.webp';
-import ruiLogo from '/src/assets/webps/wdTT/ruiLogo.webp';
-import fineImg from '/src/assets/webps/wdTT/fine.webp';
-import fineLogo from '/src/assets/webps/wdTT/fineLogo.webp';
-import rbImg from '/src/assets/webps/wdTT/rightback.webp';
-import rbLogo from '/src/assets/webps/wdTT/rightbackLogo.webp';
-import cxLogo from '/src/assets/webps/wdTT/chanxerLogo.webp';
-import cximg from '/src/assets/webps/wdTT/chanxer.webp';
-import tezz from '/src/assets/webps/wdTT/tezz.webp';
-import tezzLogo from '/src/assets/webps/wdTT/tezzLogo.webp';
-import choi from '/src/assets/webps/wdTT/choi.webp';
-import choiLogo from '/src/assets/webps/wdTT/choiLogo.webp';
-import yongsul from '/src/assets/webps/wdTT/yongsul.webp';
-import yongsulLogo from '/src/assets/webps/wdTT/yongsulLogo.webp';
-import lozicLogo from '/src/assets/webps/wdTT/lozicLogo.webp';
-import lozic from '/src/assets/webps/wdTT/lozic.webp';
-import vdLogo from '/src/assets/webps/wdTT/vandal_rockLogo.webp';
-import vdImg from '/src/assets/webps/wdTT/vandal_rock.webp';
-import aster from '/src/assets/webps/wdTT/aster.webp';
-import asterLogo from '/src/assets/webps/wdTT/asterLogo.webp';
-import nap from '/src/assets/webps/wdTT/nap_on_cloud.webp';
-import napLogo from '/src/assets/webps/wdTT/nap_on_cloudLogo.webp';
-import sigma from '/src/assets/webps/wdTT/sigma.webp';
-import sigmaLogo from '/src/assets/webps/wdTT/sigmaLogo.webp';
-import wooxi from '/src/assets/webps/wdTT/wooxi.webp';
-import wooxiLogo from '/src/assets/webps/wdTT/wooxiLogo.webp';
-import joody from '/src/assets/webps/wdTT/joody.webp';
-import joodyLogo from '/src/assets/webps/wdTT/joodyLogo.webp';
-import coco from '/src/assets/webps/wdTT/juncoco.webp';
-import cocoLogo from '/src/assets/webps/wdTT/juncocoLogo.webp';
-import nohot from '/src/assets/webps/wdTT/nohotBtn.webp';
+import redButtonTwo from '@/assets/webps/wdTT/RedButton.webp';
+import redfullBtn from '@/assets/webps/wdTT/NewPinkBtn.webp';
+import afterBtn from '@/assets/webps/wdTT/afterBtn.webp';
+import Now from '@/assets/webps/wdTT/now.webp';
+import ruiImg from '@/assets/webps/wdTT/rui.webp';
+import ruiLogo from '@/assets/webps/wdTT/ruiLogo.webp';
+import fineImg from '@/assets/webps/wdTT/fine.webp';
+import fineLogo from '@/assets/webps/wdTT/fineLogo.webp';
+import rbImg from '@/assets/webps/wdTT/rightback.webp';
+import rbLogo from '@/assets/webps/wdTT/rightbackLogo.webp';
+import cxLogo from '@/assets/webps/wdTT/chanxerLogo.webp';
+import cximg from '@/assets/webps/wdTT/chanxer.webp';
+import tezz from '@/assets/webps/wdTT/tezz.webp';
+import tezzLogo from '@/assets/webps/wdTT/tezzLogo.webp';
+import choi from '@/assets/webps/wdTT/choi.webp';
+import choiLogo from '@/assets/webps/wdTT/choiLogo.webp';
+import yongsul from '@/assets/webps/wdTT/yongsul.webp';
+import yongsulLogo from '@/assets/webps/wdTT/yongsulLogo.webp';
+import lozicLogo from '@/assets/webps/wdTT/lozicLogo.webp';
+import lozic from '@/assets/webps/wdTT/lozic.webp';
+import vdLogo from '@/assets/webps/wdTT/vandal_rockLogo.webp';
+import vdImg from '@/assets/webps/wdTT/vandal_rock.webp';
+import aster from '@/assets/webps/wdTT/aster.webp';
+import asterLogo from '@/assets/webps/wdTT/asterLogo.webp';
+import nap from '@/assets/webps/wdTT/nap_on_cloud.webp';
+import napLogo from '@/assets/webps/wdTT/nap_on_cloudLogo.webp';
+import sigma from '@/assets/webps/wdTT/sigma.webp';
+import sigmaLogo from '@/assets/webps/wdTT/sigmaLogo.webp';
+import wooxi from '@/assets/webps/wdTT/wooxi.webp';
+import wooxiLogo from '@/assets/webps/wdTT/wooxiLogo.webp';
+import joody from '@/assets/webps/wdTT/joody.webp';
+import joodyLogo from '@/assets/webps/wdTT/joodyLogo.webp';
+import coco from '@/assets/webps/wdTT/juncoco.webp';
+import cocoLogo from '@/assets/webps/wdTT/juncocoLogo.webp';
+import nohot from '@/assets/webps/wdTT/nohotBtn.webp';
 import { useTranslation } from 'react-i18next';
 
 const FlameTimeTablePage = () => {

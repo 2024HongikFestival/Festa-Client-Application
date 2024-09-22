@@ -25,13 +25,13 @@ export default function StageInfoContainer() {
           <BtnWrapper>
             <BtnText>
               <LogoContainer>
-                <Logo src={HibsLogo} alt="hibsLogo" />
+                <Logo src={HibsLogo} alt="hibsLogo" loading="lazy" />
                 <TopText>{t('main.HIBS')}</TopText>
               </LogoContainer>
               <BottomText>{t('main.gotoBtn')}</BottomText>
             </BtnText>
             <YoutubeIconWrapper>
-              <YoutubeIcon src={youtubeIcon} alt="youtube" />
+              <YoutubeIcon src={youtubeIcon} alt="youtube" loading="lazy" />
             </YoutubeIconWrapper>
           </BtnWrapper>
         </GoHibsBtn>

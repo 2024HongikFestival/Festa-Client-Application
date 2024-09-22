@@ -39,6 +39,7 @@ const FlameMdPage = () => {
                         width={product.width}
                         height={product.height}
                         $top={product.imageTop}
+                        loading="lazy"
                       />
                     </S.ImageContainer>
                     <S.ProductInfo>

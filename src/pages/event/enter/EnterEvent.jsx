@@ -102,7 +102,7 @@ const EnterEvent = () => {
 
   return (
     <S.Wrapper>
-      <S.Image src={form} alt="form" />
+      <S.Image src={form} alt="form" loading="lazy" />
       <S.FormContainer>
         <form>
           <S.Section>

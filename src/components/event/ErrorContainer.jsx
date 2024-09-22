@@ -23,9 +23,9 @@ export const LocationErrorBox = () => {
         <br />
         <HighlitedText>
           {!lang ? (
-            <LongHighlight src={highlight_long} alt="highlight_long" />
+            <LongHighlight src={highlight_long} alt="highlight_long" loading="lazy" />
           ) : (
-            <EnHighlight src={highlight_en} alt="highlight_en" />
+            <EnHighlight src={highlight_en} alt="highlight_en" loading="lazy" />
           )}
           {t(`event.error.location.title2`)}
         </HighlitedText>
@@ -62,7 +62,7 @@ export const DuplicationErrorBox = () => {
       <Title>
         <HighlitedText>
           {t(`event.error.duplicate.title1`)}
-          <ShortHighlight src={highlight_short} alt="highlight_short" />
+          <ShortHighlight src={highlight_short} alt="highlight_short" loading="lazy" />
         </HighlitedText>
         {t(`event.error.duplicate.title2`)}
       </Title>
