@@ -509,7 +509,11 @@
     "advanceperiod": "Reservation period",
     "closeadvance": "The advance reservation is closed"
   },
-
+  "map": {
+    "title": "Road map",
+    "complete": "Complete",
+    "detail": "Detailed"
+  },
   "fleamarket": {
     "pageTitle": "Fleamarket",
     "location": "Fleamarket Location",

@@ -1,111 +1,142 @@
-import { MapBox, MapTitle, MapToggle, MapToggleBtn, MainMapWrapper, MapToggleBox, MapImgBox } from './styles.js';
-import React, { useEffect, useRef, useState } from 'react';
+import {
+  MapBox,
+  MapTitle,
+  MapToggle,
+  MapToggleBtn,
+  MainMapWrapper,
+  MapImgBox,
+  BtnImg,
+  DetailMap,
+  ActiveBackground,
+} from './styles.js';
+import React, { useState, useEffect } from 'react';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
-import mapImg from './map.webp';
-import { createUseGesture, dragAction, pinchAction } from '@use-gesture/react';
-import { useSpring, animated } from '@react-spring/web';
+import mapImg from '@/assets/webps/map/completemap.webp';
+import btnImg from '@/assets/webps/map/buttonscale.webp';
+import small from '@/assets/webps/map/detailMap2.webp';
+import medium from '@/assets/webps/map/2step.webp'; // medium 이미지 경로
+import big from '@/assets/webps/map/bigmap.webp';
+import { useTranslation } from 'react-i18next';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 const MapPage = () => {
-  const [activeView, setActiveView] = useState('all'); // 'all' or 'detail'
-
-  const useGesture = createUseGesture([dragAction, pinchAction]);
-  const ref = useRef(null);
-  const [style, api] = useSpring(() => ({
-    x: 0,
-    y: 0,
-    scale: 1,
-  }));
-
-  useEffect(() => {
-    const handler = (e) => e.preventDefault();
-    document.addEventListener('gesturestart', handler);
-    document.addEventListener('gesturechange', handler);
-    document.addEventListener('gestureend', handler);
-    return () => {
-      document.removeEventListener('gesturestart', handler);
-      document.removeEventListener('gesturechange', handler);
-      document.removeEventListener('gestureend', handler);
-    };
-  }, []);
-
-  useGesture(
-    {
-      onDrag: ({ pinching, cancel, offset: [x, y], memo, ...rest }) => {
-        // 요소의 현재 스케일에 따라 드래그 범위를 조정
-        const scale = style.scale.get();
-        console.log(scale);
-        const { width, height } = ref.current.getBoundingClientRect();
-        const maxX = Math.max(0, width - width * scale);
-        const maxY = Math.max(0, height - height * scale);
-
-        // 요소가 박스 범위를 벗어나지 않도록 조정
-        const clampedX = Math.min(Math.max(x, -maxX), 0);
-        const clampedY = Math.min(Math.max(y, -maxY), 0);
-
-        // 수정
-        api.start({ clampedX, y });
-      },
-
-      onPinch: ({ origin: [ox, oy], first, movement: [ms], offset: [s, a], memo }) => {
-        if (first) {
-          if (ref.current) {
-            const { width, height, x, y } = ref.current.getBoundingClientRect();
-            const tx = ox - (x + width / 2);
-            const ty = oy - (y + height / 2);
-            memo = [style.x.get(), style.y.get(), tx, ty];
-            console.log(memo);
-          } else {
-            console.warn('ref.current is null or undefined');
-            memo = memo || [0, 0, 0, 0];
-          }
-        }
-
-        const x = memo[0] - (ms - 1) * memo[2];
-        const y = memo[1] - (ms - 1) * memo[3];
-        api.start({ scale: s, rotateZ: a, x, y });
-        return memo;
-      },
-    },
-    {
-      target: ref,
-      drag: { from: () => [style.x.get(), style.y.get()] },
-      pinch: { scaleBounds: { min: 1, max: 2 }, rubberband: true },
-    }
-  );
+  const [activeView, setActiveView] = useState('all');
+  const { t } = useTranslation();
+  const [isBigVisible, setIsBigVisible] = useState(false);
+  const [scale, setScale] = useState(1);
+  const [isDetail, setIsDetail] = useState(false);
 
   const handleToggle = (view) => {
     setActiveView(view);
   };
 
+  const handleTransform = (e) => {
+    const currentScale = e.instance.transformState.scale;
+    setScale(currentScale);
+    setIsBigVisible(currentScale > 1.3); // scale 값 1.3으로 변경
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = isBigVisible ? 'hidden' : 'auto';
+  }, [isBigVisible]);
+
   return (
     <MainMapWrapper>
-      <MapTitle>로드맵</MapTitle>
+      <MapTitle>{t('map.title')}</MapTitle>
       <MapBox>
         <ContentContainer>
           <MapToggle>
+            <ActiveBackground $whatview={activeView} />
             <MapToggleBtn
               aria-pressed={activeView === 'all'}
-              isActive={activeView === 'all'}
+              $whatview={activeView === 'all' ? 'true' : 'false'}
               onClick={() => handleToggle('all')}
             >
-              전체지도
+              {t('map.complete')}
             </MapToggleBtn>
             <MapToggleBtn
               aria-pressed={activeView === 'detail'}
-              isActive={activeView === 'detail'}
+              $whatview={activeView === 'detail' ? 'true' : 'false'}
               onClick={() => handleToggle('detail')}
             >
-              상세지도
+              {t('map.detail')}
             </MapToggleBtn>
           </MapToggle>
         </ContentContainer>
+        {activeView === 'all' ? (
+          <ContentContainer>
+            <MapImgBox>
+              <img src={mapImg} className="complete" alt="Complete Map" />
+            </MapImgBox>
+          </ContentContainer>
+        ) : (
+          <ContentContainer>
+            <MapImgBox className="detail">
+              <TransformWrapper
+                initialScale={1}
+                minScale={1}
+                maxScale={10}
+                wheel={{ step: 0.1 }}
+                pinch={{ step: 0.1 }}
+                onTransformed={handleTransform}
+              >
+                {({ resetTransform }) => {
+                  const handleReset = () => {
+                    resetTransform();
+                    setIsBigVisible(false);
+                    setScale(1);
+                  };
 
-        <ContentContainer>
-          <MapImgBox>
-            {' '}
-            <animated.img className="card" src={mapImg} ref={ref} style={style} />
-          </MapImgBox>
-        </ContentContainer>
+                  return (
+                    <div style={{ position: 'relative' }}>
+                      <TransformComponent>
+                        <DetailMap
+                          className="one"
+                          src={small}
+                          alt="Small Map"
+                          scale={scale}
+                          style={{
+                            opacity: scale < 1.3 ? 1 : 0,
+                            transition: 'opacity 0.3s ease',
+                          }}
+                        />
+                        <DetailMap
+                          className="two"
+                          src={medium}
+                          alt="Medium Map"
+                          style={{
+                            opacity: scale >= 1.3 && scale < 3.5 ? 1 : 0,
+                            transition: 'opacity 0.3s ease',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                          }}
+                        />
+                        <DetailMap
+                          className="three"
+                          src={big}
+                          alt="Big Map"
+                          style={{
+                            opacity: scale >= 3.5 ? 1 : 0, // 큰 지도
+                            transition: 'opacity 0.3s ease',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                          }}
+                        />
+                      </TransformComponent>
+                      <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" />
+                    </div>
+                  );
+                }}
+              </TransformWrapper>
+            </MapImgBox>
+          </ContentContainer>
+        )}
       </MapBox>
     </MainMapWrapper>
   );
