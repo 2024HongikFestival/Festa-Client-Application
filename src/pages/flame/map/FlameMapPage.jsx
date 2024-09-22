@@ -1,5 +1,3 @@
-// 와디페 사이트맵
-// url: /flame/map
 import {
   BoothBox,
   BoothIntro,
@@ -13,7 +11,7 @@ import {
 } from './styles.js';
 import React from 'react';
 import mapImg from '/src/assets/webps/map/sitemap.webp';
-import Lottie from 'react-lottie';
+import Lottie from 'lottie-react';
 import arrowAnimation from '/src/assets/lotties/siteMap.json';
 import { useTranslation } from 'react-i18next';
 
@@ -34,11 +32,11 @@ const FlameMapPage = () => {
   };
   return (
     <MapWrapper>
-      <MapTitle>{t('map.title')}</MapTitle>
+      <MapTitle>{t('sitemap.title')}</MapTitle>
       <MapBox>
         <MapImgBox src={mapImg} />
         <LottieBox>
-          <Lottie className="arrow" options={arrowMotion} margin={0} />
+          <Lottie animationData={arrowAnimation} loop={true} autoplay={true} />
         </LottieBox>
       </MapBox>
       <BoothBox>
@@ -46,16 +44,16 @@ const FlameMapPage = () => {
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">A.</p>
-              <p className="name">{t('map.booth1')}</p>
+              <p className="name">{t('sitemap.booth1')}</p>
             </BoothNameAndIntro>
-            <p className="intro">{t('map.product1')}</p>
+            <p className="intro">{t('sitemap.product1')}</p>
           </BoothIntro>
         </BoothOne>
         <BoothOne>
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">B.</p>
-              <p className="name">{t('map.booth2')}</p>
+              <p className="name">{t('sitemap.booth2')}</p>
             </BoothNameAndIntro>
             <p className="intro">-</p>
           </BoothIntro>
@@ -64,7 +62,7 @@ const FlameMapPage = () => {
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">C.</p>
-              <p className="name">{t('map.booth3')}</p>
+              <p className="name">{t('sitemap.booth3')}</p>
             </BoothNameAndIntro>
             <p className="intro">-</p>
           </BoothIntro>
@@ -73,7 +71,7 @@ const FlameMapPage = () => {
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">D.</p>
-              <p className="name">{t('map.booth4')}</p>
+              <p className="name">{t('sitemap.booth4')}</p>
             </BoothNameAndIntro>
             <p className="intro">-</p>
           </BoothIntro>
@@ -82,9 +80,9 @@ const FlameMapPage = () => {
           <BoothIntro>
             <BoothNameAndIntro>
               <p className="al">E.</p>
-              <p className="name">{t('map.booth5')}</p>
+              <p className="name">{t('sitemap.booth5')}</p>
             </BoothNameAndIntro>
-            <p className="intro">{t('map.product5')}</p>
+            <p className="intro">{t('sitemap.product5')}</p>
           </BoothIntro>
         </BoothOne>
       </BoothBox>

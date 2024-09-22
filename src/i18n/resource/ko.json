@@ -398,7 +398,7 @@
       "info": "랭킹은 1시간 단위로 정각 업데이트되며,\n매일 오전 5시에 리셋됩니다"
     }
   },
-  "map": {
+  "sitemap": {
     "title": "사이트맵",
     "booth1": "입장부스",
     "booth2": "레드불",
@@ -824,7 +824,8 @@
     "LostAndFound": "분실물",
     "buttonDetailText": "전자기기, 카드, 지갑 등은 제보 후<1><2>분실물 센터</2>에 보관</1> 해 주세요.",
     "ReportLostItems": "분실물 찾아주기 ✋🏻",
-    "FindLostItem": "분실물 찾아가기🧸"
+    "FindLostItem": "분실물 찾아가기 🧸",
+    "FilterError": "해당 필터링에 해당되는 게시글이 존재하지 않습니다."
   },
   "DropDown": {
     "AllTime": "전체 기간",

@@ -1,25 +1,16 @@
 import styled, { keyframes } from 'styled-components';
 
-const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
 export const MapWrapper = styled.div`
   padding: 2.4rem 0 6.4rem;
   display: grid;
+  width: 100%;
 `;
 
 export const MapTitle = styled.div`
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline3};
   text-align: center;
+  width: 100%;
 `;
 
 export const MapBox = styled.div`
@@ -28,13 +19,10 @@ export const MapBox = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-
-  .arrow {
-  }
 `;
 
 export const BoothBox = styled.div`
-  width: calc(100% - 4rem);
+  width: calc(100% - 5.6rem);
   margin: 0 2rem 0 3.6rem;
   display: flex;
   justify-content: space-between;
@@ -48,11 +36,10 @@ export const BoothOne = styled.div`
   color: ${(props) => props.theme.colors.white};
   display: flex;
   justify-content: space-between;
-  /* animation: ${fadeInUp} 0.8s ease-out; */
 
   gap: 4.4rem;
   img {
-    width: 77px;
+    width: 7.7rem;
   }
 
   .snol {
@@ -61,8 +48,9 @@ export const BoothOne = styled.div`
 `;
 
 export const MapImgBox = styled.img`
-  width: 33.5rem;
+  display: inline-block;
   max-width: 33.5rem;
+  width: 100%;
   height: 26.3rem;
 `;
 
@@ -82,7 +70,6 @@ export const BoothIntro = styled.div`
   gap: 0.3rem;
 
   .al {
-    /* margin-right: 0.15rem; */
     ${(props) => props.theme.fontStyles.basic.subHeadBold}
     color: ${(props) => props.theme.colors.white};
   }
