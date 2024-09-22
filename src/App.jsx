@@ -1,10 +1,10 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import ScrollToTop from '@/components/layouts/ScrollToTop';
 import { AuthProvider } from '@/context/AuthProvider';
 import { LostProtectedRoute, EventProtectedRoute } from '@/outlet/ProtectedRoute';
-import ScrollToTop from '@/components/layouts/ScrollToTop';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // Pre-load components
 import MapPage from '@/pages/map/MapPage';

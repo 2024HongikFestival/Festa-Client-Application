@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
 import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 import { useCamera } from '@/context/AuthProvider';
 import { getBackgroundStyle } from '@/utils/layouts/backgroundStyles';
 import { adminAxiosInstance } from '@/api/axios';
+import styled from 'styled-components';
 
 export default function Layout() {
   const [oauthPath, setOauthPath] = useState(false);

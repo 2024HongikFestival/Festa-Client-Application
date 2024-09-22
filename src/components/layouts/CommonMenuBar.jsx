@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import RenderMenuItem from '@/components/layouts/RenderMenuItem';
 import { useUpdateBeforeHeight } from '@/components/layouts/useUpdateBeforeHeight';
-import * as S from '@/components/layouts/HeaderStyles';
 import { commonMenuItems, flameMenuItems } from '@/constants/layouts/menuItems';
+import * as S from '@/components/layouts/HeaderStyles';
 import globe from '@/assets/webps/layouts/globe.webp';
 import globeGray from '@/assets/webps/layouts/globeGray.webp';
 
