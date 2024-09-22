@@ -4,9 +4,9 @@ import ContentContainer from '@/components/common/ContentContainer';
 import PageTitle from '@/components/common/PageTitle';
 import * as S from '@/pages/facilities/styles';
 
-const RestroomSection = lazy(() => import('@/pages/facilities/RestroomSection'));
-const MedicalSection = lazy(() => import('@/pages/facilities/MedicalSection'));
-const LostAndFoundSection = lazy(() => import('@/pages/facilities/LostAndFoundSection'));
+const RestroomSection = lazy(() => import('@/components/facilities/RestroomSection'));
+const MedicalSection = lazy(() => import('@/components/facilities/MedicalSection'));
+const LostAndFoundSection = lazy(() => import('@/components/facilities/LostAndFoundSection'));
 
 const FacilitiesPage = () => {
   const [selectedFacility, setSelectedFacility] = useState('restroom');
