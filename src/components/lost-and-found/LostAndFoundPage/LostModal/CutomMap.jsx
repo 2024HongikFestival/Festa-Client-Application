@@ -27,18 +27,6 @@ const LostAndFoundMap = styled(animated.img)`
 const CustomMap = () => {
   const ref = useRef(null); // 이미지 요소에 대한 ref
 
-  useEffect(() => {
-    const handler = (e) => e.preventDefault(); // 브라우저 기본 줌 동작 방지
-    document.addEventListener('gesturestart', handler);
-    document.addEventListener('gesturechange', handler);
-    document.addEventListener('gestureend', handler);
-    return () => {
-      document.removeEventListener('gesturestart', handler);
-      document.removeEventListener('gesturechange', handler);
-      document.removeEventListener('gestureend', handler);
-    };
-  }, []);
-
   return (
     <TransformWrapper initialScale={3.5} initialPositionX={-410} initialPositionY={-550} minScale={1} maxScale={6}>
       <MapWrapper>
