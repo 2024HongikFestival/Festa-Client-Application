@@ -1,27 +1,31 @@
-// 대동제 플리마켓 상세 페이지
-// url: /fleamarket/{market-id}
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-// import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
 import { useParams } from 'react-router-dom';
 import { FleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
-import FleamarketTop from '@/components/booth/FleamarketTop';
-import FleamarketEvent from '@/components/booth/FleamarketEvent';
-import FleamarketBottom from '@/components/booth/FleamarketBottom';
-import PriceTable from '@/components/booth/PriceTable';
-import RecordList from '@/components/booth/RecordList';
+import FleamarketTop from '@/components/booth/fleamarket/FleamarketTop';
+import FleamarketEvent from '@/components/booth/fleamarket/FleamarketEvent';
+import FleamarketBottom from '@/components/booth/fleamarket/FleamarketBottom';
+import PriceTable from '@/components/booth/fleamarket/PriceTable';
+import RecordList from '@/components/booth/fleamarket/RecordList';
 import { useTranslation } from 'react-i18next';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const FleamarketDetail = () => {
   const { t } = useTranslation();
   const { marketId } = useParams();
   const fleamarketDetailList = FleamarketDetailList(t);
   const item = fleamarketDetailList[`${marketId}`];
-  // const item = fleamarketDetailList.${marketId};
-  // const item = fleamarketDetailList[marketId];
   const isSpecialMarket = marketId === 'kawaii' || marketId === 'henna';
+
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      easing: 'ease-out-back',
+    });
+  }, []);
 
   return (
     <Container>
@@ -56,7 +60,7 @@ const FleamarketDetail = () => {
       {item.goods && item.goods.length > 0 && (
         <GoodsWrapper $isSpecialMarket={isSpecialMarket}>
           {item.goods.map((good, index) => (
-            <Goods key={index}>
+            <Goods key={index} data-aos="fade-right" data-aos-delay={index * 100}>
               <ExampleImg src={good.img} alt={good.name} />
               <GoodsInfo>
                 <Name>{good.name}</Name>
@@ -76,7 +80,6 @@ export default FleamarketDetail;
 
 const Container = styled.div`
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
   padding-bottom: 6.4rem;
@@ -104,16 +107,15 @@ const GoodsWrapper = styled.div`
   width: 33.5rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.6rem 1.2rem; // 세로 간격 1.6rem, 가로 간격 1.2rem
-  justify-content: space-between; // 아이템들을 양쪽 끝으로 정렬
+  gap: 1.6rem 1.2rem;
+  justify-content: space-between;
 `;
 
 const Goods = styled.div`
   width: 16rem;
-  /* height: 22.5rem; */
   height: auto;
   border-radius: 1.6rem;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -136,13 +138,11 @@ const ExampleImg = styled.img`
 
 const GoodsInfo = styled.div`
   width: 13.6rem;
-  /* height: 4.9rem; */
   height: auto;
   gap: 0.4rem;
 `;
 
 const Name = styled.div`
-  width: 14rem;
   ${(props) => props.theme.fontStyles.basic.body1Bold};
   margin-bottom: 0.4rem;
 `;

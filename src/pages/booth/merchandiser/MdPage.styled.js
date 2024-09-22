@@ -36,6 +36,7 @@ export const IconWrapper = styled.div`
 export const Icon = styled.img`
   width: 1.28rem;
   height: 1.28rem;
+  margin-right: 0.4rem;
 `;
 
 export const GuideWrapper = styled.div`
@@ -53,11 +54,10 @@ export const Caption = styled.div`
 `;
 
 export const NoteContainer = styled.div`
-  width: 30rem;
+  /* width: 30rem; */
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  padding: 2rem 2.4rem;
 `;
 
 export const NoteTitle = styled.div`
