@@ -52,7 +52,7 @@ export const ItemModal = ({ isOpen, setIsOpen, lostId }) => {
 
   const getItemApi = async () => {
     try {
-      const response = await axios.get(`https://api.2024hongikfestival.com/losts/${lostId}`);
+      const response = await axiosInstance.get(`/losts/${lostId}`);
       setItem(response.data.data);
     } catch (error) {
       console.error(error);

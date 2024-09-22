@@ -13,6 +13,7 @@ import NewPagination from '@/components/lost-and-found/LostAndFoundPage/NewPagin
 import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import i18n from '@/i18n/setting';
+import { axiosInstance } from '@/api/axios';
 i18n.changeLanguage('en');
 
 // [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
@@ -52,7 +53,7 @@ const LostAndFoundPage = () => {
 
   const getItemsApi = useCallback(async () => {
     try {
-      const response = await axios.get('https://api.2024hongikfestival.com/losts', {
+      const response = await axiosInstance.get('/losts', {
         params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
       });
       setItems(response.data.data.losts);
