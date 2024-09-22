@@ -130,6 +130,7 @@ export const ProductInfo = styled.div`
   gap: 0.2rem;
   background-color: ${(props) => props.theme.colors.flameSubBackgroundColor};
   backdrop-filter: blur(0.6rem);
+  -webkit-backdrop-filter: blur(0.6rem);
   padding: 1.55rem;
 `;
 

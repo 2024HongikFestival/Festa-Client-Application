@@ -24,13 +24,11 @@ export const LottieWrapper = styled.div`
   display: flex;
   width: 37.5rem;
   height: 70.7rem;
-  z-index: 0;
 `;
 
 export const Title = styled.div`
   width: 19.2rem;
   margin-top: 9.4rem;
-  z-index: 1;
   display: flex;
   color: ${(props) => props.theme.colors.white};
   font-family: 'SCoreDream', sans-serif;
@@ -48,7 +46,6 @@ export const Desc = styled.div`
   ${(props) => props.theme.fontStyles.basic.subHeadMed};
   color: ${(props) => props.theme.colors.white};
   text-align: center;
-  z-index: 1;
   opacity: ${(props) => (props.$showContent ? '1' : '0')};
   transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   text-shadow: 0px 0px 20px #000aff;
