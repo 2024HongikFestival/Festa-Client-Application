@@ -1,6 +1,32 @@
 {
   "main": {
-    "sorry": "ㅈㅅ ㅋㅋ"
+    "sorry": "ㅈㅅ ㅋㅋ",
+    "title": "홍익대동제",
+    "desc1": "활짝 피어있는 지금.",
+    "desc2": "있는 그대로 만개한",
+    "desc3": "청춘의 이 순간을",
+    "desc4": "2024 화양연화 ; 만개로",
+    "desc5": " 오랫동안 기억될 것입니다.",
+    "todayLineup": "오늘의 라인업",
+    "clicktoLineup": "전체 라인업 보러가기",
+    "centralStage": "중앙 무대 일정",
+    "performance1": "재주꾼 선발 대회",
+    "performance2": "연예인 초청 무대",
+    "performance3": "학생 중앙 무대",
+    "operatingHours": "운영 시간",
+    "operating1": "플리마켓",
+    "operating2": "주점",
+    "operating3": "와디페",
+    "operatinghours1": "11시 ~ 17시 ",
+    "operatinghours2": "12시 ~ 23시",
+    "operatinghours3": "19시 ~ 24시",
+    "HIBS": "HIBS 홍대방송국",
+    "gotoBtn": "실시간 공연 보러가기 !",
+    "days": {
+      "wed": "수",
+      "thu": "목",
+      "fri": "금"
+    }
   },
   "booth": {
     "pub": {
@@ -372,7 +398,7 @@
       "info": "랭킹은 1시간 단위로 정각 업데이트되며,\n매일 오전 5시에 리셋됩니다"
     }
   },
-  "map": {
+  "sitemap": {
     "title": "사이트맵",
     "booth1": "입장부스",
     "booth2": "레드불",
@@ -420,6 +446,72 @@
     "detail7": "원활한 행사 진행을 위하여 현장 스태프의 지시 및 안내에 따라 주시기 바랍니다.",
     "detail8": "현장 스태프의 지시에 반할 경우 퇴장 조치될 수 있습니다.",
     "detail9": "출입 제한 구역 접근 및 출입 시 퇴장 조치될 수 있습니다."
+  },
+
+  "reservation": {
+    "title": "예매",
+    "subtitle": "현장 예매",
+    "period": "예매 기간",
+    "twodays": "각 일",
+    "placetitle": "예매 장소",
+    "placewhere1": "홍익대학교 와우 디제이 페스티벌",
+    "placewhere2": "입장 부스",
+    "price": "가격",
+    "student": "홍익대학교 서울캠퍼스 재학생 및 휴학생",
+    "notstudent": "이외 방문객 ",
+    "notstudentwho": "(홍익대학교 서울캠퍼스 대학원생 및 졸업생 포함)",
+    "noticetitle": "유의사항",
+    "notice1": {
+      "detail1": "미성년자는 와우 디제이 페스티벌 예매가 불가하며 ",
+      "detail2": "신분증 및 여권 확인",
+      "detail3": "이 진행됩니다.",
+      "detail4": "(성인 인증 불가 시 입장이 제한됩니다.)",
+      "detail5": "현장 예매 시 "
+    },
+    "notice2": {
+      "detail1": "환불은 불가",
+      "detail2": "합니다.",
+      "detail3": "결제 완료 후 "
+    },
+    "notice3": {
+      "detail1": "입장 티켓은 도장",
+      "detail2": "으로 진행되며",
+      "detail3": "당일 입장 부스에서",
+      "detail4": "후 받으실 수 있습니다.",
+      "detail5": "와우 디제이 페스티벌 ",
+      "detail6": "톡캣 예매 완료 페이지 제시",
+      "detail7": "(사전 예매 동일) "
+    },
+    "notice4": {
+      "detail1": "재입장은 입장 도장 확인으로 가능",
+      "detail2": "하며 입장 도장이 훼손되어 확인 불가 시 스태프의 판단 하에 재입장이 제한될 수 있습니다."
+    },
+    "notice5": {
+      "detail1": "와우 디제이 페스티벌 예매는 일자별로 진행되며 ",
+      "detail2": " 예매하신 일자 당일에만 입장 가능",
+      "detail3": "합니다."
+    },
+    "notice6": {
+      "detail1": "현장 예매는 ",
+      "detail2": "현금",
+      "detail3": " 또는",
+      "detail4": "계좌이체",
+      "detail5": "결제만 가능합니다."
+    },
+    "notice7": "현장 예매는 예매 당일 입장 티켓만 구매 가능합니다.",
+    "notice8": {
+      "detail1": "현장 예매는 각 일 ",
+      "detail2": "23시 50분에 마감",
+      "detail3": "됩니다."
+    },
+    "advancetitle": "사전 예매",
+    "advanceperiod": "예매 기간",
+    "closeadvance": "사전 예매가 마감되었습니다."
+  },
+  "map": {
+    "title": "로드맵",
+    "complete": "전체 지도",
+    "detail": "상세 지도"
   },
   "fleamarket": {
     "pageTitle": "플리마켓",
@@ -716,8 +808,8 @@
     "hongikZoneDescription2": "휴학생, 졸업유예생, 대학원생 모두 가능합니다.",
     "prepareForEntry": "입장하기 위해 준비해 주세요!",
     "entryTime": "입장 시간은 <blueHighlight>16시 30분</blueHighlight>부터입니다.",
-    "entryProcedure": "입장 전 입구에서 <blueHighlight>‘톡켓’</blueHighlight>의 사전 예매 내역을 확인하고 입장합니다.",
-    "noTicketInfo": "톡켓 티켓 미소지자는 18시 30분 이후부터 현장 잔여석에 한하여 톡켓 어플에서 추가 티켓을 발급 받으실 수 있습니다.",
+    "entryProcedure": "입구에서 <blueHighlight>‘학생증(실물/모바일)과 메인 무대 티켓(톡켓)’</blueHighlight>확인 후 입장합니다. 미리 준비해 주세요!",
+    "noTicketInfo": "18시 50분부터 노쇼 인원 추산이 시작되니,<br></br> 티켓 미소지자는 19시부터 톡켓 어플을 통해<br></br>잔여석 추가예매를 준비해 주세요!",
     "locationTitle": "홍익존 위치",
     "knowBeforeEntry": "입장하기 전 알아두세요!",
     "safetyInstructions": [

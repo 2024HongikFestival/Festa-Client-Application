@@ -1,6 +1,8 @@
 import ContentContainer from '@/components/common/ContentContainer';
 import * as S from '@/pages/facilities/styles';
 import { useTranslation } from 'react-i18next';
+import medMap from '@/assets/webps/facilities/medMap.webp';
+import DraggableMap from '@/components/facilities/DraggableMap';
 
 const MedicalSection = () => {
   const { t } = useTranslation();
@@ -11,7 +13,15 @@ const MedicalSection = () => {
         <S.Title>
           {t('facilities.medical.title1')} <span>{t('facilities.medical.title2')}</span>
         </S.Title>
-        <S.Map />
+
+        <DraggableMap
+          src={medMap}
+          alt="Medical Map"
+          initialScale={2.1}
+          initialPositionX={-108}
+          initialPositionY={-104}
+        />
+
         <S.Description>
           <span>{t('facilities.medical.description1')}</span>
           {t('facilities.medical.description2')}

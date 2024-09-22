@@ -1,31 +1,43 @@
 import { styled, css } from 'styled-components';
+import AOS from 'aos';
+import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 
 // 내용이 적어서 따로 constants로 뺴지 않았습니다.
 const aboutOperatingHours = [
   {
-    title: '플리마켓',
-    time: '18시 ~ 마켓별 상이',
+    title: 'main.operating1',
+    time: 'main.operatinghours1',
+    kind: '플리마켓',
   },
   {
-    title: '주점',
-    time: '10시 ~ 18시',
+    title: 'main.operating2',
+    time: 'main.operatinghours2',
+    kind: '주점',
   },
   {
-    title: '와디페',
-    time: '10시 ~ 18시',
+    title: 'main.operating3',
+    time: 'main.operatinghours3',
+    kind: '와디페',
   },
 ];
 
 export default function OperatingHours() {
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS
+  }, []);
+
   return (
-    <Container>
-      <HoursTitle>운영 시간</HoursTitle>
+    <Container data-aos="fade-up" data-aos-delay="400">
+      <HoursTitle>{t('main.operatingHours')}</HoursTitle>
       <InfoWrapper>
         {aboutOperatingHours.map((item, index) => (
           <InfoComp key={index}>
-            <Title kind={item.title}>{item.title}</Title>
-            <InfoTextContainer kind={item.title}>
-              <Text>{item.time}</Text>
+            <Title kind={item.kind}>{t(item.title)}</Title>
+            <InfoTextContainer kind={item.kind}>
+              <Text>{t(item.time)}</Text>
             </InfoTextContainer>
           </InfoComp>
         ))}
@@ -37,8 +49,8 @@ export default function OperatingHours() {
 const Container = styled.div`
   width: 33.5rem;
   height: 19.2rem;
-  margin-top: 6.4rem;
-  margin-bottom: 14rem;
+  margin-top: 9.6rem;
+  margin-bottom: 9.6rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -47,9 +59,14 @@ const Container = styled.div`
 `;
 
 const HoursTitle = styled.div`
-  ${({ theme }) => theme.fontStyles.main.headline3};
-
-  /* color: white; 현재 배경화면 적용되지 않아 일단 주석처리 하였습니다. */
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 4.2rem;
+  letter-spacing: -0.001rem;
+  text-align: center;
+  font-family: 'SCoreDream', sans-serif;
+  color: ${(props) => props.theme.colors.white};
+  text-shadow: 0px 0px 20px ${(props) => props.theme.colors.hongikSkyBlue};
 `;
 
 const InfoWrapper = styled.div`
@@ -64,11 +81,17 @@ const InfoComp = styled.div`
   height: 13.4rem;
   box-shadow: 0 0 0.8rem 0 rgba(0, 0, 0, 0.12);
   border-radius: 1.8rem;
+  background-color: ${(props) => props.theme.colors.white};
 `;
 
 const Title = styled.div`
-  margin-top: 3.6rem;
+  height: 6.5rem;
+  margin-bottom: 1.9rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   ${({ theme }) => theme.fontStyles.main.headline6}
+  line-height: 120%;
   text-align: center;
   ${(props) =>
     props.kind === '플리마켓' &&
@@ -90,7 +113,6 @@ const Title = styled.div`
 `;
 
 const InfoTextContainer = styled.div`
-  margin-top: 1.8rem;
   height: 4.8rem;
   display: flex;
   justify-content: center;

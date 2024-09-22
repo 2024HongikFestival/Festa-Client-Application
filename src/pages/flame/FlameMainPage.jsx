@@ -98,7 +98,7 @@ const FlameMainPage = () => {
     <>
       <S.Flame>
         <S.VideoContainer>
-          <S.BackGroundVideo autoPlay loop muted>
+          <S.BackGroundVideo autoPlay loop muted playsInline>
             <source src={BgVideo} type="video/mp4" />
           </S.BackGroundVideo>
           <S.TitleContainer>
