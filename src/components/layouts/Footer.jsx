@@ -164,17 +164,32 @@ export default function Footer() {
       <S.InstaContainer $path={location.pathname}>
         <span>{t('layouts.footer.instagram')}</span>
         <S.Instagrams>
-          <Link to="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
+          <Link
+            to="https://www.instagram.com/hiufestival_official/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ cursor: 'default' }}
+          >
             <S.InstaIcon>
               <object data={mangaeInsta} alt="mangaeInsta" loading="lazy" />
             </S.InstaIcon>
           </Link>
-          <Link to="https://www.instagram.com/hiu_wodf_official/" target="_blank" rel="noopener noreferrer">
+          <Link
+            to="https://www.instagram.com/hiu_wodf_official/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ cursor: 'default' }}
+          >
             <S.InstaIcon>
               <object data={wdfInsta} alt="wdfInsta" loading="lazy" />
             </S.InstaIcon>
           </Link>
-          <Link to="https://www.instagram.com/hiu_student_council/" target="_blank" rel="noopener noreferrer">
+          <Link
+            to="https://www.instagram.com/hiu_student_council/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ cursor: 'default' }}
+          >
             <S.InstaIcon>
               <object data={gaehwaInsta} alt="gaehwaInsta" loading="lazy" />
             </S.InstaIcon>
