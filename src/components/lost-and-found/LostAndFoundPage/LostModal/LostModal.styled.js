@@ -55,6 +55,7 @@ export const LostCenterLayout = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  //touch-action: pan-x pan-y;
 `;
 
 export const LostCenterTitle = styled.span`
