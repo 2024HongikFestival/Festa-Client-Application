@@ -164,37 +164,33 @@ export default function Footer() {
       <S.InstaContainer $path={location.pathname}>
         <span>{t('layouts.footer.instagram')}</span>
         <S.Instagrams>
-          <Link
-            to="https://www.instagram.com/hiufestival_official/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ cursor: 'default' }}
-          >
-            <S.InstaIcon>
-              <img src={mangaeInsta} alt="mangaeInsta" loading="lazy" />
-            </S.InstaIcon>
-          </Link>
-          <Link
-            to="https://www.instagram.com/hiu_wodf_official/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ cursor: 'default' }}
-          >
-            <S.InstaIcon>
-              <img src={wdfInsta} alt="wdfInsta" loading="lazy" />
-            </S.InstaIcon>
-          </Link>
-          <Link
-            to="https://www.instagram.com/hiu_student_council/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ cursor: 'default' }}
-          >
-            <S.InstaIcon>
-              <img src={gaehwaInsta} alt="gaehwaInsta" loading="lazy" />
-            </S.InstaIcon>
-          </Link>
-
+          <S.InstaIconWrapper>
+            <object data={mangaeInsta} alt="mangaeInsta" loading="lazy" />
+            <S.LinkOverlay
+              to="https://www.instagram.com/hiufestival_official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ cursor: 'default' }}
+            ></S.LinkOverlay>
+          </S.InstaIconWrapper>
+          <S.InstaIconWrapper>
+            <object data={wdfInsta} alt="wdfInsta" loading="lazy" />
+            <S.LinkOverlay
+              to="https://www.instagram.com/hiu_wodf_official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ cursor: 'default' }}
+            ></S.LinkOverlay>
+          </S.InstaIconWrapper>
+          <S.InstaIconWrapper>
+            <object data={gaehwaInsta} alt="gaehwaInsta" loading="lazy" />
+            <S.LinkOverlay
+              to="https://www.instagram.com/hiu_student_council/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ cursor: 'default' }}
+            ></S.LinkOverlay>
+          </S.InstaIconWrapper>
           {flame ? (
             <S.FlamePolicy
               onClick={() => {
