@@ -18,7 +18,7 @@ const FlameMainPage = () => {
   const [logos, setLogos] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const scrollPositionRef = useRef(0); // 스크롤 위치를 저장할 useRef
+  const scrollPositionRef = useRef(0);
   useEffect(() => {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth() + 1;
@@ -67,7 +67,7 @@ const FlameMainPage = () => {
   }, [selectedDay]);
 
   const handleDateChange = (day) => {
-    scrollPositionRef.current = window.scrollY; // 상태 변경 전 현재 스크롤 위치 저장
+    scrollPositionRef.current = window.scrollY;
     setSelectedDay(day);
   };
 
@@ -163,7 +163,7 @@ const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
         <Slider
           {...carouselSettings}
           ref={sliderRef}
-          beforeChange={() => setIsTransitioning(true)} // 슬라이드 전환 시작
+          beforeChange={() => setIsTransitioning(true)}
           afterChange={(index) => {
             setCurrentSlide(index);
             setIsTransitioning(false);
@@ -196,7 +196,7 @@ const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
               key={index}
               $active={currentSlide === index}
               onClick={() => goToSlide(index)}
-              disabled={isTransitioning} // Disable clicking during transition
+              disabled={isTransitioning}
             />
           ))}
         </S.NavigationBar>

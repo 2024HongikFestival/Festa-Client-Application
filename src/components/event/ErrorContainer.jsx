@@ -1,20 +1,13 @@
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import highlight_long from '@/assets/svgs/event/highlight_long.svg';
 import highlight_short from '@/assets/svgs/event/highlight_short.svg';
-import highlight_en from '@/assets/svgs/event/highlight_en.svg';
 
 // 홍대 내부 아닌 경우 팝업창
 export const LocationErrorBox = () => {
   const { t } = useTranslation();
-  const [lang, setLang] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setLang(!lang);
-  }, [localStorage.getItem('i18nextLng')]);
 
   return (
     <ErrorContainer>
@@ -22,11 +15,8 @@ export const LocationErrorBox = () => {
         {t(`event.error.location.title1`)}
         <br />
         <HighlitedText>
-          {!lang ? (
-            <LongHighlight src={highlight_long} alt="highlight_long" loading="lazy" />
-          ) : (
-            <EnHighlight src={highlight_en} alt="highlight_en" loading="lazy" />
-          )}
+          <LongHighlight src={highlight_long} alt="highlight_long" loading="lazy" />
+
           {t(`event.error.location.title2`)}
         </HighlitedText>
         {t(`event.error.location.title3`)}
@@ -50,12 +40,7 @@ export const LocationErrorBox = () => {
 // 중복 응모 시 팝업창
 export const DuplicationErrorBox = () => {
   const { t } = useTranslation();
-  const [lang, setLang] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setLang(!lang);
-  }, [localStorage.getItem('i18nextLng')]);
 
   return (
     <ErrorContainer>

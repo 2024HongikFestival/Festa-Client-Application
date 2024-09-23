@@ -115,7 +115,6 @@ const Register = ({ imgSrc }) => {
       navigate('/lost-and-found');
       window.location.reload();
     } catch (err) {
-      console.log(err);
       alert('인증 만료 시간이 지났습니다. 재인증 후 시도해주세요');
       navigate('/lost-and-found');
       window.location.reload();

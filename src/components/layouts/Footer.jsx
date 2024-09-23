@@ -171,7 +171,7 @@ export default function Footer() {
             style={{ cursor: 'default' }}
           >
             <S.InstaIcon>
-              <object data={mangaeInsta} alt="mangaeInsta" loading="lazy" />
+              <img src={mangaeInsta} alt="mangaeInsta" loading="lazy" />
             </S.InstaIcon>
           </Link>
           <Link
@@ -181,7 +181,7 @@ export default function Footer() {
             style={{ cursor: 'default' }}
           >
             <S.InstaIcon>
-              <object data={wdfInsta} alt="wdfInsta" loading="lazy" />
+              <img src={wdfInsta} alt="wdfInsta" loading="lazy" />
             </S.InstaIcon>
           </Link>
           <Link
@@ -191,7 +191,7 @@ export default function Footer() {
             style={{ cursor: 'default' }}
           >
             <S.InstaIcon>
-              <object data={gaehwaInsta} alt="gaehwaInsta" loading="lazy" />
+              <img src={gaehwaInsta} alt="gaehwaInsta" loading="lazy" />
             </S.InstaIcon>
           </Link>
 

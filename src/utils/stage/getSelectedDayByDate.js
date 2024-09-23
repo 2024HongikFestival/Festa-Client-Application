@@ -1,4 +1,3 @@
-// 날짜에 따른 Day 선택 함수
 export const getSelectedDayByDate = () => {
   const today = new Date();
   const month = today.getMonth() + 1;

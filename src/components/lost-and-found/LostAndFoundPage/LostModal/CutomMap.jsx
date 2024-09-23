@@ -30,7 +30,7 @@ const LostAndFoundMap = styled.div`
 
 const CustomMap = () => {
   const handleTouchMove = (e) => {
-    e.preventDefault(); // 기본 동작 방지
+    e.preventDefault();
   };
 
   return (

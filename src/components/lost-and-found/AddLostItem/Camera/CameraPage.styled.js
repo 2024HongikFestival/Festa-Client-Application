@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-//import CameraButtonSvg from '@/assets/svgs/lost/CameraButtonSvg.svg';
 import CameraBtn from '@/assets/webps/lost/CameraBtn.webp';
 
 export const CameraPageWrapper = styled.div`
