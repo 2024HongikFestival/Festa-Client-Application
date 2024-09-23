@@ -1,96 +1,82 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import * as S from './FlameMainPage.Styled';
+import { djData } from '@/constants/wdfMain/djData.js';
+import { djLogos } from '@/constants/wdfMain/djLogo.js';
 import FLAME from '@/assets/svgs/FLAME.svg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import DJ1 from '@/assets/webps/wdfLineup/rui.webp';
-import DJ2 from '@/assets/webps/wdfLineup/fine.webp';
-import DJ3 from '@/assets/webps/wdfLineup/rightback.webp';
-import DJ4 from '@/assets/webps/wdfLineup/chanxer.webp';
-import DJ5 from '@/assets/webps/wdfLineup/tezz.webp';
-import DJ6 from '@/assets/webps/wdfLineup/yongsul.webp';
-import DJ7 from '@/assets/webps/wdfLineup/choi_s.webp';
-import DJ8 from '@/assets/webps/wdfLineup/lozic.webp';
-import DJ9 from '@/assets/webps/wdfLineup/vandal_rock.webp';
-import DJ10 from '@/assets/webps/wdfLineup/aster_z.webp';
-import DJ11 from '@/assets/webps/wdfLineup/nap_on_cloud.webp';
-import DJ12 from '@/assets/webps/wdfLineup/sigma_z.webp';
-import DJ13 from '@/assets/webps/wdfLineup/wooxi.webp';
-import DJ14 from '@/assets/webps/wdfLineup/joody.webp';
-import DJ15 from '@/assets/webps/wdfLineup/juncoco.webp';
-
-import DJ1Logo from '@/assets/webps/wdfLineup/ruiLogo.webp';
-import DJ2Logo from '@/assets/webps/wdfLineup/fineLogo.webp';
-import DJ3Logo from '@/assets/webps/wdfLineup/rightbackLogo.webp';
-import DJ4Logo from '@/assets/webps/wdfLineup/chanxerLogo.webp';
-import DJ5Logo from '@/assets/webps/wdfLineup/tezzLogo.webp';
-import DJ6Logo from '@/assets/webps/wdfLineup/yongsulLogo.webp';
-import DJ7Logo from '@/assets/webps/wdfLineup/choiLogo.webp';
-import DJ8Logo from '@/assets/webps/wdfLineup/lozicLogo.webp';
-import DJ9Logo from '@/assets/webps/wdfLineup/vandalrockLogo.webp';
-import DJ10Logo from '@/assets/webps/wdfLineup/asterLogo.webp';
-import DJ11Logo from '@/assets/webps/wdfLineup/naponcloudLogo.webp';
-import DJ12Logo from '@/assets/webps/wdfLineup/sigmaLogo.webp';
-import DJ13Logo from '@/assets/webps/wdfLineup/wooxiLogo.webp';
-import DJ14Logo from '@/assets/webps/wdfLineup/joodyLogo.webp';
-import DJ15Logo from '@/assets/webps/wdfLineup/juncocoLogo.webp';
-
 import speaker from '@/assets/webps/wdfMain/speaker.webp';
 import BgVideo from '@/assets/videos/flameMainBackground.mp4';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-const djData = {
-  day1: [
-    { src: DJ1, alt: 'DJ 1', name: 'RUI' },
-    { src: DJ2, alt: 'DJ 2', name: 'FINÈ' },
-    { src: DJ3, alt: 'DJ 3', name: 'rightback' },
-    { src: DJ4, alt: 'DJ 4', name: 'CHANXER' },
-    { src: DJ5, alt: 'DJ 5', name: 'TEZZ' },
-  ],
-  day2: [
-    { src: DJ6, alt: 'DJ 6', name: 'YongSul' },
-    { src: DJ7, alt: 'DJ 7', name: 'CHOI' },
-    { src: DJ8, alt: 'DJ 8', name: 'LOZIC' },
-    { src: DJ9, alt: 'DJ 9', name: 'VANDAL ROCK' },
-    { src: DJ10, alt: 'DJ 10', name: 'ASTER' },
-  ],
-  day3: [
-    { src: DJ11, alt: 'DJ 11', name: 'NAP ON CLOUD' },
-    { src: DJ12, alt: 'DJ 12', name: 'SIGMA' },
-    { src: DJ13, alt: 'DJ 13', name: 'WOOXI' },
-    { src: DJ14, alt: 'DJ 14', name: 'JOODY' },
-    { src: DJ15, alt: 'DJ 15', name: 'JUNCOCO' },
-  ],
-};
-const djLogos = {
-  day1: [
-    { src: DJ1Logo, width: '11.9rem', height: '4.9rem' },
-    { src: DJ2Logo, width: '11.5rem', height: '5.3rem' },
-    { src: DJ3Logo, width: '11.5rem', height: '9.8rem' },
-    { src: DJ4Logo, width: '14.7rem', height: '3.2rem' },
-    { src: DJ5Logo, width: '14.6rem', height: '5.4rem' },
-  ],
-  day2: [
-    { src: DJ6Logo, width: '12.5rem', height: '3.5rem' },
-    { src: DJ7Logo, width: '14.4rem', height: '4.7rem' },
-    { src: DJ8Logo, width: '12.3rem', height: '2.3rem' },
-    { src: DJ9Logo, width: '23.9rem', height: '1.9rem' },
-    { src: DJ10Logo, width: '11.5rem', height: '4.1rem' },
-  ],
-  day3: [
-    { src: DJ11Logo, width: '21.8rem', height: '2rem' },
-    { src: DJ12Logo, width: '12.8rem', height: '2.5rem' },
-    { src: DJ13Logo, width: '12.8rem', height: '3.7rem' },
-    { src: DJ14Logo, width: '11.2rem', height: '5.3rem' },
-    { src: DJ15Logo, width: '14.3rem', height: '3.6rem' },
-  ],
-};
-
 const FlameMainPage = () => {
   const { t } = useTranslation();
-  const [selectedDay, setSelectedDay] = useState('day1');
+  const [selectedDay, setSelectedDay] = useState('Day1');
+  const [images, setImages] = useState([]);
+  const [logos, setLogos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const scrollPositionRef = useRef(0); // 스크롤 위치를 저장할 useRef
+  useEffect(() => {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentDay = currentDate.getDate();
+
+    if (currentMonth === 9) {
+      if (currentDay === 25) {
+        setSelectedDay('Day1');
+      } else if (currentDay === 26) {
+        setSelectedDay('Day2');
+      } else if (currentDay === 27) {
+        setSelectedDay('Day3');
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const loadImagesAndLogos = async () => {
+      setLoading(true);
+      try {
+        if (djData[selectedDay] && djLogos[selectedDay]) {
+          const imagePromises = djData[selectedDay].map((dj) => dj.loadImage().then((module) => module.default));
+          const logoPromises = djLogos[selectedDay].map(async (logo) => {
+            const module = await logo.loadLogo();
+            return {
+              src: module.default || module,
+              width: logo.width,
+              height: logo.height,
+            };
+          });
+
+          const loadedImages = await Promise.all(imagePromises);
+          const loadedLogos = await Promise.all(logoPromises);
+
+          setImages(loadedImages);
+          setLogos(loadedLogos);
+        }
+      } catch (error) {
+        console.error('Error loading images or logos', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadImagesAndLogos();
+  }, [selectedDay]);
+
+  const handleDateChange = (day) => {
+    scrollPositionRef.current = window.scrollY; // 상태 변경 전 현재 스크롤 위치 저장
+    setSelectedDay(day);
+  };
+
+  // 상태 변경 후 스크롤 복원
+  useLayoutEffect(() => {
+    if (!loading) {
+      window.scrollTo(0, scrollPositionRef.current);
+    }
+  }, [selectedDay]);
 
   return (
     <>
@@ -132,19 +118,19 @@ const FlameMainPage = () => {
         <S.LineUpSection>
           <S.DateSection>
             <S.BtnWrapper>
-              <S.DateButton selected={selectedDay === 'day1'} onClick={() => setSelectedDay('day1')}>
+              <S.DateButton selected={selectedDay === 'Day1'} onClick={() => handleDateChange('Day1')}>
                 DAY 1 <br /> {t('wdfMain.day1')}
               </S.DateButton>
-              <S.DateButton selected={selectedDay === 'day2'} onClick={() => setSelectedDay('day2')}>
+              <S.DateButton selected={selectedDay === 'Day2'} onClick={() => handleDateChange('Day2')}>
                 DAY 2 <br /> {t('wdfMain.day2')}
               </S.DateButton>
-              <S.DateButton selected={selectedDay === 'day3'} onClick={() => setSelectedDay('day3')}>
-                DAY 3<br /> {t('wdfMain.day3')}
+              <S.DateButton selected={selectedDay === 'Day3'} onClick={() => handleDateChange('Day3')}>
+                DAY 3 <br /> {t('wdfMain.day3')}
               </S.DateButton>
             </S.BtnWrapper>
           </S.DateSection>
           <S.DayContent>
-            <DateContent carouselItems={djData[selectedDay]} selectedDay={selectedDay} />
+            <DateContent images={images} logos={logos} carouselItems={djData[selectedDay]} selectedDay={selectedDay} />
           </S.DayContent>
         </S.LineUpSection>
       </S.Flame>
@@ -152,15 +138,15 @@ const FlameMainPage = () => {
   );
 };
 
-const DateContent = ({ carouselItems, selectedDay }) => {
+const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
   const sliderRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (sliderRef.current) {
       setIsTransitioning(true);
-      sliderRef.current.slickGoTo(0, false); // false를 사용하여 애니메이션 없이 이동
+      sliderRef.current.slickGoTo(0, false);
       setCurrentSlide(0);
       setIsTransitioning(false);
     }
@@ -180,17 +166,24 @@ const DateContent = ({ carouselItems, selectedDay }) => {
           beforeChange={() => setIsTransitioning(true)} // 슬라이드 전환 시작
           afterChange={(index) => {
             setCurrentSlide(index);
-            setIsTransitioning(false); // 전환 종료
+            setIsTransitioning(false);
           }}
         >
           {carouselItems.map((item, index) => {
-            const logo = djLogos[selectedDay][index];
+            const logo = logos[index];
 
             return (
               <S.ImageContainer key={index}>
-                <S.CarouselImage src={item.src} alt={item.alt} loading="lazy" />
+                <S.CarouselImage src={images[index]} alt={item.alt} loading="lazy" />
                 <S.GradientOverlay />
-                <S.LogoImage src={logo.src} alt={`${item.name} logo`} style={{ width: logo.width }} loading="lazy" />
+                {logo && (
+                  <S.LogoImage
+                    src={logo.src}
+                    alt={`${item.name} logo`}
+                    loading="lazy"
+                    style={{ width: logo.width, height: logo.height }}
+                  />
+                )}
                 <S.Line />
                 <S.DJName>{item.name}</S.DJName>
               </S.ImageContainer>
@@ -215,15 +208,17 @@ const DateContent = ({ carouselItems, selectedDay }) => {
 export { DateContent };
 
 DateContent.propTypes = {
+  images: PropTypes.array.isRequired,
+  logos: PropTypes.array.isRequired,
+  selectedDay: PropTypes.string.isRequired,
   carouselItems: PropTypes.arrayOf(
     PropTypes.shape({
-      src: PropTypes.string.isRequired,
+      src: PropTypes.string,
       alt: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
     })
   ).isRequired,
-  selectedDay: PropTypes.string.isRequired,
 };
-
 export default FlameMainPage;
 
 const carouselSettings = {
