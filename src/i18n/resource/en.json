@@ -1026,7 +1026,8 @@
     "buttonDetailText": "Please keep expensive item <1>at the <2>Lost and Found Center</2></1> ",
     "ReportLostItems": "Report lost items ✋🏻",
     "FindLostItem": "Find lost item 🧸",
-    "FilterError": "There are no posts matching this filtering."
+    "FilterError": "There are no posts matching this filtering.",
+    "NoPost": "No lost items have been found yet!"
   },
   "DropDown": {
     "AllTime": "All Period",
