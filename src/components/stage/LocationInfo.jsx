@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import styled from 'styled-components';
@@ -19,6 +19,17 @@ const LocationInfo = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  // TransformWrapper에 대한 ref 생성
+  const transformWrapperRef = useRef(null);
+
+  // 플로팅 버튼 클릭 시 호출되는 함수
+  const handleReset = () => {
+    if (transformWrapperRef.current) {
+      // setTransform을 사용하여 초기 스케일과 위치로 되돌리기
+      transformWrapperRef.current.setTransform(-100, -240, 2.5);
+    }
+  };
+
   return (
     <Container>
       <MapContainer>
@@ -30,12 +41,13 @@ const LocationInfo = () => {
             initialPositionY={-240}
             minScale={1}
             maxScale={6}
+            ref={transformWrapperRef} // ref 연결
           >
             <MapWrapper>
               <TransformComponent>
                 <Map src={map_2} alt="Stage Info Map" />
               </TransformComponent>
-              <FloatingButton src={button} alt="button" />
+              <FloatingButton src={button} alt="button" onClick={handleReset} />
             </MapWrapper>
           </TransformWrapper>
         </MapBox>
@@ -121,6 +133,8 @@ const MapWrapper = styled.div`
   width: 33.5rem;
   height: 25rem;
   background-color: #b1daff;
+  /* 기본 핀치줌 억제 */
+  touch-action: none;
 `;
 
 const Map = styled.img`
