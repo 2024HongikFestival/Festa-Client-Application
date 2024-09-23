@@ -10,9 +10,9 @@ import {
   MapWrapper,
 } from './styles.js';
 import React from 'react';
-import mapImg from '/src/assets/webps/map/sitemap.webp';
+import mapImg from '@/assets/webps/map/sitemap.webp';
 import Lottie from 'lottie-react';
-import arrowAnimation from '/src/assets/lotties/siteMap.json';
+import arrowAnimation from '@/assets/lotties/siteMap.json';
 import { useTranslation } from 'react-i18next';
 
 import AOS from 'aos';
