@@ -13,7 +13,6 @@ const RedirectLosts = () => {
       const response = await axiosInstance.post('/losts/token', {
         code: localStorage.getItem('kakao_code'),
       });
-      console.log(response.data.message);
       localStorage.setItem('lost_access_token', response.data.data.accessToken);
       navigate('/lost-and-found/add');
     } catch (error) {
@@ -22,7 +21,7 @@ const RedirectLosts = () => {
       } else if (error.response.status === 401) {
         //console.log('일반 사용자 인증 실패');
       } else {
-        console.log(error);
+        //console.log(error);
       }
       navigate('/lost-and-found');
     }
