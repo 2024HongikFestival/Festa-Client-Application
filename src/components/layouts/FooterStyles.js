@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 export const FooterLayout = styled.footer`
@@ -250,7 +251,8 @@ export const InstaContainer = styled.div`
   }
 `;
 
-export const InstaIcon = styled.div`
+export const InstaIconWrapper = styled.div`
+  position: relative;
   width: 3.2rem;
   height: 3.2rem;
   display: flex;
@@ -262,6 +264,17 @@ export const InstaIcon = styled.div`
     width: 100%;
     height: 100%;
   }
+`;
+
+export const LinkOverlay = styled(Link)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: transparent;
+  cursor: pointer;
 `;
 
 export const Instagrams = styled.div`
