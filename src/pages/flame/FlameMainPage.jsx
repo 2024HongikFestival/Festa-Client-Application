@@ -78,7 +78,7 @@ const FlameMainPage = () => {
   }, [selectedDay]);
 
   const handleDateChange = (day) => {
-    scrollPositionRef.current = window.scrollY; // 상태 변경 전 현재 스크롤 위치 저장
+    scrollPositionRef.current = window.scrollY;
     setSelectedDay(day);
   };
 
@@ -174,7 +174,7 @@ const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
         <Slider
           {...carouselSettings}
           ref={sliderRef}
-          beforeChange={() => setIsTransitioning(true)} // 슬라이드 전환 시작
+          beforeChange={() => setIsTransitioning(true)}
           afterChange={(index) => {
             setCurrentSlide(index);
             setIsTransitioning(false);
@@ -207,7 +207,7 @@ const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
               key={index}
               $active={currentSlide === index}
               onClick={() => goToSlide(index)}
-              disabled={isTransitioning} // Disable clicking during transition
+              disabled={isTransitioning}
             />
           ))}
         </S.NavigationBar>

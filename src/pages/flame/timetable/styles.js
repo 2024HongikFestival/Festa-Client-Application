@@ -309,13 +309,6 @@ export const LiveTime = styled.span`
   z-index: 5;
 `;
 
-// 임시 푸터
-export const TTFooter = styled.div`
-  height: 18rem;
-  text-align: center;
-  color: #fff;
-`;
-
 export const UnderlinedText = styled.span`
   color: ${(props) => props.theme.colors.gray70};
   ${(props) => props.theme.fontStyles.basic.captionMed};

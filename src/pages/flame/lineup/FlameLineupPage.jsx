@@ -66,7 +66,7 @@ const FlameLineupPage = () => {
       } finally {
         setLoading(false);
         setTimeout(() => {
-          AOS.refresh(); // DOM 업데이트 이후 AOS 새로고침
+          AOS.refresh();
         }, 100);
       }
     };
@@ -83,15 +83,10 @@ const FlameLineupPage = () => {
     images.map((event, index) => (
       <S.Card key={`card-${event.src}-${index}`} data-aos={index === 0 ? '' : 'fade-up'}>
         <S.CardImageContainer>
-          <S.DjImage
-            src={images[index]?.src} // 이미지 배열에서 가져온 값 사용
-            alt={event.alt}
-            style={{ width: images[index].width }}
-            loading="lazy"
-          />
+          <S.DjImage src={images[index]?.src} alt={event.alt} style={{ width: images[index].width }} loading="lazy" />
           <S.GradientOverlay />
           <S.LogoImage
-            src={logos[index]?.src} // 로고 배열에서 가져온 값 사용
+            src={logos[index]?.src}
             alt={`${event.name} logo`}
             style={{
               width: logos[index]?.width,

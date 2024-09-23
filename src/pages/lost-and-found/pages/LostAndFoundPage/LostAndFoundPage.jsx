@@ -56,7 +56,7 @@ const LostAndFoundPage = () => {
   const getItemsApi = useCallback(async () => {
     try {
       const response = await axiosInstance.get('/losts', {
-        params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
+        params: { page: page, date: selectedDay },
       });
       setItems(response.data.data.losts);
       setTotalPages(response.data.data.totalPage);

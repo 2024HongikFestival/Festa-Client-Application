@@ -50,7 +50,7 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
         alert('차단 해제가 완료되었습니다.');
         setList((prevList) => prevList.filter((item) => item.userId !== userId));
         setDisplayedList((prevList) => prevList.filter((item) => item.userId !== userId));
-        setExpandedItem(null); // 해당 사용자가 펼쳐져 있는 상태를 초기화
+        setExpandedItem(null);
         setDisplayedLosts((prevPosts) => {
           const updatedPosts = { ...prevPosts };
           delete updatedPosts[userId];
@@ -58,7 +58,6 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
         });
       }
     } catch (error) {
-      console.error('Error unblocking user: ', error);
       alert('차단 해제에 실패했습니다.');
     }
   };

@@ -79,7 +79,7 @@ const FlameTimeTablePage = () => {
       );
     }
 
-    setDayImages(Object.assign({}, ...images)); // 이미지 상태 업데이트
+    setDayImages(Object.assign({}, ...images));
   };
 
   useEffect(() => {
