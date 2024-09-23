@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import CameraButtonSvg from '@/assets/svgs/lost/CameraButtonSvg.svg';
+//import CameraButtonSvg from '@/assets/svgs/lost/CameraButtonSvg.svg';
+import CameraBtn from '@/assets/webps/lost/CameraBtn.webp';
 
 export const CameraPageWrapper = styled.div`
   width: 100%;
@@ -45,7 +46,8 @@ export const CaptureButton = styled.button`
   height: 7.2rem;
   border-radius: 50%;
 
-  background-image: url(${CameraButtonSvg});
+  background-image: url(${CameraBtn});
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 
