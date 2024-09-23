@@ -58,7 +58,6 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
         });
       }
     } catch (error) {
-      console.error('Error unblocking user: ', error);
       alert('차단 해제에 실패했습니다.');
     }
   };

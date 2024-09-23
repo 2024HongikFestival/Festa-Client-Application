@@ -92,8 +92,6 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
         }
       );
 
-      console.log('Response Data:', response.data);
-
       const data = response.data.data;
       const result = Array.isArray(data) ? data : [data];
       const updatedList = list.map((item) => {

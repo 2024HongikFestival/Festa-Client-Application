@@ -13,7 +13,6 @@ const RedirectLosts = () => {
       const response = await axiosInstance.post('/losts/token', {
         code: localStorage.getItem('kakao_code'),
       });
-      console.log(response.data.message);
       localStorage.setItem('lost_access_token', response.data.data.accessToken);
       navigate('/lost-and-found/add');
     } catch (error) {

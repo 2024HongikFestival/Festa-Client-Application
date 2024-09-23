@@ -57,7 +57,7 @@ export default function Ranking() {
         setRankData(rankedData);
       }
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
