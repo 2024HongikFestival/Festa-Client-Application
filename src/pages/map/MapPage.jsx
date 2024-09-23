@@ -90,10 +90,9 @@ const MapPage = () => {
               maxScale={10}
               wheel={{ step: 0.1 }}
               pinch={{ step: 0.1 }}
-              onTransformed={handleTransform}
               onPinchStart={handlePinchStart}
               onPanningStart={handlePinch}
-              style={{ width: '100%', height: '100%', touchAction: 'none' }}
+              style={{ width: '100%', height: '100%' }}
             >
               {({ resetTransform }) => {
                 const handleReset = () => {
