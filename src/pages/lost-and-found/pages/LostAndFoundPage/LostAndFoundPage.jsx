@@ -101,18 +101,22 @@ const LostAndFoundPage = () => {
             <S.LostAndFoundArticleLayout>
               <S.Gap8px>
                 <DropDown setSelectedDay={setSelectedDay} />
-                <S.LostAndFoundArticle>
-                  {items.length > 0 &&
-                    items.map((item, idx) => {
-                      return (
-                        <S.LostAndFoundPost
-                          onClick={handleClickItem(item.lostId)}
-                          key={`item_${idx}`}
-                          $imgSrc={item.imageUrl}
-                        />
-                      );
-                    })}
-                </S.LostAndFoundArticle>
+                {items.length === 0 ? (
+                  <S.NoItemInArticle>아직 발견된 분실물이 없어요!</S.NoItemInArticle>
+                ) : (
+                  <S.LostAndFoundArticle>
+                    {items.length > 0 &&
+                      items.map((item, idx) => {
+                        return (
+                          <S.LostAndFoundPost
+                            onClick={handleClickItem(item.lostId)}
+                            key={`item_${idx}`}
+                            $imgSrc={item.imageUrl}
+                          />
+                        );
+                      })}
+                  </S.LostAndFoundArticle>
+                )}
               </S.Gap8px>
 
               <NewPagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
