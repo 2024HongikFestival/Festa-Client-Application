@@ -123,7 +123,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
         }
       );
 
-      // 블랙리스트 추가가 성공한 경우에만 글 삭제 실행
       await adminAxiosInstance.delete(`/admin/losts/${currentPostId}`, {
         headers: {
           Authorization: `Bearer ${getAdminToken()}`,

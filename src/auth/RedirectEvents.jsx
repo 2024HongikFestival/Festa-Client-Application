@@ -59,7 +59,6 @@ const RedirectEvents = () => {
 
   useEffect(() => {
     if (errorStatus) {
-      // 에러가 발생했을 때 body의 스크롤 방지
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';

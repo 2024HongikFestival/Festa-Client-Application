@@ -28,11 +28,11 @@ export const DayButton = styled.button`
   padding: 0;
   .day {
     display: block;
-    ${(props) => props.theme.fontStyles.basic.body2Bold}; // DAY 1 스타일
+    ${(props) => props.theme.fontStyles.basic.body2Bold};
   }
   .date {
     display: block;
-    ${(props) => props.theme.fontStyles.basic.subHeadBold}; // 9.25 (수) 스타일
+    ${(props) => props.theme.fontStyles.basic.subHeadBold};
   }
 `;
 export const CardContainer = styled.div`

@@ -43,7 +43,7 @@ const LineupPage = () => {
 
     return dayData.map((data, index) => {
       const isBlack = (selectedDay === 'day3' && index === 0) || (selectedDay !== 'day3' && index === 1);
-      const isLastCard = index === dayData.length - 1; // 마지막 카드인지 확인
+      const isLastCard = index === dayData.length - 1;
 
       return (
         <React.Fragment key={data.name}>
