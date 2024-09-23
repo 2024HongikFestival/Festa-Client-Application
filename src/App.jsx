@@ -57,7 +57,6 @@ function App() {
         <Suspense fallback={<></>}>
           <Routes>
             <Route path="*" element={<NotFoundPage />} />
-
             <Route element={<Layout />}>
               {/*  pre-loaded routes */}
               <Route path="/map" element={<MapPage />} />
