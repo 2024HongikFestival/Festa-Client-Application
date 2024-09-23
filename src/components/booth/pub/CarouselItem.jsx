@@ -117,16 +117,25 @@ export default function CarouselItem({ content, click, likeData }) {
           <Count>{totalLikes}</Count>
         </LikeBtn>
       </BtnContainer>
-      <LottieContainer>
-        {/* Lottie 컴포넌트에 animationKey를 적용하여 매번 새로 렌더링되도록 함 */}
-        <Lottie
-          style={{ position: 'absolute' }}
-          key={animationKey}
-          animationData={animationData}
-          loop={false}
-          autoPlay={false}
-        />
-      </LottieContainer>
+
+      {/* Lottie 컴포넌트에 animationKey를 적용하여 매번 새로 렌더링되도록 함 */}
+      {/* <LottieContainer> */}
+      <Lottie
+        style={{
+          position: 'absolute',
+          width: '160%',
+          height: '150%',
+          pointerEvents: 'none',
+          top: '44%', // 여기서 top 값을 조정합니다
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
+        key={animationKey}
+        animationData={animationData}
+        loop={false}
+        autoPlay={false}
+      />
+      {/* </LottieContainer> */}
     </Container>
   );
 }
@@ -218,7 +227,7 @@ const LikeBtn = styled.button`
   width: 10.7rem;
   height: 3.4rem;
   border-radius: 10rem;
-  background-color: #9747ff;
+  background-color: ${({ theme }) => theme.colors.hongikBlue};
   margin-top: ${({ $lng }) => ($lng === 'en' ? '6rem' : '1.8rem')};
   margin-bottom: ${({ $lng }) => ($lng === 'en' ? '5rem' : '2.9rem')};
   display: flex;
@@ -229,12 +238,12 @@ const LikeBtn = styled.button`
   border: none;
   outline: none;
   transition: all 0.1s ease;
-  box-shadow: 0 0.8rem 1.8rem rgba(89, 0, 204, 0.25);
+  box-shadow: 0 0.8rem 1.8rem rgb(0, 97, 211, 0.25);
   z-index: 2;
 
   &:active {
-    box-shadow: 0px 0.3rem 0.4rem rgba(89, 0, 204, 0.25);
-    background-color: #893dec;
+    box-shadow: 0px 0.3rem 0.4rem rgb(0, 97, 211, 0.25);
+    background-color: rgb(0, 97, 211, 1);
     width: 11.7rem;
     height: 3.4rem;
   }
@@ -259,5 +268,5 @@ const LottieContainer = styled.div`
   height: 100%;
   pointer-events: none;
   z-index: 60;
-  /* background-color: aliceblue; */
+  background-color: aliceblue;
 `;
