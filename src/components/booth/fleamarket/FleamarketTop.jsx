@@ -6,10 +6,7 @@ import styled from 'styled-components';
 const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
 
 FleamarketTop.propTypes = {
-  item: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
-    PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  ]).isRequired,
+  item: PropTypes.any,
 };
 
 export default function FleamarketTop({ item }) {
@@ -43,7 +40,7 @@ export default function FleamarketTop({ item }) {
           <ContentContainer>
             <TopImgWrapper $marketId={marketId}>
               {loadedImages.map((img, index) => (
-                <TopImg key={index} src={img} alt="sangsu" idx={index} loading="lazy" />
+                <TopImg key={index} src={img} alt="sangsu" $idx={index} loading="lazy" />
               ))}
             </TopImgWrapper>
           </ContentContainer>
@@ -82,7 +79,7 @@ const TopImgWrapper = styled.div`
 
 const TopImg = styled.img`
   width: 30.9rem;
-  height: ${({ idx }) => (idx === 1 ? '12.7rem' : '10.9rem')};
+  height: ${({ $idx }) => ($idx === 1 ? '12.7rem' : '10.9rem')};
 `;
 
 const TopImg2 = styled.img`

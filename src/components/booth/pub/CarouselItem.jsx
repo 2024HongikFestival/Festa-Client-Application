@@ -24,7 +24,7 @@ CarouselItem.propTypes = {
 
 export default function CarouselItem({ content, click, likeData }) {
   const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0);
-  const [animationKey, setAnimationKey] = useState(0);
+  const [animationKey, setAnimationKey] = useState(0); // 애니메이션 키 추가
   const lng = localStorage.getItem('language');
   const lottieRef = useRef(null);
 
@@ -46,12 +46,15 @@ export default function CarouselItem({ content, click, likeData }) {
 
   const handleLikeClick = async (id) => {
     click();
+
+    // 애니메이션 재생을 위해 animationKey 업데이트
     setAnimationKey((prev) => prev + 1);
 
     try {
       const response = await axiosInstance.post(`/booths/${id}/like`);
       if (response.status === 200) {
         console.log('좋아요수 +1 성공!');
+        setTotalLikes((prevLikes) => prevLikes + 1); // 좋아요 수 증가
       }
     } catch (e) {
       console.log('좋아요수 반영 실패', e);
@@ -81,9 +84,7 @@ export default function CarouselItem({ content, click, likeData }) {
           </React.Fragment>
         ))}
       </Intro>
-      {/* {content.wow ? <Wow src={content.wow} alt="wow" /> : <Wow src={wow} alt="wow" />} */}
       {wowImage && <Wow src={wowImage} alt="wow" width={'11.7rem'} height={'13.1rem'} />}
-      {/* 로드된 이미지 */}
       <PubInfoContainer $lng={lng}>
         <TextWrapper kind="food">
           <Title>Food</Title>
@@ -116,9 +117,16 @@ export default function CarouselItem({ content, click, likeData }) {
           <Count>{totalLikes}</Count>
         </LikeBtn>
       </BtnContainer>
-      {/* <LottieContainer>
-        <Lottie key={animationKey} lottieRef={lottieRef} animationData={animationData} loop={false} autoplay={false} />
-      </LottieContainer> */}
+      <LottieContainer>
+        {/* Lottie 컴포넌트에 animationKey를 적용하여 매번 새로 렌더링되도록 함 */}
+        <Lottie
+          style={{ position: 'absolute' }}
+          key={animationKey}
+          animationData={animationData}
+          loop={false}
+          autoPlay={false}
+        />
+      </LottieContainer>
     </Container>
   );
 }
@@ -198,7 +206,8 @@ const Text = styled.div`
 `;
 
 const BtnContainer = styled.div`
-  width: 11rem;
+  /* width: 11rem; */
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -243,11 +252,12 @@ const Count = styled.div`
 
 const LottieContainer = styled.div`
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
   pointer-events: none;
   z-index: 60;
+  /* background-color: aliceblue; */
 `;

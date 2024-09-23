@@ -32,14 +32,13 @@ const FleamarketDetail = () => {
 
   useEffect(() => {
     if (item.goods && item.goods.length > 0) {
-      // 비동기로 이미지 로드
       Promise.all(
         item.goods.map(async (good) => {
-          const imageModule = await good.img(); // 동적 이미지 import
-          return { ...good, imgSrc: imageModule.default }; // 새로운 키 imgSrc에 이미지를 저장
+          const imageModule = await good.img();
+          return { ...good, imgSrc: imageModule.default };
         })
       ).then((loadedGoods) => {
-        setGoodsImg(loadedGoods); // 모든 이미지가 로드된 후 상태 업데이트
+        setGoodsImg(loadedGoods);
       });
     }
   }, [item.goods]);

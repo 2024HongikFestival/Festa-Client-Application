@@ -64,7 +64,7 @@ export default function Ranking() {
     try {
       const response = await axiosInstance.get(`/booths/ranking`);
       if (response.status === 200) {
-        const sortedData = dummyResponse.data.data.sort((a, b) => b.totalLike - a.totalLike);
+        const sortedData = response.data.data.sort((a, b) => b.totalLike - a.totalLike);
 
         const rankedData = sortedData.map((item, index, array) => {
           if (index === 0) {

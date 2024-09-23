@@ -6,7 +6,6 @@ import ContentContainer from '@/components/common/ContentContainer';
 
 MD.propTypes = {
   img: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   width: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
@@ -25,7 +24,7 @@ const imageTopMap = {
   wowTatto: '2.8rem',
 };
 
-export default function MD({ img, name, price, width, height }) {
+export default function MD({ img, price, width, height }) {
   const [imageSrc, setImageSrc] = useState(null);
   const formattedPrice = price.toLocaleString();
   const imageTop = imageTopMap[img];
