@@ -71,21 +71,21 @@ export const MapImgBox = styled.div`
   width: 33.5rem;
   cursor: grab;
   overflow: hidden;
-  margin: 2.4rem 0;
+  margin-bottom: 2.4rem;
   position: relative;
   z-index: 0;
   background: #b1daff;
-  height: 22rem;
+  height: 25rem;
 
   .complete {
     width: 100%;
-    height: 22rem;
-    animation: ${fadeInUp} 1s ease-out;
+    height: 25rem;
+    animation: ${fadeInUp} 0.5s ease-out;
   }
 
   .detail {
     position: 'relative';
-    animation: ${fadeInUp} 1s ease-out;
+    animation: ${fadeInUp} 0.5s ease-out;
   }
 `;
 
@@ -109,7 +109,7 @@ export const BtnImg = styled.img`
 
 export const DetailMap = styled.img`
   width: 100%;
-  height: 22rem;
+  height: 25rem;
   transition: opacity 0.5s ease;
 `;
 
