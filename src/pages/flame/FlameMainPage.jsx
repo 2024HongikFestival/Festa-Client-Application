@@ -16,7 +16,7 @@ const FlameMainPage = () => {
   const [selectedDay, setSelectedDay] = useState('Day1');
   const [images, setImages] = useState([]);
   const [logos, setLogos] = useState([]);
-  const [loading, setLoading] = useState(true); // 로딩 상태 추가
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const currentDate = new Date();
@@ -34,37 +34,36 @@ const FlameMainPage = () => {
     }
   }, []);
 
-  // 이미지와 로고 불러오기 위한 useEffect
   useEffect(() => {
     const loadImagesAndLogos = async () => {
-      setLoading(true); // 데이터 로딩 시작
+      setLoading(true);
       try {
         if (djData[selectedDay] && djLogos[selectedDay]) {
           const imagePromises = djData[selectedDay].map((dj) => dj.loadImage().then((module) => module.default));
           const logoPromises = djLogos[selectedDay].map(async (logo) => {
             const module = await logo.loadLogo();
             return {
-              src: module.default || module, // 이미지 주소
-              width: logo.width, // 너비
-              height: logo.height, // 높이
+              src: module.default || module,
+              width: logo.width,
+              height: logo.height,
             };
           });
 
           const loadedImages = await Promise.all(imagePromises);
           const loadedLogos = await Promise.all(logoPromises);
 
-          setImages(loadedImages); // 불러온 이미지 설정
-          setLogos(loadedLogos); // 불러온 로고 설정
+          setImages(loadedImages);
+          setLogos(loadedLogos);
         }
       } catch (error) {
         console.error('Error loading images or logos', error);
       } finally {
-        setLoading(false); // 데이터 로딩 끝
+        setLoading(false);
       }
     };
 
-    loadImagesAndLogos(); // 이미지와 로고 불러오기
-  }, [selectedDay]); // selectedDay 변경 시마다 실행
+    loadImagesAndLogos();
+  }, [selectedDay]);
 
   const handleDateChange = (day) => {
     setSelectedDay(day);
@@ -139,10 +138,10 @@ const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (sliderRef.current) {
       setIsTransitioning(true);
-      sliderRef.current.slickGoTo(0, false); // false를 사용하여 애니메이션 없이 이동
+      sliderRef.current.slickGoTo(0, false);
       setCurrentSlide(0);
       setIsTransitioning(false);
     }
@@ -162,23 +161,22 @@ const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
           beforeChange={() => setIsTransitioning(true)} // 슬라이드 전환 시작
           afterChange={(index) => {
             setCurrentSlide(index);
-            setIsTransitioning(false); // 전환 종료
+            setIsTransitioning(false);
           }}
         >
           {carouselItems.map((item, index) => {
-            // logos에서 src, width, height를 가져와서 이미지로 사용
-            const logo = logos[index]; // 해당 index에 맞는 logo 정보 가져오기
+            const logo = logos[index];
 
             return (
               <S.ImageContainer key={index}>
-                <S.CarouselImage src={images[index]} alt={item.alt} loading="lazy" />
+                <S.Card key={`card-${event.src}-${index}`} alt={item.alt} loading="lazy" />
                 <S.GradientOverlay />
-                {logo && ( // logo가 존재하는 경우에만 로고 이미지를 렌더링
+                {logo && (
                   <S.LogoImage
-                    src={logo.src} // logo에서 src 가져오기
+                    src={logo.src}
                     alt={`${item.name} logo`}
                     loading="lazy"
-                    style={{ width: logo.width, height: logo.height }} // 너비와 높이 적용
+                    style={{ width: logo.width, height: logo.height }}
                   />
                 )}
                 <S.Line />
