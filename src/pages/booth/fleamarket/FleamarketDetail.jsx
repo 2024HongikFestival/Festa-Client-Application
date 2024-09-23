@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect, lazy, Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -20,6 +20,7 @@ const FleamarketDetail = () => {
   const fleamarketDetailList = FleamarketDetailList(t);
   const item = fleamarketDetailList[`${marketId}`];
   const isSpecialMarket = marketId === 'kawaii' || marketId === 'henna';
+  const [goodsImg, setGoodsImg] = useState([]);
 
   useEffect(() => {
     AOS.init({
@@ -28,6 +29,19 @@ const FleamarketDetail = () => {
       easing: 'ease-out-back',
     });
   }, []);
+
+  useEffect(() => {
+    if (item.goods && item.goods.length > 0) {
+      Promise.all(
+        item.goods.map(async (good) => {
+          const imageModule = await good.img();
+          return { ...good, imgSrc: imageModule.default };
+        })
+      ).then((loadedGoods) => {
+        setGoodsImg(loadedGoods);
+      });
+    }
+  }, [item.goods]);
 
   return (
     <Container>
@@ -62,9 +76,9 @@ const FleamarketDetail = () => {
         {/* 판매 제품 사진 컴포넌트 */}
         {item.goods && item.goods.length > 0 && (
           <GoodsWrapper $isSpecialMarket={isSpecialMarket}>
-            {item.goods.map((good, index) => (
+            {goodsImg.map((good, index) => (
               <Goods key={index} data-aos="fade-right" data-aos-delay={index * 100}>
-                <ExampleImg src={good.img} alt={good.name} />
+                <ExampleImg src={good.imgSrc} alt={good.name} />
                 <GoodsInfo>
                   <Name>{good.name}</Name>
                   <Price>₩{good.price.toLocaleString()}</Price>

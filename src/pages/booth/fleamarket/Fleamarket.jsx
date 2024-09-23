@@ -5,7 +5,8 @@ import styled from 'styled-components';
 const PageTitle = lazy(() => import('@/components/common/PageTitle'));
 const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
 const FleamarketMap = lazy(() => import('@/components/booth/fleamarket/FleamarketMap'));
-const FleamarketInfo = lazy(() => import('@/components/booth/fleamarket/FleamarketInfo'));
+
+import FleamarketInfo from '@/components/booth/fleamarket/FleamarketInfo';
 
 import { FleamarketList } from '@/constants/booth/fleamarketList';
 
@@ -23,7 +24,7 @@ const Fleamarket = () => {
           {fleamarketList.map((item, index) => (
             <div key={item.key} data-aos="fade-down" data-aos-delay={index * 100}>
               <ContentContainer>
-                <FleamarketInfo item={item} />
+                <FleamarketInfo index={index} item={item} />
               </ContentContainer>
             </div>
           ))}

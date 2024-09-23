@@ -1,64 +1,64 @@
-import aiesecImg1 from '@/assets/webps/booth/fleamarket/aiesec/aiesec1.webp';
-import aiesecImg2 from '@/assets/webps/booth/fleamarket/aiesec/aiesec2.webp';
-import aiesecImg3 from '@/assets/webps/booth/fleamarket/aiesec/aiesec3.webp';
+// import aiesecImg1 from '@/assets/webps/booth/fleamarket/aiesec/aiesec1.webp';
+// import aiesecImg2 from '@/assets/webps/booth/fleamarket/aiesec/aiesec2.webp';
+// import aiesecImg3 from '@/assets/webps/booth/fleamarket/aiesec/aiesec3.webp';
 
-import ccJuice1 from '@/assets/webps/booth/fleamarket/ccJuice/ccJuice1.webp';
-import ccJuice2 from '@/assets/webps/booth/fleamarket/ccJuice/ccJuice2.webp';
+// import ccJuice1 from '@/assets/webps/booth/fleamarket/ccJuice/ccJuice1.webp';
+// import ccJuice2 from '@/assets/webps/booth/fleamarket/ccJuice/ccJuice2.webp';
 
-import olmak1 from '@/assets/webps/booth/fleamarket/olmak/olmak1.webp';
-import olmak2 from '@/assets/webps/booth/fleamarket/olmak/olmak2.webp';
-import olmak3 from '@/assets/webps/booth/fleamarket/olmak/olmak3.webp';
-import olmak4 from '@/assets/webps/booth/fleamarket/olmak/olmak4.webp';
-import olmak5 from '@/assets/webps/booth/fleamarket/olmak/olmak5.webp';
-import olmak6 from '@/assets/webps/booth/fleamarket/olmak/olmak6.webp';
-import olmak7 from '@/assets/webps/booth/fleamarket/olmak/olmak7.webp';
+// import olmak1 from '@/assets/webps/booth/fleamarket/olmak/olmak1.webp';
+// import olmak2 from '@/assets/webps/booth/fleamarket/olmak/olmak2.webp';
+// import olmak3 from '@/assets/webps/booth/fleamarket/olmak/olmak3.webp';
+// import olmak4 from '@/assets/webps/booth/fleamarket/olmak/olmak4.webp';
+// import olmak5 from '@/assets/webps/booth/fleamarket/olmak/olmak5.webp';
+// import olmak6 from '@/assets/webps/booth/fleamarket/olmak/olmak6.webp';
+// import olmak7 from '@/assets/webps/booth/fleamarket/olmak/olmak7.webp';
 
-import kawaii1 from '@/assets/webps/booth/fleamarket/kawaii/kawaii1.webp';
-import kawaii2 from '@/assets/webps/booth/fleamarket/kawaii/kawaii2.webp';
-import kawaii3 from '@/assets/webps/booth/fleamarket/kawaii/kawaii3.webp';
-import kawaii4 from '@/assets/webps/booth/fleamarket/kawaii/kawaii4.webp';
-import kawaii5 from '@/assets/webps/booth/fleamarket/kawaii/kawaii5.webp';
-import kawaii6 from '@/assets/webps/booth/fleamarket/kawaii/kawaii6.webp';
-import kawaii7 from '@/assets/webps/booth/fleamarket/kawaii/kawaii7.webp';
-import kawaii8 from '@/assets/webps/booth/fleamarket/kawaii/kawaii8.webp';
-import kawaii9 from '@/assets/webps/booth/fleamarket/kawaii/kawaii9.webp';
-import kawaii10 from '@/assets/webps/booth/fleamarket/kawaii/kawaii10.webp';
+// import kawaii1 from '@/assets/webps/booth/fleamarket/kawaii/kawaii1.webp';
+// import kawaii2 from '@/assets/webps/booth/fleamarket/kawaii/kawaii2.webp';
+// import kawaii3 from '@/assets/webps/booth/fleamarket/kawaii/kawaii3.webp';
+// import kawaii4 from '@/assets/webps/booth/fleamarket/kawaii/kawaii4.webp';
+// import kawaii5 from '@/assets/webps/booth/fleamarket/kawaii/kawaii5.webp';
+// import kawaii6 from '@/assets/webps/booth/fleamarket/kawaii/kawaii6.webp';
+// import kawaii7 from '@/assets/webps/booth/fleamarket/kawaii/kawaii7.webp';
+// import kawaii8 from '@/assets/webps/booth/fleamarket/kawaii/kawaii8.webp';
+// import kawaii9 from '@/assets/webps/booth/fleamarket/kawaii/kawaii9.webp';
+// import kawaii10 from '@/assets/webps/booth/fleamarket/kawaii/kawaii10.webp';
 
-import henna1 from '@/assets/webps/booth/fleamarket/henna/henna1.webp';
-import henna2 from '@/assets/webps/booth/fleamarket/henna/henna2.webp';
-import henna3 from '@/assets/webps/booth/fleamarket/henna/henna3.webp';
-import henna4 from '@/assets/webps/booth/fleamarket/henna/henna4.webp';
-import henna5 from '@/assets/webps/booth/fleamarket/henna/henna5.webp';
-import henna6 from '@/assets/webps/booth/fleamarket/henna/henna6.webp';
-import henna7 from '@/assets/webps/booth/fleamarket/henna/henna7.webp';
-// 제발 좀 가져오겠니
-import hennaOtherImg from '@/assets/webps/booth/fleamarket/henna/hennaExample.webp';
+// import henna1 from '@/assets/webps/booth/fleamarket/henna/henna1.webp';
+// import henna2 from '@/assets/webps/booth/fleamarket/henna/henna2.webp';
+// import henna3 from '@/assets/webps/booth/fleamarket/henna/henna3.webp';
+// import henna4 from '@/assets/webps/booth/fleamarket/henna/henna4.webp';
+// import henna5 from '@/assets/webps/booth/fleamarket/henna/henna5.webp';
+// import henna6 from '@/assets/webps/booth/fleamarket/henna/henna6.webp';
+// import henna7 from '@/assets/webps/booth/fleamarket/henna/henna7.webp';
+// // 제발 좀 가져오겠니
+// import hennaOtherImg from '@/assets/webps/booth/fleamarket/henna/hennaExample.webp';
 
-import modori1 from '@/assets/webps/booth/fleamarket/modori/modori1.webp';
-import modori2 from '@/assets/webps/booth/fleamarket/modori/modori2.webp';
-import modori3 from '@/assets/webps/booth/fleamarket/modori/modori3.webp';
-import modori4 from '@/assets/webps/booth/fleamarket/modori/modori4.webp';
-import modori5 from '@/assets/webps/booth/fleamarket/modori/modori5.webp';
-import modori6 from '@/assets/webps/booth/fleamarket/modori/modori6.webp';
-import modori7 from '@/assets/webps/booth/fleamarket/modori/modori7.webp';
-import modori8 from '@/assets/webps/booth/fleamarket/modori/modori8.webp';
+// import modori1 from '@/assets/webps/booth/fleamarket/modori/modori1.webp';
+// import modori2 from '@/assets/webps/booth/fleamarket/modori/modori2.webp';
+// import modori3 from '@/assets/webps/booth/fleamarket/modori/modori3.webp';
+// import modori4 from '@/assets/webps/booth/fleamarket/modori/modori4.webp';
+// import modori5 from '@/assets/webps/booth/fleamarket/modori/modori5.webp';
+// import modori6 from '@/assets/webps/booth/fleamarket/modori/modori6.webp';
+// import modori7 from '@/assets/webps/booth/fleamarket/modori/modori7.webp';
+// import modori8 from '@/assets/webps/booth/fleamarket/modori/modori8.webp';
 
-import sajuraplz1 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz1.webp';
-import sajuraplz2 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz2.webp';
-import sajuraplz3 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz3.webp';
-import sajuraplz4 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz4.webp';
-import sajuraplz5 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz5.webp';
-import sajuraplz6 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz6.webp';
-import sajuraplz7 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz7.webp';
+// import sajuraplz1 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz1.webp';
+// import sajuraplz2 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz2.webp';
+// import sajuraplz3 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz3.webp';
+// import sajuraplz4 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz4.webp';
+// import sajuraplz5 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz5.webp';
+// import sajuraplz6 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz6.webp';
+// import sajuraplz7 from '@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz7.webp';
 
-import sangsu1 from '@/assets/webps/booth/fleamarket/sangsu/sangsu1.webp';
-import sangsu2 from '@/assets/webps/booth/fleamarket/sangsu/sangsu2.webp';
+// import sangsu1 from '@/assets/webps/booth/fleamarket/sangsu/sangsu1.webp';
+// import sangsu2 from '@/assets/webps/booth/fleamarket/sangsu/sangsu2.webp';
 
-import hypeBoy1 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy1.webp';
-import hypeBoy2 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy2.webp';
-import hypeBoy3 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy3.webp';
-import hypeBoy4 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy4.webp';
-import hypeBoy5 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy5.webp';
+// import hypeBoy1 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy1.webp';
+// import hypeBoy2 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy2.webp';
+// import hypeBoy3 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy3.webp';
+// import hypeBoy4 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy4.webp';
+// import hypeBoy5 from '@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy5.webp';
 
 export const FleamarketDetailList = (t) => {
   return {
@@ -66,74 +66,170 @@ export const FleamarketDetailList = (t) => {
       name: t('fleamarket.detail.0.name'),
       intro: t('fleamarket.detail.0.intro'),
       goods: [
-        { name: t('fleamarket.detail.0.goods.0.name'), price: 5000, img: ccJuice1 },
-        { name: t('fleamarket.detail.0.goods.1.name'), price: 4000, img: ccJuice2 },
+        {
+          name: t('fleamarket.detail.0.goods.0.name'),
+          price: 5000,
+          img: () => import('@/assets/webps/booth/fleamarket/ccJuice/ccJuice1.webp'),
+        },
+        {
+          name: t('fleamarket.detail.0.goods.1.name'),
+          price: 4000,
+          img: () => import('@/assets/webps/booth/fleamarket/ccJuice/ccJuice2.webp'),
+        },
       ],
     },
     olmak: {
       name: t('fleamarket.detail.2.name'),
       intro: t('fleamarket.detail.2.intro'),
       goods: [
-        { name: 'Garden Ring', price: 20000, img: olmak1 },
-        { name: 'Garden Ring (thin)', price: 11000, img: olmak2 },
-        { name: 'Bold Ugly Ring', price: 20000, img: olmak3 },
-        { name: 'Ceramic Ring', price: 12000, img: olmak4 },
-        { name: 'Rainbow bean necklace', price: 21000, img: olmak5 },
-        { name: 'Rainbow bean necklace_Dote', price: 28000, img: olmak6 },
-        { name: 'Ring necklace', price: 28000, img: olmak7 },
+        { name: 'Garden Ring', price: 20000, img: () => import('@/assets/webps/booth/fleamarket/olmak/olmak1.webp') },
+        {
+          name: 'Garden Ring (thin)',
+          price: 11000,
+          img: () => import('@/assets/webps/booth/fleamarket/olmak/olmak2.webp'),
+        },
+        {
+          name: 'Bold Ugly Ring',
+          price: 20000,
+          img: () => import('@/assets/webps/booth/fleamarket/olmak/olmak3.webp'),
+        },
+        { name: 'Ceramic Ring', price: 12000, img: () => import('@/assets/webps/booth/fleamarket/olmak/olmak4.webp') },
+        {
+          name: 'Rainbow bean necklace',
+          price: 21000,
+          img: () => import('@/assets/webps/booth/fleamarket/olmak/olmak5.webp'),
+        },
+        {
+          name: 'Rainbow bean necklace_Dote',
+          price: 28000,
+          img: () => import('@/assets/webps/booth/fleamarket/olmak/olmak6.webp'),
+        },
+        { name: 'Ring necklace', price: 28000, img: () => import('@/assets/webps/booth/fleamarket/olmak/olmak7.webp') },
       ],
     },
     henna: {
       name: t('fleamarket.detail.5.name'),
       intro: t('fleamarket.detail.5.intro'),
       goods: [
-        { name: 'QQ-22', price: 6000, img: henna1 },
-        { name: 'AA-10', price: 5000, img: henna2 },
-        { name: 'QQ-39', price: 6000, img: henna3 },
-        { name: 'AA-41', price: 3000, img: henna4 },
-        { name: 'PP-53', price: 7000, img: henna5 },
-        { name: 'PP-43', price: 7000, img: henna6 },
+        { name: 'QQ-22', price: 6000, img: () => import('@/assets/webps/booth/fleamarket/henna/henna1.webp') },
+        { name: 'AA-10', price: 5000, img: () => import('@/assets/webps/booth/fleamarket/henna/henna2.webp') },
+        { name: 'QQ-39', price: 6000, img: () => import('@/assets/webps/booth/fleamarket/henna/henna3.webp') },
+        { name: 'AA-41', price: 3000, img: () => import('@/assets/webps/booth/fleamarket/henna/henna4.webp') },
+        { name: 'PP-53', price: 7000, img: () => import('@/assets/webps/booth/fleamarket/henna/henna5.webp') },
+        { name: 'PP-43', price: 7000, img: () => import('@/assets/webps/booth/fleamarket/henna/henna6.webp') },
       ],
-      wideImgGoods: { name: t('fleamarket.detail.5.goods'), price: 8000, img: henna7 },
-      hennaOtherImg: hennaOtherImg,
+      wideImgGoods: {
+        name: t('fleamarket.detail.5.goods'),
+        price: 8000,
+        img: () => import('@/assets/webps/booth/fleamarket/henna/henna7.webp'),
+      },
+      hennaOtherImg: () => import('@/assets/webps/booth/fleamarket/henna/hennaExample.webp'),
     },
     modori: {
       name: t('fleamarket.detail.8.name'),
       intro: t('fleamarket.detail.8.intro'),
       goods: [
-        { name: t('fleamarket.detail.8.goods.0.name'), price: 20000, img: modori1 },
-        { name: t('fleamarket.detail.8.goods.1.name'), price: 15000, img: modori2 },
-        { name: t('fleamarket.detail.8.goods.2.name'), price: 15000, img: modori3 },
-        { name: t('fleamarket.detail.8.goods.3.name'), price: 12000, img: modori4 },
-        { name: t('fleamarket.detail.8.goods.4.name'), price: 15000, img: modori5 },
-        { name: t('fleamarket.detail.8.goods.5.name'), price: 8000, img: modori6 },
-        { name: t('fleamarket.detail.8.goods.6.name'), price: 5000, img: modori7 },
-        { name: t('fleamarket.detail.8.goods.7.name'), price: 10000, img: modori8 },
+        {
+          name: t('fleamarket.detail.8.goods.0.name'),
+          price: 20000,
+          img: () => import('@/assets/webps/booth/fleamarket/modori/modori1.webp'),
+        },
+        {
+          name: t('fleamarket.detail.8.goods.1.name'),
+          price: 15000,
+          img: () => import('@/assets/webps/booth/fleamarket/modori/modori2.webp'),
+        },
+        {
+          name: t('fleamarket.detail.8.goods.2.name'),
+          price: 15000,
+          img: () => import('@/assets/webps/booth/fleamarket/modori/modori3.webp'),
+        },
+        {
+          name: t('fleamarket.detail.8.goods.3.name'),
+          price: 12000,
+          img: () => import('@/assets/webps/booth/fleamarket/modori/modori4.webp'),
+        },
+        {
+          name: t('fleamarket.detail.8.goods.4.name'),
+          price: 15000,
+          img: () => import('@/assets/webps/booth/fleamarket/modori/modori5.webp'),
+        },
+        {
+          name: t('fleamarket.detail.8.goods.5.name'),
+          price: 8000,
+          img: () => import('@/assets/webps/booth/fleamarket/modori/modori6.webp'),
+        },
+        {
+          name: t('fleamarket.detail.8.goods.6.name'),
+          price: 5000,
+          img: () => import('@/assets/webps/booth/fleamarket/modori/modori7.webp'),
+        },
+        {
+          name: t('fleamarket.detail.8.goods.7.name'),
+          price: 10000,
+          img: () => import('@/assets/webps/booth/fleamarket/modori/modori8.webp'),
+        },
       ],
     },
     sajuraplz: {
       name: t('fleamarket.detail.7.name'),
       intro: t('fleamarket.detail.7.intro'),
       goods: [
-        { name: 'anatomy chess object_ceramic', price: 15000, img: sajuraplz1 },
-        { name: 'anatomy chess object_glass', price: 20000, img: sajuraplz2 },
-        { name: 'love and peace blowing cup', price: 45000, img: sajuraplz3 },
-        { name: 'ceramic weaving object', price: 35000, img: sajuraplz4 },
-        { name: t('fleamarket.detail.7.goods.0.name'), price: 38000, img: sajuraplz5 },
-        { name: t('fleamarket.detail.7.goods.1.name'), price: 28000, img: sajuraplz6 },
-        { name: t('fleamarket.detail.7.goods.2.name'), price: 48000, img: sajuraplz7 },
+        {
+          name: 'anatomy chess object_ceramic',
+          price: 15000,
+          img: () => import('@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz1.webp'),
+        },
+        {
+          name: 'anatomy chess object_glass',
+          price: 20000,
+          img: () => import('@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz2.webp'),
+        },
+        {
+          name: 'love and peace blowing cup',
+          price: 45000,
+          img: () => import('@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz3.webp'),
+        },
+        {
+          name: 'ceramic weaving object',
+          price: 35000,
+          img: () => import('@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz4.webp'),
+        },
+        {
+          name: t('fleamarket.detail.7.goods.0.name'),
+          price: 38000,
+          img: () => import('@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz5.webp'),
+        },
+        {
+          name: t('fleamarket.detail.7.goods.1.name'),
+          price: 28000,
+          img: () => import('@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz6.webp'),
+        },
+        {
+          name: t('fleamarket.detail.7.goods.2.name'),
+          price: 48000,
+          img: () => import('@/assets/webps/booth/fleamarket/sajuraplz/sajuraplz7.webp'),
+        },
       ],
     },
     hypeBoy: {
       name: t('fleamarket.detail.6.name'),
       intro: t('fleamarket.detail.6.intro'),
-      topImg: [hypeBoy1],
-      bottomImg: [hypeBoy2, hypeBoy3, hypeBoy4, hypeBoy5],
+      topImg: [() => import('@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy1.webp')],
+      bottomImg: [
+        () => import('@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy2.webp'),
+        () => import('@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy3.webp'),
+        () => import('@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy4.webp'),
+        () => import('@/assets/webps/booth/fleamarket/hypeBoy/hypeBoy5.webp'),
+      ],
     },
     sangsu: {
       name: t('fleamarket.detail.3.name'),
       intro: t('fleamarket.detail.3.intro'),
-      topImg: [sangsu1, sangsu2],
+      topImg: [
+        () => import('@/assets/webps/booth/fleamarket/sangsu/sangsu1.webp'),
+        () => import('@/assets/webps/booth/fleamarket/sangsu/sangsu2.webp'),
+      ],
       record: [
         {
           headTitle: '(A1) 국내 12inch',
@@ -285,25 +381,77 @@ export const FleamarketDetailList = (t) => {
       name: t('fleamarket.detail.4.name'),
       intro: t('fleamarket.detail.4.intro'),
       goods: [
-        { name: t('fleamarket.detail.4.goods.0.name'), price: 4000, img: kawaii1 },
-        { name: t('fleamarket.detail.4.goods.1.name'), price: 12000, img: kawaii2 },
-        { name: t('fleamarket.detail.4.goods.2.name'), price: 8000, img: kawaii3 },
-        { name: t('fleamarket.detail.4.goods.3.name'), price: 10000, img: kawaii4 },
-        { name: t('fleamarket.detail.4.goods.4.name'), price: 3000, img: kawaii5 },
-        { name: t('fleamarket.detail.4.goods.5.name'), price: 5000, img: kawaii6 },
-        { name: t('fleamarket.detail.4.goods.6.name'), price: 3500, img: kawaii7 },
-        { name: t('fleamarket.detail.4.goods.7.name'), price: 3500, img: kawaii8 },
-        { name: t('fleamarket.detail.4.goods.8.name'), price: 10000, img: kawaii9 },
-        { name: t('fleamarket.detail.4.goods.9.name'), price: 10000, img: kawaii10 },
+        {
+          name: t('fleamarket.detail.4.goods.0.name'),
+          price: 4000,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii1.webp'),
+        },
+        {
+          name: t('fleamarket.detail.4.goods.1.name'),
+          price: 12000,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii2.webp'),
+        },
+        {
+          name: t('fleamarket.detail.4.goods.2.name'),
+          price: 8000,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii3.webp'),
+        },
+        {
+          name: t('fleamarket.detail.4.goods.3.name'),
+          price: 10000,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii4.webp'),
+        },
+        {
+          name: t('fleamarket.detail.4.goods.4.name'),
+          price: 3000,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii5.webp'),
+        },
+        {
+          name: t('fleamarket.detail.4.goods.5.name'),
+          price: 5000,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii6.webp'),
+        },
+        {
+          name: t('fleamarket.detail.4.goods.6.name'),
+          price: 3500,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii7.webp'),
+        },
+        {
+          name: t('fleamarket.detail.4.goods.7.name'),
+          price: 3500,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii8.webp'),
+        },
+        {
+          name: t('fleamarket.detail.4.goods.8.name'),
+          price: 10000,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii9.webp'),
+        },
+        {
+          name: t('fleamarket.detail.4.goods.9.name'),
+          price: 10000,
+          img: () => import('@/assets/webps/booth/fleamarket/kawaii/kawaii10.webp'),
+        },
       ],
     },
     aiesec: {
       name: t('fleamarket.detail.1.name'),
       intro: t('fleamarket.detail.1.intro'),
       goods: [
-        { name: t('fleamarket.detail.1.goods.0.name'), price: 13900, img: aiesecImg1 },
-        { name: t('fleamarket.detail.1.goods.1.name'), price: 3700, img: aiesecImg2 },
-        { name: t('fleamarket.detail.1.goods.2.name'), price: 15000, img: aiesecImg3 },
+        {
+          name: t('fleamarket.detail.1.goods.0.name'),
+          price: 13900,
+          img: () => import('@/assets/webps/booth/fleamarket/aiesec/aiesec1.webp'),
+        },
+        {
+          name: t('fleamarket.detail.1.goods.1.name'),
+          price: 3700,
+          img: () => import('@/assets/webps/booth/fleamarket/aiesec/aiesec2.webp'),
+        },
+        {
+          name: t('fleamarket.detail.1.goods.2.name'),
+          price: 15000,
+          img: () => import('@/assets/webps/booth/fleamarket/aiesec/aiesec3.webp'),
+        },
       ],
     },
   };
