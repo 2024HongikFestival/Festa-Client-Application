@@ -17,7 +17,6 @@ export default function Kind123({ data }) {
   const departments = DepartmentList(t);
   const [wowImages, setWowImages] = useState([null, null, null]);
 
-  // Wow 이미지를 동적으로 로드하는 함수
   const loadWowImage = async (boothId, index) => {
     try {
       const image = await import(`@/assets/webps/booth/wow/${boothId}.webp`);
@@ -27,7 +26,6 @@ export default function Kind123({ data }) {
         return updatedImages;
       });
     } catch (error) {
-      console.error('이미지 로드 실패:', error);
       setWowImages((prevImages) => {
         const updatedImages = [...prevImages];
         updatedImages[index] = null; // 실패 시 기본 이미지로 설정할 수 있음

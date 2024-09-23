@@ -44,7 +44,7 @@ export default function PubMap() {
           initialPositionX={-150}
           initialPositionY={-15}
           wheel={{
-            step: 0.1, // 휠 줌 속도 증가
+            step: 0.1,
           }}
           panning={{
             velocityDisabled: false,
@@ -52,11 +52,11 @@ export default function PubMap() {
             velocitySensitivity: 1,
           }}
           doubleClick={{
-            step: 0.4, // 더 빠르게 줌인되도록
+            step: 0.4,
           }}
           pinch={{
-            step: 0.02, // 핀치 줌 속도 증가
-            disabled: false, // 핀치 줌 활성화
+            step: 0.02,
+            disabled: false,
           }}
         >
           <TransformComponent>
@@ -88,7 +88,7 @@ const MapContainer = styled.div`
   overflow: hidden;
   background-color: #b1daff;
   position: relative;
-  touch-action: none; // 핀치 제스처가 제대로 동작하도록 기본 터치 동작 비활성화
+  touch-action: none;
 `;
 
 const MapImg = styled.img`

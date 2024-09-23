@@ -15,7 +15,6 @@ export default function FleamarketTop({ item }) {
 
   useEffect(() => {
     if (Array.isArray(item)) {
-      // 동적으로 이미지를 불러오기
       Promise.all(
         item.map(async (img) => {
           if (typeof img === 'function') {

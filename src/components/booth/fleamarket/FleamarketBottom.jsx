@@ -35,7 +35,6 @@ export default function FleamarketBottom({ item }) {
     });
   }, []);
 
-  // 동적으로 이미지를 로드하는 함수
   useEffect(() => {
     const loadImages = async () => {
       if (marketId === 'henna') {

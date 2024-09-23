@@ -13,23 +13,21 @@ Kind111.propTypes = {
 export default function Kind111({ data }) {
   const { t } = useTranslation();
   const departments = DepartmentList(t);
-  const [wowImages, setWowImages] = useState([null, null, null]); // 각 부스의 이미지를 저장할 상태
+  const [wowImages, setWowImages] = useState([null, null, null]);
 
-  // Wow 이미지를 동적으로 로드하는 함수
   const loadWowImage = async (boothId, index) => {
     try {
       const image = await import(`@/assets/webps/booth/wow/${boothId}.webp`);
       setWowImages((prevImages) => {
         const updatedImages = [...prevImages];
-        updatedImages[index] = image.default; // 해당 인덱스에 이미지 설정
+        updatedImages[index] = image.default;
         return updatedImages;
       });
     } catch (error) {
-      console.error('이미지 로드 실패:', error);
       // 로드 실패 시 기본 이미지로 설정할 수도 있습니다.
       setWowImages((prevImages) => {
         const updatedImages = [...prevImages];
-        updatedImages[index] = null; // 실패시 null 처리
+        updatedImages[index] = null;
         return updatedImages;
       });
     }

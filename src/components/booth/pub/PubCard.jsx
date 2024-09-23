@@ -86,12 +86,9 @@ export default function PubCard() {
 
   useEffect(() => {
     const eventSource = new EventSource(sseUrl);
-    eventSource.onopen = function () {
-      console.log('SSE open success!');
-    };
+    eventSource.onopen = function () {};
 
     eventSource.onerror = function (error) {
-      console.log('SSE error!', error);
       eventSource.close();
     };
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Lottie from 'lottie-react';
 import night from '@/assets/webps/booth/icon/night.webp';
-import wow from '@/assets/webps/booth/wow/departmentWow.webp';
 import day2Night from '@/assets/webps/booth/icon/day2Night.webp';
 import favorite from '@/assets/webps/booth/icon/favorite.webp';
 import animationData from '@/assets/lotties/booth/like.json';
@@ -24,7 +23,7 @@ CarouselItem.propTypes = {
 
 export default function CarouselItem({ content, click, likeData }) {
   const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0);
-  const [animationKey, setAnimationKey] = useState(0); // 애니메이션 키 추가
+  const [animationKey, setAnimationKey] = useState(0);
   const lng = localStorage.getItem('language');
   const lottieRef = useRef(null);
 
@@ -33,7 +32,7 @@ export default function CarouselItem({ content, click, likeData }) {
   useEffect(() => {
     if (content.wow) {
       content.wow().then((module) => {
-        setWowImage(module.default); // 동적으로 로드된 이미지 설정
+        setWowImage(module.default);
       });
     }
   }, [content.wow]);
@@ -53,11 +52,10 @@ export default function CarouselItem({ content, click, likeData }) {
     try {
       const response = await axiosInstance.post(`/booths/${id}/like`);
       if (response.status === 200) {
-        console.log('좋아요수 +1 성공!');
-        setTotalLikes((prevLikes) => prevLikes + 1); // 좋아요 수 증가
+        setTotalLikes((prevLikes) => prevLikes + 1);
       }
     } catch (e) {
-      console.log('좋아요수 반영 실패', e);
+      //console.log('좋아요수 반영 실패', e);
     }
   };
 
@@ -126,7 +124,7 @@ export default function CarouselItem({ content, click, likeData }) {
           width: '160%',
           height: '150%',
           pointerEvents: 'none',
-          top: '44%', // 여기서 top 값을 조정합니다
+          top: '44%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}
@@ -214,7 +212,6 @@ const Text = styled.div`
 `;
 
 const BtnContainer = styled.div`
-  /* width: 11rem; */
   width: 100%;
   display: flex;
   justify-content: center;

@@ -49,7 +49,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
 
       if (newLosts.length === 0) {
         setHasMore(false);
-        console.log('게시글이 더 이상 없습니다. hasMore를 false로 설정합니다.');
       } else {
         setAllLosts((prevLosts) => [...prevLosts, ...newLosts]);
         setDisplayedLosts((prevDisplayedLosts) => [...prevDisplayedLosts, ...newLosts]);
@@ -57,7 +56,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
       }
     } catch (error) {
       setHasMore(false);
-      console.log('404 오류 발생. 더 이상 게시글이 없습니다.');
     } finally {
       setLoading(false);
     }
@@ -79,7 +77,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
       setCurrentPage(nextPage);
       getLosts(nextPage);
     }
-    console.log('hasMore:', hasMore);
   };
 
   const handleMoreClick = (lostId, e) => {
