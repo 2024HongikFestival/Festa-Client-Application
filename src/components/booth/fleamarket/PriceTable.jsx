@@ -1,15 +1,30 @@
-import { lazy, Suspense } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
 
 PriceTable.propTypes = {
-  bottomImg: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])).isRequired,
+  bottomImg: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.func])).isRequired,
 };
 
 export default function PriceTable({ bottomImg }) {
   const { t } = useTranslation();
+  const [loadedImages, setLoadedImages] = useState([]);
+
+  useEffect(() => {
+    // 동적 이미지 로딩
+    Promise.all(
+      bottomImg.map(async (img) => {
+        if (typeof img === 'function') {
+          const module = await img();
+          return module.default;
+        }
+        return img;
+      })
+    ).then((images) => setLoadedImages(images));
+  }, [bottomImg]);
 
   const priceData = [
     { icon: '👕', name: t('fleamarket.detail.6.price.0.object'), price: '₩15,000 ~ ₩35,000' },
@@ -44,7 +59,7 @@ export default function PriceTable({ bottomImg }) {
         <div data-aos="fade-down" data-aos-delay="200">
           <ContentContainer>
             <ImgWrapper>
-              {bottomImg.map((img, index) => (
+              {loadedImages.map((img, index) => (
                 <Img key={index} src={img} alt="example" />
               ))}
             </ImgWrapper>
