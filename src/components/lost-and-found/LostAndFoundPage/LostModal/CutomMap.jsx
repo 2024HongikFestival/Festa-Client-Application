@@ -24,8 +24,6 @@ const LostAndFoundMap = styled(animated.img)`
 `;
 
 const CustomMap = () => {
-  const ref = useRef(null);
-
   return (
     <TransformWrapper initialScale={3.5} initialPositionX={-410} initialPositionY={-550} minScale={1} maxScale={6}>
       <MapWrapper>
