@@ -126,9 +126,10 @@ export default function CarouselItem({ content, click, likeData }) {
           width: '160%',
           height: '150%',
           pointerEvents: 'none',
-          top: '44%', // 여기서 top 값을 조정합니다
+          top: lng === 'en' ? '46%' : '44%', // 여기서 top 값을 조정합니다
           left: '50%',
           transform: 'translate(-50%, -50%)',
+          zIndex: '30',
         }}
         key={animationKey}
         animationData={animationData}
