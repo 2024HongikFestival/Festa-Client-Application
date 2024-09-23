@@ -50,9 +50,11 @@ const LostAndFoundPage = () => {
       setItems(response.data.data.losts);
       setTotalPages(response.data.data.totalPage);
     } catch (error) {
-      console.error(error);
-      alert(t('LostAndFound.FilterError'));
-      window.location.reload();
+      //'' 값이 아닌 경우 -> 즉 전체 필터링이 아닌 경우에만 alert 띄워줌
+      if (selectedDay) {
+        alert(t('LostAndFound.FilterError'));
+        window.location.reload();
+      }
     }
   }, [page, selectedDay, t]);
 
