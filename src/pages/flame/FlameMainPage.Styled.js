@@ -31,7 +31,7 @@ export const Title = styled.span`
   background-color: transparent;
 `;
 
-export const WDFLogo = styled.img`
+export const WDFLogo = styled.object`
   width: 28.5rem;
   height: auto;
   display: flex;
