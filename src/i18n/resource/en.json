@@ -804,7 +804,7 @@
       "toFacilityInfo": "CONVENIENCE",
       "toFacilities": "AMENITIES",
       "toLostAndFound": "LOST AND FOUND",
-      "toEvent": "EVENTS",
+      "toEvent": "EVENT",
       "toFlameSitemap": "SITE MAP",
       "toFlameTimeTable": "TIME TABLE",
       "toFlameReservation": "RESERVATION",
