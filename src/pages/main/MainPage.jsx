@@ -21,6 +21,17 @@ export default function MainPage() {
   const today = useMemo(() => new Date(), []);
   const formattedToday = useMemo(() => `${today.getMonth() + 1}.${today.getDate()}`, [today]);
 
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Main Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
+
   const dayOfWeek = useMemo(() => {
     return formattedToday === '9.25'
       ? 'wed'

@@ -18,7 +18,18 @@ const FlameMainPage = () => {
   const [logos, setLogos] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const scrollPositionRef = useRef(0);
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Flame Main Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
+
+  const scrollPositionRef = useRef(0); // 스크롤 위치를 저장할 useRef
   useEffect(() => {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth() + 1;
