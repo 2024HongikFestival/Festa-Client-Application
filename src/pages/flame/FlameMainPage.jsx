@@ -160,7 +160,7 @@ const DateContent = ({ carouselItems, selectedDay }) => {
   React.useEffect(() => {
     if (sliderRef.current) {
       setIsTransitioning(true);
-      sliderRef.current.slickGoTo(0, false); // false를 사용하여 애니메이션 없이 이동
+      sliderRef.current.slickGoTo(0, false);
       setCurrentSlide(0);
       setIsTransitioning(false);
     }
@@ -177,10 +177,10 @@ const DateContent = ({ carouselItems, selectedDay }) => {
         <Slider
           {...carouselSettings}
           ref={sliderRef}
-          beforeChange={() => setIsTransitioning(true)} // 슬라이드 전환 시작
+          beforeChange={() => setIsTransitioning(true)}
           afterChange={(index) => {
             setCurrentSlide(index);
-            setIsTransitioning(false); // 전환 종료
+            setIsTransitioning(false);
           }}
         >
           {carouselItems.map((item, index) => {
@@ -203,7 +203,7 @@ const DateContent = ({ carouselItems, selectedDay }) => {
               key={index}
               $active={currentSlide === index}
               onClick={() => goToSlide(index)}
-              disabled={isTransitioning} // Disable clicking during transition
+              disabled={isTransitioning}
             />
           ))}
         </S.NavigationBar>

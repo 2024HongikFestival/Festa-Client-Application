@@ -132,7 +132,7 @@ const AdminEvent = () => {
                 onBack={() => {
                   setIsDetailView(false);
                   setSelectedList(null);
-                  navigate('?view=participants'); // 디테일 모드 종료 후 기본 페이지로 이동
+                  navigate('?view=participants');
                 }}
               />
             )
