@@ -2,72 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useInterval } from 'react-use';
 import AOS from 'aos';
+import { wdfTT } from '@/constants/wdfTimeTable/wdfTT';
 import 'aos/dist/aos.css';
 import redButtonTwo from '@/assets/webps/wdTT/RedButton.webp';
 import redfullBtn from '@/assets/webps/wdTT/NewPinkBtn.webp';
 import afterBtn from '@/assets/webps/wdTT/afterBtn.webp';
 import Now from '@/assets/webps/wdTT/now.webp';
-import ruiImg from '@/assets/webps/wdTT/rui.webp';
-import ruiLogo from '@/assets/webps/wdTT/ruiLogo.webp';
-import fineImg from '@/assets/webps/wdTT/fine.webp';
-import fineLogo from '@/assets/webps/wdTT/fineLogo.webp';
-import rbImg from '@/assets/webps/wdTT/rightback.webp';
-import rbLogo from '@/assets/webps/wdTT/rightbackLogo.webp';
-import cxLogo from '@/assets/webps/wdTT/chanxerLogo.webp';
-import cximg from '@/assets/webps/wdTT/chanxer.webp';
-import tezz from '@/assets/webps/wdTT/tezz.webp';
-import tezzLogo from '@/assets/webps/wdTT/tezzLogo.webp';
-import choi from '@/assets/webps/wdTT/choi.webp';
-import choiLogo from '@/assets/webps/wdTT/choiLogo.webp';
-import yongsul from '@/assets/webps/wdTT/yongsul.webp';
-import yongsulLogo from '@/assets/webps/wdTT/yongsulLogo.webp';
-import lozicLogo from '@/assets/webps/wdTT/lozicLogo.webp';
-import lozic from '@/assets/webps/wdTT/lozic.webp';
-import vdLogo from '@/assets/webps/wdTT/vandal_rockLogo.webp';
-import vdImg from '@/assets/webps/wdTT/vandal_rock.webp';
-import aster from '@/assets/webps/wdTT/aster.webp';
-import asterLogo from '@/assets/webps/wdTT/asterLogo.webp';
-import nap from '@/assets/webps/wdTT/nap_on_cloud.webp';
-import napLogo from '@/assets/webps/wdTT/nap_on_cloudLogo.webp';
-import sigma from '@/assets/webps/wdTT/sigma.webp';
-import sigmaLogo from '@/assets/webps/wdTT/sigmaLogo.webp';
-import wooxi from '@/assets/webps/wdTT/wooxi.webp';
-import wooxiLogo from '@/assets/webps/wdTT/wooxiLogo.webp';
-import joody from '@/assets/webps/wdTT/joody.webp';
-import joodyLogo from '@/assets/webps/wdTT/joodyLogo.webp';
-import coco from '@/assets/webps/wdTT/juncoco.webp';
-import cocoLogo from '@/assets/webps/wdTT/juncocoLogo.webp';
 import nohot from '@/assets/webps/wdTT/nohotBtn.webp';
-import {
-  DayBox,
-  DaysBox,
-  DjLogo,
-  LiveConcert,
-  LiveDigImg,
-  LiveDj,
-  LiveNowBox,
-  LiveTime,
-  NoticeBox,
-  NoticeText,
-  NoticeTextContent,
-  NoticeTitle,
-  NumberBox,
-  RedLine,
-  TimeTableBox,
-  TimeTableHot,
-  TimeTableName,
-  TimeTableOneBox,
-  TimeTableText,
-  TimeTableTime,
-  TTBox,
-  TTTitle,
-  TTWrapper,
-  UnderlinedText,
-} from './styles';
+import * as S from './styles';
 
 const FlameTimeTablePage = () => {
   const [selectedDate, setSelectedDate] = useState(1);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [dayImages, setDayImages] = useState({});
   const { t } = useTranslation();
 
   const dates = [
@@ -75,30 +22,58 @@ const FlameTimeTablePage = () => {
     { day: 2, date: `9.26 (${t('timetable.THU')})` },
     { day: 3, date: `9.27 (${t('timetable.FRI')})` },
   ];
-
   const dayOneTime = [
-    { dj: 'RUI', time: '7:00 PM', isHot: false, djimg: ruiImg, djlogo: ruiLogo },
-    { dj: 'FINÈ', time: '8:00 PM', isHot: false, djimg: fineImg, djlogo: fineLogo },
-    { dj: 'RIGHTBACK', time: '9:00 PM', isHot: false, djimg: rbImg, djlogo: rbLogo },
-    { dj: 'CHANXER', time: '10:00 PM', isHot: true, djimg: cximg, djlogo: cxLogo },
-    { dj: 'TEZZ', time: '11:00 PM', isHot: true, djimg: tezz, djlogo: tezzLogo },
+    { dj: 'RUI', time: '7:00 PM', isHot: false, djimg: dayImages.ruiImg, djlogo: dayImages.ruiLogo },
+    { dj: 'FINÈ', time: '8:00 PM', isHot: false, djimg: dayImages.fineImg, djlogo: dayImages.fineLogo },
+    { dj: 'RIGHTBACK', time: '9:00 PM', isHot: false, djimg: dayImages.rbImg, djlogo: dayImages.rbLogo },
+    { dj: 'CHANXER', time: '10:00 PM', isHot: true, djimg: dayImages.cxImg, djlogo: dayImages.cxLogo },
+    { dj: 'TEZZ', time: '11:00 PM', isHot: true, djimg: dayImages.tezzImg, djlogo: dayImages.tezzLogo },
   ];
 
   const dayTwoTime = [
-    { dj: 'YongSul', time: '7:00 PM', isHot: false, djimg: yongsul, djlogo: yongsulLogo },
-    { dj: 'CHOI', time: '8:00 PM', isHot: false, djimg: choi, djlogo: choiLogo },
-    { dj: 'LOZIC', time: '9:00 PM', isHot: false, djimg: lozic, djlogo: lozicLogo },
-    { dj: 'VANDAL ROCK', time: '10:00 PM', isHot: true, djimg: vdImg, djlogo: vdLogo },
-    { dj: 'ASTER', time: '11:00 PM', isHot: true, djimg: aster, djlogo: asterLogo },
+    { dj: 'YongSul', time: '7:00 PM', isHot: false, djimg: dayImages.yongsulImg, djlogo: dayImages.yongsulLogo },
+    { dj: 'CHOI', time: '8:00 PM', isHot: false, djimg: dayImages.choiImg, djlogo: dayImages.choiLogo },
+    { dj: 'LOZIC', time: '9:00 PM', isHot: false, djimg: dayImages.lozicImg, djlogo: dayImages.lozicLogo },
+    { dj: 'VANDAL ROCK', time: '10:00 PM', isHot: true, djimg: dayImages.vandalImg, djlogo: dayImages.vandalLogo },
+    { dj: 'ASTER', time: '11:00 PM', isHot: true, djimg: dayImages.asterImg, djlogo: dayImages.asterLogo },
   ];
 
   const dayThreeTime = [
-    { dj: 'NAP ON CLOUD', time: '7:00 PM', isHot: false, djimg: nap, djlogo: napLogo },
-    { dj: 'SIGMA', time: '8:00 PM', isHot: false, djimg: sigma, djlogo: sigmaLogo },
-    { dj: 'WOOXI', time: '9:00 PM', isHot: true, djimg: wooxi, djlogo: wooxiLogo },
-    { dj: 'JOODY', time: '10:00 PM', isHot: true, djimg: joody, djlogo: joodyLogo },
-    { dj: 'JUNCOCO', time: '11:00 PM', isHot: true, djimg: coco, djlogo: cocoLogo },
+    { dj: 'NAP ON CLOUD', time: '7:00 PM', isHot: false, djimg: dayImages.napImg, djlogo: dayImages.napLogo },
+    { dj: 'SIGMA', time: '8:00 PM', isHot: false, djimg: dayImages.sigmaImg, djlogo: dayImages.sigmaLogo },
+    { dj: 'WOOXI', time: '9:00 PM', isHot: true, djimg: dayImages.wooxiImg, djlogo: dayImages.wooxiLogo },
+    { dj: 'JOODY', time: '10:00 PM', isHot: true, djimg: dayImages.joodyImg, djlogo: dayImages.joodyLogo },
+    { dj: 'JUNCOCO', time: '11:00 PM', isHot: true, djimg: dayImages.cocoImg, djlogo: dayImages.cocoLogo },
   ];
+
+  const loadImages = async (day) => {
+    let images = {};
+    if (day === 1) {
+      images = await Promise.all(
+        Object.entries(wdfTT.dayOneImages).map(async ([key, loadImage]) => ({
+          [key]: (await loadImage()).default,
+        }))
+      );
+    } else if (day === 2) {
+      images = await Promise.all(
+        Object.entries(wdfTT.dayTwoImages).map(async ([key, loadImage]) => ({
+          [key]: (await loadImage()).default,
+        }))
+      );
+    } else if (day === 3) {
+      images = await Promise.all(
+        Object.entries(wdfTT.dayThreeImages).map(async ([key, loadImage]) => ({
+          [key]: (await loadImage()).default,
+        }))
+      );
+    }
+
+    setDayImages(Object.assign({}, ...images)); // 이미지 상태 업데이트
+  };
+
+  useEffect(() => {
+    loadImages(selectedDate);
+  }, [selectedDate]);
 
   const handleClick = (day) => {
     setSelectedDate(day);
@@ -179,12 +154,12 @@ const FlameTimeTablePage = () => {
   const timeTableData = getDayTimeData();
 
   return (
-    <TTWrapper>
-      <TTBox>
-        <TTTitle> {t('timetable.title')}</TTTitle>
-        <DaysBox>
+    <S.TTWrapper>
+      <S.TTBox>
+        <S.TTTitle> {t('timetable.title')}</S.TTTitle>
+        <S.DaysBox>
           {dates.map(({ day, date }) => (
-            <DayBox
+            <S.DayBox
               key={day}
               $day={day}
               className={selectedDate === day ? 'active' : ''}
@@ -192,17 +167,17 @@ const FlameTimeTablePage = () => {
             >
               <p>{`DAY ${day}`}</p>
               <p>{date}</p>
-            </DayBox>
+            </S.DayBox>
           ))}
-        </DaysBox>
+        </S.DaysBox>
 
-        <TimeTableBox>
+        <S.TimeTableBox>
           {timeTableData.map((item, index) => (
-            <TimeTableOneBox
+            <S.TimeTableOneBox
               key={index}
               className={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) && 'active'}
             >
-              <RedLine>
+              <S.RedLine>
                 {isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) ? (
                   <img src={item.isHot ? redfullBtn : nohot} className="fullBtn" alt="redButton" />
                 ) : (
@@ -214,105 +189,105 @@ const FlameTimeTablePage = () => {
                     alt="redButton"
                   />
                 )}
-              </RedLine>
+              </S.RedLine>
               {isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) ? (
-                <LiveConcert
+                <S.LiveConcert
                   className={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) && 'active'}
                   isHot={item.isHot}
                 >
-                  <LiveNowBox>
+                  <S.LiveNowBox>
                     <img src={Now} />
-                  </LiveNowBox>
-                  <LiveDigImg src={item.djimg} loading="lazy" />
-                  <LiveDj>
-                    <DjLogo src={item.djlogo} loading="lazy" />
-                  </LiveDj>
-                  <LiveTime>{item.time}</LiveTime>
-                </LiveConcert>
+                  </S.LiveNowBox>
+                  <S.LiveDigImg src={item.djimg} loading="lazy" />
+                  <S.LiveDj>
+                    <S.DjLogo src={item.djlogo} loading="lazy" />
+                  </S.LiveDj>
+                  <S.LiveTime>{item.time}</S.LiveTime>
+                </S.LiveConcert>
               ) : (
-                <TimeTableText
+                <S.TimeTableText
                   className={isTimeActive(item.time, dates.find((d) => d.day === selectedDate).date) && 'active'}
                 >
                   <div className="hot">
-                    <TimeTableName>{item.dj}</TimeTableName>
+                    <S.TimeTableName>{item.dj}</S.TimeTableName>
                     {item.isHot && (
                       <div className="hotBox">
-                        <TimeTableHot>HOT</TimeTableHot>
+                        <S.TimeTableHot>HOT</S.TimeTableHot>
                       </div>
                     )}
                   </div>
-                  <TimeTableTime>{item.time}</TimeTableTime>
-                </TimeTableText>
+                  <S.TimeTableTime>{item.time}</S.TimeTableTime>
+                </S.TimeTableText>
               )}
-            </TimeTableOneBox>
+            </S.TimeTableOneBox>
           ))}
-        </TimeTableBox>
+        </S.TimeTableBox>
 
-        <NoticeBox>
-          <NoticeTitle>{t('timetable.notice')}</NoticeTitle>
-          <NoticeText>
-            <NoticeTextContent>
-              <NumberBox>1.</NumberBox>
+        <S.NoticeBox>
+          <S.NoticeTitle>{t('timetable.notice')}</S.NoticeTitle>
+          <S.NoticeText>
+            <S.NoticeTextContent>
+              <S.NumberBox>1.</S.NumberBox>
               <p>
                 {t('timetable.detail1.text1')}
-                <UnderlinedText>{t('timetable.detail1.under1')}</UnderlinedText>
+                <S.UnderlinedText>{t('timetable.detail1.under1')}</S.UnderlinedText>
                 {t('timetable.detail1.text2')}
-                <UnderlinedText> {t('timetable.detail1.under2')}</UnderlinedText>
+                <S.UnderlinedText> {t('timetable.detail1.under2')}</S.UnderlinedText>
               </p>
-            </NoticeTextContent>
-            <NoticeTextContent>
-              <NumberBox>2.</NumberBox>
+            </S.NoticeTextContent>
+            <S.NoticeTextContent>
+              <S.NumberBox>2.</S.NumberBox>
               <p>
                 {t('timetable.detail2.text1')}
-                <UnderlinedText>{t('timetable.detail2.under')}</UnderlinedText>
+                <S.UnderlinedText>{t('timetable.detail2.under')}</S.UnderlinedText>
                 {t('timetable.detail2.text2')}
               </p>
-            </NoticeTextContent>
-            <NoticeTextContent>
-              <NumberBox>3.</NumberBox>
+            </S.NoticeTextContent>
+            <S.NoticeTextContent>
+              <S.NumberBox>3.</S.NumberBox>
               <p>
                 {t('timetable.detail3.text1')}
-                <UnderlinedText> {t('timetable.detail3.under')}</UnderlinedText>
+                <S.UnderlinedText> {t('timetable.detail3.under')}</S.UnderlinedText>
                 {t('timetable.detail3.text2')}
               </p>
-            </NoticeTextContent>
-            <NoticeTextContent>
-              <NumberBox>4.</NumberBox>
+            </S.NoticeTextContent>
+            <S.NoticeTextContent>
+              <S.NumberBox>4.</S.NumberBox>
               <p>
                 {t('timetable.detail4.text1')}
-                <UnderlinedText> {t('timetable.detail4.under')}</UnderlinedText>
+                <S.UnderlinedText> {t('timetable.detail4.under')}</S.UnderlinedText>
                 {t('timetable.detail4.text2')}
               </p>
-            </NoticeTextContent>
-            <NoticeTextContent>
-              <NumberBox>5.</NumberBox>
+            </S.NoticeTextContent>
+            <S.NoticeTextContent>
+              <S.NumberBox>5.</S.NumberBox>
               <p>
-                <UnderlinedText>{t('timetable.detail5.under1')}</UnderlinedText>
+                <S.UnderlinedText>{t('timetable.detail5.under1')}</S.UnderlinedText>
                 {t('timetable.detail5.text1')}
-                <UnderlinedText> {t('timetable.detail5.under2')}</UnderlinedText>
+                <S.UnderlinedText> {t('timetable.detail5.under2')}</S.UnderlinedText>
                 {t('timetable.detail5.text2')}
               </p>
-            </NoticeTextContent>
-            <NoticeTextContent>
-              <NumberBox>6.</NumberBox>
+            </S.NoticeTextContent>
+            <S.NoticeTextContent>
+              <S.NumberBox>6.</S.NumberBox>
               <p> {t('timetable.detail6')}</p>
-            </NoticeTextContent>
-            <NoticeTextContent>
-              <NumberBox>7.</NumberBox>
+            </S.NoticeTextContent>
+            <S.NoticeTextContent>
+              <S.NumberBox>7.</S.NumberBox>
               <p> {t('timetable.detail7')}</p>
-            </NoticeTextContent>
-            <NoticeTextContent>
-              <NumberBox>8.</NumberBox>
+            </S.NoticeTextContent>
+            <S.NoticeTextContent>
+              <S.NumberBox>8.</S.NumberBox>
               {t('timetable.detail8')}
-            </NoticeTextContent>
-            <NoticeTextContent>
-              <NumberBox>9.</NumberBox>
+            </S.NoticeTextContent>
+            <S.NoticeTextContent>
+              <S.NumberBox>9.</S.NumberBox>
               {t('timetable.detail9')}
-            </NoticeTextContent>
-          </NoticeText>
-        </NoticeBox>
-      </TTBox>
-    </TTWrapper>
+            </S.NoticeTextContent>
+          </S.NoticeText>
+        </S.NoticeBox>
+      </S.TTBox>
+    </S.TTWrapper>
   );
 };
 
