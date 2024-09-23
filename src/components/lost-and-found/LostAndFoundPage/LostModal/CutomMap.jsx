@@ -11,6 +11,7 @@ const MapWrapper = styled.div`
   position: relative;
   border: 1px solid #ddd;
   background-color: #b1daff;
+  touch-action: pan-x pan-y;
 `;
 
 const LostAndFoundMap = styled(animated.img)`
