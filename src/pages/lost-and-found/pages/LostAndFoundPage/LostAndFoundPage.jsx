@@ -19,6 +19,17 @@ const LostAndFoundPage = () => {
   const [itemLostId, setItemLostId] = useState(-1);
 
   useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Lost and Found Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     document.body.style.overflow = isBottomSheetOpen || isLocationModalOpen || isItemModalOpen ? 'hidden' : 'auto';
   }, [isBottomSheetOpen, isLocationModalOpen, isItemModalOpen]);
 

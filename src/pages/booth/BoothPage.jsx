@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import PageTitle from '@/components/common/PageTitle';
 import { useTranslation } from 'react-i18next';
 import * as S from './BoothPage.styled';
@@ -11,6 +11,17 @@ const Ranking = lazy(() => import('@/components/booth/ranking/Ranking'));
 export default function BoothPage() {
   const { t } = useTranslation();
   const [selectedTab, setSelectedTab] = useState('pub');
+
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Booth Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
 
   return (
     <S.Container>
