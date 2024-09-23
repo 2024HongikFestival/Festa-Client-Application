@@ -8,6 +8,8 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   margin-bottom: 6.4rem;
+  overflow: hidden;
+  touch-action: pan-x pan-y;
 `;
 
 export const ForGapWrapper = styled.div`
