@@ -61,9 +61,11 @@ const LostAndFoundPage = () => {
       setItems(response.data.data.losts);
       setTotalPages(response.data.data.totalPage);
     } catch (error) {
-      console.error(error);
-      alert(t('LostAndFound.FilterError'));
-      window.location.reload();
+      //'' 값이 아닌 경우 -> 즉 전체 필터링이 아닌 경우에만 alert 띄워줌
+      if (selectedDay) {
+        alert(t('LostAndFound.FilterError'));
+        window.location.reload();
+      }
     }
   }, [page, selectedDay, t]);
 
@@ -110,18 +112,22 @@ const LostAndFoundPage = () => {
             <S.LostAndFoundArticleLayout>
               <S.Gap8px>
                 <DropDown setSelectedDay={setSelectedDay} />
-                <S.LostAndFoundArticle>
-                  {items.length > 0 &&
-                    items.map((item, idx) => {
-                      return (
-                        <S.LostAndFoundPost
-                          onClick={handleClickItem(item.lostId)}
-                          key={`item_${idx}`}
-                          $imgSrc={item.imageUrl}
-                        />
-                      );
-                    })}
-                </S.LostAndFoundArticle>
+                {items.length === 0 ? (
+                  <S.NoItemInArticle>{t('LostAndFound.NoPost')}</S.NoItemInArticle>
+                ) : (
+                  <S.LostAndFoundArticle>
+                    {items.length > 0 &&
+                      items.map((item, idx) => {
+                        return (
+                          <S.LostAndFoundPost
+                            onClick={handleClickItem(item.lostId)}
+                            key={`item_${idx}`}
+                            $imgSrc={item.imageUrl}
+                          />
+                        );
+                      })}
+                  </S.LostAndFoundArticle>
+                )}
               </S.Gap8px>
 
               <NewPagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

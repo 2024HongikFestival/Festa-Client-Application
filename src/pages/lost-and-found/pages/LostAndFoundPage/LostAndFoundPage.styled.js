@@ -198,3 +198,15 @@ export const FooterIntroduction = styled.div`
   flex-shrink: 0;
   align-self: stretch;
 `;
+
+export const NoItemInArticle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30rem;
+  height: 31rem;
+
+  color: ${({ theme }) => theme.colors.gray60};
+  ${({ theme }) => theme.fontStyles.basic.subHeadBold};
+`;
