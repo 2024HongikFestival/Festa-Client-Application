@@ -9,7 +9,7 @@ import {
   MapTitle,
   MapWrapper,
 } from './styles.js';
-import React from 'react';
+import React, { useEffect } from 'react';
 import mapImg from '/src/assets/webps/map/sitemap.webp';
 import Lottie from 'lottie-react';
 import arrowAnimation from '/src/assets/lotties/siteMap.json';
@@ -17,6 +17,17 @@ import { useTranslation } from 'react-i18next';
 
 const FlameMapPage = () => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Flame Map Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
 
   const arrowMotion = {
     loop: true,

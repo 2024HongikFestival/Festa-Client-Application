@@ -35,6 +35,17 @@ const LineupPage = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'LineUp Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     setSelectedDay(getSelectedDayByDate());
   }, []);
 

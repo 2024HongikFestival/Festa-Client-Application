@@ -17,6 +17,17 @@ const FlameTimeTablePage = () => {
   const [dayImages, setDayImages] = useState({});
   const { t } = useTranslation();
 
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Flame Timetable Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
+
   const dates = [
     { day: 1, date: `9.25 (${t('timetable.WED')})` },
     { day: 2, date: `9.26 (${t('timetable.THU')})` },
