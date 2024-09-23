@@ -1,5 +1,6 @@
-import { styled, css, keyframes } from 'styled-components';
+import { styled } from 'styled-components';
 import arrow from '@/assets/webps/main/arrowRight.webp';
+import Lottie from 'lottie-react';
 
 export const Container = styled.div`
   display: flex;
@@ -21,7 +22,6 @@ export const Wrapper = styled.div`
 export const LottieWrapper = styled.div`
   position: absolute;
   top: 0;
-  display: flex;
   width: 37.5rem;
   height: 70.7rem;
 `;
