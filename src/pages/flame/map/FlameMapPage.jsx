@@ -15,21 +15,15 @@ import Lottie from 'lottie-react';
 import arrowAnimation from '/src/assets/lotties/siteMap.json';
 import { useTranslation } from 'react-i18next';
 
-import AOS from 'aos';
-import { useEffect } from 'react';
-
 const FlameMapPage = () => {
   const { t } = useTranslation();
-
-  useEffect(() => {
-    AOS.init({});
-  }, []);
 
   const arrowMotion = {
     loop: true,
     autoplay: true,
     animationData: arrowAnimation,
   };
+
   return (
     <MapWrapper>
       <MapTitle>{t('sitemap.title')}</MapTitle>
