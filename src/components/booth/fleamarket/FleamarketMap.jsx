@@ -1,49 +1,107 @@
-import React, { useState, useCallback, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
-import { useTranslation } from 'react-i18next';
+import ContentContainer from '@/components/common/ContentContainer.jsx';
+import small from '@/assets/webps/booth/map/fleamarketMapDefault.webp';
+import big from '@/assets/webps/booth/map/fleamarketMapZoom.webp';
+import btnImg from '@/assets/webps/map/buttonscale.webp';
 import styled from 'styled-components';
-const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
-import fleamarketMapDefault from '@/assets/webps/booth/map/fleamarketMapDefault.webp';
-import fleamarketMapZoom from '@/assets/webps/booth/map/fleamarketMapZoom.webp';
-import scaleBtn from '@/assets/webps/booth/icon/scaleBtn.webp';
+import { useTranslation } from 'react-i18next';
 
-export default function FleamarketMap() {
+import { MapBox, MainMapWrapper, MapImgBox, BtnImg, DetailMap } from '@/styles/map/mapStyles';
+
+const FleamarketMap = () => {
+  const [isBigVisible, setIsBigVisible] = useState(false);
+  const [scale, setScale] = useState(1);
   const { t } = useTranslation();
-  const [isZoomed, setIsZoomed] = useState(false);
 
-  const handleStateChange = useCallback((state) => {
-    if (state.scale !== 1 || state.positionX !== 0 || state.positionY !== 0) {
-      setIsZoomed(true);
-    } else {
-      setIsZoomed(false);
-    }
-  }, []);
+  const handlePinchStart = () => {
+    setIsBigVisible(true);
+  };
+
+  const handlePinch = (e) => {
+    setScale(e.instance.transformState.scale);
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = isBigVisible ? 'hidden' : 'auto';
+  }, [isBigVisible]);
 
   return (
-    <Suspense fallback={<></>}>
-      <ContentContainer>
-        <MapTitle>{t('fleamarket.location')}</MapTitle>
-        <MapContainer>
+    <MainMapWrapper>
+      <MapBox>
+        <ContentContainer>
+          <MapTitle>{t('fleamarket.location')}</MapTitle>
           <TransformWrapper
-            initialScale={3}
+            initialScale={2}
+            sensitivity={8}
+            pinchSensitivity={4}
             minScale={1}
+            panAnimationSpeed={5}
+            pinchAnimationSpeed={5}
+            enableZoomThrottling={true}
             maxScale={10}
-            limitToBounds={false}
-            centerContent={true}
-            onTransformed={handleStateChange}
+            wheel={{ step: 0.25 }}
+            pinch={{ step: 0.2 }}
+            onPinchStart={handlePinchStart}
+            onPanningStart={handlePinch}
             initialPositionX={0}
-            initialPositionY={-390}
+            initialPositionY={-200}
           >
-            <TransformComponent>
-              <MapImg src={isZoomed ? fleamarketMapZoom : fleamarketMapDefault} alt="Map" $isZoomed={isZoomed} />
-            </TransformComponent>
+            {({ resetTransform }) => {
+              const handleReset = () => {
+                resetTransform();
+                setIsBigVisible(false);
+                setScale(1);
+              };
+
+              return (
+                <div style={{ position: 'relative', width: '100%', height: '100%', margin: '0' }}>
+                  <MapImgBox className="detail">
+                    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                      <TransformComponent
+                        pinchSensitivity={6}
+                        style={{ position: 'relative', width: '100%', height: '100%' }}
+                      >
+                        <DetailMap
+                          className="one"
+                          src={small}
+                          alt="Small Map"
+                          style={{
+                            opacity: scale < 1.3 ? 1 : 0,
+                            transition: 'opacity 0.3s ease',
+                            objectFit: 'contain', // 비율 유지하며 지도 화면에 맞춤
+                            width: '100%',
+                            height: '25rem', // 컨테이너에 맞게 이미지 설정
+                          }}
+                        />
+                        <DetailMap
+                          className="two"
+                          src={big}
+                          alt="Big Map"
+                          style={{
+                            opacity: scale >= 1.3 ? 1 : 0,
+                            transition: 'opacity 0.3s ease',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '25rem',
+                            objectFit: 'contain',
+                          }}
+                        />
+                      </TransformComponent>
+                      <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" />
+                    </div>
+                  </MapImgBox>
+                </div>
+              );
+            }}
           </TransformWrapper>
-          <ScaleButton src={scaleBtn} alt="Scale" />
-        </MapContainer>
-      </ContentContainer>
-    </Suspense>
+        </ContentContainer>
+      </MapBox>
+    </MainMapWrapper>
   );
-}
+};
 
 const MapTitle = styled.div`
   width: 33.5rem;
@@ -57,28 +115,4 @@ const MapTitle = styled.div`
   ${(props) => props.theme.fontStyles.main.headline6};
 `;
 
-const MapContainer = styled.div`
-  width: 33.5rem;
-  height: 25rem;
-  margin-bottom: 2.6rem;
-  overflow: hidden;
-  background-color: #b1daff;
-  position: relative;
-`;
-
-const MapImg = styled.img`
-  width: auto;
-  height: 25rem;
-  max-width: none;
-  transition: opacity 0.3s ease;
-  opacity: ${(props) => (props.$isZoomed ? 1 : 0.99)};
-`;
-
-const ScaleButton = styled.img`
-  position: absolute;
-  bottom: 1.2rem;
-  right: 1.3rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  z-index: 10;
-`;
+export default FleamarketMap;

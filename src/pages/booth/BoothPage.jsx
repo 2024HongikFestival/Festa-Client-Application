@@ -2,8 +2,7 @@ import { lazy, Suspense, useState } from 'react';
 import PageTitle from '@/components/common/PageTitle';
 import { useTranslation } from 'react-i18next';
 import * as S from './BoothPage.styled';
-import Lottie from 'lottie-react';
-import animationData from '@/assets/lotties/booth/like.json';
+
 const PubMap = lazy(() => import('@/components/booth/pub/PubMap'));
 const PubCard = lazy(() => import('@/components/booth/pub/PubCard'));
 const PubOperatingHour = lazy(() => import('@/components/booth/pub/PubOperatingHour'));
@@ -44,7 +43,6 @@ export default function BoothPage() {
             </div>
           </Suspense>
         )}
-        <Lottie style={{ width: '200%', height: '200%' }} animationData={animationData} loop={true} autoplay={true} />
       </S.ForGapWrapper>
     </S.Container>
   );
