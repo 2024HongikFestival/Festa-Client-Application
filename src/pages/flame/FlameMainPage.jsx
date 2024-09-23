@@ -169,7 +169,7 @@ const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
 
             return (
               <S.ImageContainer key={index}>
-                <S.Card key={`card-${event.src}-${index}`} alt={item.alt} loading="lazy" />
+                <S.CarouselImage src={images[index]} alt={item.alt} loading="lazy" />
                 <S.GradientOverlay />
                 {logo && (
                   <S.LogoImage
