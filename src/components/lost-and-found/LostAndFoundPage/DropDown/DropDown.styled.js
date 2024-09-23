@@ -71,7 +71,7 @@ export const DropDownItem = styled.div`
   &:last-child {
     border-radius: 0px 0px 12px 12px;
     height: 3.3rem;
-    padding-bottom: 0.4rem;
+    padding-bottom: 0.8rem;
   }
 `;
 

@@ -1,30 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  DayBox,
-  DaysBox,
-  DjLogo,
-  LiveConcert,
-  LiveDigImg,
-  LiveDj,
-  LiveNowBox,
-  LiveTime,
-  NoticeBox,
-  NoticeText,
-  NoticeTextContent,
-  NoticeTitle,
-  NumberBox,
-  RedLine,
-  TimeTableBox,
-  TimeTableHot,
-  TimeTableName,
-  TimeTableOneBox,
-  TimeTableText,
-  TimeTableTime,
-  TTBox,
-  TTTitle,
-  TTWrapper,
-  UnderlinedText,
-} from './styles';
+import { useTranslation } from 'react-i18next';
 import { useInterval } from 'react-use';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -63,7 +38,32 @@ import joodyLogo from '@/assets/webps/wdTT/joodyLogo.webp';
 import coco from '@/assets/webps/wdTT/juncoco.webp';
 import cocoLogo from '@/assets/webps/wdTT/juncocoLogo.webp';
 import nohot from '@/assets/webps/wdTT/nohotBtn.webp';
-import { useTranslation } from 'react-i18next';
+import {
+  DayBox,
+  DaysBox,
+  DjLogo,
+  LiveConcert,
+  LiveDigImg,
+  LiveDj,
+  LiveNowBox,
+  LiveTime,
+  NoticeBox,
+  NoticeText,
+  NoticeTextContent,
+  NoticeTitle,
+  NumberBox,
+  RedLine,
+  TimeTableBox,
+  TimeTableHot,
+  TimeTableName,
+  TimeTableOneBox,
+  TimeTableText,
+  TimeTableTime,
+  TTBox,
+  TTTitle,
+  TTWrapper,
+  UnderlinedText,
+} from './styles';
 
 const FlameTimeTablePage = () => {
   const [selectedDate, setSelectedDate] = useState(1);
@@ -78,7 +78,7 @@ const FlameTimeTablePage = () => {
 
   const dayOneTime = [
     { dj: 'RUI', time: '7:00 PM', isHot: false, djimg: ruiImg, djlogo: ruiLogo },
-    { dj: 'FINE', time: '8:00 PM', isHot: false, djimg: fineImg, djlogo: fineLogo },
+    { dj: 'FINÈ', time: '8:00 PM', isHot: false, djimg: fineImg, djlogo: fineLogo },
     { dj: 'RIGHTBACK', time: '9:00 PM', isHot: false, djimg: rbImg, djlogo: rbLogo },
     { dj: 'CHANXER', time: '10:00 PM', isHot: true, djimg: cximg, djlogo: cxLogo },
     { dj: 'TEZZ', time: '11:00 PM', isHot: true, djimg: tezz, djlogo: tezzLogo },
@@ -223,9 +223,9 @@ const FlameTimeTablePage = () => {
                   <LiveNowBox>
                     <img src={Now} />
                   </LiveNowBox>
-                  <LiveDigImg src={item.djimg} />
+                  <LiveDigImg src={item.djimg} loading="lazy" />
                   <LiveDj>
-                    <DjLogo src={item.djlogo} />
+                    <DjLogo src={item.djlogo} loading="lazy" />
                   </LiveDj>
                   <LiveTime>{item.time}</LiveTime>
                 </LiveConcert>

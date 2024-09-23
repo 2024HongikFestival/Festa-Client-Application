@@ -1,7 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import error from '@/assets/webps/booth/icon/error.webp';
-import { useTranslation } from 'react-i18next';
 
 export default function PubOperatingHour() {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ export default function PubOperatingHour() {
           </DayNight>
           <GuideWrapper>
             <IconWrapper>
-              <Icon src={error} alt="error" />
+              <Icon src={error} alt="error" loading="lazy" />
             </IconWrapper>
             <Caption>{t('booth.pub.operatingInfo')}</Caption>
           </GuideWrapper>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import styled from 'styled-components';
@@ -19,6 +19,14 @@ const LocationInfo = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  const transformWrapperRef = useRef(null);
+
+  const handleReset = () => {
+    if (transformWrapperRef.current) {
+      transformWrapperRef.current.setTransform(-100, -240, 2.5);
+    }
+  };
+
   return (
     <Container>
       <MapContainer>
@@ -30,12 +38,13 @@ const LocationInfo = () => {
             initialPositionY={-240}
             minScale={1}
             maxScale={6}
+            ref={transformWrapperRef}
           >
             <MapWrapper>
               <TransformComponent>
                 <Map src={map_2} alt="Stage Info Map" />
               </TransformComponent>
-              <FloatingButton src={button} alt="button" />
+              <FloatingButton src={button} alt="button" onClick={handleReset} />
             </MapWrapper>
           </TransformWrapper>
         </MapBox>
@@ -121,6 +130,8 @@ const MapWrapper = styled.div`
   width: 33.5rem;
   height: 25rem;
   background-color: #b1daff;
+  /* 기본 핀치줌 억제 */
+  touch-action: none;
 `;
 
 const Map = styled.img`

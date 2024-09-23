@@ -83,9 +83,6 @@ const LineupPage = () => {
         </S.DayButton>
       </S.DayContainer>
       <S.CardContainer>{renderCards()}</S.CardContainer>
-      {/* <S.MCContainer data-aos="fade-up">
-        <S.MCName>{t(`LineupPage.mc.${selectedDay.toLowerCase()}`)}</S.MCName>
-      </S.MCContainer> */}
     </S.PageContainer>
   );
 };

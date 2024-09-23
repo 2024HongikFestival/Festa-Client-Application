@@ -1,10 +1,14 @@
-import PageTitle from '@/components/common/PageTitle';
-import styled from 'styled-components';
-import ContentContainer from '@/components/common/ContentContainer';
-import FleamarketInfo from '@/components/booth/fleamarket/FleamarketInfo';
-import { FleamarketList } from '@/constants/booth/fleamarketList';
+import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import FleamarketMap from '@/components/booth/fleamarket/FleamarketMap';
+import styled from 'styled-components';
+
+const PageTitle = lazy(() => import('@/components/common/PageTitle'));
+const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
+const FleamarketMap = lazy(() => import('@/components/booth/fleamarket/FleamarketMap'));
+
+import FleamarketInfo from '@/components/booth/fleamarket/FleamarketInfo';
+
+import { FleamarketList } from '@/constants/booth/fleamarketList';
 
 const Fleamarket = () => {
   const { t } = useTranslation();
@@ -12,18 +16,20 @@ const Fleamarket = () => {
   return (
     <Container>
       <PageTitle title={t('fleamarket.pageTitle')} />
-      {/* 플리마켓 지도 컴포넌트 */}
-      <FleamarketMap />
-      {/* 플리마켓 리스트 컴포넌트 */}
-      <FleamarketListWrapper>
-        {fleamarketList.map((item, index) => (
-          <div key={item.key} data-aos="fade-down" data-aos-delay={index * 100}>
-            <ContentContainer>
-              <FleamarketInfo item={item} />
-            </ContentContainer>
-          </div>
-        ))}
-      </FleamarketListWrapper>
+      <Suspense fallback={<></>}>
+        {/* 플리마켓 지도 컴포넌트 */}
+        <FleamarketMap />
+        {/* 플리마켓 리스트 컴포넌트 */}
+        <FleamarketListWrapper>
+          {fleamarketList.map((item, index) => (
+            <div key={item.key} data-aos="fade-down" data-aos-delay={index * 100}>
+              <ContentContainer>
+                <FleamarketInfo index={index} item={item} />
+              </ContentContainer>
+            </div>
+          ))}
+        </FleamarketListWrapper>
+      </Suspense>
     </Container>
   );
 };

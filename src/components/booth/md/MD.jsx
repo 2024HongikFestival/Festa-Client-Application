@@ -1,37 +1,14 @@
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next'; // i18next import
+import { useTranslation } from 'react-i18next';
 import ContentContainer from '@/components/common/ContentContainer';
-import baseballUniform from '@/assets/webps/booth/md/baseballUniform.webp';
-import bandana from '@/assets/webps/booth/md/bandana.webp';
-import rugbyUniform from '@/assets/webps/booth/md/rugbyUniform.webp';
-import stringBag from '@/assets/webps/booth/md/stringBag.webp';
-import wdfSlogan from '@/assets/webps/booth/md/wdfSlogan.webp';
-import wowBadge from '@/assets/webps/booth/md/wowBadge.webp';
-import wowWdfSeal from '@/assets/webps/booth/md/wowWdfSeal.webp';
-import wowWdfStickerPack from '@/assets/webps/booth/md/wowWdfStickerPack.webp';
-import wowWdfTshirt from '@/assets/webps/booth/md/wowWdfTshirt.webp';
-import wowTatto from '@/assets/webps/booth/md/wowTatto.webp';
 
 MD.propTypes = {
   img: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   width: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
-};
-
-const imageMap = {
-  baseballUniform,
-  bandana,
-  rugbyUniform,
-  stringBag,
-  wdfSlogan,
-  wowBadge,
-  wowWdfSeal,
-  wowWdfStickerPack,
-  wowWdfTshirt,
-  wowTatto,
 };
 
 const imageTopMap = {
@@ -47,18 +24,40 @@ const imageTopMap = {
   wowTatto: '2.8rem',
 };
 
-export default function MD({ img, name, price, width, height }) {
+export default function MD({ img, price, width, height }) {
+  const [imageSrc, setImageSrc] = useState(null);
   const formattedPrice = price.toLocaleString();
-  const imageSrc = imageMap[img];
   const imageTop = imageTopMap[img];
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const loadImage = async () => {
+      try {
+        const module = await import(`@/assets/webps/booth/md/${img}.webp`);
+        setImageSrc(module.default);
+      } catch (error) {
+        console.error(`Error loading image: ${img}`, error);
+      }
+    };
+
+    loadImage();
+  }, [img]);
 
   return (
     <ContentContainer>
       <MdWrapper>
         <Radial>
           <Frame width={width} height={height} $top={imageTop}>
-            <Img src={imageSrc} alt={t(`mdPage.products.${img}`)} $top={imageTop} width={width} height={height} />
+            {imageSrc && (
+              <Img
+                src={imageSrc}
+                alt={t(`mdPage.products.${img}`)}
+                $top={imageTop}
+                width={width}
+                height={height}
+                loading="lazy"
+              />
+            )}
           </Frame>
         </Radial>
         <Desc>
@@ -93,7 +92,7 @@ const Frame = styled.div`
   position: absolute;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  top: ${(props) => props.top};
+  top: ${(props) => props.$top};
   display: flex;
   justify-content: center;
   align-items: center;

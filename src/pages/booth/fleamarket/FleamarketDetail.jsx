@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import ContentContainer from '@/components/common/ContentContainer';
+import React, { useEffect, lazy, Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
-import FleamarketTop from '@/components/booth/fleamarket/FleamarketTop';
-import FleamarketEvent from '@/components/booth/fleamarket/FleamarketEvent';
-import FleamarketBottom from '@/components/booth/fleamarket/FleamarketBottom';
-import PriceTable from '@/components/booth/fleamarket/PriceTable';
-import RecordList from '@/components/booth/fleamarket/RecordList';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
+const FleamarketTop = lazy(() => import('@/components/booth/fleamarket/FleamarketTop'));
+const FleamarketEvent = lazy(() => import('@/components/booth/fleamarket/FleamarketEvent'));
+const FleamarketBottom = lazy(() => import('@/components/booth/fleamarket/FleamarketBottom'));
+const PriceTable = lazy(() => import('@/components/booth/fleamarket/PriceTable'));
+const RecordList = lazy(() => import('@/components/booth/fleamarket/RecordList'));
+
+import { FleamarketDetailList } from '@/constants/booth/fleamarketDetailList';
 
 const FleamarketDetail = () => {
   const { t } = useTranslation();
@@ -18,6 +20,7 @@ const FleamarketDetail = () => {
   const fleamarketDetailList = FleamarketDetailList(t);
   const item = fleamarketDetailList[`${marketId}`];
   const isSpecialMarket = marketId === 'kawaii' || marketId === 'henna';
+  const [goodsImg, setGoodsImg] = useState([]);
 
   useEffect(() => {
     AOS.init({
@@ -27,51 +30,66 @@ const FleamarketDetail = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (item.goods && item.goods.length > 0) {
+      Promise.all(
+        item.goods.map(async (good) => {
+          const imageModule = await good.img();
+          return { ...good, imgSrc: imageModule.default };
+        })
+      ).then((loadedGoods) => {
+        setGoodsImg(loadedGoods);
+      });
+    }
+  }, [item.goods]);
+
   return (
     <Container>
-      <PageTitle>
-        {item.name.split('\n').map((line, index) => (
-          <React.Fragment key={index}>
-            {line}
-            <br />
-          </React.Fragment>
-        ))}
-      </PageTitle>
-      {/* 마켓 소개 컴포넌트 */}
-      <ContentContainer>
-        <TextContainer>
-          {item.intro.split('\n').map((line, index) => (
+      <Suspense fallback={<></>}>
+        <PageTitle>
+          {item.name.split('\n').map((line, index) => (
             <React.Fragment key={index}>
               {line}
               <br />
             </React.Fragment>
           ))}
-        </TextContainer>
-      </ContentContainer>
-      {/* 탑 이미지 컴포넌트 (상수좌판, 홍입 하입보이 마켓)) */}
-      {(marketId === 'sangsu' || marketId === 'hypeBoy') && <FleamarketTop item={item.topImg} />}
-      {/* 상수좌판 레코드 목록 컴포넌트 */}
-      {marketId === 'sangsu' && <RecordList record={item.record} />}
-      {/* 가격표 컴포넌트 */}
-      {marketId === 'hypeBoy' && <PriceTable bottomImg={item.bottomImg} />}
-      {/* 이벤트 소개 컴포넌트 */}
-      <FleamarketEvent />
-      {/* 판매 제품 사진 컴포넌트 */}
-      {item.goods && item.goods.length > 0 && (
-        <GoodsWrapper $isSpecialMarket={isSpecialMarket}>
-          {item.goods.map((good, index) => (
-            <Goods key={index} data-aos="fade-right" data-aos-delay={index * 100}>
-              <ExampleImg src={good.img} alt={good.name} />
-              <GoodsInfo>
-                <Name>{good.name}</Name>
-                <Price>₩{good.price.toLocaleString()}</Price>
-              </GoodsInfo>
-            </Goods>
-          ))}
-        </GoodsWrapper>
-      )}
-      {/* 밑부분 추가 텍스트 컴포넌트 */}
-      {(marketId === 'henna' || marketId === 'kawaii') && <FleamarketBottom item={item} />}
+        </PageTitle>
+        {/* 마켓 소개 컴포넌트 */}
+        <ContentContainer>
+          <TextContainer>
+            {item.intro.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </TextContainer>
+        </ContentContainer>
+        {/* 탑 이미지 컴포넌트 (상수좌판, 홍입 하입보이 마켓)) */}
+        {(marketId === 'sangsu' || marketId === 'hypeBoy') && <FleamarketTop item={item.topImg} />}
+        {/* 상수좌판 레코드 목록 컴포넌트 */}
+        {marketId === 'sangsu' && <RecordList record={item.record} />}
+        {/* 가격표 컴포넌트 */}
+        {marketId === 'hypeBoy' && <PriceTable bottomImg={item.bottomImg} />}
+        {/* 이벤트 소개 컴포넌트 */}
+        <FleamarketEvent />
+        {/* 판매 제품 사진 컴포넌트 */}
+        {item.goods && item.goods.length > 0 && (
+          <GoodsWrapper $isSpecialMarket={isSpecialMarket}>
+            {goodsImg.map((good, index) => (
+              <Goods key={index} data-aos="fade-right" data-aos-delay={index * 100}>
+                <ExampleImg src={good.imgSrc} alt={good.name} />
+                <GoodsInfo>
+                  <Name>{good.name}</Name>
+                  <Price>₩{good.price.toLocaleString()}</Price>
+                </GoodsInfo>
+              </Goods>
+            ))}
+          </GoodsWrapper>
+        )}
+        {/* 밑부분 추가 텍스트 컴포넌트 */}
+        {(marketId === 'henna' || marketId === 'kawaii') && <FleamarketBottom item={item} />}
+      </Suspense>
     </Container>
   );
 };

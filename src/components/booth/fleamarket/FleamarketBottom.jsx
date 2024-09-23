@@ -1,11 +1,12 @@
-import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
-import ContentContainer from '@/components/common/ContentContainer';
-import PropTypes from 'prop-types';
+import React, { useEffect, lazy, Suspense, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+const ContentContainer = lazy(() => import('@/components/common/ContentContainer'));
 
 FleamarketBottom.propTypes = {
   item: PropTypes.shape({
@@ -22,6 +23,9 @@ FleamarketBottom.propTypes = {
 
 export default function FleamarketBottom({ item }) {
   const { t } = useTranslation();
+  const { marketId } = useParams();
+  const [wideImgGoodsSrc, setWideImgGoodsSrc] = useState('');
+  const [hennaOtherImgSrc, setHennaOtherImgSrc] = useState('');
 
   useEffect(() => {
     AOS.init({
@@ -31,45 +35,67 @@ export default function FleamarketBottom({ item }) {
     });
   }, []);
 
-  const { marketId } = useParams();
+  // 동적으로 이미지를 로드하는 함수
+  useEffect(() => {
+    const loadImages = async () => {
+      if (marketId === 'henna') {
+        try {
+          const wideImgModule = await item.wideImgGoods.img();
+          setWideImgGoodsSrc(wideImgModule.default);
+
+          const hennaOtherImgModule = await item.hennaOtherImg();
+          setHennaOtherImgSrc(hennaOtherImgModule.default);
+        } catch (error) {
+          console.error('Error loading images:', error);
+        }
+      }
+    };
+
+    loadImages();
+  }, [item, marketId]);
+
   if (marketId === 'kawaii') {
     return (
-      <Container $marketId={marketId}>
-        <div data-aos="fade-right" data-aos-delay={'500'}>
-          <ContentContainer>
-            <TextWrapper>
-              {t('fleamarket.detail.4.bottom')
-                .split('\n')
-                .map((line, index) => (
-                  <React.Fragment key={index}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-            </TextWrapper>
-          </ContentContainer>
-        </div>
-      </Container>
+      <Suspense fallback={<></>}>
+        <Container $marketId={marketId}>
+          <div data-aos="fade-right" data-aos-delay={'500'}>
+            <ContentContainer>
+              <TextWrapper>
+                {t('fleamarket.detail.4.bottom')
+                  .split('\n')
+                  .map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+              </TextWrapper>
+            </ContentContainer>
+          </div>
+        </Container>
+      </Suspense>
     );
   } else if (marketId === 'henna') {
     return (
-      <Container $marketId={marketId}>
-        <div data-aos="fade-right" data-aos-delay={'400'}>
-          <ContentContainer>
-            <Henna7Img src={item.wideImgGoods.img} alt="henna" />
-            <GoodsInfo>
-              <Name>{item.wideImgGoods.name}</Name>
-              <Price>₩{item.wideImgGoods.price.toLocaleString()}</Price>
-            </GoodsInfo>
-          </ContentContainer>
-        </div>
-        <div data-aos="fade-right" data-aos-delay={'500'}>
-          <ContentContainer>
-            <HennaOtherImg src={item.hennaOtherImg} alt="henna" />
-            <Text>{t('fleamarket.detail.5.bottom')}</Text>
-          </ContentContainer>
-        </div>
-      </Container>
+      <Suspense fallback={<></>}>
+        <Container $marketId={marketId}>
+          <div data-aos="fade-right" data-aos-delay={'400'}>
+            <ContentContainer>
+              {wideImgGoodsSrc && <Henna7Img src={wideImgGoodsSrc} alt="henna" />}
+              <GoodsInfo>
+                <Name>{item.wideImgGoods.name}</Name>
+                <Price>₩{item.wideImgGoods.price.toLocaleString()}</Price>
+              </GoodsInfo>
+            </ContentContainer>
+          </div>
+          <div data-aos="fade-right" data-aos-delay={'500'}>
+            <ContentContainer>
+              {hennaOtherImgSrc && <HennaOtherImg src={hennaOtherImgSrc} alt="henna" />}
+              <Text>{t('fleamarket.detail.5.bottom')}</Text>
+            </ContentContainer>
+          </div>
+        </Container>
+      </Suspense>
     );
   } else {
     return null;

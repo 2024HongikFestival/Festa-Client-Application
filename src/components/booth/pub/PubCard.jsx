@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled, { css, keyframes } from 'styled-components';
 import ContentContainer from '@/components/common/ContentContainer';
 import PubCarousel from '@/components/booth/pub/PubCarousel';
-import { useTranslation } from 'react-i18next';
 import HeartIcon from '@/components/booth/pub/HeratIcon';
 import { getHeartColor } from '@/utils/booth/getHeartColor';
 import { menuItems, subMenuItems } from '@/constants/booth/menuItems';
@@ -141,7 +141,7 @@ export default function PubCard() {
 
   return (
     <ContentContainer>
-      <PubCardContainer>
+      <PubCardContainer $lng={lng}>
         <BehindHeartContainer $isAssociation={isAssociation}>
           {behindHearts.map((heart) => (
             <FallingHeart key={heart.id} left={heart.left}>
@@ -219,6 +219,7 @@ const PubCardContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: ${({ $lng }) => ($lng === 'en' ? '2rem' : '')};
 `;
 
 const fallAnimation = keyframes`
