@@ -19,13 +19,10 @@ const LocationInfo = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  // TransformWrapper에 대한 ref 생성
   const transformWrapperRef = useRef(null);
 
-  // 플로팅 버튼 클릭 시 호출되는 함수
   const handleReset = () => {
     if (transformWrapperRef.current) {
-      // setTransform을 사용하여 초기 스케일과 위치로 되돌리기
       transformWrapperRef.current.setTransform(-100, -240, 2.5);
     }
   };
@@ -41,7 +38,7 @@ const LocationInfo = () => {
             initialPositionY={-240}
             minScale={1}
             maxScale={6}
-            ref={transformWrapperRef} // ref 연결
+            ref={transformWrapperRef}
           >
             <MapWrapper>
               <TransformComponent>
