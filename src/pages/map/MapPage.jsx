@@ -36,6 +36,14 @@ const MapPage = () => {
     setIsBigVisible(currentScale > 1.3);
   };
 
+  const handlePinchStart = () => {
+    setIsBigVisible(true);
+  };
+
+  const handlePinch = (e) => {
+    setScale(e.instance.transformState.scale);
+  };
+
   useEffect(() => {
     document.body.style.overflow = isBigVisible ? 'hidden' : 'auto';
   }, [isBigVisible]);
@@ -71,70 +79,81 @@ const MapPage = () => {
           </ContentContainer>
         ) : (
           <ContentContainer>
-            <MapImgBox className="detail">
-              <TransformWrapper
-                initialScale={1}
-                minScale={1}
-                maxScale={10}
-                wheel={{ step: 0.1 }}
-                pinch={{ step: 0.1 }}
-                onTransformed={handleTransform}
-              >
-                {({ resetTransform }) => {
-                  const handleReset = () => {
-                    resetTransform();
-                    setIsBigVisible(false);
-                    setScale(1);
-                  };
+            <TransformWrapper
+              initialScale={1}
+              sensitivity={5}
+              pinchSensitivity={4}
+              minScale={1}
+              panAnimationSpeed={2}
+              pinchAnimationSpeed={2}
+              enableZoomThrottling={true}
+              maxScale={10}
+              wheel={{ step: 0.1 }}
+              pinch={{ step: 0.1 }}
+              onPinchStart={handlePinchStart}
+              onPanningStart={handlePinch}
+              style={{ width: '100%', height: '100%' }}
+            >
+              {({ resetTransform }) => {
+                const handleReset = () => {
+                  resetTransform();
+                  setIsBigVisible(false);
+                  setScale(1);
+                };
 
-                  return (
-                    <div style={{ position: 'relative' }}>
-                      <TransformComponent>
-                        <DetailMap
-                          className="one"
-                          src={small}
-                          alt="Small Map"
-                          scale={scale}
-                          style={{
-                            opacity: scale < 1.3 ? 1 : 0,
-                            transition: 'opacity 0.3s ease',
-                          }}
-                        />
-                        <DetailMap
-                          className="two"
-                          src={medium}
-                          alt="Medium Map"
-                          style={{
-                            opacity: scale >= 1.3 && scale < 3.5 ? 1 : 0,
-                            transition: 'opacity 0.3s ease',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                          }}
-                        />
-                        <DetailMap
-                          className="three"
-                          src={big}
-                          alt="Big Map"
-                          style={{
-                            opacity: scale >= 3.5 ? 1 : 0, // 큰 지도
-                            transition: 'opacity 0.3s ease',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                          }}
-                        />
-                      </TransformComponent>
-                      <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" loading="lazy" />
-                    </div>
-                  );
-                }}
-              </TransformWrapper>
-            </MapImgBox>
+                return (
+                  <div style={{ position: 'relative', width: '100%', height: '100%', margin: ' 0 10rem' }}>
+                    <MapImgBox className="detail">
+                      <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                        <TransformComponent
+                          pinchSensitivity={6}
+                          style={{ position: 'relative', width: '150%', height: '100%' }}
+                        >
+                          <DetailMap
+                            className="one"
+                            src={small}
+                            alt="Small Map"
+                            style={{
+                              opacity: scale < 1.3 ? 1 : 0,
+                              transition: 'opacity 0.3s ease',
+                            }}
+                          />
+                          <DetailMap
+                            className="two"
+                            src={medium}
+                            alt="Medium Map"
+                            style={{
+                              opacity: scale >= 1.3 && scale < 3.5 ? 1 : 0,
+                              transition: 'opacity 0.3s ease',
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              width: '100%',
+                              height: '100%',
+                            }}
+                          />
+                          <DetailMap
+                            className="three"
+                            src={big}
+                            alt="Big Map"
+                            style={{
+                              opacity: scale >= 3.5 ? 1 : 0,
+                              transition: 'opacity 0.3s ease',
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              width: '100%',
+                              height: '100%',
+                            }}
+                          />
+                        </TransformComponent>
+                        <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" />
+                      </div>
+                    </MapImgBox>
+                  </div>
+                );
+              }}
+            </TransformWrapper>
           </ContentContainer>
         )}
       </MapBox>

@@ -65,7 +65,7 @@ export const mdList = [
   {
     img: 'stringBag',
     name: 'stringBag',
-    price: 9000,
+    price: 8000,
     width: '26.3rem',
     height: '26.3rem',
   },
