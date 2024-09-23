@@ -119,7 +119,7 @@ export default function CarouselItem({ content, click, likeData }) {
       </BtnContainer>
 
       {/* Lottie 컴포넌트에 animationKey를 적용하여 매번 새로 렌더링되도록 함 */}
-      {/* <LottieContainer> */}
+
       <Lottie
         style={{
           position: 'absolute',
@@ -135,7 +135,6 @@ export default function CarouselItem({ content, click, likeData }) {
         loop={false}
         autoPlay={false}
       />
-      {/* </LottieContainer> */}
     </Container>
   );
 }
@@ -257,16 +256,4 @@ const HeartIcon = styled.img`
 const Count = styled.div`
   ${({ theme }) => theme.fontStyles.basic.captionBold};
   color: white;
-`;
-
-const LottieContainer = styled.div`
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 60;
-  background-color: aliceblue;
 `;
