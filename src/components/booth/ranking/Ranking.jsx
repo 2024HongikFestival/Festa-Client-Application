@@ -1,4 +1,4 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useState, lazy, Suspense, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import error from '@/assets/webps/booth/icon/error.webp';
@@ -15,7 +15,7 @@ export default function Ranking() {
   const [rankData, setRankData] = useState([]);
   const { t } = useTranslation();
 
-  const renderRankingComponent = () => {
+  const renderRankingComponent = useMemo(() => {
     if (rankData.length === 0) return null;
 
     const firstPlaceCount = rankData.filter((item) => item.rank === 1).length;
@@ -33,7 +33,7 @@ export default function Ranking() {
     } else {
       return null;
     }
-  };
+  }, [rankData]);
 
   const getRankingInfo = async () => {
     try {
@@ -88,7 +88,7 @@ export default function Ranking() {
           </Caption>
         </GuideWrapper>
         {/* 주점별 랭킹 순위 부분 */}
-        <Suspense fallback={<></>}>{renderRankingComponent()}</Suspense>
+        <Suspense fallback={<></>}>{renderRankingComponent}</Suspense> {/* 함수 호출 X */}
       </RankingContainer>
     </ContentContainer>
   );
