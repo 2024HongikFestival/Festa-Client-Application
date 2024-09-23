@@ -15,7 +15,6 @@ const RedirectEvents = () => {
 
   const getLocation = async () => {
     navigator.geolocation.getCurrentPosition(function (pos) {
-      console.log(pos);
       var latitude = pos.coords.latitude;
       var longitude = pos.coords.longitude;
       setLocation({ latitude: latitude, longitude: longitude });
@@ -29,7 +28,6 @@ const RedirectEvents = () => {
         latitude: location.latitude,
         longtitude: location.longitude,
       });
-      console.log(response.data.message);
       localStorage.setItem('event_access_token', response.data.data.accessToken);
       navigate('/event/enter');
     } catch (error) {
@@ -44,7 +42,7 @@ const RedirectEvents = () => {
       } else if (error.response.status === 409) {
         setErrorStatus(409);
       } else {
-        console.log(error);
+        //console.log(error);
       }
     }
   };
