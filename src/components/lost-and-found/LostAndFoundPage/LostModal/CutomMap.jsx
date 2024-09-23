@@ -14,16 +14,18 @@ const MapWrapper = styled.div`
   touch-action: pan-x pan-y;
 `;
 
-const LostAndFoundMap = styled.img`
+const LostAndFoundMap = styled.div`
   width: 100%;
   height: 100%;
   width: 33.5rem;
   height: 22.5rem;
+  background-image: url(${LostAndFoundLocation});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 
   object-fit: cover;
   touch-action: pan-x pan-y;
-
-  //touch-action: none;
 `;
 
 const CustomMap = () => {
@@ -42,7 +44,7 @@ const CustomMap = () => {
     >
       <MapWrapper>
         <TransformComponent>
-          <LostAndFoundMap src={LostAndFoundLocation} alt="Custom Map" />
+          <LostAndFoundMap alt="Custom Map" />
         </TransformComponent>
       </MapWrapper>
     </TransformWrapper>
