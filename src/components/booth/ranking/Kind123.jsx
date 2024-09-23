@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled, css } from 'styled-components';
 import first from '@/assets/svgs/booth/icon/1st.svg';
 import second from '@/assets/svgs/booth/icon/2nd.svg';
@@ -7,7 +7,6 @@ import heart from '@/assets/webps/booth/icon/heartIcon.webp';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { DepartmentList } from '@/constants/booth/departmentList';
-import { WowList } from '@/constants/booth/wowList';
 
 Kind123.propTypes = {
   data: PropTypes.any.isRequired,
@@ -16,12 +15,39 @@ Kind123.propTypes = {
 export default function Kind123({ data }) {
   const { t } = useTranslation();
   const departments = DepartmentList(t);
+  const [wowImages, setWowImages] = useState([null, null, null]);
+
+  // Wow 이미지를 동적으로 로드하는 함수
+  const loadWowImage = async (boothId, index) => {
+    try {
+      const image = await import(`@/assets/webps/booth/wow/${boothId}.webp`);
+      setWowImages((prevImages) => {
+        const updatedImages = [...prevImages];
+        updatedImages[index] = image.default;
+        return updatedImages;
+      });
+    } catch (error) {
+      console.error('이미지 로드 실패:', error);
+      setWowImages((prevImages) => {
+        const updatedImages = [...prevImages];
+        updatedImages[index] = null; // 실패 시 기본 이미지로 설정할 수 있음
+        return updatedImages;
+      });
+    }
+  };
+
+  useEffect(() => {
+    // 각 부스의 이미지를 비동기로 로드
+    data.forEach((item, index) => {
+      loadWowImage(item.boothId, index);
+    });
+  }, [data]);
 
   return (
     <PodiumWrapper>
       <Podium1>
         <WowImgWrapper $rank="2nd">
-          <Wow src={WowList[data[1].boothId]} alt="wow" />
+          {wowImages[1] ? <Wow src={wowImages[1]} alt="wow" /> : <div>Loading...</div>}
         </WowImgWrapper>
         <Box width="2nd">
           <Badge src={second} alt="2nd" $rank="2nd" />
@@ -35,13 +61,13 @@ export default function Kind123({ data }) {
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>+{data[1].totalLike}</Count>
+            <Count>{data[1].totalLike > 9999 ? '9999+' : data[1].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium1>
       <Podium2>
         <WowImgWrapper $rank="1st">
-          <Wow src={WowList[data[0].boothId]} alt="wow" />
+          {wowImages[0] ? <Wow src={wowImages[0]} alt="wow" /> : <div>Loading...</div>}
         </WowImgWrapper>
         <Box width="1st">
           <Badge src={first} alt="1st" $rank="1st" />
@@ -55,13 +81,13 @@ export default function Kind123({ data }) {
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>+{data[0].totalLike}</Count>
+            <Count>{data[0].totalLike > 9999 ? '9999+' : data[0].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium2>
       <Podium3>
         <WowImgWrapper $rank="3rd">
-          <Wow src={WowList[data[2].boothId]} alt="wow" />
+          {wowImages[2] ? <Wow src={wowImages[2]} alt="wow" /> : <div>Loading...</div>}
         </WowImgWrapper>
         <Box width="3rd">
           <Badge src={third} alt="3rd" $rank="3rd" />
@@ -75,7 +101,7 @@ export default function Kind123({ data }) {
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>+{data[2].totalLike}</Count>
+            <Count>{data[2].totalLike > 9999 ? '9999+' : data[2].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium3>
@@ -128,7 +154,7 @@ const WowImgWrapper = styled.div`
       margin-bottom: 2.454rem;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.$rank === '3rd' &&
     css`
       margin-bottom: 2.734rem;
@@ -163,7 +189,7 @@ const Box = styled.div`
       padding: 0.8rem 1.2rem 0.357rem 1.2rem;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.width === '3rd' &&
     css`
       height: 9.5rem;
@@ -187,7 +213,7 @@ const Badge = styled.img`
       height: 3.343rem;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.$rank === '3rd' &&
     css`
       width: 1.44rem;
@@ -220,7 +246,7 @@ const Department = styled.div`
       ${({ theme }) => theme.fontStyles.basic.captionBold}
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.$rank === '3rd' &&
     css`
       margin-top: 0.4rem;

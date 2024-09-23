@@ -141,7 +141,7 @@ export default function PubCard() {
 
   return (
     <ContentContainer>
-      <PubCardContainer>
+      <PubCardContainer $lng={lng}>
         <BehindHeartContainer $isAssociation={isAssociation}>
           {behindHearts.map((heart) => (
             <FallingHeart key={heart.id} left={heart.left}>
@@ -219,6 +219,7 @@ const PubCardContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: ${({ $lng }) => ($lng === 'en' ? '2rem' : '')};
 `;
 
 const fallAnimation = keyframes`
