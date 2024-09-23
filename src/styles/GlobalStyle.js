@@ -1,8 +1,9 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
+
     a{
         text-decoration: none;
         color: inherit;
@@ -20,10 +21,19 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         line-height: 1;
-        font-family: 'Noto Sans KR', sans-serif;
-        background-color: #000000;
-        /* margin-bottom: 100px; */
+        /* font-family: 'Noto Sans KR', sans-serif; */
+        /* max-width: 760px; */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        display: flex; 
+        flex-direction: column;
+        justify-content: center; 
     }
+
+    body::-webkit-scrollbar {
+        display: none; /* 웹 브라우저에서 스크롤 바 숨기기 */
+    }
+
     ol, ul{
         list-style: none;
     }
@@ -43,6 +53,7 @@ const GlobalStyles = createGlobalStyle`
             font-size: 10px;
         }
     }
+
 `;
 
 export default GlobalStyles;

@@ -1,0 +1,82 @@
+{
+  "Day1": [
+    {
+      "id": "1",
+      "stageName": "stageSchedule.talentContest",
+      "totalDuration": "17:00 - 19:30",
+      "artists": [
+        "stageSchedule.eventDetails.talentEvents.melodyBand",
+        "stageSchedule.eventDetails.talentEvents.gr8Dance",
+        "stageSchedule.eventDetails.talentEvents.royKimSolo",
+        "stageSchedule.eventDetails.talentEvents.yuZiYeBand",
+        "stageSchedule.eventDetails.talentEvents.backToBackDance",
+        "stageSchedule.eventDetails.talentEvents.leeMinGyuSolo",
+        "stageSchedule.eventDetails.talentEvents.academicWarningBand",
+        "stageSchedule.eventDetails.talentEvents.ryukMarinSolo",
+        "stageSchedule.eventDetails.talentEvents.cheongRamBand"
+      ]
+    },
+    {
+      "id": "2",
+      "stageName": "stageSchedule.celebrityStage",
+      "totalDuration": "20:00 - 22:00",
+      "artists": [
+        "stageSchedule.eventDetails.artist.artist1",
+        "stageSchedule.eventDetails.artist.artist2",
+        "stageSchedule.eventDetails.artist.artist3"
+      ]
+    }
+  ],
+  "Day2": [
+    {
+      "id": "3",
+      "stageName": "stageSchedule.studentCenterStage",
+      "totalDuration": "17:00 - 19:30",
+      "artists": [
+        "stageSchedule.eventDetails.studentCenterEventsDay1.hwangInSeongBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.afterBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.kaiserBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.imagineBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.brainsWars",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.performingArtsMusical",
+        "stageSchedule.eventDetails.studentCenterEventsDay1.ohHyeonSongAndTomato"
+      ]
+    },
+    {
+      "id": "4",
+      "stageName": "stageSchedule.celebrityStage",
+      "totalDuration": "20:00 - 22:00",
+      "artists": [
+        "stageSchedule.eventDetails.artist.artist4",
+        "stageSchedule.eventDetails.artist.artist5",
+        "stageSchedule.eventDetails.artist.artist6"
+      ]
+    }
+  ],
+  "Day3": [
+    {
+      "id": "5",
+      "stageName": "stageSchedule.studentCenterStage",
+      "totalDuration": "17:00 - 19:30",
+      "artists": [
+        "stageSchedule.eventDetails.studentCenterEventsDay2.illEquippedWord",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.oneNightTwoDays",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.woonerBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.hongGroove",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.performingArtsBand",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.blackTetra",
+        "stageSchedule.eventDetails.studentCenterEventsDay2.bitzFlow"
+      ]
+    },
+    {
+      "id": "6",
+      "stageName": "stageSchedule.celebrityStage",
+      "totalDuration": "20:00 - 22:00",
+      "artists": [
+        "stageSchedule.eventDetails.artist.artist7",
+        "stageSchedule.eventDetails.artist.artist8",
+        "stageSchedule.eventDetails.artist.artist9"
+      ]
+    }
+  ]
+}

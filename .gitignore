@@ -25,7 +25,7 @@ dist-ssr
 
 # zero-install 사용
 .yarn/*
-!.yarn/cache
+.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
@@ -34,3 +34,6 @@ dist-ssr
 
 .vscode
 .env
+/build/
+
+build

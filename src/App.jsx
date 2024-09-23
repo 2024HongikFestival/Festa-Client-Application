@@ -1,37 +1,106 @@
-import styled from "styled-components";
-import { useTranslation } from "react-i18next";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AOS from 'aos';
+import ScrollToTop from '@/components/layouts/ScrollToTop';
+import { AuthProvider } from '@/context/AuthProvider';
+import { LostProtectedRoute, EventProtectedRoute } from '@/outlet/ProtectedRoute';
+import 'aos/dist/aos.css';
 
-/*
-  경로 설정은 여기에서 합니다! 자신이 만들 경로들 위에 주석으로 이름 표기 부탁드립니다. 🙇‍♀️
-  페이지 url은 모두 소문자로 작성합니다.
-*/
+// Pre-load components
+import MapPage from '@/pages/map/MapPage';
+import LineupPage from '@/pages/stage/LineupPage';
+import StageInfoPage from '@/pages/stage/StageInfoPage';
+import HongikZonePage from '@/pages/stage/HongikZonePage';
+import BoothPage from '@/pages/booth/BoothPage';
+import Fleamarket from '@/pages/booth/fleamarket/Fleamarket';
+import MdPage from '@/pages/booth/merchandiser/MdPage';
+import FacilitiesPage from '@/pages/facilities/FacilitiesPage';
+import LostAndFoundPage from '@/pages/lost-and-found/pages/LostAndFoundPage/LostAndFoundPage';
+import EventPage from '@/pages/event/main/EventPage';
+import FlameMainPage from '@/pages/flame/FlameMainPage';
+import FlameMapPage from '@/pages/flame/map/FlameMapPage';
+import FlameTimeTablePage from '@/pages/flame/timetable/FlameTimeTablePage';
+import FlameReservationPage from '@/pages/flame/reservation/FlameReservationPage';
+import FlameLineupPage from '@/pages/flame/lineup/FlameLineupPage';
+import FlameMdPage from '@/pages/flame/merchandiser/FlameMdPage';
+import FlamePromotionPage from '@/pages/flame/promotion/FlamePromotionPage';
+
+// Lazy-load components
+const MainPage = lazy(() => import('@/pages/main/MainPage'));
+const RedirectEvents = lazy(() => import('@/auth/RedirectEvents'));
+const RedirectLosts = lazy(() => import('@/auth/RedirectLosts'));
+const Layout = lazy(() => import('@/components/layouts/Layout'));
+const AdminEvent = lazy(() => import('@/pages/admin/AdminEvent'));
+const AdminPage = lazy(() => import('@/pages/admin/AdminPage'));
+const FleamarketDetail = lazy(() => import('@/pages/booth/fleamarket/FleamarketDetail'));
+const EnterEvent = lazy(() => import('@/pages/event/enter/EnterEvent'));
+const SubmitEvent = lazy(() => import('@/pages/event/SubmitEvent'));
+const GaehwaPage = lazy(() => import('@/pages/makers/GaehwaPage'));
+const LikelionPage = lazy(() => import('@/pages/makers/LikelionPage'));
+const NotFoundPage = lazy(() => import('@/pages/not-found/NotFoundPage'));
+const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
+const AddLostItem = lazy(() => import('@/pages/lost-and-found/pages/AddLostItem/AddLostItem'));
+
 function App() {
-  const { t, i18n } = useTranslation("translations");
-
-  const clickHandler = (lang) => {
-    console.log(`conver to ${lang}`);
-    i18n.changeLanguage(lang);
-  };
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      mirror: false,
+    });
+  }, []);
 
   return (
-    <div>
-      <h1>홍익대학교 멋쟁이사자처럼 2024 대동제 프로젝트입니다. 🦁</h1>
-      <Example>컴끼얏호우</Example>
-      <button onClick={() => clickHandler("en")}>English</button>
-      <button onClick={() => clickHandler("ko")}>Korean</button>
-      <div>{t("hello")}</div>
-      <div>{t("goodbye")}</div>
-      {/* 😽 윤서 ---------- */}
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Suspense fallback={<></>}>
+          <Routes>
+            <Route path="*" element={<NotFoundPage />} />
+
+            <Route element={<Layout />}>
+              {/*  pre-loaded routes */}
+              <Route path="/map" element={<MapPage />} />
+              <Route path="/lineup" element={<LineupPage />} />
+              <Route path="/stage-info" element={<StageInfoPage />} />
+              <Route path="/hongik-zone" element={<HongikZonePage />} />
+              <Route path="/booth" element={<BoothPage />} />
+              <Route path="/fleamarket" element={<Fleamarket />} />
+              <Route path="/md" element={<MdPage />} />
+              <Route path="/facilities" element={<FacilitiesPage />} />
+              <Route path="/lost-and-found" element={<LostAndFoundPage />} />
+              <Route path="/event" element={<EventPage />} />
+              <Route path="/flame" element={<FlameMainPage />} />
+              <Route path="/flame/map" element={<FlameMapPage />} />
+              <Route path="/flame/timetable" element={<FlameTimeTablePage />} />
+              <Route path="/flame/reservation" element={<FlameReservationPage />} />
+              <Route path="/flame/lineup" element={<FlameLineupPage />} />
+              <Route path="/flame/md" element={<FlameMdPage />} />
+              <Route path="/flame/promotion" element={<FlamePromotionPage />} />
+
+              {/*  lazy-loaded routes */}
+              <Route path="/" element={<MainPage />} />
+              <Route path="/fleamarket/:marketId" element={<FleamarketDetail />} />
+              <Route element={<EventProtectedRoute />}>
+                <Route path="/event/enter" element={<EnterEvent />} />
+                <Route path="/event/submit" element={<SubmitEvent />} />
+              </Route>
+              <Route path="/oauth/events" element={<RedirectEvents />} />
+              <Route path="/likelion" element={<LikelionPage />} />
+              <Route path="/gaehwa" element={<GaehwaPage />} />
+              <Route element={<LostProtectedRoute />}>
+                <Route path="/lost-and-found/add" element={<AddLostItem />} />
+              </Route>
+              <Route path="/oauth/losts" element={<RedirectLosts />} />
+              <Route path="/admin" element={<AdminLogin />} />
+              <Route path="/admin/losts" element={<AdminPage />} />
+              <Route path="/admin/event" element={<AdminEvent />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
 export default App;
-
-const Example = styled.div`
-  width: 500px;
-  height: 100px;
-  border: solid 3px;
-  border-radius: 10px;
-`;
