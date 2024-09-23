@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import * as S from './FlameMainPage.Styled';
 import { djData } from '@/constants/wdfMain/djData.js';
 import { djLogos } from '@/constants/wdfMain/djLogo.js';
@@ -18,6 +18,7 @@ const FlameMainPage = () => {
   const [logos, setLogos] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const scrollPositionRef = useRef(0); // 스크롤 위치를 저장할 useRef
   useEffect(() => {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth() + 1;
@@ -66,12 +67,16 @@ const FlameMainPage = () => {
   }, [selectedDay]);
 
   const handleDateChange = (day) => {
+    scrollPositionRef.current = window.scrollY; // 상태 변경 전 현재 스크롤 위치 저장
     setSelectedDay(day);
   };
 
-  if (loading) {
-    return <></>;
-  }
+  // 상태 변경 후 스크롤 복원
+  useLayoutEffect(() => {
+    if (!loading) {
+      window.scrollTo(0, scrollPositionRef.current);
+    }
+  }, [selectedDay]);
 
   return (
     <>
