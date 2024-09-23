@@ -75,6 +75,7 @@ export const MapImgBox = styled.div`
   position: relative;
   z-index: 0;
   background: #b1daff;
+  height: 22rem;
 
   .complete {
     width: 100%;
@@ -108,7 +109,7 @@ export const BtnImg = styled.img`
 
 export const DetailMap = styled.img`
   width: 100%;
-  height: 100%;
+  height: 22rem;
   transition: opacity 0.5s ease;
 `;
 
