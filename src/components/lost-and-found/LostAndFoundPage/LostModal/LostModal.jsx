@@ -25,8 +25,6 @@ const LostModal = ({ children, top, gap, isOpen, setIsOpen }) => {
 };
 
 export const LocationModal = ({ isOpen, setIsOpen }) => {
-  const panZoomRef = React.useRef(null);
-
   return (
     <LostModal top={'16.3rem'} gap={'0rem'} isOpen={isOpen} setIsOpen={setIsOpen}>
       <S.LostCenterLayout>
