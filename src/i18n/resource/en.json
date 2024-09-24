@@ -577,9 +577,9 @@
     "location": "Flea market Location",
     "list": [
       {
-        "key": "ccJuice",
-        "name": "CC Juice",
-        "intro": "A place where you can overcome the hot weather with juice and fruit salad made of fresh fruit"
+        "key": "hypeBoy",
+        "name": "Hongik hype boy market",
+        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike and more at a low price."
       },
       {
         "key": "almak",
@@ -587,24 +587,9 @@
         "intro": "We sell handmade jewelry and accessories made of nature-inspired ceramics and glass materials"
       },
       {
-        "key": "henna",
-        "name": "Henna, do it!",
-        "intro": "Have you tried Henna?"
-      },
-      {
-        "key": "modori",
-        "name": "Modori",
-        "intro": "A family of carpenters' cute props"
-      },
-      {
-        "key": "sajuraplz",
-        "name": "Sajurplz",
-        "intro": "The pottery I made. I baked it for you"
-      },
-      {
-        "key": "hypeBoy",
-        "name": "Hongik hype boy market",
-        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike and more at a low price."
+        "key": "aiesec",
+        "name": "How about MZ eco-friendly practice with AIESEC?",
+        "intro": "Multi-use tumbler and hand knitted tea coaster that can be transformed into a keyring"
       },
       {
         "key": "sangsu",
@@ -612,14 +597,29 @@
         "intro": "Sales of used LP and CD at home and abroad"
       },
       {
+        "key": "sajuraplz",
+        "name": "Sajurplz",
+        "intro": "The pottery I made. I baked it for you"
+      },
+      {
         "key": "kawaii",
         "name": "Something cute ^..^",
         "intro": "It's a special handmade knitted piece that express cuteness and affection"
       },
       {
-        "key": "aiesec",
-        "name": "How about MZ eco-friendly practice with AIESEC?",
-        "intro": "Multi-use tumbler and hand knitted tea coaster that can be transformed into a keyring"
+        "key": "henna",
+        "name": "Henna, do it!",
+        "intro": "Have you tried Henna?"
+      },
+      {
+        "key": "ccJuice",
+        "name": "CC Juice",
+        "intro": "A place where you can overcome the hot weather with juice and fruit salad made of fresh fruit"
+      },
+      {
+        "key": "modori",
+        "name": "Modori",
+        "intro": "A family of carpenters' cute props"
       }
     ],
     "detail": [
