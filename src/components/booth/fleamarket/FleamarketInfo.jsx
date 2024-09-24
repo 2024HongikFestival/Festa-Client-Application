@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import arrow from '@/assets/webps/booth/icon/arrow.webp';
 
 FleamarketInfo.propTypes = {
   item: PropTypes.shape({
@@ -21,7 +22,11 @@ export default function FleamarketInfo({ item, index }) {
     <MarketInfoContainer onClick={() => moveToDetailPage(item.key)}>
       <Index>{index + 1}</Index>
       <MarketTextWrapper>
-        <Title>{item.name}</Title>
+        <TitleWrapper>
+          <Title>{item.name}</Title>
+          <Arrow src={arrow} alt="arrow" />
+        </TitleWrapper>
+
         <Intro>
           {item.intro.split('\n').map((line, idx) => (
             <React.Fragment key={idx}>
@@ -61,6 +66,16 @@ const Title = styled.div`
   ${({ theme }) => theme.fontStyles.basic.body1Bold}
 `;
 
+const TitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Arrow = styled.img`
+  width: 1.92rem;
+  height: 1.92rem;
+`;
 const Intro = styled.div`
   margin-top: 0.8rem;
   ${({ theme }) => theme.fontStyles.basic.body2Reg}
