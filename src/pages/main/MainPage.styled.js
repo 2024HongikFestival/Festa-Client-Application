@@ -1,4 +1,4 @@
-import { styled, css, keyframes } from 'styled-components';
+import { styled } from 'styled-components';
 import arrow from '@/assets/webps/main/arrowRight.webp';
 
 export const Container = styled.div`
