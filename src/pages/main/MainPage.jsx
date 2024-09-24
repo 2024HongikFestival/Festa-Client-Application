@@ -21,6 +21,17 @@ export default function MainPage() {
   const today = useMemo(() => new Date(), []);
   const formattedToday = useMemo(() => `${today.getMonth() + 1}.${today.getDate()}`, [today]);
 
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Main Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
+
   const dayOfWeek = useMemo(() => {
     return formattedToday === '9.25'
       ? 'wed'
@@ -42,7 +53,7 @@ export default function MainPage() {
   const isLineupDate = useMemo(() => ['9.25', '9.26', '9.27'].includes(formattedToday), [formattedToday]);
 
   useEffect(() => {
-    setIsMounted(true); // 컴포넌트가 마운트되었음을 표시
+    setIsMounted(true);
 
     const lottieTimer = setTimeout(() => {
       if (!isEnglish) {
@@ -70,7 +81,7 @@ export default function MainPage() {
   }, [i18n.language]);
 
   if (!isMounted) {
-    return null; // 마운트되지 않았을 때는 아무것도 렌더링하지 않음
+    return null;
   }
 
   return (

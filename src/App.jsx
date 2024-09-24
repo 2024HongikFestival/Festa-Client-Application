@@ -57,7 +57,6 @@ function App() {
         <Suspense fallback={<></>}>
           <Routes>
             <Route path="*" element={<NotFoundPage />} />
-
             <Route element={<Layout />}>
               {/*  pre-loaded routes */}
               <Route path="/map" element={<MapPage />} />
@@ -81,21 +80,17 @@ function App() {
               {/*  lazy-loaded routes */}
               <Route path="/" element={<MainPage />} />
               <Route path="/fleamarket/:marketId" element={<FleamarketDetail />} />
-
               <Route element={<EventProtectedRoute />}>
                 <Route path="/event/enter" element={<EnterEvent />} />
                 <Route path="/event/submit" element={<SubmitEvent />} />
               </Route>
               <Route path="/oauth/events" element={<RedirectEvents />} />
-
               <Route path="/likelion" element={<LikelionPage />} />
               <Route path="/gaehwa" element={<GaehwaPage />} />
-
               <Route element={<LostProtectedRoute />}>
                 <Route path="/lost-and-found/add" element={<AddLostItem />} />
               </Route>
               <Route path="/oauth/losts" element={<RedirectLosts />} />
-
               <Route path="/admin" element={<AdminLogin />} />
               <Route path="/admin/losts" element={<AdminPage />} />
               <Route path="/admin/event" element={<AdminEvent />} />

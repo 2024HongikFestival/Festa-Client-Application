@@ -1,0 +1,40 @@
+export const wdfTT = {
+  dayOneImages: {
+    ruiImg: () => import('@/assets/webps/wdTT/rui.webp'),
+    ruiLogo: () => import('@/assets/webps/wdTT/ruiLogo.webp'),
+    fineImg: () => import('@/assets/webps/wdTT/fine.webp'),
+    fineLogo: () => import('@/assets/webps/wdTT/fineLogo.webp'),
+    rbImg: () => import('@/assets/webps/wdTT/rightback.webp'),
+    rbLogo: () => import('@/assets/webps/wdTT/rightbackLogo.webp'),
+    cxImg: () => import('@/assets/webps/wdTT/chanxer.webp'),
+    cxLogo: () => import('@/assets/webps/wdTT/chanxerLogo.webp'),
+    tezzImg: () => import('@/assets/webps/wdTT/tezz.webp'),
+    tezzLogo: () => import('@/assets/webps/wdTT/tezzLogo.webp'),
+  },
+
+  dayTwoImages: {
+    yongsulImg: () => import('@/assets/webps/wdTT/yongsul.webp'),
+    yongsulLogo: () => import('@/assets/webps/wdTT/yongsulLogo.webp'),
+    choiImg: () => import('@/assets/webps/wdTT/choi.webp'),
+    choiLogo: () => import('@/assets/webps/wdTT/choiLogo.webp'),
+    lozicImg: () => import('@/assets/webps/wdTT/lozic.webp'),
+    lozicLogo: () => import('@/assets/webps/wdTT/lozicLogo.webp'),
+    vandalImg: () => import('@/assets/webps/wdTT/vandal_rock.webp'),
+    vandalLogo: () => import('@/assets/webps/wdTT/vandal_rockLogo.webp'),
+    asterImg: () => import('@/assets/webps/wdTT/aster.webp'),
+    asterLogo: () => import('@/assets/webps/wdTT/asterLogo.webp'),
+  },
+
+  dayThreeImages: {
+    napImg: () => import('@/assets/webps/wdTT/nap_on_cloud.webp'),
+    napLogo: () => import('@/assets/webps/wdTT/nap_on_cloudLogo.webp'),
+    sigmaImg: () => import('@/assets/webps/wdTT/sigma.webp'),
+    sigmaLogo: () => import('@/assets/webps/wdTT/sigmaLogo.webp'),
+    wooxiImg: () => import('@/assets/webps/wdTT/wooxi.webp'),
+    wooxiLogo: () => import('@/assets/webps/wdTT/wooxiLogo.webp'),
+    joodyImg: () => import('@/assets/webps/wdTT/joody.webp'),
+    joodyLogo: () => import('@/assets/webps/wdTT/joodyLogo.webp'),
+    cocoImg: () => import('@/assets/webps/wdTT/juncoco.webp'),
+    cocoLogo: () => import('@/assets/webps/wdTT/juncocoLogo.webp'),
+  },
+};

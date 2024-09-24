@@ -26,6 +26,17 @@ const MapPage = () => {
   const [isBigVisible, setIsBigVisible] = useState(false);
   const [scale, setScale] = useState(1);
 
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Map Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
+
   const handleToggle = (view) => {
     setActiveView(view);
   };

@@ -26,20 +26,23 @@ const eventEnd = dayjs.tz('2024-09-27 23:59:59', 'Asia/Seoul');
 
 const EventPage = () => {
   const { t } = useTranslation();
-  //const [stateData, setStateData] = useState();
   const [currentUrl, setCurrentUrl] = useState('');
   const [isEventPeriod, setIsEventPeriod] = useState(false);
 
   const navigationType = useNavigationType();
 
-  // const handleRandomState = () => {
-  //   const array = new Uint32Array(1);
-  //   self.crypto.getRandomValues(array);
-  //   setStateData(array[0]);
-  // };
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Event Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
 
   const handleKakaoAuth = () => {
-    // window.location.href = EVENTS_KAKAO_AUTH_URL + `&state=${stateData}`;
     window.location.href = EVENTS_KAKAO_AUTH_URL;
   };
 
@@ -50,7 +53,6 @@ const EventPage = () => {
   }, [navigationType]);
 
   useEffect(() => {
-    //handleRandomState();
     setCurrentUrl(window.location.href);
 
     // 현재 시간이 이벤트 기간 내에 있는지 확인
