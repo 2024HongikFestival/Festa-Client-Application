@@ -149,19 +149,44 @@ const FlameMainPage = () => {
   );
 };
 
-const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
+const DateContent = ({ images, logos, carouselItems }) => {
   const sliderRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  useEffect(() => {
-    if (sliderRef.current) {
-      setIsTransitioning(true);
-      sliderRef.current.slickGoTo(0, false);
-      setCurrentSlide(0);
-      setIsTransitioning(false);
+  const touchStartRef = useRef({ x: 0, y: 0 });
+  const [isSwipingHorizontally, setIsSwipingHorizontally] = useState(false);
+
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchMove = (e) => {
+    const touch = e.touches[0];
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      setIsSwipingHorizontally(true);
+      e.preventDefault();
+    } else {
+      setIsSwipingHorizontally(false);
     }
-  }, [selectedDay]);
+  };
+
+  useEffect(() => {
+    const slider = sliderRef.current.innerSlider.list;
+
+    slider.addEventListener('touchstart', handleTouchStart, { passive: true });
+    slider.addEventListener('touchmove', handleTouchMove, { passive: false }); // passive: false로 설정해 preventDefault 허용
+
+    return () => {
+      slider.removeEventListener('touchstart', handleTouchStart);
+      slider.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, []);
+
   const goToSlide = (index) => {
     if (sliderRef.current) {
       sliderRef.current.slickGoTo(index);
