@@ -104,7 +104,9 @@ export const GoLineupPageBtn = styled.button`
   border-radius: 1.2rem;
   box-shadow: 0 0.2rem 0.8rem 0 rgba(66, 255, 187, 0.04);
   display: flex;
+  background: linear-gradient(92deg, rgba(3, 124, 158, 0.32) 5.37%, rgba(22, 170, 234, 0.32) 97.97%);
 
+  box-shadow: 0px 0.2rem 0.8rem 0 rgba(66, 255, 187, 0.04);
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -118,11 +120,10 @@ export const GoLineupPageBtn = styled.button`
   &::before {
     content: '';
     position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: -0.5px;
+    left: -0.5px;
+    right: -0.5px;
+    bottom: -0.5px;
     border-radius: 1.2rem;
     padding: 0.2rem;
     background: linear-gradient(90deg, #aed3ff 0%, #39c3ef 100%);
