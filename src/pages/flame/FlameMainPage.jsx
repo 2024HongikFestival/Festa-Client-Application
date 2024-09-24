@@ -149,7 +149,7 @@ const FlameMainPage = () => {
   );
 };
 
-const DateContent = ({ images, logos, carouselItems }) => {
+const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
   const sliderRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -175,11 +175,17 @@ const DateContent = ({ images, logos, carouselItems }) => {
     }
   };
 
+  const goToSlide = (index) => {
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(index);
+    }
+  };
+
   useEffect(() => {
     const slider = sliderRef.current.innerSlider.list;
 
     slider.addEventListener('touchstart', handleTouchStart, { passive: true });
-    slider.addEventListener('touchmove', handleTouchMove, { passive: false }); // passive: false로 설정해 preventDefault 허용
+    slider.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     return () => {
       slider.removeEventListener('touchstart', handleTouchStart);
@@ -187,12 +193,14 @@ const DateContent = ({ images, logos, carouselItems }) => {
     };
   }, []);
 
-  const goToSlide = (index) => {
+  useEffect(() => {
     if (sliderRef.current) {
-      sliderRef.current.slickGoTo(index);
+      setIsTransitioning(true);
+      sliderRef.current.slickGoTo(0, false);
+      setCurrentSlide(0);
+      setIsTransitioning(false);
     }
-  };
-
+  }, [selectedDay]);
   return (
     <S.Content>
       <S.CarouselContainer>
