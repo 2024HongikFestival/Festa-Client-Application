@@ -30,7 +30,6 @@ const CameraPage = ({ setCapturedImage }) => {
         videoRef.current.play();
       } catch (err) {
         setError('카메라에 접근할 수 없습니다. 권한을 확인해주세요.');
-        console.error('Error accessing camera: ', err);
       }
     };
     startCamera();

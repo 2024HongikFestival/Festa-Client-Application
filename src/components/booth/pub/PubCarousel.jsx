@@ -65,14 +65,7 @@ export default function PubCarousel({ menu, click, likeData }) {
         <StyledSlider ref={sliderRef} {...settings} $lng={lng}>
           {pubList[currentCategory].map((item, index) => {
             const relatedLikeData = likeData?.[index];
-            return (
-              <CarouselItem
-                key={index}
-                content={item}
-                click={click}
-                likeData={relatedLikeData} // 순서대로 매칭된 likeData를 CarouselItem에 전달
-              />
-            );
+            return <CarouselItem key={index} content={item} click={click} likeData={relatedLikeData} />;
           })}
         </StyledSlider>
       </CarouselContainer>

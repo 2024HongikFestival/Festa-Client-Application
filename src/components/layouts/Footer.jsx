@@ -29,7 +29,7 @@ export default function Footer() {
       behavior: 'smooth',
     });
   };
-  // navigation
+
   const handleNavigation = (path) => {
     if (location.pathname === path) {
       // 같은 페이지로 이동할 때
@@ -49,7 +49,6 @@ export default function Footer() {
     }
   };
 
-  // 이전 화면으로
   const handleGoBack = () => {
     nav(-1);
     setTimeout(() => {
@@ -69,14 +68,12 @@ export default function Footer() {
       const windowHeight = window.innerHeight;
       const buttonHeight = 45;
 
-      // Up 버튼을 일정 스크롤 이후에 노출
       if (scrollY > 500) {
         setShowUpBtn(true);
       } else {
         setShowUpBtn(false);
       }
 
-      // 푸터가 화면 상단에서 보이기 시작할 때 버튼을 고정
       if (footerTop <= windowHeight - buttonHeight) {
         setIsAtFooter(true);
       } else {

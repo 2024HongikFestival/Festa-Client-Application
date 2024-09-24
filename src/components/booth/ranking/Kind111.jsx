@@ -24,7 +24,6 @@ export default function Kind111({ data }) {
         return updatedImages;
       });
     } catch (error) {
-      console.error('이미지 로드 실패:', error);
       // 로드 실패 시 기본 이미지로 설정할 수도 있습니다.
       setWowImages((prevImages) => {
         const updatedImages = [...prevImages];

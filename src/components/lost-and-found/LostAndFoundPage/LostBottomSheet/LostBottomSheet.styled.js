@@ -52,7 +52,6 @@ export const ModalBox = styled.div`
   border-radius: var(--Corner-Extra-large, 28px) var(--Corner-Extra-large, 28px) 0px 0px;
   background: var(--Schemes-On-Primary, #fff);
 
-  /* M3/Elevation Light/3 */
   box-shadow:
     0px 4px 8px 3px rgba(0, 0, 0, 0.15),
     0px 1px 3px 0px rgba(0, 0, 0, 0.3);

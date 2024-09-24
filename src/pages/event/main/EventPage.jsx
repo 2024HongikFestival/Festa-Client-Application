@@ -1,156 +1,160 @@
-import { useEffect, useState } from 'react';
-import { useNavigationType } from 'react-router-dom';
+import { useState, useEffect, Fragment } from 'react';
+import { useNavigate, useNavigationType } from 'react-router-dom';
+import { axiosInstance } from '@/api/axios';
 import { useTranslation } from 'react-i18next';
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
-import NoticeTimeBox from '@/components/event/NoticeTimeBox';
-import raffle from '@/assets/webps/event/raffle.webp';
-import shareIcon from '@/assets/webps/event/shareIcon.webp';
-import kakaoLogo from '@/assets/svgs/event/kakaoLogo.svg';
-import { handleShare } from '@/utils/event/handleShare';
-import frame from '@/assets/svgs/event/frame.svg';
-import tvingLogo from '@/assets/svgs/event/tvingLogo.svg';
-import { EVENTS_KAKAO_AUTH_URL } from '@/auth/OAuth';
+import PhoneNumBox from '@/components/event/PhoneNumBox';
+import form from '@/assets/webps/event/form.webp';
 import * as S from './styled';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
-dayjs.extend(utc);
-dayjs.extend(timezone);
-
-dayjs.tz.setDefault('Asia/Seoul');
-
-const eventStart = dayjs.tz('2024-09-25 10:00:00', 'Asia/Seoul');
-const eventEnd = dayjs.tz('2024-09-27 23:59:59', 'Asia/Seoul');
-
-const EventPage = () => {
+const EnterEvent = () => {
   const { t } = useTranslation();
-  const [currentUrl, setCurrentUrl] = useState('');
-  const [isEventPeriod, setIsEventPeriod] = useState(false);
-
+  const navigate = useNavigate();
   const navigationType = useNavigationType();
 
-  useEffect(() => {
-    // 페이지뷰 이벤트 발송
-    if (window.gtag) {
-      window.gtag('event', 'page_view', {
-        page_title: 'Event Page',
-        page_location: window.location.href,
-        page_path: window.location.pathname,
-      });
-    }
-  }, []);
+  // input & textarea 상태 관리
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [comment, setComment] = useState('');
+  const [textCount, setTextCount] = useState(0);
+  const [isAvailable, setIsAvailable] = useState(false);
 
-  const handleKakaoAuth = () => {
-    window.location.href = EVENTS_KAKAO_AUTH_URL;
+  // 전화번호 관련 상태
+  const [isPhoneValid, setIsPhoneValid] = useState(false);
+  const [codeArr, setCodeArr] = useState(Array(11).fill(''));
+  const _onChangeCode = (code) => {
+    setCodeArr(code.slice(0, codeArr.length));
+  };
+
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleComment = (e) => {
+    e.preventDefault();
+    if (e.target.value.length > 100) {
+      e.target.value = e.target.value.slice(0, 100);
+    }
+    setTextCount(e.target.value.length);
+    setComment(e.target.value);
+  };
+
+  const isEntryAvailable = () => {
+    const isPhoneValid = codeArr.every((element) => element !== '');
+
+    if (isPhoneValid) {
+      let rawPhoneStr = codeArr.join('');
+      const dash = '-';
+      const phoneStr = rawPhoneStr.slice(0, 3) + dash + rawPhoneStr.slice(3, 7) + dash + rawPhoneStr.slice(7, 11);
+      setPhone(phoneStr);
+    }
+    if (name && isPhoneValid) {
+      setIsAvailable(true);
+    } else {
+      setIsAvailable(false);
+    }
+  };
+
+  const handleEventEntry = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axiosInstance.post(
+        '/entries',
+        {
+          name: name,
+          phone: phone,
+          prize: '티빙구독권',
+          comment: comment,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('event_access_token')}`,
+          },
+        }
+      );
+      localStorage.removeItem('kakao_code');
+      localStorage.removeItem('event_access_token');
+      navigate('/event/submit', { state: { date: response.data.data.date } });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
+    isEntryAvailable();
+  }, [name, codeArr]);
+
+  useEffect(() => {
+    if (codeArr.length !== 11 || codeArr.some((element) => element === '') || phone.length !== 13) {
+      setIsPhoneValid(false);
+    } else {
+      setIsPhoneValid(true);
+    }
+  }, [codeArr, phone]);
+
+  useEffect(() => {
     if (navigationType === 'POP') {
-      localStorage.removeItem('event_access_token');
+      navigate('/event');
     }
   }, [navigationType]);
 
-  useEffect(() => {
-    setCurrentUrl(window.location.href);
-
-    // 현재 시간이 이벤트 기간 내에 있는지 확인
-    const now = dayjs();
-    if (now.isAfter(eventStart) && now.isBefore(eventEnd)) {
-      setIsEventPeriod(true);
-    }
-  }, []);
-
   return (
     <S.Wrapper>
-      <S.Title>
-        2024 <br />
-        <span>
-          {t(`event.main.notice.title1`)}&nbsp;
-          <span id="highlight">{t(`event.main.notice.title2`)}</span>
-        </span>
-      </S.Title>
-      <S.ImageWrapper>
-        <S.Image src={raffle} alt="raffle" />
-      </S.ImageWrapper>
-      <S.NoticeText>
-        {t(`event.main.notice.description1`)} <span>{t(`event.main.notice.description2`)}</span>{' '}
-        {t(`event.main.notice.description3`)}
-      </S.NoticeText>
+      <S.Image src={form} alt="form" loading="lazy" />
+      <S.FormContainer>
+        <form>
+          <S.Section>
+            <S.SectionText>{t(`event.enter.name1`)}</S.SectionText>
+            <S.Input type="text" placeholder={t(`event.enter.name2`)} onChange={handleName} value={name} />
+          </S.Section>
+          <S.Section>
+            <S.SectionText>{t(`event.enter.phone`)}</S.SectionText>
+            <S.PhoneContainer>
+              {codeArr.map((item, index) => (
+                <Fragment key={index}>
+                  <PhoneNumBox
+                    item={item}
+                    index={index}
+                    codeArr={codeArr}
+                    onChange={_onChangeCode}
+                    className={isPhoneValid ? ' active' : ''}
+                  />
+                  {(index === 2 || index === 6) && <S.Dash />}
+                </Fragment>
+              ))}
+            </S.PhoneContainer>
+          </S.Section>
 
-      <NoticeTimeBox />
-
-      <S.QNABox>
-        <S.QText>{t(`event.main.notice.qText`)}</S.QText>
-        <S.AText>{t(`event.main.notice.aText`)}</S.AText>
-      </S.QNABox>
-
-      <S.Raffle>
-        <S.Quantity>
-          <p>{t(`event.main.item.quantity`)}</p>
-        </S.Quantity>
-        <S.RaffleTitle>
-          {t(`event.main.item.title1`)}
-          <br />
-          <span>{t(`event.main.item.title2`)}</span> {t(`event.main.item.title3`)}
-        </S.RaffleTitle>
-        <S.RaffleWrapper>
-          <S.RaffleImage src={frame} alt="frame" />
-          <S.RaffleContainer>
-            <p id="top">Standard</p>
-            <S.Logo src={tvingLogo} alt="tving" />
-            <p id="description">{t(`event.main.item.description1`)}</p>
-          </S.RaffleContainer>
-        </S.RaffleWrapper>
-      </S.Raffle>
-
-      <S.NoticeDetail>
-        <S.DetailSection>
-          <S.DetailTitle>{t(`event.main.detail.title1`)}</S.DetailTitle>
-          <S.DetailDescription>
-            {t(`event.main.detail.description1`)}
-            <br />
-            {t(`event.main.detail.description2`)}
-          </S.DetailDescription>
-        </S.DetailSection>
-        <S.DetailSection>
-          <S.DetailTitle>{t(`event.main.detail.title2`)}</S.DetailTitle>
-          <S.DetailDescription>{t(`event.main.detail.description3`)}</S.DetailDescription>
-        </S.DetailSection>
-        <S.DetailSection>
-          <S.DetailTitle>{t(`event.main.detail.title3`)}</S.DetailTitle>
-          <S.DetailDescription>
-            {t(`event.main.detail.description4`)}
-            <br />
-            {t(`event.main.detail.description5`)}
-          </S.DetailDescription>
-        </S.DetailSection>
-        <S.DetailSection>
-          <S.DetailTitle>{t(`event.main.detail.title4`)}</S.DetailTitle>
-          <S.DetailDescription>{t(`event.main.detail.description6`)}</S.DetailDescription>
-        </S.DetailSection>
-      </S.NoticeDetail>
-      <S.ShareButton
-        onClick={() => {
-          handleShare(currentUrl);
-        }}
-      >
-        <S.ShareIcon src={shareIcon} alt="shareIcon" />
-        <S.ShareText>{t(`event.main.button.share`)}</S.ShareText>
-      </S.ShareButton>
-      {isEventPeriod ? (
-        <S.KakaoAuthButton onClick={handleKakaoAuth}>
-          <img src={kakaoLogo} alt="kakaoLogo" />
-          <p>{t(`event.main.button.available`)}</p>
-        </S.KakaoAuthButton>
-      ) : (
-        <S.DisabledEnterButton>
-          <p>{t(`event.main.button.unavailable`)}</p>
-        </S.DisabledEnterButton>
-      )}
+          <S.Section className="last">
+            <S.SectionText>
+              {t(`event.enter.comment1`)}
+              <br />
+              {t(`event.enter.comment2`)} <span>{t(`event.enter.comment3`)}</span>
+            </S.SectionText>
+            <S.TextAreaWrapper>
+              <S.TextArea
+                type="text"
+                maxLength="100"
+                placeholder={t(`event.enter.comment4`)}
+                outline="none"
+                onChange={handleComment}
+                value={comment}
+              />
+              <S.TextCount id="count">({textCount}/100)</S.TextCount>
+            </S.TextAreaWrapper>
+          </S.Section>
+          {isAvailable ? (
+            <S.EnterButton onClick={handleEventEntry}>
+              <p>{t(`event.enter.submit`)}</p>
+            </S.EnterButton>
+          ) : (
+            <S.DisableButton disabled>
+              <p>{t(`event.enter.submit`)}</p>
+            </S.DisableButton>
+          )}
+        </form>
+      </S.FormContainer>
     </S.Wrapper>
   );
 };
 
-export default EventPage;
+export default EnterEvent;

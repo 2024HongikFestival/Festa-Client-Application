@@ -26,7 +26,6 @@ export default function Kind123({ data }) {
         return updatedImages;
       });
     } catch (error) {
-      console.error('이미지 로드 실패:', error);
       setWowImages((prevImages) => {
         const updatedImages = [...prevImages];
         updatedImages[index] = null;

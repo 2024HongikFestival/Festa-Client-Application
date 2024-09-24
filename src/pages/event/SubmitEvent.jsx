@@ -12,7 +12,6 @@ const SubmitEvent = () => {
   const location = useLocation();
 
   const { date } = location.state || {};
-  console.log(date);
 
   const instagramUrl = 'https://www.instagram.com/hiufestival_official/';
 
