@@ -77,7 +77,6 @@ export default function PubCard() {
         changes[category] = change;
       }
     }
-    console.log(changes);
     return changes;
   }, []);
 
