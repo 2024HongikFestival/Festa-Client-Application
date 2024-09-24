@@ -69,7 +69,7 @@ export default function Kind113({ data }) {
           </DepartmentWrapper>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>{data[0].totalLike > 9999 ? '9999+' : data[0].totalLike}</Count>
+            <Count>{data[0].totalLike > 99999 ? '99999+' : data[0].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium1>
@@ -91,7 +91,7 @@ export default function Kind113({ data }) {
 
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>{data[2].totalLike > 9999 ? '9999+' : data[2].totalLike}</Count>
+            <Count>{data[2].totalLike > 99999 ? '99999+' : data[2].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium3>

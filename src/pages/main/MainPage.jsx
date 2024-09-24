@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import * as S from './MainPage.styled';
 import mainStart from '@/assets/lotties/main/mainStart.json';
+
 import AOS from 'aos';
 import mainLineup1 from '@/assets/webps/main/mainLineup1.webp';
 import mainLineup2 from '@/assets/webps/main/mainLineup2.webp';
