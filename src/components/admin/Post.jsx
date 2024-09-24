@@ -336,6 +336,7 @@ const PostContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
   width: 100%;
   background-color: ${(props) => props.theme.colors.gray10};
   gap: ${({ $nogap }) => ($nogap ? '0' : '0.8rem')};

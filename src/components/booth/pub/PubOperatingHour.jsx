@@ -79,7 +79,6 @@ const Caption = styled.div`
 `;
 
 const DayNight = styled.div`
-  width: 14.9rem;
   height: 4rem;
   display: flex;
   flex-direction: column;
