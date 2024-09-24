@@ -9,6 +9,7 @@ import flameLogo from '@/assets/svgs/layouts/flame.svg';
 import mangaeInsta from '@/assets/svgs/layouts/mangaeInsta.svg';
 import wdfInsta from '@/assets/svgs/layouts/wdfInsta.svg';
 import gaehwaInsta from '@/assets/svgs/layouts/gaehwaInsta.svg';
+import snolInsta from '@/assets/svgs/layouts/snolInsta.svg';
 import up from '@/assets/svgs/layouts/up.svg';
 import flameVideo from '@/assets/videos/flameMainFooter.mp4';
 
@@ -191,6 +192,17 @@ export default function Footer() {
               style={{ cursor: 'default' }}
             ></S.LinkOverlay>
           </S.InstaIconWrapper>
+          {flame && (
+            <S.InstaIconWrapper>
+              <object data={snolInsta} alt="snolInsta" loading="lazy" />
+              <S.LinkOverlay
+                to="https://www.instagram.com/snol_official?igsh=MXN3NHBwOXljazBkaw%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ cursor: 'default' }}
+              ></S.LinkOverlay>
+            </S.InstaIconWrapper>
+          )}
           {flame ? (
             <S.FlamePolicy
               onClick={() => {
