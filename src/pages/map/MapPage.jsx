@@ -29,6 +29,7 @@ const MapPage = () => {
   const [isBigVisible, setIsBigVisible] = useState(false);
   const [scale, setScale] = useState(1);
   const [Istalk, setIsTalk] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
     // 페이지뷰 이벤트 발송
@@ -43,12 +44,14 @@ const MapPage = () => {
 
   const handleToggle = (view) => {
     setActiveView(view);
+    if (view === 'detail') {
+      setShowOverlay(true); // 상세 탭 클릭 시 오버레이 표시
+    }
   };
 
   const removeTalk = () => {
-    if (!Istalk) {
-      setIsTalk(true);
-    }
+    setShowOverlay(false);
+    setIsTalk(true);
   };
 
   const handleTransform = (e) => {
@@ -95,20 +98,26 @@ const MapPage = () => {
             </MapImgBox>
           </ContentContainer>
         ) : (
-          <div onClick={() => removeTalk()} style={{ position: 'relative', width: 'auto', height: '42.rem' }}>
+          <div style={{ position: 'relative', width: 'auto', height: '42rem' }}>
             <ContentContainer>
-              {!Istalk && (
+              {showOverlay && (
                 <div
                   style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    position: 'relative',
+                    zIndex: 1000,
                   }}
+                  onClick={removeTalk}
                 >
                   <TalkBox src={talk} />
                   <TalkDiv>
-                    <span>{t('map.talk0')}</span>
                     {t('map.talk1')}
                     <span>{t('map.talk2')}</span>
                     {t('map.talk3')}
@@ -177,7 +186,7 @@ const MapPage = () => {
                               alt="Medium Map"
                               style={{
                                 opacity: scale >= 1.8 && scale < 3.5 ? 1 : 0,
-                                transition: 'opacity 0.7s ease',
+                                transition: 'opacity 0.6s ease',
                                 position: 'absolute',
                                 top: 0,
                                 left: 0,
@@ -190,7 +199,7 @@ const MapPage = () => {
                               alt="Big Map"
                               style={{
                                 opacity: scale >= 3.5 ? 1 : 0,
-                                transition: 'opacity 0.7s ease',
+                                transition: 'opacity 0.6s ease',
                                 position: 'absolute',
                                 top: 0,
                                 left: 0,

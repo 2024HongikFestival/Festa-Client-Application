@@ -571,13 +571,12 @@
     "title": "Road Map",
     "complete": "Complete",
     "detail": "Detailed",
-    "talk0": "Move",
-    "talk1": " to your desired area",
-    "talk2": "",
-    "talk3": "",
-    "talk4": "or tap continuously to ",
-    "talk5": "zoom in !",
-    "talk6": ""
+    "talk1": "You can ",
+    "talk2": "move",
+    "talk3": " to the area you want",
+    "talk4": "or ",
+    "talk5": "zoom in",
+    "talk6": " by double touches!"
   },
   "fleamarket": {
     "pageTitle": "Flea market",

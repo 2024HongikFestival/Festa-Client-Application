@@ -111,16 +111,16 @@ export const TalkBox = styled.img`
   position: absolute;
   z-index: 2;
   width: 24rem;
-  top: 8rem;
+  top: 22.4rem;
 `;
 
 export const TalkDiv = styled.div`
   position: absolute;
   z-index: 3;
-  width: 19.5rem;
+  width: 24rem;
   ${(props) => props.theme.fontStyles.basic.captionBold};
 
-  top: 9.5rem;
+  top: 23.8rem;
   text-align: center;
 
   span {
