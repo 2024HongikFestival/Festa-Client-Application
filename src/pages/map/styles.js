@@ -68,33 +68,18 @@ export const MapToggleBox = styled.div`
 `;
 
 export const MapImgBox = styled.div`
-  width: 33.5rem;
+  width: 100%;
   cursor: grab;
-  overflow: hidden;
   margin: 2.4rem 0;
   position: relative;
   z-index: 0;
+  height: ${(props) => (props.$whatview === 'all' ? '22rem' : '42.2rem')};
   background: #b1daff;
-  height: 22rem;
 
   .complete {
-    width: 100%;
     height: 22rem;
     animation: ${fadeInUp} 1s ease-out;
   }
-
-  .detail {
-    position: 'relative';
-    animation: ${fadeInUp} 1s ease-out;
-  }
-`;
-
-export const MapSpan = styled.span`
-  position: absolute;
-  color: black;
-  top: 2rem;
-  left: 2rem;
-  z-index: 100;
 `;
 
 export const BtnImg = styled.img`
@@ -108,9 +93,7 @@ export const BtnImg = styled.img`
 `;
 
 export const DetailMap = styled.img`
-  width: 100%;
-  height: 22rem;
-  transition: opacity 0.5s ease;
+  height: 22.2rem;
 `;
 
 export const ActiveBackground = styled.div`
@@ -122,4 +105,26 @@ export const ActiveBackground = styled.div`
   border-radius: 3rem;
   transition: transform 0.25s ease;
   transform: ${({ $whatview }) => ($whatview === 'all' ? 'translateX(0)' : 'translateX(15.8rem)')};
+`;
+
+export const TalkBox = styled.img`
+  position: absolute;
+  z-index: 2;
+  width: 24rem;
+  top: 22.4rem;
+`;
+
+export const TalkDiv = styled.div`
+  position: absolute;
+  z-index: 3;
+  width: 24rem;
+  ${(props) => props.theme.fontStyles.basic.captionBold};
+
+  top: 23.8rem;
+  text-align: center;
+
+  span {
+    ${(props) => props.theme.fontStyles.basic.captionBold};
+    color: ${(props) => props.theme.colors.hongikBlue};
+  }
 `;
