@@ -19,6 +19,17 @@ const LostAndFoundPage = () => {
   const [itemLostId, setItemLostId] = useState(-1);
 
   useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Lost and Found Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     document.body.style.overflow = isBottomSheetOpen || isLocationModalOpen || isItemModalOpen ? 'hidden' : 'auto';
   }, [isBottomSheetOpen, isLocationModalOpen, isItemModalOpen]);
 
@@ -45,14 +56,16 @@ const LostAndFoundPage = () => {
   const getItemsApi = useCallback(async () => {
     try {
       const response = await axiosInstance.get('/losts', {
-        params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
+        params: { page: page, date: selectedDay },
       });
       setItems(response.data.data.losts);
       setTotalPages(response.data.data.totalPage);
     } catch (error) {
-      console.error(error);
-      alert(t('LostAndFound.FilterError'));
-      window.location.reload();
+      //'' 값이 아닌 경우 -> 즉 전체 필터링이 아닌 경우에만 alert 띄워줌
+      if (selectedDay) {
+        alert(t('LostAndFound.FilterError'));
+        window.location.reload();
+      }
     }
   }, [page, selectedDay, t]);
 
@@ -99,18 +112,22 @@ const LostAndFoundPage = () => {
             <S.LostAndFoundArticleLayout>
               <S.Gap8px>
                 <DropDown setSelectedDay={setSelectedDay} />
-                <S.LostAndFoundArticle>
-                  {items.length > 0 &&
-                    items.map((item, idx) => {
-                      return (
-                        <S.LostAndFoundPost
-                          onClick={handleClickItem(item.lostId)}
-                          key={`item_${idx}`}
-                          $imgSrc={item.imageUrl}
-                        />
-                      );
-                    })}
-                </S.LostAndFoundArticle>
+                {items.length === 0 ? (
+                  <S.NoItemInArticle>{t('LostAndFound.NoPost')}</S.NoItemInArticle>
+                ) : (
+                  <S.LostAndFoundArticle>
+                    {items.length > 0 &&
+                      items.map((item, idx) => {
+                        return (
+                          <S.LostAndFoundPost
+                            onClick={handleClickItem(item.lostId)}
+                            key={`item_${idx}`}
+                            $imgSrc={item.imageUrl}
+                          />
+                        );
+                      })}
+                  </S.LostAndFoundArticle>
+                )}
               </S.Gap8px>
 
               <NewPagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

@@ -11,26 +11,40 @@ const MapWrapper = styled.div`
   position: relative;
   border: 1px solid #ddd;
   background-color: #b1daff;
+  touch-action: pan-x pan-y;
 `;
 
-const LostAndFoundMap = styled(animated.img)`
+const LostAndFoundMap = styled.div`
   width: 100%;
   height: 100%;
   width: 33.5rem;
   height: 22.5rem;
+  background-image: url(${LostAndFoundLocation});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 
   object-fit: cover;
-  touch-action: none;
+  touch-action: pan-x pan-y;
 `;
 
 const CustomMap = () => {
-  const ref = useRef(null);
+  const handleTouchMove = (e) => {
+    e.preventDefault();
+  };
 
   return (
-    <TransformWrapper initialScale={3.5} initialPositionX={-410} initialPositionY={-550} minScale={1} maxScale={6}>
+    <TransformWrapper
+      initialScale={3.5}
+      initialPositionX={-250}
+      initialPositionY={-350}
+      minScale={1}
+      maxScale={6}
+      onTouchMove={handleTouchMove}
+    >
       <MapWrapper>
         <TransformComponent>
-          <LostAndFoundMap src={LostAndFoundLocation} alt="Custom Map" />
+          <LostAndFoundMap alt="Custom Map" />
         </TransformComponent>
       </MapWrapper>
     </TransformWrapper>

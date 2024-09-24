@@ -92,8 +92,6 @@ const EntryDetail = ({ prizeName, title, titleDescription, quantity, onBack }) =
         }
       );
 
-      console.log('Response Data:', response.data);
-
       const data = response.data.data;
       const result = Array.isArray(data) ? data : [data];
       const updatedList = list.map((item) => {
@@ -398,7 +396,7 @@ const ActionButton = styled.button`
     if (props.$buttonType === 'fullDraw') {
       return props.$isEnabled ? '#3586D7' : props.theme.colors.gray60;
     }
-    return props.theme.colors.gray60; // 기본 색상
+    return props.theme.colors.gray60;
   }};
   color: ${(props) => (props.$isEnabled ? props.theme.colors.white : props.theme.colors.gray40)};
   border: none;

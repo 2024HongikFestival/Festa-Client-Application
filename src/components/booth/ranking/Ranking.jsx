@@ -1,10 +1,9 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useState, lazy, Suspense, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import error from '@/assets/webps/booth/icon/error.webp';
 import ContentContainer from '@/components/common/ContentContainer';
 
-// 동적 import를 통한 Lazy loading
 const Kind123 = React.lazy(() => import('@/components/booth/ranking/Kind123'));
 const Kind122 = React.lazy(() => import('@/components/booth/ranking/Kind122'));
 const Kind111 = React.lazy(() => import('@/components/booth/ranking/Kind111'));
@@ -16,31 +15,7 @@ export default function Ranking() {
   const [rankData, setRankData] = useState([]);
   const { t } = useTranslation();
 
-  const dummyResponse = {
-    status: 200,
-    message: '주점 랭킹 조회 성공',
-    data: {
-      data: [
-        {
-          boothId: 24,
-          boothName: '자무;자전에서 음주가무',
-          totalLike: 99,
-        },
-        {
-          boothId: 26,
-          boothName: '슬램덩크',
-          totalLike: 99,
-        },
-        {
-          boothId: 29,
-          boothName: '운수 좋은 날',
-          totalLike: 99,
-        },
-      ],
-    },
-  };
-
-  const renderRankingComponent = () => {
+  const renderRankingComponent = useMemo(() => {
     if (rankData.length === 0) return null;
 
     const firstPlaceCount = rankData.filter((item) => item.rank === 1).length;
@@ -56,9 +31,9 @@ export default function Ranking() {
     } else if (firstPlaceCount === 3) {
       return <Kind111 data={rankData} />;
     } else {
-      return null; // 처리되지 않은 케이스
+      return null;
     }
-  };
+  }, [rankData]);
 
   const getRankingInfo = async () => {
     try {
@@ -82,7 +57,7 @@ export default function Ranking() {
         setRankData(rankedData);
       }
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -113,7 +88,7 @@ export default function Ranking() {
           </Caption>
         </GuideWrapper>
         {/* 주점별 랭킹 순위 부분 */}
-        <Suspense fallback={<></>}>{renderRankingComponent()}</Suspense>
+        <Suspense fallback={<></>}>{renderRankingComponent}</Suspense> {/* 함수 호출 X */}
       </RankingContainer>
     </ContentContainer>
   );

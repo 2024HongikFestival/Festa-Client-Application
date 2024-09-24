@@ -15,7 +15,17 @@ const CameraPage = ({ setCapturedImage }) => {
 
     const startCamera = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } } });
+
+        // 줌을 지원하는 경우 1배 줌으로 설정
+        const videoTrack = stream.getVideoTracks()[0];
+        const capabilities = videoTrack.getCapabilities();
+        if (capabilities.zoom) {
+          await videoTrack.applyConstraints({
+            advanced: [{ zoom: 1 }],
+          });
+        }
+
         videoRef.current.srcObject = stream;
         videoRef.current.play();
       } catch (err) {

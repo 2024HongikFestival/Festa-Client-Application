@@ -46,7 +46,6 @@ const EnterEvent = () => {
       const dash = '-';
       const phoneStr = rawPhoneStr.slice(0, 3) + dash + rawPhoneStr.slice(3, 7) + dash + rawPhoneStr.slice(7, 11);
       setPhone(phoneStr);
-      console.log(phoneStr);
     }
     if (name && isPhoneValid) {
       setIsAvailable(true);
@@ -72,13 +71,11 @@ const EnterEvent = () => {
           },
         }
       );
-      console.log(response.data.message);
       localStorage.removeItem('kakao_code');
       localStorage.removeItem('event_access_token');
-      console.log(response.data.data.date);
       navigate('/event/submit', { state: { date: response.data.data.date } });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

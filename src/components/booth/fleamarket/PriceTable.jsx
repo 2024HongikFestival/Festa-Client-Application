@@ -14,7 +14,6 @@ export default function PriceTable({ bottomImg }) {
   const [loadedImages, setLoadedImages] = useState([]);
 
   useEffect(() => {
-    // 동적 이미지 로딩
     Promise.all(
       bottomImg.map(async (img) => {
         if (typeof img === 'function') {

@@ -9,20 +9,24 @@ import {
   MapTitle,
   MapWrapper,
 } from './styles.js';
-import React from 'react';
-import mapImg from '@/assets/webps/map/sitemap.webp';
+import React, { useEffect } from 'react';
+import mapImg from '/src/assets/webps/map/sitemap.webp';
 import Lottie from 'lottie-react';
 import arrowAnimation from '@/assets/lotties/siteMap.json';
 import { useTranslation } from 'react-i18next';
-
-import AOS from 'aos';
-import { useEffect } from 'react';
 
 const FlameMapPage = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    AOS.init({});
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Flame Map Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
   }, []);
 
   const arrowMotion = {
@@ -30,6 +34,7 @@ const FlameMapPage = () => {
     autoplay: true,
     animationData: arrowAnimation,
   };
+
   return (
     <MapWrapper>
       <MapTitle>{t('sitemap.title')}</MapTitle>

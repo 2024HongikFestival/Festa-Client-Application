@@ -19,7 +19,7 @@ presigendAxiosInstance.interceptors.request.use((config) => {
   if (lost_access_token) {
     config.headers.Authorization = `Bearer ${lost_access_token}`;
   } else {
-    console.log('토큰 없음');
+    // console.log('토큰 없음');
   }
   return config;
 });
