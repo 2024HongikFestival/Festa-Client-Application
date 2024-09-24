@@ -280,7 +280,7 @@
             "food": "어묵탕, 두부김치"
           },
           {
-            "department": "TED",
+            "department": "TEDxHongikU",
             "intro": "테드와서무라(이자카야)",
             "event": "퀴즈, 폴라로이드",
             "food": "명란감자전, 야끼소바"
@@ -569,7 +569,13 @@
   "map": {
     "title": "로드맵",
     "complete": "전체 지도",
-    "detail": "상세 지도"
+    "detail": "상세 지도",
+    "talk1": "원하는 구역으로 ",
+    "talk2": "이동",
+    "talk3": "하거나 ",
+    "talk4": "연속으로 터치해 ",
+    "talk5": "확대",
+    "talk6": "할 수 있어요!"
   },
   "fleamarket": {
     "pageTitle": "플리마켓",
@@ -587,7 +593,7 @@
       },
       {
         "key": "aiesec",
-        "name": "AIESEC과 함께 MZ한 친환경 실천 어때?",
+        "name": "AIESEC과 함께 MZ한 친환경 실천",
         "intro": "다회용 텀블러 & 키링으로 변신 가능한 손뜨개\n 티코스터"
       },
       {
@@ -862,7 +868,7 @@
         "imagineBand": "이매진 밴드",
         "brainsWars": "브레인스워즈",
         "performingArtsMusical": "공연예술 뮤지컬",
-        "ohHyeonSongAndTomato": "오현성과 토마토"
+        "ohHyeonSongAndTomato": "오현성토마토디럭스"
       },
       "studentCenterEventsDay2": {
         "illEquippedWord": "못갖춘 마디",

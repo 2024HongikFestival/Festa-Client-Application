@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, { useRef } from 'react';
+>>>>>>> 21147b669243ce6cab7fe07075fc81a4744800aa
 import styled from 'styled-components';
 import LostAndFoundLocation from '@/assets/webps/lost/LostAndFoundLocation.webp';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
