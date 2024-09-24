@@ -77,6 +77,7 @@ export default function PubCard() {
         changes[category] = change;
       }
     }
+    console.log(changes);
     return changes;
   }, []);
 
@@ -95,7 +96,7 @@ export default function PubCard() {
           const changes = compare(prevData, newData);
 
           const newBehindHearts = Object.entries(changes).flatMap(([category, change]) => {
-            const heartCount = Math.min(change, 3);
+            const heartCount = Math.min(change, 1);
             return Array.from({ length: heartCount }, () => ({
               id: Date.now() + Math.random(),
               left: `${Math.random() * 80 + 10}%`,
@@ -107,7 +108,7 @@ export default function PubCard() {
             setBehindHearts((prev) => [...prev, ...newBehindHearts].slice(-100));
             setTimeout(() => {
               setBehindHearts((hearts) => hearts.filter((heart) => !newBehindHearts.includes(heart)));
-            }, 3000);
+            }, 7000);
           }
         }
         return newData;
