@@ -1,14 +1,14 @@
 import React from 'react';
-import { useTranslation, Trans } from 'react-i18next'; // i18next import
+import { useTranslation } from 'react-i18next';
 import PageTitle from '@/components/common/PageTitle';
 import ContentContainer from '@/components/common/ContentContainer';
-import error from '@/assets/webps/booth/icon/error.webp';
-import MD from '@/components/booth/MD';
+import MD from '@/components/booth/md/MD';
 import { mdList } from '@/constants/booth/mdList';
+import error from '@/assets/webps/booth/icon/error.webp';
 import * as S from './MdPage.styled';
 
 export default function MdPage() {
-  const { t } = useTranslation(); // useTranslation 훅 사용
+  const { t } = useTranslation();
 
   return (
     <S.Container>
@@ -25,7 +25,7 @@ export default function MdPage() {
         </S.InfoText>
         <S.GuideWrapper>
           <S.IconWrapper>
-            <S.Icon src={error} alt="error" />
+            <S.Icon src={error} alt="error" loading="lazy" />
           </S.IconWrapper>
           <S.Caption>{t('mdPage.purchaseAlert')}</S.Caption>
         </S.GuideWrapper>
@@ -37,7 +37,7 @@ export default function MdPage() {
             <MD
               key={index}
               img={item.img}
-              name={t(`mdPage.products.${item.img}`)} // 번역된 제품 이름 사용
+              name={t(`mdPage.products.${item.img}`)}
               price={item.price}
               width={item.width}
               height={item.height}
@@ -46,7 +46,7 @@ export default function MdPage() {
             <div key={index} data-aos="zoom-in-up">
               <MD
                 img={item.img}
-                name={t(`mdPage.products.${item.img}`)} // 번역된 제품 이름 사용
+                name={t(`mdPage.products.${item.img}`)}
                 price={item.price}
                 width={item.width}
                 height={item.height}

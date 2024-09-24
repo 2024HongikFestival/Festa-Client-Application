@@ -56,7 +56,7 @@ const theme = {
       letter-spacing: -0.0024rem;
     `,
       headline5: `
-      font-family: 'Pretendard', sans-serif;;
+      font-family: 'Pretendard', sans-serif;
       font-size: 2.4rem;
       font-weight: 800;
       font-style: normal;
@@ -64,7 +64,7 @@ const theme = {
       letter-spacing: -0.0024rem;
     `,
       headline6: `
-      font-family: 'Pretendard', sans-serif;;
+      font-family: 'Pretendard', sans-serif;
       font-size: 2rem;
       font-weight: 800;
       font-style: normal;
@@ -72,7 +72,7 @@ const theme = {
       letter-spacing: -0.002rem;
     `,
       department: `
-      font-family: 'Pretendard', sans-serif;;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.4rem;
       font-weight: 800;
       font-style: normal;
@@ -80,7 +80,7 @@ const theme = {
       letter-spacing: -0.014rem;
     `,
       intro: `
-      font-family: 'Pretendard', sans-serif;;
+      font-family: 'Pretendard', sans-serif;
       font-size: 1.1rem;
       font-weight: 400;
       font-style: normal;
@@ -88,13 +88,13 @@ const theme = {
       letter-spacing: -0.011rem;
     `,
       roboto: `
-      font-family: 'Roboto', sans-serif;;
+      font-family: 'Roboto', sans-serif;
       font-size: 1.4rem;
-      font-weight: 500;
+      font-weight: 600;
       font-style: normal;
       line-height: 160%;
       letter-spacing: -0.014rem;
-  `,
+    `,
     },
     flame: {
       headline1: `

@@ -21,7 +21,7 @@ export const PaginationUl = styled.ul`
 `;
 
 export const Li = styled.li`
-  float: left; //추후 없애보기
+  float: left;
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -39,9 +39,8 @@ export const PaginationEdgeLi = styled(Li)`
   cursor: pointer;
   margin: 0 1rem;
 
-  // 본인이 첫 번째 자식일 경우
   &:first-child {
-    text-align: right; //추후 없애보기
+    text-align: right;
     &::before {
       position: absolute;
       font-size: 2rem;

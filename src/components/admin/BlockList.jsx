@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Post from './Post';
 import { adminAxiosInstance } from '@/api/axios';
 import arrowDown from '@/assets/webps/admin/arrow_drop_down.webp';
 import arrowUp from '@/assets/webps/admin/arrow_drop_up.webp';
-import Post from './Post';
-import PropTypes from 'prop-types';
 
 const PAGE_SIZE = 12;
 
@@ -30,10 +30,8 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
   };
 
   const updateLostsStatus = (userId, updatedPosts) => {
-    // updatedPosts에서 userId에 해당하는 게시물만 필터링
     const filteredPosts = updatedPosts.filter((post) => post.userId === userId);
 
-    // 필터링된 게시물 리스트로 상태 업데이트
     setDisplayedLosts((prevPosts) => ({
       ...prevPosts,
       [userId]: filteredPosts,
@@ -50,17 +48,16 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
       });
       if (response.status === 204) {
         alert('차단 해제가 완료되었습니다.');
-        setList((prevList) => prevList.filter((item) => item.userId !== userId)); // 차단 해제된 사용자 리스트에서 제거
+        setList((prevList) => prevList.filter((item) => item.userId !== userId));
         setDisplayedList((prevList) => prevList.filter((item) => item.userId !== userId));
-        setExpandedItem(null); // 해당 사용자가 펼쳐져 있는 상태를 초기화
+        setExpandedItem(null);
         setDisplayedLosts((prevPosts) => {
           const updatedPosts = { ...prevPosts };
-          delete updatedPosts[userId]; // 사용자의 포스트 정보 삭제
+          delete updatedPosts[userId];
           return updatedPosts;
         });
       }
     } catch (error) {
-      console.error('Error unblocking user: ', error);
       alert('차단 해제에 실패했습니다.');
     }
   };
@@ -145,8 +142,6 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('accessToken');
-
-        // 블랙리스트 데이터 가져오기
         const responseBlacklist = await adminAxiosInstance.get('/admin/blacklist', {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -154,7 +149,6 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
         });
         setList(responseBlacklist.data.data);
 
-        // 모든 분실물 데이터 가져오기
         await fetchAllLosts();
       } catch (error) {
         console.error('Error fetching data:', error.response?.data || error.message);
@@ -188,6 +182,7 @@ const BlockList = ({ setIsDetailView, setPostId }) => {
                   src={expandedItem === item.userId ? arrowUp : arrowDown}
                   alt="Toggle Arrow"
                   onClick={() => toggleExpand(item.userId)}
+                  loading="lazy"
                 />
               </List>
               {expandedItem === item.userId && (

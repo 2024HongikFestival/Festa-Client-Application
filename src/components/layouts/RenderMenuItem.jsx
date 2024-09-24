@@ -6,7 +6,6 @@ const RenderMenuItem = ({ item, index, openAccordion, setOpenAccordion, flame, n
   const isAccordionOpen = openAccordion === index;
   const contentRef = useRef(null);
 
-  // 아코디언 메뉴 toggle
   const toggleAccordion = (index) => {
     setOpenAccordion(openAccordion === index ? null : index);
   };

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 export const useUpdateBeforeHeight = (menuRef) => {
   useEffect(() => {
-    const menuElement = menuRef.current; // effect 실행 시의 menuRef.current 값을 저장
+    const menuElement = menuRef.current;
 
     const updateBeforeHeight = () => {
       if (menuElement) {
@@ -10,7 +10,6 @@ export const useUpdateBeforeHeight = (menuRef) => {
         menuElement.style.setProperty('--before-height', `${scrollHeight}px`);
       }
     };
-
     // 초기 높이 설정
     updateBeforeHeight();
 

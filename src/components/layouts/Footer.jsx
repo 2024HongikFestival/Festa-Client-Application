@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import mangaeLogo from '@/assets/webps/layouts/mangae.webp';
 import { useTranslation } from 'react-i18next';
+import * as S from '@/components/layouts/FooterStyles';
+import mangaeLogo from '@/assets/webps/layouts/mangae.webp';
 import rightArrow from '@/assets/svgs/makers/rightArrow.svg';
 import rightArrowGray from '@/assets/svgs/makers/rightArrowGray.svg';
 import flameLogo from '@/assets/svgs/layouts/flame.svg';
@@ -9,8 +11,6 @@ import wdfInsta from '@/assets/svgs/layouts/wdfInsta.svg';
 import gaehwaInsta from '@/assets/svgs/layouts/gaehwaInsta.svg';
 import up from '@/assets/svgs/layouts/up.svg';
 import flameVideo from '@/assets/videos/flameMainFooter.mp4';
-import * as S from '@/components/layouts/FooterStyles';
-import { useEffect, useState } from 'react';
 
 export default function Footer() {
   const [isAtFooter, setIsAtFooter] = useState(false);
@@ -129,11 +129,11 @@ export default function Footer() {
       )}
       {flame ? (
         <S.Flame>
-          <img src={flameLogo} alt="flame" />
+          <object data={flameLogo} alt="flame" loading="lazy" />
         </S.Flame>
       ) : (
         <S.Mangae>
-          <img src={mangaeLogo} alt="mangae" />
+          <object data={mangaeLogo} alt="mangae" loading="lazy" />
         </S.Mangae>
       )}
       <S.Contributor $path={location.pathname}>
@@ -164,15 +164,33 @@ export default function Footer() {
       <S.InstaContainer $path={location.pathname}>
         <span>{t('layouts.footer.instagram')}</span>
         <S.Instagrams>
-          <Link to="https://www.instagram.com/hiufestival_official/" target="_blank" rel="noopener noreferrer">
-            <img src={mangaeInsta} alt="mangaeInsta" />
-          </Link>
-          <Link to="https://www.instagram.com/hiu_wodf_official/" target="_blank" rel="noopener noreferrer">
-            <img src={wdfInsta} alt="wdfInsta" />
-          </Link>
-          <Link to="https://www.instagram.com/hiu_student_council/" target="_blank" rel="noopener noreferrer">
-            <img src={gaehwaInsta} alt="gaehwaInsta" />
-          </Link>
+          <S.InstaIconWrapper>
+            <object data={mangaeInsta} alt="mangaeInsta" loading="lazy" />
+            <S.LinkOverlay
+              to="https://www.instagram.com/hiufestival_official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ cursor: 'default' }}
+            ></S.LinkOverlay>
+          </S.InstaIconWrapper>
+          <S.InstaIconWrapper>
+            <object data={wdfInsta} alt="wdfInsta" loading="lazy" />
+            <S.LinkOverlay
+              to="https://www.instagram.com/hiu_wodf_official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ cursor: 'default' }}
+            ></S.LinkOverlay>
+          </S.InstaIconWrapper>
+          <S.InstaIconWrapper>
+            <object data={gaehwaInsta} alt="gaehwaInsta" loading="lazy" />
+            <S.LinkOverlay
+              to="https://www.instagram.com/hiu_student_council/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ cursor: 'default' }}
+            ></S.LinkOverlay>
+          </S.InstaIconWrapper>
           {flame ? (
             <S.FlamePolicy
               onClick={() => {

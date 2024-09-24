@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import * as S from './styles/LineupPage';
 import { getSelectedDayByDate } from '@/utils/stage/getSelectedDayByDate';
-
 import img1 from '@/assets/webps/stageLineup/0925_1.webp';
 import img2 from '@/assets/webps/stageLineup/0925_2.webp';
 import img3 from '@/assets/webps/stageLineup/0925_3.webp';
@@ -12,6 +10,7 @@ import img6 from '@/assets/webps/stageLineup/0926_3.webp';
 import img7 from '@/assets/webps/stageLineup/0927_1.webp';
 import img8 from '@/assets/webps/stageLineup/0927_2.webp';
 import img9 from '@/assets/webps/stageLineup/0927_3.webp';
+import * as S from './styles/LineupPage';
 
 const Data = {
   day1: [
@@ -36,6 +35,17 @@ const LineupPage = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'LineUp Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     setSelectedDay(getSelectedDayByDate());
   }, []);
 
@@ -44,15 +54,24 @@ const LineupPage = () => {
 
     return dayData.map((data, index) => {
       const isBlack = (selectedDay === 'day3' && index === 0) || (selectedDay !== 'day3' && index === 1);
+      const isLastCard = index === dayData.length - 1;
 
       return (
-        <S.Card key={data.name} data-aos={index === 0 ? '' : 'fade-up'}>
-          <S.CardImage src={data.src} alt={data.alt} />
-          <S.CardDescription>
-            {/* $isBlack으로 수정 */}
-            <S.Name $isBlack={isBlack}>{data.name}</S.Name>
-          </S.CardDescription>
-        </S.Card>
+        <React.Fragment key={data.name}>
+          <S.Card data-aos={index === 0 ? '' : 'fade-up'}>
+            <S.CardImage src={data.src} alt={data.alt} />
+            <S.CardDescription>
+              <S.Name $isBlack={isBlack}>{data.name}</S.Name>
+            </S.CardDescription>
+          </S.Card>
+
+          {/* 마지막 카드 아래에만 MCContainer 추가 */}
+          {isLastCard && (
+            <S.MCContainer data-aos="fade-up">
+              <S.MCName>{t(`LineupPage.mc.${selectedDay.toLowerCase()}`)}</S.MCName>
+            </S.MCContainer>
+          )}
+        </React.Fragment>
       );
     });
   };
@@ -75,9 +94,6 @@ const LineupPage = () => {
         </S.DayButton>
       </S.DayContainer>
       <S.CardContainer>{renderCards()}</S.CardContainer>
-      <S.MCContainer data-aos="fade-up">
-        <S.MCName>{t(`LineupPage.mc.${selectedDay.toLowerCase()}`)}</S.MCName>
-      </S.MCContainer>
     </S.PageContainer>
   );
 };

@@ -1,23 +1,14 @@
-// 대동제 분실물 (메인)
-// url: /lost-and-found
-
-import axios from 'axios';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import * as S from './LostAndFoundPage.styled';
-
+import { Trans, useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 import DropDown from '@/components/lost-and-found/LostAndFoundPage/DropDown/DropDown';
 import LostBottomSheet from '@/components/lost-and-found/LostAndFoundPage/LostBottomSheet/LostBottomSheet';
 import { ItemModal, LocationModal } from '@/components/lost-and-found/LostAndFoundPage/LostModal/LostModal';
 import NewPagination from '@/components/lost-and-found/LostAndFoundPage/NewPagination/NewPagination';
-import { Trans, useTranslation } from 'react-i18next';
-import styled from 'styled-components';
 import { axiosInstance } from '@/api/axios';
-// import i18n from '@/i18n/setting';
-// i18n.changeLanguage('en');
+import * as S from './LostAndFoundPage.styled';
 
-// [...Array(totalItems)] -> totalItems의 length를 가진 빈 배열
-// Array(totalItems) -> totalItems의 length를 가진 undefined가 채워진 배열
 const LostAndFoundPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -26,6 +17,17 @@ const LostAndFoundPage = () => {
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [itemLostId, setItemLostId] = useState(-1);
+
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Lost and Found Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isBottomSheetOpen || isLocationModalOpen || isItemModalOpen ? 'hidden' : 'auto';
@@ -54,14 +56,16 @@ const LostAndFoundPage = () => {
   const getItemsApi = useCallback(async () => {
     try {
       const response = await axiosInstance.get('/losts', {
-        params: { page: page, date: selectedDay }, //date 비어있으면 losts?page=1&date= 형식으로 보내짐 -> 전체 조회
+        params: { page: page, date: selectedDay },
       });
       setItems(response.data.data.losts);
       setTotalPages(response.data.data.totalPage);
     } catch (error) {
-      console.error(error);
-      alert(t('LostAndFound.FilterError'));
-      window.location.reload();
+      //'' 값이 아닌 경우 -> 즉 전체 필터링이 아닌 경우에만 alert 띄워줌
+      if (selectedDay) {
+        alert(t('LostAndFound.FilterError'));
+        window.location.reload();
+      }
     }
   }, [page, selectedDay, t]);
 
@@ -73,13 +77,11 @@ const LostAndFoundPage = () => {
     getItemsApi();
   }, [currentPage]);
 
-  //드롭다운(필터링) 바뀌면 기본적으로 1페이지부터
   useEffect(() => {
     currentPage === 1 ? getItemsApi() : handlePage(1);
   }, [selectedDay]);
 
   const handleClickItem = (lostId) => () => {
-    //navigate(`${lostId}`);
     setIsItemModalOpen(true);
     setItemLostId(lostId);
   };
@@ -110,18 +112,22 @@ const LostAndFoundPage = () => {
             <S.LostAndFoundArticleLayout>
               <S.Gap8px>
                 <DropDown setSelectedDay={setSelectedDay} />
-                <S.LostAndFoundArticle>
-                  {items.length > 0 &&
-                    items.map((item, idx) => {
-                      return (
-                        <S.LostAndFoundPost
-                          onClick={handleClickItem(item.lostId)}
-                          key={`item_${idx}`}
-                          $imgSrc={item.imageUrl}
-                        />
-                      );
-                    })}
-                </S.LostAndFoundArticle>
+                {items.length === 0 ? (
+                  <S.NoItemInArticle>{t('LostAndFound.NoPost')}</S.NoItemInArticle>
+                ) : (
+                  <S.LostAndFoundArticle>
+                    {items.length > 0 &&
+                      items.map((item, idx) => {
+                        return (
+                          <S.LostAndFoundPost
+                            onClick={handleClickItem(item.lostId)}
+                            key={`item_${idx}`}
+                            $imgSrc={item.imageUrl}
+                          />
+                        );
+                      })}
+                  </S.LostAndFoundArticle>
+                )}
               </S.Gap8px>
 
               <NewPagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
@@ -144,7 +150,6 @@ const StyleSpan = styled.span`
     content: '';
   }
   &::before {
-    //공백 처리를 위한 구문
     content: '';
     display: inline-block;
     width: 5px;

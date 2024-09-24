@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import instaIcon from '@/assets/webps/makers/instaIcon.webp';
 import githubIcon from '@/assets/webps/makers/githubIcon.webp';
 
@@ -15,13 +16,13 @@ const LikelionCard = ({ profileImg, name, department, ment, instaLink, githubLin
       </Department>
       <Ment>{ment}</Ment>
       <Icons>
-        <a href={instaLink} target="_blank" rel="noopener noreferrer">
+        <Link to={instaLink} target="_blank" rel="noopener noreferrer">
           <img src={instaIcon} alt="Instagram" />
-        </a>
+        </Link>
         {githubLink && (
-          <a href={githubLink} target="_blank" rel="noopener noreferrer">
+          <Link to={githubLink} target="_blank" rel="noopener noreferrer">
             <img src={githubIcon} alt="GitHub" />
-          </a>
+          </Link>
         )}
       </Icons>
     </LikelionCardLayout>

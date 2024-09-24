@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import PieceImg from '@/assets/svgs/main/piece.svg';
-import AOS from 'aos';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import AOS from 'aos';
+import PieceImg from '@/assets/svgs/main/piece.svg';
 
 const stageData = {
   9.25: {
@@ -32,10 +32,9 @@ export default function StageInfo() {
   const today = new Date();
   const { t } = useTranslation();
   const formattedToday = `${today.getMonth() + 1}.${today.getDate()}`;
-  // const formattedToday = '9.25'; // 글자색 변화 확인용
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (

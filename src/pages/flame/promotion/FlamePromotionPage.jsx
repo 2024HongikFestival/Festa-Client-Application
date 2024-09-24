@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import 'aos/dist/aos.css';
-import { productsData } from '@/constants/wdfPromotion/data'; // js 파일에서 데이터 import
+import { productsData } from '@/constants/wdfPromotion/data';
 
 const FlamePromotionPage = () => {
   const { t } = useTranslation();
@@ -16,11 +16,12 @@ const FlamePromotionPage = () => {
             <Card key={product.id} data-aos={index === 0 ? '' : 'zoom-in-up'}>
               <ImageContainer>
                 <Image
-                  src={product.image} // 이미지 바로 사용
+                  src={product.image}
                   alt={product.name}
                   width={product.width}
                   height={product.height}
-                  top={product.imageTop}
+                  $top={product.imageTop}
+                  loading="lazy"
                 />
               </ImageContainer>
               <Description>

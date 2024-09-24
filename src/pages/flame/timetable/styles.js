@@ -81,8 +81,8 @@ export const DayBox = styled.div`
   }
 
   &.active p {
-    background: ${({ day }) => {
-      if (day === 2) {
+    background: ${({ $day }) => {
+      if ($day === 2) {
         return 'radial-gradient(50% 50% at 50% 50%, #F0F423 0%, #DF2020 100%)';
       } else {
         return 'linear-gradient(104deg, #df2020 35.72%, #ffb800 88.25%)';
@@ -307,13 +307,6 @@ export const LiveTime = styled.span`
   bottom: 1.8rem;
   right: 1.25rem;
   z-index: 5;
-`;
-
-// 임시 푸터
-export const TTFooter = styled.div`
-  height: 18rem;
-  text-align: center;
-  color: #fff;
 `;
 
 export const UnderlinedText = styled.span`

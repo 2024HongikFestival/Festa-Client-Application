@@ -1,8 +1,8 @@
-import { adminAxiosInstance } from '@/api/axios';
-import deleteBtn from '@/assets/webps/admin/deleteBtn.webp';
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import * as XLSX from 'xlsx';
+import { adminAxiosInstance } from '@/api/axios';
+import deleteBtn from '@/assets/webps/admin/deleteBtn.webp';
 
 const prizeMapping = {
   '티빙 구독권': '티빙구독권',
@@ -13,13 +13,11 @@ const Winners = () => {
   const [prizes, setPrizes] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Function to fetch data
   const fetchData = async () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('accessToken');
 
-      // Fetch winners
       const winnersResponse = await adminAxiosInstance.get('/admin/entries/winners', {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -27,7 +25,6 @@ const Winners = () => {
       });
       setWinners(winnersResponse.data.data);
 
-      // Fetch prizes
       const prizesResponse = await adminAxiosInstance.get('/admin/entries/prizes', {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -41,12 +38,10 @@ const Winners = () => {
     }
   };
 
-  // Fetch data on component mount
   useEffect(() => {
     fetchData();
   }, []);
 
-  // Map prize names to prize data
   const prizeMap = prizes.reduce((acc, prize) => {
     const mappedPrizeName = prizeMapping[prize.prizeName];
     if (mappedPrizeName) {
@@ -55,7 +50,6 @@ const Winners = () => {
     return acc;
   }, {});
 
-  // Group winners by prize
   const getGroupedWinners = useCallback(() => {
     return winners.reduce((acc, winner) => {
       const prizeKey = winner.prize;
@@ -82,7 +76,7 @@ const Winners = () => {
       return {
         당첨자: winner.name,
         전화번호: winner.phone,
-        '당첨 상품': prizeName, // 상품 이름 매핑
+        '당첨 상품': prizeName,
         '당첨 여부': winner.winner ? 'O' : 'X',
         '중복 여부': winner.duplicate ? 'O' : 'X',
       };
@@ -106,7 +100,6 @@ const Winners = () => {
         },
       });
 
-      // Fetch data again after canceling the winner
       fetchData();
     } catch (error) {
       console.error('Error canceling winner: ', error);
@@ -116,7 +109,6 @@ const Winners = () => {
   if (loading) {
     return <p style={{ padding: '2rem', textAlign: 'center' }}>로딩 중...</p>;
   }
-
   if (!winners.length) {
     return <p style={{ padding: '2rem', textAlign: 'center' }}>당첨자가 없습니다.</p>;
   }

@@ -1,3 +1,13 @@
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import ContentContainer from '@/components/common/ContentContainer.jsx';
+import mapImg from '@/assets/webps/map/completemap.webp';
+import btnImg from '@/assets/webps/map/buttonscale.webp';
+import small from '@/assets/webps/map/detailMap2.webp';
+import medium from '@/assets/webps/map/2step.webp';
+import big from '@/assets/webps/map/bigmap.webp';
+
 import {
   MapBox,
   MapTitle,
@@ -9,22 +19,23 @@ import {
   DetailMap,
   ActiveBackground,
 } from './styles.js';
-import React, { useState, useEffect } from 'react';
-import ContentContainer from '@/components/common/ContentContainer.jsx';
-import mapImg from '@/assets/webps/map/completemap.webp';
-import btnImg from '@/assets/webps/map/buttonscale.webp';
-import small from '@/assets/webps/map/detailMap2.webp';
-import medium from '@/assets/webps/map/2step.webp'; // medium 이미지 경로
-import big from '@/assets/webps/map/bigmap.webp';
-import { useTranslation } from 'react-i18next';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 const MapPage = () => {
   const [activeView, setActiveView] = useState('all');
   const { t } = useTranslation();
   const [isBigVisible, setIsBigVisible] = useState(false);
   const [scale, setScale] = useState(1);
-  const [isDetail, setIsDetail] = useState(false);
+
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Map Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
 
   const handleToggle = (view) => {
     setActiveView(view);
@@ -33,7 +44,15 @@ const MapPage = () => {
   const handleTransform = (e) => {
     const currentScale = e.instance.transformState.scale;
     setScale(currentScale);
-    setIsBigVisible(currentScale > 1.3); // scale 값 1.3으로 변경
+    setIsBigVisible(currentScale > 1.3);
+  };
+
+  const handlePinchStart = () => {
+    setIsBigVisible(true);
+  };
+
+  const handlePinch = (e) => {
+    setScale(e.instance.transformState.scale);
   };
 
   useEffect(() => {
@@ -71,70 +90,81 @@ const MapPage = () => {
           </ContentContainer>
         ) : (
           <ContentContainer>
-            <MapImgBox className="detail">
-              <TransformWrapper
-                initialScale={1}
-                minScale={1}
-                maxScale={10}
-                wheel={{ step: 0.1 }}
-                pinch={{ step: 0.1 }}
-                onTransformed={handleTransform}
-              >
-                {({ resetTransform }) => {
-                  const handleReset = () => {
-                    resetTransform();
-                    setIsBigVisible(false);
-                    setScale(1);
-                  };
+            <TransformWrapper
+              initialScale={1}
+              sensitivity={5}
+              pinchSensitivity={4}
+              minScale={1}
+              panAnimationSpeed={2}
+              pinchAnimationSpeed={2}
+              enableZoomThrottling={true}
+              maxScale={10}
+              wheel={{ step: 0.1 }}
+              pinch={{ step: 0.1 }}
+              onPinchStart={handlePinchStart}
+              onPanningStart={handlePinch}
+              style={{ width: '100%', height: '100%' }}
+            >
+              {({ resetTransform }) => {
+                const handleReset = () => {
+                  resetTransform();
+                  setIsBigVisible(false);
+                  setScale(1);
+                };
 
-                  return (
-                    <div style={{ position: 'relative' }}>
-                      <TransformComponent>
-                        <DetailMap
-                          className="one"
-                          src={small}
-                          alt="Small Map"
-                          scale={scale}
-                          style={{
-                            opacity: scale < 1.3 ? 1 : 0,
-                            transition: 'opacity 0.3s ease',
-                          }}
-                        />
-                        <DetailMap
-                          className="two"
-                          src={medium}
-                          alt="Medium Map"
-                          style={{
-                            opacity: scale >= 1.3 && scale < 3.5 ? 1 : 0,
-                            transition: 'opacity 0.3s ease',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                          }}
-                        />
-                        <DetailMap
-                          className="three"
-                          src={big}
-                          alt="Big Map"
-                          style={{
-                            opacity: scale >= 3.5 ? 1 : 0, // 큰 지도
-                            transition: 'opacity 0.3s ease',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                          }}
-                        />
-                      </TransformComponent>
-                      <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" />
-                    </div>
-                  );
-                }}
-              </TransformWrapper>
-            </MapImgBox>
+                return (
+                  <div style={{ position: 'relative', width: '100%', height: '100%', margin: ' 0 10rem' }}>
+                    <MapImgBox className="detail">
+                      <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                        <TransformComponent
+                          pinchSensitivity={6}
+                          style={{ position: 'relative', width: '150%', height: '100%' }}
+                        >
+                          <DetailMap
+                            className="one"
+                            src={small}
+                            alt="Small Map"
+                            style={{
+                              opacity: scale < 1.3 ? 1 : 0,
+                              transition: 'opacity 0.3s ease',
+                            }}
+                          />
+                          <DetailMap
+                            className="two"
+                            src={medium}
+                            alt="Medium Map"
+                            style={{
+                              opacity: scale >= 1.3 && scale < 3.5 ? 1 : 0,
+                              transition: 'opacity 0.3s ease',
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              width: '100%',
+                              height: '100%',
+                            }}
+                          />
+                          <DetailMap
+                            className="three"
+                            src={big}
+                            alt="Big Map"
+                            style={{
+                              opacity: scale >= 3.5 ? 1 : 0,
+                              transition: 'opacity 0.3s ease',
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              width: '100%',
+                              height: '100%',
+                            }}
+                          />
+                        </TransformComponent>
+                        <BtnImg src={btnImg} onClick={handleReset} alt="Reset Scale" />
+                      </div>
+                    </MapImgBox>
+                  </div>
+                );
+              }}
+            </TransformWrapper>
           </ContentContainer>
         )}
       </MapBox>

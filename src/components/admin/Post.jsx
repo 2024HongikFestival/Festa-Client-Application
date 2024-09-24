@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import morebtn from '@/assets/webps/admin/more_vert.webp';
-import { adminAxiosInstance } from '@/api/axios';
 import PropTypes from 'prop-types';
 import Popup from './Popup';
+import morebtn from '@/assets/webps/admin/more_vert.webp';
+import { adminAxiosInstance } from '@/api/axios';
 
 const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) => {
   const [allLosts, setAllLosts] = useState([]);
@@ -48,8 +48,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
       setTotalPages(response.data.data.totalPage);
 
       if (newLosts.length === 0) {
-        setHasMore(false); // 더 이상 게시글이 없으면 hasMore를 false로 설정
-        console.log('게시글이 더 이상 없습니다. hasMore를 false로 설정합니다.');
+        setHasMore(false);
       } else {
         setAllLosts((prevLosts) => [...prevLosts, ...newLosts]);
         setDisplayedLosts((prevDisplayedLosts) => [...prevDisplayedLosts, ...newLosts]);
@@ -57,7 +56,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
       }
     } catch (error) {
       setHasMore(false);
-      console.log('404 오류 발생. 더 이상 게시글이 없습니다.');
     } finally {
       setLoading(false);
     }
@@ -79,7 +77,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
       setCurrentPage(nextPage);
       getLosts(nextPage);
     }
-    console.log('hasMore:', hasMore);
   };
 
   const handleMoreClick = (lostId, e) => {
@@ -116,7 +113,6 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
     }
 
     try {
-      // 먼저 블랙리스트 추가 시도
       await adminAxiosInstance.post(
         '/admin/blacklist',
         { userId: lost.userId },
@@ -127,14 +123,11 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
         }
       );
 
-      // 블랙리스트 추가가 성공한 경우에만 글 삭제 실행
       await adminAxiosInstance.delete(`/admin/losts/${currentPostId}`, {
         headers: {
           Authorization: `Bearer ${getAdminToken()}`,
         },
       });
-
-      // 상태 변경 및 UI 업데이트
       handleStatusChange('DELETED', true);
       setShowOptions(null);
       setShowPopup(false);
@@ -256,7 +249,7 @@ const Post = ({ posts, userId, setIsDetailView, setPostId, updateLostsStatus }) 
             onClick={() => handleClick(lost.lostId)}
             $hasborder={posts === userPosts}
           >
-            <Img src={lost.imageUrl} alt={lost.content} />
+            <Img src={lost.imageUrl} alt={lost.content} loading="lazy" />
             <PostInfo>
               <Status $loststatus={lost.lostStatus}>
                 &middot; {lost.lostStatus === 'PUBLISHED' ? '게시중' : '삭제됨'}
@@ -326,7 +319,7 @@ Post.propTypes = {
       imageUrl: PropTypes.string.isRequired,
       content: PropTypes.string,
       lostStatus: PropTypes.oneOf(['PUBLISHED', 'DELETED']).isRequired,
-      isUserBlocked: PropTypes.bool, // 추가된 prop
+      isUserBlocked: PropTypes.bool,
       userId: PropTypes.string.isRequired,
       createdAt: PropTypes.string.isRequired,
     })
@@ -343,9 +336,10 @@ const PostContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
   width: 100%;
   background-color: ${(props) => props.theme.colors.gray10};
-  gap: ${({ $nogap }) => ($nogap ? '0' : '0.8rem')}; /* 0.5rem → 0.8rem */
+  gap: ${({ $nogap }) => ($nogap ? '0' : '0.8rem')};
   padding-bottom: ${({ $nogap }) => ($nogap ? '0' : '8rem')};
 `;
 
@@ -355,15 +349,15 @@ const Wrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding-left: 1.6rem; /* 1rem → 1.6rem */
+  padding-left: 1.6rem;
 `;
 
 const Container = styled.div`
   display: flex;
   background-color: ${(props) => props.theme.colors.white};
   justify-content: center;
-  width: 32rem; /* 20rem → 32rem */
-  height: 8rem; /* 5rem → 8rem */
+  width: 32rem;
+  height: 8rem;
   box-sizing: border-box;
   color: ${(props) => props.theme.colors.black};
   cursor: pointer;
@@ -373,79 +367,79 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
-  width: 8rem; /* 5rem → 8rem */
-  height: 8rem; /* 5rem → 8rem */
+  width: 8rem;
+  height: 8rem;
   object-fit: cover;
 `;
 
 const UserInfo = styled.span`
   display: flex;
-  height: 2.4rem; /* 1.5rem → 2.4rem */
+  height: 2.4rem;
   flex-direction: row;
   align-items: center;
-  padding-left: 1.6rem; /* 1rem → 1.6rem */
-  gap: 0.8rem; /* 0.5rem → 0.8rem */
+  padding-left: 1.6rem;
+  gap: 0.8rem;
 `;
 
 const UserName = styled.span`
   ${(props) => props.theme.fontStyles.body2Bold};
   color: ${(props) => props.theme.colors.gray60};
-  font-size: 1.4rem; /* 0.875rem → 1.4rem */
+  font-size: 1.4rem;
   font-weight: 700;
 `;
 
 const UserId = styled.span`
   ${(props) => props.theme.fontStyles.body2Med};
-  font-size: 1.4rem; /* 0.875rem → 1.4rem */
+  font-size: 1.4rem;
   color: ${(props) => (props.$isblocked ? props.theme.colors.gray30 : props.theme.colors.gray80)};
   text-decoration: ${(props) => (props.$isblocked ? 'line-through' : 'none')};
 `;
 
 const PostDate = styled.span`
-  height: 2.08rem; /* 1.3rem → 2.08rem */
+  height: 2.08rem;
   display: flex;
   align-items: flex-end;
   ${(props) => props.theme.fontStyles.body2Med};
   color: ${(props) => props.theme.colors.gray40};
-  font-size: 1.4rem; /* 0.875rem → 1.4rem */
+  font-size: 1.4rem;
 `;
 
 const PostInfo = styled.div`
   display: flex;
   flex-direction: column;
-  width: 24rem; /* 15rem → 24rem */
-  padding-top: 0.8rem; /* 0.5rem → 0.8rem */
-  padding-right: 1.6rem; /* 1rem → 1.6rem */
+  width: 24rem;
+  padding-top: 0.8rem;
+  padding-right: 1.6rem;
   position: relative;
 `;
 
 const Status = styled.span`
   display: flex;
-  height: 1.8rem; /* 1.125rem → 1.8rem */
+  height: 1.8rem;
   justify-content: flex-end;
   align-items: center;
   ${(props) => props.theme.fontStyles.captionBold};
   text-align: right;
-  font-size: 1.2rem; /* 0.75rem → 1.2rem */
+  font-size: 1.2rem;
   color: ${(props) => (props.$loststatus === 'PUBLISHED' ? '#53cc7c' : '#F04949')};
   font-weight: 700;
 `;
 
 const LoadMoreButton = styled.button`
   ${(props) => props.theme.fontStyles.basic.body1Bold};
-  width: 32rem; /* 20rem → 32rem */
-  height: 6.4rem; /* 4rem → 6.4rem */
+  width: 32rem;
+  height: 6.4rem;
   background-color: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.colors.gray70};
   border: none;
-  font-size: 1.6rem; /* 1rem → 1.6rem */
+  font-size: 1.6rem;
   cursor: pointer;
 `;
 
 const MoreBtn = styled.div`
   background: url(${morebtn});
-  width: 2.4rem; /* 1.5rem → 2.4rem */
-  height: 2.08rem; /* 1.3rem → 2.08rem */
+  width: 2.4rem;
+  height: 2.08rem;
   z-index: 10;
   background-repeat: no-repeat;
   background-size: contain;
@@ -453,10 +447,10 @@ const MoreBtn = styled.div`
 
 const OptionsContainer = styled.div`
   position: absolute;
-  top: calc(100% - 0.8rem); /* calc(100% - 0.5rem) → calc(100% - 0.8rem) */
-  right: -1rem; /* -0.625rem → -1rem */
+  top: calc(100% - 0.8rem);
+  right: -1rem;
   background-color: ${(props) => props.theme.colors.white};
-  width: 11.2rem; /* 7rem → 11.2rem */
+  width: 11.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -466,10 +460,10 @@ const OptionsContainer = styled.div`
 const OptionButton = styled.button`
   ${(props) => props.theme.fontStyles.basic.captionMed};
   width: 100%;
-  padding: 0.8rem 1.6rem; /* 0.5rem 1rem → 0.8rem 1.6rem */
-  height: 3.4rem; /* 2.125rem → 3.4rem */
+  padding: 0.8rem 1.6rem;
+  height: 3.4rem;
   border: none;
-  font-size: 1.2rem; /* 0.75rem → 1.2rem */
+  font-size: 1.2rem;
   background-color: ${(props) => props.theme.colors.gray60};
   color: ${(props) => props.theme.colors.white};
   cursor: pointer;

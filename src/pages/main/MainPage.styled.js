@@ -1,4 +1,4 @@
-import { styled, css, keyframes } from 'styled-components';
+import { styled } from 'styled-components';
 import arrow from '@/assets/webps/main/arrowRight.webp';
 
 export const Container = styled.div`
@@ -21,7 +21,6 @@ export const Wrapper = styled.div`
 export const LottieWrapper = styled.div`
   position: absolute;
   top: 0;
-  display: flex;
   width: 37.5rem;
   height: 70.7rem;
 `;
@@ -93,6 +92,7 @@ export const LineupInfoWrapper = styled.div`
   justify-content: space-between;
   border-radius: 1.2rem;
 `;
+
 export const GoLineupPageBtn = styled.button`
   margin-top: 3.2rem;
   width: 33.5rem;
@@ -102,28 +102,47 @@ export const GoLineupPageBtn = styled.button`
   ${(props) => props.theme.fontStyles.main.headline6};
   margin-bottom: 4rem;
   border-radius: 1.2rem;
-  background: linear-gradient(92deg, rgba(3, 124, 158, 0.32) 5.37%, rgba(22, 170, 234, 0.32) 97.97%);
   box-shadow: 0 0.2rem 0.8rem 0 rgba(66, 255, 187, 0.04);
-  backdrop-filter: blur(1.2rem);
   display: flex;
+  background: linear-gradient(92deg, rgba(3, 124, 158, 0.32) 5.37%, rgba(22, 170, 234, 0.32) 97.97%);
+
+  box-shadow: 0px 0.2rem 0.8rem 0 rgba(66, 255, 187, 0.04);
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   border: none;
+  background-color: transparent;
 
-  background: linear-gradient(90deg, #aed3ff 0%, #39c3ef 100%);
   padding: 0.2rem;
   background-clip: padding-box, border-box;
   background-origin: border-box;
 
-  & > * {
-    background: linear-gradient(92deg, rgba(3, 124, 158, 0.32) 5.37%, rgba(22, 170, 234, 0.32) 97.97%);
+  &::before {
+    content: '';
+    position: absolute;
+    top: -0.5px;
+    left: -0.5px;
+    right: -0.5px;
+    bottom: -0.5px;
     border-radius: 1.2rem;
-    width: 100%;
-    height: 100%;
+    padding: 0.2rem;
+    background: linear-gradient(90deg, #aed3ff 0%, #39c3ef 100%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  a {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
   }
 `;
 

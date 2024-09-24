@@ -1,6 +1,5 @@
-// src/components/Camera.js
-import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useCamera } from '@/context/AuthProvider';
 import * as S from './CameraPage.styled';
@@ -16,7 +15,17 @@ const CameraPage = ({ setCapturedImage }) => {
 
     const startCamera = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } } });
+
+        // 줌을 지원하는 경우 1배 줌으로 설정
+        const videoTrack = stream.getVideoTracks()[0];
+        const capabilities = videoTrack.getCapabilities();
+        if (capabilities.zoom) {
+          await videoTrack.applyConstraints({
+            advanced: [{ zoom: 1 }],
+          });
+        }
+
         videoRef.current.srcObject = stream;
         videoRef.current.play();
       } catch (err) {
@@ -24,7 +33,6 @@ const CameraPage = ({ setCapturedImage }) => {
         console.error('Error accessing camera: ', err);
       }
     };
-
     startCamera();
 
     return () => {
@@ -38,7 +46,6 @@ const CameraPage = ({ setCapturedImage }) => {
   const capturePhoto = () => {
     if (!videoRef.current) return;
 
-    //videoRef.current.videoWidth, videoRef.current.videoHeight 는 해상도
     const canvas = document.createElement('canvas');
     canvas.width = videoRef.current.videoWidth;
     canvas.height = videoRef.current.videoHeight;
@@ -59,7 +66,6 @@ const CameraPage = ({ setCapturedImage }) => {
           <S.CameraNoticeText>{t('AddLostAndFound.TakeAPictureOfLostItem')}</S.CameraNoticeText>
           <S.Video ref={videoRef} autoPlay playsInline />
           <S.CaptureButton onClick={capturePhoto} />
-          {/*capturedImage && <Preview image={capturedImage} />*/}
         </>
       )}
     </S.CameraPageWrapper>

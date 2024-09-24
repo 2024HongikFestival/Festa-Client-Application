@@ -1,15 +1,17 @@
-import AddLostItemBg from '@/assets/webps/lost/AddLostItemBg.webp';
-import LostAndFoundBg from '@/assets/webps/lost/LostAndFoundBg.webp';
-import facilitiesBG from '@/assets/svgs/facilities/facilitiesBG.svg';
-import fleamarketBg1 from '@/assets/svgs/booth/background/fleamarketMainBackground.svg';
-import fleamarketBg2 from '@/assets/svgs/booth/background/fleamarketCommonBackground.svg';
-import fleamarketBg3 from '@/assets/svgs/booth/background/fleamarketSangsuBackground.svg';
-import mdBg from '@/assets/svgs/booth/background/mdBackground.svg';
-import boothBg from '@/assets/svgs/booth/background/boothBackground.svg';
-import stageBg from '@/assets/webps/stage/background.webp';
-import mainBg from '@/assets/svgs/main/mainBg.svg';
-import mapBg from '@/assets/svgs/map/mapBg.svg';
 import { css } from 'styled-components';
+
+// 확정 배경 이미지
+import stageBg from '@/assets/webps/stage/background.webp';
+import mainBackground from '@/assets/webps/main/mainBackground.webp';
+import LostAndFoundBackgound from '@/assets/webps/lost/LostAndFoundBackgound.webp';
+import AddLostBackground from '@/assets/webps/lost/AddLostBackground.webp';
+import facilitiesBackground from '@/assets/webps/facilities/facilitiesBackground.webp';
+import mdBackground from '@/assets/webps/booth/background/mdBackground.webp';
+import fleamarketBg1 from '@/assets/webps/booth/background/fleamarketMainBackground.webp';
+import fleamarketBg2 from '@/assets/webps/booth/background/fleamarketCommonBackground.webp';
+import fleamarketBg3 from '@/assets/webps/booth/background/fleamarketSangsuBackground.webp';
+import roadmapBackground from '@/assets/webps/map/background/roadmapBackground.webp';
+import boothBackground from '@/assets/webps/booth/background/boothBackground.webp';
 
 // 공통 스타일 정의
 const commonBackgroundStyle = css`
@@ -57,7 +59,7 @@ const backgroundStyles = {
   map: {
     paths: ['/map'],
     style: css`
-      background-image: url(${mapBg});
+      background-image: url(${roadmapBackground});
       ${commonBackgroundStyle}
     `,
   },
@@ -71,35 +73,35 @@ const backgroundStyles = {
   lostAndFound: {
     paths: ['/lost-and-found', '/lost-and-found/'],
     style: css`
-      background-image: url(${LostAndFoundBg});
+      background-image: url(${LostAndFoundBackgound});
       ${commonBackgroundStyle}
     `,
   },
   addLostAndFound: {
     paths: ['/lost-and-found/add'],
     style: css`
-      background-image: url(${AddLostItemBg});
+      background-image: url(${AddLostBackground});
       ${commonBackgroundStyle}
     `,
   },
   facilities: {
     paths: ['/facilities'],
     style: css`
-      background-image: url(${facilitiesBG});
+      background-image: url(${facilitiesBackground});
       ${commonBackgroundStyle}
     `,
   },
   booth: {
     paths: ['/booth'],
     style: css`
-      background-image: url(${boothBg});
+      background-image: url(${boothBackground});
       ${commonBackgroundStyle}
     `,
   },
   md: {
     paths: ['/md'],
     style: css`
-      background-image: url(${mdBg});
+      background-image: url(${mdBackground});
       ${commonBackgroundStyle}
     `,
   },
@@ -113,7 +115,7 @@ const backgroundStyles = {
   fleamarketCommon: {
     paths: [
       '/fleamarket/ccJuice',
-      '/fleamarket/almak',
+      '/fleamarket/olmak',
       '/fleamarket/henna',
       '/fleamarket/modori',
       '/fleamarket/sajuraplz',
@@ -136,7 +138,7 @@ const backgroundStyles = {
   main: {
     paths: ['/'],
     style: css`
-      background-image: url(${mainBg});
+      background-image: url(${mainBackground});
       ${commonBackgroundStyle}
       background-position: top -4.9rem center;
     `,

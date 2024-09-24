@@ -7,6 +7,8 @@ export const FacilitiesLayout = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  touch-action: pan-x pan-y;
 `;
 
 export const ToggleWrapper = styled.div`

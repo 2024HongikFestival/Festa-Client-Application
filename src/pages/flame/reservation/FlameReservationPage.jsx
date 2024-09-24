@@ -1,6 +1,3 @@
-// 와디페 예매
-// url: /flame/reservation
-
 import React from 'react';
 import {
   CostBox,
@@ -54,10 +51,13 @@ const PreReservationBox = () => {
         </RVPeriodBox>
         <CostBox>
           <RVPeriodTitleP>{t('reservation.price')}</RVPeriodTitleP>
-          <PriceIntroBox style={{ marginBottom: '0.4rem' }}>
+          <PriceIntroBox style={{ marginBottom: '0.8rem' }}>
             <div className="wholeBox">
               <span className="dot">• </span>
-              <PriceIntro>{t('reservation.student')}</PriceIntro>
+              <div className="detailBox">
+                <PriceIntro>{t('reservation.student')}</PriceIntro>
+                <WhoVisit>{t('reservation.studentwho')}</WhoVisit>
+              </div>
             </div>
             <PriceInfo>₩5,000</PriceInfo>
           </PriceIntroBox>

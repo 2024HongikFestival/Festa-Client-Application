@@ -1,16 +1,27 @@
+import { useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import likelionBgImg from '@/assets/webps/makers/likelionBgImg.webp';
 import LikelionCard from '@/components/makers/LikelionCard';
 import { contributors } from '@/constants/makers/LikelionContributors';
+import likelionBgImg from '@/assets/webps/makers/likelionBgImg.webp';
 
 const LikelionPage = () => {
   const contributorsData = contributors();
-
   const pm = contributorsData.pm;
   const plan = contributorsData.plan;
   const design = contributorsData.design;
   const frontend = contributorsData.frontend;
   const backend = contributorsData.backend;
+
+  useEffect(() => {
+    // 페이지뷰 이벤트 발송
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Makers Likelion Page',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
+  }, []);
 
   return (
     <LikelionLayout>

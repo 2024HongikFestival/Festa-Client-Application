@@ -6,20 +6,20 @@ export const MdProductsContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 5.2rem; /* 52px -> 5.2rem */
+  gap: 5.2rem;
 `;
 
 export const ProductsSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.8rem; /* 28px -> 2.8rem */
+  gap: 2.8rem;
   align-self: stretch;
   margin-top: 2.4rem;
 `;
 
 export const Title = styled.h2`
-  height: 4.8rem; /* 48px -> 4.8rem */
+  height: 4.8rem;
   text-align: center;
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.fontStyles.flame.headline3};
@@ -29,7 +29,7 @@ export const ProductList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 33.5rem; /* 335px -> 33.5rem */
+  width: 33.5rem;
   gap: 2.8rem;
 `;
 
@@ -37,7 +37,7 @@ export const ProductLocation = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem; /* 8px -> 0.8rem */
+  gap: 0.8rem;
   align-self: stretch;
   text-align: center;
 `;
@@ -48,7 +48,7 @@ export const LocationDescription = styled.div`
   flex-wrap: wrap;
   align-self: stretch;
   background-color: ${(props) => props.theme.colors.gray90};
-  padding: 0.8rem; /* 8px -> 0.8rem */
+  padding: 0.8rem;
   color: ${(props) => props.theme.colors.gray10};
   ${(props) => props.theme.fontStyles.basic.body1Bold};
 `;
@@ -60,7 +60,7 @@ export const MainDescription = styled.span`
 
 export const Highlight = styled.span`
   color: ${(props) => props.theme.colors.gray20};
-  ${(props) => props.theme.fontStyles.basic.body1Med}; /* "에서"에 적용될 스타일 */
+  ${(props) => props.theme.fontStyles.basic.body1Med};
 `;
 
 export const SubDescription = styled.span`
@@ -71,7 +71,7 @@ export const SubDescription = styled.span`
 export const LocationAlert = styled.div`
   display: flex;
   align-items: center;
-  height: 1.8rem; /* 18px -> 1.8rem */
+  height: 1.8rem;
   color: ${(props) => props.theme.colors.gray60};
   gap: 0.8rem;
   ${(props) => props.theme.fontStyles.basic.captionMed};
@@ -85,8 +85,8 @@ export const CardContainer = styled.div`
 `;
 
 export const AlertImage = styled.img`
-  width: 1.58rem; /* 15.36px -> 1.536rem */
-  height: 1.58rem; /* 15.36px -> 1.536rem */
+  width: 1.58rem;
+  height: 1.58rem;
   flex-shrink: 0;
 `;
 
@@ -139,7 +139,7 @@ export const ProductDetails = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 0.4rem; /* 4px -> 0.4rem */
+  gap: 0.4rem;
   align-self: stretch;
 `;
 
@@ -160,10 +160,10 @@ export const ProductPrice = styled.div`
 
 export const NoticeContainer = styled.div`
   display: flex;
-  width: 33.5rem; /* 335px -> 33.5rem */
+  width: 33.5rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.2rem; /* 12px -> 1.2rem */
+  gap: 1.2rem;
   margin-bottom: 6.4rem;
 `;
 
@@ -178,7 +178,7 @@ export const NoticeList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.4rem; /* 4px -> 0.4rem */
+  gap: 0.4rem;
   align-self: stretch;
 `;
 
@@ -193,8 +193,8 @@ export const NoticeItem = styled.li`
     content: '•';
     position: absolute;
     left: -1.2rem;
-    top: 0; /* 점을 첫 번째 줄과 정렬합니다 */
-    font-size: 1.2rem; /* 12px -> 1.2rem */
+    top: 0;
+    font-size: 1.2rem;
     color: ${(props) => props.theme.colors.gray5};
   }
 `;

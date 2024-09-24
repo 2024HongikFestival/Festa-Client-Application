@@ -11,7 +11,7 @@
     "desc5": "by “2024 Hwa Yang Yeon Hwa; Blossom”",
     "todayLineup": "Today’s Lineup",
     "clicktoLineup": "Click to view Full line up",
-    "centralStage": "Central Stage Schedule",
+    "centralStage": "Main Stage Schedule",
     "performance1": "Talent Contest",
     "performance2": "Celebrities",
     "performance3": "Student Main Stage",
@@ -42,7 +42,7 @@
       "night": "Night",
       "operatingInfo": "Operating hours may vary from booth to booth",
       "menu": {
-        "1": "Free major",
+        "1": "Autonomous major",
         "2": "Business/Economic",
         "3": "Art",
         "4": "Architecture/Urban Affairs",
@@ -62,15 +62,15 @@
           {
             "department": "Campus Autonomous Major",
             "intro": "dancing/drinking/singing in one's sleep",
-            "event": "a receipt camera, a spinning wheel",
-            "food": "Stir-fried spicy pork, potato pancakes"
+            "event": "a receipt camera,\na spinning wheel",
+            "food": "Stir-fried spicy pork,\npotato pancakes"
           }
         ],
         "2": [
           {
             "department": "Business School",
             "intro": "Street bar (Kyungpo)",
-            "food": "Fishcake Soup, Stir-fried pork belly with a thin slice"
+            "food": "Fishcake Soup,\nStir-fried pork belly"
           },
           {
             "department": "Economic School",
@@ -80,10 +80,10 @@
         ],
         "3": [
           {
-            "department": "The Center of the College of Fine Arts",
+            "department": "The Center of\nthe College of Fine Arts",
             "intro": "the Marble Bar at the University of the Arts",
-            "event": "the Marvel board game of the art school",
-            "food": "tteokbokki, fruit salad"
+            "event": "the Marvel board game of the art",
+            "food": "tteokbokki,\nfruit salad"
           },
           {
             "department": "Printmaking Department",
@@ -94,13 +94,13 @@
           {
             "department": "Oriental Painting Department",
             "intro": "a goblin bar",
-            "food": "Sauce Flatter, fruit salad"
+            "food": "Sauce Flatter,\nfruit salad"
           },
           {
             "department": "Department of Painting",
-            "intro": "Imagination Factory of the Department of Painting",
-            "event": "Mini game, flea market",
-            "food": "Popcorn, corn cheese"
+            "intro": "Imagination Factory of\nthe Department of Painting",
+            "event": "Mini game,\nflea market",
+            "food": "Popcorn,\ncorn cheese"
           },
           {
             "department": "Department of Pottery Glass",
@@ -109,10 +109,10 @@
             "food": "Takoyaki, Onigiri"
           },
           {
-            "department": "Department of Wooden Furniture",
+            "department": "Department of\nWooden Furniture",
             "intro": "Utopia in my school days",
             "event": "Mini game, Mini gacha",
-            "food": "Corn cheese buldak(spicy noodle), sweet and sour chicken with rice cake"
+            "food": "Corn cheese buldak, chicken"
           },
           {
             "department": "The Art Department",
@@ -126,7 +126,7 @@
             "food": "Pizza and sausage"
           },
           {
-            "department": "Department of Metal Molding Design",
+            "department": "Department of\nMetal Molding Design",
             "intro": "Underwater Goldie Land Pub",
             "event": "Spinning the roulette, flea market",
             "food": "Direct fire fried rice, assorted sausage"
@@ -135,7 +135,7 @@
             "department": "Textile Art Fashion Design Department",
             "intro": "Y2k Hunting Bar",
             "event": "flea market",
-            "food": "udon noodle, hotteok set"
+            "food": "udon noodle,\nhotteok set"
           },
           {
             "department": "Department of Industrial Design",
@@ -164,14 +164,14 @@
             "food": "Sausage and fried rice, Ramen"
           },
           {
-            "department": "Department of Korean Language Education",
+            "department": "Department of\nKorean Language Education",
             "intro": "Heungbu is cheeky. My tavern",
-            "food": "Potato pancake, budae jjigae(korean soup)"
+            "food": "Potato pancake, budae jjigae"
           },
           {
             "department": "Mathematics Education Department",
             "intro": "an awesomeness pub",
-            "food": "Chapagyechi, Picagoras(special menu)"
+            "food": "Chapagyechi, Picagoras"
           },
           {
             "department": "History Education Department",
@@ -186,24 +186,24 @@
         ],
         "6": [
           {
-            "department": "The Department of German Literature",
+            "department": "The Department\nof German Literature",
             "intro": "a soccer festival pub",
             "food": "Currie Boost, Schweinhaksen"
           },
           {
-            "department": "Department of English Language and Literature",
+            "department": "Department of\nEnglish Language and Literature",
             "intro": "a chilling haunted house pub",
             "food": "Assorted Sausage, Chicken salad"
           },
           {
-            "department": "French Literature and Literature Department",
+            "department": "French Literature\nand Literature Department",
             "intro": "Paris Saint-Germain pub",
             "food": "chop steak, rolled omelet with cheese"
           },
           {
-            "department": "Department of Korean Language and Literature",
+            "department": "Department of\nKorean Language and Literature",
             "intro": "Beer count night",
-            "food": "korean traditional cookie icecream, Cheese and Potato Pancake"
+            "food": "korean cookie ice-cream, Pancake"
           }
         ],
         "7": [
@@ -215,12 +215,12 @@
           {
             "department": "Department of Construction and Environmental Engineering",
             "intro": "Beach, I'm a civil engineering teacher",
-            "food": "Gambas, emotional taco"
+            "food": "Gambas,\nemotional taco"
           },
           {
             "department": "Department of Mechanical Systems Engineering",
             "intro": "Mario Party Mechanics",
-            "food": "Stir-fried spicy pork, Stir-fried pork belly with a thin slice"
+            "food": "Stir-fried spicy pork, Stir-fried pork belly"
           },
           {
             "department": "Department of Industrial Data Engineering",
@@ -236,10 +236,10 @@
             "department": "Department of Electrical and Electrical Engineering",
             "intro": "Wion Stadium",
             "event": "Hook ball, beer pong",
-            "food": "Pork belly green onion salad, Chapagetti and egg cheese"
+            "food": "Pork belly, Chapagetti"
           },
           {
-            "department": "Department of Computer Science",
+            "department": "Department of\nComputer Science",
             "intro": "Commercial meeting group of computer science",
             "food": "Chives pancake, tteokbokki"
           },
@@ -259,7 +259,7 @@
           {
             "department": "Department of Design and Arts Management",
             "intro": "Retro Garmac's \"Wow Shop\"",
-            "food": "Fried ham, Fishcake Soup"
+            "food": "Fried ham,\nFishcake Soup"
           }
         ],
         "9": [
@@ -279,13 +279,13 @@
             "department": "HICC",
             "intro": "Hi! CC",
             "event": "a friend-matching program",
-            "food": "Fish cake soup, tofu kimchi"
+            "food": "Fish cake soup,\n tofu kimchi"
           },
           {
             "department": "TED",
             "intro": "Ted and Westmura (Izakaya)",
             "event": "Quiz, Polaroid",
-            "food": "pollack roe and potato pancake, yakisoba"
+            "food": "pollack roe&potato pancake, yakisoba"
           }
         ],
         "10": [
@@ -299,7 +299,7 @@
             "department": "A shooting club",
             "intro": "Shooting PX",
             "event": "a shooting experience",
-            "food": "PPogly, egg rice with soy sauce"
+            "food": "PPogly, egg rice with soy sausage"
           },
           {
             "department": "A swimming club",
@@ -310,14 +310,14 @@
           {
             "department": "A baseball club",
             "intro": "a sports pub",
-            "event": "Restraint check, ball control check",
-            "food": "Chicken skewers, fish cake soup"
+            "event": "Restraint check,\nball control check",
+            "food": "Chicken skewers,\nfish cake soup"
           },
           {
             "department": "A badminton club(Pang Pang)",
             "intro": "Olympic theme",
             "event": "Tic-Tac-Toe, Dart",
-            "food": "Tofu kimchi, fish cake soup"
+            "food": "Tofu kimchi,\nfish cake soup"
           }
         ],
         "11": [
@@ -330,19 +330,19 @@
           {
             "department": "Magic's",
             "intro": "Magic's Magic Store",
-            "event": "a magic performance, fortune card",
+            "event": "magic performance, fortune card",
             "food": "Grilled sausage, nachos"
           },
           {
             "department": "Brains Wars",
             "intro": "Hip Hop Lounge Bar",
             "event": "DJing/Graphy Experience",
-            "food": "Chapagetti, dried pollack"
+            "food": "Chapagetti,\ndried pollack"
           },
           {
             "department": "Snol",
             "intro": "Snol night",
-            "event": "Numbering meeting, Picking a night market",
+            "event": "Number meeting & Picking night market",
             "food": "Tofu Kimchi, Stir-fried spicy pork"
           }
         ],
@@ -354,7 +354,7 @@
             "food": "Cold noodles, dumplings"
           },
           {
-            "department": "A calligraphy club(Seo woo hwae)",
+            "department": "A calligraphy club\n(Seo woo hwae)",
             "intro": "\"Seoshindang,\" the new school of calligraphy",
             "event": "the making of amulets / walls",
             "food": "Group of korean pancake, grilled rice balls"
@@ -363,7 +363,7 @@
             "department": "A boardgame club(One-ple)",
             "intro": "One-ple board game pub",
             "event": "Board game competition",
-            "food": "beef jerky, fish cake skewer"
+            "food": "beef jerky,\nfish cake skewer"
           },
           {
             "department": "High-running",
@@ -374,9 +374,9 @@
         ],
         "13": [
           {
-            "department": "Mang-nyang-nyang-nyang-nyang-yuri",
+            "department": "Meong Nyang Boori",
             "intro": "Gather around, \"Mang-Nyang's Forest\"",
-            "event": "Flea Market, Mini Game",
+            "event": "Flea Market,\nMini Game",
             "food": "Tofu Kimchi, green onion pancake"
           },
           {
@@ -389,7 +389,7 @@
             "department": "Misarang/Volcano",
             "intro": "Answer me, Volcano",
             "event": "Face painting",
-            "food": "Fried vegetables sausages, chicken skewers"
+            "food": "Fried sausages, chicken skewers"
           }
         ]
       }
@@ -397,11 +397,68 @@
     "ranking": {
       "title1": "A popular real-time ",
       "title2": "pub",
-      "info": "Rankings will be updated on an hourly basis,\n reset daily at 5 AM"
+      "info": "Rankings will be updated every 5 min,\n reset daily at 5 AM",
+      "department": {
+        "3": "Arch. & \nUrban Affairs",
+        "4": "Business School",
+        "5": "Economics School",
+        "6": "Engineering Center",
+        "7": "Construction & Env. Eng.",
+        "8": "Mech. Systems Eng.",
+        "9": "Industrial Data Eng.",
+        "10": "Materials Eng.",
+        "11": "Electrical\nEng.",
+        "12": "Computer\nScience",
+        "13": "Chemical\nEng.",
+        "14": "Performing Arts",
+        "15": "Design & Arts\nManagement",
+        "16": "German Literature",
+        "17": "English Literature",
+        "18": "French Literature",
+        "19": "Korean Literature",
+        "20": "Fine Arts\nCenter",
+        "21": "Printmaking",
+        "22": "Oriental Painting",
+        "23": "Painting",
+        "24": "Pottery & Glass",
+        "25": "Wooden Furniture",
+        "26": "Art Studies",
+        "27": "Sculpture",
+        "28": "Metal Molding\nDesign",
+        "29": "Fashion Design",
+        "30": "Industrial\nDesign",
+        "31": "Visual\nDesign",
+        "32": "English Education",
+        "33": "Korean Education",
+        "34": "Math Education",
+        "35": "History Education",
+        "36": "Education",
+        "37": "Campus\nAutonomous Major",
+        "38": "I love you",
+        "39": "HECC",
+        "40": "HICC",
+        "41": "TED",
+        "42": "Basketbal\nClub",
+        "43": "Shooting Club",
+        "44": "Swimming Club",
+        "45": "Baseball Club",
+        "46": "Pang Pang",
+        "47": "Tturami",
+        "48": "Magic's",
+        "49": "Brains Wars",
+        "50": "Snol",
+        "51": "Literature\nSociety",
+        "52": "Seo woo hwae",
+        "53": "One-ple",
+        "54": "High-\nrunning",
+        "55": "Meow Woof\nClub",
+        "56": "AIESEC",
+        "57": "Misarang/\nVolcano"
+      }
     }
   },
   "sitemap": {
-    "title": "Site Map",
+    "title": "SITE MAP",
     "booth1": "Entrance",
     "booth2": "Red Bull",
     "booth3": "Jägermeiſter",
@@ -458,14 +515,15 @@
     "placewhere1": "WOW DJ FESTIVAL",
     "placewhere2": "ENTRANCE BOOTH",
     "price": "Price",
-    "student": "Students & students on leave of absence from Hongik University Seoul Campus",
+    "student": "Hongik university students",
+    "studentwho": "(Student ID will be checked at the entrance)",
     "notstudent": "outside visitor",
-    "notstudentwho": "(including graduate students and graduates from Hongik University's Seoul Campus)",
+    "notstudentwho": "(included Hongik university graduates)",
     "noticetitle": "Precautions",
     "notice1": {
       "detail1": "Minors cannot book the Wow DJ Festival,",
-      "detail2": "and ID verification will be carried out",
-      "detail3": " when purchasing on-site.",
+      "detail2": "so you need to provide ID cards when",
+      "detail3": " making on-site reservations.",
       "detail4": "(Adult authentication is not allowed, admission is restricted.)",
       "detail5": ""
     },
@@ -510,18 +568,18 @@
     "closeadvance": "The advance reservation is closed"
   },
   "map": {
-    "title": "Road map",
+    "title": "Road Map",
     "complete": "Complete",
     "detail": "Detailed"
   },
   "fleamarket": {
-    "pageTitle": "Fleamarket",
-    "location": "Fleamarket Location",
+    "pageTitle": "Flea market",
+    "location": "Flea market Location",
     "list": [
       {
-        "key": "ccJuice",
-        "name": "CC Juice",
-        "intro": "A place where you can overcome the hot weather with juice and fruit salad made of fresh fruit"
+        "key": "hypeBoy",
+        "name": "Hongik hype boy market",
+        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike and more at a low price."
       },
       {
         "key": "almak",
@@ -529,24 +587,9 @@
         "intro": "We sell handmade jewelry and accessories made of nature-inspired ceramics and glass materials"
       },
       {
-        "key": "henna",
-        "name": "Henna, do it",
-        "intro": "Have you tried Henna"
-      },
-      {
-        "key": "modori",
-        "name": "Modori",
-        "intro": "A family of carpenters' cute props"
-      },
-      {
-        "key": "sajuraplz",
-        "name": "Sajurplz",
-        "intro": "The pottery I made. I baked it for you"
-      },
-      {
-        "key": "hypeBoy",
-        "name": "Hongik hype boy",
-        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike and more at a low price."
+        "key": "aiesec",
+        "name": "How about MZ eco-friendly practice with AIESEC?",
+        "intro": "Multi-use tumbler and hand knitted tea coaster that can be transformed into a keyring"
       },
       {
         "key": "sangsu",
@@ -554,14 +597,29 @@
         "intro": "Sales of used LP and CD at home and abroad"
       },
       {
+        "key": "sajuraplz",
+        "name": "Sajurplz",
+        "intro": "The pottery I made. I baked it for you"
+      },
+      {
         "key": "kawaii",
-        "name": "Something cute",
+        "name": "Something cute ^..^",
         "intro": "It's a special handmade knitted piece that express cuteness and affection"
       },
       {
-        "key": "aiesec",
-        "name": "How about MZ eco-friendly practice with AIESEC?",
-        "intro": "Multi-use tumbler and hand knitted tea coaster that can be transformed into a keyring"
+        "key": "henna",
+        "name": "Henna, do it!",
+        "intro": "Have you tried Henna?"
+      },
+      {
+        "key": "ccJuice",
+        "name": "CC Juice",
+        "intro": "A place where you can overcome the hot weather with juice and fruit salad made of fresh fruit"
+      },
+      {
+        "key": "modori",
+        "name": "Modori",
+        "intro": "A family of carpenters' cute props"
       }
     ],
     "detail": [
@@ -609,14 +667,17 @@
       },
       {
         "name": "Sang-su guilty verdict",
-        "intro": "Sales of used LP and CD at home and abroad 💿🎶"
+        "intro": "Sales of used LP and CD\nat home and abroad 💿🎶"
       },
       {
         "name": "Something cute ^..^",
         "intro": "It’s a special handmade knitted piece that express cuteness and affection 🧶🍅",
-        "event1": "1. If you purchase more than 10,000 won, you will get a knitted badge!",
+        "event1": "1. If you purchase more than ₩10,000, you will get a knitted badge!",
         "event2": "2. Instagram event",
-        "event3": "Please leave a picture of your visit as a story! We're going to draw two of you and give you the key ring you want.",
+        "event3": "Post a story of your visit",
+        "event4": "Win a keyring (2 winners drawn)",
+        "event5": "Instargram (@ilovegiyumppojjak)",
+        "event6": "Winners will be notified via DM on Oct 1",
         "bottom": "There are also a variety of knitted pieces and pretty packages! Express your feelings to your loved ones. 💝",
         "goods": [
           {
@@ -654,28 +715,58 @@
       {
         "name": "Henna, do it!",
         "intro": "Have you tried Henna? 🖌️🖤",
-        "bottom": "There are about 100 more patterns to explore ☺️"
+        "bottom": "There are about 100 more patterns to explore ☺️",
+        "event1": "1. Tag seoul campus' open major Instagram",
+        "event2": "Upload your henna story",
+        "event3": "Receive ₩1,000 discount!",
+        "event4": "2. ₩1,000 discount for 2 Henna procedures",
+        "event5": "3. Drawing event",
+        "event6": "Henna offers an opportunity to draw if she has a procedure of 5,000 won or more.",
+        "event7": "Students majoring in autonomous majors at Seoul Campus can choose one.",
+        "event8": "🥇 1st : Free treatment for Henna design you want!",
+        "event9": "🥈 2nd : Provide cup noodles when visiting the autonomous major pub (evening)",
+        "event10": "You can't participate in events 1 and 2",
+        "goods": "LE 5-22"
       },
       {
         "name": "Hongik hype boy market",
-        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike 👕✨ and more at a low price. "
+        "intro": "Taking clothing from various street brands such as Supreme, Palace, Stussy, Nike 👕✨ and more at a low price.",
+        "price": [
+          { "object": "T-shirt" },
+          { "object": "sweatshirt/hood" },
+          { "object": "hat" },
+          { "object": "new product" },
+          { "text": "Just like the purchase price!" },
+          { "text": "We have more prepared~!" }
+        ]
       },
       {
         "name": "sajuraplz",
-        "intro": "The pottery I made. I baked it for you 🫵🍶"
+        "intro": "The pottery I made. I baked it for you 🫵🍶",
+        "goods": [
+          {
+            "name": "oval frame cup"
+          },
+          {
+            "name": "heart star sticker cup"
+          },
+          {
+            "name": "frame mug set"
+          }
+        ]
       },
       {
         "name": "Modori",
         "intro": "A family of carpenters’ cute props 🌳🪓",
         "goods": [
           {
-            "name": "cake kering"
+            "name": "cake keyring"
           },
           {
             "name": "donut keyring"
           },
           {
-            "name": "fish keyring"
+            "name": "rockfish keyring"
           },
           {
             "name": "robot keyring"
@@ -713,7 +804,7 @@
       "toFacilityInfo": "CONVENIENCE",
       "toFacilities": "AMENITIES",
       "toLostAndFound": "LOST AND FOUND",
-      "toEvent": "EVENTS",
+      "toEvent": "EVENT",
       "toFlameSitemap": "SITE MAP",
       "toFlameTimeTable": "TIME TABLE",
       "toFlameReservation": "RESERVATION",
@@ -774,7 +865,7 @@
         "imagineBand": "Imagine Band",
         "brainsWars": "Brain’s wars",
         "performingArtsMusical": "Performing arts musical",
-        "ohHyeonSongAndTomato": "Oh hyeon song and tomato"
+        "ohHyeonSongAndTomato": "Oh hyeon-seong Tomato Deluxe"
       },
       "studentCenterEventsDay2": {
         "illEquippedWord": "An ill-equipped word",
@@ -855,7 +946,7 @@
     "wdfDescription4": "where the fireworks of youth flame.",
     "day1": "9.25 (WED)",
     "day2": "9.26 (THU)",
-    "day3": "9.25 (FRI)"
+    "day3": "9.27 (FRI)"
   },
   "flameMdPage": {
     "title": "MD PRODUCT",
@@ -935,7 +1026,8 @@
     "buttonDetailText": "Please keep expensive item <1>at the <2>Lost and Found Center</2></1> ",
     "ReportLostItems": "Report lost items ✋🏻",
     "FindLostItem": "Find lost item 🧸",
-    "FilterError": "There are no posts matching this filtering."
+    "FilterError": "There are no posts matching this filtering.",
+    "NoPost": "No lost items have been found yet!"
   },
   "DropDown": {
     "AllTime": "All Period",

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 export const FooterLayout = styled.footer`
@@ -34,15 +35,14 @@ export const UpBtn = styled.div`
   transition:
     opacity 0.5s ease-in-out,
     bottom 0.3s ease;
-  opacity: ${({ $show }) => ($show ? '1' : '0')}; /* fadeIn, fadeOut 효과 */
-  pointer-events: ${({ $show }) => ($show ? 'auto' : 'none')}; /* 버튼이 보이지 않을 때 클릭 방지 */
+  opacity: ${({ $show }) => ($show ? '1' : '0')};
+  pointer-events: ${({ $show }) => ($show ? 'auto' : 'none')};
 
   img {
     width: 1.7rem;
     padding-right: 0.1rem;
   }
 
-  /* ::before로 그라데이션 테두리 추가 */
   &::before {
     content: '';
     position: absolute;
@@ -95,7 +95,6 @@ export const FloatingBtn = styled.div`
     ${(props) => props.theme.fontStyles.basic.body2Med};
   }
 
-  /* ::before로 그라데이션 테두리 추가 */
   &::before {
     content: '';
     position: absolute;
@@ -125,7 +124,7 @@ export const Mangae = styled.div`
   height: 4rem;
   overflow: hidden;
   z-index: 1;
-  img {
+  object {
     width: 100%;
     height: 100%;
   }
@@ -139,7 +138,7 @@ export const Flame = styled.div`
   height: 3.3rem;
   overflow: hidden;
   z-index: 1;
-  img {
+  object {
     width: 100%;
     height: 100%;
   }
@@ -250,17 +249,32 @@ export const InstaContainer = styled.div`
         color: ${(props) => props.theme.colors.gray10};
       `};
   }
+`;
 
-  a {
-    width: 3.2rem;
-    height: 3.2rem;
-    margin-right: 1.1rem;
-  }
+export const InstaIconWrapper = styled.div`
+  position: relative;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.1rem;
 
-  img {
+  object {
     width: 100%;
     height: 100%;
   }
+`;
+
+export const LinkOverlay = styled(Link)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: transparent;
+  cursor: pointer;
 `;
 
 export const Instagrams = styled.div`
@@ -289,7 +303,7 @@ export const BackgroundVideo = styled.video`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 99%; // 선 생김 이슈 해결용
+  height: 99%;
   object-fit: cover;
   z-index: -1;
 `;
@@ -302,7 +316,7 @@ export const Policy = styled.div`
   font-family: Pretendard;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 15px */
+  line-height: 150%;
   letter-spacing: -0.001rem;
 `;
 

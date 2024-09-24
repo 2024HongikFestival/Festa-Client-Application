@@ -1,4 +1,3 @@
-//vite-plugin-svgr 설치 후, vite.config.js에 적절한 설정을 해준 후 아래와 같이 사용.
 import error_kakao from '@/assets/svgs/lost/error_kakao.svg?react';
 import KakaoLogo from '@/assets/svgs/lost/KakaoLogo.svg?react';
 import kakaoBackGround from '@/assets/webps/lost/kakaoBackGround.webp';
@@ -25,8 +24,8 @@ const slideDown = keyframes`
 export const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.4);
   z-index: 10;
 
@@ -106,7 +105,7 @@ export const ContentNoticeTitle = styled.span`
 export const ContentNoticeText = styled.span`
   align-self: stretch;
   color: ${({ theme }) => theme.colors.gray70};
-  ${({ theme }) => theme.fontStyles.basic.body1Med}; //
+  ${({ theme }) => theme.fontStyles.basic.body1Med};
   white-space: pre-line;
   text-align: center;
 `;
@@ -128,7 +127,6 @@ export const KakaoButton = styled.button`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  //background: #FADB34;
 
   color: ${({ theme }) => theme.colors.gray100};
   ${({ theme }) => theme.fontStyles.basic.body1Bold};

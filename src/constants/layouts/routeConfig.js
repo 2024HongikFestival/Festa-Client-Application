@@ -50,7 +50,7 @@ const routeConfig = {
   // 플리마켓 상세페이지
   ...[
     '/fleamarket/ccJuice',
-    '/fleamarket/almak',
+    '/fleamarket/olmak',
     '/fleamarket/henna',
     '/fleamarket/modori',
     '/fleamarket/sajuraplz',
