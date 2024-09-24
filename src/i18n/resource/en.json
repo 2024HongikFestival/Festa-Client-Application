@@ -239,7 +239,7 @@
             "food": "Pork belly, Chapagetti"
           },
           {
-            "department": "Department of Computer Science",
+            "department": "Department of\nComputer Science",
             "intro": "Commercial meeting group of computer science",
             "food": "Chives pancake, tteokbokki"
           },

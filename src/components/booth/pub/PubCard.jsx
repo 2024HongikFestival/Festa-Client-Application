@@ -28,6 +28,7 @@ export default function PubCard() {
       'clubFederation',
     ];
     const isAssoc = associationKeys.includes(selectedMenu);
+    console.log(isAssoc);
     setIsAssociation(isAssoc);
   }, [selectedMenu]);
 
@@ -113,7 +114,7 @@ export default function PubCard() {
 
           if (newBehindHearts.length > 0) {
             setBehindHearts((prev) => {
-              const updatedHearts = [...prev, ...newBehindHearts].slice(-3);
+              const updatedHearts = [...prev, ...newBehindHearts].slice(-50);
               setTimeout(() => {
                 setBehindHearts((hearts) => hearts.filter((heart) => !updatedHearts.includes(heart)));
               }, 5000);
@@ -145,9 +146,9 @@ export default function PubCard() {
       <PubCardContainer $lng={lng}>
         <BehindHeartContainer $isAssociation={isAssociation}>
           {behindHearts.map((heart) => (
-            <FallingHeart key={heart.id} left={heart.left}>
+            <FallingHeart2 key={heart.id} left={heart.left}>
               <HeartIcon color={heart.color} />
-            </FallingHeart>
+            </FallingHeart2>
           ))}
         </BehindHeartContainer>
         <HeartContainer $isAssociation={isAssociation}>
@@ -234,6 +235,21 @@ const fallAnimation = keyframes`
   }
 `;
 
+const fallAnimation2 = keyframes`
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;  // 40% 위치에서 opacity가 0으로
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  
+`;
+
 const FallingHeart = styled.div`
   position: absolute;
   top: 0;
@@ -241,6 +257,15 @@ const FallingHeart = styled.div`
   width: 100%;
   height: 100%;
   animation: ${fallAnimation} 3s linear forwards;
+`;
+
+const FallingHeart2 = styled.div`
+  position: absolute;
+  top: 0;
+  left: ${({ left }) => left};
+  width: 100%;
+  height: 100%;
+  animation: ${fallAnimation2} 3s linear forwards;
 `;
 
 const HeartContainer = styled.div`
