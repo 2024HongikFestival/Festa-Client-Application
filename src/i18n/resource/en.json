@@ -570,7 +570,13 @@
   "map": {
     "title": "Road Map",
     "complete": "Complete",
-    "detail": "Detailed"
+    "detail": "Detailed",
+    "talk1": "You can ",
+    "talk2": "move",
+    "talk3": " to the area you want",
+    "talk4": "or ",
+    "talk5": "zoom in",
+    "talk6": " by double touches!"
   },
   "fleamarket": {
     "pageTitle": "Flea market",
