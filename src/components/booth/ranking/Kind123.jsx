@@ -59,7 +59,7 @@ export default function Kind123({ data }) {
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>{data[1].totalLike > 9999 ? '9999+' : data[1].totalLike}</Count>
+            <Count>{data[1].totalLike > 99999 ? '99999+' : data[1].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium1>
@@ -79,7 +79,7 @@ export default function Kind123({ data }) {
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>{data[0].totalLike > 9999 ? '9999+' : data[0].totalLike}</Count>
+            <Count>{data[0].totalLike > 99999 ? '99999+' : data[0].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium2>
@@ -99,7 +99,7 @@ export default function Kind123({ data }) {
           </Department>
           <CountWrapper>
             <HeartIcon src={heart} alt="heart" />
-            <Count>{data[2].totalLike > 9999 ? '9999+' : data[2].totalLike}</Count>
+            <Count>{data[2].totalLike > 99999 ? '99999+' : data[2].totalLike}</Count>
           </CountWrapper>
         </Box>
       </Podium3>

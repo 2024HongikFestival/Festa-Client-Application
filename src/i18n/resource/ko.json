@@ -280,7 +280,7 @@
             "food": "어묵탕, 두부김치"
           },
           {
-            "department": "TED",
+            "department": "TEDxHongikU",
             "intro": "테드와서무라(이자카야)",
             "event": "퀴즈, 폴라로이드",
             "food": "명란감자전, 야끼소바"
@@ -587,7 +587,7 @@
       },
       {
         "key": "aiesec",
-        "name": "AIESEC과 함께 MZ한 친환경 실천 어때?",
+        "name": "AIESEC과 함께 MZ한 친환경 실천",
         "intro": "다회용 텀블러 & 키링으로 변신 가능한 손뜨개\n 티코스터"
       },
       {
@@ -862,7 +862,7 @@
         "imagineBand": "이매진 밴드",
         "brainsWars": "브레인스워즈",
         "performingArtsMusical": "공연예술 뮤지컬",
-        "ohHyeonSongAndTomato": "오현성과 토마토"
+        "ohHyeonSongAndTomato": "오현성토마토디럭스"
       },
       "studentCenterEventsDay2": {
         "illEquippedWord": "못갖춘 마디",

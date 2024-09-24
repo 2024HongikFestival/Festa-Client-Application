@@ -154,6 +154,45 @@ const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  const touchStartRef = useRef({ x: 0, y: 0 });
+  const [isSwipingHorizontally, setIsSwipingHorizontally] = useState(false);
+
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchMove = (e) => {
+    const touch = e.touches[0];
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      setIsSwipingHorizontally(true);
+      e.preventDefault();
+    } else {
+      setIsSwipingHorizontally(false);
+    }
+  };
+
+  const goToSlide = (index) => {
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(index);
+    }
+  };
+
+  useEffect(() => {
+    const slider = sliderRef.current.innerSlider.list;
+
+    slider.addEventListener('touchstart', handleTouchStart, { passive: true });
+    slider.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      slider.removeEventListener('touchstart', handleTouchStart);
+      slider.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, []);
+
   useEffect(() => {
     if (sliderRef.current) {
       setIsTransitioning(true);
@@ -162,12 +201,6 @@ const DateContent = ({ images, logos, carouselItems, selectedDay }) => {
       setIsTransitioning(false);
     }
   }, [selectedDay]);
-  const goToSlide = (index) => {
-    if (sliderRef.current) {
-      sliderRef.current.slickGoTo(index);
-    }
-  };
-
   return (
     <S.Content>
       <S.CarouselContainer>

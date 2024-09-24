@@ -16,7 +16,6 @@ export default function PubCard() {
   const [likeData, setLikeData] = useState(null);
   const [selectedLikeData, setSelectedLikeData] = useState(null);
   const [isAssociation, setIsAssociation] = useState(false);
-  const [previousLikeData, setPreviousLikeData] = useState(null);
 
   useEffect(() => {
     const associationKeys = [
@@ -25,23 +24,22 @@ export default function PubCard() {
       'clubPerformance',
       'clubExhibitionLeisure',
       'clubSociety',
+      'clubFederation',
     ];
-    const isAssoc = associationKeys.includes(selectedMenu);
-    setIsAssociation(isAssoc);
+    setIsAssociation(associationKeys.includes(selectedMenu));
   }, [selectedMenu]);
 
   const handleLikeBtnClick = useCallback(() => {
     const newHeart = {
-      id: Date.now(),
+      id: `${Date.now()}-${Math.random()}`, // 고유한 키 생성
       left: `${Math.random() * 80 + 10}%`,
       color: getHeartColor(selectedMenu),
+      delay: Math.random() * 2, // 0초에서 2초 사이의 랜덤 딜레이
     };
     setHearts((prevHearts) => [...prevHearts, newHeart]);
 
     setLikeData((prevData) => {
-      if (!prevData || !prevData[selectedMenu]) {
-        return prevData;
-      }
+      if (!prevData || !prevData[selectedMenu]) return prevData;
 
       const updatedData = { ...prevData };
       updatedData[selectedMenu] = updatedData[selectedMenu].map((booth) =>
@@ -54,7 +52,7 @@ export default function PubCard() {
 
     setTimeout(() => {
       setHearts((prevHearts) => prevHearts.filter((heart) => heart.id !== newHeart.id));
-    }, 5000);
+    }, 3000);
   }, [selectedMenu, selectedLikeData]);
 
   const handleMenuClick = (item) => {
@@ -68,7 +66,6 @@ export default function PubCard() {
 
   const compare = useCallback((prevData, newData) => {
     const changes = {};
-
     for (const category in newData) {
       if (!prevData[category]) continue;
 
@@ -80,29 +77,25 @@ export default function PubCard() {
         changes[category] = change;
       }
     }
-
     return changes;
   }, []);
 
   useEffect(() => {
     const eventSource = new EventSource(sseUrl);
-    eventSource.onopen = function () {
-      console.log('SSE open success!');
-    };
-
-    eventSource.onerror = function (error) {
+    eventSource.onopen = () => console.log('SSE open success!');
+    eventSource.onerror = (error) => {
       console.log('SSE error!', error);
       eventSource.close();
     };
 
-    eventSource.onmessage = function (event) {
+    eventSource.onmessage = (event) => {
       const newData = JSON.parse(event.data);
       setLikeData((prevData) => {
         if (prevData) {
           const changes = compare(prevData, newData);
 
           const newBehindHearts = Object.entries(changes).flatMap(([category, change]) => {
-            const heartCount = Math.min(change, 3);
+            const heartCount = Math.min(change, 1);
             return Array.from({ length: heartCount }, () => ({
               id: Date.now() + Math.random(),
               left: `${Math.random() * 80 + 10}%`,
@@ -111,16 +104,11 @@ export default function PubCard() {
           });
 
           if (newBehindHearts.length > 0) {
-            setBehindHearts((prev) => {
-              const updatedHearts = [...prev, ...newBehindHearts].slice(-3);
-              setTimeout(() => {
-                setBehindHearts((hearts) => hearts.filter((heart) => !updatedHearts.includes(heart)));
-              }, 5000);
-              return updatedHearts;
-            });
+            setBehindHearts((prev) => [...prev, ...newBehindHearts].slice(-100));
+            setTimeout(() => {
+              setBehindHearts((hearts) => hearts.filter((heart) => !newBehindHearts.includes(heart)));
+            }, 7000);
           }
-
-          setPreviousLikeData(prevData);
         }
         return newData;
       });
@@ -131,22 +119,18 @@ export default function PubCard() {
     };
   }, [sseUrl, compare]);
 
-  const category = selectedMenu === 'clubFederation' ? 'clubScholarship' : selectedMenu;
-
   useEffect(() => {
-    if (likeData) {
-      setSelectedLikeData(likeData[category]);
-    }
-  }, [likeData, category]);
+    if (likeData) setSelectedLikeData(likeData[selectedMenu === 'clubFederation' ? 'clubScholarship' : selectedMenu]);
+  }, [likeData, selectedMenu]);
 
   return (
     <ContentContainer>
       <PubCardContainer $lng={lng}>
         <BehindHeartContainer $isAssociation={isAssociation}>
           {behindHearts.map((heart) => (
-            <FallingHeart key={heart.id} left={heart.left}>
+            <FallingHeart2 key={heart.id} left={heart.left}>
               <HeartIcon color={heart.color} />
-            </FallingHeart>
+            </FallingHeart2>
           ))}
         </BehindHeartContainer>
         <HeartContainer $isAssociation={isAssociation}>
@@ -172,7 +156,6 @@ export default function PubCard() {
                 </MenuItem>
               ))}
           </MenuWrapper>
-
           <MenuWrapper $index={'2'}>
             {menuItems(t)
               .slice(4)
@@ -189,7 +172,6 @@ export default function PubCard() {
                 </MenuItem>
               ))}
           </MenuWrapper>
-
           <SubMenuWrapper $show={showSubMenu}>
             {subMenuItems(t).map((item) => (
               <SubMenuItem
@@ -210,6 +192,8 @@ export default function PubCard() {
     </ContentContainer>
   );
 }
+
+// Styled components follow...
 
 const PubCardContainer = styled.div`
   width: 33.5rem;
@@ -233,6 +217,21 @@ const fallAnimation = keyframes`
   }
 `;
 
+const fallAnimation2 = keyframes`
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;  // 40% 위치에서 opacity가 0으로
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  
+`;
+
 const FallingHeart = styled.div`
   position: absolute;
   top: 0;
@@ -240,6 +239,17 @@ const FallingHeart = styled.div`
   width: 100%;
   height: 100%;
   animation: ${fallAnimation} 3s linear forwards;
+  animation-delay: ${({ delay }) => delay}s; // 랜덤 딜레이 추가
+`;
+
+const FallingHeart2 = styled.div`
+  position: absolute;
+  top: 0;
+  left: ${({ left }) => left};
+  width: 100%;
+  height: 100%;
+  animation: ${fallAnimation2} 3s linear forwards;
+  animation-delay: ${({ delay }) => delay}s; // 랜덤 딜레이 추가
 `;
 
 const HeartContainer = styled.div`
