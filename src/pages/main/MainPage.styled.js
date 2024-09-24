@@ -93,40 +93,6 @@ export const LineupInfoWrapper = styled.div`
   border-radius: 1.2rem;
 `;
 
-// export const GoLineupPageBtn = styled.button`
-//   margin-top: 3.2rem;
-//   width: 33.5rem;
-//   height: 5.4rem;
-//   position: relative;
-//   color: ${(props) => props.theme.colors.white};
-//   ${(props) => props.theme.fontStyles.main.headline6};
-//   margin-bottom: 4rem;
-//   border-radius: 1.2rem;
-//   box-shadow: 0 0.2rem 0.8rem 0 rgba(66, 255, 187, 0.04);
-//   backdrop-filter: blur(1.2rem);
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   box-sizing: border-box;
-//   border: none;
-//   background-color: transparent;
-//   /* background: linear-gradient(90deg, #aed3ff 0%, #39c3ef 100%); */
-
-//   padding: 0.2rem;
-//   background-clip: padding-box, border-box;
-//   background-origin: border-box;
-
-//   & > * {
-//     background: linear-gradient(92deg, rgba(3, 124, 158, 0.32) 5.37%, rgba(22, 170, 234, 0.32) 97.97%);
-//     border-radius: 1.2rem;
-//     width: 100%;
-//     height: 100%;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//   }
-// `;
-
 export const GoLineupPageBtn = styled.button`
   margin-top: 3.2rem;
   width: 33.5rem;
@@ -137,9 +103,8 @@ export const GoLineupPageBtn = styled.button`
   margin-bottom: 4rem;
   border-radius: 1.2rem;
   box-shadow: 0 0.2rem 0.8rem 0 rgba(66, 255, 187, 0.04);
-  /* backdrop-filter: blur(1.2rem); */
   display: flex;
-  flex-direction: column;
+
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
