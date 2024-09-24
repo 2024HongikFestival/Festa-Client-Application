@@ -45,6 +45,12 @@ const MapPage = () => {
     setActiveView(view);
   };
 
+  const removeTalk = () => {
+    if (!Istalk) {
+      setIsTalk(true);
+    }
+  };
+
   const handleTransform = (e) => {
     const currentScale = e.instance.transformState.scale;
     setScale(currentScale);
@@ -58,10 +64,6 @@ const MapPage = () => {
   const handlePinch = (e) => {
     setScale(e.instance.transformState.scale);
   };
-
-  useEffect(() => {
-    document.body.style.overflow = isBigVisible ? 'hidden' : 'auto';
-  }, [isBigVisible]);
 
   return (
     <MainMapWrapper>
@@ -88,17 +90,21 @@ const MapPage = () => {
         </ContentContainer>
         {activeView === 'all' ? (
           <ContentContainer>
-            <MapImgBox>
+            <MapImgBox $whatview={activeView}>
               <img src={mapImg} className="complete" alt="Complete Map" />
             </MapImgBox>
           </ContentContainer>
         ) : (
-          <div style={{ position: 'relative', width: 'auto' }}>
+          <div onClick={() => removeTalk()} style={{ position: 'relative', width: 'auto', height: '42.rem' }}>
             <ContentContainer>
               {!Istalk && (
                 <div
-                  onClick={() => setIsTalk(true)}
-                  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    position: 'relative',
+                  }}
                 >
                   <TalkBox src={talk} />
                   <TalkDiv>
@@ -115,7 +121,7 @@ const MapPage = () => {
               )}
               <TransformWrapper
                 wrapperClass="my-wrapper"
-                wrapperStyle={{ position: 'relative' }} // 래퍼 스타일
+                wrapperStyle={{ position: 'relative' }}
                 initialScale={1}
                 sensitivity={5}
                 pinchSensitivity={4}
@@ -125,6 +131,10 @@ const MapPage = () => {
                 enableZoomThrottling={true}
                 onTransformed={handleTransform}
                 maxScale={10}
+                initialPositionY={120}
+                centerOnInit={true}
+                initialPositionX={0}
+                disablePadding={true}
                 wheel={{ step: 0.1, smoothStep: 0.05 }}
                 pinch={{ step: 0.1 }}
                 onPinchStart={handlePinchStart}
@@ -139,17 +149,25 @@ const MapPage = () => {
                   };
 
                   return (
-                    <div style={{ position: 'relative', width: '100%', height: '100%', margin: ' 0 10rem' }}>
-                      <MapImgBox className="detail">
-                        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                          <TransformComponent pinchSensitivity={6}>
+                    <div style={{ position: 'relative', width: 'auto', margin: ' 0 10rem' }}>
+                      <MapImgBox $whatview={activeView}>
+                        <div style={{ position: 'relative', width: 'auto' }}>
+                          <TransformComponent
+                            wrapperClass="my-wrapper"
+                            wrapperStyle={{
+                              position: 'relative',
+                              width: 'auto',
+                              height: '42.2rem',
+                            }}
+                            pinchSensitivity={6}
+                          >
                             <DetailMap
                               className="one"
                               src={small}
                               alt="Small Map"
                               style={{
-                                opacity: scale < 1.3 ? 1 : 0.8,
-                                transition: 'opacity 0.3s ease',
+                                opacity: scale < 1.8 ? 1 : 0.8,
+                                transition: 'opacity 0.7s ease',
                                 width: 'auto',
                               }}
                             />
@@ -158,7 +176,7 @@ const MapPage = () => {
                               src={medium}
                               alt="Medium Map"
                               style={{
-                                opacity: scale >= 1.3 && scale < 3.5 ? 1 : 0,
+                                opacity: scale >= 1.8 && scale < 3.5 ? 1 : 0,
                                 transition: 'opacity 0.7s ease',
                                 position: 'absolute',
                                 top: 0,

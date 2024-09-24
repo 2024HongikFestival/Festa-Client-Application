@@ -70,26 +70,16 @@ export const MapToggleBox = styled.div`
 export const MapImgBox = styled.div`
   width: 100%;
   cursor: grab;
-  overflow: hidden;
   margin: 2.4rem 0;
   position: relative;
   z-index: 0;
-  height: 22rem;
-  /* height: ${(props) => (props.$whatview === 'all' ? '22rem' : 'auto')}; */
+  height: ${(props) => (props.$whatview === 'all' ? '22rem' : '42.2rem')};
   background: #b1daff;
 
   .complete {
     height: 22rem;
     animation: ${fadeInUp} 1s ease-out;
   }
-`;
-
-export const MapSpan = styled.span`
-  position: absolute;
-  color: black;
-  top: 2rem;
-  left: 2rem;
-  z-index: 100;
 `;
 
 export const BtnImg = styled.img`
@@ -103,9 +93,7 @@ export const BtnImg = styled.img`
 `;
 
 export const DetailMap = styled.img`
-  /* height: 42.2rem; */
-  height: 22rem;
-  transition: opacity 0.5s ease;
+  height: 22.2rem;
 `;
 
 export const ActiveBackground = styled.div`
