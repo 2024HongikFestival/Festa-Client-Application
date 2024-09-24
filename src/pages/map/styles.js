@@ -68,23 +68,18 @@ export const MapToggleBox = styled.div`
 `;
 
 export const MapImgBox = styled.div`
-  width: 33.5rem;
+  width: 100%;
   cursor: grab;
   overflow: hidden;
   margin: 2.4rem 0;
   position: relative;
   z-index: 0;
   height: 22rem;
+  /* height: ${(props) => (props.$whatview === 'all' ? '22rem' : 'auto')}; */
   background: #b1daff;
 
   .complete {
-    width: 100%;
     height: 22rem;
-    animation: ${fadeInUp} 1s ease-out;
-  }
-
-  .detail {
-    position: 'relative';
     animation: ${fadeInUp} 1s ease-out;
   }
 `;
@@ -108,7 +103,7 @@ export const BtnImg = styled.img`
 `;
 
 export const DetailMap = styled.img`
-  width: 33.5rem;
+  /* height: 42.2rem; */
   height: 22rem;
   transition: opacity 0.5s ease;
 `;
@@ -122,4 +117,26 @@ export const ActiveBackground = styled.div`
   border-radius: 3rem;
   transition: transform 0.25s ease;
   transform: ${({ $whatview }) => ($whatview === 'all' ? 'translateX(0)' : 'translateX(15.8rem)')};
+`;
+
+export const TalkBox = styled.img`
+  position: absolute;
+  z-index: 2;
+  width: 24rem;
+  top: 8rem;
+`;
+
+export const TalkDiv = styled.div`
+  position: absolute;
+  z-index: 3;
+  width: 19.5rem;
+  ${(props) => props.theme.fontStyles.basic.captionBold};
+
+  top: 9.5rem;
+  text-align: center;
+
+  span {
+    ${(props) => props.theme.fontStyles.basic.captionBold};
+    color: ${(props) => props.theme.colors.hongikBlue};
+  }
 `;

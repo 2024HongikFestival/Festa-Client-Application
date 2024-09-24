@@ -569,7 +569,15 @@
   "map": {
     "title": "로드맵",
     "complete": "전체 지도",
-    "detail": "상세 지도"
+    "detail": "상세 지도",
+    "talk0": "",
+
+    "talk1": "원하는 구역으로 ",
+    "talk2": "이동",
+    "talk3": "하거나 ",
+    "talk4": "연속으로 터치해 ",
+    "talk5": "확대",
+    "talk6": "할 수 있어요!!"
   },
   "fleamarket": {
     "pageTitle": "플리마켓",
