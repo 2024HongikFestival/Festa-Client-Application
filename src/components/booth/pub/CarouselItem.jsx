@@ -25,11 +25,8 @@ export default function CarouselItem({ content, click, likeData }) {
   const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0);
   const [animationKey, setAnimationKey] = useState(0);
   const lng = localStorage.getItem('language');
-  const lottieRef = useRef(null);
-
   const [wowImage, setWowImage] = useState(null);
 
-  // 클릭 매크로 방지를 위한 상태 및 ref
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const lastClickTimeRef = useRef(0);
   const clickIntervalsRef = useRef([]);
@@ -55,16 +52,14 @@ export default function CarouselItem({ content, click, likeData }) {
     lastClickTimeRef.current = now;
 
     clickIntervalsRef.current.push(interval);
-    if (clickIntervalsRef.current.length > 6) {
+    if (clickIntervalsRef.current.length > 7) {
       clickIntervalsRef.current.shift();
     }
 
-    // 클릭 간격이 200ms 미만이면 의심
     if (interval < 100) {
       return false;
     }
 
-    // 최근 5개 클릭 간격의 일관성 체크
     if (clickIntervalsRef.current.length === 5) {
       const avgInterval = clickIntervalsRef.current.reduce((a, b) => a + b) / 5;
       const isConsistent = clickIntervalsRef.current.every((int) => Math.abs(int - avgInterval) < 50);
