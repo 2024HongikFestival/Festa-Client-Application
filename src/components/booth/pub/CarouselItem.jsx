@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styled from 'styled-components';
 import Lottie from 'lottie-react';
 import night from '@/assets/webps/booth/icon/night.webp';
-import wow from '@/assets/webps/booth/wow/departmentWow.webp';
 import day2Night from '@/assets/webps/booth/icon/day2Night.webp';
 import favorite from '@/assets/webps/booth/icon/favorite.webp';
 import animationData from '@/assets/lotties/booth/like.json';
@@ -26,9 +25,12 @@ export default function CarouselItem({ content, click, likeData }) {
   const [totalLikes, setTotalLikes] = useState(likeData?.totalLike || 0);
   const [animationKey, setAnimationKey] = useState(0);
   const lng = localStorage.getItem('language');
-  const lottieRef = useRef(null);
-
   const [wowImage, setWowImage] = useState(null);
+
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const lastClickTimeRef = useRef(0);
+  const clickIntervalsRef = useRef([]);
+  const blockTimeoutRef = useRef(null);
 
   useEffect(() => {
     if (content.wow) {
@@ -44,21 +46,66 @@ export default function CarouselItem({ content, click, likeData }) {
     }
   }, [likeData]);
 
-  const handleLikeClick = async (id) => {
-    click();
-    setAnimationKey((prev) => prev + 1);
+  const checkClickPattern = useCallback(() => {
+    const now = Date.now();
+    const interval = now - lastClickTimeRef.current;
+    lastClickTimeRef.current = now;
 
-    try {
-      const response = await axiosInstance.post(`/booths/${id}/like`);
-      if (response.status === 200) {
-        console.log('좋아요수 +1 성공!');
-        setTotalLikes((prevLikes) => prevLikes + 1);
-      }
-    } catch (e) {
-      console.log('좋아요수 반영 실패', e);
+    clickIntervalsRef.current.push(interval);
+    if (clickIntervalsRef.current.length > 7) {
+      clickIntervalsRef.current.shift();
     }
-  };
 
+    if (interval < 100) {
+      return false;
+    }
+
+    if (clickIntervalsRef.current.length === 5) {
+      const avgInterval = clickIntervalsRef.current.reduce((a, b) => a + b) / 5;
+      const isConsistent = clickIntervalsRef.current.every((int) => Math.abs(int - avgInterval) < 50);
+      if (isConsistent) {
+        return false;
+      }
+    }
+
+    return true;
+  }, []);
+
+  const handleLikeClick = useCallback(
+    async (id) => {
+      if (isButtonDisabled) return;
+
+      if (!checkClickPattern()) {
+        setIsButtonDisabled(true);
+        console.log('비정상적인 클릭 패턴이 감지되었습니다. 30초 동안 버튼이 비활성화됩니다.');
+
+        if (blockTimeoutRef.current) {
+          clearTimeout(blockTimeoutRef.current);
+        }
+
+        blockTimeoutRef.current = setTimeout(() => {
+          setIsButtonDisabled(false);
+          clickIntervalsRef.current = [];
+        }, 30000);
+
+        return;
+      }
+
+      click();
+      setAnimationKey((prev) => prev + 1);
+
+      try {
+        const response = await axiosInstance.post(`/booths/${id}/like`);
+        if (response.status === 200) {
+          console.log('좋아요수 +1 성공!');
+          setTotalLikes((prevLikes) => prevLikes + 1);
+        }
+      } catch (e) {
+        console.log('좋아요수 반영 실패', e);
+      }
+    },
+    [click, isButtonDisabled, checkClickPattern]
+  );
   return (
     <Container $lng={lng}>
       {content.time === 'all' ? (
@@ -110,14 +157,12 @@ export default function CarouselItem({ content, click, likeData }) {
         )}
       </PubInfoContainer>
       <BtnContainer>
-        <LikeBtn onClick={() => handleLikeClick(likeData.boothId)} $lng={lng}>
+        <LikeBtn onClick={() => handleLikeClick(likeData.boothId)} $lng={lng} disabled={isButtonDisabled}>
           <HeartIcon src={favorite} alt="favorite" />
           <Count>{totalLikes}</Count>
         </LikeBtn>
       </BtnContainer>
-
       {/* Lottie 컴포넌트에 animationKey를 적용하여 매번 새로 렌더링되도록 함 */}
-
       <Lottie
         style={{
           position: 'absolute',
