@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import ContentContainer from '@/components/common/ContentContainer.jsx';
-import small from '@/assets/webps/booth/map/pubMapDefault.webp';
-import big from '@/assets/webps/booth/map/pubMapZoom.webp';
+import small from '@/assets/webps/booth/map/defaultPubMap.webp';
+import big from '@/assets/webps/booth/map/zoomPubMap.webp';
 import btnImg from '@/assets/webps/map/buttonscale.webp';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
