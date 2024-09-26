@@ -26,7 +26,7 @@ const RedirectEvents = () => {
       const response = await axiosInstance.post('/entries/token', {
         code: localStorage.getItem('kakao_code'),
         latitude: location.latitude,
-        longtitude: location.longitude,
+        longitude: location.longitude,
       });
       localStorage.setItem('event_access_token', response.data.data.accessToken);
       navigate('/event/enter');
