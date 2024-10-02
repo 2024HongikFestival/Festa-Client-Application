@@ -1,10 +1,10 @@
 ## 🎪 2024 홍익대학교 가을 대동제 화양연화; 만개 사이트 프로젝트
 
-<< 사진 >>
+![KakaoTalk_Photo_2024-10-02-22-32-42](https://github.com/user-attachments/assets/cc247482-aa80-46cd-8f93-bb1682fcd0bf)
 
 ## ✨ 프로젝트 소개
 
-홍익대학교 멋쟁이사자처럼 12기와 제58대 총학생회 개화가 함께한 대동제 사이트 프로젝트입니다. 축제를 즐기고자 하는 학우들과 외부인들이 라인업, 위치 정보 및 실시간 공연 중인 DJ 정보 등 분산된 정보를 한번에 확인할 수 있습니다. 더하여 분실물 게시판, 상품 제공 이벤트, 실시간 주점 좋아요 기능 등을 사용하며 축제를 한층 더 재미있게 즐길 수 있도록 하였습니다.
+홍익대학교 멋쟁이사자처럼 12기와 제58대 총학생회 개화가 함께한 대동제 사이트 프로젝트입니다. 축제를 즐기고자 하는 학우들과 외부인들이 라인업, 위치 정보 및 실시간 공연 중인 DJ 정보 등 분산된 정보들을 한번에 확인할 수 있습니다. 더하여 분실물 게시판, 상품 제공 이벤트, 실시간 주점 좋아요 기능 등을 사용하며 축제를 한층 더 재미있게 즐길 수 있게끔 하였습니다.
 
 > 개발 기간 : 2024.07 ~ 2024.09
 
@@ -59,6 +59,64 @@
   - 사이트맵을 통해 출입구 방향을 알 수 있고, 프로모션 부스가 어디에 위치하는 지 알 수 있습니다.
   - 와디페 공연 중 사이트에 접속하면 '현재' 공연 중인 DJ가 표기되어, 따로 검색하지 않아도 해당 DJ에 대한 정보를 습득할 수 있습니다.
 
+## 🗂️ 프로젝트 구조
+
+```
+.
+├── README.md
+├── global.js
+├── index.html
+├── jsconfig.json
+├── package-lock.json
+├── package.json
+├── public
+│   ├── faviconBlack.svg
+│   └── faviconWhite.svg
+├── src
+│   ├── App.jsx
+│   ├── api
+│   │   └── axios.js
+│   ├── assets
+│   │   ├── lotties
+│   │   ├── svgs
+│   │   ├── videos
+│   │   └── webps
+│   ├── auth
+│   │   ├── OAuth.js
+│   │   ├── RedirectEvents.jsx
+│   │   └── RedirectLosts.jsx
+│   ├── components
+│   ├── constants
+│   ├── context
+│   ├── i18n
+│   │   ├── resource
+│   │   │   ├── en.json
+│   │   │   └── ko.json
+│   │   └── setting.js
+│   ├── main.jsx
+│   ├── outlet
+│   ├── pages
+│   │   ├── admin
+│   │   ├── booth
+│   │   ├── event
+│   │   ├── facilities
+│   │   ├── flame
+│   │   ├── lost-and-found
+│   │   ├── main
+│   │   ├── makers
+│   │   ├── map
+│   │   ├── not-found
+│   │   └── stage
+│   ├── styles
+│   │   ├── GlobalStyle.js
+│   │   ├── map
+│   │   │   └── mapStyles.js
+│   │   └── theme.js
+│   └── utils
+├── vite.config.js
+└── yarn.lock
+```
+
 ## 🍃 브랜치 전략
 
 - `main (배포용 브랜치)`
@@ -109,3 +167,98 @@
 |                김동욱<br/>[@boogiewooki02](https://github.com/boogiewooki02)                |                        최정인<br/>[@cuyqo](https://github.com/cuyqo)                        |                       공준혁<br/>[@ocahs9](https://github.com/ocahs9)                       |
 
 ## 💭 화면 및 기능 구성
+
+### 대동제
+
+<details>
+<summary><strong>메인</strong></summary>
+
+메인화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>로드맵</strong></summary>
+
+로드맵 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>공연</strong></summary>
+
+공연 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>부스</strong></summary>
+
+부스 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>편의 정보</strong></summary>
+
+편의 정보 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>이벤트</strong></summary>
+
+이벤트 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+### 와디페
+
+<details>
+<summary><strong>메인</strong></summary>
+
+메인 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>사이트맵</strong></summary>
+
+사이트맵 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>타임테이블</strong></summary>
+
+타임테이블 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>예매</strong></summary>
+
+예매 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>라인업</strong></summary>
+
+라인업 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>MD 상품</strong></summary>
+
+MD 상품 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>
+
+<details>
+<summary><strong>프로모션 부스</strong></summary>
+
+프로모션 부스 화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+</details>

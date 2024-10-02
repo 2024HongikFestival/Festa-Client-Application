@@ -37,3 +37,7 @@ dist-ssr
 /build/
 
 build
+.git
+.husky
+.yarn
+node_modules
