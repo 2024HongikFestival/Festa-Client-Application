@@ -151,20 +151,19 @@
 | **Styling**         | ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![Styled Components](https://img.shields.io/badge/Styled--Components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)                                                                                |
 | **Formatting**      | ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black) ![Husky](https://img.shields.io/badge/Husky-000000?style=for-the-badge&logo=husky&logoColor=white) |
 | **Version Control** | ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)                                                                                                                   |
-| **CI/CD**           | ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)                                                                                                                                                                                      |
 | **Build Tool**      | ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)                                                                                                                                                                                                                      |
 | **Package Manager** | ![Yarn](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)                                                                                                                                                                                                                      |
 | **Cowork Tool**     | ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)                                                                                                             |
 
 ## 👩🏻‍💻 팀원 소개
 
-| <img src="https://avatars.githubusercontent.com/u/118096607?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/113417326?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/81095801?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/127955729?v=4" width="150" height="150"/> |
-| :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
-|                 서가영<br/>[@caminobelllo](https://github.com/caminobelllo)                 |                    원윤서<br/>[@dbstj0403](https://github.com/dbstj0403)                    |                     심수연<br/>[@letthem](https://github.com/letthem)                      |                 원채영<br/>[@chaeyoungwon](https://github.com/chaeyoungwon)                 |
+| <img src="https://avatars.githubusercontent.com/u/118096607?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/155794105?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/128466405?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/81095801?v=4" width="150" height="150"/> |
+| :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+|                 서가영<br/>[@caminobelllo](https://github.com/caminobelllo)                 |                       공준혁<br/>[@ocahs9](https://github.com/ocahs9)                       |                김동욱<br/>[@boogiewooki02](https://github.com/boogiewooki02)                |                     심수연<br/>[@letthem](https://github.com/letthem)                      |
 
-| <img src="https://avatars.githubusercontent.com/u/128466405?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/144602200?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/155794105?v=4" width="150" height="150"/> |
+| <img src="https://avatars.githubusercontent.com/u/113417326?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/127955729?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/144602200?v=4" width="150" height="150"/> |
 | :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
-|                김동욱<br/>[@boogiewooki02](https://github.com/boogiewooki02)                |                        최정인<br/>[@cuyqo](https://github.com/cuyqo)                        |                       공준혁<br/>[@ocahs9](https://github.com/ocahs9)                       |
+|                    원윤서<br/>[@dbstj0403](https://github.com/dbstj0403)                    |                 원채영<br/>[@chaeyoungwon](https://github.com/chaeyoungwon)                 |                        최정인<br/>[@cuyqo](https://github.com/cuyqo)                        |
 
 ## 💭 화면 및 기능 구성
 
@@ -174,6 +173,12 @@
 <summary><strong>메인</strong></summary>
 
 메인화면에 관련된 화면 및 기능을 여기에 작성하세요.
+
+| 스크린샷 | 기능    | 설명    |
+| -------- | ------- | ------- |
+| 테스트1  | 테스트2 | 테스트3 |
+| 테스트1  | 테스트2 | 테스트3 |
+| 테스트1  | 테스트2 | 테스트3 |
 
 </details>
 
