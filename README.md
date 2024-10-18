@@ -117,6 +117,18 @@
 └── yarn.lock
 ```
 
+## 🧸 시작 가이드
+
+- Node.js: v22.0.0
+- Yarn: v4.5.0
+
+```
+$ git clone git@github.com:2024HongikFestival/Festa-Client-Application.git
+$ cd Festa-Client-Application
+$ yarn install
+$ yarn dev
+```
+
 ## 🍃 브랜치 전략
 
 - `main (배포용 브랜치)`
@@ -171,6 +183,7 @@
 
 <details>
 <summary><strong>메인</strong></summary>
+<br/>
 
 | 스크린샷  | 기능    | 설명                                                                                                              |
 | --------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
